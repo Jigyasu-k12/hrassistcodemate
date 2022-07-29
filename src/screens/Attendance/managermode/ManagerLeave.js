@@ -117,9 +117,9 @@ export const ManagerLeave = () => {
             console.log("APiresult GetPendingLeaveReq", result);
             stopLoader();
             if(result.Value.length > 0){
-                let apidata = result.Value;
+                let apiData = result.Value;
                 let newarray = [];
-                apidata.forEach(element => {
+                apiData.forEach(element => {
                     newarray.push({...element, selected:false})
                 });
                 setGetPendingLeaveReq(newarray)

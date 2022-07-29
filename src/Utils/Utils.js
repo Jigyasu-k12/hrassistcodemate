@@ -33,6 +33,8 @@ export const PostMethode = async (url, data, token, context=null) => {
             if(context && error.response.status== 403){
                 UseLogout(context);
                 throw handleError(error)
+            }else{
+                throw handleError(error)
             }        
             // console.log(error.response.data);
             // console.log(error.response.status);

@@ -43,16 +43,16 @@ const Hospital = ({ locationName }) => {
 
   const GetHospListApi = (data) => {
     let token = AppUserData.token
-    let apidata ;
+    let apiData ;
     if(data==undefined){
-      apidata = {};
+      apiData = {};
     }
     else {
-      apidata= {
+      apiData= {
         "HospLoc":data}
     }
     setLoader(true);
-    ApiService.PostMethode('/GetHospList', apidata, token, authContext)
+    ApiService.PostMethode('/GetHospList', apiData, token, authContext)
       .then(result => {
         setFilterModal(false);
         console.log("setHospitallList", result);
@@ -85,8 +85,8 @@ const Hospital = ({ locationName }) => {
   const GetHospLocnApi = () => {
     setFilterModal(true);
     let token = AppUserData.token
-    let apidata = {}
-    ApiService.PostMethode('/GetHospLocn', apidata, token, authContext)
+    let apiData = {}
+    ApiService.PostMethode('/GetHospLocn', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         // console.log("Apiresult",result);

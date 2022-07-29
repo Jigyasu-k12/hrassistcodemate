@@ -45,44 +45,44 @@ const FoodCount = ({ navigation }) => {
     let userId = AppUserData.data
     let formatedDate = moment(date).format("DD-MMMM-YYYY").toUpperCase();
     console.log("currentdate", formatedDate);
-    let apidata;
+    let apiData;
     if (currentInd == 0) {
-      apidata = {
+      apiData = {
         MenuType: "F",
         staffid: userId,
         MenuDate: formatedDate,
         MenuLocation: "002"
       }
-      console.log("index 0 ", apidata);
+      console.log("index 0 ", apiData);
     }
     else if (currentInd == 1) {
-      apidata = {
+      apiData = {
         MenuType: "F",
         staffid: userId,
         MenuDate: formatedDate,
         MenuLocation: "010"
       }
-      console.log("index 0 ", apidata);
+      console.log("index 0 ", apiData);
     }
     else if (currentInd == 2) {
-      apidata = {
+      apiData = {
         MenuType: "F",
         staffid: userId,
         MenuDate: formatedDate,
         MenuLocation: "011"
       }
-      console.log("index 0 ", apidata);
+      console.log("index 0 ", apiData);
     }
     else if (currentInd == 3) {
-      apidata = {
+      apiData = {
         MenuType: "F",
         staffid: userId,
         MenuDate: formatedDate,
         MenuLocation: "041"
       }
-      console.log("index 0 ", apidata);
+      console.log("index 0 ", apiData);
     }
-    console.log("apidata", apidata);
+    console.log("apiData", apiData);
     setLoader(true);
     ApiService.PostMethode('/GetMenuCant', apiData, token, authContext)
       .then(result => {

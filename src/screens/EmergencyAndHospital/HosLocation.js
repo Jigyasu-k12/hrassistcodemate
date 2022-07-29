@@ -17,7 +17,7 @@ const HosLocation = ({ navigation }) => {
 
   const GetHospLocnApi = () => {
     let token = AppUserData.token
-    let apidata = {}
+    let apiData = {}
     setLoader(true);
     ApiService.PostMethode('/GetHospLocn', apiData, token, authContext)
       .then(result => {

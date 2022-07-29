@@ -135,7 +135,7 @@ const VisitorDetails = ({navigation,route}) => {
     console.log("dataarr",dataarr);
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = 
+    let apiData = 
       dataarr.map((item)=>{
      let obj= {
       "ControlNo" : controlno,
@@ -152,17 +152,17 @@ const VisitorDetails = ({navigation,route}) => {
       }
       return obj
     })
-    console.log("apidata",apidata)
+    console.log("apiData",apiData)
         // route.params.visitorpayload.buildings
     setLoader(true);
     ApiService.PostMethode('/SubmitVSDT', apiData, token, authContext)
       .then(result => {
         // console.log("APiresult SubmitVSDT", result.Result);
-        let Apidata= result.Result
-        console.log("APiresult SubmitVSDT",Apidata);
-        // alert( Apidata)
-        Toast.show(Apidata);
-        if(Apidata.includes("SUCCESS")){
+        let apiData= result.Result
+        console.log("APiresult SubmitVSDT",apiData);
+        // alert( apiData)
+        Toast.show(apiData);
+        if(apiData.includes("SUCCESS")){
           // navigation.navigate("Home");
 
           // navigation.dispatch(

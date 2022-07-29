@@ -44,7 +44,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
     const [OpenDateTimePicker, setOpenDateTimePicker] = useState(false);
     const [OpenDateTimePicker2, setOpenDateTimePicker2] = useState(false);
     const [show, setShow] = useState(false);
-    const [TaxiApiData, setTaxiApiData] = useState({});
+    const [TaxiapiData, setTaxiapiData] = useState({});
     const [Alldata, setAlldata] = useState({})
     const [taxitypeList, settaxitypeList] = useState([]);
     const [TimeoutMax, setTimeoutMax] = useState(new Date());
@@ -75,7 +75,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                 console.log("APiresult GetRequest_Detail", result);
                 stopLoader(false);
                 if(result.Value &&result.Value){
-                    setTaxiApiData({
+                    setTaxiapiData({
                         empid:result.Value[0].TCAR_EMPL_ID.toString(),
                         Name:result.Value[0].EMPL_NAME,
                         slipno:result.Value[0].TCAR_SLIP_NO.toString(),
@@ -338,7 +338,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     enableReinitialize
                     innerRef={fromRef}
                     validationSchema={gatePassScheema}
-                    initialValues={TaxiApiData}
+                    initialValues={TaxiapiData}
                     onSubmit={values => {                    
                         SubmitData(values);
                     }}

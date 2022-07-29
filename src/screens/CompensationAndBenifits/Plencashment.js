@@ -31,7 +31,7 @@ const Plencashment = ({ navigation, route }) => {
   const InitPLEncashmenApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "UserName": userId
     }
 
@@ -69,11 +69,11 @@ const Plencashment = ({ navigation, route }) => {
   const SubmitPLEncashmentApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       UserName: userId,
       Encashdays: encashDays
     }
-    // console.log("SubmitPLEncashmentApiapidata", apidata);
+    // console.log("SubmitPLEncashmentApiapiData", apiData);
     setLoader(true);
     ApiService.PostMethode('/SubmitPLEncashment', apiData, token, authContext)
       .then(result => {
@@ -103,7 +103,7 @@ const Plencashment = ({ navigation, route }) => {
   const InitMEDEncashment = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "UserName": userId
     }
     //Set Loader
@@ -131,7 +131,7 @@ const Plencashment = ({ navigation, route }) => {
   const ReportLTC = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "StaffNo": userId
     }
     //set error
@@ -192,7 +192,7 @@ const Plencashment = ({ navigation, route }) => {
   const SubmitMEDEncashmentApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "UserName": userId
     }
     //set Loader

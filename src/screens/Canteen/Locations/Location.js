@@ -50,7 +50,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
         let token = AppUserData.token
         let userId = AppUserData.data
         let formatedDate = moment(date).format("DD-MMMM-YYYY").toUpperCase();
-        let apidata = {
+        let apiData = {
             MenuType: route.params.MenuType,
             MenuDate: formatedDate,
             MenuLocation: route.params.MenuLocation,
