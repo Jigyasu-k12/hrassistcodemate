@@ -73,7 +73,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
 
         //Set Loader
         setLoader(true);
-        ApiService.PostMethode('/reportCONV', apiData, token)
+        ApiService.PostMethode('/reportCONV', apiData, token, authContext)
             .then(result => {
                 console.log('reportCONV', result);
                 setBill(result.Value)
@@ -104,7 +104,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
         //Set Loader
         setLoader(true);
 
-        ApiService.PostMethode('/getLovmConv', apiData, token)
+        ApiService.PostMethode('/getLovmConv', apiData, token, authContext)
             .then(result => {
                 console.log('fuel data', result.Value);
                 let FuelData = result.Value
@@ -156,7 +156,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
                 
                 //Set Loader
                 setLoader(true);
-                ApiService.PostMethode('/SubmitConveyBill', apiData, token)
+                ApiService.PostMethode('/SubmitConveyBill', apiData, token, authContext)
                     .then(result => {    
                         stopLoader();
                         if(result.Result){                               

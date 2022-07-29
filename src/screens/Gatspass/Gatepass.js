@@ -75,12 +75,12 @@ const Gatepass = ({ navigation }) => {
     let apiData = { "UserName": userId }
     console.log(apiData)
     setLoader(true);
-    ApiService.PostMethode('/GetLocationListVGPS', apiData, token)
+    ApiService.PostMethode('/GetLocationListVGPS', apiData, token, authContext)
       .then(result => {
         console.log("APiresult GetLocationListVGPS", result);
         setLoader(false);
-        setLocations(result.Value);
-        if(result.Value.length > 0){
+        if(result?.Value?.length > 0){
+          setLocations(result.Value);
           let Location = result.Value[0].LOCN;
           let LocationCode = result.Value[0].CODE;
           // console.log("LocationCode", LocationCode)
@@ -105,7 +105,7 @@ const Gatepass = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -119,11 +119,11 @@ const Gatepass = ({ navigation }) => {
     let apiData = { "UserName": userId }
     console.log(apiData)
     setLoader(true);
-    ApiService.PostMethode('/GetSearchLevelsListVGPS', apiData, token)
+    ApiService.PostMethode('/GetSearchLevelsListVGPS', apiData, token, authContext)
       .then(result => {
         console.log("Search level", result);
         setLoader(false);
-        if(result.Value.length> 0){
+        if(result?.Value?.length> 0){
           let arrData = result.Value.map((item) => { return { 'label': item.MEANING, value: item.VAL } })
           setSearchLevelData(arrData);
           fromRef.current.setFieldValue('searchLevel', arrData[0]);
@@ -145,7 +145,7 @@ const Gatepass = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -161,7 +161,7 @@ const Gatepass = ({ navigation }) => {
       }
       let token = AppUserData.token
       setLoader(true);
-      ApiService.PostMethode('/GetEmplLookup', apiData, token)
+      ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
         .then(result => {
           setLoader(false);
 
@@ -184,7 +184,7 @@ const Gatepass = ({ navigation }) => {
           } else if (error) {
             Toast.show('Network Error');
           } else {
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
@@ -201,7 +201,7 @@ const Gatepass = ({ navigation }) => {
     console.log('post userId', userId);
     let token = AppUserData.token
     setLoader(true);
-    ApiService.PostMethode('/GetAccessListVGPS', apiData, token)
+    ApiService.PostMethode('/GetAccessListVGPS', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         let responseData = result.Value
@@ -226,7 +226,7 @@ const Gatepass = ({ navigation }) => {
         } else if (error) {
           Toast.show('Network Error');
         } else {
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }

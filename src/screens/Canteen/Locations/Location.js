@@ -57,7 +57,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
             staffid: userId,            
         }
         setLoader(true);
-        ApiService.PostMethode('/GetMenuCant', apidata, token)
+        ApiService.PostMethode('/GetMenuCant', apiData, token, authContext)
           .then(result => {
             setLoader(false);
             let ApiValue = result.Value
@@ -96,7 +96,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
       };

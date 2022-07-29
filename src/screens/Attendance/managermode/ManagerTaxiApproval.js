@@ -70,7 +70,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         let userId = AppUserData?.data?.userId;
         let apiData = { "SlipNO": route?.params?.data};
         setLoader(true);
-        ApiService.PostMethode('/GetRequestDetail', apiData, token)
+        ApiService.PostMethode('/GetRequestDetail', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult GetRequest_Detail", result);
                 stopLoader(false);
@@ -116,7 +116,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };
@@ -126,7 +126,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         let userId = AppUserData?.data?.userId;
         let apiData = { "PartyCode": party_Code};
         setLoader(true);
-        ApiService.PostMethode('/GetTaxiType', apiData, token)
+        ApiService.PostMethode('/GetTaxiType', apiData, token, authContext)
             .then(result => {
                 // console.log("APiresult GetTaxiType", result);
                 stopLoader(false);
@@ -151,7 +151,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }
@@ -161,7 +161,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         let userId = AppUserData?.data?.userId;
         let apiData = { "Location": locncode};
         setLoader(true);
-        ApiService.PostMethode('/GetCalender', apiData, token)
+        ApiService.PostMethode('/GetCalender', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult GetCalender", result);
                 stopLoader(false);
@@ -197,7 +197,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }
@@ -248,7 +248,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                 "Source" : ""
                 };
         setLoader(true);
-        ApiService.PostMethode('/ApproveTaxiRequest', apiData, token)
+        ApiService.PostMethode('/ApproveTaxiRequest', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult ApproveTaxiRequest", result);
                 stopLoader(false);
@@ -278,7 +278,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }

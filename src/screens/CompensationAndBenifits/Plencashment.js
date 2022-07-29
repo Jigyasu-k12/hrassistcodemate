@@ -38,7 +38,7 @@ const Plencashment = ({ navigation, route }) => {
     //set Loader
     setLoader(true);
 
-    ApiService.PostMethode('/initPLEncashment', apidata, token)
+    ApiService.PostMethode('/initPLEncashment', apiData, token, authContext)
       .then(result => {
 
         // Stop Loader
@@ -75,7 +75,7 @@ const Plencashment = ({ navigation, route }) => {
     }
     // console.log("SubmitPLEncashmentApiapidata", apidata);
     setLoader(true);
-    ApiService.PostMethode('/SubmitPLEncashment', apidata, token)
+    ApiService.PostMethode('/SubmitPLEncashment', apiData, token, authContext)
       .then(result => {
         // console.log("SubmitPLEncashmentApi", result);
 
@@ -108,7 +108,7 @@ const Plencashment = ({ navigation, route }) => {
     }
     //Set Loader
     setLoader(true);
-    ApiService.PostMethode('/InitMEDEncashment', apidata, token)
+    ApiService.PostMethode('/InitMEDEncashment', apiData, token, authContext)
       .then(result => {
 
         // Stop Loader
@@ -137,7 +137,7 @@ const Plencashment = ({ navigation, route }) => {
     //set error
     setLoader(true);
 
-    ApiService.PostMethode('/ReportLTC', apidata, token)
+    ApiService.PostMethode('/ReportLTC', apiData, token, authContext)
       .then(result => {
         // console.log("ReportLTC", result);
 
@@ -198,7 +198,7 @@ const Plencashment = ({ navigation, route }) => {
     //set Loader
     // setLoader(false);
     // createTwoButtonAlert();
-    ApiService.PostMethode('/SubmitMEDEncashment', apidata, token)
+    ApiService.PostMethode('/SubmitMEDEncashment', apiData, token, authContext)
       .then(result => {
         // console.log("SubmitMEDEncashment", result);
 

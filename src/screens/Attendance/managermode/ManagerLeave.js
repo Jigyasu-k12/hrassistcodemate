@@ -70,7 +70,7 @@ export const ManagerLeave = () => {
           "ToDate": date
         };
         setLoader(true);
-        ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token)
+        ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token, authContext)
           .then(result => {
             console.log("APiresult `GetEmplLevDetail`", result);
             stopLoader();
@@ -92,7 +92,7 @@ export const ManagerLeave = () => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
       }
@@ -105,13 +105,14 @@ export const ManagerLeave = () => {
           // setrefresh(false);
         }
         let UserName = AppUserData?.data?.EMPL_NAME
+        let userId = AppUserData?.data?.userId
         let token = AppUserData.token;
         let apiData = {
-          "UserName": "spnayak",
+          "UserName": userId,
           // "UserName": UserName,
         };
         setLoader(true);
-        ApiService.PostMethode('/GetPendingLeaveReq  ', apiData, token)
+        ApiService.PostMethode('/GetPendingLeaveReq  ', apiData, token, authContext)
           .then(result => {
             console.log("APiresult GetPendingLeaveReq", result);
             stopLoader();
@@ -123,7 +124,7 @@ export const ManagerLeave = () => {
                 });
                 setGetPendingLeaveReq(newarray)
             }else{
-                Toast("No Pending Request Found");
+                Toast.show("No Pending Request Found");
             }
           })
           .catch(error => {
@@ -141,7 +142,7 @@ export const ManagerLeave = () => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
       }
@@ -213,7 +214,7 @@ export const ManagerLeave = () => {
             "Remarks": data.remark
         };
         setLoader(true);
-        ApiService.PostMethode('/ApproveRejectLeave  ', apiData, token)
+        ApiService.PostMethode('/ApproveRejectLeave  ', apiData, token, authContext)
           .then(result => {
             console.log("APiresult ApproveRejectLeave", result);
             stopLoader();
@@ -243,7 +244,7 @@ export const ManagerLeave = () => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
     }
@@ -340,7 +341,7 @@ export const ManagerLeave = () => {
       }}>        
         <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Date</Text>
         <Text Bold style={styles.HeaderColumn}>Type</Text>
-        <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Periord</Text>
+        <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Period</Text>
         <Text Bold style={styles.HeaderColumn}>Status</Text>
       </View>
     );

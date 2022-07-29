@@ -94,7 +94,7 @@ export const Attendance = ({navigation}) => {
       }
       let token = AppUserData.token
       setLoader(true);
-      ApiService.PostMethode('/GetEmplLookup', apiData, token)
+      ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
         .then(result => {
           stopLoader();
 
@@ -115,7 +115,7 @@ export const Attendance = ({navigation}) => {
           } else if (error) {
             Toast.show('Network Error');
           } else {
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }

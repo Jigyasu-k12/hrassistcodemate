@@ -128,7 +128,8 @@ export default TaxSavings
 const styles = StyleSheet.create({
     container:{
         paddingHorizontal:10,
-        flex:1
+        flex:1, 
+        paddingVertical:10
     },  
     textContainer: {
         width: '100%',
@@ -152,8 +153,9 @@ const styles = StyleSheet.create({
 
     },
     MainCard: {
-        flex:1,
+         flex:1,
         paddingHorizontal:10,
+        paddingVertical:10,
         shadowColor: GlobalColor.Black,
         shadowOffset: {
             width: 0,
@@ -163,7 +165,6 @@ const styles = StyleSheet.create({
         shadowRadius: 3.0,
         elevation: 3,
         borderRadius: 4,
-        marginTop:5,
     }
 
 

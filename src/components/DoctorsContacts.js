@@ -35,7 +35,7 @@ const DoctorsContacts = ({ navigation, route }) => {
     let apiData = {}
     let token = AppUserData.token
     setLoader(true);
-    ApiService.PostMethode('/EmergencyPoshCell', apiData, token)
+    ApiService.PostMethode('/EmergencyPoshCell', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value
@@ -78,7 +78,7 @@ const DoctorsContacts = ({ navigation, route }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -91,7 +91,7 @@ const DoctorsContacts = ({ navigation, route }) => {
     let token = AppUserData.token
     console.log("apiData", apiData);
     setLoader(true);
-    ApiService.PostMethode('/GetEmerContact', apiData, token)
+    ApiService.PostMethode('/GetEmerContact', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value
@@ -146,7 +146,7 @@ const DoctorsContacts = ({ navigation, route }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

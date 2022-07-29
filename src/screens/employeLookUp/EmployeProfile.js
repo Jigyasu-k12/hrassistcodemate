@@ -37,8 +37,8 @@ const EmployProfile = ({ navigation, route }) => {
       StaffNO:userId
     }
     setLoader(true);
-    // ApiService.PostMethode('/GetEmployeeProfile', apiData, token)
-    ApiService.PostMethode('/GetEmpSearch', apiData, token)
+    // ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
+    ApiService.PostMethode('/GetEmpSearch', apiData, token, authContext)
       .then(result => {
         stopLoader();
         if(result.Value?.Table.length > 0){
@@ -62,7 +62,7 @@ const EmployProfile = ({ navigation, route }) => {
         } else if (error) {
           Toast.show('Network Error');
         } else {
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

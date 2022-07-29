@@ -62,7 +62,7 @@ const VisitorDetails = ({navigation,route}) => {
          "MultipleEmployeeIndicator" : route.params.visitorpayload.empId, 
             }
     setLoader(true);
-    ApiService.PostMethode('/SubmitVGPE', apiData, token)
+    ApiService.PostMethode('/SubmitVGPE', apiData, token, authContext)
       .then(result => {
         console.log("APiresult SubmitVGPE", result);
         if(result.Result){
@@ -85,7 +85,7 @@ const VisitorDetails = ({navigation,route}) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -95,7 +95,7 @@ const VisitorDetails = ({navigation,route}) => {
     let userId = AppUserData?.data?.userId;
     let apiData ={"Search": phone};
     setLoader(true);
-    ApiService.PostMethode('/GetVisitorByPhoneVGPS', apiData, token)
+    ApiService.PostMethode('/GetVisitorByPhoneVGPS', apiData, token, authContext)
       .then(result => {
         console.log(result.Value);
         if(result.Value.length > 0){
@@ -124,7 +124,7 @@ const VisitorDetails = ({navigation,route}) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -155,7 +155,7 @@ const VisitorDetails = ({navigation,route}) => {
     console.log("apidata",apidata)
         // route.params.visitorpayload.buildings
     setLoader(true);
-    ApiService.PostMethode('/SubmitVSDT', apidata, token)
+    ApiService.PostMethode('/SubmitVSDT', apiData, token, authContext)
       .then(result => {
         // console.log("APiresult SubmitVSDT", result.Result);
         let Apidata= result.Result
@@ -201,7 +201,7 @@ const VisitorDetails = ({navigation,route}) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
