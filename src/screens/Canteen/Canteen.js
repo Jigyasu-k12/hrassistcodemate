@@ -48,7 +48,7 @@ const Canteen = ({ navigation }) => {
           <View
             style={styles.MenuContainer}>
             <Text Bold>Canteen Menu</Text>
-            <Feather name="corner-up-right" size={20} />
+            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
           </View>
         </TouchableOpacity>
 
@@ -83,7 +83,7 @@ const Canteen = ({ navigation }) => {
           <View
             style={styles.MenuContainer}>
             <Text Bold>Food Court</Text>
-            <Feather name="corner-up-right" size={20} />
+            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
           </View>
         </TouchableOpacity>
 

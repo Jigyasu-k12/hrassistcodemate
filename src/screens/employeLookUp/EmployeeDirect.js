@@ -115,7 +115,7 @@ const EmployeeDirect = () => {
               style={[styles.searchIcon, { marginLeft: search == '' ? 35 : null }]}
               name="send"
               size={25}
-              color='#2980b9'
+              color={GlobalColor.Secondary}
             />
           </TouchableOpacity>
         </View>
@@ -141,7 +141,7 @@ const EmployeeDirect = () => {
                   style={styles.searchIcon}
                   name="person-circle-outline"
                   size={25}
-                  color="#2757C3"
+                  color={GlobalColor.Secondary}
                 />
                 <View style={{ flexDirection: 'column', width: '70%' }}>
                   <Text style={{ fontSize: 16 }}>
@@ -163,7 +163,7 @@ const EmployeeDirect = () => {
                     style={styles.searchIcon}
                     name="chevron-forward-circle-outline"
                     size={25}
-                    color="#2757C3"
+                    color={GlobalColor.Secondary}
                   />
                 </TouchableOpacity>
               </TouchableOpacity>

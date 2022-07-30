@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '100%',
     borderLeftWidth: 5,
-    borderLeftColor: '#4174D0',
+    borderLeftColor: GlobalColor.Secondary,
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 5,

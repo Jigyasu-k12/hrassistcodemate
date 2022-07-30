@@ -189,7 +189,7 @@ const Payroll = () => {
         </View>
         <View style={styles.item}>
           <Text Bold>Salary Slip</Text>
-          <Feather name="corner-up-right" size={20} />
+          <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
         </View>
       </TouchableOpacity>
 
@@ -219,7 +219,7 @@ const Payroll = () => {
           </View>
           <View style={styles.item}>
             <Text Bold>Tax Computation Slip</Text>
-            <Feather name="corner-up-right" size={20} />
+            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary} />
           </View>
         </View>
 
@@ -305,7 +305,7 @@ const Payroll = () => {
           </View>
           <View style={styles.item}>
             <Text Bold>PF Balance </Text>
-            <Feather name="corner-up-right" size={20} />
+            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
           </View>
         </View>
 
@@ -387,7 +387,7 @@ const Payroll = () => {
         </View>
         <View style={styles.item}>
           <Text Bold>Tax Savings</Text>
-          <Feather name="corner-up-right" size={20} />
+          <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
         </View>
       </TouchableOpacity>
 

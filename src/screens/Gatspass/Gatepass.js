@@ -942,9 +942,9 @@ const Gatepass = ({ navigation }) => {
                       </ScrollView>
                       <TouchableOpacity onPress={toggleBuilding}>
                         {show == true ? (
-                          <Ionicons name="caret-up" size={30} color={'#4174D0'} />
+                          <Ionicons name="caret-up" size={30} color={GlobalColor.Secondary} />
                         ) : (
-                          <Ionicons name="caret-down" size={30} color={'#4174D0'} />
+                          <Ionicons name="caret-down" size={30} color={GlobalColor.Secondary} />
                         )}
                       </TouchableOpacity>
                     </View>
@@ -1094,7 +1094,7 @@ const Gatepass = ({ navigation }) => {
                         justifyContent: 'center',
 
                       }}>
-                      <Feather name="search" size={20} color={'#4174D0'} />
+                      <Feather name="search" size={20} color={GlobalColor.Secondary} />
                     </View>
 
 
@@ -1132,7 +1132,7 @@ const Gatepass = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}>
-                      <Ionicons name="send" size={20} color={'#4174D0'} />
+                      <Ionicons name="send" size={20} color={GlobalColor.Secondary} />
                     </TouchableOpacity>
                   </View>
 

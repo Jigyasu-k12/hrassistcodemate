@@ -83,7 +83,7 @@ const BuisnessTravel = ({navigation}) => {
           <Text style={{}} Bold>
             MSIL GST Details
           </Text>
-          <Ionicons name="chevron-forward-outline" size={20} />
+          <Ionicons name="chevron-forward-outline" size={20} color={GlobalColor.Secondary}/>
         </View>
       </TouchableOpacity>
 
@@ -110,7 +110,7 @@ const BuisnessTravel = ({navigation}) => {
           <Text style={{fontSize: 16}} Bold>
             Shuttle Booking
           </Text>
-          <Ionicons name="chevron-forward-outline" size={20} />
+          <Ionicons name="chevron-forward-outline" size={20} color={GlobalColor.Secondary}/>
         </View>
       </TouchableOpacity>
     </View>
