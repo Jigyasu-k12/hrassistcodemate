@@ -82,7 +82,7 @@ const PastBook = ({navigation, route}) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };
@@ -93,7 +93,7 @@ const PastBook = ({navigation, route}) => {
         }
         // setModalVisible(true);
         setLoader(true);
-        ApiService.PostMethode('/BookingDetail', apiData, token)
+        ApiService.PostMethode('/BookingDetail', apiData, token, authContext)
             .then(result => {
                 console.log("BookingDetail", result);
 
@@ -121,7 +121,7 @@ const PastBook = ({navigation, route}) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };
@@ -138,7 +138,7 @@ const PastBook = ({navigation, route}) => {
         }        
         // console.log("apiPayload", apiData)
         setLoader(true);
-        ApiService.PostMethode('/ShuttleEligibility', apiData, token)
+        ApiService.PostMethode('/ShuttleEligibility', apiData, token, authContext)
             .then(result => {
                 console.log("ShuttleEligibility", result);
                 setLoader(false);
@@ -175,7 +175,7 @@ const PastBook = ({navigation, route}) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };

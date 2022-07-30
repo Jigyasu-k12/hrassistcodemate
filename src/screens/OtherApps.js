@@ -58,7 +58,7 @@ const OtherApps = ({ navigation }) => {
     }
 
 
-    ApiService.PostMethode('/GetAPPLink', apiData, token)
+    ApiService.PostMethode('/GetAPPLink', apiData, token, authContext)
       .then(result => {
         let responseData = result.Value
         stopLoader(false);
@@ -85,7 +85,7 @@ const OtherApps = ({ navigation }) => {
         } else if (error) {
           Toast.show('Network Error');
         } else {
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -171,7 +171,7 @@ const OtherApps = ({ navigation }) => {
       <Header title ="Other Mobile Apps"/>
           <View style={{ flex: 1, paddingHorizontal:10, }}>
             <FlatList
-              contentContainerStyle={{ flex:1, alignItems:'center' }}
+              contentContainerStyle={{ flex:1, alignSelf:'center' }}
               data={appLink}
               numColumns={2}
               ListEmptyComponent={<ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={()=>GetAPPLinkApi(true)} refreshing={refresh} />}
@@ -208,9 +208,9 @@ const styles = StyleSheet.create({
     minWidth:150,
     maxWidth:200,
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: 15,
     margin: 5,
-    alignSelf:'center',
+    marginRight:15,
     borderColor:GlobalColor.Secondary,
     borderWidth:0.5,
     paddingHorizontal: 15,

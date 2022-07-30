@@ -56,7 +56,7 @@ const Birthdays = () => {
     let apiData = { PFlag: '' }
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetEmplBirthday', apiData, token)
+    ApiService.PostMethode('/GetEmplBirthday', apiData, token, authContext)
       .then(result => {
         console.log("GetEmplBirthday", result);
         stopLoader(false);
@@ -93,7 +93,7 @@ const Birthdays = () => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -106,7 +106,7 @@ const Birthdays = () => {
     let token = AppUserData.token
     setmodalLoader(true);
     setModalVisible(true);
-    ApiService.PostMethode('/GetEmployeeProfile', apiData, token)
+    ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
       .then(result => {
         let response = result.Value
         if (response.Table) {
@@ -138,7 +138,7 @@ const Birthdays = () => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

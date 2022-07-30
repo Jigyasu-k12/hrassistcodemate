@@ -17,9 +17,9 @@ const HosLocation = ({ navigation }) => {
 
   const GetHospLocnApi = () => {
     let token = AppUserData.token
-    let apidata = {}
+    let apiData = {}
     setLoader(true);
-    ApiService.PostMethode('/GetHospLocn', apidata, token)
+    ApiService.PostMethode('/GetHospLocn', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         // console.log("Apiresult",result);
@@ -42,7 +42,7 @@ const HosLocation = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

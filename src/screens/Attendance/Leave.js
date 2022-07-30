@@ -151,7 +151,7 @@ const Leave = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -161,7 +161,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetInitialLeave', apiData, token)
+    ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
       .then(result => {
         console.log("APiresult getleave types", result.value);
         setLoader(false);
@@ -191,7 +191,7 @@ const Leave = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }
@@ -202,7 +202,7 @@ const Leave = ({ navigation }) => {
     let token = AppUserData.token;
     console.log("Token==>",token);
     setLoader(true);
-    ApiService.PostMethode('/GetLeaveReason', apiData, token)
+    ApiService.PostMethode('/GetLeaveReason', apiData, token,authContext)
       .then(result => {
         console.log("APiresult GetLeaveReason", result);
         setLoader(false);
@@ -231,7 +231,7 @@ const Leave = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }
@@ -244,7 +244,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/LeaveStatus', apiData, token)
+    ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
         console.log(result.Value);
         setLoader(false);
@@ -274,7 +274,7 @@ const Leave = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }
@@ -298,7 +298,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetEmplLevDetail', apiData, token)
+    ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
       .then(result => {
         // console.log("APiresult GetEmplLevDetail", result);
         setLoader(false);
@@ -326,7 +326,7 @@ const Leave = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }
@@ -341,7 +341,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/DeleteLeave', apiData, token)
+    ApiService.PostMethode('/DeleteLeave', apiData, token, authContext)
       .then(result => {
         console.log("APiresult DeleteLeave", result);
         setLoader(false);
@@ -367,7 +367,7 @@ const Leave = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }
@@ -1117,6 +1117,7 @@ const Leave = ({ navigation }) => {
                           justifyContent: 'space-between',
                           paddingBottom: 15,
                           paddingVertical: 5,
+                          
                         }}>
                         <Text
                           Bold

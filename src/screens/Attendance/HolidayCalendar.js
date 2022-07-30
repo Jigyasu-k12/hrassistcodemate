@@ -72,7 +72,7 @@ const HolidayCalendar = () => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetEmplCal', apiData, token)
+    ApiService.PostMethode('/GetEmplCal', apiData, token, authContext)
       .then(result => {
         // console.log("APiresult GetEmplCal", result);
         setLoader(false);
@@ -155,7 +155,7 @@ const HolidayCalendar = () => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }

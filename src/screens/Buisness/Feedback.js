@@ -41,7 +41,7 @@ const Feedback = ({ navigation, route }) => {
             "Feedback"  : FeedbackData
         }
         setLoader(true);
-        ApiService.PostMethode('/ShuttleSeatFeedback', apiData, token)
+        ApiService.PostMethode('/ShuttleSeatFeedback', apiData, token, authContext)
             .then(result => {
                 setLoader(false);
                 let responseData = result.Result;
@@ -64,7 +64,7 @@ const Feedback = ({ navigation, route }) => {
                 } else if (error) {
                     Toast.show('Network Error');
                 } else {
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }

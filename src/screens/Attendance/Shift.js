@@ -104,7 +104,7 @@ const Shift = ({navigation}) => {
       "EmplID":userId
       };
     setLoader(true);
-    ApiService.PostMethode('/GetEmplShift', apiData, token)
+    ApiService.PostMethode('/GetEmplShift', apiData, token,authContext)
       .then(result => {
         console.log("GetEmplShift", result);
         setLoader(false);
@@ -126,7 +126,7 @@ const Shift = ({navigation}) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }
@@ -141,7 +141,7 @@ const flexiShiftPlanLov = () => {
     "UserName": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/flexiShiftPlanLov', apiData, token)
+  ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)
     .then(result => {
       console.log("flexiShiftPlanLov", result);
       setLoader(false);
@@ -163,7 +163,7 @@ const flexiShiftPlanLov = () => {
         // console.log("error.request", error.request._response);
       } else {
         // anything else
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
       }
     });
 }
@@ -176,7 +176,7 @@ const CurrentShift = () => {
     "StaffNo": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/CurrentShift', apiData, token)
+  ApiService.PostMethode('/CurrentShift', apiData, token, authContext)
     .then(result => {
       console.log("CurrentShift", result);
       setLoader(false);
@@ -198,7 +198,7 @@ const CurrentShift = () => {
         // console.log("error.request", error.request._response);
       } else {
         // anything else
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
       }
     });
 }
@@ -212,7 +212,7 @@ const SubmitFlexiShiftPlan = () => {
     "Staffid": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token)
+  ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token, authContext)
     .then(result => {
       console.log("SubmitFlexiShiftPlan", result);
       setLoader(false);
@@ -235,7 +235,7 @@ const SubmitFlexiShiftPlan = () => {
         // console.log("error.request", error.request._response);
       } else {
         // anything else
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
       }
     });
 }
@@ -248,7 +248,7 @@ const RptShiftStatus = () => {
     "StaffNo": "222852",
     };
   setLoader(true);
-  ApiService.PostMethode('/RptShiftStatus', apiData, token)
+  ApiService.PostMethode('/RptShiftStatus', apiData, token, authContext)
     .then(result => {
       console.log("RptShiftStatus", result);
       setLoader(false);
@@ -270,7 +270,7 @@ const RptShiftStatus = () => {
         // console.log("error.request", error.request._response);
       } else {
         // anything else
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
       }
     });
 }
@@ -282,7 +282,7 @@ const FlexiShiftElig = () => {
     "UserName": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/FlexiShiftElig', apiData, token)
+  ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)
     .then(result => {
       console.log("FlexiShiftElig", result.Result);
       setLoader(false);
@@ -304,7 +304,7 @@ const FlexiShiftElig = () => {
         // console.log("error.request", error.request._response);
       } else {
         // anything else
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
       }
     });
 }
@@ -317,7 +317,7 @@ const FlexiShiftStartDateLOV = () => {
     "StaffNo": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/FlexiShiftStartDateLOV', apiData, token)
+  ApiService.PostMethode('/FlexiShiftStartDateLOV', apiData, token, authContext)
     .then(result => {
       console.log("FlexiShiftStartDateLOV", result.Result);
       setLoader(false);
@@ -339,7 +339,7 @@ const FlexiShiftStartDateLOV = () => {
         // console.log("error.request", error.request._response);
       } else {
         // anything else
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
       }
     });
 }
@@ -590,7 +590,7 @@ const handleSubmit = () => {
               data={shiftData}
               keyExtractor={item => Math.floor((Math.random() * 1000) + 1)}
               renderItem={({item}) => (
-                <View style={styles.dataRow}>
+                <View style={[styles.dataRow, {alignItems:'center'}]}>
                   <View style={{flexDirection:'column'}}>
                       <Text>{item.START_DATE}</Text>
                       <Text>To</Text>

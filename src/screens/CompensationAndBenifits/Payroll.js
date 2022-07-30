@@ -73,7 +73,7 @@ const Payroll = () => {
       "EmplID": EmplID
     }
     setLoader(true);
-    ApiService.PostMethode('/GetSalaryMonth', apiData, token)
+    ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
       .then(result => {
         stopLoader()
         console.log('GetSalaryMonth', result);

@@ -55,7 +55,7 @@ const Attendance = ({navigation}) => {
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetValidGPSUser', apiData, token)
+      ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
         .then(result => {
           console.log("APiresult GetValidGPSUser", result);
           setLoader(false);
@@ -85,7 +85,7 @@ const Attendance = ({navigation}) => {
             // console.log("error.request", error.request._response);
           } else {
             // anything else
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
@@ -118,7 +118,7 @@ const Attendance = ({navigation}) => {
       // AppUserData?.data?.userId
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetRawPunch', apiData, token)
+      ApiService.PostMethode('/GetRawPunch', apiData, token, authContext)
         .then(result => {
           console.log("APiresult GetRawPunch", result);
           setLoader(false);
@@ -141,7 +141,7 @@ const Attendance = ({navigation}) => {
             // console.log("error.request", error.request._response);
           } else {
             // anything else
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
@@ -184,7 +184,7 @@ const Attendance = ({navigation}) => {
       if(Platform.OS == 'android'){
           // AppUserData?.data?.userId 222852
         let token = AppUserData.token;
-        ApiService.PostMethode('/GetMobDevice', apiData, token)
+        ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
           .then(result => {
             console.log("APiresult GetMobDevice", result);
             setLoader(false);
@@ -197,7 +197,7 @@ const Attendance = ({navigation}) => {
               if (model.includes(modelfrmplug)) {
                 console.log("inside");
                 let notSupported = true;
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
               }else{
                 // Toast.show('Worked');
               }
@@ -218,7 +218,7 @@ const Attendance = ({navigation}) => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
         }
@@ -251,7 +251,7 @@ const Attendance = ({navigation}) => {
                 // console.log("error.request", error.request._response);
               } else {
                 // anything else
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
               }
             });
         }else{
@@ -268,7 +268,7 @@ const Attendance = ({navigation}) => {
         StaffNo: EmplID
     }
     setLoader(true);
-    ApiService.PostMethode('/SubmitPunchRO', apiData, token)
+    ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
         .then(result => {
             setLoader(false);
             console.log('ApiResult SubmitPunchRO', result);
@@ -289,7 +289,7 @@ const Attendance = ({navigation}) => {
             } else if (error) {
                 Toast.show('Network Error');
             } else {
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
             }
         });
   }
@@ -319,7 +319,7 @@ const Attendance = ({navigation}) => {
             } else if (error) {
                 Toast.show('Network Error');
             } else {
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
             }
         });
 };

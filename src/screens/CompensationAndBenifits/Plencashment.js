@@ -31,14 +31,14 @@ const Plencashment = ({ navigation, route }) => {
   const InitPLEncashmenApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "UserName": userId
     }
 
     //set Loader
     setLoader(true);
 
-    ApiService.PostMethode('/initPLEncashment', apidata, token)
+    ApiService.PostMethode('/initPLEncashment', apiData, token, authContext)
       .then(result => {
 
         // Stop Loader
@@ -69,13 +69,13 @@ const Plencashment = ({ navigation, route }) => {
   const SubmitPLEncashmentApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       UserName: userId,
       Encashdays: encashDays
     }
-    // console.log("SubmitPLEncashmentApiapidata", apidata);
+    // console.log("SubmitPLEncashmentApiapiData", apiData);
     setLoader(true);
-    ApiService.PostMethode('/SubmitPLEncashment', apidata, token)
+    ApiService.PostMethode('/SubmitPLEncashment', apiData, token, authContext)
       .then(result => {
         // console.log("SubmitPLEncashmentApi", result);
 
@@ -103,12 +103,12 @@ const Plencashment = ({ navigation, route }) => {
   const InitMEDEncashment = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "UserName": userId
     }
     //Set Loader
     setLoader(true);
-    ApiService.PostMethode('/InitMEDEncashment', apidata, token)
+    ApiService.PostMethode('/InitMEDEncashment', apiData, token, authContext)
       .then(result => {
 
         // Stop Loader
@@ -131,13 +131,13 @@ const Plencashment = ({ navigation, route }) => {
   const ReportLTC = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "StaffNo": userId
     }
     //set error
     setLoader(true);
 
-    ApiService.PostMethode('/ReportLTC', apidata, token)
+    ApiService.PostMethode('/ReportLTC', apiData, token, authContext)
       .then(result => {
         // console.log("ReportLTC", result);
 
@@ -192,13 +192,13 @@ const Plencashment = ({ navigation, route }) => {
   const SubmitMEDEncashmentApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
-    let apidata = {
+    let apiData = {
       "UserName": userId
     }
     //set Loader
     // setLoader(false);
     // createTwoButtonAlert();
-    ApiService.PostMethode('/SubmitMEDEncashment', apidata, token)
+    ApiService.PostMethode('/SubmitMEDEncashment', apiData, token, authContext)
       .then(result => {
         // console.log("SubmitMEDEncashment", result);
 

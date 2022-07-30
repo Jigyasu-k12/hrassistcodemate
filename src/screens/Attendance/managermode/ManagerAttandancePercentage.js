@@ -65,7 +65,7 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
     };
 
 
-    ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token)
+    ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)
       .then(result => {
         console.log("GetAttendancePercentageYearwise", result);
         stopLoader(false);
@@ -87,7 +87,7 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }

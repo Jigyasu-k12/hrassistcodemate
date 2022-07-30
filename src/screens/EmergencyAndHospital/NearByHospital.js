@@ -22,7 +22,7 @@ const NearByHospital = () => {
     let token = AppUserData.token
     let UserId = AppUserData.data
     setLoader(true);
-    ApiService.PostMethode('/GetHospitalLink', UserId, token)
+    ApiService.PostMethode('/GetHospitalLink', UserId, token, authContext)
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value[0].LINK
@@ -44,7 +44,7 @@ const NearByHospital = () => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

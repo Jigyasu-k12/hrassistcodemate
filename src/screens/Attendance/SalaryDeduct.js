@@ -56,7 +56,7 @@ const SalaryDeduct = ({ navigation }) => {
       "StaffNo" : userId
      };
 
-    ApiService.PostMethode('/SalDedList', apiData, token)
+    ApiService.PostMethode('/SalDedList', apiData, token, authContext)
       .then(result => {
         console.log("APiresult SalDedList", result);
         stopLoader(false);
@@ -78,7 +78,7 @@ const SalaryDeduct = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }

@@ -46,7 +46,7 @@ const EmployeeDirect = () => {
       }
       let token = AppUserData.token
       setLoader(true);
-      ApiService.PostMethode('/GetEmplLookup', apiData, token)
+      ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
         .then(result => {
           setLoader(false);
           // console.log('ApiResult', result);
@@ -66,7 +66,7 @@ const EmployeeDirect = () => {
           } else if (error) {
             Toast.show('Network Error');
           } else {
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
