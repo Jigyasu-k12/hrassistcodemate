@@ -53,7 +53,7 @@ export const ManagerFlexiShift = () => {
         "StaffNo": userId,
       };
       setLoader(true);
-      ApiService.PostMethode('/FlexiShiftPendAppLOV  ', apiData, token)
+      ApiService.PostMethode('/FlexiShiftPendAppLOV', apiData, token)
         .then(result => {
           console.log("APiresult FlexiShiftPendAppLOV", result);
           stopLoader();

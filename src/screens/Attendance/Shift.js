@@ -104,7 +104,7 @@ const Shift = ({navigation}) => {
       "EmplID":userId
       };
     setLoader(true);
-    ApiService.PostMethode('/GetEmplShift  ', apiData, token)
+    ApiService.PostMethode('/GetEmplShift', apiData, token)
       .then(result => {
         console.log("GetEmplShift", result);
         setLoader(false);
@@ -141,7 +141,7 @@ const flexiShiftPlanLov = () => {
     "UserName": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/flexiShiftPlanLov  ', apiData, token)
+  ApiService.PostMethode('/flexiShiftPlanLov', apiData, token)
     .then(result => {
       console.log("flexiShiftPlanLov", result);
       setLoader(false);
@@ -176,7 +176,7 @@ const CurrentShift = () => {
     "StaffNo": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/CurrentShift  ', apiData, token)
+  ApiService.PostMethode('/CurrentShift', apiData, token)
     .then(result => {
       console.log("CurrentShift", result);
       setLoader(false);
@@ -212,7 +212,7 @@ const SubmitFlexiShiftPlan = () => {
     "Staffid": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/SubmitFlexiShiftPlan  ', apiData, token)
+  ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token)
     .then(result => {
       console.log("SubmitFlexiShiftPlan", result);
       setLoader(false);
@@ -248,7 +248,7 @@ const RptShiftStatus = () => {
     "StaffNo": "222852",
     };
   setLoader(true);
-  ApiService.PostMethode('/RptShiftStatus  ', apiData, token)
+  ApiService.PostMethode('/RptShiftStatus', apiData, token)
     .then(result => {
       console.log("RptShiftStatus", result);
       setLoader(false);
@@ -282,7 +282,7 @@ const FlexiShiftElig = () => {
     "UserName": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/FlexiShiftElig  ', apiData, token)
+  ApiService.PostMethode('/FlexiShiftElig', apiData, token)
     .then(result => {
       console.log("FlexiShiftElig", result.Result);
       setLoader(false);
@@ -317,7 +317,7 @@ const FlexiShiftStartDateLOV = () => {
     "StaffNo": userId,
     };
   setLoader(true);
-  ApiService.PostMethode('/FlexiShiftStartDateLOV  ', apiData, token)
+  ApiService.PostMethode('/FlexiShiftStartDateLOV', apiData, token)
     .then(result => {
       console.log("FlexiShiftStartDateLOV", result.Result);
       setLoader(false);

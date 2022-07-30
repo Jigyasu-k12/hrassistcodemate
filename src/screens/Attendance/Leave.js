@@ -161,16 +161,16 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetInitialLeave  ', apiData, token)
+    ApiService.PostMethode('/GetInitialLeave', apiData, token)
       .then(result => {
-        console.log("APiresult getleave types", result);
+        console.log("APiresult getleave types", result.value);
         setLoader(false);
         if (result.Value) {
           let updatedArray = [];
           result.Value.Table2.forEach((element, index) => {
             updatedArray.push({ ...element, id: index, Type: element.SHORT_NAME, value: element.ABSENCE_ID.replace(/\D/g, "") });
           });
-          console.log(updatedArray);
+          console.log("Leave Types Array..... ",updatedArray);
           setLeaveTypes(updatedArray);
         } else {
           Toast.show('No Leave type found');
@@ -200,8 +200,9 @@ const Leave = ({ navigation }) => {
     let apiData = { "LeaveType": type };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
+    console.log("Token==>",token);
     setLoader(true);
-    ApiService.PostMethode('/GetLeaveReason  ', apiData, token)
+    ApiService.PostMethode('/GetLeaveReason', apiData, token)
       .then(result => {
         console.log("APiresult GetLeaveReason", result);
         setLoader(false);
@@ -243,7 +244,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/LeaveStatus  ', apiData, token)
+    ApiService.PostMethode('/LeaveStatus', apiData, token)
       .then(result => {
         console.log(result.Value);
         setLoader(false);
@@ -297,7 +298,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token)
+    ApiService.PostMethode('/GetEmplLevDetail', apiData, token)
       .then(result => {
         // console.log("APiresult GetEmplLevDetail", result);
         setLoader(false);
@@ -340,7 +341,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/DeleteLeave  ', apiData, token)
+    ApiService.PostMethode('/DeleteLeave', apiData, token)
       .then(result => {
         console.log("APiresult DeleteLeave", result);
         setLoader(false);

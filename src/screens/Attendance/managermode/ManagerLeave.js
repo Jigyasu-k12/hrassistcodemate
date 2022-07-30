@@ -70,7 +70,7 @@ export const ManagerLeave = () => {
           "ToDate": date
         };
         setLoader(true);
-        ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token)
+        ApiService.PostMethode('/GetEmplLevDetail', apiData, token)
           .then(result => {
             console.log("APiresult `GetEmplLevDetail`", result);
             stopLoader();

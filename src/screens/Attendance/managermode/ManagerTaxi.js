@@ -110,7 +110,7 @@ export const ManagerTaxi = ({navigation}) => {
           "UserName": userId//"NSTHAKUR"
         };
         setLoader(true);
-        ApiService.PostMethode('/ApprovedTaxiReport  ', apiData, token)
+        ApiService.PostMethode('/ApprovedTaxiReport', apiData, token)
           .then(result => {
             console.log("APiresult ApprovedTaxiReport", result);
             stopLoader();

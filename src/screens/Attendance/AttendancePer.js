@@ -55,7 +55,7 @@ const AttendancePer = ({ navigation }) => {
       "UserName": userId,
       "Years":3
     };
-    ApiService.PostMethode('/GetAttendancePercentageYearwise  ', apiData, token)
+    ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token)
       .then(result => {
         console.log("GetAttendancePercentageYearwise", result);
         stopLoader(false);
