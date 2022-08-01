@@ -53,7 +53,7 @@ export const ManagerFlexiShift = () => {
         "StaffNo": userId,
       };
       setLoader(true);
-      ApiService.PostMethode('/FlexiShiftPendAppLOV  ', apiData, token)
+      ApiService.PostMethode('/FlexiShiftPendAppLOV  ', apiData, token, authContext)
         .then(result => {
           console.log("APiresult FlexiShiftPendAppLOV", result);
           stopLoader();
@@ -79,7 +79,7 @@ export const ManagerFlexiShift = () => {
             // console.log("error.request", error.request._response);
           } else {
             // anything else
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
@@ -124,7 +124,7 @@ export const ManagerFlexiShift = () => {
             "AppFlag" :type,
         };
         setLoader(true);
-        ApiService.PostMethode('/ApproveFlexiShift  ', apiData, token)
+        ApiService.PostMethode('/ApproveFlexiShift  ', apiData, token, authContext)
           .then(result => {
             console.log("APiresult ApproveFlexiShift", result);
             stopLoader();
@@ -153,7 +153,7 @@ export const ManagerFlexiShift = () => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
     }

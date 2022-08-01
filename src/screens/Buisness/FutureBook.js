@@ -58,7 +58,7 @@ export default function FutureBook() {
             ToDate: '',
         }
         setLoader(true);
-        ApiService.PostMethode('/GetShuttlePastFutureReport', apiData, token)
+        ApiService.PostMethode('/GetShuttlePastFutureReport', apiData, token, authContext)
             .then(result => {
                 console.log("GetShutlPastFutrReportApi", result);
                 stopLoader(false);
@@ -86,7 +86,7 @@ export default function FutureBook() {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };
@@ -99,7 +99,7 @@ export default function FutureBook() {
         // return;
         // setLoader(true);
         setmodalVisible(true);
-        ApiService.PostMethode('/BookingDetail', apiData, token)
+        ApiService.PostMethode('/BookingDetail', apiData, token, authContext)
             .then(result => {
                 console.log("BookingDetail", result);
                 setLoader(false);
@@ -127,7 +127,7 @@ export default function FutureBook() {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };
@@ -189,7 +189,7 @@ export default function FutureBook() {
             };        
         // console.log("apiData", apiData)
         setLoader(true);
-        ApiService.PostMethode('/BookShuttleSeat', apiData, token)
+        ApiService.PostMethode('/BookShuttleSeat', apiData, token, authContext)
             .then(result => {
                 setLoader(false);
                 console.log('ApiResult', responseData);
@@ -208,7 +208,7 @@ export default function FutureBook() {
                 } else if (error) {
                     Toast.show('Network Error');
                 } else {
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }
@@ -328,8 +328,12 @@ export default function FutureBook() {
                 <Text Bold>{BookingDetail.BKDT_STATUS_FLAG}</Text>                
             </View>
             <View style={styles.modalButtons}>
-                <Button title="OK" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setmodalVisible(!modalVisible)}/>
-                <Button title="CANCEL BOOKING" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>confirmCancel(BookingDetail)}/>
+                <Button title="Ok" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setmodalVisible(!modalVisible)}/>
+                {
+                   BookingDetail.BKDT_STATUS_FLAG == 'Booked' ? (
+                        <Button title="Cancel Booking" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>confirmCancel(BookingDetail)}/>
+                    ): null
+                }
             </View>
             
           </View>

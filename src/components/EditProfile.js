@@ -32,7 +32,7 @@ const EditProfile = ({ navigation, route }) => {
       UserName: userId
     }
     setLoader(true);
-    ApiService.PostMethode('/GetEmployeeProfile', apiData, token)
+    ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
       .then(result => {
         stopLoader(false);
         let responseData = result.Value.Table;
@@ -54,7 +54,7 @@ const EditProfile = ({ navigation, route }) => {
         } else if (error) {
           Toast.show('Network Error');
         } else {
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -73,7 +73,7 @@ const EditProfile = ({ navigation, route }) => {
         "ExtensionNo" : empPhone,
         "EmergencyNo" : ""
     }
-    ApiService.PostMethode('/UpdateEmpProf', apiData, token)
+    ApiService.PostMethode('/UpdateEmpProf', apiData, token, authContext)
       .then(result => {
         if(result.Result){
           stopLoader(false);
@@ -93,7 +93,7 @@ const EditProfile = ({ navigation, route }) => {
         } else if (error) {
           Toast.show('Network Error');
         } else {
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

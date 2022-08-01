@@ -65,7 +65,7 @@ export const ManagerTaxi = ({navigation}) => {
     
         };
         setLoader(true);
-        ApiService.PostMethode('/GetTaxiPendingList', apiData, token)
+        ApiService.PostMethode('/GetTaxiPendingList', apiData, token, authContext)
           .then(result => {
             console.log("APiresult GetTaxiPendingList", result);
             stopLoader();
@@ -94,7 +94,7 @@ export const ManagerTaxi = ({navigation}) => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
       }
@@ -110,7 +110,7 @@ export const ManagerTaxi = ({navigation}) => {
           "UserName": userId//"NSTHAKUR"
         };
         setLoader(true);
-        ApiService.PostMethode('/ApprovedTaxiReport  ', apiData, token)
+        ApiService.PostMethode('/ApprovedTaxiReport  ', apiData, token, authContext)
           .then(result => {
             console.log("APiresult ApprovedTaxiReport", result);
             stopLoader();
@@ -136,7 +136,7 @@ export const ManagerTaxi = ({navigation}) => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
       }
@@ -157,7 +157,7 @@ export const ManagerTaxi = ({navigation}) => {
           }
           let token = AppUserData.token
           setLoader(true);
-          ApiService.PostMethode('/GetEmplLookup', apiData, token)
+          ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
             .then(result => {
               console.log("GetEmplLookup",result);
               stopLoader();
@@ -179,7 +179,7 @@ export const ManagerTaxi = ({navigation}) => {
               } else if (error) {
                 Toast.show('Network Error');
               } else {
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
               }
             });
         }
@@ -438,7 +438,7 @@ export const ManagerTaxi = ({navigation}) => {
         ) : (
           <View style={{ flex: 1 }}>
             <FlatList
-                contentContainerStyle={{ flex:1 }}
+                contentContainerStyle={{ flexGrow:1, paddingBottom:10 }}
                 data={approvedTaxiReport}
                 renderItem={ItemRender}
                 keyExtractor={item => item.id}
@@ -472,10 +472,14 @@ const styles = StyleSheet.create({
     },
     HeaderColumn:{
         flex:0.25,
+        alignItems:'center',
+        textAlign:'center'
+        // justifyContent:'center',
     },
     itemColumn:{
         flex:0.25,
         justifyContent:'center',
+        alignItems:'center'
     },
     itemButton:{
         width:30,

@@ -46,7 +46,7 @@ const SalarySlip = ({ navigation }) => {
         }
         //set loader
         setLoader(true);
-        ApiService.PostMethode('/GetSalaryMonth', apiData, token)
+        ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
             .then(result => {
                 console.log('GetSalaryMonth', result);
 
@@ -84,7 +84,7 @@ const SalarySlip = ({ navigation }) => {
         console.log("SalaryMonth", apiData)
         //set Loader
         setLoader(true);
-        ApiService.PostMethode('/GetSalaryType', apiData, token)
+        ApiService.PostMethode('/GetSalaryType', apiData, token, authContext)
             .then(result => {
 
                 // Stop Loader
@@ -119,10 +119,10 @@ const SalarySlip = ({ navigation }) => {
         //set Loader
         setLoader(true);
 
-        ApiService.PostMethode('/GetSalaryData', apiData, token)
+        ApiService.PostMethode('/GetSalaryData', apiData, token, authContext)
             .then(result => {
                 // Stop Loader
-                stopLoader()
+                
                 let responseData = result.Value.Table1
                 let responseData2 = result.Value.Table2
                 let responseData3 = result.Value.Table3
@@ -134,6 +134,7 @@ const SalarySlip = ({ navigation }) => {
                 console.log('GetSalaryData', responseData2);
                 console.log('GetSalaryData3', responseData3,);
                 console.log('GetSalaryData4', responseData4,);
+                stopLoader();
             })
             .catch(error => {
                 // Stop Loader
@@ -244,7 +245,7 @@ const SalarySlip = ({ navigation }) => {
                             justifyContent: 'space-between',
                             paddingHorizontal: 10,
                         }}>
-                        <Text >
+                        <Text Bold>
                             {defaultDate}
                         </Text>
                         <Feather name="corner-up-right" size={20} />
@@ -258,11 +259,11 @@ const SalarySlip = ({ navigation }) => {
                     coverScreen={true}
                     isVisible={isModalVisible}>
                     <View style={styles.modal}>
-                        <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
+                        <TouchableOpacity style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
                             <Feather
                                 name="x-circle"
-                                color={GlobalColor.Black}
-                                size={20}
+                                color={GlobalColor.Danger}
+                                size={25}
                                 onPress={toggleModal}
                                 style={{ margin: 10 }}
                             />
@@ -312,7 +313,7 @@ const SalarySlip = ({ navigation }) => {
 
                             salaryType && salaryType.map((item) => {
                                 return (
-                                    <Text >
+                                    <Text Bold>
                                         {item.PYDT_DESCRIPTION}
                                     </Text>
                                 )
@@ -329,8 +330,8 @@ const SalarySlip = ({ navigation }) => {
                     {/* Table */}
 
                     {table1Data.length > 0 ? (
-                        <>
-                            <View style={[styles.Table, {}]}>
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={[styles.Table]}>
                                 <View style={styles.tableRow}>
                                     <Text Bold>Pay Element</Text>
                                 </View>
@@ -349,9 +350,9 @@ const SalarySlip = ({ navigation }) => {
                                 keyExtractor={({ item, index }) => index}
                                 renderItem={({ item, index }) => {
                                     return (
-                                        <View style={styles.Table}>
-                                            <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{item.MDESC}</Text>
+                                        <View style={[styles.Table]}>
+                                            <View style={[styles.tableRow, {alignItems:'center'}]}>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2, textAlign:'center' }}>{item.MDESC}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
                                                 <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{item.EARNING}</Text>
@@ -365,13 +366,13 @@ const SalarySlip = ({ navigation }) => {
                                         </View>
                                     )
                                 }} />
-                        </>
+                        </View>
                     ) : null}
 
 
                     {table4Data.length > 0 ? (
-                        <>
-                            <View style={[styles.Table, {}]}>
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={[styles.Table, {justifyContent:'space-between'}]}>
                                 <View style={styles.tableRow}>
                                     <Text Bold>Earnings</Text>
                                 </View>
@@ -387,7 +388,7 @@ const SalarySlip = ({ navigation }) => {
                                 keyExtractor={({ item, index }) => index}
                                 renderItem={({ item, index }) => {
                                     return (
-                                        <View style={[styles.Table, { alignSelf: 'center', }]}>
+                                        <View style={[styles.Table, { justifyContent:'space-between' }]}>
                                             <View style={styles.tableRow}>
                                                 <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.EARNING}</Text>
                                             </View>
@@ -400,13 +401,12 @@ const SalarySlip = ({ navigation }) => {
                                         </View>
                                     )
                                 }} />
-                        </>
+                        </View>
                     ) : null}
 
                     {table2Data.length > 0 ? (
-                        <>
+                        <View style={{ paddingHorizontal:10 }}>
                             <View style={styles.Table}>
-
                                 <Text Bold>General Message</Text>
                             </View>
                             <FlatList
@@ -420,28 +420,28 @@ const SalarySlip = ({ navigation }) => {
                                         </View>
                                     )
                                 }} />
-                        </>
+                        </View>
                     ) : null}
 
                     {table3Data.length > 0 ? (
-                        <><View style={[styles.Table,]}>
-                            <Text Bold >Employee Message</Text>
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={[styles.Table,]}>
+                                <Text Bold >Employee Message</Text>
+                            </View>
+                                <FlatList
+                                    data={table3Data}
+                                    keyExtractor={({ item, index }) => index}
+                                    renderItem={({ item, index }) => {
+
+                                        return (
+                                            <View style={[styles.Table, { flexDirection: 'column' }]}>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.EXMS_MESSAGES}</Text>
+
+                                            </View>
+                                        )
+
+                                    }} />
                         </View>
-
-                            <FlatList
-                                data={table3Data}
-                                keyExtractor={({ item, index }) => index}
-                                renderItem={({ item, index }) => {
-
-                                    return (
-                                        <View style={[styles.Table, { flexDirection: 'column' }]}>
-                                            <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.EXMS_MESSAGES}</Text>
-
-                                        </View>
-                                    )
-
-                                }} />
-                        </>
                     ) : null}
                 </ScrollView>
 
@@ -465,12 +465,13 @@ const styles = StyleSheet.create({
 
     },
     modal: {
+        position:'relative',
         paddingVertical: 15,
         height: '100%',
         width: '100%',
         alignSelf: 'center',
         backgroundColor: GlobalColor.White,
-        borderRadius: 5,
+        borderRadius: 3,
         shadowColor: GlobalColor.Black,
         shadowOffset: {
             width: 0,
@@ -478,12 +479,12 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.18,
         shadowRadius: 3.0,
-
         elevation: 5,
     },
     Salary: {
-        top: 10,
-        marginVertical: 10,
+        // top: 10,
+        marginVertical: 5,
+        paddingVertical:15,
         width: '100%',
         backgroundColor: GlobalColor.White,
         alignSelf: 'center',
@@ -498,7 +499,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
         elevation: 5,
-        borderRadius: 5
+        borderRadius: 3
     },
     textContainer: {
         width: '100%',
@@ -531,7 +532,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         borderBottomWidth: 0.5,
         borderColor: GlobalColor.Secondary,
-        marginTop: 30
+        paddingVertical:15
     },
     tableRow: {
         width: '25%',

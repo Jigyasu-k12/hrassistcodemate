@@ -43,7 +43,7 @@ const EmergencyContacts = ({ navigation }) => {
     let token = AppUserData.token
     // console.log(apiData)
     setLoader(true);
-    ApiService.PostMethode('/GetEmerMain', apiData, token)
+    ApiService.PostMethode('/GetEmerMain', apiData, token, authContext)
       .then(result => {
         stopLoader(false);
         let ApiValue = result.Value
@@ -65,7 +65,7 @@ const EmergencyContacts = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

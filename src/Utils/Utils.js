@@ -1,8 +1,20 @@
+import React, {useContext, useEffect, useState} from 'react';
+import {
+    View,
+    StyleSheet,
+    TouchableOpacity,
+    FlatList,
+    ScrollView,
+    TextInput,
+    SafeAreaView,
+    Alert
+  } from 'react-native';
 import axios from "axios";
 import { API_SERVICES_URL } from "../API/Api";
 import Toast from 'react-native-simple-toast';
+import AuthContext from '../context/AuthContext';
 
-export const PostMethode = async (url, data, token) => {
+export const PostMethode = async (url, data, token, context=null) => {
     let PostUrl = API_SERVICES_URL + url;
     console.log("Api url", PostUrl, data);
     try {
@@ -16,7 +28,21 @@ export const PostMethode = async (url, data, token) => {
         // console.log("Api resp",response)
         return response.data;
     } catch (error) {
-        throw handleError(error)
+        // console.log(error);
+        if (error.response) {
+            if(context && error.response.status== 403){
+                UseLogout(context);
+                throw handleError(error)
+            }else{
+                throw handleError(error)
+            }        
+            // console.log(error.response.data);
+            // console.log(error.response.status);
+            // console.log(error.response.headers);
+        }else{
+            throw handleError(error)
+        }
+        
     }
 }
 
@@ -58,6 +84,20 @@ export const showErrorMessage = (error) => {
     } else if (error) {
         Toast.show('Network Error');
     } else {
-        Toast.show('Something Went Wrong');
+        Toast.show('Session expired login again');
     }
+}
+
+
+const UseLogout = (context) => {
+    context.signOut(),
+    Alert.alert(
+        "Unauthorised",
+        "Session Expired login again",
+        [
+          { text: "OK", 
+        //   onPress: () => context.signOut(),
+           style: "cancel"}
+        ]
+      );
 }

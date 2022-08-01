@@ -6,7 +6,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Payroll from './Payroll';
 import Benifits from './Benifits';
-import TouchID from 'react-native-touch-id';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Header } from '../../components/reusable/Header';
 import { GlobalColor } from '../../constants/Colors';

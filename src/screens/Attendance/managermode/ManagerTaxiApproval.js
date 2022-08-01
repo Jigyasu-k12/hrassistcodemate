@@ -44,7 +44,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
     const [OpenDateTimePicker, setOpenDateTimePicker] = useState(false);
     const [OpenDateTimePicker2, setOpenDateTimePicker2] = useState(false);
     const [show, setShow] = useState(false);
-    const [TaxiApiData, setTaxiApiData] = useState({});
+    const [TaxiapiData, setTaxiapiData] = useState({});
     const [Alldata, setAlldata] = useState({})
     const [taxitypeList, settaxitypeList] = useState([]);
     const [TimeoutMax, setTimeoutMax] = useState(new Date());
@@ -70,12 +70,12 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         let userId = AppUserData?.data?.userId;
         let apiData = { "SlipNO": route?.params?.data};
         setLoader(true);
-        ApiService.PostMethode('/GetRequestDetail', apiData, token)
+        ApiService.PostMethode('/GetRequestDetail', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult GetRequest_Detail", result);
                 stopLoader(false);
                 if(result.Value &&result.Value){
-                    setTaxiApiData({
+                    setTaxiapiData({
                         empid:result.Value[0].TCAR_EMPL_ID.toString(),
                         Name:result.Value[0].EMPL_NAME,
                         slipno:result.Value[0].TCAR_SLIP_NO.toString(),
@@ -116,7 +116,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     };
@@ -126,7 +126,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         let userId = AppUserData?.data?.userId;
         let apiData = { "PartyCode": party_Code};
         setLoader(true);
-        ApiService.PostMethode('/GetTaxiType', apiData, token)
+        ApiService.PostMethode('/GetTaxiType', apiData, token, authContext)
             .then(result => {
                 // console.log("APiresult GetTaxiType", result);
                 stopLoader(false);
@@ -151,7 +151,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }
@@ -161,7 +161,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         let userId = AppUserData?.data?.userId;
         let apiData = { "Location": locncode};
         setLoader(true);
-        ApiService.PostMethode('/GetCalender', apiData, token)
+        ApiService.PostMethode('/GetCalender', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult GetCalender", result);
                 stopLoader(false);
@@ -197,7 +197,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }
@@ -248,7 +248,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                 "Source" : ""
                 };
         setLoader(true);
-        ApiService.PostMethode('/ApproveTaxiRequest', apiData, token)
+        ApiService.PostMethode('/ApproveTaxiRequest', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult ApproveTaxiRequest", result);
                 stopLoader(false);
@@ -278,7 +278,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }
@@ -338,7 +338,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                     enableReinitialize
                     innerRef={fromRef}
                     validationSchema={gatePassScheema}
-                    initialValues={TaxiApiData}
+                    initialValues={TaxiapiData}
                     onSubmit={values => {                    
                         SubmitData(values);
                     }}

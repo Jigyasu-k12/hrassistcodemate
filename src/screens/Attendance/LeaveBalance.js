@@ -56,7 +56,7 @@ const LeaveBalance = ({ navigation }) => {
       "UserName" : userId
     };
 
-    ApiService.PostMethode('/GetInitialLeave  ', apiData, token)
+    ApiService.PostMethode('/GetInitialLeave  ', apiData, token, authContext)
       .then(result => {
         console.log("APiresult GetInitialLeave", result);
         stopLoader(false);
@@ -78,7 +78,7 @@ const LeaveBalance = ({ navigation }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   }

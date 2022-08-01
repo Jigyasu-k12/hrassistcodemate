@@ -55,7 +55,7 @@ const CompayShiftDe = ({ navigation }) => {
         let apiData = {
             "UserName": userId
         };
-        ApiService.PostMethode('/CompanyShiftMaster  ', apiData, token)
+        ApiService.PostMethode('/CompanyShiftMaster  ', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult CompanyShiftMaster", result);
                 stopLoader(false);
@@ -77,7 +77,7 @@ const CompayShiftDe = ({ navigation }) => {
                     // console.log("error.request", error.request._response);
                 } else {
                     // anything else
-                    Toast.show('Something Went Wrong');
+                    Toast.show('Session expired login again');
                 }
             });
     }

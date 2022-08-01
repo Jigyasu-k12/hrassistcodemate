@@ -55,7 +55,7 @@ const Attendance = ({navigation}) => {
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetValidGPSUser', apiData, token)
+      ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
         .then(result => {
           console.log("APiresult GetValidGPSUser", result);
           setLoader(false);
@@ -85,7 +85,7 @@ const Attendance = ({navigation}) => {
             // console.log("error.request", error.request._response);
           } else {
             // anything else
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
@@ -118,7 +118,7 @@ const Attendance = ({navigation}) => {
       // AppUserData?.data?.userId
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetRawPunch', apiData, token)
+      ApiService.PostMethode('/GetRawPunch', apiData, token, authContext)
         .then(result => {
           console.log("APiresult GetRawPunch", result);
           setLoader(false);
@@ -141,7 +141,7 @@ const Attendance = ({navigation}) => {
             // console.log("error.request", error.request._response);
           } else {
             // anything else
-            Toast.show('Something Went Wrong');
+            Toast.show('Session expired login again');
           }
         });
     }
@@ -184,7 +184,7 @@ const Attendance = ({navigation}) => {
       if(Platform.OS == 'android'){
           // AppUserData?.data?.userId 222852
         let token = AppUserData.token;
-        ApiService.PostMethode('/GetMobDevice', apiData, token)
+        ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
           .then(result => {
             console.log("APiresult GetMobDevice", result);
             setLoader(false);
@@ -197,7 +197,7 @@ const Attendance = ({navigation}) => {
               if (model.includes(modelfrmplug)) {
                 console.log("inside");
                 let notSupported = true;
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
               }else{
                 // Toast.show('Worked');
               }
@@ -205,7 +205,7 @@ const Attendance = ({navigation}) => {
           })
           .catch(error => {
             setLoader(false);
-            console.log('Error occurred==>', error);
+            console.log('Error occurred==> getMobDevice', error);
             if (error.response) {
               if (error.response.status == 401) {
                 console.log('error from api', error.response);
@@ -218,44 +218,49 @@ const Attendance = ({navigation}) => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Something Went Wrong');
+              Toast.show('Session expired login again');
             }
           });
         }
 
-        let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(location.latitude) + ',' + parseFloat(location.longitude) + '&key=' + MapLisenceKey
-        ApiService.getRawurl(url)
-          .then(result => {
-            console.log("APiresult getRawurl", result);
-            setLoader(false);
-            let location = result.results[0].formatted_address;
-            setUserLocation(location)
-            let date = "13-11-1993";
-            CallAPIToStoreAddress(location, date, location.latitude, location.longitude);
-
-          })
-          .catch(error => {
-            setLoader(false);
-            console.log('Error occurred==>', error);
-            if (error.response) {
-              if (error.response.status == 401) {
-                console.log('error from api', error.response);
+        if(location.latitude && location.longitude){
+          let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(location.latitude) + ',' + parseFloat(location.longitude) + '&key=' + MapLisenceKey
+          console.log(url);
+          ApiService.getRawurl(url)
+            .then(result => {
+              console.log("APiresult getRawurl", result);
+              setLoader(false);
+              let location = result.results[0].formatted_address;
+              setUserLocation(location)
+              let date = "13-11-1993";
+              CallAPIToStoreAddress(location, date, location.latitude, location.longitude);
+  
+            })
+            .catch(error => {
+              setLoader(false);
+              console.log('Error occurred==> APiresult getRawurl', error);
+              if (error.response) {
+                if (error.response.status == 401) {
+                  console.log('error from api', error.response);
+                }
+                // client received an error response (5xx, 4xx)
+                Toast.show(error.response.data.title);
+              } else if (error.request) {
+                // client never received a response, or request never left
+                Toast.show('Network Error');
+                // console.log("error.request", error.request._response);
+              } else {
+                // anything else
+                Toast.show('Session expired login again');
               }
-              // client received an error response (5xx, 4xx)
-              Toast.show(error.response.data.title);
-            } else if (error.request) {
-              // client never received a response, or request never left
-              Toast.show('Network Error');
-              // console.log("error.request", error.request._response);
-            } else {
-              // anything else
-              Toast.show('Something Went Wrong');
-            }
-          });
+            });
+        }else{
+          CallAPIToStoreAddress();
+        }
   };
 
 
-  const CallAPIToStoreAddress= (location, dati, lat, lon)=> {
+  const CallAPIToStoreAddress= (location="", dati="", lat="", lon="")=> {
     let token = AppUserData.token
     let EmplID = AppUserData?.data?.userId
     let apiData = {
@@ -263,11 +268,11 @@ const Attendance = ({navigation}) => {
         StaffNo: EmplID
     }
     setLoader(true);
-    ApiService.PostMethode('/SubmitPunchRO', apiData, token)
+    ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
         .then(result => {
             setLoader(false);
             console.log('ApiResult SubmitPunchRO', result);
-            Alert.alert(result.Result)
+            Alert.alert("Success", result.Result);
             // let responseData = result.Value[0].SHIS_YYMM_CODE
             // console.log('GetMonth', responseData)
             // setMonth(responseData)
@@ -275,7 +280,7 @@ const Attendance = ({navigation}) => {
         })
         .catch(error => {
             setLoader(false);
-            // console.log('Error occurred==>', error);
+            console.log('Error occurred==> SubmitPunchRO', error);
             if (error.response) {
                 if (error.response.status == 401) {
                     console.log('error from api', error.response);
@@ -284,7 +289,7 @@ const Attendance = ({navigation}) => {
             } else if (error) {
                 Toast.show('Network Error');
             } else {
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
             }
         });
   }
@@ -314,7 +319,7 @@ const Attendance = ({navigation}) => {
             } else if (error) {
                 Toast.show('Network Error');
             } else {
-                Toast.show('Something Went Wrong');
+                Toast.show('Session expired login again');
             }
         });
 };

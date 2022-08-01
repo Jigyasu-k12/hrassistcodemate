@@ -61,7 +61,7 @@ const Book = () => {
     let token = AppUserData.token
     console.log(apiData)
     setLoader(true);
-    ApiService.PostMethode('/GetShuttleRoutes', apiData, token)
+    ApiService.PostMethode('/GetShuttleRoutes', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value
@@ -84,14 +84,14 @@ const Book = () => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
 
   let BKAVID = []
   {
-    book.map((item) => {
+    book?.map((item) => {
       return BKAVID.push(item.SHTL_ROUT_MAPP_ID)
     })
   }
@@ -107,7 +107,7 @@ const Book = () => {
       BKAVStartDate: payloadDate,
     }
     console.log("apiPayload", apiData)
-    ApiService.PostMethode('/GetSeatsAvailability', apiData, token)
+    ApiService.PostMethode('/GetSeatsAvailability', apiData, token, authContext)
       .then(result => {
         stopLoader()
         let ApiValue = result.Result
@@ -130,7 +130,7 @@ const Book = () => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };

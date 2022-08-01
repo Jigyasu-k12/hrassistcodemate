@@ -43,16 +43,16 @@ const Hospital = ({ locationName }) => {
 
   const GetHospListApi = (data) => {
     let token = AppUserData.token
-    let apidata ;
+    let apiData ;
     if(data==undefined){
-      apidata = {};
+      apiData = {};
     }
     else {
-      apidata= {
+      apiData= {
         "HospLoc":data}
     }
     setLoader(true);
-    ApiService.PostMethode('/GetHospList', apidata, token)
+    ApiService.PostMethode('/GetHospList', apiData, token, authContext)
       .then(result => {
         setFilterModal(false);
         console.log("setHospitallList", result);
@@ -76,7 +76,7 @@ const Hospital = ({ locationName }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
@@ -85,8 +85,8 @@ const Hospital = ({ locationName }) => {
   const GetHospLocnApi = () => {
     setFilterModal(true);
     let token = AppUserData.token
-    let apidata = {}
-    ApiService.PostMethode('/GetHospLocn', apidata, token)
+    let apiData = {}
+    ApiService.PostMethode('/GetHospLocn', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         // console.log("Apiresult",result);
@@ -110,7 +110,7 @@ const Hospital = ({ locationName }) => {
           // console.log("error.request", error.request._response);
         } else {
           // anything else
-          Toast.show('Something Went Wrong');
+          Toast.show('Session expired login again');
         }
       });
   };
