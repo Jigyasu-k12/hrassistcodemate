@@ -92,7 +92,7 @@ const LeaveBalance = ({ navigation }) => {
   if (loader) {
     return (
       <SafeAreaView style={styles.container}>
-        <Header title={"Leave Balance"} back/>
+        {/* <Header title={"Leave Balance"} back/> */}
         <LoadingScreen />
       </SafeAreaView>
     )
@@ -101,8 +101,8 @@ const LeaveBalance = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-      <Header title="Leave Balance" back/>
-      <View style={{ flex:1, paddingHorizontal:10 }}>
+      {/* <Header title="Leave Balance" back/> */}
+      <View style={{ flex:1, }}>
         <FlatList
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={() =>  <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => GetInitialLeave(true)} refreshing={refresh} ></ListEmptyComponent>}

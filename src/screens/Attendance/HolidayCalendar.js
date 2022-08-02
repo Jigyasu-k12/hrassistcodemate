@@ -277,6 +277,7 @@ const renderItemHolidaysingle=({item})=>{
         // contentContainerStyle={{ flexGrow: 1 }}
       >
       <View style={{width: '100%', paddingHorizontal:5, marginTop:0}}>
+      
         <SegmentedControlTab
           borderRadius={5}
           values={['MSIL 249', 'MSIL 280', 'SMG', 'MNS/HQ']}
@@ -290,6 +291,7 @@ const renderItemHolidaysingle=({item})=>{
           activeTabStyle={styles.activeTabStyle}
           activeTabTextStyle={styles.activeTabTextStyle}
         />
+       
       </View>
       
       <View style={{paddingHorizontal:10,marginTop:5, flex:1}}>

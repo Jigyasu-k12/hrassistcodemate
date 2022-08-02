@@ -492,6 +492,7 @@ if(loader){
                   setOpen(false);
                   setFromDate(fromDate);
                   console.log(fromDate);
+                  
                 }}
                 onCancel={() => {
                   setOpen(false);
