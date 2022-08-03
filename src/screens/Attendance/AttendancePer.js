@@ -55,7 +55,7 @@ const AttendancePer = ({ navigation }) => {
       "UserName": userId,
       "Years":3
     };
-    ApiService.PostMethode('/GetAttendancePercentageYearwise  ', apiData, token, authContext)
+    ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)
       .then(result => {
         console.log("GetAttendancePercentageYearwise", result);
         stopLoader(false);
@@ -90,8 +90,8 @@ const AttendancePer = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-      <Header title="Attendance Percentage"/>
-      <View style={{ flex:1, paddingHorizontal:10 }}>
+      {/* <Header title="Attendance Percentage"/> */}
+      <View style={{ flex:1,}}>
         <FlatList
           contentContainerStyle={{ flexGrow: 1 }}
           data={Attendance}

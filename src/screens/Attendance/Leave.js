@@ -158,7 +158,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetInitialLeave  ', apiData, token, authContext)
+    ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
       .then(result => {
         console.log("APiresult getleave types", result);
         setLoader(false);
@@ -198,7 +198,7 @@ const Leave = ({ navigation }) => {
   //   // AppUserData?.data?.userId 222852
   //   let token = AppUserData.token;
   //   setLoader(true);
-  //   ApiService.PostMethode('/GetLeaveReason  ', apiData, token, authContext)
+  //   ApiService.PostMethode('/GetLeaveReason', apiData, token, authContext)
   //     .then(result => {
   //       console.log("APiresult GetLeaveReason", result);
   //       setLoader(false);
@@ -240,7 +240,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/LeaveStatus  ', apiData, token, authContext)
+    ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
         console.log("Get Financial Year .....",result.Value);
         setLoader(false);
@@ -294,7 +294,7 @@ const Leave = ({ navigation }) => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token, authContext)
+    ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
       .then(result => {
         // console.log("APiresult GetEmplLevDetail", result);
         setLoader(false);
@@ -337,7 +337,7 @@ const Leave = ({ navigation }) => {
   //   // AppUserData?.data?.userId 222852
   //   let token = AppUserData.token;
   //   setLoader(true);
-  //   ApiService.PostMethode('/DeleteLeave  ', apiData, token, authContext)
+  //   ApiService.PostMethode('/DeleteLeave', apiData, token, authContext)
   //     .then(result => {
   //       console.log("APiresult DeleteLeave", result);
   //       setLoader(false);

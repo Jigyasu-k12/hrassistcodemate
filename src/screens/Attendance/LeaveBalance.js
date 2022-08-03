@@ -56,7 +56,7 @@ const LeaveBalance = ({ navigation }) => {
       "UserName" : userId
     };
 
-    ApiService.PostMethode('/GetInitialLeave  ', apiData, token, authContext)
+    ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
       .then(result => {
         console.log("APiresult GetInitialLeave", result);
         stopLoader(false);

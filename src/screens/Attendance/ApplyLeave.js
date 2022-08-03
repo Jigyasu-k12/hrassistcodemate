@@ -81,7 +81,7 @@ const ApplyLeave = ({navigation}) => {
       period: yup.string().required('Please select period'),
       selectDate: yup.string().required('Date  is required'),
       reason: yup.string().required('Please select a reason'),
-      comment: yup.string().required('Comment is required'),
+    //   comment: yup.string().required('Comment is required'),
     });
     const fromRef = useRef(null);
   
@@ -140,7 +140,7 @@ const ApplyLeave = ({navigation}) => {
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetInitialLeave  ', apiData, token, authContext)
+      ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
         .then(result => {
           console.log("APiresult getleave types", result);
           setLoader(false);
@@ -180,7 +180,7 @@ const ApplyLeave = ({navigation}) => {
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetLeaveReason  ', apiData, token, authContext)
+      ApiService.PostMethode('/GetLeaveReason', apiData, token, authContext)
         .then(result => {
           console.log("APiresult GetLeaveReason", result);
           setLoader(false);
@@ -234,7 +234,7 @@ const ApplyLeave = ({navigation}) => {
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token, authContext)
+      ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
         .then(result => {
           // console.log("APiresult GetEmplLevDetail", result);
           setLoader(false);

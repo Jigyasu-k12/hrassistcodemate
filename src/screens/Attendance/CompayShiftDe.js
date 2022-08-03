@@ -55,7 +55,7 @@ const CompayShiftDe = ({ navigation }) => {
         let apiData = {
             "UserName": userId
         };
-        ApiService.PostMethode('/CompanyShiftMaster  ', apiData, token, authContext)
+        ApiService.PostMethode('/CompanyShiftMaster', apiData, token, authContext)
             .then(result => {
                 console.log("APiresult CompanyShiftMaster", result);
                 stopLoader(false);

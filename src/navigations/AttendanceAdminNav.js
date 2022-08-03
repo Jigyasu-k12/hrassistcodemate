@@ -12,6 +12,7 @@ import ManagerTaxiApproval from '../screens/Attendance/managermode/ManagerTaxiAp
 import ManagerAttandancePercentage from '../screens/Attendance/managermode/ManagerAttandancePercentage';
 import ApplyLeave from '../screens/Attendance/ApplyLeave';
 import LeaveViewReport from '../screens/Attendance/LeaveViewReport';
+import MarkAttendence from '../screens/Attendance/MarkAttendence';
 
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +30,7 @@ function AttendanceAdminNav() {
       <Stack.Screen name='ManagerAttandancePercentage' component={ManagerAttandancePercentage}/>  
       <Stack.Screen name='ApplyLeave' component={ApplyLeave}/> 
       <Stack.Screen name='LeaveViewReport' component={LeaveViewReport}/> 
+      <Stack.Screen name='MarkAttendence' component={MarkAttendence}/> 
 
        
 

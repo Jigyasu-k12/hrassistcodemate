@@ -101,7 +101,7 @@ const ShiftDetails = () => {
             "EmplID": userId
         };
         setLoader(true);
-        ApiService.PostMethode('/GetEmplShift  ', apiData, token, authContext)
+        ApiService.PostMethode('/GetEmplShift', apiData, token, authContext)
             .then(result => {
                 console.log("GetEmplShift", result);
                 setLoader(false);
@@ -138,7 +138,7 @@ const ShiftDetails = () => {
             "UserName": userId,
         };
         setLoader(true);
-        ApiService.PostMethode('/flexiShiftPlanLov  ', apiData, token, authContext)
+        ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)
             .then(result => {
                 console.log("flexiShiftPlanLov", result);
                 setLoader(false);
@@ -173,7 +173,7 @@ const ShiftDetails = () => {
             "StaffNo": userId,
         };
         setLoader(true);
-        ApiService.PostMethode('/CurrentShift  ', apiData, token, authContext)
+        ApiService.PostMethode('/CurrentShift', apiData, token, authContext)
             .then(result => {
                 console.log("CurrentShift", result);
                 setLoader(false);
@@ -209,7 +209,7 @@ const ShiftDetails = () => {
             "Staffid": userId,
         };
         setLoader(true);
-        ApiService.PostMethode('/SubmitFlexiShiftPlan  ', apiData, token, authContext)
+        ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token, authContext)
             .then(result => {
                 console.log("SubmitFlexiShiftPlan", result);
                 setLoader(false);
@@ -245,7 +245,7 @@ const ShiftDetails = () => {
             "StaffNo": "222852",
         };
         setLoader(true);
-        ApiService.PostMethode('/RptShiftStatus  ', apiData, token, authContext)
+        ApiService.PostMethode('/RptShiftStatus', apiData, token, authContext)
             .then(result => {
                 console.log("RptShiftStatus", result);
                 setLoader(false);
@@ -279,7 +279,7 @@ const ShiftDetails = () => {
             "UserName": userId,
         };
         setLoader(true);
-        ApiService.PostMethode('/FlexiShiftElig  ', apiData, token, authContext)
+        ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)
             .then(result => {
                 console.log("FlexiShiftElig", result.Result);
                 setLoader(false);
@@ -314,7 +314,7 @@ const ShiftDetails = () => {
             "StaffNo": userId,
         };
         setLoader(true);
-        ApiService.PostMethode('/FlexiShiftStartDateLOV  ', apiData, token, authContext)
+        ApiService.PostMethode('/FlexiShiftStartDateLOV', apiData, token, authContext)
             .then(result => {
                 console.log("FlexiShiftStartDateLOV", result.Result);
                 setLoader(false);

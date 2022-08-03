@@ -53,7 +53,7 @@ export const ManagerFlexiShift = () => {
         "StaffNo": userId,
       };
       setLoader(true);
-      ApiService.PostMethode('/FlexiShiftPendAppLOV  ', apiData, token, authContext)
+      ApiService.PostMethode('/FlexiShiftPendAppLOV', apiData, token, authContext)
         .then(result => {
           console.log("APiresult FlexiShiftPendAppLOV", result);
           stopLoader();
@@ -124,7 +124,7 @@ export const ManagerFlexiShift = () => {
             "AppFlag" :type,
         };
         setLoader(true);
-        ApiService.PostMethode('/ApproveFlexiShift  ', apiData, token, authContext)
+        ApiService.PostMethode('/ApproveFlexiShift', apiData, token, authContext)
           .then(result => {
             console.log("APiresult ApproveFlexiShift", result);
             stopLoader();

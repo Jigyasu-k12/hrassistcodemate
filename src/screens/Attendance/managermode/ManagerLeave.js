@@ -70,7 +70,7 @@ export const ManagerLeave = () => {
           "ToDate": date
         };
         setLoader(true);
-        ApiService.PostMethode('/GetEmplLevDetail  ', apiData, token, authContext)
+        ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
           .then(result => {
             console.log("APiresult `GetEmplLevDetail`", result);
             stopLoader();
@@ -112,7 +112,7 @@ export const ManagerLeave = () => {
           // "UserName": UserName,
         };
         setLoader(true);
-        ApiService.PostMethode('/GetPendingLeaveReq  ', apiData, token, authContext)
+        ApiService.PostMethode('/GetPendingLeaveReq', apiData, token, authContext)
           .then(result => {
             console.log("APiresult GetPendingLeaveReq", result);
             stopLoader();
@@ -214,7 +214,7 @@ export const ManagerLeave = () => {
             "Remarks": data.remark
         };
         setLoader(true);
-        ApiService.PostMethode('/ApproveRejectLeave  ', apiData, token, authContext)
+        ApiService.PostMethode('/ApproveRejectLeave', apiData, token, authContext)
           .then(result => {
             console.log("APiresult ApproveRejectLeave", result);
             stopLoader();

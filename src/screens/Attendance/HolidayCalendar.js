@@ -72,7 +72,7 @@ const HolidayCalendar = () => {
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
-    ApiService.PostMethode('/GetEmplCal  ', apiData, token, authContext)
+    ApiService.PostMethode('/GetEmplCal', apiData, token, authContext)
       .then(result => {
         // console.log("APiresult GetEmplCal", result);
         setLoader(false);

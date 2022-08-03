@@ -56,7 +56,7 @@ const SalaryDeduct = ({ navigation }) => {
       "StaffNo" : userId
      };
 
-    ApiService.PostMethode('/SalDedList  ', apiData, token, authContext)
+    ApiService.PostMethode('/SalDedList', apiData, token, authContext)
       .then(result => {
         console.log("APiresult SalDedList", result);
         stopLoader(false);
