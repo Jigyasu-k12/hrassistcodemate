@@ -129,6 +129,7 @@ const MarkAttendence = () => {
   
           })
           .catch(error => {
+            CallAPIToStoreAddress();
             setLoader(false);
             console.log('Error occurred==> APiresult getRawurl', error);
             if (error.response) {
@@ -143,7 +144,7 @@ const MarkAttendence = () => {
               // console.log("error.request", error.request._response);
             } else {
               // anything else
-              Toast.show('Session expired login again');
+              // Toast.show(JSON.stringify(error));
             }
           });
       } else {

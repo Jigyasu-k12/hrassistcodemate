@@ -126,7 +126,7 @@ const Gst = ({ navigation }) => {
         <TextInput
           placeholder="Search By StateName"
           secureTextEntry={false}
-          autoCapitalize='characters'
+          // autoCapitalize='characters'
           onChangeText={(text) => {
             filterdData(text)
           }}
@@ -138,7 +138,7 @@ const Gst = ({ navigation }) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={filteredDataSource.length == 0 ? gst : filteredDataSource}
-        contentContainerStyle={{ flex:1 }}
+        contentContainerStyle={{ flexGrow:1, }}
         ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => SearchEmployee()} refreshing={refresh}></ListEmptyComponent>}
         keyExtractor={(item, index) => index}
         renderItem={({ item, index }) => {

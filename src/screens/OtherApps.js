@@ -92,10 +92,7 @@ const OtherApps = ({ navigation }) => {
 
 
   const linkOpen = (link) => {
-
-    console.log(link);
-
-
+    // console.log(link);
     if(
       link.LINK_APP_CATG == 'HRASSIST_OTH_APP' && link.LINK_TYPE != 'In-House_App' && link.LINK_LINK5 == 'ANDROID'
     ){
@@ -104,6 +101,11 @@ const OtherApps = ({ navigation }) => {
       link.LINK_APP_CATG == 'HRASSIST_OTH_APP' && link.LINK_TYPE == 'In-House_App' && link.LINK_LINK5 == 'ANDROID'
     ){
       downloadInhouseApp(link.LINK_LINK1, link.LINK_LINK4);
+    }else if(
+      link.LINK_LINK5 == 'IOS'
+    ){
+      // console.log(link);
+      downloadInhouseAppIos(link.LINK_LINK4, link.LINK_LINK2)
     }
   }
 
@@ -150,6 +152,29 @@ const OtherApps = ({ navigation }) => {
       });
     }else{
       Linking.openURL(link);
+    }
+  }
+
+  const downloadInhouseAppIos = (link, link4)=>{
+    console.log(link4);
+
+    // let pack_name= link.split("=");
+    if(Platform.OS === 'ios'){
+      // var SendIntentAndroid = require('react-native-send-intent');
+      // SendIntentAndroid.isAppInstalled(link4).then(isInstalled => {
+      //   if(isInstalled){
+      //     SendIntentAndroid.openApp(link4).then(wasOpened => {
+      //       if(!wasOpened){
+      //         Linking.openURL(link);    
+      //       }
+      //     });
+      //   }else{
+      //     Linking.openURL(link);    
+      //   }
+      // });
+      Linking.openURL(link4);
+    }else{
+      Linking.openURL(link4);
     }
   }
 
@@ -216,13 +241,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 25,
     backgroundColor: GlobalColor.White,
-    shadowColor: '#000',
+    shadowColor: 'gray',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 1.29,
-    shadowRadius: 10.65,
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
     elevation: 5,
     alignItems: 'center',
     borderRadius: 0,

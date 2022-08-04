@@ -707,6 +707,7 @@ const VisitorDetails = ({navigation,route}) => {
       borderColor:GlobalColor.Secondary,
       padding: 5,
       borderRadius: 0,
+      height:40
     },
     singlerow:{
       flexDirection:'row',

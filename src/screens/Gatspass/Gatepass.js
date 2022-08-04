@@ -258,7 +258,7 @@ const Gatepass = ({ navigation }) => {
     persionalVehical:yup.object().required('Select an option'),
     internalVehical: yup.object().required('Select an option'),
     vehicleNumber: yup.string()
-      .test('Vehicle Number is required', function () {
+      .test('Vehicle Number is required','Vehicle Number is required',  function () {
         if (this.parent.persionalVehical.value === 'N') {
           return true;
         } else {
@@ -852,6 +852,7 @@ const Gatepass = ({ navigation }) => {
                           alignSelf: 'center',
                           borderColor: GlobalColor.Secondary,
                           fontSize: 16,
+                          height:40
                         }}
                       />
                       {errors.vehicleNumber && touched.vehicleNumber && (

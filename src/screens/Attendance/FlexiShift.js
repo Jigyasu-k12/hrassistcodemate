@@ -664,6 +664,7 @@ const styles = StyleSheet.create({
       shadowRadius: 2.0,
       elevation: 5,
       borderRadius: 0,
+      height:40,
     },
     tabsContainerStyle: {
       marginTop: 10,

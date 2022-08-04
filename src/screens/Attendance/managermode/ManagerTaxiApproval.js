@@ -631,7 +631,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 Source
                                             </Text>
                                             <TextInput
-                                                style={styles.TextInputDesign}
+                                                style={[styles.TextInputDesign, {height:40}]}
                                                 onChangeText={handleChange('StartPoint')}
                                                 onBlur={handleBlur('StartPoint')}
                                                 value={values.StartPoint}
@@ -651,7 +651,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 Destination
                                             </Text>
                                             <TextInput
-                                            style={styles.TextInputDesign}
+                                            style={[styles.TextInputDesign, {height:40}]}
                                                 onChangeText={handleChange('desig')}
                                                 onBlur={handleBlur('desig')}
                                                 value={values.desig}

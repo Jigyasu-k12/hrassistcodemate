@@ -113,7 +113,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
 
@@ -128,7 +128,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
 
@@ -143,7 +143,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
@@ -156,7 +156,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
@@ -169,7 +169,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
 
@@ -183,7 +183,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
 
@@ -197,7 +197,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
@@ -210,7 +210,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+                            labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
@@ -223,7 +223,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
@@ -236,7 +236,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 0.5, borderBottomColor: GlobalColor.PrimaryLight}}
             />
 
@@ -257,7 +257,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 1, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
@@ -272,7 +272,7 @@ function CustomDrawer(props) {
                   style={styles.icon}
                 />
               )}
-              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto'}}
+              labelStyle={{ fontSize:GlobalFontSize.Small, color:GlobalColor.Primary, fontFamily:'Roboto', fontWeight:"300"}}
               style={{borderBottomWidth: 1, borderBottomColor: GlobalColor.PrimaryLight}}
             />
 

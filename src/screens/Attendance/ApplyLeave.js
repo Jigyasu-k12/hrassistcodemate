@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  SafeAreaView, 
+  SafeAreaView,
+  Alert, 
 } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -108,7 +109,7 @@ const ApplyLeave = ({navigation}) => {
               setValidReason("Select Reason");     
             }   
           }
-          Toast.show(result.Result);
+          Alert.alert(result.Result);
         })
         .catch(error => {
           setLoader(false);
@@ -438,6 +439,12 @@ const ApplyLeave = ({navigation}) => {
                                                 fromRef.current.setFieldValue('planned', "P")
                                             }
                                             tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            boxType="square"
+                                            // hideBox
+                                            style={{ height: 20, width: 20, marginRight:5 }}
+                                            onCheckColor={GlobalColor.Secondary}
+                                            onTintColor={GlobalColor.Secondary}
+                                            
                                         />
                                         <Text style={styles.checkboxText}>Planned</Text>
                                     </View>
@@ -451,6 +458,11 @@ const ApplyLeave = ({navigation}) => {
                                                 fromRef.current.setFieldValue('planned', "U")
                                             }}
                                             tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            boxType="square"
+                                            // hideBox
+                                            style={{ height: 20, width: 20, marginRight:5 }}
+                                            onCheckColor={GlobalColor.Secondary}
+                                            onTintColor={GlobalColor.Secondary}
                                         />
                                         <Text style={styles.checkboxText}>Unplanned</Text>
                                     </View>
@@ -502,7 +514,12 @@ const ApplyLeave = ({navigation}) => {
                                             onValueChange={(newValue) => {
                                                 fromRef.current.setFieldValue('period', "3")
                                             }}
+                                            boxType="square"
+                                            // hideBox
+                                            style={{ height: 20, width: 20, marginRight:5 }}
                                             tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            onCheckColor={GlobalColor.Secondary}
+                                            onTintColor={GlobalColor.Secondary}
                                         />
                                         <Text style={styles.checkboxText}>Full Day</Text>
                                     </View>
@@ -513,7 +530,12 @@ const ApplyLeave = ({navigation}) => {
                                             onValueChange={(newValue) => {
                                                 fromRef.current.setFieldValue('period', "1")
                                             }}
+                                            boxType="square"
+                                            // hideBox
+                                            style={{ height: 20, width: 20, marginRight:5 }}
                                             tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            onCheckColor={GlobalColor.Secondary}
+                                            onTintColor={GlobalColor.Secondary}
                                         />
                                         <Text style={styles.checkboxText}>1st Half</Text>
                                     </View>
@@ -527,7 +549,12 @@ const ApplyLeave = ({navigation}) => {
                                             onValueChange={(newValue) => {
                                                 fromRef.current.setFieldValue('period', "2")
                                             }}
+                                            boxType="square"
+                                            // hideBox
+                                            style={{ height: 20, width: 20, marginRight:5 }}
                                             tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            onCheckColor={GlobalColor.Secondary}
+                                            onTintColor={GlobalColor.Secondary}
                                         />
                                         <Text style={styles.checkboxText}>2nd Half</Text>
                                     </View>
@@ -696,6 +723,7 @@ const ApplyLeave = ({navigation}) => {
 
 
                                     <Modal isVisible={isModalVisible}>
+                                    <SafeAreaView>
                                         <View
                                             style={{
                                                 height: '100%',
@@ -731,6 +759,7 @@ const ApplyLeave = ({navigation}) => {
                                                 renderItem={rederReason}
                                             />
                                         </View>
+                                        </SafeAreaView>
                                     </Modal>
                                 </TouchableOpacity>
                             </View>
@@ -754,6 +783,7 @@ const ApplyLeave = ({navigation}) => {
                                     onChangeText={handleChange('comment')}
                                     onBlur={handleBlur('comment')}
                                     value={values.comment}
+                                    style={{height:80}}
                                 />
                             </View>
 
@@ -859,7 +889,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: '#ddd',
-        padding: 10
+        padding: 10,
     },
     spinnerTextStyle: {
         color: '#fff'
