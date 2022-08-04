@@ -89,7 +89,7 @@ const CompayShiftDe = ({ navigation }) => {
     if (loader) {
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <Header title={"Company Shift Details"} back />
+                {/* <Header title={"Company Shift Details"} back /> */}
                 <LoadingScreen />
             </SafeAreaView>
         )
@@ -97,7 +97,7 @@ const CompayShiftDe = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-            <Header title={"Company Shift Details"} back />
+            {/* <Header title={"Company Shift Details"} back /> */}
             <View style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight, paddingHorizontal: 10, paddingTop: 10 }}>
 
                 <FlatList
@@ -114,7 +114,6 @@ const CompayShiftDe = ({ navigation }) => {
                             //     <Text>{item.START_TIME}</Text>
                             //     <Text>{item.FIRST_HALF_END}</Text>
                             // </View>
-
                             <View style={styles.cardContainer}>
                                 <View style={styles.cardRow}>
                                     <View style={styles.cardColumn}>

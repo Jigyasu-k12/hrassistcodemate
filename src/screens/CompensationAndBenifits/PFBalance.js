@@ -79,9 +79,6 @@ const PFBalance = () => {
         )
       }
 
-
-
-
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
             <Header title="PF Balance" back />

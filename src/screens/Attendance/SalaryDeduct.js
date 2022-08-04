@@ -91,7 +91,7 @@ const SalaryDeduct = ({ navigation }) => {
   if (loader) {
     return (
       <SafeAreaView style={{ flex:1 }}>
-        <Header title={"Salary Deduction"} back/>
+        {/* <Header title={"Salary Deduction"} back/> */}
         <LoadingScreen />
       </SafeAreaView>
     )
@@ -99,8 +99,8 @@ const SalaryDeduct = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight}}>    
-      <Header title="Salary Deduction" back/>
-      <View style={{ flex:1, paddingHorizontal:10 }}>
+      {/* <Header title="Salary Deduction" back/> */}
+      <View style={{ flex:1,  }}>
         <FlatList
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={() =>  <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => SalDedList(true)} refreshing={refresh} ></ListEmptyComponent>}

@@ -32,6 +32,7 @@ import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import ManagerFlexiShift from './managermode/ManagerFlexiShift';
 import ManagerLeave from './managermode/ManagerLeave';
 import ManagerTaxi from './managermode/ManagerTaxi';
+import ManagerAttandance from './managermode/ManagerAttandance';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -52,7 +53,7 @@ const ManagerMode = ({ navigation }) => {
         <Tab.Screen name="Leave" component={ManagerLeave} />
         <Tab.Screen name="FlexiShift" component={ManagerFlexiShift} />
         <Tab.Screen name="Taxi" component={ManagerTaxi} />
-        <Tab.Screen name="Attendance" component={Attendance} />
+        <Tab.Screen name="Attendance" component={ManagerAttandance} />
         
       </Tab.Navigator>
 
@@ -72,178 +73,7 @@ const ManagerMode = ({ navigation }) => {
 
 
 
-export const Attendance = ({navigation}) => {
-  const [search, setSearch] = useState('')
-  const [employ, setEmploy] = useState([])
-  const { authContext, AppUserData } = useContext(AuthContext);
-  const [loader, setLoader] = useState(false);
-  const [refresh, setrefresh] = useState(false);
-  const stopLoader = () => {
-    setLoader(false);
-    // setrefresh(false);
-  }
 
-  const SearchEmployee = () => {
-    console.log('post data', search);
-    if (search === '') {
-      Alert.alert("please enter a valid keyWord ")
-      return
-    } else {
-      let apiData = {
-        Search: search
-      }
-      let token = AppUserData.token
-      setLoader(true);
-      ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
-        .then(result => {
-          stopLoader();
-
-          console.log('ApiResult', result);
-
-          let responseData = result.Value;
-          console.log('ApiResult', responseData);
-          setEmploy(responseData)
-        })
-        .catch(error => {
-          stopLoader();
-          // console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            Toast.show(error.response.data.title);
-          } else if (error) {
-            Toast.show('Network Error');
-          } else {
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-  };
-
-  const emptyList = () => {
-    setSearch('')
-  }
-  return (
-    <View style={{ flex:1, width: '100%', paddingHorizontal: 10, backgroundColor: GlobalColor.PrimaryLight }}>
-      <View
-        style={{
-          marginVertical: 10,
-          width: '100%',          
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderWidth: 1,
-          borderColor: GlobalColor.Secondary,
-          borderRadius: 5,
-          alignSelf: 'center',
-          backgroundColor: GlobalColor.White,
-        }}>
-        <View
-          style={{
-            width: '15%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Feather name="search" size={20} color={GlobalColor.Secondary} />
-        </View>
-        <TextInput
-        
-          placeholder="Search By Name/Dept/Staff/ID"
-          value={search}
-          onChangeText={(data) => {
-            setSearch(data)
-          }}
-          style={{
-            width: '65%',
-            paddingVertical: 5,
-            fontSize: 16,
-            paddingVertical:10
-          }}
-        />
-        {search !== '' ? (
-          <TouchableOpacity
-            style={{ borderRadius: 8, marginLeft: -20, alignSelf: 'center' }} onPress={() => { emptyList() }}>
-            <Ionicons
-              style={styles.searchIcon}
-              name="close-circle-outline"
-              size={25}
-              color={GlobalColor.Secondary}
-            />
-          </TouchableOpacity>
-        ) : null}
-        <TouchableOpacity
-          onPress={() => {
-            SearchEmployee()
-          }}
-          style={{
-            width: '15%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Ionicons name="send" size={20} color={GlobalColor.Secondary} />
-        </TouchableOpacity>
-      </View>
-      {loader == true ? (
-        <Spinner
-          visible={loader}
-          textContent={'Loading...'}
-          textStyle={styles.spinnerTextStyle}
-        />
-      ) : null}
-      {employ.length > 0 ? (
-
-        <FlatList
-          data={employ}
-          keyExtractor={({ item, index }) => index}
-          ListEmptyComponent={() => {
-            return (
-              <ListEmptyComponent title="No Data Found"
-              ></ListEmptyComponent>
-            )
-          }}
-          renderItem={({ item, index }) => {
-            return (
-              <TouchableOpacity style={[styles.FlatListData,]} 
-                onPress={()=>{
-                  console.log(item);
-                  navigation.navigate("ManagerAttandancePercentage", {data:item["Staff No"]})
-                }}
-              >
-                <Ionicons
-                  style={styles.searchIcon}
-                  name="person-circle-outline"
-                  size={25}
-                  color={GlobalColor.Secondary}
-                />
-                <View style={{ flexDirection: 'column', width: '70%' }}>
-                  <Text style={{ fontSize: 16 }}>
-                    {item.Name}
-                  </Text>
-                  <Text>
-                    {item.Desg} , {item.Dept} ({item['Staff No']})
-                  </Text>
-                </View>
-                <TouchableOpacity>
-                  <Ionicons
-                    style={styles.searchIcon}
-                    name="chevron-forward-circle-outline"
-                    size={25}
-                    color={GlobalColor.Secondary}
-                  />
-                </TouchableOpacity>
-              </TouchableOpacity>
-            )
-          }} />
-      ) : (
-
-        
-          <ListEmptyComponent title="No Data Found"
-              ></ListEmptyComponent>
-       
-      )}
-    </View>
-  );
-};
 
 
 

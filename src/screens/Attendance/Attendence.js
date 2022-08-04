@@ -1,6 +1,6 @@
 //import liraries
-import React, {useEffect, useState,useContext} from 'react';
-import {View, StyleSheet, TouchableOpacity, FlatList, Platform, Alert } from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { View, StyleSheet, TouchableOpacity, FlatList, Platform, Alert, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
@@ -20,19 +20,23 @@ import Button from './../../components/reusable/Button'
 import { GlobalColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
-import {LoadingScreen} from './../../components/reusable/LoadingScreen';
+import { LoadingScreen } from './../../components/reusable/LoadingScreen';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
-import {DataTable} from 'react-native-paper';
+import { DataTable } from 'react-native-paper';
+import MarkAttendence from './MarkAttendence';
+import AttendanceReport from './AttendanceReport';
+import AttendancePer from './AttendancePer';
 
 
 
-const Attendance = ({navigation}) => {
+const Attendance = ({ navigation }) => {
   const [fromDate, setFromDate] = useState(new Date());
-  const [toDate,setToDate] = useState (new Date());
+  const [toDate, setToDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [openSecond, setOpenSecond] = useState(false);
-  const [MarkAttandance, setMarkAttandance] = useState(0);
-  const [loader, setLoader] = useState(false)
+  const [MarkAttandance, setMarkAttandance] = useState(50);
+  const [AttendenceReport, setAttendenceReport] = useState(50);
+  const [loader, setLoader] = useState(true);
   const [MapLisenceKey, setMapLisenceKey] = useState("");
   const [horizental, setHorizental] = useState(false);
   const [userLocation, setUserLocation] = useState('');
@@ -50,331 +54,303 @@ const Attendance = ({navigation}) => {
     }, [])
   );
 
-    const checkGpsAvailable = () =>{
-      let apiData = { "UserName":AppUserData?.data?.userId };
-      // AppUserData?.data?.userId 222852
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
-        .then(result => {
-          console.log("APiresult GetValidGPSUser", result);
-          setLoader(false);
-          if(result.Result == "Y"){
-            setShowAttandanceTabs(true);
-            setMarkAttandance(0);
-            getUserCurrentLocation();
-            getLocationLisenceKey();
-          }else{
-            setShowAttandanceTabs(false);
-            setMarkAttandance(1);
-            GetRawPunch();
+  const checkGpsAvailable = () => {
+    let apiData = { "UserName": AppUserData?.data?.userId };
+    // AppUserData?.data?.userId 222852
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
+      .then(result => {
+        console.log("APiresult GetValidGPSUser", result);
+        setLoader(false);
+        if (result.Result == "Y") {
+          setShowAttandanceTabs(true);
+          setMarkAttandance(0);
+          setAttendenceReport(0);
+          // getUserCurrentLocation();
+          // getLocationLisenceKey();
+        } else {
+          setShowAttandanceTabs(false);
+          setMarkAttandance(1);
+          setAttendenceReport(0);
+          // GetRawPunch();
+        }
+      })
+      .catch(error => {        
+        setLoader(false);
+
+        setShowAttandanceTabs(false);
+        setMarkAttandance(1);
+        setAttendenceReport(0);
+
+
+        console.log('Error occurred==>', error);
+        if (error.response) {
+          if (error.response.status == 401) {
+            console.log('error from api', error.response);
           }
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-
-
-    const getUserCurrentLocation = () =>{
-      Geolocation.getCurrentPosition(position => {
-        console.log('position', position);
-        const {latitude, longitude} = position.coords;
-        setLocation({
-          latitude,
-          longitude,
-        });
-      },
-      error => Alert.alert('Error', JSON.stringify(error)),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
-      );
-    }
-
-
-
-
-    const GetRawPunch = () =>{
-      let apiData = { 
-        "FromDate" : moment(fromDate).format('DD-MMM-YYYY'),
-        "ToDate" :  moment(toDate).format('DD-MMM-YYYY'),
-          "StaffNo" : AppUserData?.data?.userId 
-      };
-      // console.log(apiData);
-      // AppUserData?.data?.userId
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetRawPunch', apiData, token, authContext)
-        .then(result => {
-          console.log("APiresult GetRawPunch", result);
-          setLoader(false);
-          if(result.Value){
-            setRawPunches(result.Value);
-          }
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-
-
-    const renderItem =({item})=>{
-      // console.log("first data sujsdhg", item)
-      return(
-        <View style={styles.renderitem}>
-            <Text>{item['Staff No']}</Text>
-               <Text>{item.Date.slice(0, 12)}</Text> 
-               <Text>{item.Date.slice("12", 17)}</Text> 
-            {/* <Text>{item.Date}</Text> */}
-            <Text>{item['Moble/Machine']}</Text>
-        </View>
-      )
-    }
-
-
-
-  const handleMarkAttandance = index => {
-    setMarkAttandance(index);
-  };
-
-
-  const handelDate = () => {
-   if(fromDate >toDate)
-   {
-    Alert.alert('from date should be less then to date');
-   }else {
-    GetRawPunch();
-   }
+          // client received an error response (5xx, 4xx)
+          Toast.show(error.response.data.title);
+        } else if (error.request) {
+          // client never received a response, or request never left
+          Toast.show('Network Error');
+          // console.log("error.request", error.request._response);
+        } else {
+          // anything else
+          Toast.show('Session expired login again');
+        }
+      });
   }
 
-  const [location, setLocation] = useState('');
 
-  const getMobDevice = () => {
-    let apiData = { "UserName":AppUserData?.data?.userId };
-      setLoader(true);
-      if(Platform.OS == 'android'){
-          // AppUserData?.data?.userId 222852
-        let token = AppUserData.token;
-        ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
-          .then(result => {
-            console.log("APiresult GetMobDevice", result);
-            setLoader(false);
-            if(result.Value.length > 0){
-              // DEVC_ID: "1"
-              // DEVC_NAME: "ONEPLUS A3003, Redmi Note 4"
-              let model = result.Value[0].DEVC_NAME;
-              let modelfrmplug = Platform.Model;
+  const getUserCurrentLocation = () => {
+    Geolocation.getCurrentPosition(position => {
+      console.log('position', position);
+      const { latitude, longitude } = position.coords;
+      setLocation({
+        latitude,
+        longitude,
+      });
+    },
+      error => Alert.alert('Error', JSON.stringify(error)),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+  }
 
-              if (model.includes(modelfrmplug)) {
-                console.log("inside");
-                let notSupported = true;
-                Toast.show('Session expired login again');
-              }else{
-                // Toast.show('Worked');
-              }
-            }
-          })
-          .catch(error => {
-            setLoader(false);
-            console.log('Error occurred==> getMobDevice', error);
-            if (error.response) {
-              if (error.response.status == 401) {
-                console.log('error from api', error.response);
-              }
-              // client received an error response (5xx, 4xx)
-              Toast.show(error.response.data.title);
-            } else if (error.request) {
-              // client never received a response, or request never left
-              Toast.show('Network Error');
-              // console.log("error.request", error.request._response);
-            } else {
-              // anything else
+
+
+/*
+  const GetRawPunch = () => {
+    let apiData = {
+      "FromDate": moment(fromDate).format('DD-MMM-YYYY'),
+      "ToDate": moment(toDate).format('DD-MMM-YYYY'),
+      "StaffNo": AppUserData?.data?.userId
+    };
+    // console.log(apiData);
+    // AppUserData?.data?.userId
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/GetRawPunch', apiData, token, authContext)
+      .then(result => {
+        console.log("APiresult GetRawPunch", result);
+        setLoader(false);
+        if (result.Value) {
+          setRawPunches(result.Value);
+        }
+      })
+      .catch(error => {
+        setLoader(false);
+        console.log('Error occurred==>', error);
+        if (error.response) {
+          if (error.response.status == 401) {
+            console.log('error from api', error.response);
+          }
+          // client received an error response (5xx, 4xx)
+          Toast.show(error.response.data.title);
+        } else if (error.request) {
+          // client never received a response, or request never left
+          Toast.show('Network Error');
+          // console.log("error.request", error.request._response);
+        } else {
+          // anything else
+          Toast.show('Session expired login again');
+        }
+      });
+  }
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.renderitem}>
+        <Text>{item['Staff No']}</Text>
+        <Text>{item.Date.slice(0, 12)}</Text>
+        <Text>{item.Date.slice("12", 17)}</Text>
+        <Text>{item['Moble/Machine']}</Text>
+      </View>
+    )
+  }
+
+    const handelDate = () => {
+    if (fromDate > toDate) {
+      Alert.alert('from date should be less then to date');
+    } else {
+      GetRawPunch();
+    }
+  }
+
+    const getMobDevice = () => {
+    let apiData = { "UserName": AppUserData?.data?.userId };
+    setLoader(true);
+    if (Platform.OS == 'android') {
+      // AppUserData?.data?.userId 222852
+      let token = AppUserData.token;
+      ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
+        .then(result => {
+          console.log("APiresult GetMobDevice", result);
+          setLoader(false);
+          if (result.Value.length > 0) {
+            // DEVC_ID: "1"
+            // DEVC_NAME: "ONEPLUS A3003, Redmi Note 4"
+            let model = result.Value[0].DEVC_NAME;
+            let modelfrmplug = Platform.Model;
+
+            if (model.includes(modelfrmplug)) {
+              console.log("inside");
+              let notSupported = true;
               Toast.show('Session expired login again');
+            } else {
+              // Toast.show('Worked');
             }
-          });
-        }
+          }
+        })
+        .catch(error => {
+          setLoader(false);
+          console.log('Error occurred==> getMobDevice', error);
+          if (error.response) {
+            if (error.response.status == 401) {
+              console.log('error from api', error.response);
+            }
+            // client received an error response (5xx, 4xx)
+            Toast.show(error.response.data.title);
+          } else if (error.request) {
+            // client never received a response, or request never left
+            Toast.show('Network Error');
+            // console.log("error.request", error.request._response);
+          } else {
+            // anything else
+            Toast.show('Session expired login again');
+          }
+        });
+    }
 
-        if(location.latitude && location.longitude){
-          let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(location.latitude) + ',' + parseFloat(location.longitude) + '&key=' + MapLisenceKey
-          console.log(url);
-          ApiService.getRawurl(url)
-            .then(result => {
-              console.log("APiresult getRawurl", result);
-              setLoader(false);
-              let location = result.results[0].formatted_address;
-              setUserLocation(location)
-              let date = "13-11-1993";
-              CallAPIToStoreAddress(location, date, location.latitude, location.longitude);
-  
-            })
-            .catch(error => {
-              setLoader(false);
-              console.log('Error occurred==> APiresult getRawurl', error);
-              if (error.response) {
-                if (error.response.status == 401) {
-                  console.log('error from api', error.response);
-                }
-                // client received an error response (5xx, 4xx)
-                Toast.show(error.response.data.title);
-              } else if (error.request) {
-                // client never received a response, or request never left
-                Toast.show('Network Error');
-                // console.log("error.request", error.request._response);
-              } else {
-                // anything else
-                Toast.show('Session expired login again');
-              }
-            });
-        }else{
-          CallAPIToStoreAddress();
-        }
+    if (location.latitude && location.longitude) {
+      let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(location.latitude) + ',' + parseFloat(location.longitude) + '&key=' + MapLisenceKey
+      console.log(url);
+      ApiService.getRawurl(url)
+        .then(result => {
+          console.log("APiresult getRawurl", result);
+          setLoader(false);
+          let location = result.results[0].formatted_address;
+          setUserLocation(location)
+          let date = "13-11-1993";
+          CallAPIToStoreAddress(location, date, location.latitude, location.longitude);
+
+        })
+        .catch(error => {
+          setLoader(false);
+          console.log('Error occurred==> APiresult getRawurl', error);
+          if (error.response) {
+            if (error.response.status == 401) {
+              console.log('error from api', error.response);
+            }
+            // client received an error response (5xx, 4xx)
+            Toast.show(error.response.data.title);
+          } else if (error.request) {
+            // client never received a response, or request never left
+            Toast.show('Network Error');
+            // console.log("error.request", error.request._response);
+          } else {
+            // anything else
+            Toast.show('Session expired login again');
+          }
+        });
+    } else {
+      CallAPIToStoreAddress();
+    }
   };
 
 
-  const CallAPIToStoreAddress= (location="", dati="", lat="", lon="")=> {
+  const CallAPIToStoreAddress = (location = "", dati = "", lat = "", lon = "") => {
     let token = AppUserData.token
     let EmplID = AppUserData?.data?.userId
     let apiData = {
-        // EmplID: EmplID
-        StaffNo: EmplID
+      // EmplID: EmplID
+      StaffNo: EmplID
     }
     setLoader(true);
     ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
-        .then(result => {
-            setLoader(false);
-            console.log('ApiResult SubmitPunchRO', result);
-            Alert.alert("Success", result.Result);
-            // let responseData = result.Value[0].SHIS_YYMM_CODE
-            // console.log('GetMonth', responseData)
-            // setMonth(responseData)
-           
-        })
-        .catch(error => {
-            setLoader(false);
-            console.log('Error occurred==> SubmitPunchRO', error);
-            if (error.response) {
-                if (error.response.status == 401) {
-                    console.log('error from api', error.response);
-                }
-                Toast.show(error.response.data.title);
-            } else if (error) {
-                Toast.show('Network Error');
-            } else {
-                Toast.show('Session expired login again');
-            }
-        });
+      .then(result => {
+        setLoader(false);
+        console.log('ApiResult SubmitPunchRO', result);
+        Alert.alert("Success", result.Result);
+        // let responseData = result.Value[0].SHIS_YYMM_CODE
+        // console.log('GetMonth', responseData)
+        // setMonth(responseData)
+
+      })
+      .catch(error => {
+        setLoader(false);
+        console.log('Error occurred==> SubmitPunchRO', error);
+        if (error.response) {
+          if (error.response.status == 401) {
+            console.log('error from api', error.response);
+          }
+          Toast.show(error.response.data.title);
+        } else if (error) {
+          Toast.show('Network Error');
+        } else {
+          Toast.show('Session expired login again');
+        }
+      });
   }
 
   const getLocationLisenceKey = () => {
     let token = AppUserData.token
     let EmplID = AppUserData.data
     let apiData = {
-        EmplID: EmplID
+      EmplID: EmplID
     }
     setLoader(true);
     ApiService.PostMethode('/GetMapsLicenseKey', {}, token)
-        .then(result => {
-            setLoader(false);
-            console.log('ApiResult GetMapsLicenseKey', result);
-            if(result.Result){
-              setMapLisenceKey(result.Result);
-            }           
-        })
-        .catch(error => {
-            setLoader(false);
-            if (error.response) {
-                if (error.response.status == 401) {
-                    console.log('error from api', error.response);
-                }
-                Toast.show(error.response.data.title);
-            } else if (error) {
-                Toast.show('Network Error');
-            } else {
-                Toast.show('Session expired login again');
-            }
-        });
-};
+      .then(result => {
+        setLoader(false);
+        console.log('ApiResult GetMapsLicenseKey', result);
+        if (result.Result) {
+          setMapLisenceKey(result.Result);
+        }
+      })
+      .catch(error => {
+        setLoader(false);
+        if (error.response) {
+          if (error.response.status == 401) {
+            console.log('error from api', error.response);
+          }
+          Toast.show(error.response.data.title);
+        } else if (error) {
+          Toast.show('Network Error');
+        } else {
+          Toast.show('Session expired login again');
+        }
+      });
+  };
 
-if(loader){
-  return(
-    <LoadingScreen/>
-  )
-}
 
+*/
+
+  const handleMarkAttandance = index => {
+    setMarkAttandance(index);
+  };
+  const handleAttendanceReport = index => {
+    setAttendenceReport(index);
+  };
+
+  // const [location, setLocation] = useState('');
+  if (loader) {
+    return (
+      <LoadingScreen />
+    )
+  }
 
   return (
-        <View style={styles.container}>
-          {/* <TouchableOpacity
-            style={styles.addtnlBtn}
-            onPress={() => {
-             
-              horizental == true ? setHorizental(false) : setHorizental(true);
-            }}>
-            <Ionicons
-              name="ellipsis-vertical-circle"
-              size={30}
-              color={'#0083B0'}
-            />
-          </TouchableOpacity>
-          
-          {horizental == true ? (
-            <View
-              style={{
-                padding: 5,
-                paddingVertical:8,
-                backgroundColor: '#0083B0',
-                position: 'absolute',
-                // bottom:30,
-                right: 30,
-                top:5,
-                zIndex:1000,
-                borderRadius:2
-              }}>
-                <TouchableOpacity onPress={() => {
-                  setHorizental(false)
-                  navigation.navigate('AttendancePer')
-                }}>                  
-                  <Text style={{ color:"#fff"}}>Attendance Percentage</Text>
-                </TouchableOpacity>
-            </View>
-          ) : null} */}
-
-
-        <View style={{width: '100%',flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>      
-          {
-            ShowAttandanceTabs ? (
+    <View style={styles.container}>
+      <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        {
+          ShowAttandanceTabs ? (
+            <ScrollView
+            horizontal={true}
+            >
             <SegmentedControlTab
               borderRadius={2}
-              values={['Mark Attendance', 'View Report']}
+              values={['Mark Attendance', 'View Report', 'Attendance Percentage']}
               selectedIndex={MarkAttandance}
               onTabPress={index => {
                 handleMarkAttandance(index);
@@ -385,169 +361,61 @@ if(loader){
               activeTabStyle={styles.activeTabStyle}
               activeTabTextStyle={styles.activeTabTextStyle}
             />
-              ):(
-                <Text style={[styles.titleLabel, {marginTop:10}]} bold>Attendance Report</Text>
-              )
-            }
-        </View>
-
-      <View style={{ flex:1 }}>
-        {MarkAttandance == 0 ? (
-          <View>
-            <TouchableOpacity style={styles.content}>
-            <Text>Live Location
-                <Icon name='map-marker-radius'size={25} color={'green'}/>  
-                </Text>
-              <TouchableOpacity
-                style={styles.circle}
-                onPress={() => {
-                  getMobDevice();
-                }}>
-                <Text>Punch</Text>
-              </TouchableOpacity>
-              <Text style={{textAlign:'center'}}>{userLocation}</Text>
-                          
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>getUserCurrentLocation()} style={styles.resetLocation}>
-              <Text style={styles.resetLocationTxt}>Reset Location</Text>
-              <Ionicons name='ios-locate-outline'size={30} color={'green'}/>
-            </TouchableOpacity>
-
-          </View>
-        ) : (
-          <View style={{ flex:1 }}>
-            <View
-              style={styles.reportView}>
-              <View
-                style={{
-                  width: '48%',
-                }}>
-                <Text style={styles.titleLabel}>From</Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    borderBottomWidth: 1,
-                    borderBottomColor: 'gray',
-                    padding: 3,
-                  }}>
-                  <Text style={{color: 'gray'}}>
-                    {moment(fromDate).format('MMM Do YYYY')}
-                  </Text>
-                  <View>
-                    <View>
-                      <TouchableOpacity onPress={() => setOpen(true)}>
-                        <Ionicons
-                          name="calendar-outline"
-                          size={25}
-                          color={GlobalColor.Secondary}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  width: '48%',
-                }}>
-                <Text style={styles.titleLabel}>To</Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    borderBottomWidth: 1,
-                    borderBottomColor: 'gray',
-                    padding: 3,
-                  }}>
-                  <Text style={{color: 'gray'}}>
-                    {moment(toDate).format('MMM Do YYYY')}
-                  </Text>
-                  <View>
-                    <View>
-                      <TouchableOpacity
-                        onPress={() =>  (setOpenSecond(true))}>
-                        <Ionicons
-                          name="calendar-outline"
-                          size={25}
-                          color={GlobalColor.Secondary}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                </View>
-              </View>
-
-              {/* DatePicker */}
-
-              <DatePicker
-                modal
-                open={open}
-                date={fromDate}
-                mode='date'
-                onConfirm={fromDate => {
-                  setOpen(false);
-                  setFromDate(fromDate);
-                  console.log(fromDate);
-                }}
-                onCancel={() => {
-                  setOpen(false);
-                }}
-              />
-              <DatePicker
-                modal
-                mode='date'
-                open={openSecond}
-                date={toDate}
-                onConfirm={toDate => {
-                  setOpenSecond(false);
-                  setToDate(toDate);
-                  console.log(toDate);
-                }}
-                onCancel={() => {
-                  setOpenSecond(false);
-                }}
-              />
-            </View>
-            <Button onPress={() => {handelDate()}} title={"Submit"}></Button>
-            <DataTable
-            style={{
-              width: '100%',
-              backgroundColor: '#fff',
-              marginVertical: 10,   
-              flex:1           
-            }}>
-
-            <DataTable.Header style={{backgroundColor: '#fff'}}>
-              <DataTable.Title>
-                <Text Bold style={{color: GlobalColor.Primary, fontSize: GlobalFontSize.Small}}>Staff Id</Text>
-              </DataTable.Title>
-               <DataTable.Title numeric >
-                <Text Bold  style={{color: GlobalColor.Primary, fontSize: GlobalFontSize.Small}}>
-                  Date
-                </Text>
-              </DataTable.Title>
-              <DataTable.Title numeric>
-                <Text Bold  style={{color: GlobalColor.Primary, fontSize: GlobalFontSize.Small}}>Time</Text>
-              </DataTable.Title>
-              <DataTable.Title numeric>
-                <Text Bold  style={{color: GlobalColor.Primary, fontSize: GlobalFontSize.Small}}>Source</Text>
-              </DataTable.Title>
-            </DataTable.Header>
-
-            <FlatList
-              contentContainerStyle={{ flexGrow:1 }}
-              data={RawPunches}
-              renderItem={renderItem}
-              ListEmptyComponent={()=><ListEmptyComponent title="No Data Found" subtitle="Please select dates and submit to view data"></ListEmptyComponent>}
-              keyExtractor={item => item.Date.toString()}
+            </ScrollView>
+          ) : (
+            // <Text style={[styles.titleLabel, {marginTop:10}]} bold>Attendance Report</Text>          
+            // <ScrollView
+            // horizontal={true}
+            // >
+            <SegmentedControlTab
+              borderRadius={2}
+              values={['Attendance Report', 'Attendance Percentage']}
+              selectedIndex={AttendenceReport}
+              onTabPress={index => {
+                handleAttendanceReport(index);
+              }}
+              tabsContainerStyle={styles.tabsContainerStyle}
+              tabStyle={styles.tabStyle2}
+              tabTextStyle={styles.tabTextStyle}
+              activeTabStyle={styles.activeTabStyle}
+              activeTabTextStyle={styles.activeTabTextStyle}
             />
-            </DataTable>
-          </View>
-        )}
+            // </ScrollView>                  
+          )
+        }
+      </View>
+
+      <View style={{ flex: 1 }}>
+        {
+          ShowAttandanceTabs ? (
+            <View style={{ flex: 1 }}>
+                {ShowAttandanceTabs && MarkAttandance == 0 ? <MarkAttendence /> : null}
+                {ShowAttandanceTabs && MarkAttandance == 1 ? <AttendanceReport /> : null}
+                {ShowAttandanceTabs && MarkAttandance == 2 ? <AttendancePer /> : null}
+            </View>
+          ): (
+            <View style={{ flex: 1 }}>
+                {!ShowAttandanceTabs && AttendenceReport == 0 ? <AttendanceReport/> :null}
+                {!ShowAttandanceTabs && AttendenceReport == 1 ? <AttendancePer/> :null}
+            </View>
+          )
+        }
+        
+
+      {/* {ShowAttandanceTabs && MarkAttandance == 0 ? <MarkAttendence /> : null}
+      {ShowAttandanceTabs && MarkAttandance == 1 ? <AttendanceReport /> : null}
+      {ShowAttandanceTabs && MarkAttandance == 2 ? <AttendancePer /> : null}
+
+      {!ShowAttandanceTabs && AttendenceReport == 0 ? <AttendanceReport/> :null}
+      {!ShowAttandanceTabs && AttendenceReport == 1 ? <AttendancePer/> :null} */}
+
+        {/* {MarkAttandance == 0 ? (
+          <MarkAttendence/>
+         
+        ) : (
+          <AttendanceReport/>
+         
+        )} */}
       </View>
     </View>
   );
@@ -557,16 +425,16 @@ if(loader){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal:10,
-    position:'relative',
-    backgroundColor:GlobalColor.PrimaryLight
+    paddingHorizontal: 10,
+    position: 'relative',
+    backgroundColor: GlobalColor.PrimaryLight
   },
   tabsContainerStyle: {
     marginTop: 10,
-    borderRadius:0,
-    width:'100%'
+    borderRadius: 0,
+    width: '100%'
   },
-  reportView:{
+  reportView: {
     width: '100%',
     borderWidth: 1,
     borderColor: '#fff',
@@ -588,14 +456,22 @@ const styles = StyleSheet.create({
   },
   tabStyle: {
     paddingVertical: 10,
+    paddingHorizontal:10,
     borderWidth: 1,
-    borderRadius:0,
-    borderColor:GlobalColor.Secondary
+    borderRadius: 0,
+    borderColor: GlobalColor.Secondary
+  },
+  tabStyle2: {
+    paddingVertical: 10,
+ 
+    borderWidth: 1,
+    borderRadius: 0,
+    borderColor: GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize:GlobalFontSize.P,
+    fontSize: GlobalFontSize.P,
     color: 'grey',
-    fontFamily:'Roboto-Bold',
+    fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
     backgroundColor: GlobalColor.PrimaryLight,
@@ -619,13 +495,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.18,
     shadowRadius: 2.0,
     elevation: 5,
-    marginVertical:10
+    marginVertical: 10
   },
   circle: {
     height: 100,
     width: 100,
     borderWidth: 3,
-    borderColor:'green',
+    borderColor: 'green',
     borderRadius: 100,
     alignSelf: 'center',
     justifyContent: 'center',
@@ -633,42 +509,42 @@ const styles = StyleSheet.create({
     padding: 8,
     marginVertical: 30,
   },
-  renderitem:{
-    paddingVertical:15,
-    paddingHorizontal:10,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    backgroundColor:'#fff',
-    marginTop:10,
-    borderWidth:0.5, 
-    borderColor:GlobalColor.LightDark
+  renderitem: {
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    marginTop: 10,
+    borderWidth: 0.5,
+    borderColor: GlobalColor.LightDark
   },
-  resetLocation:{
-    marginTop:20,
-    flexDirection:'row', 
-    alignSelf:'center',
-    backgroundColor:'#4a4a4a',
-    alignItems:'center',
-    padding:10
+  resetLocation: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    backgroundColor: '#4a4a4a',
+    alignItems: 'center',
+    padding: 10
   },
-  resetLocationTxt:{
-    color:"#fff",
-    marginRight:5,
-    fontWeight:"700"
+  resetLocationTxt: {
+    color: "#fff",
+    marginRight: 5,
+    fontWeight: "700"
   },
-  spinnerTextStyle:{
-    color:'#fff'
+  spinnerTextStyle: {
+    color: '#fff'
   },
-  titleLabel:{
+  titleLabel: {
     color: GlobalColor.Primary,
-    fontWeight:'700',
-    fontSize:16
+    fontWeight: '700',
+    fontSize: 16
   },
-  addtnlBtn:{
-    position:'absolute',
-    right:10,
-    top:5,
-    zIndex:55555
+  addtnlBtn: {
+    position: 'absolute',
+    right: 10,
+    top: 5,
+    zIndex: 55555
   }
 
 });

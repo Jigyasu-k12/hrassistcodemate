@@ -31,6 +31,8 @@ import { Header } from '../../../components/reusable/Header';
 import Button from '../../../components/reusable/Button';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
+import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
+
 
 
 
@@ -100,6 +102,15 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
       return () => unsubscribe;
     }, [])
 );
+
+  if (loader) {
+    return (
+      <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
+        <Header title={"Attendance Percentage"} back />
+        <LoadingScreen />
+      </SafeAreaView>
+    )
+  }
 
 
 

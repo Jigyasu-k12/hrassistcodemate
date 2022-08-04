@@ -48,7 +48,6 @@ const SignIn = ({ navigation }) => {
     AuthService.Post('Login', data)
       .then(res => {
         console.log(res);
-
         let contextData = {
           token: res.token,
           user: values.UserName,

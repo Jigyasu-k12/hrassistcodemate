@@ -85,13 +85,21 @@ const AttendancePer = ({ navigation }) => {
     GetAttendancePercentageYearwise();
   }, []);
 
+  if (loader) {
+    return (
+      <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
+        <LoadingScreen />
+      </SafeAreaView>
+    )
+  }
+
 
 
 
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-      <Header title="Attendance Percentage"/>
-      <View style={{ flex:1, paddingHorizontal:10 }}>
+      {/* <Header title="Attendance Percentage"/> */}
+      <View style={{ flex:1,}}>
         <FlatList
           contentContainerStyle={{ flexGrow: 1 }}
           data={Attendance}
