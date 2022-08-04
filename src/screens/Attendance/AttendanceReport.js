@@ -10,9 +10,7 @@ import Geolocation from '@react-native-community/geolocation';
 import AuthContext from '../../context/AuthContext';
 import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../Utils/Utils';
-
 import { useFocusEffect } from '@react-navigation/native';
-
 import Button from './../../components/reusable/Button'
 import { GlobalColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
@@ -31,78 +29,18 @@ const AttendanceReport = () => {
     const [MarkAttandance, setMarkAttandance] = useState(0);
     const [loader, setLoader] = useState(false)
     const [MapLisenceKey, setMapLisenceKey] = useState("");
-
+    const [location, setLocation] = useState('');
     const { authContext, AppUserData } = useContext(AuthContext);
-  
     // To Hide or show based on getGpsAvailable
     const [ShowAttandanceTabs, setShowAttandanceTabs] = useState(false);
     const [RawPunches, setRawPunches] = useState([]);
   
-  
     useFocusEffect(
       React.useCallback(() => {
-        const unsubscribe = checkGpsAvailable();
+        const unsubscribe = GetRawPunch();
         return () => unsubscribe;
       }, [])
     );
-  
-    const checkGpsAvailable = () => {
-      let apiData = { "UserName": AppUserData?.data?.userId };
-      // AppUserData?.data?.userId 222852
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
-        .then(result => {
-          console.log("APiresult GetValidGPSUser", result);
-          setLoader(false);
-          if (result.Result == "Y") {
-            setShowAttandanceTabs(true);
-            setMarkAttandance(0);
-            getUserCurrentLocation();
-            getLocationLisenceKey();
-          } else {
-            setShowAttandanceTabs(false);
-            setMarkAttandance(1);
-            GetRawPunch();
-          }
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-  
-  
-    const getUserCurrentLocation = () => {
-      Geolocation.getCurrentPosition(position => {
-        console.log('position', position);
-        const { latitude, longitude } = position.coords;
-        setLocation({
-          latitude,
-          longitude,
-        });
-      },
-        error => Alert.alert('Error', JSON.stringify(error)),
-        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-      );
-    }
-  
-  
-  
   
     const GetRawPunch = () => {
       let apiData = {
@@ -157,12 +95,6 @@ const AttendanceReport = () => {
     }
   
   
-  
-    const handleMarkAttandance = index => {
-      setMarkAttandance(index);
-    };
-  
-  
     const handelDate = () => {
       if (fromDate > toDate) {
         Alert.alert('from date should be less then to date');
@@ -170,76 +102,6 @@ const AttendanceReport = () => {
         GetRawPunch();
       }
     }
-  
-    const [location, setLocation] = useState('');
-  
-    
-  
-  
-    const CallAPIToStoreAddress = (location = "", dati = "", lat = "", lon = "") => {
-      let token = AppUserData.token
-      let EmplID = AppUserData?.data?.userId
-      let apiData = {
-        // EmplID: EmplID
-        StaffNo: EmplID
-      }
-      setLoader(true);
-      ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
-        .then(result => {
-          setLoader(false);
-          console.log('ApiResult SubmitPunchRO', result);
-          Alert.alert("Success", result.Result);
-          // let responseData = result.Value[0].SHIS_YYMM_CODE
-          // console.log('GetMonth', responseData)
-          // setMonth(responseData)
-  
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==> SubmitPunchRO', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            Toast.show(error.response.data.title);
-          } else if (error) {
-            Toast.show('Network Error');
-          } else {
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-  
-    const getLocationLisenceKey = () => {
-      let token = AppUserData.token
-      let EmplID = AppUserData.data
-      let apiData = {
-        EmplID: EmplID
-      }
-      setLoader(true);
-      ApiService.PostMethode('/GetMapsLicenseKey', {}, token)
-        .then(result => {
-          setLoader(false);
-          console.log('ApiResult GetMapsLicenseKey', result);
-          if (result.Result) {
-            setMapLisenceKey(result.Result);
-          }
-        })
-        .catch(error => {
-          setLoader(false);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            Toast.show(error.response.data.title);
-          } else if (error) {
-            Toast.show('Network Error');
-          } else {
-            Toast.show('Session expired login again');
-          }
-        });
-    };
-  
     if (loader) {
       return (
         <LoadingScreen />

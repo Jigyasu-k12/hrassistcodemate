@@ -61,7 +61,7 @@ const FlexiShift = () => {
   
       const LoadInitial= ()=>{
         FlexiShiftElig()
-        GetEmplShift()
+        // GetEmplShift()
         flexiShiftPlanLov()
         CurrentShift()
         FlexiShiftStartDateLOV()
@@ -244,8 +244,8 @@ const FlexiShift = () => {
     let userId = AppUserData?.data?.userId;
     let token = AppUserData.token;
     let apiData = {
-      "StaffNo": "222852",
-      };
+      "StaffNo": userId,
+    };
     setLoader(true);
     ApiService.PostMethode('/RptShiftStatus', apiData, token, authContext)
       .then(result => {
@@ -306,6 +306,23 @@ const FlexiShift = () => {
           Toast.show('Session expired login again');
         }
       });
+  }
+
+  const FlatList_Header = () => {
+    return (
+      <View style={{
+        width: "100%",
+        justifyContent: 'space-between',
+        paddingHorizontal:10,
+        paddingVertical:15,
+        backgroundColor:GlobalColor.White,
+        flexDirection:'row', 
+      }}>        
+        <Text Bold style={[styles.HeaderColumn, {flex:0.40}]}>Shift</Text>
+        <Text Bold style={[styles.HeaderColumn, {flex:0.40}]}>Applicable Date</Text>
+        <Text Bold style={[styles.HeaderColumn, {flex:0.20}]}>Status</Text>
+      </View>
+    );
   }
   
   
@@ -541,15 +558,8 @@ const FlexiShift = () => {
 
 
        {/* Report */}
-       <Text style={{textAlign: 'center',marginTop:10}}>Report</Text>
-       {shiftStatus.length>0?(
-       <DataTable
-         style={{
-           width: '100%',
-           backgroundColor: '#fff',
-           marginVertical: 10,
-         }}>
-         <DataTable.Header style={{backgroundColor: GlobalColor.White}}>
+       <Text style={{textAlign: 'center',marginTop:5, marginBottom:5}}>Report</Text>
+         {/* <DataTable.Header style={{backgroundColor: GlobalColor.White}}>
            <DataTable.Title>
              <Text Bold style={{color: GlobalColor.Primary, fontSize: GlobalFontSize.Small}}>Shift</Text>
            </DataTable.Title>
@@ -561,33 +571,37 @@ const FlexiShift = () => {
            <DataTable.Title numeric>
              <Text Bold style={{color: GlobalColor.Primary, fontSize: GlobalFontSize.Small}}>Status</Text>
            </DataTable.Title>
-         </DataTable.Header>
+         </DataTable.Header> */}
 
-
+         
          <FlatList
            data={shiftStatus}
            keyExtractor={item => item.id}
+           ListHeaderComponent={FlatList_Header}
+           ListHeaderComponentStyle={{ borderBottomColor: GlobalColor.Secondary, borderBottomWidth: 1 }}
            renderItem={({item}) => (
              <View  style={{
                width: '100%',
                backgroundColor: '#fff',
-               marginVertical: 10,
+               marginVertical: 0,
                flexDirection:'row',
                justifyContent:'space-between',
-               padding:10
+               padding:10, 
+               paddingVertical:15, 
+               borderBottomWidth:0.4,
+               borderBottomColor:GlobalColor.LightDark
              }}>
-               <Text>{item.SHFT_START_SHIFT}</Text>
-               <Text>{moment(item.SHFT_START_DATE).format('DD-MMM-YYYY')}</Text>
-               <Text>{item.STATUS === 'Approved' ? (
-                     <Text style={{color: 'green'}}>Approved</Text>
+               <Text style={{ flex:0.40 }}>{item.SHFT_START_SHIFT}</Text>
+               <Text style={{ flex:0.40 }}>{moment(item.SHFT_START_DATE).format('M/DD/YYYY')}</Text>
+               <Text style={{ flex:0.20 }}>{item.STATUS === 'Approved' ? (
+                     <Text style={{color: 'green'}}>{item.STATUS}</Text>
                    ) : (
-                     <Text style={{color: 'red'}}>Pending</Text>
-                   )}</Text>
+                     <Text style={{color: 'green'}}>{item.STATUS}</Text>
+                   )}
+              </Text>
              </View>
            )}
          />
-       </DataTable>
-       ):null}
      </ScrollView>
 
  </SafeAreaView>
@@ -604,7 +618,6 @@ const styles = StyleSheet.create({
       padding: 5,
       paddingVertical:10,
       backgroundColor: '#FFF',
-      // alignSelf: 'center',
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -637,7 +650,6 @@ const styles = StyleSheet.create({
       },
     inputBox: {
       width: '100%',
-      // alignSelf: 'center',
       backgroundColor: '#fff',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -678,22 +690,6 @@ const styles = StyleSheet.create({
     activeTabTextStyle: {
       color: GlobalColor.Secondary,
     },
-    // content: {
-    //   top: 10,
-    //   alignItems: 'center',
-    //   padding: 10,
-    //   backgroundColor: 'white',
-    //   borderRadius: 5,
-    //   shadowColor: '#000',
-    //   shadowOffset: {
-    //     width: 0,
-    //     height: 1,
-    //   },
-    //   shadowOpacity: 0.18,
-    //   shadowRadius: 2.0,
-  
-    //   elevation: 5,
-    // },
     dataRow:{
       width:'100%',
       justifyContent:'space-between',
@@ -702,19 +698,17 @@ const styles = StyleSheet.create({
       paddingHorizontal:10, 
       paddingVertical:5
     },
-    // addtnlBtn:{
-    //   position:'absolute',
-    //   right:10,
-    //   top:0,
-    //   zIndex:55555
-    // }
     addtnlBtn:{
       position:'absolute',
       right:10,
       top:0,
       zIndex:55555
     },
+    HeaderColumn:{
+      flex:0.25,
+    },
+    spinnerTextStyle: {
+      color: '#fff'
+    },
   });
-  
-  //make this component available to the app 
 export default FlexiShift

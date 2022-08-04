@@ -85,6 +85,14 @@ const AttendancePer = ({ navigation }) => {
     GetAttendancePercentageYearwise();
   }, []);
 
+  if (loader) {
+    return (
+      <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
+        <LoadingScreen />
+      </SafeAreaView>
+    )
+  }
+
 
 
 

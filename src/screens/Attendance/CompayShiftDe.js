@@ -114,7 +114,6 @@ const CompayShiftDe = ({ navigation }) => {
                             //     <Text>{item.START_TIME}</Text>
                             //     <Text>{item.FIRST_HALF_END}</Text>
                             // </View>
-
                             <View style={styles.cardContainer}>
                                 <View style={styles.cardRow}>
                                     <View style={styles.cardColumn}>

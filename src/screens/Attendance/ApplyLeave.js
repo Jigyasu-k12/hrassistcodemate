@@ -37,22 +37,17 @@ const ApplyLeave = ({navigation}) => {
     const [fromDate, setFromDate] = useState(new Date());
     const [toDate, setToDate] = useState(new Date());
     const [loader, setLoader] = useState(false);
-
     const [textinputSecondDate, setTextinputSecondDate] = useState('');
     const [open, setOpen] = useState(false);
     const [second, setSecond] = useState(false);
-
-
     const [checked, setChecked] = useState(null);
     const [validReason, setValidReason] = useState('Select Reason');
     const { authContext, AppUserData } = useContext(AuthContext);
     // const [comment, setComment] = useState('');
-  
     // added for leave page 
     const [LeaveTypes, setLeaveTypes] = useState([]);
     const [Leavereason, setLeavereason] = useState([]);
     const [isModalVisible, setModalVisible] = useState(false);
- 
     const [EmpLeaveDetail, setEmpLeaveDetail] = useState([]);
     
   

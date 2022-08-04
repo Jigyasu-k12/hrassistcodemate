@@ -44,51 +44,11 @@ const LeaveViewReport = () => {
   
     useFocusEffect(
       React.useCallback(() => {
-        const unsubscribe = getleavetypes();
+        const unsubscribe = getfinancialyear();
         return () => unsubscribe;
       }, [])
     )
-    const fromRef = useRef(null);  
-    
-    const getleavetypes = () => {
-      let apiData = { "UserName": AppUserData?.data?.userId };
-      // AppUserData?.data?.userId 222852
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
-        .then(result => {
-          console.log("APiresult getleave types", result);
-          setLoader(false);
-          if (result.Value) {
-            let updatedArray = [];
-            result.Value.Table2.forEach((element, index) => {
-              updatedArray.push({ ...element, id: index, Type: element.SHORT_NAME, value: element.ABSENCE_ID.replace(/\D/g, "") });
-            });
-            console.log(updatedArray);
-            setLeaveTypes(updatedArray);
-          } else {
-            Toast.show('No Leave type found');
-          }
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
-        });
-    }
+ 
 
     const getfinancialyear = () => {
       let apiData = {
@@ -185,7 +145,6 @@ const LeaveViewReport = () => {
     }  
   
     const DeleteLeavePending = (data) => {
-  
       let apiData = {
         "UserName": AppUserData?.data?.userId,
         "ApplicationID": data['Application ID']
@@ -227,20 +186,10 @@ const LeaveViewReport = () => {
     const toggleModal = () => {
       setModalVisible(!isModalVisible);
     };  
-    const handleLeave = index => {
-      // console.log(index);
-      if (index == 1) {
-        getfinancialyear()
-      }
-      setapplyLeave(index);
-    };    
-  useEffect(()=> {
-    handleLeave(1)
-  }, []) 
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-        {/* {
+        {
           loader ?
             <Spinner
               visible={loader}
@@ -248,12 +197,8 @@ const LeaveViewReport = () => {
               textStyle={styles.spinnerTextStyle}
             />
             : null
-        } */}
-       
-          
-          
-            <View style={{ flexGrow: 1,  }}>
-           
+        }          
+            <View style={{ flexGrow: 1,  }}> 
                 <View style={{ flex: 1 }}>
                   <Text Bold style={{ paddingHorizontal: 0, marginTop: 5 }}>Select Financial Year</Text>
                   <View

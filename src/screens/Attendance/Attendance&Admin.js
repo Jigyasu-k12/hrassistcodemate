@@ -84,7 +84,7 @@ const AttendanceAdmin = ({navigation}) => {
                 </Text>
             </View>     
 
-            {
+            {/* {
               route != "Holiday Calendar" ? (
                 <TouchableOpacity
                 style={styles.addtnlBtn}
@@ -98,10 +98,10 @@ const AttendanceAdmin = ({navigation}) => {
                 />
               </TouchableOpacity>
               ):null
-            }
+            } */}
         </LinearGradient>
           
-          {horizental == true && route != "Holiday Calendar" ? (
+          {/* {horizental == true && route != "Holiday Calendar" ? (
             <View
               style={{
                 padding: 10,
@@ -163,7 +163,7 @@ const AttendanceAdmin = ({navigation}) => {
                 ):null
               }
             </View>
-          ) : null}
+          ) : null} */}
 
       <Tab.Navigator 
        swipeEnabled={false}

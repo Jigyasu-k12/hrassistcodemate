@@ -82,12 +82,12 @@ const Shift = ({ navigation }) => {
   //   RptShiftStatus()
   // }, [])
 
-  useFocusEffect(
-    React.useCallback(() => {
-      const unsubscribe = LoadInitial();
-      return () => unsubscribe;
-    }, [])
-  )
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     const unsubscribe = LoadInitial();
+  //     return () => unsubscribe;
+  //   }, [])
+  // )
 
 
   const handleShift = index => {

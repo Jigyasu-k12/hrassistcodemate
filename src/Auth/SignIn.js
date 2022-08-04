@@ -47,6 +47,7 @@ const SignIn = ({ navigation }) => {
     // console.log('api data', data);
     AuthService.Post('Login', data)
       .then(res => {
+        console.log(res);
         let contextData = {
           token: res.token,
           user: values.UserName,
@@ -106,7 +107,7 @@ const SignIn = ({ navigation }) => {
       .catch(error => {
         setLoader(false);
         // return;
-        console.log('response data', JSON.stringify(error));
+        console.log('response data', error);
         if (error.response) {
           // client received an error response (5xx, 4xx)
           console.log(error.response.data.error.message);

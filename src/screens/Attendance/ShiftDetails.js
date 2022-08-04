@@ -58,23 +58,9 @@ const ShiftDetails = () => {
 
 
     const LoadInitial = () => {
-        FlexiShiftElig()
-        GetEmplShift()
-        flexiShiftPlanLov()
-        CurrentShift()
-        FlexiShiftStartDateLOV()
-        RptShiftStatus()
+        GetEmplShift();
     }
 
-    // ENd
-    // useEffect(() => {
-    //   FlexiShiftElig()
-    //   GetEmplShift()
-    //   flexiShiftPlanLov()
-    //   CurrentShift()
-    //   FlexiShiftStartDateLOV()
-    //   RptShiftStatus()
-    // }, [])
 
     useFocusEffect(
         React.useCallback(() => {
@@ -82,11 +68,6 @@ const ShiftDetails = () => {
             return () => unsubscribe;
         }, [])
     )
-
-
-    const handleShift = index => {
-        setShift(index);
-    };
 
 
     // SHIFT DETAILS API
@@ -128,282 +109,6 @@ const ShiftDetails = () => {
             });
     }
     // END 
-
-    // FLEXI SHIFT API
-
-    const flexiShiftPlanLov = () => {
-        let userId = AppUserData?.data?.EMPL_NAME;
-        let token = AppUserData.token;
-        let apiData = {
-            "UserName": userId,
-        };
-        setLoader(true);
-        ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)
-            .then(result => {
-                console.log("flexiShiftPlanLov", result);
-                setLoader(false);
-                let ApiResult = result.Value
-                setShiftType(ApiResult)
-            })
-            .catch(error => {
-                setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    // client received an error response (5xx, 4xx)
-                    Toast.show(error.response.data.title);
-                } else if (error.request) {
-                    // client never received a response, or request never left
-                    Toast.show('Network Error');
-                    // console.log("error.request", error.request._response);
-                } else {
-                    // anything else
-                    Toast.show('Session expired login again');
-                }
-            });
-    }
-
-
-    const CurrentShift = () => {
-        let userId = AppUserData?.data?.userId;
-        let token = AppUserData.token;
-        let apiData = {
-            "StaffNo": userId,
-        };
-        setLoader(true);
-        ApiService.PostMethode('/CurrentShift', apiData, token, authContext)
-            .then(result => {
-                console.log("CurrentShift", result);
-                setLoader(false);
-                let ApiResult = result.Result
-                setCurrentShift(ApiResult)
-            })
-            .catch(error => {
-                setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    // client received an error response (5xx, 4xx)
-                    Toast.show(error.response.data.title);
-                } else if (error.request) {
-                    // client never received a response, or request never left
-                    Toast.show('Network Error');
-                    // console.log("error.request", error.request._response);
-                } else {
-                    // anything else
-                    Toast.show('Session expired login again');
-                }
-            });
-    }
-
-
-
-    const SubmitFlexiShiftPlan = () => {
-        let userId = AppUserData?.data?.userId;
-        let token = AppUserData.token;
-        let apiData = {
-            "Staffid": userId,
-        };
-        setLoader(true);
-        ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token, authContext)
-            .then(result => {
-                console.log("SubmitFlexiShiftPlan", result);
-                setLoader(false);
-                let ApiResult = result.Result
-                alert(ApiResult)
-                // setSubmitShift(ApiResult)
-            })
-            .catch(error => {
-                setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    // client received an error response (5xx, 4xx)
-                    Toast.show(error.response.data.title);
-                } else if (error.request) {
-                    // client never received a response, or request never left
-                    Toast.show('Network Error');
-                    // console.log("error.request", error.request._response);
-                } else {
-                    // anything else
-                    Toast.show('Session expired login again');
-                }
-            });
-    }
-
-
-    const RptShiftStatus = () => {
-        let userId = AppUserData?.data?.userId;
-        let token = AppUserData.token;
-        let apiData = {
-            "StaffNo": "222852",
-        };
-        setLoader(true);
-        ApiService.PostMethode('/RptShiftStatus', apiData, token, authContext)
-            .then(result => {
-                console.log("RptShiftStatus", result);
-                setLoader(false);
-                let ApiResult = result.Value
-                setShiftStatus(ApiResult)
-            })
-            .catch(error => {
-                setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    // client received an error response (5xx, 4xx)
-                    Toast.show(error.response.data.title);
-                } else if (error.request) {
-                    // client never received a response, or request never left
-                    Toast.show('Network Error');
-                    // console.log("error.request", error.request._response);
-                } else {
-                    // anything else
-                    Toast.show('Session expired login again');
-                }
-            });
-    }
-
-    const FlexiShiftElig = () => {
-        let userId = AppUserData?.data?.userId;
-        let token = AppUserData.token;
-        let apiData = {
-            "UserName": userId,
-        };
-        setLoader(true);
-        ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)
-            .then(result => {
-                console.log("FlexiShiftElig", result.Result);
-                setLoader(false);
-                let ApiResult = result.Result
-                setFlexiShiftElig(ApiResult)
-            })
-            .catch(error => {
-                setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    // client received an error response (5xx, 4xx)
-                    Toast.show(error.response.data.title);
-                } else if (error.request) {
-                    // client never received a response, or request never left
-                    Toast.show('Network Error');
-                    // console.log("error.request", error.request._response);
-                } else {
-                    // anything else
-                    Toast.show('Session expired login again');
-                }
-            });
-    }
-
-
-    const FlexiShiftStartDateLOV = () => {
-        let userId = AppUserData?.data?.userId;
-        let token = AppUserData.token;
-        let apiData = {
-            "StaffNo": userId,
-        };
-        setLoader(true);
-        ApiService.PostMethode('/FlexiShiftStartDateLOV', apiData, token, authContext)
-            .then(result => {
-                console.log("FlexiShiftStartDateLOV", result.Result);
-                setLoader(false);
-                let ApiResult = result.Result
-                setFlexiDate(ApiResult)
-            })
-            .catch(error => {
-                setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    // client received an error response (5xx, 4xx)
-                    Toast.show(error.response.data.title);
-                } else if (error.request) {
-                    // client never received a response, or request never left
-                    Toast.show('Network Error');
-                    // console.log("error.request", error.request._response);
-                } else {
-                    // anything else
-                    Toast.show('Session expired login again');
-                }
-            });
-    }
-
-    const handleSubmit = () => {
-        if (shiftName == '') {
-            alert("Please select shift name")
-        }
-        else if (choseDate == '') {
-            alert("Please select Date")
-        }
-        else {
-
-            submitAlert('Warning', 'Are You Sure?', 'yes', 'No');
-        }
-    }
-
-
-
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
-
-    const submitAlert = (title, body, btnTxt, btnTxt2) => {
-        Alert.alert(title, body, [
-            {
-                text: btnTxt,
-                onPress: () => {
-                    SubmitFlexiShiftPlan();
-                    RptShiftStatus();
-                },
-            },
-            {
-                text: btnTxt2,
-                onPress: () => {
-                    console.log('No Pressed');
-                },
-            },
-        ]);
-    };
-
-
-    const rederReason = ({ item }) => {
-        return (
-            <View
-                style={{
-                    padding: 10,
-                    margin: 2,
-                    borderBottomWidth: 1,
-                    borderBottomColor: GlobalColor.Secondary,
-                    paddingVertical: 15
-                }}>
-                <TouchableOpacity
-                    onPress={() => {
-                        // console.log('selected reason', item);
-                        setShiftName(item.SHIFT_DESCRIPTION);
-                        setModalVisible(false);
-                        console.log('data', shiftName);
-                    }}>
-                    <Text style={{ paddingHorizontal: 10 }}>
-                        {item.SHIFT_DESCRIPTION}
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        );
-    };
-
     return (
         <SafeAreaView style={styles.container}>
             {loader == true ? (
@@ -551,9 +256,7 @@ const ShiftDetails = () => {
                             )}
                         />
                     </DataTable>
-                </ScrollView>
-        
-                
+                </ScrollView>                
         </SafeAreaView>
     )
 }
@@ -645,22 +348,9 @@ const styles = StyleSheet.create({
     activeTabTextStyle: {
         color: GlobalColor.Secondary,
     },
-    // content: {
-    //   top: 10,
-    //   alignItems: 'center',
-    //   padding: 10,
-    //   backgroundColor: 'white',
-    //   borderRadius: 5,
-    //   shadowColor: '#000',
-    //   shadowOffset: {
-    //     width: 0,
-    //     height: 1,
-    //   },
-    //   shadowOpacity: 0.18,
-    //   shadowRadius: 2.0,
-
-    //   elevation: 5,
-    // },
+    spinnerTextStyle:{
+        color:GlobalColor.White
+    },
     dataRow: {
         width: '100%',
         justifyContent: 'space-between',
@@ -669,12 +359,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5
     },
-    // addtnlBtn:{
-    //   position:'absolute',
-    //   right:10,
-    //   top:0,
-    //   zIndex:55555
-    // }
     addtnlBtn: {
         position: 'absolute',
         right: 10,

@@ -31,10 +31,12 @@ const MarkAttendence = () => {
     const [horizental, setHorizental] = useState(false);
     const [userLocation, setUserLocation] = useState('');
     const { authContext, AppUserData } = useContext(AuthContext);
+    const [location, setLocation] = useState('');
+
   
     // To Hide or show based on getGpsAvailable
     const [ShowAttandanceTabs, setShowAttandanceTabs] = useState(false);
-    const [RawPunches, setRawPunches] = useState([]);
+
   
   
     useFocusEffect(
@@ -45,43 +47,10 @@ const MarkAttendence = () => {
     );
   
     const checkGpsAvailable = () => {
-      let apiData = { "UserName": AppUserData?.data?.userId };
-      // AppUserData?.data?.userId 222852
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
-        .then(result => {
-          console.log("APiresult GetValidGPSUser", result);
-          setLoader(false);
-          if (result.Result == "Y") {
-            setShowAttandanceTabs(true);
-            setMarkAttandance(0);
-            getUserCurrentLocation();
-            getLocationLisenceKey();
-          } else {
-            setShowAttandanceTabs(false);
-            setMarkAttandance(1);
-            GetRawPunch();
-          }
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
-        });
+      setShowAttandanceTabs(true);
+      setMarkAttandance(0);
+      getUserCurrentLocation();
+      getLocationLisenceKey();
     }
   
   
@@ -99,53 +68,7 @@ const MarkAttendence = () => {
       );
     }
   
-  
-  
-  
-    const GetRawPunch = () => {
-      let apiData = {
-        "FromDate": moment(fromDate).format('DD-MMM-YYYY'),
-        "ToDate": moment(toDate).format('DD-MMM-YYYY'),
-        "StaffNo": AppUserData?.data?.userId
-      };
-      // console.log(apiData);
-      // AppUserData?.data?.userId
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetRawPunch', apiData, token, authContext)
-        .then(result => {
-          console.log("APiresult GetRawPunch", result);
-          setLoader(false);
-          if (result.Value) {
-            setRawPunches(result.Value);
-          }
-        })
-        .catch(error => {
-          setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-  
-  
-
-  
- 
-  
-    const [location, setLocation] = useState('');
+    
   
     const getMobDevice = () => {
       let apiData = { "UserName": AppUserData?.data?.userId };

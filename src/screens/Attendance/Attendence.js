@@ -34,10 +34,9 @@ const Attendance = ({ navigation }) => {
   const [toDate, setToDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [openSecond, setOpenSecond] = useState(false);
-  const [MarkAttandance, setMarkAttandance] = useState(0);
-  const [AttendenceReport, setAttendenceReport] = useState(0);
-
-  const [loader, setLoader] = useState(false)
+  const [MarkAttandance, setMarkAttandance] = useState(50);
+  const [AttendenceReport, setAttendenceReport] = useState(50);
+  const [loader, setLoader] = useState(true);
   const [MapLisenceKey, setMapLisenceKey] = useState("");
   const [horizental, setHorizental] = useState(false);
   const [userLocation, setUserLocation] = useState('');
@@ -67,16 +66,24 @@ const Attendance = ({ navigation }) => {
         if (result.Result == "Y") {
           setShowAttandanceTabs(true);
           setMarkAttandance(0);
-          getUserCurrentLocation();
-          getLocationLisenceKey();
+          setAttendenceReport(0);
+          // getUserCurrentLocation();
+          // getLocationLisenceKey();
         } else {
           setShowAttandanceTabs(false);
           setMarkAttandance(1);
-          GetRawPunch();
+          setAttendenceReport(0);
+          // GetRawPunch();
         }
       })
-      .catch(error => {
+      .catch(error => {        
         setLoader(false);
+
+        setShowAttandanceTabs(false);
+        setMarkAttandance(1);
+        setAttendenceReport(0);
+
+
         console.log('Error occurred==>', error);
         if (error.response) {
           if (error.response.status == 401) {
@@ -112,7 +119,7 @@ const Attendance = ({ navigation }) => {
 
 
 
-
+/*
   const GetRawPunch = () => {
     let apiData = {
       "FromDate": moment(fromDate).format('DD-MMM-YYYY'),
@@ -151,31 +158,18 @@ const Attendance = ({ navigation }) => {
       });
   }
 
-
   const renderItem = ({ item }) => {
-    // console.log("first data sujsdhg", item)
     return (
       <View style={styles.renderitem}>
         <Text>{item['Staff No']}</Text>
         <Text>{item.Date.slice(0, 12)}</Text>
         <Text>{item.Date.slice("12", 17)}</Text>
-        {/* <Text>{item.Date}</Text> */}
         <Text>{item['Moble/Machine']}</Text>
       </View>
     )
   }
 
-
-
-  const handleMarkAttandance = index => {
-    setMarkAttandance(index);
-  };
-  const handleAttendanceReport = index => {
-    setAttendenceReport(index);
-  };
-
-
-  const handelDate = () => {
+    const handelDate = () => {
     if (fromDate > toDate) {
       Alert.alert('from date should be less then to date');
     } else {
@@ -183,9 +177,7 @@ const Attendance = ({ navigation }) => {
     }
   }
 
-  const [location, setLocation] = useState('');
-
-  const getMobDevice = () => {
+    const getMobDevice = () => {
     let apiData = { "UserName": AppUserData?.data?.userId };
     setLoader(true);
     if (Platform.OS == 'android') {
@@ -331,6 +323,17 @@ const Attendance = ({ navigation }) => {
       });
   };
 
+
+*/
+
+  const handleMarkAttandance = index => {
+    setMarkAttandance(index);
+  };
+  const handleAttendanceReport = index => {
+    setAttendenceReport(index);
+  };
+
+  // const [location, setLocation] = useState('');
   if (loader) {
     return (
       <LoadingScreen />
@@ -339,42 +342,6 @@ const Attendance = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <TouchableOpacity
-            style={styles.addtnlBtn}
-            onPress={() => {
-             
-              horizental == true ? setHorizental(false) : setHorizental(true);
-            }}>
-            <Ionicons
-              name="ellipsis-vertical-circle"
-              size={30}
-              color={'#0083B0'}
-            />
-          </TouchableOpacity>
-          
-          {horizental == true ? (
-            <View
-              style={{
-                padding: 5,
-                paddingVertical:8,
-                backgroundColor: '#0083B0',
-                position: 'absolute',
-                // bottom:30,
-                right: 30,
-                top:5,
-                zIndex:1000,
-                borderRadius:2
-              }}>
-                <TouchableOpacity onPress={() => {
-                  setHorizental(false)
-                  navigation.navigate('AttendancePer')
-                }}>                  
-                  <Text style={{ color:"#fff"}}>Attendance Percentage</Text>
-                </TouchableOpacity>
-            </View>
-          ) : null} */}
-
-
       <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         {
           ShowAttandanceTabs ? (
@@ -413,22 +380,34 @@ const Attendance = ({ navigation }) => {
               activeTabStyle={styles.activeTabStyle}
               activeTabTextStyle={styles.activeTabTextStyle}
             />
-            // </ScrollView>
-            
-          
+            // </ScrollView>                  
           )
         }
       </View>
 
       <View style={{ flex: 1 }}>
+        {
+          ShowAttandanceTabs ? (
+            <View style={{ flex: 1 }}>
+                {ShowAttandanceTabs && MarkAttandance == 0 ? <MarkAttendence /> : null}
+                {ShowAttandanceTabs && MarkAttandance == 1 ? <AttendanceReport /> : null}
+                {ShowAttandanceTabs && MarkAttandance == 2 ? <AttendancePer /> : null}
+            </View>
+          ): (
+            <View style={{ flex: 1 }}>
+                {!ShowAttandanceTabs && AttendenceReport == 0 ? <AttendanceReport/> :null}
+                {!ShowAttandanceTabs && AttendenceReport == 1 ? <AttendancePer/> :null}
+            </View>
+          )
+        }
         
 
-      {ShowAttandanceTabs && MarkAttandance == 0 ? <MarkAttendence /> : null}
+      {/* {ShowAttandanceTabs && MarkAttandance == 0 ? <MarkAttendence /> : null}
       {ShowAttandanceTabs && MarkAttandance == 1 ? <AttendanceReport /> : null}
       {ShowAttandanceTabs && MarkAttandance == 2 ? <AttendancePer /> : null}
 
       {!ShowAttandanceTabs && AttendenceReport == 0 ? <AttendanceReport/> :null}
-      {!ShowAttandanceTabs && AttendenceReport == 1 ? <AttendancePer/> :null}
+      {!ShowAttandanceTabs && AttendenceReport == 1 ? <AttendancePer/> :null} */}
 
         {/* {MarkAttandance == 0 ? (
           <MarkAttendence/>

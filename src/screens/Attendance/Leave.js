@@ -76,12 +76,12 @@ const Leave = ({ navigation }) => {
 
 
 
-  useFocusEffect(
-    React.useCallback(() => {
-      const unsubscribe = getleavetypes();
-      return () => unsubscribe;
-    }, [])
-  )
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     const unsubscribe = getleavetypes();
+  //     return () => unsubscribe;
+  //   }, [])
+  // )
 
   // var radio_props = [
   //   { label: 'Planned', value: "P" },
