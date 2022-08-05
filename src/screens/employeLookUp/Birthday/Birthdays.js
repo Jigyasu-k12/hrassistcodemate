@@ -193,6 +193,11 @@ const Birthdays = () => {
         <View style={{ flex: 1 }}>
           {CurrentPage == 0 ? (
             <View style={{ flexGrow: 1 }}>
+              
+              <Image source={require("../../../assets/Images/notification.png")}
+              style={styles.img}
+              />
+              
               <FlatList
                 contentContainerStyle={{ flexGrow: 1 }}
                 ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => PostBirthdayData()} refreshing={refresh}></ListEmptyComponent>}
@@ -235,7 +240,7 @@ const Birthdays = () => {
                               <Text>
                                 {item.BIRTHDATE.includes("TODAY") ? item.Desg : null} </Text>
                               <Text>
-                                   | {item.BIRTHDATE.includes("TODAY") ? item.Dept : null}</Text>
+                                | {item.BIRTHDATE.includes("TODAY") ? item.Dept : null}</Text>
                             </View>
                           </View>
                         </View>
@@ -279,9 +284,9 @@ const Birthdays = () => {
                           <Text>{item.Email}</Text>
 
                           <View style={{ flexDirection: "row" }}>
-                          <Text>{item.Desg} </Text>
-                          <Text>| {item.Dept}</Text>
-                            </View>                         
+                            <Text>{item.Desg} </Text>
+                            <Text>| {item.Dept}</Text>
+                          </View>
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -349,14 +354,14 @@ const Birthdays = () => {
                       {modalItem && modalItem.Email && modalItem.Email}
                     </Text>
 
-                    <View style={{flexDirection:"row"}}>
+                    <View style={{ flexDirection: "row" }}>
 
-                    <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} >
-                      {modalItem && modalItem.Desg && modalItem.Desg}</Text>
-                    <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} > | {modalItem && modalItem.Dept && modalItem.Dept}
-                     </Text>
+                      <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} >
+                        {modalItem && modalItem.Desg && modalItem.Desg}</Text>
+                      <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} > | {modalItem && modalItem.Dept && modalItem.Dept}
+                      </Text>
                     </View>
-                    
+
                   </View>
                   <View
                     style={{
@@ -501,6 +506,16 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     zIndex: 55
+  },
+  img:{
+   width:"100%",
+   height:"20%",
+   marginTop:10,
+   overflow:"hidden",
+   borderRadius:0,
+   alignSelf:"center",
+   marginVertical:10
+    
   }
 });
 

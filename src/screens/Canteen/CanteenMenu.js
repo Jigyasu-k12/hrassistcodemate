@@ -38,7 +38,8 @@ const CanteenMenu = ({ navigation }) => {
         screenOptions={{
           tabBarLabelStyle: GlobalFontSize.P,
           tabBarActiveTintColor: GlobalColor.White,
-          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
+          tabBarIndicatorStyle: { borderBottomWidth: 5,
+          borderBottomColor: GlobalColor.White },
           tabBarStyle: { backgroundColor: GlobalColor.PrimaryGradient, elevation: 0 },
         }}
       >

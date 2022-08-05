@@ -403,6 +403,7 @@ const Plencashment = ({ navigation, route }) => {
               {lta.length > 0 ? (
                 <View>
                   {lta && lta.map((item) => {
+                    console.log("MENT_FNYR_YEAR",item)
                     return (
                       <>
 

@@ -60,6 +60,7 @@ const AttendancePer = ({ navigation }) => {
         console.log("GetAttendancePercentageYearwise", result);
         stopLoader(false);
         let ApiResult = result.Value
+        console.log("Api Result Get Attendance Percentage", ApiResult);
         setAttendance(ApiResult)
       })
       .catch(error => {
@@ -109,8 +110,8 @@ const AttendancePer = ({ navigation }) => {
             return (
               <TouchableOpacity
                 style={styles.canteen}>
-                <Text>{item.MATT_FNYR_YEAR}</Text>
-                <Text>{item.MATT_PERCENT}</Text>
+                <Text>Finalcial year {item.MATT_FNYR_YEAR}</Text>
+                <Text>{item.MATT_PERCENT}%</Text>
               </TouchableOpacity>
             )
           }}

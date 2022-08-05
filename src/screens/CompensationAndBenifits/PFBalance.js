@@ -85,22 +85,22 @@ const PFBalance = () => {
             <View style={[styles.MainCard, { padding: 10,backgroundColor: GlobalColor.White }]}>
                 <View>
                     <View style={styles.textContainer}>
-                        <Text >Employee's</Text>
+                        <Text Bold >Employee's</Text>
                         <Text Bold>
                             Rs.{employeePf}
                         </Text>
                     </View>
                     <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:GlobalColor.Secondary,}}/>
                     <View style={styles.textContainer}>
-                        <Text >Employer's</Text>
+                        <Text Bold >Employer's</Text>
                         <Text Bold>
                             Rs.{employerPf}
                         </Text>
                     </View>
                     <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:GlobalColor.Secondary,}}/>
-                    <View style={styles.textContainer}>
-                        <Text Bold>Net Balance</Text>
-                        <Text Bold>
+                    <View style={styles.textContainer2}>
+                        <Text Bold style={{fontSize:19}}>Net Balance</Text>
+                        <Text Bold style={{fontSize:19}}>
                             Rs.{netBalance}
                         </Text>
                     </View>
@@ -119,8 +119,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'center',
         justifyContent: 'space-between',
-        marginVertical: 8,
+        marginVertical: 15,
 
+    },
+    textContainer2:{
+        width: '90%',
+        flexDirection: 'row',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+        marginVertical: 13,
+ 
     },
     MainCard: {
 
