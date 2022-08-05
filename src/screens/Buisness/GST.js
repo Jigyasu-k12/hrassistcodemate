@@ -138,8 +138,8 @@ const Gst = ({ navigation }) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={filteredDataSource.length == 0 ? gst : filteredDataSource}
-        contentContainerStyle={{ flex:1 }}
-        ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => SearchEmployee()} refreshing={refresh}></ListEmptyComponent>}
+        contentContainerStyle={{ flexGrow:1 }}
+        ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => GetGSTDetailstApi()} refreshing={refresh}></ListEmptyComponent>}
         keyExtractor={(item, index) => index}
         renderItem={({ item, index }) => {
           return (
