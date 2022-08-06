@@ -110,7 +110,7 @@ const AttendancePer = ({ navigation }) => {
             return (
               <TouchableOpacity
                 style={styles.canteen}>
-                <Text>Finalcial year {item.MATT_FNYR_YEAR}</Text>
+                <Text>Financial year {item.MATT_FNYR_YEAR}</Text>
                 <Text>{item.MATT_PERCENT}%</Text>
               </TouchableOpacity>
             )

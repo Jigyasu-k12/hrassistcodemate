@@ -211,7 +211,7 @@ const VisitorDetails = ({navigation,route}) => {
 
   const [ActionPlans, setActionPlans] = useState([
     {
-      phone: '',
+      phone: '+91',
       vendor: '',
       title:'',
       name:'',
@@ -258,7 +258,9 @@ const VisitorDetails = ({navigation,route}) => {
             }
 
             <Formik
+             
               innerRef={fromRef}
+              validateOnBlur={false}
               enableReinitialize
               initialValues={{
                 actionPlans: ActionPlans,
@@ -311,11 +313,14 @@ const VisitorDetails = ({navigation,route}) => {
                                            Phone
                                           </Text>
                                           <TextInput
+                                          value={values.actionPlans[index].phone}
+
+                                            maxLength={13}
                                             key={index.ColourQuentity}
-                                            keyboardType='number-pad'
+                                            // keyboardType=''
                                             // maxLength={5}
                                             style={styles.input}
-                                            // placeholder="Enter phone"
+                                            // placeholder="+91"
                                             onChangeText={handleChange(
                                               `actionPlans[${index}].phone`,
                                             )}

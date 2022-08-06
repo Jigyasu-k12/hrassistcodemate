@@ -447,7 +447,7 @@ const renderItemHolidaysingle=({item})=>{
 };
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({  
   container: {
     flex: 1,
     // width: '100%',
@@ -466,7 +466,7 @@ const styles = StyleSheet.create({
     borderColor:GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize:GlobalFontSize.P,
+    fontSize: GlobalFontSize.P-1,
     color: 'grey',
     fontFamily:'Roboto-Bold',
   },
@@ -491,7 +491,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 2.0,
-
     elevation: 5,
   },
   calenderContainer:{
@@ -505,8 +504,10 @@ const styles = StyleSheet.create({
     width:"100%",
     backgroundColor:'#fff',
     flexDirection:'row',
-    borderWidth:1,
-    borderColor:"#eee",
+    paddingVertical:15,
+    marginVertical:3,   
+    borderLeftWidth: 5,
+    borderLeftColor: GlobalColor.Secondary,   
     marginBottom:2,
     padding:10,
     justifyContent:'space-between',

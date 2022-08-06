@@ -194,10 +194,12 @@ const Birthdays = () => {
           {CurrentPage == 0 ? (
             <View style={{ flexGrow: 1 }}>
               
-              <Image source={require("../../../assets/Images/notification.png")}
+              <Image
+              source={{
+                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Birthday_candles.jpg/1200px-Birthday_candles.jpg',
+              }}
               style={styles.img}
-              />
-              
+            />              
               <FlatList
                 contentContainerStyle={{ flexGrow: 1 }}
                 ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => PostBirthdayData()} refreshing={refresh}></ListEmptyComponent>}
@@ -464,7 +466,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '100%',
     borderLeftWidth: 5,
-    borderLeftColor: '#4174D0',
+    borderLeftColor: GlobalColor.Secondary,
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 5,

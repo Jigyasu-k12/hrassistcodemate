@@ -462,14 +462,13 @@ const styles = StyleSheet.create({
     borderColor: GlobalColor.Secondary
   },
   tabStyle2: {
-    paddingVertical: 10,
- 
+    paddingVertical: 10, 
     borderWidth: 1,
     borderRadius: 0,
     borderColor: GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P,
+    fontSize: GlobalFontSize.P-1,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },

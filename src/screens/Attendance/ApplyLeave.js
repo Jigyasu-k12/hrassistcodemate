@@ -381,13 +381,13 @@ const ApplyLeave = ({navigation}) => {
                                                     styles.circle,
                                                     {
                                                         backgroundColor:
-                                                            checked == item.id ? '#00B4DB' : null,
+                                                            checked == item.id ? GlobalColor.Secondary : null,
                                                     },
                                                 ]}>
                                                 <Text
                                                     style={{
                                                         color: checked == item.id ? '#fff' : '#000',
-                                                        fontSize: GlobalFontSize.Error
+                                                        fontSize: GlobalFontSize.P-4
                                                     }}>
                                                     {item.Type}
                                                 </Text>

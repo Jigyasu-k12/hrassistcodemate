@@ -110,11 +110,10 @@ const Plencashment = ({ navigation, route }) => {
     setLoader(true);
     ApiService.PostMethode('/InitMEDEncashment', apiData, token, authContext)
       .then(result => {
-
         // Stop Loader
         stopLoader()
-        // console.log("InitMEDEncashment", ApiValue);
         let ApiValue = result.Value
+        console.log("InitMEDEncashment", ApiValue);
         setLta(ApiValue)
       })
       .catch(error => {

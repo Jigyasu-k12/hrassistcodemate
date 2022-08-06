@@ -13,16 +13,17 @@ import { GlobalColor } from '../../constants/Colors';
 
 
 export default (props) =>{
-    const {placeholder=''}= props;
+    const {placeholder='',value}= props;
 
     return(
         <TextInput
         {...props}
+        
         // placeholder={placeholder}
         // secureTextEntry={false}
         // onChangeText={handleChange('UserName')}
         // onBlur={handleBlur('UserName')}
-        // value={values.UserName}
+        value={value}
         style={[{
           flex:1,
           color:GlobalColor.Primary,

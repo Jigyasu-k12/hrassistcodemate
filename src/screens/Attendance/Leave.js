@@ -515,7 +515,7 @@ const styles = StyleSheet.create({
     borderColor: GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P,
+    fontSize: GlobalFontSize.P-1,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },
