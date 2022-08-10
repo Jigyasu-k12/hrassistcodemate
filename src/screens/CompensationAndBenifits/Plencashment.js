@@ -185,9 +185,6 @@ const Plencashment = ({ navigation, route }) => {
   };
 
 
-
-
-
   const SubmitMEDEncashmentApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
@@ -350,7 +347,7 @@ const Plencashment = ({ navigation, route }) => {
                     keyboardType={'numeric'} onChangeText={(text) => { setEncashDays(text) }} value={encashDays} />
                 </View>
               </View>
-              <View style={{ height: 100, marginTop: 10 }}>
+              <View style={{ flex:1, marginTop: 10 }}>
 
                 <Button onPress={() => {
                   encashmentData()
@@ -376,6 +373,50 @@ const Plencashment = ({ navigation, route }) => {
 
 
                 <Text style={{ textAlign: 'center' }}>Report</Text>
+                <View
+              style={styles.reportHeader}>
+              <Text Bold>Process Date</Text>
+              <Text Bold>Process Desc</Text>
+              <Text Bold>Days</Text>
+            </View>
+
+            {
+              ltaReport.length > 0 ? (
+                <View>
+
+                  {ltaReport && ltaReport.map((item) => {
+                    return (
+                      <ScrollView>
+                      <TouchableOpacity style={[styles.reportHeader, {
+                        paddingVertical: 15,
+                        paddingHorizontal: 10,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        backgroundColor: '#fff',
+                        marginBottom: 3,
+                        borderWidth: 0.5,
+                        borderColor: GlobalColor.LightDark
+                      }]}>
+                        {/* <Text>{item.PL_PROC_DATE}</Text>
+                        <Text>{item.LTCF_YEARS}</Text>
+                        <Text>{item.RLTY_DESC}</Text> */}
+                      </TouchableOpacity>
+                      </ScrollView>
+                    )
+                  })}
+                </View>
+              ) : (
+                <ListEmptyComponent title="No Data Found"
+                ></ListEmptyComponent>
+                // <View style={{ width: '90%', marginTop: 20, justifyContent: 'center', alignItems: 'center' }}>
+                //   <Text>Not Data Found</Text>
+                // </View>
+              )
+            }
+
+
+
+
               </View>
             </View>
           ) : <View>
@@ -475,7 +516,6 @@ const Plencashment = ({ navigation, route }) => {
                   {ltaReport && ltaReport.map((item) => {
                     return (
                       <TouchableOpacity style={[styles.reportHeader, {
-
                         paddingVertical: 15,
                         paddingHorizontal: 10,
                         flexDirection: 'row',
@@ -500,10 +540,7 @@ const Plencashment = ({ navigation, route }) => {
                 // </View>
               )
             }
-
-
           </View>
-
           }
         </View>
       </ScrollView>
@@ -523,7 +560,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
-
     borderWidth: 0,
     borderColor: GlobalColor.PrimaryGradient,
   },
@@ -539,11 +575,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-
     marginBottom: 8,
     borderWidth: 0.5,
     borderColor: GlobalColor.LightDark
   },
+  
   reportData: {
 
   }

@@ -148,7 +148,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
-    borderRadius: 0
+    borderRadius: 0,    
+      borderLeftWidth: 5,
+      borderLeftColor: GlobalColor.Secondary,   
+      marginBottom:2,
+     
+
+    
+
   },
 });
 
