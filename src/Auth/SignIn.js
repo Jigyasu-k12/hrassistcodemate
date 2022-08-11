@@ -111,18 +111,7 @@ const SignIn = ({ navigation }) => {
         setLoader(false);
         // return;
         console.log('response data', error);
-        if (error.response) {
-          // client received an error response (5xx, 4xx)
-          console.log(error.response.data.error.message);
-          Toast.show(error.response.data.error.message);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Something Went Wrong');
-        }
+        ApiService.showErrorMessage(error, authContext);
       });
   }
 

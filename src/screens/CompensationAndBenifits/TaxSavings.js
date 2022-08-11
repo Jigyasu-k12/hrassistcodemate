@@ -54,21 +54,18 @@ const TaxSavings = () => {
           let result = await ApiService.PostMethode('/GetTaxSavings', {
             "EmplID": AppUserData?.data?.userId,
             "FNYR": month,
-          }, AppUserData.token)
-    
+          }, AppUserData.token)    
           //remove loader
           stopLoader()
           if(result?.Value){
             //set Data
             setTaxSaving(result?.Value?.Table2)
           }
-        } catch (error) {
-    
+        } catch (error) {    
           //remove loader
-          stopLoader()
-    
+          stopLoader()    
           //Show Error Massage
-          showErrorMessage(error)
+          ApiService.showErrorMessage(error, authContext);
         }
       };
 

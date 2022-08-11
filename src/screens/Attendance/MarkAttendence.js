@@ -19,7 +19,6 @@ import Text from '../../components/reusable/Text';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 
 
-
 const MarkAttendence = () => {
     const [fromDate, setFromDate] = useState(new Date());
     const [toDate, setToDate] = useState(new Date());
@@ -97,21 +96,8 @@ const MarkAttendence = () => {
           })
           .catch(error => {
             setLoader(false);
-            console.log('Error occurred==> getMobDevice', error);
-            if (error.response) {
-              if (error.response.status == 401) {
-                console.log('error from api', error.response);
-              }
-              // client received an error response (5xx, 4xx)
-              Toast.show(error.response.data.title);
-            } else if (error.request) {
-              // client never received a response, or request never left
-              Toast.show('Network Error');
-              // console.log("error.request", error.request._response);
-            } else {
-              // anything else
-              Toast.show('Session expired login again');
-            }
+            // console.log('Error occurred==> getMobDevice', error);
+            ApiService.showErrorMessage(error, authContext);
           });
       }
   
@@ -130,21 +116,8 @@ const MarkAttendence = () => {
           })
           .catch(error => {
             setLoader(false);
-            console.log('Error occurred==> APiresult getRawurl', error);
-            if (error.response) {
-              if (error.response.status == 401) {
-                console.log('error from api', error.response);
-              }
-              // client received an error response (5xx, 4xx)
-              Toast.show(error.response.data.title);
-            } else if (error.request) {
-              // client never received a response, or request never left
-              Toast.show('Network Error');
-              // console.log("error.request", error.request._response);
-            } else {
-              // anything else
-              Toast.show('Session expired login again');
-            }
+            // console.log('Error occurred==> APiresult getRawurl', error);
+            ApiService.showErrorMessage(error, authContext);
           });
       } else {
         CallAPIToStoreAddress();
@@ -173,16 +146,7 @@ const MarkAttendence = () => {
         .catch(error => {
           setLoader(false);
           console.log('Error occurred==> SubmitPunchRO', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            Toast.show(error.response.data.title);
-          } else if (error) {
-            Toast.show('Network Error');
-          } else {
-            Toast.show('Session expired login again');
-          }
+          ApiService.showErrorMessage(error, authContext);
         });
     }
   
@@ -203,16 +167,7 @@ const MarkAttendence = () => {
         })
         .catch(error => {
           setLoader(false);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            Toast.show(error.response.data.title);
-          } else if (error) {
-            Toast.show('Network Error');
-          } else {
-            Toast.show('Session expired login again');
-          }
+          ApiService.showErrorMessage(error, authContext);
         });
     };
   

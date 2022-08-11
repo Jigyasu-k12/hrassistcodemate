@@ -27,27 +27,22 @@ const TaxComputationSlip = () => {
     const [taxData, setTaxData] = useState([]);
     const { authContext, AppUserData } = useContext(AuthContext);
     const [refresh, setrefresh] = useState(false);
-
     const stopLoader = () => {
         setLoader(false);
         setrefresh(false);
     }
-
     // tax Saving Api
     const GetTaxAppApi = async (isrefresh = false) => {
         if(!isrefresh){
             setLoader(true);
-        }
-        
+        }        
         try {
             //Get Data
             let result = await ApiService.PostMethode('/GetTaxApp', {
                 "UserName": AppUserData?.data?.userId
             }, AppUserData.token)
-
             // Stop Loader
             stopLoader()
-
             //Set Data
             setTaxData(result.Value)
         }
@@ -55,7 +50,7 @@ const TaxComputationSlip = () => {
             //Stop Loader
             stopLoader()
             //Show Error Massage
-            showErrorMessage(error)
+            ApiService.showErrorMessage(error, authContext);
         }
     };
 

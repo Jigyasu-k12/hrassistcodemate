@@ -49,10 +49,8 @@ const SalarySlip = ({ navigation }) => {
         ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
             .then(result => {
                 console.log('GetSalaryMonth', result);
-
                 // Stop Loader
                 stopLoader()
-
                 let responseData = result.Value
                 let defaultDate = result.Value[0].SHIS_YYMM_CODE
                 console.log('defaultDate', defaultDate);
@@ -62,14 +60,11 @@ const SalarySlip = ({ navigation }) => {
                 GetSalaryData(defaultDate)
             })
             .catch(error => {
-
                 // Stop Loader
                 stopLoader()
-
                 // console.log('Error occurred==>', error);
-
                 //Show Error Massage
-                showErrorMessage(error)
+                ApiService.showErrorMessage(error, authContext);
             });
     };
 
@@ -86,23 +81,18 @@ const SalarySlip = ({ navigation }) => {
         setLoader(true);
         ApiService.PostMethode('/GetSalaryType', apiData, token, authContext)
             .then(result => {
-
                 // Stop Loader
                 stopLoader()
-
                 console.log('GetSalaryType', result);
                 let responseData = result.Value
                 setSalaryType(responseData)
             })
             .catch(error => {
-
                 // Stop Loader
                 stopLoader()
-
                 // console.log('Error occurred==>', error);
-
                 //Show Error Massage
-                showErrorMessage(error)
+                ApiService.showErrorMessage(error, authContext);
             });
     };
     const GetSalaryData = (data) => {
@@ -115,10 +105,8 @@ const SalarySlip = ({ navigation }) => {
 
         }
         console.log("GetSalaryData", apiData)
-
         //set Loader
         setLoader(true);
-
         ApiService.PostMethode('/GetSalaryData', apiData, token, authContext)
             .then(result => {
                 // Stop Loader
@@ -142,7 +130,7 @@ const SalarySlip = ({ navigation }) => {
                 // console.log('Error occurred==>', error);
 
                 //Show Error Massage
-                showErrorMessage(error)
+                ApiService.showErrorMessage(error, authContext);
             });
     };
 

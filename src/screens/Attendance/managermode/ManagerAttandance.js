@@ -78,16 +78,7 @@ export const ManagerAttandance = ({navigation}) => {
             .catch(error => {
               stopLoader();
               // console.log('Error occurred==>', error);
-              if (error.response) {
-                if (error.response.status == 401) {
-                  console.log('error from api', error.response);
-                }
-                Toast.show(error.response.data.title);
-              } else if (error) {
-                Toast.show('Network Error');
-              } else {
-                Toast.show('Session expired login again');
-              }
+              ApiService.showErrorMessage(error, authContext);
             });
       };
 

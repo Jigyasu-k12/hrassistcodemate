@@ -20,11 +20,8 @@ import { showErrorMessage } from '../../Utils/Utils';
 import { DataTable } from 'react-native-paper';
 import Toast from 'react-native-simple-toast';
 
-
-
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { GlobalFontSize } from '../../constants/FontSize';
-
 const ConveyanceBillsSubmission = ({ navigation, route }) => {
     const fromRef = useRef(null);
 
@@ -70,7 +67,6 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
             "UserName": EmplID
         }
 
-
         //Set Loader
         setLoader(true);
         ApiService.PostMethode('/reportCONV', apiData, token, authContext)
@@ -79,19 +75,14 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
                 setBill(result.Value)
                 //stop Loader
                 stopLoader();
-
             })
             .catch(error => {
-
                 //stop Loader
                 stopLoader();
-
                 //Show Error Massage
-                showErrorMessage(error)
+                ApiService.showErrorMessage(error, authContext);
             });
     };
-
-
 
     const FuelConvElig = () => {
         let token = AppUserData.token
@@ -117,14 +108,13 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
                 setFuelValue(FuelValue)
                 //stop Loader
                 stopLoader();
-
             })
             .catch(error => {
                 console.log(error)
                 //stop Loader
                 stopLoader();
                 //Show Error Massage
-                showErrorMessage(error)
+                ApiService.showErrorMessage(error, authContext);
             });
     };
 
@@ -148,12 +138,8 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
                 }
 
                 apiData.BillDate = moment(apiData.BillDate).format('DD-MMM-YYYY')
-
-
                 console.log(apiData);
-                // return;
-
-                
+                // return;                
                 //Set Loader
                 setLoader(true);
                 ApiService.PostMethode('/SubmitConveyBill', apiData, token, authContext)
@@ -173,7 +159,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
                         //stop Loader
                         stopLoader();
                         //Show Error Massage
-                        showErrorMessage(error)
+                        ApiService.showErrorMessage(error, authContext);
                     });
               }}
         ])
