@@ -14,9 +14,35 @@ import { API_SERVICES_URL } from "../API/Api";
 import Toast from 'react-native-simple-toast';
 import AuthContext from '../context/AuthContext';
 
-export const PostMethode = async (url, data, token, context=null) => {
+export const PostMethode =  async (url, data, token, context=null) => {
     let PostUrl = API_SERVICES_URL + url;
-    console.log("Api url", PostUrl, data);
+    // console.log("Api url", PostUrl, data);
+
+    try {
+        let response = await axios({
+            method: "post",
+            url: PostUrl,
+            data: data,
+            headers: {
+                Accept: "application/json",
+                authToken: token,
+            }
+        });
+        return response.data;
+    } catch (error) {
+            throw error
+    }
+
+return
+
+
+
+
+
+
+
+/*
+
     try {
         let response = await axios.post(PostUrl, JSON.stringify(data), {
             headers: {
@@ -28,6 +54,9 @@ export const PostMethode = async (url, data, token, context=null) => {
         // console.log("Api resp",response)
         return response.data;
     } catch (error) {
+        throw handleError(error.toJSON())
+        // return new Error(error);
+        return Promise.reject(error);
         // console.log(error);
         if (error.response) {
             if(context && error.response.status== 403){
@@ -44,6 +73,8 @@ export const PostMethode = async (url, data, token, context=null) => {
         }
         
     }
+    */
+    
 }
 
 export const getRawurl = async (url, data, token) => {
@@ -63,9 +94,6 @@ export const getRawurl = async (url, data, token) => {
     }
 }
 
-// const handleError = (error) => {
-//     return error
-// }
 
 const handleError = (err) => {
     let error = err;
@@ -75,17 +103,29 @@ const handleError = (err) => {
     return new Error(error.message);
 }
 
-export const showErrorMessage = (error) => {
+export const showErrorMessage = (error, context=null) => {
+    console.log(error.response.status);
+    console.log(error.response.data);
     if (error.response) {
-        if (error.response.status == 401) {
-            console.log('error from api', error.response);
+        if(error.response.status == "403" || error.response.status == "401"){
+            UseLogout(context);
+            return;
+        }else if (error.response && error.response.data.hasOwnProperty('Message')){
+            Toast.show(error.response.data.Message);    
+            return;
         }
-        Toast.show(error.response.data.title);
-    } else if (error) {
-        Toast.show('Network Error');
-    } else {
-        Toast.show('Session expired login again');
-    }
+        Toast.show(error.toString());
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+        Toast.show("Network Error");
+      } else {
+        Toast.show("Something Went Wrong");
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
 }
 
 

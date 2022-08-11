@@ -83,6 +83,9 @@ const SignIn = ({ navigation }) => {
     // return;
     ApiService.PostMethode('/GetEmployeeProfile', data, token)
       .then(res => {
+
+        console.log(res);
+
         let response = res.Value;
         if(response.Table){
           let userData = {
@@ -200,8 +203,8 @@ const SignIn = ({ navigation }) => {
 
               <Formik
                 validationSchema={loginValidationSchema}
-                initialValues={{ UserName: '', Password: '' }}
-                // initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
+                // initialValues={{ UserName: '', Password: '' }}
+                initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
                 // initialValues={{ UserName: '548596', Password: 'Maruti@04@22' }}
                 onSubmit={values => {
                   handleLogin(values);

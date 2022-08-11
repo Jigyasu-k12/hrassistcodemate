@@ -45,7 +45,7 @@ const EmployeLookUp = ({ navigation }) => {
       <Header title={"Employee Lookup"}/>
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { textTransform:'uppercase' },
+          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
           tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },

@@ -241,7 +241,7 @@ const FoodCount = ({ navigation }) => {
 
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { fontSize: 14 },
+          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
           tabBarStyle: { backgroundColor:GlobalColor.Secondary, elevation: 0 },

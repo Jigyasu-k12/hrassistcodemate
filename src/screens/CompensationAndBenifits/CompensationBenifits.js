@@ -124,7 +124,7 @@ const CompensationBenifits = ({ navigation }) => {
                 <Header title="Compensation and Benefits" />
                     <Tab.Navigator
                       screenOptions={{
-                        tabBarLabelStyle: {},
+                        tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
                         tabBarActiveTintColor: GlobalColor.White,
                         tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
                         tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },
