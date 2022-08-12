@@ -291,7 +291,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendar249
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -327,7 +327,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendar280
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -363,7 +363,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendarSMG
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -399,7 +399,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendarMNS
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}

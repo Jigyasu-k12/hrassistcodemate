@@ -111,7 +111,7 @@ const Hospital = ({ locationName }) => {
         <View style={styles.itemBox}>
           <Modal
             backdropOpacity={0.7}
-            animationType="slide"
+            // animationType="slide"
             animationOut="fadeOut"
             transparent={true}
             visible={modalVisible}>
@@ -172,6 +172,16 @@ const Hospital = ({ locationName }) => {
                   size={25}             
                 />
               </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {                                                
+                  GetHospListApi()
+                }}
+                style={{paddingVertical:10 }}>
+                <Text Bold style={{ fontSize: 16, paddingHorizontal: 10, color:GlobalColor.Primary }}>Clear Filter</Text>
+              </TouchableOpacity>
+
+
 
               <View style={{ paddingHorizontal:10, marginTop:20, flex:1 }}>
                 <FlatList
