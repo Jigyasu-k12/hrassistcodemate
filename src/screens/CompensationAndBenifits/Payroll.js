@@ -85,7 +85,7 @@ const Payroll = () => {
       .catch(error => {
         stopLoader()
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 

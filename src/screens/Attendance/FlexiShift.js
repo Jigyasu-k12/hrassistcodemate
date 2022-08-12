@@ -112,21 +112,8 @@ const FlexiShift = () => {
         })
         .catch(error => {
           setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
+          // console.log('Error occurred==>', error);
+          ApiService.showErrorMessage(error, authContext);
         });
     }
   // END 
@@ -149,21 +136,8 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
   
@@ -184,21 +158,8 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
   
@@ -221,21 +182,8 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
   
@@ -256,21 +204,8 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
   
@@ -290,21 +225,8 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
 
@@ -342,21 +264,8 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
   
@@ -367,13 +276,10 @@ const FlexiShift = () => {
     else if(choseDate==''){
       alert("Please select Date")
     }
-    else{
-      
+    else{      
       submitAlert('Warning', 'Are You Sure?', 'yes', 'No');
     }
-  }
-  
-    
+  }     
   
     const toggleModal = () => {
       setModalVisible(!isModalVisible);
@@ -430,8 +336,7 @@ const FlexiShift = () => {
          textContent={'Loading...'}
          textStyle={styles.spinnerTextStyle}
        />
-     ) : null} 
-    
+     ) : null}   
   
      <ScrollView style={{ flex:1, paddingHorizontal:10 }}>
        <Text style={{paddingVertical: 15, paddingHorizontal: 0,}} Bold>
@@ -474,7 +379,6 @@ const FlexiShift = () => {
                      }}>
                      Select Shift
                    </Text>
-
                    <TouchableOpacity onPress={toggleModal}>
                      <Ionicons
                        name="close-circle-outline"
@@ -492,12 +396,9 @@ const FlexiShift = () => {
            </Modal>
          </TouchableOpacity>
        </View>
-
-
        <Text Bold style={{paddingVertical: 15, paddingHorizontal: 0}}>
          Applicable Date
        </Text>
-
        <DatePicker
          modal
          open={openThird}
@@ -528,8 +429,6 @@ const FlexiShift = () => {
          </TouchableOpacity>
        </View>
 
-
-
        <Text Bold style={{paddingVertical: 15, paddingHorizontal: 0}}>
          Current Shift
        </Text>
@@ -541,8 +440,7 @@ const FlexiShift = () => {
            paddingHorizontal={10}
          />
        </View>
-       {/* Button */}
-       
+       {/* Button */}       
        {
          flexiShiftElig==='N' ? (
            <View style={{  marginTop:10, width:"100%",alignSelf:'center' }}>

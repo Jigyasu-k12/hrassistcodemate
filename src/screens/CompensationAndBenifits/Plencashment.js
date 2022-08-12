@@ -14,19 +14,25 @@ import Button from '../../components/reusable/Button';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import { showErrorMessage } from '../../Utils/Utils';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
+import moment from 'moment';
 
 const Plencashment = ({ navigation, route }) => {
 
   let pageName = route.params.pageName
-  console.log("pagename", pageName);
   const { authContext, AppUserData } = useContext(AuthContext);
   const [loader, setLoader] = useState(false)
   const [encashment, setEncashment] = useState([]);
   const [lta, setLta] = useState([]);
   const [ltaReport, setLtaReport] = useState([]);
+  const [Plreport, setPlreport] = useState([]);
   const [encashDays, setEncashDays] = useState('');
   const [refresh, setrefresh] = useState(false);
-  // const [refresh, setrefresh] = useState(false);
+  const [FinancialYear, setFinancialYear] = useState([]);
+  const [YearFrom, setYearFrom] = useState("");
+  const [YearTo, setYearTo] = useState("");
+
+
+
 
   const InitPLEncashmenApi = () => {
     let token = AppUserData.token
@@ -34,10 +40,8 @@ const Plencashment = ({ navigation, route }) => {
     let apiData = {
       "UserName": userId
     }
-
     //set Loader
     setLoader(true);
-
     ApiService.PostMethode('/initPLEncashment', apiData, token, authContext)
       .then(result => {
 
@@ -61,7 +65,7 @@ const Plencashment = ({ navigation, route }) => {
         // console.log('Error occurred==>', error);
 
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -81,7 +85,7 @@ const Plencashment = ({ navigation, route }) => {
 
         // Stop Loader
         stopLoader()
-        alert(result.Result)
+        Alert.alert("Payroll", result.Result);
         // createTwoButtonAlert(result.Result)
 
         // setResult(ApiValue)
@@ -93,13 +97,12 @@ const Plencashment = ({ navigation, route }) => {
         // console.log('Error occurred==>', error);
 
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
 
   //   LTA ENCASHMENT API 
-
   const InitMEDEncashment = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
@@ -110,24 +113,63 @@ const Plencashment = ({ navigation, route }) => {
     setLoader(true);
     ApiService.PostMethode('/InitMEDEncashment', apiData, token, authContext)
       .then(result => {
-
         // Stop Loader
         stopLoader()
-        // console.log("InitMEDEncashment", ApiValue);
         let ApiValue = result.Value
+        console.log("InitMEDEncashment", ApiValue);
         setLta(ApiValue)
       })
       .catch(error => {
-
         // Stop Loader
         stopLoader()
-
         // console.log('Error occurred==>', error);
-
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
+
+
+  const getfinancialyear = () => {
+    let apiData = {
+      "UserName": AppUserData?.data?.userId
+    };
+    // AppUserData?.data?.userId 222852
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
+      .then(result => {
+        console.log("Get Financial Year .....",result.Value);
+        setLoader(false);
+        if (result.Value) {
+          setFinancialYear(result.Value.Table);
+          if (result.Value && result.Value.Table[0].FNYR_YEAR) {
+            // setSelectedYear(result.Value.Table[0].FNYR_YEAR);
+            // getEmpLeaveDetail(result.Value.Table[0].FNYR_YEAR);
+
+            var curryear = ((new Date().getFullYear()).toString()).substring(0, 2);
+            var from;
+            if (parseInt(((result.Value.Table[0].FNYR_YEAR.toString()).substring(0, 2))) == 99) {
+              from = '01-apr-' + (parseInt(curryear) - 10) + ((result.Value.Table[0].FNYR_YEAR.toString()).substring(0, 2));
+            } else {
+              from = '01-apr-' + curryear + ((result.Value.Table[0].FNYR_YEAR.toString()).substring(0, 2));
+            }
+            var to = '31-mar-' + curryear + ((result.Value.Table[0].FNYR_YEAR.toString()).substring(2, 4));
+            setYearFrom(from);
+            setYearTo(to);
+          }
+        } else {
+          Toast.show('Financial year not found');
+        }
+      })
+      .catch(error => {
+        setLoader(false);
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
+      });
+  }
+
+
+
   const ReportLTC = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
@@ -155,21 +197,49 @@ const Plencashment = ({ navigation, route }) => {
 
 
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
+
+  const ReportPL = () => {
+    let token = AppUserData.token
+    let userId = AppUserData?.data?.userId
+    let apiData = {
+      "StaffNo": userId
+    }
+    //set error
+    setLoader(true);
+    ApiService.PostMethode('/ReportPL', apiData, token, authContext)
+      .then(result => {
+        console.log("ReportLTC", result);
+        // Stop Loader
+        stopLoader()
+        let ApiValue = result.Value
+        setPlreport(ApiValue)
+      })
+      .catch(error => {
+        // Stop Loader
+        stopLoader()
+        // console.log('Error occurred==>', error);
+        //Show Error Massage
+        ApiService.showErrorMessage(error, authContext);
+      });
+  };
+
 
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Payroll",
-      "Are You Sure want to",
+      "Are You Sure want to Encash?",
       [
         {
           text: "Cancel",
           onPress: () => console.log("Cancel Pressed"),
           style: "cancel"
         },
-        { text: "OK", onPress: () => { console.log("OK Pressed") } }
+        { text: "OK", onPress: () => { 
+          SubmitMEDEncashmentApi();
+         } }
       ]
     );
 
@@ -188,38 +258,36 @@ const Plencashment = ({ navigation, route }) => {
 
 
 
-
   const SubmitMEDEncashmentApi = () => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-      "UserName": userId
+      "StaffNo": userId
     }
     //set Loader
     // setLoader(false);
     // createTwoButtonAlert();
-    ApiService.PostMethode('/SubmitMEDEncashment', apiData, token, authContext)
+    ApiService.PostMethode('/SubmitLtcEnch', apiData, token, authContext)
       .then(result => {
         // console.log("SubmitMEDEncashment", result);
-
         // Stop Loader
         stopLoader()
         let ApiValue = result.Result
-        alert(ApiValue)
-        createTwoButtonAlert(ApiValue)
+        // alert(ApiValue)
+        Alert.alert("Payroll", ApiValue);
+        // createTwoButtonAlert(ApiValue)
       })
       .catch(error => {
         // Stop Loader
         stopLoader()
         console.log('Error occurred==>', error);
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
 
   const encashmentData = () => {
-    console.log("kusckgvdskdfdykudf", encashDays)
     if (encashDays == '') {
       AlertOccurred('Payroll', "Please enter days", 'ok')
       return
@@ -227,8 +295,6 @@ const Plencashment = ({ navigation, route }) => {
     if (encashDays == 0) {
       AlertOccurred('Payroll', 'Please enter greater then zero', 'ok');
     }
-
-
     else {
       SubmitPLEncashmentApi()
       setEncashDays('')
@@ -239,9 +305,14 @@ const Plencashment = ({ navigation, route }) => {
 
 
   useEffect(() => {
-    InitPLEncashmenApi()
-    InitMEDEncashment()
-    ReportLTC()
+    if(route.params.pageName =='PL Encashment'){
+      InitPLEncashmenApi();
+      ReportPL();
+      // InitMEDEncashment()
+    }else{
+      ReportLTC()
+      getfinancialyear();
+    }
   }, [])
 
   if (loader) {
@@ -273,46 +344,7 @@ const Plencashment = ({ navigation, route }) => {
       <ScrollView style={styles.container}>
 
         <Header title={pageName} />
-
-        {/* <LinearGradient
-          style={{ padding: 20 }}
-          colors={['#4174D0', '#6ef7ff']}>
-          <View style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                width: 40,
-                alignItems: 'center',
-              }}>
-              <Ionicons
-                name="chevron-back-outline"
-                size={25}
-                color={'white'}
-                onPress={() => navigation.goBack()}
-              />
-              <Ionicons
-                name="menu-outline"
-                size={25}
-                color={'white'}
-                onPress={() => navigation.openDrawer()}
-              />
-            </View>
-
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 16,
-                letterSpacing: 1,
-                marginLeft: 30,
-              }}>
-              {pageName}
-            </Text>
-          </View>
-        </LinearGradient> */}
-
         <View style={{ paddingHorizontal: 10 }}>
-
           {pageName == 'PL Encashment' ? (
             <View >
               <View style={{
@@ -351,58 +383,61 @@ const Plencashment = ({ navigation, route }) => {
                     keyboardType={'numeric'} onChangeText={(text) => { setEncashDays(text) }} value={encashDays} />
                 </View>
               </View>
-              <View style={{ height: 100, marginTop: 10 }}>
+              <View style={{ flex:1, marginTop: 10 }}>
 
                 <Button onPress={() => {
                   encashmentData()
                 }} title="CLAIM"></Button>
-
-                {/* <TouchableOpacity
-               >
-                <LinearGradient
-                  style={{
-                    padding: 20,
-                    borderRadius: 8,
-                    alignItems: 'center',
-                    width: '100%',
-                    alignSelf: 'center',
-                    marginVertical: 10,
-                  }}
-                  colors={['#4174D0', '#6ef7ff']}>
-                  <Text style={{ fontSize: 16, color: '#fff' }}>
-                    CLAIM
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity> */}
-
-
                 <Text style={{ textAlign: 'center' }}>Report</Text>
+                <View
+              style={styles.reportHeader}>
+              <Text Bold>Process Date</Text>
+              <Text Bold>Process Desc</Text>
+              <Text Bold>Days</Text>
+            </View>
+
+            {
+              Plreport.length > 0 ? (
+                <View>
+                  {Plreport && Plreport.map((item) => {
+                    return (
+                      <ScrollView>
+                      <TouchableOpacity style={[styles.reportHeader, {
+                        paddingVertical: 15,
+                        paddingHorizontal: 10,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        backgroundColor: '#fff',
+                        marginBottom: 3,
+                        borderWidth: 0.5,
+                        borderColor: GlobalColor.LightDark
+                      }]}>
+                        <Text>{item.PROCESSDATE}</Text>
+                        <Text>{item.PROCESS_DESCRIPTION}</Text>
+                        <Text>{item.ENTRY_EARN_VALUE}</Text>
+                      </TouchableOpacity>
+                      </ScrollView>
+                    )
+                  })}
+                </View>
+              ) : (
+                <ListEmptyComponent title="No Data Found"></ListEmptyComponent>
+              )
+            }
+
+
+
+
               </View>
             </View>
-          ) : <View>
-            <View style={{
-              // width: '100%',
-              // alignSelf: 'center',
-              // justifyContent: 'center',
-              // marginTop: 30,
-              // paddingVertical: 10,
-              // borderRadius: 8,
-              // backgroundColor: GlobalColor.White,
-              // shadowColor:GlobalColor.Black,
-              // shadowOffset: {
-              //   width: -0,
-              //   height: 1,
-              // },
-              // shadowOpacity: 0.22,
-              // shadowRadius: 2.22,
-              // elevation: 5,
-              // borderRadius: 5,
-              // marginBottom: 10
-            }}>
-
+          ) : 
+          
+          <View>
+            <View style={{}}>
               {lta.length > 0 ? (
                 <View>
                   {lta && lta.map((item) => {
+                    console.log("MENT_FNYR_YEAR",item)
                     return (
                       <>
 
@@ -422,43 +457,21 @@ const Plencashment = ({ navigation, route }) => {
               ) : (
                 <View>
                   <View style={styles.box}>
-                    <Text>Financial Year</Text>
-                    <Text>not Found</Text>
+                    <Text>Financial Year</Text>                                        
+                    <Text>{moment(YearFrom).format('YYYY')}-{moment(YearTo).format('YYYY')}</Text>
                   </View>
                   <View style={styles.box}>
                     <Text>Staff No</Text>
-                    <Text>not Found</Text>
+                    <Text>{AppUserData?.data?.userId}</Text>
                   </View>
                 </View>
               )}
             </View>
             <View style={{ height: 100, marginTop: 10 }}>
-
               <Button onPress={() => {
-                SubmitMEDEncashmentApi()
+                // SubmitMEDEncashmentApi();
+                createTwoButtonAlert();
               }} title="ENCASH"></Button>
-
-
-              {/* <TouchableOpacity onPress={() => {
-              SubmitMEDEncashmentApi()
-            }}>
-              <LinearGradient
-                style={{
-                  padding: 20,
-                  borderRadius: 8,
-                  alignItems: 'center',
-                  width: '90%',
-                  alignSelf: 'center',
-                  marginVertical: 10,
-                }}
-                colors={['#4174D0', '#6ef7ff']}>
-                <Text style={{ fontSize: 16, color: '#fff' }}>
-                  ENCASh
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity> */}
-
-
               <Text style={{ textAlign: 'center' }}>Report</Text>
             </View>
             <View
@@ -475,7 +488,6 @@ const Plencashment = ({ navigation, route }) => {
                   {ltaReport && ltaReport.map((item) => {
                     return (
                       <TouchableOpacity style={[styles.reportHeader, {
-
                         paddingVertical: 15,
                         paddingHorizontal: 10,
                         flexDirection: 'row',
@@ -500,10 +512,7 @@ const Plencashment = ({ navigation, route }) => {
                 // </View>
               )
             }
-
-
           </View>
-
           }
         </View>
       </ScrollView>
@@ -523,7 +532,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
-
     borderWidth: 0,
     borderColor: GlobalColor.PrimaryGradient,
   },
@@ -539,11 +547,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-
     marginBottom: 8,
     borderWidth: 0.5,
     borderColor: GlobalColor.LightDark
   },
+  
   reportData: {
 
   }

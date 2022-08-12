@@ -49,21 +49,8 @@ const Gst = ({ navigation }) => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -136,9 +123,10 @@ const Gst = ({ navigation }) => {
 
       {/* FLATLIST */}
       <FlatList
+      style={{flexGrow:1,}}
         showsVerticalScrollIndicator={false}
         data={filteredDataSource.length == 0 ? gst : filteredDataSource}
-        contentContainerStyle={{ flexGrow:1, }}
+        contentContainerStyle={{ flexGrow:1 }}
         ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => GetGSTDetailstApi()} refreshing={refresh}></ListEmptyComponent>}
         keyExtractor={(item, index) => index}
         renderItem={({ item, index }) => {
@@ -176,7 +164,8 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalColor.PrimaryLight,   
   },
   MainContainer:{
-    paddingHorizontal:20
+    flex:1,
+    paddingHorizontal:20,  
   },
   SearchContainer: {
     marginVertical: 10,

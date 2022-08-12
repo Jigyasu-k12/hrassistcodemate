@@ -36,9 +36,10 @@ const CanteenMenu = ({ navigation }) => {
       <Header title="Canteen Menu" />
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: GlobalFontSize.P,
+          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: GlobalColor.White,
-          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
+          tabBarIndicatorStyle: { borderBottomWidth: 5,
+          borderBottomColor: GlobalColor.White },
           tabBarStyle: { backgroundColor: GlobalColor.PrimaryGradient, elevation: 0 },
         }}
       >

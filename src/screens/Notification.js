@@ -29,31 +29,24 @@ const Notification = ({ navigation }) => {
   }
 
   const NotifiApi = async (pulldown = false) => {
-
     if (!pulldown) {
       //Set Loader
       setLoader(true);
     }
-
     try {
-
       //Set Axios Header
       let axiosheader = {
         headers: {
           'authorization': 'Basic ZDU5NjEyY2ItYTI3NS00ZTYzLTkyMGItNGE4ODJmYjFiOTVm'
         }
       }
-
       //Get Data
       let resp = await axios.get('https://onesignal.com/api/v1/notifications?app_id=42fcb50a-922f-4b0e-9ba3-701d663beede', axiosheader)
-
       // Remove Loader
       stopLoader();
-
       // Set Data
       let result = resp?.data?.notifications
       setNotifi(result)
-
     } catch (error) {
       stopLoader();
       showErrorMessage(error)

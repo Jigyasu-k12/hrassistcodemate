@@ -1,13 +1,13 @@
 //import liraries
-import React, {Component, useContext} from 'react';
-import {View, StyleSheet, Image, ScrollView, SafeAreaView} from 'react-native';
+import React, { Component, useContext } from 'react';
+import { View, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import TouchableCard from '../components/Touchable';
 import LinearGradient from 'react-native-linear-gradient';
-import {SliderBox} from 'react-native-image-slider-box';
+import { SliderBox } from 'react-native-image-slider-box';
 import IconBadge from 'react-native-icon-badge';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import AuthContext from './../context/AuthContext';
 import { GlobalColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
@@ -16,7 +16,7 @@ import Text from '../components/reusable/Text';
 
 
 // create a component
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   const { authContext, AppUserData } = useContext(AuthContext);
   // images for carousel
   const image = [
@@ -30,39 +30,39 @@ const Home = ({navigation}) => {
 
   // end array
   return (
-    <SafeAreaView style={{flexGrow: 1}}>
-    <View style={styles.container}>
-      <View
-        colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]}
-        style={styles.gradient}>
-        <View>
-          <View style={styles.headerText1}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <Ionicons
-                name="menu-outline"
-                size={30}
-                color={GlobalColor.Primary}
-                onPress={() => navigation.openDrawer()}
-              />
-              <Text style={[styles.brand, {marginLeft: 15}]} Bold>HR Assist</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Notification");
+    <SafeAreaView style={{ flexGrow: 1 }}>
+      <View style={styles.container}>
+        <View
+          colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]}
+          style={styles.gradient}>
+          <View>
+            <View style={styles.headerText1}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
+                <Ionicons
+                  name="menu-outline"
+                  size={30}
+                  color={GlobalColor.Primary}
+                  onPress={() => navigation.openDrawer()}
+                />
+                <Text style={[styles.brand, { marginLeft: 15 }]} Bold>HR Assist</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("Notification");
+                  }}>
                   <Feather name="bell" color={GlobalColor.Primary} size={30} />
-                {/* <IconBadge
+                  {/* <IconBadge
                   MainElement={<Feather name="bell" color={'#fff'} size={30} />}
                   // BadgeElement={<Text style={{color: '#fff', fontWeight:'700'}}>5</Text>}
                   IconBadgeStyle={{
@@ -70,51 +70,54 @@ const Home = ({navigation}) => {
                     backgroundColor: "#4174D0",
                   }}
                 /> */}
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={{ flexDirection: 'row', marginHorizontal: 10, marginVertical: 5, alignItems: 'center' }}
+            ><TouchableOpacity onPress={() => { navigation.navigate("EditProfile") }}>
+                {AppUserData.data && AppUserData.data.profile_photo ? (
+                  <Image
+                    source={{ uri: 'data:image/png;base64, ' + AppUserData.data.profile_photo }}
+                    style={{ width: 40, height: 40, borderRadius: 50 }}
+                  />
+                ) : (
+                  <Image
+                    source={require('../assets/Images/smile.jpg')}
+                    style={{ width: 40, height: 40, borderRadius: 50 }}
+                  />
+                )}
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => { navigation.navigate("EditProfile") }} style={{ marginHorizontal: 10 }}>
+                <Text
+                  style={{
+                    fontSize: GlobalFontSize.P,
+                    color: GlobalColor.Primary,
+                    textTransform: 'capitalize'
+                  }}
+                  Bold>
+                  {AppUserData.data && AppUserData?.data?.EMPL_NAME ? AppUserData?.data?.EMPL_NAME : "User"}
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
-          
-          <View style={{flexDirection: 'row', marginHorizontal: 10,marginVertical:5, alignItems:'center'}}>
-            {AppUserData.data && AppUserData.data.profile_photo ? (
-              <Image
-                source={{uri:'data:image/png;base64, '+AppUserData.data.profile_photo}}
-                style={{width: 40, height: 40, borderRadius: 50}}
-              />
-            ):(
-              <Image
-                source={require('../assets/Images/smile.jpg')}
-                style={{width: 40, height: 40, borderRadius: 50}}
-              />
-            )}
-            <View style={{marginHorizontal: 10}}>
-              <Text
-                style={{
-                  fontSize: GlobalFontSize.P,
-                  color: GlobalColor.Primary,
-                  textTransform: 'capitalize'
-                }}
-                Bold>
-                {AppUserData.data && AppUserData?.data?.EMPL_NAME ? AppUserData?.data?.EMPL_NAME : "User"}
-              </Text>
-            </View>
-          </View>
         </View>
+
+
+        <View style={styles.carousel}>
+          <SliderBox
+            images={image}
+            autoplay={true}
+            circleLoop={true}
+            style={styles.carouselimg}
+            sliderBoxHeight={250}
+          />
+        </View>
+        <TouchableCard navigation={navigation} />
+
+
       </View>
-
-
-      <View style={styles.carousel}>
-        <SliderBox
-          images={image}
-          autoplay={true}
-          circleLoop={true}
-          style={styles.carouselimg}
-          sliderBoxHeight={250}
-        />
-      </View>
-      <TouchableCard navigation={navigation} />
-
-
-    </View>
     </SafeAreaView>
   );
 };
@@ -162,9 +165,9 @@ const styles = StyleSheet.create({
     elevation: 5,
     zIndex: 1,
     overflow: 'hidden',
-    marginBottom:5,
-    borderWidth:0.5,
-    borderColor:GlobalColor.Secondary
+    marginBottom: 5,
+    borderWidth: 0.5,
+    borderColor: GlobalColor.Secondary
   },
   carouselimg: {
     minHeight: '100%',

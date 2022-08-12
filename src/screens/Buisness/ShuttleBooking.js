@@ -2,13 +2,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
-  
   StyleSheet,
-
   TouchableOpacity,
   SafeAreaView
-
-
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -16,6 +12,7 @@ import FutureBook from './FutureBook';
 import PastBook from './PastBook';
 import Book from './Book';
 import { GlobalColor } from '../../constants/Colors';
+import { GlobalFontSize } from '../../constants/FontSize';
 import { Header } from '../../components/reusable/Header';
 
 const ShuttleBooking = ({ navigation }) => {
@@ -30,7 +27,7 @@ const ShuttleBooking = ({ navigation }) => {
       <View style={styles.container}>      
       <Tab.Navigator 
        screenOptions={{
-        tabBarLabelStyle: { fontSize: 14 },
+        tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
         tabBarActiveTintColor: GlobalColor.White,
         tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
         tabBarStyle: { backgroundColor: GlobalColor.PrimaryGradient, elevation: 0 },

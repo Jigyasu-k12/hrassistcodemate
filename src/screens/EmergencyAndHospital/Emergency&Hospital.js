@@ -28,7 +28,7 @@ const EmergencyHospital = ({ navigation, route }) => {
       <Header title="Emergency & Hospital"/>
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: {  },
+          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
           tabBarStyle: { backgroundColor: '#0083B0', elevation: 0 },

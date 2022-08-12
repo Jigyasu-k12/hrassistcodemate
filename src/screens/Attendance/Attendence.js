@@ -78,27 +78,11 @@ const Attendance = ({ navigation }) => {
       })
       .catch(error => {        
         setLoader(false);
-
         setShowAttandanceTabs(false);
         setMarkAttandance(1);
         setAttendenceReport(0);
-
-
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
 
@@ -462,14 +446,13 @@ const styles = StyleSheet.create({
     borderColor: GlobalColor.Secondary
   },
   tabStyle2: {
-    paddingVertical: 10,
- 
+    paddingVertical: 10, 
     borderWidth: 1,
     borderRadius: 0,
     borderColor: GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P,
+    fontSize: GlobalFontSize.P-1,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },

@@ -168,7 +168,7 @@ const AttendanceAdmin = ({navigation}) => {
       <Tab.Navigator 
        swipeEnabled={false}
        screenOptions={{
-        tabBarLabelStyle: { fontSize: 12,fontWeight:'700'},
+        tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
         tabBarActiveTintColor: '#fff',
         tabBarItemStyle: { paddingHorizontal:0 },
         tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff'},

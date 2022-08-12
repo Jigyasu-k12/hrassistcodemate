@@ -142,21 +142,8 @@ const HolidayCalendar = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
 
@@ -304,7 +291,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendar249
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -340,7 +327,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendar280
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -376,7 +363,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendarSMG
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -412,7 +399,7 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendarMNS
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700"}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
                     previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
                     selectedDayColor={'#f00'}
@@ -447,7 +434,7 @@ const renderItemHolidaysingle=({item})=>{
 };
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({  
   container: {
     flex: 1,
     // width: '100%',
@@ -466,7 +453,7 @@ const styles = StyleSheet.create({
     borderColor:GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize:GlobalFontSize.P,
+    fontSize: GlobalFontSize.P-1,
     color: 'grey',
     fontFamily:'Roboto-Bold',
   },
@@ -491,7 +478,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 2.0,
-
     elevation: 5,
   },
   calenderContainer:{
@@ -505,8 +491,10 @@ const styles = StyleSheet.create({
     width:"100%",
     backgroundColor:'#fff',
     flexDirection:'row',
-    borderWidth:1,
-    borderColor:"#eee",
+    paddingVertical:15,
+    marginVertical:3,   
+    borderLeftWidth: 5,
+    borderLeftColor: GlobalColor.Secondary,   
     marginBottom:2,
     padding:10,
     justifyContent:'space-between',

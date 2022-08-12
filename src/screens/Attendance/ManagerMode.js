@@ -44,7 +44,7 @@ const ManagerMode = ({ navigation }) => {
       <Header title="Manager Mode" />
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { fontSize: 12, fontWeight: '700' },
+          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: GlobalColor.White,
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
           tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },

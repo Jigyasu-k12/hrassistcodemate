@@ -65,27 +65,12 @@ const Book = () => {
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value
-        console.log("book", ApiValue);
         setbook(ApiValue)
       })
-
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        console.log(error);
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -117,23 +102,11 @@ const Book = () => {
       .catch(error => {
         setModalVisible(false);
         stopLoader();
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        ApiService.showErrorMessage(error, authContext);
       });
   };
+
+
   useFocusEffect(
     React.useCallback(() => {
       const unsubscribe = GetShuttleRoutesApi();

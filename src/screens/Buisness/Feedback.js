@@ -55,17 +55,8 @@ const Feedback = ({ navigation, route }) => {
             })
             .catch(error => {
                 setLoader(false);
-                console.log('Error occurred==>', error);
-                if (error.response) {
-                    if (error.response.status == 401) {
-                        console.log('error from api', error.response);
-                    }
-                    Toast.show(error.response.data.title);
-                } else if (error) {
-                    Toast.show('Network Error');
-                } else {
-                    Toast.show('Session expired login again');
-                }
+                // console.log('Error occurred==>', error);
+                ApiService.showErrorMessage(error, authContext);
             });
     }
 

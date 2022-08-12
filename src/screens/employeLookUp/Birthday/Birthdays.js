@@ -80,21 +80,8 @@ const Birthdays = () => {
       })
       .catch(error => {
         stopLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -125,21 +112,8 @@ const Birthdays = () => {
       .catch(error => {
         stopLoader(false);
         setModalVisible(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -190,11 +164,18 @@ const Birthdays = () => {
           />
         </View>
 
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 ,paddingVertical:10}}>
           {CurrentPage == 0 ? (
             <View style={{ flexGrow: 1 }}>
+              
+              <Image
+              source={{
+                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Birthday_candles.jpg/1200px-Birthday_candles.jpg',
+              }}
+              style={styles.img}
+            />              
               <FlatList
-                contentContainerStyle={{ flexGrow: 1 }}
+                contentContainerStyle={{ flexGrow: 1,}}
                 ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => PostBirthdayData()} refreshing={refresh}></ListEmptyComponent>}
                 data={todayBirthday}
                 keyExtractor={({ item, index }) => index}
@@ -235,7 +216,7 @@ const Birthdays = () => {
                               <Text>
                                 {item.BIRTHDATE.includes("TODAY") ? item.Desg : null} </Text>
                               <Text>
-                                   | {item.BIRTHDATE.includes("TODAY") ? item.Dept : null}</Text>
+                                | {item.BIRTHDATE.includes("TODAY") ? item.Dept : null}</Text>
                             </View>
                           </View>
                         </View>
@@ -279,9 +260,9 @@ const Birthdays = () => {
                           <Text>{item.Email}</Text>
 
                           <View style={{ flexDirection: "row" }}>
-                          <Text>{item.Desg} </Text>
-                          <Text>| {item.Dept}</Text>
-                            </View>                         
+                            <Text>{item.Desg} </Text>
+                            <Text>| {item.Dept}</Text>
+                          </View>
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -349,14 +330,14 @@ const Birthdays = () => {
                       {modalItem && modalItem.Email && modalItem.Email}
                     </Text>
 
-                    <View style={{flexDirection:"row"}}>
+                    <View style={{ flexDirection: "row" }}>
 
-                    <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} >
-                      {modalItem && modalItem.Desg && modalItem.Desg}</Text>
-                    <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} > | {modalItem && modalItem.Dept && modalItem.Dept}
-                     </Text>
+                      <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} >
+                        {modalItem && modalItem.Desg && modalItem.Desg}</Text>
+                      <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} > | {modalItem && modalItem.Dept && modalItem.Dept}
+                      </Text>
                     </View>
-                    
+
                   </View>
                   <View
                     style={{
@@ -501,6 +482,16 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     zIndex: 55
+  },
+  img:{
+   width:"100%",
+   height:"20%",
+   marginTop:10,
+   overflow:"hidden",
+   borderRadius:0,
+   alignSelf:"center",
+   marginVertical:10
+    
   }
 });
 

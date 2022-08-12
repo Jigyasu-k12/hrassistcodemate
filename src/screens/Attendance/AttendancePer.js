@@ -60,25 +60,13 @@ const AttendancePer = ({ navigation }) => {
         console.log("GetAttendancePercentageYearwise", result);
         stopLoader(false);
         let ApiResult = result.Value
+        console.log("Api Result Get Attendance Percentage", ApiResult);
         setAttendance(ApiResult)
       })
       .catch(error => {
         stopLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   }
   useEffect(() => {
@@ -109,8 +97,8 @@ const AttendancePer = ({ navigation }) => {
             return (
               <TouchableOpacity
                 style={styles.canteen}>
-                <Text>{item.MATT_FNYR_YEAR}</Text>
-                <Text>{item.MATT_PERCENT}</Text>
+                <Text>Financial year {item.MATT_FNYR_YEAR}</Text>
+                <Text>{item.MATT_PERCENT}%</Text>
               </TouchableOpacity>
             )
           }}
@@ -147,7 +135,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
-    borderRadius: 0
+    borderRadius: 0,    
+      borderLeftWidth: 5,
+      borderLeftColor: GlobalColor.Secondary,   
+      marginBottom:2,
+     
+
+    
+
   },
 });
 

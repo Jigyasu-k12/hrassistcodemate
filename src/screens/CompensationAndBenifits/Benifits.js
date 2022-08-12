@@ -57,7 +57,7 @@ const Benifits = () => {
         //stop Loader
         stopLoader();
         //Show Error Massage
-        showErrorMessage(error)
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 

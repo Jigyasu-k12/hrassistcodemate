@@ -19,8 +19,6 @@ import AuthContext from '../context/AuthContext';
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Spinner from 'react-native-loading-spinner-overlay';
-
-// Component Import
 import Text from '../components/reusable/Text';
 import { GlobalColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
@@ -83,6 +81,9 @@ const SignIn = ({ navigation }) => {
     // return;
     ApiService.PostMethode('/GetEmployeeProfile', data, token)
       .then(res => {
+
+        console.log(res);
+
         let response = res.Value;
         console.log(res);
         if(response.Table){
@@ -108,18 +109,7 @@ const SignIn = ({ navigation }) => {
         setLoader(false);
         // return;
         console.log('response data', error);
-        if (error.response) {
-          // client received an error response (5xx, 4xx)
-          console.log(error.response.data.error.message);
-          Toast.show(error.response.data.error.message);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Something Went Wrong');
-        }
+        ApiService.showErrorMessage(error, authContext);
       });
   }
 
@@ -200,6 +190,7 @@ const SignIn = ({ navigation }) => {
 
               <Formik
                 validationSchema={loginValidationSchema}
+                // initialValues={{ UserName: '', Password: '' }}
                 initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
                 // initialValues={{ UserName: '548596', Password: 'Maruti@04@22' }}
                 onSubmit={values => {

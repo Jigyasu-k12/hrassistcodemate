@@ -3,13 +3,10 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import {
   View,
   StyleSheet,
-
   ActivityIndicator,
   TouchableOpacity,
   SafeAreaView,
-
 } from 'react-native';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { FlatList } from 'react-native-gesture-handler';
@@ -32,7 +29,7 @@ const LeaveViewReport = () => {
     const [validReason, setValidReason] = useState('Select Reason');
     const { authContext, AppUserData } = useContext(AuthContext);
     // const [comment, setComment] = useState('');
-  
+      
     // added for leave page 
     const [LeaveTypes, setLeaveTypes] = useState([]);   
     const [isModalVisible, setModalVisible] = useState(false);
@@ -74,21 +71,8 @@ const LeaveViewReport = () => {
         })
         .catch(error => {
           setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
+          // console.log('Error occurred==>', error);
+          ApiService.showErrorMessage(error, authContext);
         });
     }
   
@@ -126,21 +110,8 @@ const LeaveViewReport = () => {
         })
         .catch(error => {
           setLoader(false);
-          console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
+          // console.log('Error occurred==>', error);
+          ApiService.showErrorMessage(error, authContext);
         });
     }  
   
@@ -166,20 +137,7 @@ const LeaveViewReport = () => {
         .catch(error => {
           setLoader(false);
           console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            // client received an error response (5xx, 4xx)
-            Toast.show(error.response.data.title);
-          } else if (error.request) {
-            // client never received a response, or request never left
-            Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
-          } else {
-            // anything else
-            Toast.show('Session expired login again');
-          }
+          ApiService.showErrorMessage(error, authContext);
         });
     }  
   

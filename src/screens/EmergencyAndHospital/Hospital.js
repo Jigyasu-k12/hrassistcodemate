@@ -63,21 +63,8 @@ const Hospital = ({ locationName }) => {
       .catch(error => {
         setFilterModal(false);
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -97,21 +84,8 @@ const Hospital = ({ locationName }) => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
-        if (error.response) {
-          if (error.response.status == 401) {
-            console.log('error from api', error.response);
-          }
-          // client received an error response (5xx, 4xx)
-          Toast.show(error.response.data.title);
-        } else if (error.request) {
-          // client never received a response, or request never left
-          Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
-        } else {
-          // anything else
-          Toast.show('Session expired login again');
-        }
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
       });
   };
 
@@ -137,7 +111,7 @@ const Hospital = ({ locationName }) => {
         <View style={styles.itemBox}>
           <Modal
             backdropOpacity={0.7}
-            animationType="slide"
+            // animationType="slide"
             animationOut="fadeOut"
             transparent={true}
             visible={modalVisible}>
@@ -198,6 +172,16 @@ const Hospital = ({ locationName }) => {
                   size={25}             
                 />
               </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {                                                
+                  GetHospListApi()
+                }}
+                style={{paddingVertical:10 }}>
+                <Text Bold style={{ fontSize: 16, paddingHorizontal: 10, color:GlobalColor.Primary }}>Clear Filter</Text>
+              </TouchableOpacity>
+
+
 
               <View style={{ paddingHorizontal:10, marginTop:20, flex:1 }}>
                 <FlatList
