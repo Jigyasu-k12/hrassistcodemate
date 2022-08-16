@@ -75,9 +75,6 @@ const TaxComputationSlip = () => {
                 <Text Bold>Amount (Rs.)</Text>
             </View>
         )}
-
-
-
     return (
         <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
             <Header title="Tax Computation Slip" back/>
@@ -117,7 +114,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'space-between',
         marginVertical: 8,       
-        
+
     },
     MainCard:{
         flex:1,        

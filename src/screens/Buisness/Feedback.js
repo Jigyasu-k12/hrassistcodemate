@@ -42,14 +42,16 @@ const Feedback = ({ navigation, route }) => {
         }
         setLoader(true);
         ApiService.PostMethode('/ShuttleSeatFeedback', apiData, token, authContext)
+        
             .then(result => {
                 setLoader(false);
                 let responseData = result.Result;
                 if(result.Result){
+                    Alert.alert("Alert", "Feedback submitted successfully Thank you !");
                     Toast.show(responseData);
                     navigation.goBack();
                 }
-                console.log('ApiResult', responseData);
+                // console.log('ApiResult hjsgdfjhgsjdhfgsjhg', responseData);
                 // setBookData(responseData)
                 // alert(responseData)                
             })

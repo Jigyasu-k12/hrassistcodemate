@@ -358,9 +358,10 @@ const FlexiShift = () => {
            <Modal isVisible={isModalVisible}>
              <View
                  style={{
-                   height: '100%',
+                   height: '90%',
                    backgroundColor: GlobalColor.White,
                    borderRadius: 0,
+                   
                  }}
                >
                  <View

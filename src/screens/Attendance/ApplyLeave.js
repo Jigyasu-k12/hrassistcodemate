@@ -659,7 +659,7 @@ const ApplyLeave = ({navigation}) => {
                                     style={{
                                         flexDirection: 'row',
                                         alignItems: 'baseline',
-                                        padding: 10,
+                                        paddingVertical: 10,
                                         justifyContent: 'space-between',
                                     }}>
                                     <Text style={{}}>{validReason}</Text>

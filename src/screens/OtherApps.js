@@ -187,7 +187,7 @@ const OtherApps = ({ navigation }) => {
       <Header title ="Other Mobile Apps"/>
           <View style={{ flex: 1, paddingHorizontal:10, }}>
             <FlatList
-              contentContainerStyle={{ flex:1, alignSelf:'center' }}
+              contentContainerStyle={{ flex:1 }}
               data={appLink}
               numColumns={2}
               ListEmptyComponent={<ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={()=>GetAPPLinkApi(true)} refreshing={refresh} />}

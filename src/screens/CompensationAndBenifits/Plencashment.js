@@ -182,19 +182,16 @@ const Plencashment = ({ navigation, route }) => {
     ApiService.PostMethode('/ReportLTC', apiData, token, authContext)
       .then(result => {
         // console.log("ReportLTC", result);
-
         // Stop Loader
         stopLoader()
         let ApiValue = result.Value
         setLtaReport(ApiValue)
       })
       .catch(error => {
-
-        // Stop Loader
+         // Stop Loader
         stopLoader()
 
         // console.log('Error occurred==>', error);
-
 
         //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
@@ -225,8 +222,6 @@ const Plencashment = ({ navigation, route }) => {
         ApiService.showErrorMessage(error, authContext);
       });
   };
-
-
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Payroll",
@@ -242,8 +237,6 @@ const Plencashment = ({ navigation, route }) => {
          } }
       ]
     );
-
-
   const AlertOccurred = (title, body, btnTxt) => {
     Alert.alert(title, body, [
       {
@@ -254,9 +247,6 @@ const Plencashment = ({ navigation, route }) => {
       },
     ]);
   };
-
-
-
 
   const SubmitMEDEncashmentApi = () => {
     let token = AppUserData.token
@@ -285,8 +275,6 @@ const Plencashment = ({ navigation, route }) => {
         ApiService.showErrorMessage(error, authContext);
       });
   };
-
-
   const encashmentData = () => {
     if (encashDays == '') {
       AlertOccurred('Payroll', "Please enter days", 'ok')
@@ -300,9 +288,6 @@ const Plencashment = ({ navigation, route }) => {
       setEncashDays('')
     }
   }
-
-
-
 
   useEffect(() => {
     if(route.params.pageName =='PL Encashment'){
@@ -424,10 +409,6 @@ const Plencashment = ({ navigation, route }) => {
                 <ListEmptyComponent title="No Data Found"></ListEmptyComponent>
               )
             }
-
-
-
-
               </View>
             </View>
           ) : 
@@ -440,7 +421,6 @@ const Plencashment = ({ navigation, route }) => {
                     console.log("MENT_FNYR_YEAR",item)
                     return (
                       <>
-
                         <View style={[styles.reportHeader, { marginTop: 15 }]}>
                           <Text>Financial Year</Text>
                           <Text Bold>{item.MENT_FNYR_YEAR}</Text>
