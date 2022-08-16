@@ -162,6 +162,7 @@ const Hospital = ({ locationName }) => {
             visible={filterModal}
             transparent={true}
             >
+              <SafeAreaView style={{flex:1}}>
             <View style={[styles.modalBox,{ position:'relative',flex:1}]}>
               <TouchableOpacity style={{ position:'absolute',top:10, right:10, zIndex:555555 }}                   onPress={() =>
                     setFilterModal(false)}     
@@ -207,6 +208,7 @@ const Hospital = ({ locationName }) => {
                   }} />
               </View>
             </View>
+            </SafeAreaView>
           </Modal>
 
           <View style={{ width: '100%', justifyContent: 'flex-end', flexDirection:'row', padding:5 }}>

@@ -246,6 +246,7 @@ const SalarySlip = ({ navigation }) => {
                     backdropOpacity={0.1}
                     coverScreen={true}
                     isVisible={isModalVisible}>
+                        <SafeAreaView style={{flex:1}}>                        
                     <View style={styles.modal}>
                         <TouchableOpacity style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
                             <Feather
@@ -283,6 +284,7 @@ const SalarySlip = ({ navigation }) => {
                             )}
                         />
                     </View>
+                    </SafeAreaView>
                 </Modal>
                 <TouchableOpacity
                     style={styles.Salary}>
