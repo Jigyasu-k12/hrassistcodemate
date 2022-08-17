@@ -14,8 +14,7 @@ const Canteen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
       <Header title="Canteen" />
-
-
+      
       <View style={{width:"100%",paddingHorizontal:10}}>
         <TouchableOpacity
           style={styles.canteen}
