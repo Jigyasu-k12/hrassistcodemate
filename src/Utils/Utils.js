@@ -16,7 +16,7 @@ import AuthContext from '../context/AuthContext';
 
 export const PostMethode =  async (url, data, token, context=null) => {
     let PostUrl = API_SERVICES_URL + url;
-    // console.log("Api url", PostUrl, data);
+    console.log("Api url", PostUrl, data);
 
     try {
         let response = await axios({

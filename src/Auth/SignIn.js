@@ -19,8 +19,6 @@ import AuthContext from '../context/AuthContext';
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Spinner from 'react-native-loading-spinner-overlay';
-
-// Component Import
 import Text from '../components/reusable/Text';
 import { GlobalColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
@@ -192,8 +190,8 @@ const SignIn = ({ navigation }) => {
 
               <Formik
                 validationSchema={loginValidationSchema}
-                // initialValues={{ UserName: '', Password: '' }}
-                initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
+                initialValues={{ UserName: '', Password: '' }}
+                // initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
                 // initialValues={{ UserName: '548596', Password: 'Maruti@04@22' }}
                 onSubmit={values => {
                   handleLogin(values);

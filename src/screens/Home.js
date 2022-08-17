@@ -89,7 +89,7 @@ const Home = ({ navigation }) => {
                 )}
               </TouchableOpacity>
 
-              <View style={{ marginHorizontal: 10 }}>
+              <TouchableOpacity onPress={() => { navigation.navigate("EditProfile") }} style={{ marginHorizontal: 10 }}>
                 <Text
                   style={{
                     fontSize: GlobalFontSize.P,
@@ -99,7 +99,7 @@ const Home = ({ navigation }) => {
                   Bold>
                   {AppUserData.data && AppUserData?.data?.EMPL_NAME ? AppUserData?.data?.EMPL_NAME : "User"}
                 </Text>
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
