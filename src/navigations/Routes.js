@@ -12,6 +12,7 @@ import AuthNavigator from './AuthNavigator';
 import AuthContext from '../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SignIn from '../Auth/SignIn';
+import { navigationRef } from './RootNavigation';
 
 const Routes = () => {
   const [AppUserData, setAppUserData] = React.useState({});
@@ -164,7 +165,7 @@ const Routes = () => {
   } else {
     return (
       <AuthContext.Provider value={{...options, authContext}}>
-        <NavigationContainer>
+        <NavigationContainer  ref={navigationRef}>
           {loginState.userToken == null ? <AuthNavigator /> : <MyDrawer />}
         </NavigationContainer>
       </AuthContext.Provider>
