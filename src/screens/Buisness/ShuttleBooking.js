@@ -14,29 +14,95 @@ import Book from './Book';
 import { GlobalColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import { Header } from '../../components/reusable/Header';
+import Text from '../../components/reusable/Text';
 
 const ShuttleBooking = ({ navigation }) => {
   const Tab = createMaterialTopTabNavigator();
   const [horizental, setHorizental] = useState(false);
+  const [route, setroute] = useState("book");
+
+  const tabBarListeners = ({ navigation, route }) => ({
+    tabPress: () => {
+      setHorizental(false);
+      setroute(route.name);
+      console.log(navigation, route);
+    },
+  });
 
 
-  
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Header title={"Shuttle Booking"}  />
-      <View style={styles.container}>      
-      <Tab.Navigator 
-       screenOptions={{
-        tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
-        tabBarActiveTintColor: GlobalColor.White,
-        tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
-        tabBarStyle: { backgroundColor: GlobalColor.PrimaryGradient, elevation: 0 },
-      }}>
-        <Tab.Screen name="Book" component={Book} />
-        <Tab.Screen name="Past Bookings" component={PastBook} />
-        <Tab.Screen name="Future Bookings" component={FutureBook} />
-      </Tab.Navigator>
-    </View>
+      <Header title={"Shuttle Booking"} />
+
+      {
+        route != "Guidelines" ? (
+          <TouchableOpacity
+            style={styles.addtnlBtn}
+            onPress={() => {
+              horizental == true ? setHorizental(false) : setHorizental(true);
+            }}>
+            <Ionicons
+              name="ellipsis-vertical-circle"
+              size={30}
+              color={'#fff'}
+            />
+          </TouchableOpacity>
+        ) : null
+      }
+
+      {horizental == true && route != "Guidelines" ? (
+        <View
+          style={{            
+            
+            paddingVertical: 5,
+            paddingHorizontal:10,
+            backgroundColor: GlobalColor.White,
+            position: 'absolute',
+            //  bottom:30,
+            right: 45,
+            top: 30,   
+            zIndex:100       
+            
+          }}>
+            
+          
+            
+              <View style={{ }}>
+                <TouchableOpacity
+                  style={{ borderBottomWidth: 0, paddingBottom: 5, }} onPress={() => {
+                   
+                    navigation.navigate('Guidelines')
+                  }}>
+                  <Text Bold >Guidelines</Text>
+                </TouchableOpacity>                
+              </View>
+            
+        
+        </View>
+      ) : null}
+
+
+
+
+
+
+
+
+
+
+      <View style={styles.container}>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
+            tabBarActiveTintColor: GlobalColor.White,
+            tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
+            tabBarStyle: { backgroundColor: GlobalColor.PrimaryGradient, elevation: 0 },
+          }}>
+          <Tab.Screen name="Book" component={Book} />
+          <Tab.Screen name="Past Bookings" component={PastBook} />
+          <Tab.Screen name="Future Bookings" component={FutureBook} />
+        </Tab.Navigator>
+      </View>
     </SafeAreaView>
   );
 };
@@ -46,6 +112,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: GlobalColor.White,
+  },
+  addtnlBtn: {
+    position: 'absolute',
+    right: 10,
+    top: 15,
+    zIndex: 55555555
+  },
+  fullWidthButton: {
+    backgroundColor: GlobalColor.Primary,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  fullWidthButtonText: {
+    color: GlobalColor.White,
+    marginLeft: 8
   },
 });
 

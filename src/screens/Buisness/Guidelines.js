@@ -4,11 +4,12 @@ import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Header } from '../../components/reusable/Header';
 // create a component
 const Guidelines = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <LinearGradient
+            {/* <LinearGradient
                 style={{ padding: 20 }}
                 colors={['#437cd5', '#5dc0e9']}>
                 <View style={{ flexDirection: 'row' }}>
@@ -43,7 +44,9 @@ const Guidelines = ({ navigation }) => {
                         Guidelines
                     </Text>
                 </View>
-            </LinearGradient>
+            </LinearGradient> */}
+
+            <Header title={"Guidelines"} />
 
             {/* BODY */}
             <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
