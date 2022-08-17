@@ -12,52 +12,57 @@ import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 
 
 const PFBalance = () => {
-    const [loader, setLoader] = useState(false);
+    const [loader, setLoader] = useState(false)
     const [taxData, setTaxData] = useState([]);
     const [taxSaving, setTaxSaving] = useState();
-    const [month, setMonth] = useState('');
+    const [month, setMonth] = useState();
     const [employeePf, setEmployeePf] = useState();
     const [employerPf, setEmployerPf] = useState();
     const [netBalance, setNetBalance] = useState();
     const { authContext, AppUserData } = useContext(AuthContext);
-    const [refresh, setrefresh] = useState(false);    
-    const [YearFrom, setYearFrom] = useState("");
-    const [YearTo, setYearTo] = useState("");
+    const [refresh, setrefresh] = useState(false);
+
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [taxModalVisible, setTaxModalVisible] = useState(false);
+    const [pfModalVisible, setPfModalVisible] = useState(false);
+    const [savingModalVisible, setSevingModalVisible] = useState(false);
 
     const stopLoader = () => {
         setLoader(false);
         setrefresh(false);
     }
 
-
-
    // // Pf Balance Api 
   const PfBalance = async () => {
     //set Loader
     setLoader(true);
+
     try {
+
       //get Api Data
       let result = await ApiService.PostMethode('/GetPFStatement', {
         "EmplID": AppUserData?.data?.userId,
-        // "FNYR": "2022-2023"
+        "FNYR": month
       }, AppUserData.token)
+
       //stop Loader
       stopLoader();
-      console.log(result.Value);
       if(result.Value){
         //Set Data
-        let CB1_CB2 = result.Value.Table2[0].PFST_CB1_CB2
+        let CB1_CB2 = result.Value.Table1[0].CB1_CB2
         let PFST_MUL_CB3 = result.Value.Table2[0].PFST_MUL_CB3
         let NetBalance = CB1_CB2 + PFST_MUL_CB3
         setEmployeePf(CB1_CB2)
         setEmployerPf(PFST_MUL_CB3)
         setNetBalance(NetBalance)
       }
+
     } catch (error) {
       //stop Loader
       stopLoader()
       //Show Error Massage
       ApiService.showErrorMessage(error, authContext);
+      
     }
   };
 
