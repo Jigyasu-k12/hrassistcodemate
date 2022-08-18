@@ -23,6 +23,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Spinner from 'react-native-loading-spinner-overlay';
 import Onboarding from 'react-native-onboarding-swiper'; // 1.1.4
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { GlobalColor } from '../constants/Colors';
 
 
 const OnboardingScreen = ({ navigation }) => {
@@ -84,7 +85,7 @@ const OnboardingScreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const backgroundColor = isLight => (isLight ? '#6ef7ff' : 'lightblue');
+  const backgroundColor = isLight => (isLight ? GlobalColor.Secondary : GlobalColor.Secondary);
   const color = isLight => backgroundColor(!isLight);
 
 

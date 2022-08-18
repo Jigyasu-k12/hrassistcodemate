@@ -261,7 +261,7 @@ function CustomDrawer(props) {
               style={{borderBottomWidth: 1, borderBottomColor: GlobalColor.PrimaryLight}}
             />
             <DrawerItem
-              label="LogOut"
+              label="Logout"
               onPress={() => {
                 LogOutAlertOccurred('Warning', 'Are You Sure?', 'yes', 'No');
               }}
