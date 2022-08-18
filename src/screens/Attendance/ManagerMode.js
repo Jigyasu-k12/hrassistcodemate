@@ -43,12 +43,14 @@ const ManagerMode = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
       <Header title="Manager Mode" />
       <Tab.Navigator
+        swipeEnabled={false}
         screenOptions={{
+          tabBarScrollEnabled: true,
+          tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
           tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: GlobalColor.White,
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
           tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },
-          tabBarItemStyle: { paddingHorizontal: 0 },
         }}>
         <Tab.Screen name="Leave" component={ManagerLeave} />
         <Tab.Screen name="FlexiShift" component={ManagerFlexiShift} />

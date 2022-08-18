@@ -19,6 +19,7 @@ function BusinessNavigator() {
         <Stack.Screen name="SeatBook" component={SeatBook} />
         <Stack.Screen name="Guidelines" component={Guidelines} />
         <Stack.Screen name='Feedback' component={Feedback} options={{unmountOnBlur:true}}/> 
+        
       </Stack.Navigator>
   );
 }

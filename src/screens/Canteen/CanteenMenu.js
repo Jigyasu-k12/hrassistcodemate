@@ -35,7 +35,10 @@ const CanteenMenu = ({ navigation }) => {
     <View style={{ flex: 1, width: '100%', height: '100%' }}>
       <Header title="Canteen Menu" />
       <Tab.Navigator
+        swipeEnabled={false}
         screenOptions={{
+          tabBarScrollEnabled: true,
+          tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
           tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: GlobalColor.White,
           tabBarIndicatorStyle: { borderBottomWidth: 5,

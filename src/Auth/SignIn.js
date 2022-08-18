@@ -151,15 +151,15 @@ const SignIn = ({ navigation }) => {
                       // flexDirection: 'row',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      marginTop:15
+                      // marginTop:15
                     }}>
                     <Image
-                      source={require('../assets/Images/logoo.png')}
-                      style={{ width: 80, height: 80, resizeMode: 'contain' }}
+                      source={require('../assets/Images/maruti_logo.png')}
+                      style={{ width: "90%",height:140, resizeMode:'contain' }}
                     />
                   </View>
 
-                  <View
+                  {/* <View
                     style={{
                       // flexDirection: 'row',
                       alignSelf: 'center',
@@ -184,7 +184,7 @@ const SignIn = ({ navigation }) => {
                       marginBottom: 40
                     }}>
                     to <Text style={{ fontSize: 35, color: GlobalColor.Primary }} Bold>HR Assist</Text>
-                  </Text>
+                  </Text> */}
                 </View>
               </View>
 
@@ -192,7 +192,7 @@ const SignIn = ({ navigation }) => {
                 validationSchema={loginValidationSchema}
                 initialValues={{ UserName: '', Password: '' }}
                 // initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
-                // initialValues={{ UserName: '548596', Password: 'Maruti@04@22' }}
+                // initialValues={{ UserName: '548596', Password: 'Maruti@08@22' }}
                 onSubmit={values => {
                   handleLogin(values);
                 }}>
@@ -312,8 +312,9 @@ const SignIn = ({ navigation }) => {
                     </View>
                   </View>
                 )}
-              </Formik>
+              </Formik>                                          
             </View>
+            <Text style={styles.copyRight}>Copyright {'\u00A9'} 2018 Maruti Suzuki India Ltd.</Text>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
@@ -330,7 +331,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 10,
     marginBottom: -50,
-    backgroundColor:GlobalColor.PrimaryLight
+    backgroundColor:GlobalColor.Secondary
   },
   spinnerTextStyle: {
     color: GlobalColor.White
@@ -349,6 +350,12 @@ const styles = StyleSheet.create({
   error:{
     color:GlobalColor.Danger,
     fontSize:GlobalFontSize.Error
+  },
+  copyRight:{
+    backgroundColor:GlobalColor.White, 
+    textAlign:'center', 
+    paddingBottom:5, 
+    fontSize:GlobalFontSize.Small-3
   }
 });
 

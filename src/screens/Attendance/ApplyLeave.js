@@ -5,10 +5,9 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  SafeAreaView,
-  Alert, 
+  SafeAreaView, 
+  Alert 
 } from 'react-native';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -109,7 +108,19 @@ const ApplyLeave = ({navigation}) => {
               setValidReason("Select Reason");     
             }   
           }
-          Alert.alert(result.Result);
+        //   Toast.show(result.Result);
+
+        Alert.alert(
+            "Leave",
+            result.Result,
+            [
+              {
+                text: "OK",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+            ]
+          );
         })
         .catch(error => {
           setLoader(false);

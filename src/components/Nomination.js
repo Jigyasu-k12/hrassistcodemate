@@ -19,6 +19,24 @@ const Nomination = ({ navigation, route }) => {
         const NominationData = route.params.data
         const responseArr = [];
         let ArrayKeys = [];
+
+
+        let group_to_values = NominationData.reduce(function (obj, item) {
+            obj[item.NOMM_DESC] = obj[item.NOMM_DESC] || [];
+            obj[item.NOMM_DESC].push(item.ENOM_NAME + "#" + item.ENOM_PERCENT);
+            return obj;
+        }, {});
+
+
+        let groups = Object.keys(group_to_values).map(function (key) {
+            return { group: key, nomine: group_to_values[key] };
+        });
+
+
+        console.log(groups);
+
+
+
         /*
         NominationData.forEach(element => {
             if(!ArrayKeys.includes(element.NOMM_DESC)){
@@ -40,7 +58,7 @@ const Nomination = ({ navigation, route }) => {
         setNominationArrya(responseArr);
         */
 
-        NominationData.map((item) => {
+        groups.map((item) => {
             return (
                 responseArr.push({
                     ...item,
@@ -48,7 +66,7 @@ const Nomination = ({ navigation, route }) => {
                 })
             )
         })
-        setNominiData(NominationData)
+        setNominiData(groups)
     }, [])
 
 
@@ -79,15 +97,22 @@ const Nomination = ({ navigation, route }) => {
                                 <TouchableOpacity onPress={() => {
                                     handleDropDown(index)
                                 }} style={[styles.tabStyle, { borderBottomLeftRadius: item.isClicked ? 0 : 3, borderBottomRightRadius: item.isClicked ? 0 : 3 }]}>
-                                    <Text Bold style={{  }}>{item.NOMM_DESC}</Text>
+                                    <Text Bold style={{  }}>{item.group}</Text>
                                     {item.isClicked == true ? (<Ionicons name={'ios-chevron-up'} size={20} />) : (<Ionicons name={'ios-chevron-down'} size={20} />)}
                                 </TouchableOpacity>
+
                                 {item.isClicked == true ? (
                                     <View>
-                                        <View style={[styles.tabStyle, { marginTop: 0, elevation: 0, borderTopEndRadius: 0, borderTopStartRadius: 0 }]}>
-                                            <Text>{item.ENOM_PERCENT}</Text>
-                                            <Text>{item.ENOM_NAME}</Text>
-                                        </View>
+                                        {
+                                            item.nomine.length > 0 && item.nomine.map((dataItem)=>{
+                                                return(
+                                                    <View style={[styles.tabStyle, { marginTop: 0, elevation: 0, borderTopEndRadius: 0, borderTopStartRadius: 0 }]}>
+                                                        <Text>{dataItem.split("#")[0]}</Text>
+                                                        <Text>{dataItem.split("#")[1]}%</Text>
+                                                    </View>
+                                                )
+                                            })   
+                                        }
                                     </View>
                                 ) : null}
                             </>

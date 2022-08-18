@@ -1,17 +1,14 @@
 import { View, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import React, { useState } from 'react'
-import { ScrollView } from 'react-native-gesture-handler';
+import React, { useState } from 'react';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
 import Text from '../../../components/reusable/Text';
 import { GlobalColor } from '../../../constants/Colors';
 import Collapsible from 'react-native-collapsible';
 // import Accordion from 'react-native-collapsible/Accordion';
-
 const Accordion = ({ data, name, handleDropDown, isOpen }) => {
     const [refresh, setrefresh] = useState(false);
     const [loader, setLoader] = useState(false);
-
 
     const stopLoader = () => {
         try {
@@ -20,8 +17,7 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
         } catch(error){
             console.log(error)
         }
-    }
-    
+    }    
 
     return (
         <View style={{paddingHorizontal:0, flex:1}}>
@@ -47,7 +43,7 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
                                     
                                     return (
                                         <View>
-                                            <Text >SHIFT {item.CANT_SHFT}</Text>
+                                            <Text >{item.CANT_SHFT} SHIFT </Text>
                                             <Text style={{marginTop: 10 }}>{item.CANT_ITEM1}</Text>
                                             <Text >{item.CANT_ITEM2}</Text>
                                             <Text >{item.CANT_ITEM3}</Text>
@@ -62,8 +58,6 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
                         />
                     </View>
             </Collapsible>
-
-
 
             {/* {
                 isOpen == true ?
