@@ -279,10 +279,10 @@ function CustomDrawer(props) {
           </View>
         </View>
       <View style={styles.footer}>
-        <Text style={{color: GlobalColor.Text}}>V2.2.2</Text>
+        <Text style={{fontSize: GlobalFontSize.Small-3}}>v1.1.1</Text>
         <View style={{flexDirection: 'row', padding: 5}}>
-          <Text style={{fontSize: 12, color: GlobalColor.Text, marginBottom: 15}}>
-            Copyright 2022 HR Assist
+          <Text style={{fontSize: GlobalFontSize.Small-3, color: GlobalColor.Text, marginBottom: 15}}>
+            Copyright {'\u00A9'} 2018 Maruti Suzuki India Ltd.
           </Text>
         </View>
       </View>

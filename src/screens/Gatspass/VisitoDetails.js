@@ -29,6 +29,7 @@ import Button from '../../components/reusable/Button';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { CommonActions } from '@react-navigation/native';
+import { GlobalFontSize } from '../../constants/FontSize';
 
 
 
@@ -60,7 +61,7 @@ const VisitorDetails = ({navigation,route}) => {
          "VisitDateTo" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
          "VglmID" : "",
          "MultipleEmployeeIndicator" : route.params.visitorpayload.empId, 
-            }
+      }
     setLoader(true);
     ApiService.PostMethode('/SubmitVGPE', apiData, token, authContext)
       .then(result => {
@@ -118,7 +119,7 @@ const VisitorDetails = ({navigation,route}) => {
       "AddressLine1" : item.adddress,
       "AddressLine2" : "",
       "VisitorDesg" : item.designation,
-      "VisitorPhone" : item.phone,
+      "VisitorPhone" : "+91"+item.phone,
       "VisitorLaptopID" : item.laptop,
       "VisitorTitle" : item.title,
       "VisitorUserID" : userId,
@@ -172,7 +173,7 @@ const VisitorDetails = ({navigation,route}) => {
 
   const [ActionPlans, setActionPlans] = useState([
     {
-      phone: '+91',
+      phone: '',
       vendor: '',
       title:'',
       name:'',
@@ -189,7 +190,7 @@ const VisitorDetails = ({navigation,route}) => {
     actionPlans: Yup.array().of(
       Yup.object().shape({
           // these constraints take precedence
-          phone: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
+          phone: Yup.string().min(1, 'too short').max(10, "max 10 char").required('Required'), // these constraints take precedence
           vendor: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
           title: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
           name: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
@@ -218,8 +219,7 @@ const VisitorDetails = ({navigation,route}) => {
                     />:null
             }
 
-            <Formik
-             
+            <Formik             
               innerRef={fromRef}
               validateOnBlur={false}
               enableReinitialize
@@ -271,16 +271,28 @@ const VisitorDetails = ({navigation,route}) => {
                                           <Text
                                             Bold
                                             style={styles.label}>
-                                           Phone
+                                            Phone
                                           </Text>
-                                          <TextInput
-                                          value={values.actionPlans[index].phone}
 
-                                            maxLength={13}
+                                        <View style={[styles.inputBox]}>
+                                          {/* <Text style={{ fontSize:GlobalFontSize.Small }}>+91</Text> */}
+
+                                          <View>
+                                          <TextInput
+                                            value={"+91"}                                            
+                                            style={{                                             
+                                              paddingHorizontal:0, 
+                                            }}
+                                            editable={false} selectTextOnFocus={false}
+                                          />
+                                          </View>
+                                          <TextInput
+                                           value={values.actionPlans[index].phone}
+                                            maxLength={10}
                                             key={index.ColourQuentity}
-                                            // keyboardType=''
+                                            keyboardType='numeric'
                                             // maxLength={5}
-                                            style={styles.input}
+                                            style={styles.inputNoborder}
                                             // placeholder="+91"
                                             onChangeText={handleChange(
                                               `actionPlans[${index}].phone`,
@@ -290,9 +302,11 @@ const VisitorDetails = ({navigation,route}) => {
                                                 `actionPlans[${index}].phone`,
                                               );
                                               GetVisitorPhoneBygps(values.actionPlans[index].phone, index);
-
                                             }}
                                           />
+
+
+                                        </View>
                                           {errors.actionPlans &&
                                             errors.actionPlans.length >= index ? (
                                               <Text style={styles.errorLabel}>
@@ -673,6 +687,26 @@ const VisitorDetails = ({navigation,route}) => {
       borderColor:GlobalColor.Secondary,
       padding: 5,
       borderRadius: 0,
+    },
+    inputNoborder: {
+      // flex: 1,
+      // borderWidth: 1,
+      // borderColor:GlobalColor.Secondary,
+      paddingLeft: 0,
+      // borderRadius: 0,
+      // borderWidth:1,
+      // height:30,
+    },
+    inputBox:{
+      flex: 1,
+      flexDirection:'row',
+      alignItems:'center',
+      justifyContent:'center',
+      borderWidth: 1,
+      borderColor:GlobalColor.Secondary,
+      paddingLeft: 5,
+      borderRadius: 0,
+      height:40
     },
     singlerow:{
       flexDirection:'row',

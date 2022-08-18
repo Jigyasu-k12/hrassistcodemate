@@ -227,8 +227,11 @@ const FoodCount = ({ navigation }) => {
        <Header title="Food Court"/>        
 
       <Tab.Navigator
+        swipeEnabled={false}
         screenOptions={{
           tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
+          tabBarScrollEnabled: true,
+          tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
           tabBarStyle: { backgroundColor:GlobalColor.Secondary, elevation: 0 },

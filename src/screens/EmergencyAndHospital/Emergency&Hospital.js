@@ -27,12 +27,14 @@ const EmergencyHospital = ({ navigation, route }) => {
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
       <Header title="Emergency & Hospital"/>
       <Tab.Navigator
+        swipeEnabled={false}
         screenOptions={{
+          tabBarScrollEnabled: true,
+          tabBarItemStyle: { paddingHorizontal:10, width:'auto' },
           tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
           tabBarStyle: { backgroundColor: '#0083B0', elevation: 0 },
-          tabBarItemStyle:{ paddingHorizontal:0}
         }}>
         <Tab.Screen name="Emergency Contacts" component={EmergencyContacts} />
         <Tab.Screen name="Hospital" component={Hospital} />

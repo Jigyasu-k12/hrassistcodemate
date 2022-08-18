@@ -10,6 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import FutureBook from './FutureBook';
 import PastBook from './PastBook';
+import Guidelines from './Guidelines';
 import Book from './Book';
 import { GlobalColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
@@ -34,7 +35,7 @@ const ShuttleBooking = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <Header title={"Shuttle Booking"} />
 
-      {
+      {/* {
         route != "Guidelines" ? (
           <TouchableOpacity
             style={styles.addtnlBtn}
@@ -64,9 +65,7 @@ const ShuttleBooking = ({ navigation }) => {
             zIndex:100       
             
           }}>
-            
-          
-            
+                                
               <View style={{ }}>
                 <TouchableOpacity
                   style={{ borderBottomWidth: 0, paddingBottom: 5, }} onPress={() => {
@@ -79,20 +78,13 @@ const ShuttleBooking = ({ navigation }) => {
             
         
         </View>
-      ) : null}
-
-
-
-
-
-
-
-
-
-
+      ) : null} */}
       <View style={styles.container}>
         <Tab.Navigator
+          swipeEnabled={false}
           screenOptions={{
+            tabBarScrollEnabled: true,
+            tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
             tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
             tabBarActiveTintColor: GlobalColor.White,
             tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
@@ -101,6 +93,7 @@ const ShuttleBooking = ({ navigation }) => {
           <Tab.Screen name="Book" component={Book} />
           <Tab.Screen name="Past Bookings" component={PastBook} />
           <Tab.Screen name="Future Bookings" component={FutureBook} />
+          <Tab.Screen name="Guidelines" component={Guidelines} />
         </Tab.Navigator>
       </View>
     </SafeAreaView>

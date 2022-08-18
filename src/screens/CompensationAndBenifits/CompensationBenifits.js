@@ -131,7 +131,7 @@ const CompensationBenifits = ({ navigation }) => {
                         tabBarItemStyle: { paddingHorizontal: 0 }
                       }}>
                       <Tab.Screen name="Payroll" component={Payroll} />
-                      <Tab.Screen name="Benifits" component={Benifits} />
+                      <Tab.Screen name="Benefits" component={Benifits} />
                     </Tab.Navigator>
             </View>
              ) : ( 
