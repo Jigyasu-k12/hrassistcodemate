@@ -51,6 +51,11 @@ const Home = ({ navigation }) => {
                 />
                 <Text style={[styles.brand, { marginLeft: 15 }]} Bold>HR Assist</Text>
               </View>
+              <Image
+                style={styles.tinyLogo}
+                source={require('./../assets/Images/mslogo.png')}
+              />
+
               <View
                 style={{
                   flexDirection: 'row',
@@ -174,6 +179,12 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'contain',
   },
+  tinyLogo:{
+    width:60, 
+    height:30, 
+    resizeMode:'contain',
+    marginTop:5 
+  }
 });
 
 //make this component available to the app

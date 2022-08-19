@@ -14,7 +14,7 @@ import Text from './reusable/Text';
 
 const myCustomeSharing =async () =>{
   const shareOption = {
-    message:"install this app https://msilappstore.in/hrassist/",
+    message:"You may download latest version of HR Assist mobile app from following link:https://msilappstore.in/HrAssist/",
   }
   try {const shareResponse = await Share.open(shareOption)}
     catch(error){
