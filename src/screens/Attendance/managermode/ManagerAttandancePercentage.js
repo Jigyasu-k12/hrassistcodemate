@@ -115,8 +115,8 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
             return (
               <TouchableOpacity
                 style={styles.canteen}>
-                <Text>{item.MATT_FNYR_YEAR}</Text>
-                <Text>{item.MATT_PERCENT}</Text>
+                <Text>Financial year {item.MATT_FNYR_YEAR}</Text>
+                <Text>{item.MATT_PERCENT}%</Text>
               </TouchableOpacity>
             )
           }}
@@ -135,7 +135,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   canteen: {
-    top: 10,
     marginVertical: 10,
     width: '100%',
     backgroundColor: '#fff',
@@ -153,7 +152,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
-    borderRadius: 0
+    borderRadius: 0,
+    borderLeftWidth: 5,
+    borderLeftColor: GlobalColor.Secondary,   
+    marginBottom:2,
   },
 });
 

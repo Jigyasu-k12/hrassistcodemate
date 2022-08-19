@@ -144,7 +144,6 @@ const Birthdays = () => {
       <LoadingScreen />
     )
   }
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ flex: 1 }}>
@@ -164,20 +163,21 @@ const Birthdays = () => {
           />
         </View>
 
-        <View style={{ flex: 1 ,paddingVertical:10}}>
-          {CurrentPage == 0 ? (
-            <View style={{ flexGrow: 1 }}>
-              
-              <Image
-              source={{
-                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Birthday_candles.jpg/1200px-Birthday_candles.jpg',
-              }}
-              style={styles.img}
-            />              
+        <View style={{ flex: 1 ,paddingVertical:10}}>  
+          {CurrentPage == 0 ? (        
+            <View style={{ flexGrow: 1 }}>                       
               <FlatList
                 contentContainerStyle={{ flexGrow: 1,}}
                 ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => PostBirthdayData()} refreshing={refresh}></ListEmptyComponent>}
                 data={todayBirthday}
+                ListHeaderComponent={
+                  <Image
+                  source={{
+                    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Birthday_candles.jpg/1200px-Birthday_candles.jpg',
+                  }}
+                  style={styles.img}
+                />   
+                }
                 keyExtractor={({ item, index }) => index}
                 renderItem={({ item, index }) => {
                   return (
@@ -485,7 +485,7 @@ const styles = StyleSheet.create({
   },
   img:{
    width:"100%",
-   height:"20%",
+   height:150,
    marginTop:10,
    overflow:"hidden",
    borderRadius:0,
