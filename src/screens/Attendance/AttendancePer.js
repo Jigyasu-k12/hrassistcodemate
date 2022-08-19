@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   canteen: {
-    top: 10,
+    // top: 10,
     marginVertical: 10,
     width: '100%',
     backgroundColor: '#fff',
@@ -136,13 +136,9 @@ const styles = StyleSheet.create({
     shadowRadius: 4.65,
     elevation: 8,
     borderRadius: 0,    
-      borderLeftWidth: 5,
-      borderLeftColor: GlobalColor.Secondary,   
-      marginBottom:2,
-     
-
-    
-
+    borderLeftWidth: 5,
+    borderLeftColor: GlobalColor.Secondary,   
+    marginBottom:2,
   },
 });
 

@@ -24,7 +24,7 @@ import { Header } from '../../components/reusable/Header';
 
 const TaxComputationSlip = () => {
     const [loader, setLoader] = useState(false)
-    const [taxData, setTaxData] = useState([]);
+    const [TaxData, setTaxData] = useState([]);
     const { authContext, AppUserData } = useContext(AuthContext);
     const [refresh, setrefresh] = useState(false);
     const stopLoader = () => {
@@ -35,23 +35,31 @@ const TaxComputationSlip = () => {
     const GetTaxAppApi = async (isrefresh = false) => {
         if(!isrefresh){
             setLoader(true);
-        }        
-        try {
-            //Get Data
-            let result = await ApiService.PostMethode('/GetTaxApp', {
-                "UserName": AppUserData?.data?.userId
-            }, AppUserData.token)
-            // Stop Loader
-            stopLoader()
-            //Set Data
-            setTaxData(result.Value)
         }
-        catch (error) {
-            //Stop Loader
-            stopLoader()
+        
+        ApiService.PostMethode('/GetTaxApp', {"UserName": AppUserData?.data?.userId}, AppUserData.token, authContext)
+          .then(result => {
+            console.log('GetSalaryMonth', result);
+            // Stop Loader
+            stopLoader();
+
+            if(result.Value.length > 0){
+                let responseData = result.Value;
+                 let arrayData = responseData.map((item)=>{
+                    return {...item};
+                })
+                setTaxData(responseData)
+            }else{
+                setTaxData([])
+            }
+          })
+          .catch(error => {
+            // Stop Loader
+            stopLoader();
+            // console.log('Error occurred==>', error);
             //Show Error Massage
             ApiService.showErrorMessage(error, authContext);
-        }
+          });
     };
 
     useEffect(() => {
@@ -59,14 +67,14 @@ const TaxComputationSlip = () => {
     }, [])
 
 
-    if(loader){
-        return(
-            <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
-                <Header title="Tax Computation Slip" back/>
-                <LoadingScreen/>
-            </SafeAreaView>          
-        )
-      }
+    // if(loader){
+    //     return(
+    //         <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
+    //             <Header title="Tax Computation Slip" back/>
+    //             <LoadingScreen/>
+    //         </SafeAreaView>          
+    //     )
+    //   }
     
       const FlatList_Header_Approve = () => {
         return (
@@ -80,8 +88,8 @@ const TaxComputationSlip = () => {
             <Header title="Tax Computation Slip" back/>
             <View style={[styles.MainCard,{padding:10,backgroundColor: GlobalColor.White}]}>
                 <FlatList
-                    showsVerticalScrollIndicator={false}
-                    data={taxData}//taxData
+                    // showsVerticalScrollIndicator={false}
+                    data={TaxData}//taxData
                     ListEmptyComponent={() => {
                         return (
                             <ListEmptyComponent title="No Data Found"
@@ -93,7 +101,7 @@ const TaxComputationSlip = () => {
                     ListHeaderComponent={FlatList_Header_Approve}
                     keyExtractor={({ item, index }) => index}
                     renderItem={({ item, index }) => (
-                        <View style={styles.textContainer}>
+                        <View style={styles.textContainer} key={index}>
                             <Text>{item.SALARY_HEAD}</Text>
                             <Text>{item.AMOUNT}</Text>
                         </View>

@@ -194,9 +194,31 @@ export const ManagerLeave = () => {
             stopLoader();
               if(result.Result){
                 if(type == "A"){
-                    Toast.show(result.Result);
+                  Alert.alert(
+                    "Leave",
+                    result.Result,
+                    [
+                      {
+                        text: "OK",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                      },                      
+                    ]
+                  );
+                    // Toast.show(result.Result);
                 }else{
-                    Toast.show(result.Result);
+                  Alert.alert(
+                    "Leave",
+                    result.Result,
+                    [
+                      {
+                        text: "OK",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                      },                      
+                    ]
+                  );
+                    // Toast.show(result.Result);
                 }
                 GetPendingLeaveReq();
               }else{

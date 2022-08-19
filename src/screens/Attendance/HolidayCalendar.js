@@ -157,7 +157,7 @@ const HolidayCalendar = () => {
 
   const change249 = (viewdate)=> {
 
-    console.log(HolidayCalendar);
+    // console.log(HolidayCalendar);
 
     setMonthlyHolidays([]);
 
@@ -207,7 +207,7 @@ const HolidayCalendar = () => {
       }
     }
 
-    console.log(MonthlyHolidays);
+    // console.log(MonthlyHolidays);
 }
 
 useEffect(() => {
