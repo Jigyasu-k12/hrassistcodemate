@@ -148,45 +148,23 @@ const SignIn = ({ navigation }) => {
                 <View>
                   <View
                     style={{
-                      // flexDirection: 'row',
-                      justifyContent: 'center',
+                      // justifyContent: 'center',
                       alignItems: 'center',
-                      // marginTop:15
                     }}>
                     <Image
                       source={require('../assets/Images/maruti_logo.png')}
-                      style={{ width: "90%",height:140, resizeMode:'contain' }}
+                      style={{ width: "90%",height:100, resizeMode:'contain' }}
+                    />
+                    <Image
+                      source={require('../assets/Images/hrass.png')}
+                      style={{ width: "60%",height:100, resizeMode:'contain', marginBottom:60 }}
                     />
                   </View>
-
-                  {/* <View
-                    style={{
-                      // flexDirection: 'row',
-                      alignSelf: 'center',
-                      // paddingVertical: 8,
-                      justifyContent: 'space-between',
-                    }}>
-                    <Text
-                      style={{
-                        fontSize: GlobalFontSize.H1,
-                        color: GlobalColor.Primary,
-                      }}
-                      Bold
-                      >
-                      Welcome
-                    </Text>
-                  </View>
-                  <Text
-                    style={{
-                      fontSize: GlobalFontSize.H4,
-                      color: GlobalColor.Primary,
-                      alignSelf: 'center',
-                      marginBottom: 40
-                    }}>
-                    to <Text style={{ fontSize: 35, color: GlobalColor.Primary }} Bold>HR Assist</Text>
-                  </Text> */}
+                    {/* <Text style={{ fontSize: 35, color: GlobalColor.Primary, textAlign:'center', marginBottom:60 }} Bold>HR Assist</Text> */}
                 </View>
               </View>
+
+
 
               <Formik
                 validationSchema={loginValidationSchema}
@@ -206,6 +184,7 @@ const SignIn = ({ navigation }) => {
                   isValid,
                 }) => (
                   <View style={styles.login}>
+                    <Text style={{ fontSize: 30, color: GlobalColor.Primary, textAlign:'center', marginBottom:25, marginTop:25 }} Bold>Login</Text>
                     <View style={{ paddingTop: 0 }}>
                       <View style={{ paddingVertical: 10 }}>
                         <View
@@ -337,15 +316,15 @@ const styles = StyleSheet.create({
     color: GlobalColor.White
   },
   login: {
-    flex: 1,
+    flex:1,
     width: '100%',
     backgroundColor: '#fff',
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
-    alignSelf: 'center',
+    // alignSelf: 'center',
     borderWidth: 1,
     borderColor: GlobalColor.White,
-    justifyContent:'center'
+    // justifyContent:'center'
   },
   error:{
     color:GlobalColor.Danger,

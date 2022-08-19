@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   canteen: {
-    // top: 10,
     marginVertical: 10,
     width: '100%',
     backgroundColor: '#fff',

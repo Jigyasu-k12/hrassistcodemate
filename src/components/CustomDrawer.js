@@ -65,6 +65,7 @@ function CustomDrawer(props) {
               justifyContent: 'space-around',
               top: 30,
               padding: 10,
+              alignItems:'center'
             }}>
             {AppUserData.data && AppUserData.data.profile_photo ? (
               <Image
@@ -79,14 +80,14 @@ function CustomDrawer(props) {
             )}
             <View style={{ flex:1}}>
               <Text style={styles.textTitle} Bold>{AppUserData.data && AppUserData?.data?.EMPL_NAME ? AppUserData?.data?.EMPL_NAME : "User"}</Text>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => {
                   navigation.navigate('EditProfile');
                 }}>
                 <Text style={{color: '#fff', marginTop: 5, textDecorationLine: 'underline', fontSize:GlobalFontSize.Small}}>
                   Edit Profile
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
             <Text>
               <Icon
