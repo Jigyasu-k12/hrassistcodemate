@@ -48,13 +48,14 @@ const PFBalance = () => {
       //stop Loader
       stopLoader();
       if(result.Value){
+        // console.log(result.Value.Table1);
         //Set Data
         let CB1_CB2 = result.Value.Table1[0].CB1_CB2
         let PFST_MUL_CB3 = result.Value.Table2[0].PFST_MUL_CB3
-        let NetBalance = CB1_CB2 + PFST_MUL_CB3
+        let NetBalance = CB1_CB2 + PFST_MUL_CB3;
         setEmployeePf(CB1_CB2)
         setEmployerPf(PFST_MUL_CB3)
-        setNetBalance(NetBalance)
+        setNetBalance(parseFloat(NetBalance).toFixed(2))
       }
 
     } catch (error) {
