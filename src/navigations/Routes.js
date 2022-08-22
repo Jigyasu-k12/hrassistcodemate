@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TextInput,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MyDrawer from './Drawer';
@@ -13,6 +14,8 @@ import AuthContext from '../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SignIn from '../Auth/SignIn';
 import { navigationRef } from './RootNavigation';
+import * as ApiService from './../Utils/Utils';
+import DeviceInfo from 'react-native-device-info';
 
 const Routes = () => {
   const [AppUserData, setAppUserData] = React.useState({});
@@ -147,6 +150,37 @@ const Routes = () => {
     }
   };
 
+
+  const SendAnalytics = (PageName)=>{
+    // console.log(AppUserData?.data?.userId);
+    if(!AppUserData?.data?.userId){
+      return;
+    } 
+
+    let apiData = {    
+        "StaffNo" : AppUserData?.data?.userId,
+        "DeviceName" : DeviceInfo.getBrand(),
+        "DeviceID" : DeviceInfo.getDeviceId(),
+        "DeviceType" : Platform.OS,
+        "PageName" : PageName.name        
+    }
+
+
+    ApiService.PostMethode('/SubmitAnly', apiData, AppUserData.token, authContext)
+    .then(result => {
+     console.log(result);
+    })
+    .catch(error => {
+      // stopLoader(false);
+      console.log('Error occurred==>', error);
+      // ApiService.showErrorMessage(error, authContext);
+    });
+  }
+
+
+
+  
+
   if (loginState.isLoading == true) {
     // console.log('Login State loading', loginState.isLoading);
     return (
@@ -165,7 +199,9 @@ const Routes = () => {
   } else {
     return (
       <AuthContext.Provider value={{...options, authContext}}>
-        <NavigationContainer  ref={navigationRef}>
+        <NavigationContainer  ref={navigationRef} onStateChange={()=> 
+          SendAnalytics(navigationRef.getCurrentRoute())
+          }>
           {loginState.userToken == null ? <AuthNavigator /> : <MyDrawer />}
         </NavigationContainer>
       </AuthContext.Provider>
