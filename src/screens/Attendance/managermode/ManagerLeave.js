@@ -111,6 +111,7 @@ export const ManagerLeave = () => {
                 });
                 setGetPendingLeaveReq(newarray)
             }else{
+              setGetPendingLeaveReq([])
                 Toast.show("No Pending Request Found");
             }
           })
