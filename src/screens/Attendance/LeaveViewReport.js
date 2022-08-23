@@ -21,6 +21,8 @@ import Spinner from 'react-native-loading-spinner-overlay/lib';
 import { GlobalColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
+import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
+
 
 const LeaveViewReport = () => {
   
@@ -37,7 +39,18 @@ const LeaveViewReport = () => {
     const [FinancialYear, setFinancialYear] = useState([]);
     const [EmpLeaveDetail, setEmpLeaveDetail] = useState([]);
     const [modalData, setModalData] = useState([]);
-    const [SelectedYear, setSelectedYear] = useState("");  
+    const [SelectedYear, setSelectedYear] = useState("");
+    const [refresh, setrefresh] = useState(false);
+
+
+    const stopLoader = () => {
+        try {
+            setLoader(false);
+            setrefresh(false);
+        } catch (error) {
+            console.log(error)
+        }
+    }  
   
     useFocusEffect(
       React.useCallback(() => {
@@ -57,7 +70,7 @@ const LeaveViewReport = () => {
       ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
         .then(result => {
           console.log("get year financial",result.Value);
-          setLoader(false);
+          stopLoader(false);
           if (result.Value) {
             let reasons = [];
             setFinancialYear(result.Value.Table);
@@ -70,14 +83,21 @@ const LeaveViewReport = () => {
           }
         })
         .catch(error => {
-          setLoader(false);
+          stopLoader(false);
           // console.log('Error occurred==>', error);
           ApiService.showErrorMessage(error, authContext);
         });
     }
   
-    const getEmpLeaveDetail = (fnyear) => {
-  
+    const getEmpLeaveDetail = (fnyear, isrefresh =false ) => {
+
+
+      if(!isrefresh){
+        setLoader(true);
+      }else{
+        setrefresh(true);
+      }
+
       var curryear = ((new Date().getFullYear()).toString()).substring(0, 2);
       var from;
       if (parseInt(((fnyear.toString()).substring(0, 2))) == 99) {
@@ -91,14 +111,12 @@ const LeaveViewReport = () => {
         "FromDate": from,
         "ToDate": to
       };
-  
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
-      setLoader(true);
       ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
         .then(result => {
-          // console.log("APiresult GetEmplLevDetail", result);
-          setLoader(false);
+          console.log("APiresult GetEmplLevDetail", result);
+          stopLoader(false);
           let arr = []
           if (result.Value) {
             arr.push(result.Value)
@@ -109,7 +127,7 @@ const LeaveViewReport = () => {
           }
         })
         .catch(error => {
-          setLoader(false);
+          stopLoader(false);
           // console.log('Error occurred==>', error);
           ApiService.showErrorMessage(error, authContext);
         });
@@ -126,7 +144,7 @@ const LeaveViewReport = () => {
       ApiService.PostMethode('/DeleteLeave', apiData, token, authContext)
         .then(result => {
           console.log("APiresult DeleteLeave", result);
-          setLoader(false);
+          stopLoader(false);
           if (result.Result) {
             getEmpLeaveDetail(SelectedYear);
             Toast.show(result.Result);
@@ -135,7 +153,7 @@ const LeaveViewReport = () => {
           }
         })
         .catch(error => {
-          setLoader(false);
+          stopLoader(false);
           console.log('Error occurred==>', error);
           ApiService.showErrorMessage(error, authContext);
         });
@@ -144,6 +162,61 @@ const LeaveViewReport = () => {
     const toggleModal = () => {
       setModalVisible(!isModalVisible);
     };  
+
+
+    const ItemRenderLeave = ({ item }) => (
+      <TouchableOpacity 
+      key={item['Application ID']}
+      style={styles.item}
+      onPress={()=>{
+        setModalData(item)
+        setLeaveDetailModal(true)
+      }}>
+         <View style={[styles.itemColumn, {flex:0.40}]}>
+            <Text style={styles.itemText}>{item["From Date"]}</Text>
+            <Text style={styles.itemText}>{item["To Date"]}</Text>                                    
+         </View>
+
+         <View style={[styles.itemColumn,{flex:0.20}]}>
+           <Text style={styles.itemText}>
+            {item['Leave Type'] == "ARS" ?
+              item['Leave Type'] : 
+              item['Leave Type'].split(" ")[0].substring(0, 1) + ". " + item['Leave Type'].split(" ")[1].substring(0, 1) + "." }
+           </Text>
+         </View>
+
+         <View style={[styles.itemColumn, {flex:0.40}]}>
+           <Text style={styles.itemText}>{item.Period}</Text>
+         </View>
+
+         <View style={[styles.itemColumn]}>
+                    {item.Status === 'Approved' ? (
+                      <Text style={[styles.itemText, { color: 'green' }]}>{item.Status}</Text>
+                        ) : (
+                        <Text style={[styles.itemText, { color: 'red' }]}>{item.Status}</Text>
+                      )}
+         </View>
+      </TouchableOpacity>
+    );
+
+    const FlatList_Header_Leave = () => {
+      return (
+        <View style={{
+          width: "100%",
+          justifyContent: 'space-between',
+          paddingHorizontal:10,
+          paddingVertical:15,
+          backgroundColor:GlobalColor.White,
+          flexDirection:'row'
+        }}>        
+          <Text Bold style={[styles.HeaderColumn, {flex:0.40}]}>Date</Text>
+          <Text Bold style={[styles.HeaderColumn, {flex:0.20}]}>Type</Text>
+          <Text Bold style={[styles.HeaderColumn, {flex:0.40}]}>Period</Text>
+          <Text Bold style={styles.HeaderColumn}>Status</Text>
+        </View>
+      );
+    }
+
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -223,7 +296,27 @@ const LeaveViewReport = () => {
                   <View showsVerticalScrollIndicator={false} style={styles.container}> 
   
                   <View style={{ flex: 1, paddingHorizontal: 0, marginTop: 5 }}>
-                    <DataTable
+
+                  <FlatList
+                    contentContainerStyle={{ flexGrow:1 }}
+                    data={EmpLeaveDetail}//EmpLeaveDetail
+                    renderItem={ItemRenderLeave}
+                    keyExtractor={item => item.id}
+                    ListHeaderComponent={FlatList_Header_Leave}
+                    ListHeaderComponentStyle={{ borderBottomColor: GlobalColor.Secondary, borderBottomWidth: 1 }}
+                    ListEmptyComponent={<ListEmptyComponent 
+                        title="No Data Found"
+                        enableRefresh={true} onRefreshCallback={() => getEmpLeaveDetail(SelectedYear, true)} refreshing={refresh}
+                        ></ListEmptyComponent>
+                    }
+                />
+
+
+
+
+
+
+                    {/* <DataTable
                       style={{
                         width: '100%',
                         backgroundColor: '#fff',
@@ -243,6 +336,13 @@ const LeaveViewReport = () => {
                           <Text Bold style={{ color: GlobalColor.Primary, fontSize: GlobalFontSize.Small }}>Status</Text>
                         </DataTable.Title>
                       </DataTable.Header>
+
+
+
+
+
+
+
   
                       <FlatList
                         data={EmpLeaveDetail}
@@ -269,14 +369,18 @@ const LeaveViewReport = () => {
                                   }}>
                                   <DataTable.Cell >
                                                                       
-                                      {item['From Date']}
-                                      {/* {item['To Date']} */}
+                                     <Text>{item['From Date']}</Text>
+                                     <Text>{item['To Date']}</Text>                                       
   
                                   </DataTable.Cell>
                                 </View>
   
-                                <DataTable.Cell numeric>{item['Leave Type']}</DataTable.Cell>
-                                <DataTable.Cell numeric>
+                                <DataTable.Cell numeric style={{ width:5 }}>{item['Leave Type'] == "ARS" ?
+                                item['Leave Type'] : 
+                                item['Leave Type'].split(" ")[0].substring(0, 1) + ". " + item['Leave Type'].split(" ")[1].substring(0, 1) + "." }</DataTable.Cell>
+
+
+                                <DataTable.Cell numeric style={{ flex:1 }}>
                                   {item.Period}
                                 </DataTable.Cell>
                                 <DataTable.Cell numeric>
@@ -291,7 +395,7 @@ const LeaveViewReport = () => {
                           </View>
                         )}
                       />
-                    </DataTable>
+                    </DataTable> */}
                     <Modal
                       isVisible={LeaveDetailModal}
                       // animationType="slide"
@@ -483,7 +587,42 @@ const styles = StyleSheet.create({
     },
     checkboxText: {
         marginLeft: 2
-    }
+    },
+    item:{
+      flexDirection:'row',
+      backgroundColor:GlobalColor.White,
+      paddingHorizontal:10, 
+      marginTop:5,
+      justifyContent:'space-between',
+      paddingVertical:5,
+      borderBottomWidth:0.5,
+      borderBottomColor:GlobalColor.Secondary
+  },
+  HeaderColumn:{
+      flex:0.25,
+  },
+  itemColumn:{
+      flex:0.25,
+      justifyContent:'center',
+  },
+  itemButton:{
+      width:30,
+      height:30,
+      borderRadius:15,
+      backgroundColor:GlobalColor.PrimaryLight,
+      alignItems:'center',
+      justifyContent:'center',
+  },
+  itemColumnButtons:{
+      flex:0.25,
+      alignItems:'center',
+      justifyContent:'center',
+      paddingHorizontal:10,
+      flexDirection:'row',
+  },
+  itemText:{
+    fontSize:GlobalFontSize.Small
+  }
 });
 
 export default LeaveViewReport

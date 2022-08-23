@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component, useContext } from 'react';
+import React, { Component, useContext, useEffect } from 'react';
 import { View, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -12,6 +12,8 @@ import AuthContext from './../context/AuthContext';
 import { GlobalColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
 import Text from '../components/reusable/Text';
+import * as ApiService from '../Utils/Utils';
+
 
 
 
@@ -27,6 +29,41 @@ const Home = ({ navigation }) => {
     "https://marutistoragenew.blob.core.windows.net/ag3mobileapp/2.png",
     "https://marutistoragenew.blob.core.windows.net/ag3mobileapp/3.png"
   ];
+
+
+
+  const checkAppUpdate = () =>{
+    let versionfromplug = '1.1.2';
+    let appname = "HR ASSIST";
+    let devicetype = "ANDROID"
+
+    let apiData = {
+      "AppName" : appname,
+      "DeviceType" : devicetype,
+      "Version" : versionfromplug
+    }
+
+    let token = AppUserData.token;
+    let userId = AppUserData?.data?.userId
+    ApiService.PostMethode('/CheckAppVersion', apiData, token, authContext)
+    .then(result => {
+      console.log(result);       
+    })
+    .catch(error => {
+      // stopLoader(false);
+      // console.log('Error occurred==>', error);
+      ApiService.showErrorMessage(error, authContext);
+    });
+  } 
+    useEffect(() => {
+      const permission = checkAppUpdate();
+      return () => {
+      permission
+      };
+    }, []);
+
+
+
 
   // end array
   return (

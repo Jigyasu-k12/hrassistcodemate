@@ -219,6 +219,9 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         color: GlobalColor.Primary,
         fontSize: GlobalFontSize.Error
+    },
+    cardColumn:{
+        flex:1
     }
 });
 

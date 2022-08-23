@@ -63,6 +63,7 @@ const Gatepass = ({ navigation }) => {
   const [search, setSearch] = useState('');
   const [searchedNameData, setSearchedNameData] = useState('');
   const [empmodalVisible, setEmpModalVisible] = useState(false);
+  const [LocationDisabled, setLocationDisabled] = useState(false);
 
 
   const [Locations, setLocations] = useState([]);
@@ -88,6 +89,9 @@ const Gatepass = ({ navigation }) => {
           setEmpLocCode(LocationCode)
           fromRef.current.setFieldValue('office', result.Value[0]);
           GetAccessListVGPSApi(result.Value[0].CODE.split(',')[0]);
+        }else{
+          setLocationDisabled(true);
+          setLocations([]);
         }
       })
       .catch(error => {
@@ -386,6 +390,7 @@ const Gatepass = ({ navigation }) => {
 
               <SelectDropdown
                 data={Locations}
+                disabled={LocationDisabled}
                 defaultValue={values.office}
                 onSelect={(selectedItem, index) => {
                   // console.log(selectedItem, index);
@@ -395,7 +400,7 @@ const Gatepass = ({ navigation }) => {
                   setFieldValue('office', selectedItem);
                   GetAccessListVGPSApi(selectedItem.CODE.split(',')[0]);
                 }}
-                defaultButtonText={'Select Location'}
+                defaultButtonText={LocationDisabled ? "No location found":'Select Location'}
                 buttonTextAfterSelection={(selectedItem, index) => {
                   // text represented after item is selected
                   // if data array is an array of objects then return selectedItem.property to render after item is selected

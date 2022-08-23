@@ -5,14 +5,17 @@ import {
   StyleSheet,
   TextInput,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MyDrawer from './Drawer';
 import AuthNavigator from './AuthNavigator';
 import AuthContext from '../context/AuthContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import SignIn from '../Auth/SignIn';
 import { navigationRef } from './RootNavigation';
+import * as ApiService from './../Utils/Utils';
+import DeviceInfo from 'react-native-device-info';
 
 const Routes = () => {
   const [AppUserData, setAppUserData] = React.useState({});
@@ -68,8 +71,8 @@ const Routes = () => {
         // return;
         if (userToken && userData !== null) {
           try {
-            await AsyncStorage.setItem('userToken', userToken);
-            await AsyncStorage.setItem('userData', JSON.stringify(userData));
+            await EncryptedStorage.setItem('userToken', userToken);
+            await EncryptedStorage.setItem('userData', JSON.stringify(userData));
             contextData = {token: userToken, data: userData};
             setAppUserData({
               token: userToken,
@@ -94,7 +97,7 @@ const Routes = () => {
       },
       signOut: async () => {
         try {
-          await AsyncStorage.removeItem('userToken').then(
+          await EncryptedStorage.removeItem('userToken').then(
             setAppUserData({}),
             dispatch({type: 'LOGOUT'}),
             // console.log('Login state', loginState),
@@ -117,8 +120,8 @@ const Routes = () => {
     let userData = null;
     let dataFound;
     try {
-      userToken = await AsyncStorage.getItem('userToken');
-      userData = await AsyncStorage.getItem('userData');
+      userToken = await EncryptedStorage.getItem('userToken');
+      userData = await EncryptedStorage.getItem('userData');
       userData = JSON.parse(userData);
       // console.log('User Token found ==>', userToken);
       // console.log('User Data found ==>', userData);
@@ -147,6 +150,37 @@ const Routes = () => {
     }
   };
 
+
+  const SendAnalytics = (PageName)=>{
+    // console.log(AppUserData?.data?.userId);
+    if(!AppUserData?.data?.userId){
+      return;
+    } 
+
+    let apiData = {    
+        "StaffNo" : AppUserData?.data?.userId,
+        "DeviceName" : DeviceInfo.getBrand(),
+        "DeviceID" : DeviceInfo.getDeviceId(),
+        "DeviceType" : Platform.OS,
+        "PageName" : PageName.name        
+    }
+
+
+    ApiService.PostMethode('/SubmitAnly', apiData, AppUserData.token, authContext)
+    .then(result => {
+     console.log(result);
+    })
+    .catch(error => {
+      // stopLoader(false);
+      console.log('Error occurred==>', error);
+      // ApiService.showErrorMessage(error, authContext);
+    });
+  }
+
+
+
+  
+
   if (loginState.isLoading == true) {
     // console.log('Login State loading', loginState.isLoading);
     return (
@@ -165,7 +199,9 @@ const Routes = () => {
   } else {
     return (
       <AuthContext.Provider value={{...options, authContext}}>
-        <NavigationContainer  ref={navigationRef}>
+        <NavigationContainer  ref={navigationRef} onStateChange={()=> 
+          SendAnalytics(navigationRef.getCurrentRoute())
+          }>
           {loginState.userToken == null ? <AuthNavigator /> : <MyDrawer />}
         </NavigationContainer>
       </AuthContext.Provider>

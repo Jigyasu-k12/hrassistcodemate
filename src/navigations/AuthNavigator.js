@@ -14,7 +14,7 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignIn from '../Auth/SignIn';
 import OnboardingScreen from '../Auth/Onboarding';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 
 
 const Stack = createNativeStackNavigator();
@@ -33,7 +33,7 @@ const AuthNavigator = () => {
 
 
   const getStorageData = async()=>{
-    await AsyncStorage.getItem('isnotfirstTime').then((data)=>{
+    await EncryptedStorage.getItem('isnotfirstTime').then((data)=>{
       if(data != null){
         console.log(data);
         setIsFirstLaunch(true);
