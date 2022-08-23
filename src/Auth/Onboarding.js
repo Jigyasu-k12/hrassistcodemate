@@ -22,7 +22,7 @@ import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Spinner from 'react-native-loading-spinner-overlay';
 import Onboarding from 'react-native-onboarding-swiper'; // 1.1.4
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import { GlobalColor } from '../constants/Colors';
 
 
@@ -34,7 +34,7 @@ const OnboardingScreen = ({ navigation }) => {
 
   const storeData = async () => {
     try {
-      await AsyncStorage.setItem('isnotfirstTime', "abcd").then(()=>{
+      await EncryptedStorage.setItem('isnotfirstTime', "abcd").then(()=>{
         navigation.navigate("SignIn");
       })
     } catch (e) {

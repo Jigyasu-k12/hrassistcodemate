@@ -11,7 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import MyDrawer from './Drawer';
 import AuthNavigator from './AuthNavigator';
 import AuthContext from '../context/AuthContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import SignIn from '../Auth/SignIn';
 import { navigationRef } from './RootNavigation';
 import * as ApiService from './../Utils/Utils';
@@ -71,8 +71,8 @@ const Routes = () => {
         // return;
         if (userToken && userData !== null) {
           try {
-            await AsyncStorage.setItem('userToken', userToken);
-            await AsyncStorage.setItem('userData', JSON.stringify(userData));
+            await EncryptedStorage.setItem('userToken', userToken);
+            await EncryptedStorage.setItem('userData', JSON.stringify(userData));
             contextData = {token: userToken, data: userData};
             setAppUserData({
               token: userToken,
@@ -97,7 +97,7 @@ const Routes = () => {
       },
       signOut: async () => {
         try {
-          await AsyncStorage.removeItem('userToken').then(
+          await EncryptedStorage.removeItem('userToken').then(
             setAppUserData({}),
             dispatch({type: 'LOGOUT'}),
             // console.log('Login state', loginState),
@@ -120,8 +120,8 @@ const Routes = () => {
     let userData = null;
     let dataFound;
     try {
-      userToken = await AsyncStorage.getItem('userToken');
-      userData = await AsyncStorage.getItem('userData');
+      userToken = await EncryptedStorage.getItem('userToken');
+      userData = await EncryptedStorage.getItem('userData');
       userData = JSON.parse(userData);
       // console.log('User Token found ==>', userToken);
       // console.log('User Data found ==>', userData);

@@ -54,7 +54,7 @@ public class MainActivity extends ReactActivity {
       "com.zachspong.temprootremovejb",
       "com.ramdroid.appquarantine",
       "com.topjohnwu.magisk",
-      "com.android.chrome"
+      // "com.android.chrome"
       };
 
       for (int i=0; i<packages.length; i++) {

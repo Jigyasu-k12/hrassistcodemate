@@ -119,7 +119,7 @@ export default function App() {
       },()=>{
         // console.log("is rooted/jailbreak/emulator/simulator")
         // is rooted/jailbreak/emulator/simulator)
-          // BackHandler.exitApp();
+          BackHandler.exitApp();
         })
     }
 
