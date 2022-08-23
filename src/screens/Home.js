@@ -55,7 +55,6 @@ const Home = ({ navigation }) => {
       ApiService.showErrorMessage(error, authContext);
     });
   } 
-
     useEffect(() => {
       const permission = checkAppUpdate();
       return () => {

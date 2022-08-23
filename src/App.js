@@ -21,12 +21,13 @@ import RNPermissions, {
 } from 'react-native-permissions';
 import RNBootSplash from "react-native-bootsplash";
 import { LogBox } from 'react-native';
+import JailMonkey from 'react-native-pvt-jail-monkey'
+
+
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
 ]);
-
 export default function App() {
-
 
   useEffect(() => {
     const init = async () => {
@@ -99,6 +100,29 @@ export default function App() {
     //   permission
     //   };
     // }, []);
+
+    useEffect(() => {
+      const Safety = checkDeviceSafety();
+      return () => {
+      Safety
+      };
+    }, []);
+
+
+
+    const checkDeviceSafety = () =>{
+      let params = {debug:false,checkEmulator:true}
+      //custom method with all security checking 
+      JailMonkey.isSafe(params).then(()=>{
+        console.log("is not rooted/jailbreak/emulator/simulator")
+        // is not rooted/jailbreak/emulator/simulator
+      },()=>{
+        // console.log("is rooted/jailbreak/emulator/simulator")
+        // is rooted/jailbreak/emulator/simulator)
+          // BackHandler.exitApp();
+        })
+    }
+
 
 
   

@@ -13,8 +13,62 @@ import axios from "axios";
 import { API_SERVICES_URL } from "../API/Api";
 import Toast from 'react-native-simple-toast';
 import AuthContext from '../context/AuthContext';
+import {fetch} from 'react-native-ssl-pinning';
 
-export const PostMethode =  async (url, data, token, context=null) => {
+
+export const PostMethode = async(url, data, token, context=null) =>{
+    let PostUrl = API_SERVICES_URL + url;
+    // console.log("Api url", PostUrl, data);
+    /*
+    fetch(PostUrl, {
+        method: "POST" ,
+        timeoutInterval: 2000, // milliseconds
+        body: data,
+        // your certificates array (needed only in android) ios will pick it automatically
+        sslPinning: {
+            certs: ["mycert"] // your certificates name (without extension), for example cert1.cer, cert2.cer
+        },
+        headers: {
+            Accept: "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "e_platform": "mobile",
+            authToken: token,
+        }
+    })
+    .then(response => {
+        // console.log(`response received ${response}`)
+        return response.data;
+    })
+    .catch(err => {
+        // console.log(`error: ${err}`)
+        throw error
+    })
+
+*/
+    try {
+           return fetch(PostUrl, {
+            method: "POST" ,
+            timeoutInterval: 3000, // milliseconds
+            body: JSON.stringify(data),
+            disableAllSecurity: false,
+            // your certificates array (needed only in android) ios will pick it automatically
+            sslPinning: {
+                certs: ["mycert"] // your certificates name (without extension), for example cert1.cer, cert2.cer
+            },
+            headers: {
+                Accept: "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "e_platform": "mobile",
+                authToken: token,
+            }
+        }).then(res=>JSON.parse(res.bodyString))    
+    } catch (error) {
+        console.log("error catched in util", error);
+        throw error.json()
+    }
+}
+
+
+
+
+
+export const PostMethodes =  async (url, data, token, context=null) => {
     let PostUrl = API_SERVICES_URL + url;
     console.log("Api url", PostUrl, data);
 
@@ -31,50 +85,7 @@ export const PostMethode =  async (url, data, token, context=null) => {
         return response.data;
     } catch (error) {
             throw error
-    }
-
-return
-
-
-
-
-
-
-
-/*
-
-    try {
-        let response = await axios.post(PostUrl, JSON.stringify(data), {
-            headers: {
-                'Content-Type ': "application/json",
-                // Accept :"application/json",
-                authToken: token,
-            }
-        })
-        // console.log("Api resp",response)
-        return response.data;
-    } catch (error) {
-        throw handleError(error.toJSON())
-        // return new Error(error);
-        return Promise.reject(error);
-        // console.log(error);
-        if (error.response) {
-            if(context && error.response.status== 403){
-                UseLogout(context);
-                throw handleError(error)
-            }else{
-                throw handleError(error)
-            }        
-            // console.log(error.response.data);
-            // console.log(error.response.status);
-            // console.log(error.response.headers);
-        }else{
-            throw handleError(error)
-        }
-        
-    }
-    */
-    
+    }    
 }
 
 export const getRawurl = async (url, data, token) => {
@@ -103,9 +114,26 @@ const handleError = (err) => {
     return new Error(error.message);
 }
 
+
+
 export const showErrorMessage = (error, context=null) => {
-    console.log(error.response.status);
-    console.log(error.response.data);
+    console.log(error);
+    let showErrorMessage = error.bodyString ? JSON.parse(error.bodyString): null;
+    if(error && error.status){
+        if(error.status == "403" || error.status == "401"){
+            UseLogout(context);
+            return;
+        }else if (showErrorMessage && showErrorMessage.hasOwnProperty('Message')){
+            Toast.show(showErrorMessage.Message);    
+            return;
+        }     
+        Toast.show(error.status + " Something Went Wrong");    
+    }else{
+        Toast.show("Something Went Wrong");
+    }
+    return;
+
+
     if (error.response) {
         if(error.response.status == "403" || error.response.status == "401"){
             UseLogout(context);

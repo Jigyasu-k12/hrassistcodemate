@@ -13,7 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import AuthService from '../Service/AuthService';
+import AuthService,  {AuthPost, showErrorMessage}from '../Service/AuthService';
 import * as ApiService from './../Utils/Utils';
 import AuthContext from '../context/AuthContext';
 import Toast from 'react-native-simple-toast'
@@ -43,7 +43,7 @@ const SignIn = ({ navigation }) => {
       Password: values.Password,
     };
     // console.log('api data', data);
-    AuthService.Post('Login', data)
+    AuthPost('Login', data)
       .then(res => {
         console.log(res);
         let contextData = {
@@ -55,6 +55,9 @@ const SignIn = ({ navigation }) => {
       .catch(error => {
         console.log(error);
         setLoader(false);
+        showErrorMessage(error);
+        /*
+        console.log(error);
         // return;
         console.log('response data', JSON.stringify(error));
         Toast.show(JSON.stringify(error))
@@ -70,6 +73,8 @@ const SignIn = ({ navigation }) => {
           // anything else
          Toast.show('Something Went Wrong');
         }
+
+        */
       });
   };
 
@@ -169,8 +174,6 @@ const SignIn = ({ navigation }) => {
               <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{ UserName: '', Password: '' }}
-                // initialValues={{ UserName: '222852', Password: 'Maruti@131' }}
-                // initialValues={{ UserName: '548596', Password: 'Maruti@08@22' }}
                 onSubmit={values => {
                   handleLogin(values);
                 }}>
