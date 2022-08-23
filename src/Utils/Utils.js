@@ -46,7 +46,7 @@ export const PostMethode = async(url, data, token, context=null) =>{
     try {
            return fetch(PostUrl, {
             method: "POST" ,
-            timeoutInterval: 10000, // milliseconds
+            timeoutInterval: 0, // milliseconds
             body: JSON.stringify(data),
             disableAllSecurity: false,
             // your certificates array (needed only in android) ios will pick it automatically
@@ -56,6 +56,7 @@ export const PostMethode = async(url, data, token, context=null) =>{
             headers: {
                 Accept: "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "e_platform": "mobile",
                 authToken: token,
+              'Content-Type': 'application/json',
             }
         }).then(res=>JSON.parse(res.bodyString))    
     } catch (error) {

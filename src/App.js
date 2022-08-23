@@ -22,6 +22,7 @@ import Routes from './navigations/Routes';
 import RNBootSplash from "react-native-bootsplash";
 import { LogBox } from 'react-native';
 import JailMonkey from 'react-native-pvt-jail-monkey'
+import RNExitApp from 'react-native-exit-app';
 
 
 LogBox.ignoreLogs([
@@ -117,6 +118,10 @@ export default function App() {
         console.log("is not rooted/jailbreak/emulator/simulator")
         // is not rooted/jailbreak/emulator/simulator
       },()=>{
+        if(Platform.OS === "ios"){
+          RNExitApp.exitApp();
+          return;
+        }
         // console.log("is rooted/jailbreak/emulator/simulator")
         // is rooted/jailbreak/emulator/simulator)
           BackHandler.exitApp();

@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3F62F7EA2892716D00CEAC5F /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 3F62F7E92892716D00CEAC5F /* fonts */; };
+		3FC893AF28B4FE95001E060E /* mycert.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3FC893AE28B4FE32001E060E /* mycert.cer */; };
 		59BF5A1EFD584A36B40080F8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81707924716F472F9AFC0B44 /* Roboto-Light.ttf */; };
 		5C62749C6FCE4F5BABE305D6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A572EA5779264C7E98B841D7 /* Roboto-Bold.ttf */; };
 		6DC7E1B248334C6DA9BEFA2F /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B424F2DFBE4B4BF1B2B46E17 /* Roboto-Italic.ttf */; };
@@ -54,6 +55,7 @@
 		1BA18D7E11022A6AD4FBAAC0 /* Pods-MarutiSuzukiApp-MarutiSuzukiAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarutiSuzukiApp-MarutiSuzukiAppTests.release.xcconfig"; path = "Target Support Files/Pods-MarutiSuzukiApp-MarutiSuzukiAppTests/Pods-MarutiSuzukiApp-MarutiSuzukiAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		1C743F37A562597033BA7F9A /* Pods-MarutiSuzukiApp-MarutiSuzukiAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarutiSuzukiApp-MarutiSuzukiAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MarutiSuzukiApp-MarutiSuzukiAppTests/Pods-MarutiSuzukiApp-MarutiSuzukiAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F62F7E92892716D00CEAC5F /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		3FC893AE28B4FE32001E060E /* mycert.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = mycert.cer; path = ../certs/mycert.cer; sourceTree = "<group>"; };
 		48C44E33936F4A16BA263604 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		4D90EF3CEDF5463DBBA9B090 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		53368163BC22440CABD9A237 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				3FC893AE28B4FE32001E060E /* mycert.cer */,
 				3F62F7E92892716D00CEAC5F /* fonts */,
 				13B07FAE1A68108700A75B9A /* MarutiSuzukiApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -289,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC893AF28B4FE95001E060E /* mycert.cer in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				92648742304B4CC2A8A4C5F7 /* Roboto-Black.ttf in Resources */,

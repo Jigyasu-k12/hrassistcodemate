@@ -16,6 +16,8 @@ import SignIn from '../Auth/SignIn';
 import { navigationRef } from './RootNavigation';
 import * as ApiService from './../Utils/Utils';
 import DeviceInfo from 'react-native-device-info';
+import RNExitApp from 'react-native-exit-app';
+
 
 const Routes = () => {
   const [AppUserData, setAppUserData] = React.useState({});
@@ -152,7 +154,7 @@ const Routes = () => {
 
 
   const SendAnalytics = (PageName)=>{
-    // console.log(AppUserData?.data?.userId);
+    console.log(AppUserData?.data?.userId);
     if(!AppUserData?.data?.userId){
       return;
     } 
