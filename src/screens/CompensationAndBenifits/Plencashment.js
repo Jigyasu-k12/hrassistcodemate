@@ -412,7 +412,7 @@ const Plencashment = ({ navigation, route }) => {
                         borderWidth: 0.5,
                         borderColor: GlobalColor.LightDark
                       }]}>
-                        <Text>{item.PROCESSDATE}</Text>
+                        <Text>{item.PROCESSDATE ? moment(item.PROCESSDATE).format('MM/DD/YYYY'):''}</Text>
                         <Text>{item.PROCESS_DESCRIPTION}</Text>
                         <Text>{item.ENTRY_EARN_VALUE}</Text>
                       </TouchableOpacity>

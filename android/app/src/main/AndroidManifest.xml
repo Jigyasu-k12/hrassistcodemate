@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.marutisuzukiapp">
+  package="com.maruti.hrapp">
 
     <queries>
     <!-- Specific apps you interact with, eg: -->

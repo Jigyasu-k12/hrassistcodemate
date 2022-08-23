@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.marutisuzukiapp",
+    package = "com.maruti.hrapp",
 )
 
 android_resource(
     name = "res",
-    package = "com.marutisuzukiapp",
+    package = "com.maruti.hrapp",
     res = "src/main/res",
 )
 
