@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useContext, useEffect } from 'react';
-import { View, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, SafeAreaView, Alert, Linking } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import TouchableCard from '../components/Touchable';
@@ -33,9 +33,9 @@ const Home = ({ navigation }) => {
 
 
   const checkAppUpdate = () =>{
-    let versionfromplug = '1.1.2';
+    let versionfromplug = '1.1.1';
     let appname = "HR ASSIST";
-    let devicetype = "ANDROID"
+    let devicetype = "IOS"
 
     let apiData = {
       "AppName" : appname,
@@ -47,11 +47,35 @@ const Home = ({ navigation }) => {
     let userId = AppUserData?.data?.userId
     ApiService.PostMethode('/CheckAppVersion', apiData, token, authContext)
     .then(result => {
+      if(result.Result){
+        let vesionNo = result.Result.split("~");
+        // console.log(vesionNo);
+        if(vesionNo[1] != versionfromplug){
+
+          Alert.alert(
+            "New Update",
+            "Please update the app to new version by downloading and installing the app",
+            [
+              // {
+              //   text: "Cancel",
+              //   onPress: () => console.log("Cancel Pressed"),
+              //   style: "cancel"
+              // },
+              { text: "OK", onPress: () => {
+                Linking.openURL(vesionNo[0]);
+              } }
+            ]
+          );          
+        }
+
+
+      }
+
       console.log(result);       
     })
     .catch(error => {
       // stopLoader(false);
-      // console.log('Error occurred==>', error);
+      console.log('Error occurred==>', error);
       ApiService.showErrorMessage(error, authContext);
     });
   } 

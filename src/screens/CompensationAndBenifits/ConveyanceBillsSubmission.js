@@ -64,7 +64,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
         let EmplID = AppUserData?.data?.userId
         console.log("this empid", EmplID)
         let apiData = {
-            "UserName": EmplID
+            "StaffNo": EmplID
         }
 
         //Set Loader
