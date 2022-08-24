@@ -64,7 +64,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
         let EmplID = AppUserData?.data?.userId
         console.log("this empid", EmplID)
         let apiData = {
-            "UserName": EmplID
+            "StaffNo": EmplID
         }
 
         //Set Loader
@@ -420,7 +420,7 @@ const ConveyanceBillsSubmission = ({ navigation, route }) => {
                 )}
                 </Formik>
 
-                <View style={{ paddingHorizontal: 10 }}>
+                <View style={{ paddingHorizontal: 10, marginBottom:10 }}>
                     <View
                         style={styles.reportHeader}>
                         <Text Bold style={styles.textline}>Bill No</Text>
