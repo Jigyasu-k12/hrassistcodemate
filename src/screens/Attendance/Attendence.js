@@ -348,9 +348,9 @@ const Attendance = ({ navigation }) => {
             </ScrollView>
           ) : (
             // <Text style={[styles.titleLabel, {marginTop:10}]} bold>Attendance Report</Text>          
-            // <ScrollView
-            // horizontal={true}
-            // >
+            <ScrollView
+            horizontal={true}
+            >
             <SegmentedControlTab
               borderRadius={2}
               values={['Attendance Report', 'Attendance Percentage']}
@@ -359,12 +359,12 @@ const Attendance = ({ navigation }) => {
                 handleAttendanceReport(index);
               }}
               tabsContainerStyle={styles.tabsContainerStyle}
-              tabStyle={styles.tabStyle2}
+              tabStyle={styles.tabStyle}
               tabTextStyle={styles.tabTextStyle}
               activeTabStyle={styles.activeTabStyle}
               activeTabTextStyle={styles.activeTabTextStyle}
             />
-            // </ScrollView>                  
+            </ScrollView>                  
           )
         }
       </View>
