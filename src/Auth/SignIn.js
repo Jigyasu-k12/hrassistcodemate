@@ -124,12 +124,12 @@ const SignIn = ({ navigation }) => {
   const loginValidationSchema = yup.object().shape({
     UserName: yup
       .string()
-      .required('Username is required')
-      .min(6, 'min 6 digit is require ')
-      .max(6, 'max 6 digit allowed'),
+      .required('Username is required'),
+      // .min(6, 'min 6 digit is require ')
+      // .max(6, 'max 6 digit allowed'),
     Password: yup
       .string()
-      .min(8, 'Password must be atleast 8 character')
+      // .min(8, 'Password must be atleast 8 character')
       .required('Password is required'),
   });
 
