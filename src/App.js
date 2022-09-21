@@ -101,12 +101,12 @@ export default function App() {
     //   };
     // }, []);
 
-    useEffect(() => {
-      const Safety = checkDeviceSafety();
-      return () => {
-      Safety
-      };
-    }, []);
+    // useEffect(() => {
+    //   const Safety = checkDeviceSafety();
+    //   return () => {
+    //   Safety
+    //   };
+    // }, []);
 
 
 
@@ -115,9 +115,13 @@ export default function App() {
       //custom method with all security checking 
       JailMonkey.isSafe(params).then(()=>{
         console.log("is not rooted/jailbreak/emulator/simulator")
+        // console.log(JailMonkey.isJailBroken())
         // is not rooted/jailbreak/emulator/simulator
+        if(JailMonkey.isJailBroken()){
+          BackHandler.exitApp();
+        }
       },()=>{
-        // console.log("is rooted/jailbreak/emulator/simulator")
+        console.log("is rooted/jailbreak/emulator/simulator")
         // is rooted/jailbreak/emulator/simulator)
           BackHandler.exitApp();
         })

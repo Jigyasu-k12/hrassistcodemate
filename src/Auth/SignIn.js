@@ -87,7 +87,7 @@ const SignIn = ({ navigation }) => {
     ApiService.PostMethode('/GetEmployeeProfile', data, token)
       .then(res => {
 
-        console.log(res);
+        console.log(res.Value.Table1[0].EMPL_NAME);
 
         let response = res.Value;
         if(response.Table){

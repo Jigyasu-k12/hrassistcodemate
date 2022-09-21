@@ -214,7 +214,8 @@ const Gatepass = ({ navigation }) => {
       .required('Duration  is required')
       .max(24, 'Duration should be less then 24 hours'),
     searchLevel: yup.object().required('select one search level please'),
-    reason: yup.string().required('Reason is required'),
+    reason: yup.string().required('Reason is required')
+    .matches(/^[a-zA-Z0-9_ .-]*$/, "Special characters not allowed"),
     persionalVehical:yup.object().required('Select an option'),
     internalVehical: yup.object().required('Select an option'),
     vehicleNumber: yup.string()
