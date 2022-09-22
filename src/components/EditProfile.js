@@ -35,10 +35,10 @@ const EditProfile = ({ navigation, route }) => {
     ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
       .then(result => {
         stopLoader(false);
-        let responseData = result.Value.Table;
-        console.log(responseData);
-        let NominationData = result.Value.Table1
-        let Phone =result.Value.Table[0].EXTN
+        let responseData = result.Value.Table1;
+        // console.log(responseData);
+        let NominationData = result.Value.Table2
+        let Phone =result.Value.Table1[0].EXTN
         setEmpPhone(Phone)
         setNominiData(NominationData)
         setEmployeeData(responseData);

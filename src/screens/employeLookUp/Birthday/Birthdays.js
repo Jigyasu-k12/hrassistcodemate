@@ -96,9 +96,9 @@ const Birthdays = () => {
     ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
       .then(result => {
         let response = result.Value
-        if (response.Table) {
-          // console.log("employeeresult", response.Table[0].profile_photo,);
-          let profile = response.Table[0] && response.Table ? response.Table[0].profile_photo : '';
+        if (response.Table1) {
+          // console.log("employeeresult", response.Table1[0].profile_photo,);
+          let profile = response.Table1[0] && response.Table1 ? response.Table1[0].profile_photo : '';
           setModalItem(item);
           setEmpPhoto(profile);
           stopLoader(false);
