@@ -67,8 +67,6 @@ function CustomDrawer(props) {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-      // UserName: userId,
-      // Password: "Maruti@131"
     }
     setLoader(true);
     ApiService.PostMethode('/Logout', apiData, token, authContext)

@@ -101,12 +101,12 @@ export default function App() {
     //   };
     // }, []);
 
-    // useEffect(() => {
-    //   const Safety = checkDeviceSafety();
-    //   return () => {
-    //   Safety
-    //   };
-    // }, []);
+    useEffect(() => {
+      const Safety = checkDeviceSafety();
+      return () => {
+      Safety
+      };
+    }, []);
 
 
 

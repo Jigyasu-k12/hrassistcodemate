@@ -95,7 +95,8 @@ const SignIn = ({ navigation }) => {
         if(response.Table1){
           let userData = {
             EMPL_NAME: Decrypt(response.Table1[0].EMPL_NAME),
-            profile_photo:response.Table1[0].profile_photo,
+            // profile_photo:response.Table1[0].profile_photo,
+            profile_photo:null,
             userId:user,
             EMPL_DESG_CODE:Decrypt(response.Table1[0].EMPL_DESG_CODE),
           };
