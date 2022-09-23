@@ -8,6 +8,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { Header } from './reusable/Header';
 import Text from './reusable/Text';
 import { GlobalColor } from '../constants/Colors';
+import { Decrypt } from '../Service/Helper';
+
 
 const Nomination = ({ navigation, route }) => {
     const [loader, setLoader] = useState(false)
@@ -97,7 +99,7 @@ const Nomination = ({ navigation, route }) => {
                                 <TouchableOpacity onPress={() => {
                                     handleDropDown(index)
                                 }} style={[styles.tabStyle, { borderBottomLeftRadius: item.isClicked ? 0 : 3, borderBottomRightRadius: item.isClicked ? 0 : 3 }]}>
-                                    <Text Bold style={{  }}>{item.group}</Text>
+                                    <Text Bold style={{  }}>{Decrypt(item.group)}</Text>
                                     {item.isClicked == true ? (<Ionicons name={'ios-chevron-up'} size={20} />) : (<Ionicons name={'ios-chevron-down'} size={20} />)}
                                 </TouchableOpacity>
 
@@ -107,8 +109,8 @@ const Nomination = ({ navigation, route }) => {
                                             item.nomine.length > 0 && item.nomine.map((dataItem)=>{
                                                 return(
                                                     <View style={[styles.tabStyle, { marginTop: 0, elevation: 0, borderTopEndRadius: 0, borderTopStartRadius: 0 }]}>
-                                                        <Text>{dataItem.split("#")[0]}</Text>
-                                                        <Text>{dataItem.split("#")[1]}%</Text>
+                                                        <Text>{Decrypt(dataItem.split("#")[0])}</Text>
+                                                        <Text>{Decrypt(dataItem.split("#")[1])}%</Text>
                                                     </View>
                                                 )
                                             })   

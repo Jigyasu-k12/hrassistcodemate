@@ -27,6 +27,7 @@ import Button from '../components/reusable/Button';
 import { LoadingScreen } from '../components/reusable/LoadingScreen';
 import { btoa, atob } from 'react-native-quick-base64';
 import CryptoJS from "react-native-crypto-js";
+import { Decrypt } from '../Service/Helper';
 
 
 
@@ -35,25 +36,6 @@ const SignIn = ({ navigation }) => {
   const { authContext, AppUserData } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(true);
   const [Loader, setLoader] = useState(false);
-
-
-
-  const decrypt = () => {
-    let string = "bQDXgDXfw4giqKfuziXJ9Q==";
-    let key = "kq5ruimd1d3wu3p6vy3b4dg770oi87xs";
-
-    var rawData = CryptoJS.enc.Base64.parse(string);
-    key = CryptoJS.enc.Latin1.parse(key);
-    var iv = CryptoJS.enc.Latin1.parse("");
-    var plaintextData = CryptoJS.AES.decrypt(
-        { ciphertext: rawData },
-        key,
-        { iv: iv });
-    var decryptedJWT = plaintextData.toString(CryptoJS.enc.Utf8);
-
-    console.log(decryptedJWT);
-  }
-
 
 
   const handleLogin = values => {
@@ -112,11 +94,10 @@ const SignIn = ({ navigation }) => {
         let response = res.Value;
         if(response.Table1){
           let userData = {
-            EMPL_NAME: response.Table1[0].EMPL_NAME,
+            EMPL_NAME: Decrypt(response.Table1[0].EMPL_NAME),
             profile_photo:response.Table1[0].profile_photo,
             userId:user,
-            EMPL_DESG_CODE:response.Table1[0].EMPL_DESG_CODE,
-  
+            EMPL_DESG_CODE:Decrypt(response.Table1[0].EMPL_DESG_CODE),
           };
           let contextData = {
             token: token,
@@ -192,7 +173,7 @@ const SignIn = ({ navigation }) => {
 
 
               <Formik
-                validationSchema={loginValidationSchema}
+                // validationSchema={loginValidationSchema}
                 initialValues={{ UserName: '', Password: '' }}
                 onSubmit={values => {
                   handleLogin(values);
