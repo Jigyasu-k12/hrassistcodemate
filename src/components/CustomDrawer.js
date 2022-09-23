@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext,useState} from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -20,6 +20,9 @@ import AuthContext from '../context/AuthContext';
 import { GlobalColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
 import Text from './reusable/Text';
+import * as ApiService from '../Utils/Utils';
+import { LoadingScreen } from './reusable/LoadingScreen';
+import Toast from 'react-native-simple-toast';
 
 // import SignIn from '../Auth/SignIn';
 
@@ -37,12 +40,16 @@ const myCustomeSharing = async () => {
 
 function CustomDrawer(props) {
   const {authContext, AppUserData} = useContext(AuthContext);
+  const [loader, setLoader] = useState(false);
+  const [refresh, setrefresh] = useState(false);
+
+
   const LogOutAlertOccurred = (title, body, btnTxt, btnTxt2) => {
     Alert.alert(title, body, [
       {
         text: btnTxt,
         onPress: () => {
-          authContext.signOut();
+          logoutApi();  
         },
       },
       {
@@ -53,7 +60,49 @@ function CustomDrawer(props) {
       },
     ]);
   };
+
+  const logoutApi =() =>{
+    let token = AppUserData.token
+    let userId = AppUserData?.data?.userId
+    let apiData = {
+      // UserName: userId,
+      // Password: "Maruti@131"
+    }
+    setLoader(true);
+    ApiService.PostMethode('/Logout', apiData, token, authContext)
+      .then(result => {
+        console.log(result);
+        stopLoader(false);
+        if(result &&result.Result == false){
+          Toast.show("Logout failed try again")
+        }else{
+          authContext.signOut();
+        }
+      })
+      .catch(error => {
+        stopLoader(false);
+        console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
+      });
+  }
+
+  const stopLoader = () => {
+    try {
+      setLoader(false);
+      setrefresh(false);
+    } catch(error){
+        console.log(error)
+    }
+  }
   const {navigation} = props;
+
+  if(loader){
+    return(
+      <LoadingScreen></LoadingScreen>
+    )
+  }
+
+  
   return (
       <DrawerContentScrollView style={{backgroundColor: '#ffffff'}} {...props}>
         <LinearGradient

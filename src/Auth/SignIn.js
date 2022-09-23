@@ -25,8 +25,10 @@ import { GlobalFontSize } from '../constants/FontSize';
 import TextInput from '../components/reusable/TextInput';
 import Button from '../components/reusable/Button';
 import { LoadingScreen } from '../components/reusable/LoadingScreen';
-
-
+// import { btoa, atob } from 'react-native-quick-base64';
+import CryptoJS from "react-native-crypto-js";
+import { Decrypt } from '../Service/Helper';
+import {decode as atob, encode as btoa} from 'base-64'
 
 
 const SignIn = ({ navigation }) => {
@@ -39,10 +41,10 @@ const SignIn = ({ navigation }) => {
   const handleLogin = values => {
     setLoader(true);
     let data = {
-      UserName: values.UserName,
-      Password: values.Password,
+      UserName: btoa(values.UserName),
+      Password: btoa(values.Password),
     };
-    // console.log('api data', data);
+    console.log('api data', data);
     AuthPost('Login', data)
       .then(res => {
         console.log(res);
@@ -91,12 +93,13 @@ const SignIn = ({ navigation }) => {
 
         let response = res.Value;
         console.log(res);
-        if(response.Table){
+        if(response.Table1){
           let userData = {
-            EMPL_NAME: response.Table[0].EMPL_NAME,
-            profile_photo:response.Table[0].profile_photo,
+            EMPL_NAME: Decrypt(response.Table1[0].EMPL_NAME),
+            // profile_photo:response.Table1[0].profile_photo,
+            profile_photo:null,
             userId:user,
-            EMPL_DESG_CODE:response.Table[0].EMPL_DESG_CODE,
+            EMPL_DESG_CODE:Decrypt(response.Table1[0].EMPL_DESG_CODE),
           };
           let contextData = {
             token: token,

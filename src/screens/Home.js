@@ -149,7 +149,7 @@ const Home = ({ navigation }) => {
                   />
                 ) : (
                   <Image
-                    source={require('../assets/Images/smile.jpg')}
+                    source={require('../assets/Images/Avtar.png')}
                     style={{ width: 40, height: 40, borderRadius: 50 }}
                   />
                 )}

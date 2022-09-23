@@ -13,6 +13,7 @@ import ListEmptyComponent from './reusable/ListEmptyComponent';
 import Button from './reusable/Button';
 import Text from './reusable/Text';
 import { GlobalColor } from '../constants/Colors';
+import { Decrypt } from '../Service/Helper';
 
 // create a component
 const EditProfile = ({ navigation, route }) => {
@@ -35,10 +36,10 @@ const EditProfile = ({ navigation, route }) => {
     ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
       .then(result => {
         stopLoader(false);
-        let responseData = result.Value.Table;
-        console.log(responseData);
-        let NominationData = result.Value.Table1
-        let Phone =result.Value.Table[0].EXTN
+        let responseData = result.Value.Table1;
+        // console.log(responseData);
+        let NominationData = result.Value.Table2
+        let Phone =Decrypt(result.Value.Table1[0].EXTN)
         setEmpPhone(Phone)
         setNominiData(NominationData)
         setEmployeeData(responseData);
@@ -179,16 +180,16 @@ const EditProfile = ({ navigation, route }) => {
             keyExtractor={( item) => item.EMPL_ID.toString()}
             renderItem={({ item, index }) => (
               <View key={item.EMPL_ID}>
-                <Text style={{ color: 'gray', fontSize: 20, textAlign: 'center', padding: 5, letterSpacing: 1 }}>{item.EMPL_NAME}</Text>
+                <Text style={{ color: 'gray', fontSize: 20, textAlign: 'center', padding: 5, letterSpacing: 1 }}>{Decrypt(item.EMPL_NAME)}</Text>
                 <View style={styles.box}>
                   <Text style={styles.header} >Vertical / Div ./Department</Text>
-                  <Text>{item.DIVN_DIRC_CODE} / {item.EMPL_DIVN_CODE} / {item.EMPL_DEPT_CODE}</Text>
+                  <Text>{Decrypt(item.DIVN_DIRC_CODE)} / {Decrypt(item.EMPL_DIVN_CODE)} / {Decrypt(item.EMPL_DEPT_CODE)}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text style={styles.header}>Personal Phone Number</Text>
                   <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <TouchableOpacity onPress={()=>Linking.openURL(`tel:${item.PRESENT_PHONE}`)}>
-                      <Text style={{color:'#4174D0', fontWeight:'700'}}>{item.PRESENT_PHONE}</Text>
+                    <TouchableOpacity onPress={()=>Linking.openURL(`tel:${Decrypt(item.PRESENT_PHONE)}`)}>
+                      <Text style={{color:'#4174D0', fontWeight:'700'}}>{Decrypt(item.PRESENT_PHONE)}</Text>
                     </TouchableOpacity>
                     <Switch
                       trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -210,16 +211,16 @@ const EditProfile = ({ navigation, route }) => {
                 </View>
                 <View style={styles.box}>
                   <Text style={styles.header}>Offical Phone Number</Text>
-                  <Text> {item.Phone}</Text>
+                  <Text> {Decrypt(item.Phone)}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text style={styles.header}>Email Id</Text>
-                  <Text> {item.EMPL_EMAIL_ID ? (item.EMPL_EMAIL_ID) +"@maruti.co.in": "N.A"}</Text>
+                  <Text> {Decrypt(item.EMPL_EMAIL_ID) ? (Decrypt(item.EMPL_EMAIL_ID)) +"@maruti.co.in": "N.A"}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text style={styles.header}>HRBP</Text>
                   <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text>{item.HRBP}</Text>
+                    <Text>{Decrypt(item.HRBP)}</Text>
                     <Ionicons
                       name="md-call-sharp"
                       size={30}
@@ -233,12 +234,12 @@ const EditProfile = ({ navigation, route }) => {
                 <View style={styles.box}>
                   <Text style={styles.header}>Permanent Address</Text>
 
-                  <Text>{item.PERMANENT_ADDRESS_LINE1}, {item.PERMANENT_ADDRESS_LINE2}, {item.PERMANENT_ADDRESS_LINE3}, {item.PERMANENT_CITY}, {item.PERMANENT_ADDRESS}, {item.PERMANENT_PINCODE}</Text>
+                  <Text>{Decrypt(item.PERMANENT_ADDRESS_LINE1)}, {Decrypt(item.PERMANENT_ADDRESS_LINE2)}, {Decrypt(item.PERMANENT_ADDRESS_LINE3)}, {Decrypt(item.PERMANENT_CITY)}, {Decrypt(item.PERMANENT_ADDRESS)}, {Decrypt(item.PERMANENT_PINCODE)}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text style={styles.header}>Present Address</Text>
                   <Text>
-                    {item.PRESENT_ADDRESS_LINE1}, {item.PRESENT_ADDRESS_LINE2}, {item.PRESENT_ADDRESS_LINE3}, {item.PRESENT_CITY}, {item.PRESENT_ADDRESS}, {item.PRESENT_PINCODE} 
+                    {Decrypt(item.PRESENT_ADDRESS_LINE1)}, {Decrypt(item.PRESENT_ADDRESS_LINE2)}, {Decrypt(item.PRESENT_ADDRESS_LINE3)}, {Decrypt(item.PRESENT_CITY)}, {Decrypt(item.PRESENT_ADDRESS)}, {Decrypt(item.PRESENT_PINCODE)} 
                     </Text>
                 </View>
                 <View style={styles.box}>

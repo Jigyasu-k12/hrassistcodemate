@@ -115,7 +115,11 @@ export default function App() {
       let params = {debug:false,checkEmulator:true}
       //custom method with all security checking 
       JailMonkey.isSafe(params).then(()=>{
-        console.log("is not rooted/jailbreak/emulator/simulator")
+        console.log("is not rooted/jailbreak/emulator/simulator");
+        if(JailMonkey.isJailBroken()){
+          RNExitApp.exitApp();
+          return;
+        }
         // is not rooted/jailbreak/emulator/simulator
       },()=>{
         if(Platform.OS === "ios"){
