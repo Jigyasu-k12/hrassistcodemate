@@ -1,11 +1,12 @@
 //import liraries
 import React, { useEffect, useState, useContext } from 'react';
-import { View, StyleSheet, TouchableOpacity, FlatList, Platform, Alert } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, FlatList, Platform, Alert, PermissionsAndroid } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import moment from 'moment';
-import Geolocation from '@react-native-community/geolocation';
+// import Geolocation from '@react-native-community/geolocation';
+import Geolocation from 'react-native-geolocation-service';
 
 import AuthContext from '../../context/AuthContext';
 import Toast from 'react-native-simple-toast'
@@ -17,6 +18,7 @@ import { GlobalColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
+import RNMockLocationDetector from "react-native-mock-location-detector";
 
 
 const MarkAttendence = () => {
@@ -30,7 +32,12 @@ const MarkAttendence = () => {
     const [horizental, setHorizental] = useState(false);
     const [userLocation, setUserLocation] = useState('');
     const { authContext, AppUserData } = useContext(AuthContext);
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useState({
+      latitude:null, 
+      longitude:null
+    });
+    const [locationStatus, setLocationStatus] = useState(true);
+
 
   
     // To Hide or show based on getGpsAvailable
@@ -48,37 +55,97 @@ const MarkAttendence = () => {
     const checkGpsAvailable = () => {
       setShowAttandanceTabs(true);
       setMarkAttandance(0);
-      getUserCurrentLocation();
+      // getUserCurrentLocation();
       getLocationLisenceKey();
     }
+
+
+
+    useEffect(() => {
+      const requestLocationPermission = async () => {
+        if (Platform.OS === 'ios') {
+          // getOneTimeLocation();
+          // subscribeLocationLocation();
+        } else {
+          try {
+            const granted = await PermissionsAndroid.request(
+              PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+              {
+                title: 'Location Access Required',
+                message: 'This App needs to Access your location',
+              },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+              //To Check, If Permission is granted
+              setLocationStatus(true);
+              // subscribeLocationLocation();
+            } else {
+              setLocationStatus(false);
+            }
+          } catch (err) {
+            console.warn(err);
+          }
+        }
+      };
+
+      requestLocationPermission();
+      return () => {
+        // Geolocation.clearWatch(watchID);
+      };
+    }, []);
+
+
   
   
-    const getUserCurrentLocation = () => {
-      Geolocation.getCurrentPosition(position => {
-        console.log('position', position);
-        const { latitude, longitude } = position.coords;
-        setLocation({
-          latitude,
-          longitude,
-        });
-      },
-        error => console.log('Error', JSON.stringify(error)),
-        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-      );
-    }
+    // const getUserCurrentLocation = () => {
+    //   Geolocation.getCurrentPosition(position => {
+    //     console.log('position', position);
+    //     const { latitude, longitude } = position.coords;
+    //     setLocation({
+    //       latitude,
+    //       longitude,
+    //     });
+    //   },
+    //     error => console.log('Error', JSON.stringify(error)),
+    //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    //   );
+    // }
   
     
   
-    const getMobDevice = () => {
+    const getMobDevice =  async(reset = false) => {
+      const isLocationMocked = await  RNMockLocationDetector.checkMockLocationProvider();
+      if (isLocationMocked) {
+        Alert.alert(
+          "Error",
+          "Location is mocked please retry",
+          [
+            {
+              text: "Okay",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel"
+            },
+            // { text: "OK", onPress: () => {
+            //   Linking.openURL(vesionNo[0]);
+            // } }
+          ]
+        );
+        return;
+      }
+
+
+
       let apiData = { "UserName": AppUserData?.data?.userId };
       setLoader(true);
+
+      /*
       if (Platform.OS == 'android') {
         // AppUserData?.data?.userId 222852
         let token = AppUserData.token;
         ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
           .then(result => {
             console.log("APiresult GetMobDevice", result);
-            setLoader(false);
+            // setLoader(false);
             if (result.Value.length > 0) {
               // DEVC_ID: "1"
               // DEVC_NAME: "ONEPLUS A3003, Redmi Note 4"
@@ -100,28 +167,73 @@ const MarkAttendence = () => {
             ApiService.showErrorMessage(error, authContext);
           });
       }
-  
-      if (location.latitude && location.longitude) {
-        let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(location.latitude) + ',' + parseFloat(location.longitude) + '&key=' + MapLisenceKey
+      */
+
+      // console.log(location);
+      // return;
+
+
+
+      Geolocation.getCurrentPosition(position => {
+        setLoader(true);
+        console.log('position', position);
+        const { latitude, longitude } = position.coords;
+        let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(latitude) + ',' + parseFloat(longitude) + '&key=' + MapLisenceKey
         console.log(url);
         ApiService.getRawurl(url)
           .then(result => {
             console.log("APiresult getRawurl", result);
-            setLoader(false);
-            let location = result.results[0].formatted_address;
-            setUserLocation(location)
-            let date = "13-11-1993";
-            CallAPIToStoreAddress(location, date, location.latitude, location.longitude);
-  
+            // setLoader(false);
+            let userlocation = result.results[0].formatted_address;
+            setUserLocation(userlocation)
+            let date = moment(new Date()).format('DD-MMM-YYYY');
+
+            if(!reset){              
+              CallAPIToStoreAddress(userlocation, date, latitude, longitude);
+            }else{
+              setLoader(false);
+            }
           })
           .catch(error => {
             setLoader(false);
+            Alert.alert(
+              "Error",
+              "Unable to get location name retry",
+              [
+                {
+                  text: "Okay",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                // { text: "OK", onPress: () => {
+                //   Linking.openURL(vesionNo[0]);
+                // } }
+              ]
+            );
+
             // console.log('Error occurred==> APiresult getRawurl', error);
-            ApiService.showErrorMessage(error, authContext);
+            // ApiService.showErrorMessage(error, authContext);
           });
-      } else {
-        CallAPIToStoreAddress();
-      }
+
+
+      },
+        error => {
+          console.log(error);
+          setLoader(false);
+          Alert.alert(
+            "Error",
+            "Unable to detect current location please reset location & retry",
+            [
+              {
+                text: "Okay",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+            ]
+          );
+        },
+        { enableHighAccuracy: false, timeout: 2000, maximumAge: 1000 },
+      );
     };
   
   
@@ -130,8 +242,14 @@ const MarkAttendence = () => {
       let EmplID = AppUserData?.data?.userId
       let apiData = {
         // EmplID: EmplID
-        StaffNo: EmplID
+        StaffNo: EmplID,
+        Longitude: lon,
+        Latitude: lat,
+        Location: location,
+        PunchDate:dati
       }
+
+      console.log(apiData);
       setLoader(true);
       ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
         .then(result => {
@@ -180,9 +298,7 @@ const MarkAttendence = () => {
 
   return (
     <View style={styles.container}>      
-
-      <View style={{ flex: 1 }}>
-       
+      <View style={{ flex: 1 }}>       
           <View>
             <TouchableOpacity style={styles.content}>
               <Text>Live Location
@@ -198,10 +314,18 @@ const MarkAttendence = () => {
               <Text style={{ textAlign: 'center' }}>{userLocation}</Text>
 
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => getUserCurrentLocation()} style={styles.resetLocation}>
+            <TouchableOpacity onPress={() => getMobDevice(true)} style={styles.resetLocation}>
               <Text style={styles.resetLocationTxt}>Reset Location</Text>
               <Ionicons name='ios-locate-outline' size={30} color={'green'} />
             </TouchableOpacity>
+
+
+                {
+                  !locationStatus ?
+                  <Text style={{ textAlign:'center', marginTop:5}}>
+                  Location Permission Denied
+                </Text>: null
+                }
 
           </View>
         
