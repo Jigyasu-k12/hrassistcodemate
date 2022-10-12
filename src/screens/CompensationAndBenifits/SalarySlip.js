@@ -19,6 +19,7 @@ import { GlobalColor } from '../../constants/Colors';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { showErrorMessage } from '../../Utils/Utils';
 import { GlobalFontSize } from '../../constants/FontSize';
+import { Decrypt } from '../../Service/Helper';
 
 const SalarySlip = ({ navigation }) => {
 
@@ -48,7 +49,7 @@ const SalarySlip = ({ navigation }) => {
         setLoader(true);
         ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
             .then(result => {
-                console.log('GetSalaryMonth', result);
+                // console.log('GetSalaryMonth', result);
                 // Stop Loader
                 stopLoader()
                 let responseData = result.Value
@@ -73,7 +74,7 @@ const SalarySlip = ({ navigation }) => {
         let token = AppUserData.token
         let EmplID = AppUserData?.data?.userId
         let apiData = {
-            "SalaryMonth": data,
+            "SalaryMonth": Decrypt(data),
             "EmplID": EmplID,
         }
         console.log("SalaryMonth", apiData)
@@ -100,28 +101,27 @@ const SalarySlip = ({ navigation }) => {
         let EmplID = AppUserData?.data?.userId
         let apiData = {
             "EmplID": EmplID,
-            "SalaryMonth": data,
+            "SalaryMonth": Decrypt(data),
             "SalType": "0"
-
         }
         console.log("GetSalaryData", apiData)
         //set Loader
         setLoader(true);
         ApiService.PostMethode('/GetSalaryData', apiData, token, authContext)
             .then(result => {
-                // Stop Loader
-                
-                let responseData = result.Value.Table1
-                let responseData2 = result.Value.Table2
-                let responseData3 = result.Value.Table3
-                let responseData4 = result.Value.Table4
+                console.log(result.Value)
+                // Stop Loader                
+                let responseData = result.Value.Table2
+                let responseData2 = result.Value.Table3
+                let responseData3 = result.Value.Table4
+                let responseData4 = result.Value.Table5
                 setTable1Data(responseData)
                 setTable2Data(responseData2)
                 setTable3Data(responseData3)
                 setTable4Data(responseData4)
-                console.log('GetSalaryData', responseData2);
-                console.log('GetSalaryData3', responseData3,);
-                console.log('GetSalaryData4', responseData4,);
+                // console.log('GetSalaryData', responseData2);
+                // console.log('GetSalaryData3', responseData3,);
+                // console.log('GetSalaryData4', responseData4,);
                 stopLoader();
             })
             .catch(error => {
@@ -137,10 +137,9 @@ const SalarySlip = ({ navigation }) => {
     useEffect(() => {
         GetMonth()
         GetSalaryData()
-        GetSalaryTypeApi()
-        console.log("first massage", table3Data)
+        // GetSalaryTypeApi()
     }, [])
-    console.log("month data", month);
+    // console.log("month data", month);
 
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
@@ -234,7 +233,7 @@ const SalarySlip = ({ navigation }) => {
                             paddingHorizontal: 10,
                         }}>
                         <Text Bold>
-                            {defaultDate}
+                            {Decrypt(defaultDate)}
                         </Text>
                         <Feather name="corner-up-right" size={20} />
                     </View>
@@ -278,7 +277,7 @@ const SalarySlip = ({ navigation }) => {
                                         toggleModal()
                                     }}
                                     style={styles.textContainer}>
-                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: GlobalFontSize.P }}>{item.SHIS_YYMM_CODE}</Text>
+                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: GlobalFontSize.P }}>{Decrypt(item.SHIS_YYMM_CODE)}</Text>
                                 </TouchableOpacity>
                             )}
                         />
@@ -302,7 +301,7 @@ const SalarySlip = ({ navigation }) => {
                             salaryType && salaryType.map((item) => {
                                 return (
                                     <Text Bold>
-                                        {item.PYDT_DESCRIPTION}
+                                        {Decrypt(item.PYDT_DESCRIPTION)}
                                     </Text>
                                 )
                             })
@@ -340,16 +339,16 @@ const SalarySlip = ({ navigation }) => {
                                     return (
                                         <View style={[styles.Table]}>
                                             <View style={[styles.tableRow, {alignItems:'center'}]}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2, textAlign:'center' }}>{item.MDESC}</Text>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2, textAlign:'center' }}>{Decrypt(item.MDESC)}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{item.EARNING}</Text>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{item.DED}</Text>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{item.SHIS_REMARKS}</Text>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.SHIS_REMARKS)}</Text>
                                             </View>
                                         </View>
                                     )
@@ -378,13 +377,13 @@ const SalarySlip = ({ navigation }) => {
                                     return (
                                         <View style={[styles.Table, { justifyContent:'space-between' }]}>
                                             <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.EARNING}</Text>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.DED}</Text>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
-                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.NET}</Text>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.NET)}</Text>
                                             </View>
                                         </View>
                                     )
@@ -403,7 +402,7 @@ const SalarySlip = ({ navigation }) => {
                                 renderItem={({ item, index }) => {
                                     return (
                                         <View style={[styles.Table, { flexDirection: 'column' }]}>
-                                            <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.GLMS_MESSAGES}</Text>
+                                            <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.GLMS_MESSAGES)}</Text>
 
                                         </View>
                                     )
@@ -423,7 +422,7 @@ const SalarySlip = ({ navigation }) => {
 
                                         return (
                                             <View style={[styles.Table, { flexDirection: 'column' }]}>
-                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{item.EXMS_MESSAGES}</Text>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EXMS_MESSAGES)}</Text>
 
                                             </View>
                                         )

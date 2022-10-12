@@ -17,6 +17,7 @@ import { GlobalColor } from '../../constants/Colors';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { showErrorMessage } from '../../Utils/Utils';
 import { Header } from '../../components/reusable/Header';
+import { Decrypt } from '../../Service/Helper';
 
 
 
@@ -58,8 +59,9 @@ const TaxSavings = () => {
           //remove loader
           stopLoader()
           if(result?.Value){
+            console.log(result);
             //set Data
-            setTaxSaving(result?.Value?.Table2)
+            setTaxSaving(result?.Value?.Table3)
           }
         } catch (error) {    
           //remove loader
@@ -108,8 +110,8 @@ const TaxSavings = () => {
                             keyExtractor={({ item, index }) => index}
                             renderItem={({ item, index }) => (
                                 <View style={styles.textContainerFlatList}>
-                                    <View style={{ width: '70%' }}><Text>{item.SAVG_DESC}</Text></View>
-                                    <Text>{item.SVDT_AMT}</Text>
+                                    <View style={{ width: '70%' }}><Text>{Decrypt(item.SAVG_DESC)}</Text></View>
+                                    <Text>{Decrypt(item.SVDT_AMT)}</Text>
                                     {/* <View style={{width:'50%',justifyContent:'flex-end'}}>></View> */}
                                 </View>
                             )}

@@ -14,3 +14,13 @@ export const Decrypt = (string="") => {
     let decryptedJWT = plaintextData.toString(CryptoJS.enc.Utf8);
     return decryptedJWT;
   }
+
+  export const encrypyDecrypt = (string="") => {  
+    let key = "kq5ruimd1d3wu3p6vy3b4dg770oi87xs";
+    let parsedkey = CryptoJS.enc.Latin1.parse(key);
+    let iv = CryptoJS.enc.Latin1.parse("");
+    let encrypted = CryptoJS.AES.encrypt(string, parsedkey, {iv:iv});
+    return encrypted.toString();
+    // console.log(encrypted.toString());
+    // return "abcd";
+  }

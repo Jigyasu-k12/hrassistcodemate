@@ -7,7 +7,8 @@ import {
   // TextInput,
   TouchableOpacity,
   ActivityIndicator,
-  SafeAreaView
+  SafeAreaView,
+  NativeModules
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -27,9 +28,9 @@ import Button from '../components/reusable/Button';
 import { LoadingScreen } from '../components/reusable/LoadingScreen';
 import { btoa, atob } from 'react-native-quick-base64';
 import CryptoJS from "react-native-crypto-js";
-import { Decrypt } from '../Service/Helper';
+import { Decrypt, encrypyDecrypt } from '../Service/Helper';
 
-
+// var Aes = NativeModules.Aes
 
 
 const SignIn = ({ navigation }) => {
@@ -38,13 +39,22 @@ const SignIn = ({ navigation }) => {
   const [Loader, setLoader] = useState(false);
 
 
+
+  // const encryptData = (text, key) => {
+  //   return Aes.sha1(text).then(iv => {
+  //     console.log(iv);
+  //       return iv;
+  //   })
+  // }
+
   const handleLogin = values => {
-    setLoader(true);
     let data = {
-      UserName: btoa(values.UserName),
-      Password: btoa(values.Password),
+      UserName: encrypyDecrypt(values.UserName),
+      Password: encrypyDecrypt(values.Password),
     };
-    console.log('api data', data);
+    // console.log('api data', data);
+    // return;
+    setLoader(true);
     AuthPost('Login', data)
       .then(res => {
         console.log(res);
