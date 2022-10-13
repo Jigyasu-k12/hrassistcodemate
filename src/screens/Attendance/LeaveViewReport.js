@@ -89,11 +89,11 @@ const LeaveViewReport = () => {
   const getEmpLeaveDetail = (fnyear, isrefresh = false) => {
 
     console.log(fnyear);
-    // if (!isrefresh) {
-    //   setLoader(true);
-    // } else {
-    //   setrefresh(true);
-    // }
+    if (!isrefresh) {
+      setLoader(true);
+    } else {
+      setrefresh(true);
+    }
 
     var curryear = new Date().getFullYear().toString().substring(0, 2);
     var from;
