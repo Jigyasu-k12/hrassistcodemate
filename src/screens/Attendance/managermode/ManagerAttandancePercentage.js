@@ -32,6 +32,7 @@ import Button from '../../../components/reusable/Button';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
 import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
+import {Decrypt} from '../../../Service/Helper';
 
 
 
@@ -66,6 +67,7 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
       "Years":3
     };
 
+    console.log('apiData==>', apiData)
 
     ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)
       .then(result => {
