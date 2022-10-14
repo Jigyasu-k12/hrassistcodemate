@@ -30,6 +30,7 @@ import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { CommonActions } from '@react-navigation/native';
 import { GlobalFontSize } from '../../constants/FontSize';
+import { Decrypt } from '../../Service/Helper';
 
 
 
@@ -60,8 +61,9 @@ const VisitorDetails = ({navigation,route}) => {
          "LocationCode" : route.params.visitorpayload.location,
          "VisitDateTo" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
          "VglmID" : "",
-         "MultipleEmployeeIndicator" : route.params.visitorpayload.empId, 
+         "MultipleEmployeeIndicator" : Decrypt(route.params.visitorpayload.empId), 
       }
+    console.log('apiData===>', apiData)
     setLoader(true);
     ApiService.PostMethode('/SubmitVGPE', apiData, token, authContext)
       .then(result => {
