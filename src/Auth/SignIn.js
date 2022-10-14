@@ -26,7 +26,7 @@ import { GlobalFontSize } from '../constants/FontSize';
 import TextInput from '../components/reusable/TextInput';
 import Button from '../components/reusable/Button';
 import { LoadingScreen } from '../components/reusable/LoadingScreen';
-import { btoa, atob } from 'react-native-quick-base64';
+// import { btoa, atob } from 'react-native-quick-base64';
 import CryptoJS from "react-native-crypto-js";
 import { Decrypt, encrypyDecrypt } from '../Service/Helper';
 
