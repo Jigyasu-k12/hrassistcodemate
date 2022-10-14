@@ -7,7 +7,8 @@ import {
   // TextInput,
   TouchableOpacity,
   ActivityIndicator,
-  SafeAreaView
+  SafeAreaView,
+  NativeModules
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -25,10 +26,11 @@ import { GlobalFontSize } from '../constants/FontSize';
 import TextInput from '../components/reusable/TextInput';
 import Button from '../components/reusable/Button';
 import { LoadingScreen } from '../components/reusable/LoadingScreen';
-// import { btoa, atob } from 'react-native-quick-base64';
+import { btoa, atob } from 'react-native-quick-base64';
 import CryptoJS from "react-native-crypto-js";
-import { Decrypt } from '../Service/Helper';
-import {decode as atob, encode as btoa} from 'base-64'
+import { Decrypt, encrypyDecrypt } from '../Service/Helper';
+
+// var Aes = NativeModules.Aes
 
 
 const SignIn = ({ navigation }) => {
@@ -38,13 +40,21 @@ const SignIn = ({ navigation }) => {
 
 
 
+  // const encryptData = (text, key) => {
+  //   return Aes.sha1(text).then(iv => {
+  //     console.log(iv);
+  //       return iv;
+  //   })
+  // }
+
   const handleLogin = values => {
-    setLoader(true);
     let data = {
-      UserName: btoa(values.UserName),
-      Password: btoa(values.Password),
+      UserName: encrypyDecrypt(values.UserName),
+      Password: encrypyDecrypt(values.Password),
     };
-    console.log('api data', data);
+    // console.log('api data', data);
+    // return;
+    setLoader(true);
     AuthPost('Login', data)
       .then(res => {
         console.log(res);
@@ -89,10 +99,9 @@ const SignIn = ({ navigation }) => {
     ApiService.PostMethode('/GetEmployeeProfile', data, token)
       .then(res => {
 
-        console.log(res);
+        console.log(res.Value.Table1[0].EMPL_NAME);
 
         let response = res.Value;
-        console.log(res);
         if(response.Table1){
           let userData = {
             EMPL_NAME: Decrypt(response.Table1[0].EMPL_NAME),
@@ -128,7 +137,7 @@ const SignIn = ({ navigation }) => {
     UserName: yup
       .string()
       .required('Username is required'),
-      // .min(6, 'min 6 digit is require ')
+      // .min(6, 'min 6 digit is required')
       // .max(6, 'max 6 digit allowed'),
     Password: yup
       .string()
@@ -175,7 +184,7 @@ const SignIn = ({ navigation }) => {
 
 
               <Formik
-                validationSchema={loginValidationSchema}
+                // validationSchema={loginValidationSchema}
                 initialValues={{ UserName: '', Password: '' }}
                 onSubmit={values => {
                   handleLogin(values);

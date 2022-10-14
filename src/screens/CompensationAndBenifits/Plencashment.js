@@ -15,6 +15,8 @@ import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import { showErrorMessage } from '../../Utils/Utils';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import moment from 'moment';
+import { Decrypt } from '../../Service/Helper';
+
 
 const Plencashment = ({ navigation, route }) => {
 
@@ -141,19 +143,23 @@ const Plencashment = ({ navigation, route }) => {
         console.log("Get Financial Year .....",result.Value);
         setLoader(false);
         if (result.Value) {
-          setFinancialYear(result.Value.Table);
-          if (result.Value && result.Value.Table[0].FNYR_YEAR) {
-            // setSelectedYear(result.Value.Table[0].FNYR_YEAR);
-            // getEmpLeaveDetail(result.Value.Table[0].FNYR_YEAR);
+
+          console.log("====================================",result.Value)
+
+
+          setFinancialYear(result.Value.Table1);
+          if (result.Value && result.Value.Table1[0].FNYR_YEAR) {
+            // setSelectedYear(result.Value.Table1[0].FNYR_YEAR);
+            // getEmpLeaveDetail(result.Value.Table1[0].FNYR_YEAR);
 
             var curryear = ((new Date().getFullYear()).toString()).substring(0, 2);
             var from;
-            if (parseInt(((result.Value.Table[0].FNYR_YEAR.toString()).substring(0, 2))) == 99) {
-              from = '01-apr-' + (parseInt(curryear) - 10) + ((result.Value.Table[0].FNYR_YEAR.toString()).substring(0, 2));
+            if (parseInt(((Decrypt(result.Value.Table1[0].FNYR_YEAR).toString()).substring(0, 2))) == 99) {
+              from = '01-apr-' + (parseInt(curryear) - 10) + ((Decrypt(result.Value.Table1[0].FNYR_YEAR).toString()).substring(0, 2));
             } else {
-              from = '01-apr-' + curryear + ((result.Value.Table[0].FNYR_YEAR.toString()).substring(0, 2));
+              from = '01-apr-' + curryear + ((Decrypt(result.Value.Table1[0].FNYR_YEAR).toString()).substring(0, 2));
             }
-            var to = '31-mar-' + curryear + ((result.Value.Table[0].FNYR_YEAR.toString()).substring(2, 4));
+            var to = '31-mar-' + curryear + ((Decrypt(result.Value.Table1[0].FNYR_YEAR).toString()).substring(2, 4));
             setYearFrom(from);
             setYearTo(to);
           }
@@ -352,15 +358,15 @@ const Plencashment = ({ navigation, route }) => {
               }}>
                 <View style={styles.box}>
                   <Text>Current balance</Text>
-                  <Text Bold>{encashment.PL_BAL && encashment.PL_BAL}</Text>
+                  <Text Bold>{Decrypt(encashment.PL_BAL) && Decrypt(encashment.PL_BAL)}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text>Current year opening balance</Text>
-                  <Text Bold>{encashment.PL_CR_FWD && encashment.PL_CR_FWD}</Text>
+                  <Text Bold>{Decrypt(encashment.PL_CR_FWD) && Decrypt(encashment.PL_CR_FWD)}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text>PL encashable</Text>
-                  <Text Bold>{encashment.PL_ENCASHABLE && encashment.PL_ENCASHABLE}</Text>
+                  <Text Bold>{Decrypt(encashment.PL_ENCASHABLE) && Decrypt(encashment.PL_ENCASHABLE)}</Text>
                 </View>
                 <View style={styles.box}>
                   <Text>Encash</Text>
@@ -397,9 +403,9 @@ const Plencashment = ({ navigation, route }) => {
                         borderWidth: 0.5,
                         borderColor: GlobalColor.LightDark
                       }]}>
-                        <Text>{item.PROCESSDATE ? moment(item.PROCESSDATE).format('MM/DD/YYYY'):''}</Text>
-                        <Text>{item.PROCESS_DESCRIPTION}</Text>
-                        <Text>{item.ENTRY_EARN_VALUE}</Text>
+                        <Text>{item.PROCESSDATE ? moment(Decrypt(item.PROCESSDATE)).format('MM/DD/YYYY'):''}</Text>
+                        <Text>{Decrypt(item.PROCESS_DESCRIPTION)}</Text>
+                        <Text>{Decrypt(item.ENTRY_EARN_VALUE)}</Text>
                       </TouchableOpacity>
                       </ScrollView>
                     )
@@ -423,11 +429,11 @@ const Plencashment = ({ navigation, route }) => {
                       <>
                         <View style={[styles.reportHeader, { marginTop: 15 }]}>
                           <Text>Financial Year</Text>
-                          <Text Bold>{item.MENT_FNYR_YEAR}</Text>
+                          <Text Bold>{Decrypt(item.MENT_FNYR_YEAR)}</Text>
                         </View>
                         <View style={[styles.reportHeader, { marginTop: 5 }]}>
                           <Text>Staff No</Text>
-                          <Text Bold>{item.MENT_EMPL_ID}</Text>
+                          <Text Bold>{Decrypt(item.MENT_EMPL_ID)}</Text>
                         </View>
                       </>
 
@@ -477,9 +483,9 @@ const Plencashment = ({ navigation, route }) => {
                         borderWidth: 0.5,
                         borderColor: GlobalColor.LightDark
                       }]}>
-                        <Text>{item.LTCF_FAML_NAME}</Text>
-                        <Text>{item.LTCF_YEARS}</Text>
-                        <Text>{item.RLTY_DESC}</Text>
+                        <Text>{Decrypt(item.LTCF_FAML_NAME)}</Text>
+                        <Text>{Decrypt(item.LTCF_YEARS)}</Text>
+                        <Text>{Decrypt(item.RLTY_DESC)}</Text>
                       </TouchableOpacity>
                     )
                   })}

@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useContext, useEffect } from 'react';
-import { View, StyleSheet, Image, ScrollView, SafeAreaView, Alert, Linking } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, SafeAreaView , Alert, Linking } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import TouchableCard from '../components/Touchable';

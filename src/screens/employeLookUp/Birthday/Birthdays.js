@@ -1,5 +1,5 @@
 //import liraries
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -10,37 +10,36 @@ import {
   Animated,
   ActivityIndicator,
   Linking,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import Feather from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
-import Toast from 'react-native-simple-toast'
+import Toast from 'react-native-simple-toast';
 import * as ApiService from '../../../Utils/Utils';
-import AuthContext from '../../../context/AuthContext'
+import AuthContext from '../../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import { useFocusEffect } from '@react-navigation/native';
-import { GlobalColor } from '../../../constants/Colors';
-import { GlobalFontSize } from '../../../constants/FontSize';
+import {useFocusEffect} from '@react-navigation/native';
+import {GlobalColor} from '../../../constants/Colors';
+import {GlobalFontSize} from '../../../constants/FontSize';
 import Text from '../../../components/reusable/Text';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
-import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
-
+import {LoadingScreen} from '../../../components/reusable/LoadingScreen';
+import {Decrypt} from '../../../Service/Helper';
 
 // create a component
 const Birthdays = () => {
-  const { authContext, AppUserData } = useContext(AuthContext);
+  const {authContext, AppUserData} = useContext(AuthContext);
   const [isModalVisible, setModalVisible] = useState(false);
-  const [loader, setLoader] = useState(false)
-  const [todayBirthday, setTodayBirthday] = useState([])
-  const [tomorrowBirthday, SetTomorrowBirthday] = useState([])
-  const [modalItem, setModalItem] = useState()
+  const [loader, setLoader] = useState(false);
+  const [todayBirthday, setTodayBirthday] = useState([]);
+  const [tomorrowBirthday, SetTomorrowBirthday] = useState([]);
+  const [modalItem, setModalItem] = useState();
   const [staffNo, setStaffNo] = useState();
-  const [empPhoto, setEmpPhoto] = useState()
+  const [empPhoto, setEmpPhoto] = useState();
   const [refresh, setrefresh] = useState(false);
   const [modalLoader, setmodalLoader] = useState(false);
-
 
   const stopLoader = () => {
     try {
@@ -48,35 +47,34 @@ const Birthdays = () => {
       setrefresh(false);
       setmodalLoader(false);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const PostBirthdayData = () => {
-    let apiData = { PFlag: '' }
+    let apiData = {PFlag: ''};
     let token = AppUserData.token;
     setLoader(true);
     ApiService.PostMethode('/GetEmplBirthday', apiData, token, authContext)
       .then(result => {
-        console.log("GetEmplBirthday", result);
+        console.log('GetEmplBirthday', result);
         stopLoader(false);
-        let tommorowData = []
-        let todayData = []
-        let ApiValue = result.Value
-        ApiValue.filter((Element) => {
+        let tommorowData = [];
+        let todayData = [];
+        let ApiValue = result.Value;
+        ApiValue.filter(Element => {
           // console.log('Element', Element);
-          let todayResult = Element.BIRTHDATE.includes("TODAY");
+          let todayResult = Decrypt(Element.BIRTHDATE).includes('TODAY');
           // console.log("today",todayResult);
-          let tommorowResult = Element.BIRTHDATE.includes("TOMORROW");
+          let tommorowResult = Decrypt(Element.BIRTHDATE).includes('TOMORROW');
           if (todayResult) {
-            todayData.push(Element)
-            setTodayBirthday(todayData)
+            todayData.push(Element);
+            setTodayBirthday(todayData);
+          } else if (tommorowResult) {
+            tommorowData.push(Element);
+            SetTomorrowBirthday(tommorowData);
           }
-          else if (tommorowResult) {
-            tommorowData.push(Element)
-            SetTomorrowBirthday(tommorowData)
-          }
-        })
+        });
       })
       .catch(error => {
         stopLoader(false);
@@ -85,20 +83,22 @@ const Birthdays = () => {
       });
   };
 
-
-
-  // emp Profile Data  
-  const GetUserDetails = (item) => {
-    let apiData = { "UserName": item['Staff No'] };
-    let token = AppUserData.token
+  // emp Profile Data
+  const GetUserDetails = item => {
+    let apiData = {UserName: Decrypt(item['Staff No'])};
+    console.log('api Data==>', apiData);
+    let token = AppUserData.token;
     setmodalLoader(true);
     setModalVisible(true);
     ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
       .then(result => {
-        let response = result.Value
-        if (response.Table) {
-          // console.log("employeeresult", response.Table[0].profile_photo,);
-          let profile = response.Table[0] && response.Table ? response.Table[0].profile_photo : '';
+        let response = result.Value;
+        if (response.Table1) {
+          // console.log("employeeresult", response.Table1[0].profile_photo,);
+          let profile =
+            response.Table1[0] && response.Table1
+              ? response.Table1[0].profile_photo
+              : '';
           setModalItem(item);
           setEmpPhoto(profile);
           stopLoader(false);
@@ -106,7 +106,7 @@ const Birthdays = () => {
         } else {
           stopLoader(false);
           setModalVisible(false);
-          Toast.show("User not found");
+          Toast.show('User not found');
         }
       })
       .catch(error => {
@@ -117,21 +117,16 @@ const Birthdays = () => {
       });
   };
 
-
   useFocusEffect(
     React.useCallback(() => {
       const unsubscribe = PostBirthdayData();
       return () => unsubscribe;
-    }, [])
-  )
-
-
+    }, []),
+  );
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
-
-
 
   const [CurrentPage, setCurrentPage] = useState(0);
 
@@ -140,14 +135,12 @@ const Birthdays = () => {
   };
 
   if (loader) {
-    return (
-      <LoadingScreen />
-    )
+    return <LoadingScreen />;
   }
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ flex: 1 }}>
-        <View style={{ width: '100%' }}>
+      <View style={{flex: 1}}>
+        <View style={{width: '100%'}}>
           <SegmentedControlTab
             borderRadius={0}
             values={['Today', 'Tomorrow']}
@@ -163,25 +156,37 @@ const Birthdays = () => {
           />
         </View>
 
+<<<<<<< HEAD
         <View style={{ flex: 1 ,paddingVertical:10}}>
           {CurrentPage == 0 ? (
             <View style={{ flexGrow: 1 }}>                          
+=======
+        <View style={{flex: 1, paddingVertical: 10}}>
+          {CurrentPage == 0 ? (
+            <View style={{flexGrow: 1}}>
+>>>>>>> 517ba82d60d3770836ead308701c1577ebd00aad
               <FlatList
-                contentContainerStyle={{ flexGrow: 1,}}
-                ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => PostBirthdayData()} refreshing={refresh}></ListEmptyComponent>}
+                contentContainerStyle={{flexGrow: 1}}
+                ListEmptyComponent={() => (
+                  <ListEmptyComponent
+                    title="No Data Found"
+                    enableRefresh={true}
+                    onRefreshCallback={() => PostBirthdayData()}
+                    refreshing={refresh}></ListEmptyComponent>
+                )}
                 data={todayBirthday}
                 ListHeaderComponent={
                   <Image
-                  source={{
-                    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Birthday_candles.jpg/1200px-Birthday_candles.jpg',
-                  }}
-                  style={styles.img}
-                />   
+                    source={{
+                      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Birthday_candles.jpg/1200px-Birthday_candles.jpg',
+                    }}
+                    style={styles.img}
+                  />
                 }
-                keyExtractor={({ item, index }) => index}
-                renderItem={({ item, index }) => {
+                keyExtractor={({item, index}) => index}
+                renderItem={({item, index}) => {
                   return (
-                    <View style={{ flex: 1 }}>
+                    <View style={{flex: 1}}>
                       <TouchableOpacity
                         onPress={() => {
                           GetUserDetails(item);
@@ -197,8 +202,10 @@ const Birthdays = () => {
                               paddingVertical: 8,
                               width: '20%',
                             }}>
-                            <Text style={{ textAlign: 'center', }}>
-                              {item.BIRTHDATE.includes("TODAY") ? item.DIRC_CODE : null}
+                            <Text style={{textAlign: 'center'}}>
+                              {Decrypt(item.BIRTHDATE).includes('TODAY')
+                                ? Decrypt(item.DIRC_CODE)
+                                : null}
                             </Text>
                           </View>
                           <View
@@ -208,15 +215,28 @@ const Birthdays = () => {
                               paddingLeft: 15,
                             }}>
                             <Text Bold>
-                              {item.BIRTHDATE.includes("TODAY") ? item.Name : null}</Text>
+                              {Decrypt(item.BIRTHDATE).includes('TODAY')
+                                ? Decrypt(item.Name)
+                                : null}
+                            </Text>
                             <Text>
-                              {item.BIRTHDATE.includes("TODAY") ? item.Email : null}</Text>
+                              {Decrypt(item.BIRTHDATE).includes('TODAY')
+                                ? Decrypt(item.Email)
+                                : null}
+                            </Text>
 
-                            <View style={{ flexDirection: "row" }}>
+                            <View style={{flexDirection: 'row'}}>
                               <Text>
-                                {item.BIRTHDATE.includes("TODAY") ? item.Desg : null} </Text>
+                                {Decrypt(item.BIRTHDATE).includes('TODAY')
+                                  ? Decrypt(item.Desg)
+                                  : null}{' '}
+                              </Text>
                               <Text>
-                                | {item.BIRTHDATE.includes("TODAY") ? item.Dept : null}</Text>
+                                |{' '}
+                                {item.BIRTHDATE.includes('TODAY')
+                                  ? item.Dept
+                                  : null}
+                              </Text>
                             </View>
                           </View>
                         </View>
@@ -227,17 +247,24 @@ const Birthdays = () => {
               />
             </View>
           ) : (
-            <View style={{ flexGrow: 1 }}>
+            <View style={{flexGrow: 1}}>
               <FlatList
-                contentContainerStyle={{ flexGrow: 1 }}
-                ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => PostBirthdayData()} refreshing={refresh}></ListEmptyComponent>}
+                contentContainerStyle={{flexGrow: 1}}
+                ListEmptyComponent={() => (
+                  <ListEmptyComponent
+                    title="No Data Found"
+                    enableRefresh={true}
+                    onRefreshCallback={() => PostBirthdayData()}
+                    refreshing={refresh}></ListEmptyComponent>
+                )}
                 data={tomorrowBirthday}
-                keyExtractor={({ item, index }) => index}
-                renderItem={({ item, index }) => (
-                  <View style={{ flex: 1 }}>
-                    <TouchableOpacity onPress={() => {
-                      GetUserDetails(item);
-                    }}>
+                keyExtractor={({item, index}) => index}
+                renderItem={({item, index}) => (
+                  <View style={{flex: 1}}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        GetUserDetails(item);
+                      }}>
                       <View style={styles.itemView}>
                         <View
                           style={{
@@ -245,9 +272,8 @@ const Birthdays = () => {
                             paddingVertical: 8,
                             width: '20%',
                           }}>
-                          <Text style={{ textAlign: 'center' }}>
-                            {item.DIRC_CODE}
-
+                          <Text style={{textAlign: 'center'}}>
+                            {Decrypt(item.DIRC_CODE)}
                           </Text>
                         </View>
                         <View
@@ -256,12 +282,14 @@ const Birthdays = () => {
                             paddingVertical: 5,
                             paddingLeft: 15,
                           }}>
-                          <Text Bold style>{item.Name}</Text>
-                          <Text>{item.Email}</Text>
+                          <Text Bold style>
+                            {Decrypt(item.Name)}
+                          </Text>
+                          <Text>{Decrypt(item.Email)}</Text>
 
-                          <View style={{ flexDirection: "row" }}>
-                            <Text>{item.Desg} </Text>
-                            <Text>| {item.Dept}</Text>
+                          <View style={{flexDirection: 'row'}}>
+                            <Text>{Decrypt(item.Desg)} </Text>
+                            <Text>| {Decrypt(item.Dept)}</Text>
                           </View>
                         </View>
                       </View>
@@ -279,120 +307,129 @@ const Birthdays = () => {
           coverScreen={true}
           isVisible={isModalVisible}>
           <View
-            style={{ minHeight: 400, borderRadius: 15, backgroundColor: GlobalColor.White }}>
-            {
-              modalLoader ? (
-                <LoadingScreen />
-              ) : (
-                <View style={styles.modal}>
-                  <TouchableOpacity style={styles.ModalCloseIcon}>
-                    <Feather
-                      name="x-circle"
-                      color={'#000'}
-                      size={30}
-                      onPress={toggleModal}
+            style={{
+              minHeight: 400,
+              borderRadius: 15,
+              backgroundColor: GlobalColor.White,
+            }}>
+            {modalLoader ? (
+              <LoadingScreen />
+            ) : (
+              <View style={styles.modal}>
+                <TouchableOpacity style={styles.ModalCloseIcon}>
+                  <Feather
+                    name="x-circle"
+                    color={'#000'}
+                    size={30}
+                    onPress={toggleModal}
+                  />
+                </TouchableOpacity>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
+                    width: 150,
+                    height: 150,
+                    borderWidth: 5,
+                    borderColor: GlobalColor.Secondary,
+                    borderRadius: 75,
+                    marginTop: 80,
+                  }}>
+                  {empPhoto ? (
+                    <Image
+                      source={{uri: 'data:image/png;base64, ' + empPhoto}}
+                      style={[styles.profileImg, {marginRight: 5}]}
                     />
-                  </TouchableOpacity>
-                  <View
-                    style={{
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      alignSelf: 'center',
-                      width: 150,
-                      height: 150,
-                      borderWidth: 5,
-                      borderColor: GlobalColor.Secondary,
-                      borderRadius: 75,
-                      marginTop: 80,
-                    }}>
-                    {empPhoto ? (
-                      <Image
-                        source={{ uri: 'data:image/png;base64, ' + empPhoto }}
-                        style={[styles.profileImg, { marginRight: 5 }]}
-                      />
-                    ) : (
-                      <Image
-                        source={require('../../../assets/Images/Avtar.png')}
-                        style={[styles.profileImg, { marginRight: 5 }]}
-                      />
-                    )}
-                  </View>
-                  <View
-                    style={{
-                      paddingVertical: 15,
-                      alignSelf: 'center',
-                      alignItems: 'center',
-                    }}>
-                    <Text Bold style={{ color: GlobalColor.Primary, lineHeight: 20 }}>
-                      {modalItem && modalItem.Name && modalItem.Name}
+                  ) : (
+                    <Image
+                      source={require('../../../assets/Images/Avtar.png')}
+                      style={[styles.profileImg, {marginRight: 5}]}
+                    />
+                  )}
+                </View>
+                <View
+                  style={{
+                    paddingVertical: 15,
+                    alignSelf: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
+                    Bold
+                    style={{color: GlobalColor.Primary, lineHeight: 20}}>
+                    {modalItem && modalItem.Name && modalItem.Name}
+                  </Text>
+                  <Text style={{color: GlobalColor.Primary, lineHeight: 20}}>
+                    {modalItem && modalItem.Email && modalItem.Email}
+                  </Text>
+
+                  <View style={{flexDirection: 'row'}}>
+                    <Text style={{color: GlobalColor.Primary, lineHeight: 20}}>
+                      {modalItem && modalItem.Desg && modalItem.Desg}
                     </Text>
-                    <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }}>
-                      {modalItem && modalItem.Email && modalItem.Email}
+                    <Text style={{color: GlobalColor.Primary, lineHeight: 20}}>
+                      {' '}
+                      | {modalItem && modalItem.Dept && modalItem.Dept}
                     </Text>
-
-                    <View style={{ flexDirection: "row" }}>
-
-                      <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} >
-                        {modalItem && modalItem.Desg && modalItem.Desg}</Text>
-                      <Text style={{ color: GlobalColor.Primary, lineHeight: 20 }} > | {modalItem && modalItem.Dept && modalItem.Dept}
-                      </Text>
-                    </View>
-
-                  </View>
-                  <View
-                    style={{
-                      // height: '23%',
-                      marginTop: 5,
-                      // backgroundColor:'yellow',
-                      flexDirection: 'row',
-                      alignSelf: 'center',
-                      justifyContent: 'space-around',
-                      width: '50%',
-                      alignItems: 'flex-end',
-                    }}>
-
-
-                    <TouchableOpacity
-                      onPress={() => {
-                        Linking.openURL(`mailto:${modalItem.Email}`)
-                      }}
-                      style={{
-                        borderWidth: 1,
-                        width: 40,
-                        height: 40,
-                        borderColor: GlobalColor.Primary,
-                        borderRadius: 100,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
-                      <Feather name="mail" size={20} color={GlobalColor.Primary} />
-                    </TouchableOpacity>
-
-
-                    <TouchableOpacity
-                      style={{
-                        borderWidth: 1,
-                        width: 40,
-                        height: 40,
-                        borderColor: GlobalColor.Primary,
-                        borderRadius: 100,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                      onPress={() => {
-                        Linking.openURL(`tel:${modalItem.MOB_NO}`)
-                      }}
-                    >
-                      <Feather name="phone-call" size={20} color={GlobalColor.Primary} />
-                    </TouchableOpacity>
                   </View>
                 </View>
-              )}
+                <View
+                  style={{
+                    // height: '23%',
+                    marginTop: 5,
+                    // backgroundColor:'yellow',
+                    flexDirection: 'row',
+                    alignSelf: 'center',
+                    justifyContent: 'space-around',
+                    width: '50%',
+                    alignItems: 'flex-end',
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      Linking.openURL(`mailto:${modalItem.Email}`);
+                    }}
+                    style={{
+                      borderWidth: 1,
+                      width: 40,
+                      height: 40,
+                      borderColor: GlobalColor.Primary,
+                      borderRadius: 100,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Feather
+                      name="mail"
+                      size={20}
+                      color={GlobalColor.Primary}
+                    />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    style={{
+                      borderWidth: 1,
+                      width: 40,
+                      height: 40,
+                      borderColor: GlobalColor.Primary,
+                      borderRadius: 100,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    onPress={() => {
+                      Linking.openURL(`tel:${modalItem.MOB_NO}`);
+                    }}>
+                    <Feather
+                      name="phone-call"
+                      size={20}
+                      color={GlobalColor.Primary}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
           </View>
         </Modal>
       </View>
     </SafeAreaView>
-
   );
 };
 
@@ -401,18 +438,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   tabsContainerStyle: {
     marginTop: 10,
     borderRadius: 0,
-    width: '100%'
+    width: '100%',
   },
   tabStyle: {
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary
+    borderColor: GlobalColor.Secondary,
   },
   tabTextStyle: {
     fontSize: GlobalFontSize.P,
@@ -469,7 +506,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
-    position: 'relative'
+    position: 'relative',
   },
   profileImg: {
     height: 110,
@@ -481,18 +518,17 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
-    zIndex: 55
+    zIndex: 55,
   },
-  img:{
-   width:"100%",
-   height:150,
-   marginTop:10,
-   overflow:"hidden",
-   borderRadius:0,
-   alignSelf:"center",
-   marginVertical:10
-    
-  }
+  img: {
+    width: '100%',
+    height: 150,
+    marginTop: 10,
+    overflow: 'hidden',
+    borderRadius: 0,
+    alignSelf: 'center',
+    marginVertical: 10,
+  },
 });
 
 //make this component available to the app

@@ -9,6 +9,7 @@ import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { showErrorMessage } from '../../Utils/Utils';
 import { Header } from '../../components/reusable/Header';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
+import { Decrypt } from '../../Service/Helper';
 
 
 const PFBalance = () => {
@@ -48,14 +49,14 @@ const PFBalance = () => {
       //stop Loader
       stopLoader();
       if(result.Value){
-        // console.log(result.Value.Table1);
+        console.log(result.Value);
         //Set Data
-        let CB1_CB2 = result.Value.Table1[0].CB1_CB2
-        let PFST_MUL_CB3 = result.Value.Table2[0].PFST_MUL_CB3
+        let CB1_CB2 = result.Value.Table2[0].CB1_CB2
+        let PFST_MUL_CB3 = result.Value.Table3[0].PFST_MUL_CB3
         let NetBalance = CB1_CB2 + PFST_MUL_CB3;
-        setEmployeePf(CB1_CB2)
-        setEmployerPf(PFST_MUL_CB3)
-        setNetBalance(parseFloat(NetBalance).toFixed(2))
+        setEmployeePf(Decrypt(CB1_CB2))
+        setEmployerPf(Decrypt(PFST_MUL_CB3))
+        setNetBalance(parseFloat(Decrypt(NetBalance)).toFixed(2))
       }
 
     } catch (error) {

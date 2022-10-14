@@ -24,135 +24,153 @@ import {Header} from '../../components/reusable/Header';
 import {LoadingScreen} from '../../components/reusable/LoadingScreen';
 import {GlobalColor} from '../../constants/Colors';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
-import {showErrorMessage} from '../../Utils/Utils';
-import {GlobalFontSize} from '../../constants/FontSize';
+import { showErrorMessage } from '../../Utils/Utils';
+import { GlobalFontSize } from '../../constants/FontSize';
+import { Decrypt } from '../../Service/Helper';
 
-const SalarySlip = ({navigation}) => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [month, setMonth] = useState([]);
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [defaultDate, setDefaultDate] = useState('Select Month');
-  const [loader, setLoader] = useState(false);
-  const [table1Data, setTable1Data] = useState('');
-  const [table2Data, setTable2Data] = useState('');
-  const [table3Data, setTable3Data] = useState('');
-  const [table4Data, setTable4Data] = useState('');
-  const [salaryType, setSalaryType = useState] = useState('');
-  const {authContext, AppUserData} = useContext(AuthContext);
-  const [refresh, setrefresh] = useState(false);
+const SalarySlip = ({ navigation }) => {
 
-  const GetMonth = () => {
-    let token = AppUserData.token;
-    let EmplID = AppUserData?.data?.userId;
-    let apiData = {
-      EmplID: EmplID,
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [month, setMonth] = useState([]);
+    const [selectedMonth, setSelectedMonth] = useState('');
+    const [defaultDate, setDefaultDate] = useState('Select Month');
+    const [loader, setLoader] = useState(false)
+    const [table1Data, setTable1Data] = useState('')
+    const [table2Data, setTable2Data] = useState('')
+    const [table3Data, setTable3Data] = useState('')
+    const [table4Data, setTable4Data] = useState('')
+    const [salaryType, setSalaryType = useState] = useState('')
+    const { authContext, AppUserData } = useContext(AuthContext);
+    const [refresh, setrefresh] = useState(false);
+
+
+
+
+    const GetMonth = () => {
+        let token = AppUserData.token
+        let EmplID = AppUserData?.data?.userId
+        let apiData = {
+            EmplID: EmplID
+        }
+        //set loader
+        setLoader(true);
+        ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
+            .then(result => {
+                // console.log('GetSalaryMonth', result);
+                // Stop Loader
+                stopLoader()
+                let responseData = result.Value
+                let defaultDate = result.Value[0].SHIS_YYMM_CODE
+                console.log('defaultDate', defaultDate);
+                setDefaultDate(defaultDate);
+                setMonth(responseData);
+                GetSalaryTypeApi(defaultDate)
+                GetSalaryData(defaultDate)
+            })
+            .catch(error => {
+                // Stop Loader
+                stopLoader()
+                // console.log('Error occurred==>', error);
+                //Show Error Massage
+                ApiService.showErrorMessage(error, authContext);
+            });
     };
-    //set loader
-    setLoader(true);
-    ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
-      .then(result => {
-        console.log('GetSalaryMonth', result);
-        // Stop Loader
-        stopLoader();
-        let responseData = result.Value;
-        let defaultDate = result.Value[0].SHIS_YYMM_CODE;
-        console.log('defaultDate', defaultDate);
-        setDefaultDate(defaultDate);
-        setMonth(responseData);
-        GetSalaryTypeApi(defaultDate);
-        GetSalaryData(defaultDate);
-      })
-      .catch(error => {
-        // Stop Loader
-        stopLoader();
-        // console.log('Error occurred==>', error);
-        //Show Error Massage
-        ApiService.showErrorMessage(error, authContext);
-      });
-  };
 
-  const GetSalaryTypeApi = data => {
-    let token = AppUserData.token;
-    let EmplID = AppUserData?.data?.userId;
-    let apiData = {
-      SalaryMonth: data,
-      EmplID: EmplID,
+
+    const GetSalaryTypeApi = (data) => {
+        let token = AppUserData.token
+        let EmplID = AppUserData?.data?.userId
+        let apiData = {
+            "SalaryMonth": Decrypt(data),
+            "EmplID": EmplID,
+        }
+        console.log("SalaryMonth", apiData)
+        //set Loader
+        setLoader(true);
+        ApiService.PostMethode('/GetSalaryType', apiData, token, authContext)
+            .then(result => {
+                // Stop Loader
+                stopLoader()
+                console.log('GetSalaryType', result);
+                let responseData = result.Value
+                setSalaryType(responseData)
+            })
+            .catch(error => {
+                // Stop Loader
+                stopLoader()
+                // console.log('Error occurred==>', error);
+                //Show Error Massage
+                ApiService.showErrorMessage(error, authContext);
+            });
     };
-    console.log('SalaryMonth', apiData);
-    //set Loader
-    setLoader(true);
-    ApiService.PostMethode('/GetSalaryType', apiData, token, authContext)
-      .then(result => {
-        // Stop Loader
-        stopLoader();
-        console.log('GetSalaryType', result);
-        let responseData = result.Value;
-        setSalaryType(responseData);
-      })
-      .catch(error => {
-        // Stop Loader
-        stopLoader();
-        // console.log('Error occurred==>', error);
-        //Show Error Massage
-        ApiService.showErrorMessage(error, authContext);
-      });
-  };
-  const GetSalaryData = data => {
-    let token = AppUserData.token;
-    let EmplID = AppUserData?.data?.userId;
-    let apiData = {
-      EmplID: EmplID,
-      SalaryMonth: data,
-      SalType: '0',
+    const GetSalaryData = (data) => {
+        let token = AppUserData.token
+        let EmplID = AppUserData?.data?.userId
+        let apiData = {
+            "EmplID": EmplID,
+            "SalaryMonth": Decrypt(data),
+            "SalType": "0"
+        }
+        console.log("GetSalaryData", apiData)
+        //set Loader
+        setLoader(true);
+        ApiService.PostMethode('/GetSalaryData', apiData, token, authContext)
+            .then(result => {
+                console.log(result.Value)
+                // Stop Loader                
+                let responseData = result.Value.Table2
+                let responseData2 = result.Value.Table3
+                let responseData3 = result.Value.Table4
+                let responseData4 = result.Value.Table5
+                setTable1Data(responseData)
+                setTable2Data(responseData2)
+                setTable3Data(responseData3)
+                setTable4Data(responseData4)
+                // console.log('GetSalaryData', responseData2);
+                // console.log('GetSalaryData3', responseData3,);
+                // console.log('GetSalaryData4', responseData4,);
+                stopLoader();
+            })
+            .catch(error => {
+                // Stop Loader
+                stopLoader()
+                // console.log('Error occurred==>', error);
+
+                //Show Error Massage
+                ApiService.showErrorMessage(error, authContext);
+            });
     };
-    console.log('GetSalaryData', apiData);
-    //set Loader
-    setLoader(true);
-    ApiService.PostMethode('/GetSalaryData', apiData, token, authContext)
-      .then(result => {
-        // Stop Loader
 
-        let responseData = result.Value.Table1;
-        let responseData2 = result.Value.Table2;
-        let responseData3 = result.Value.Table3;
-        let responseData4 = result.Value.Table4;
-        setTable1Data(responseData);
-        setTable2Data(responseData2);
-        setTable3Data(responseData3);
-        setTable4Data(responseData4);
-        console.log('GetSalaryData', responseData2);
-        console.log('GetSalaryData3', responseData3);
-        console.log('GetSalaryData4', responseData4);
-        stopLoader();
-      })
-      .catch(error => {
-        // Stop Loader
-        stopLoader();
-        // console.log('Error occurred==>', error);
+    useEffect(() => {
+        GetMonth()
+        GetSalaryData()
+        // GetSalaryTypeApi()
+    }, [])
+    // console.log("month data", month);
 
-        //Show Error Massage
-        ApiService.showErrorMessage(error, authContext);
-      });
-  };
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+    };
 
-  useEffect(() => {
-    GetMonth();
-    GetSalaryData();
-    GetSalaryTypeApi();
-    console.log('first massage', table3Data);
-  }, []);
-  console.log('month data', month);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
 
-  const stopLoader = () => {
-    setLoader(false);
-    setrefresh(false);
-  };
+    const stopLoader = () => {
+        setLoader(false);
+        setrefresh(false);
+    }
 
-  if (loader) {
+    if (loader) {
+        return (
+            <SafeAreaView style={styles.containerLoading}>
+                <Header title="Salary Slip" />
+                <LoadingScreen />
+            </SafeAreaView>
+        )
+    }
+
+
+
+
     return (
       <SafeAreaView style={styles.containerLoading}>
         <Header title="Salary Slip" />
@@ -271,6 +289,7 @@ const SalarySlip = ({navigation}) => {
                 renderItem={({item, index}) => (
                   <TouchableOpacity
                     onPress={() => {
+<<<<<<< HEAD
                       console.log(item.SHIS_YYMM_CODE);
                       setDefaultDate(item.SHIS_YYMM_CODE);
                       GetSalaryTypeApi(item.SHIS_YYMM_CODE);
@@ -374,6 +393,21 @@ const SalarySlip = ({navigation}) => {
                             fontSize: GlobalFontSize.P - 2,
                           }}>
                           {item.SHIS_REMARKS}
+=======
+                        // GetSalaryTypeApi()
+                        toggleModal()
+                        console.log(month)
+                    }}>
+                    <View
+                        style={{
+                            width: '100%',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            paddingHorizontal: 10,
+                        }}>
+                        <Text Bold>
+                            {Decrypt(defaultDate)}
+>>>>>>> 517ba82d60d3770836ead308701c1577ebd00aad
                         </Text>
                       </View>
                     </View>
@@ -383,6 +417,7 @@ const SalarySlip = ({navigation}) => {
             </View>
           ) : null}
 
+<<<<<<< HEAD
           {table4Data.length > 0 ? (
             <View style={{paddingHorizontal: 10}}>
               <View style={[styles.Table, {justifyContent: 'space-between'}]}>
@@ -401,6 +436,52 @@ const SalarySlip = ({navigation}) => {
                 keyExtractor={({item, index}) => index}
                 renderItem={({item, index}) => {
                   return (
+=======
+                <Modal
+                    backdropOpacity={0.1}
+                    coverScreen={true}
+                    isVisible={isModalVisible}>
+                    <View style={styles.modal}>
+                        <TouchableOpacity style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
+                            <Feather
+                                name="x-circle"
+                                color={GlobalColor.Danger}
+                                size={25}
+                                onPress={toggleModal}
+                                style={{ margin: 10 }}
+                            />
+                        </TouchableOpacity>
+                        <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={month}
+                            ListEmptyComponent={() => {
+                                return (
+                                    <ListEmptyComponent title="No Data Found"
+                                    // enableRefresh={true}
+                                    // onRefreshCallback={()=>GetShutlPastFutrReportApi(true)} refreshing={refresh}
+                                    ></ListEmptyComponent>
+                                )
+                            }}
+                            keyExtractor={({ item, index }) => index}
+                            renderItem={({ item, index }) => (
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        console.log(item.SHIS_YYMM_CODE)
+                                        setDefaultDate(item.SHIS_YYMM_CODE)
+                                        GetSalaryTypeApi(item.SHIS_YYMM_CODE)
+                                        GetSalaryData(item.SHIS_YYMM_CODE)
+                                        toggleModal()
+                                    }}
+                                    style={styles.textContainer}>
+                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: GlobalFontSize.P }}>{Decrypt(item.SHIS_YYMM_CODE)}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
+                </Modal>
+                <TouchableOpacity
+                    style={styles.Salary}>
+>>>>>>> 517ba82d60d3770836ead308701c1577ebd00aad
                     <View
                       style={[styles.Table, {justifyContent: 'space-between'}]}>
                       <View style={styles.tableRow}>
@@ -453,12 +534,155 @@ const SalarySlip = ({navigation}) => {
                           color: GlobalColor.Black,
                           fontSize: GlobalFontSize.P - 2,
                         }}>
+<<<<<<< HEAD
                         {item.GLMS_MESSAGES}
                       </Text>
                     </View>
                   );
                 }}
               />
+=======
+                        {salaryType == '' ? (
+                            <Text >
+                                Select Type
+                            </Text>
+                        ) : (
+
+                            salaryType && salaryType.map((item) => {
+                                return (
+                                    <Text Bold>
+                                        {Decrypt(item.PYDT_DESCRIPTION)}
+                                    </Text>
+                                )
+                            })
+
+                        )}
+                        <Feather name="corner-up-right" size={20} />
+                    </View>
+                </TouchableOpacity>
+
+
+
+                <ScrollView style={{ backgroundColor: GlobalColor.White, marginVertical: 10, }} >
+                    {/* Table */}
+
+                    {table1Data.length > 0 ? (
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={[styles.Table]}>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Pay Element</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Earnings</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Deduction</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Remarks</Text>
+                                </View>
+                            </View>
+                            <FlatList
+                                data={table1Data}
+                                keyExtractor={({ item, index }) => index}
+                                renderItem={({ item, index }) => {
+                                    return (
+                                        <View style={[styles.Table]}>
+                                            <View style={[styles.tableRow, {alignItems:'center'}]}>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2, textAlign:'center' }}>{Decrypt(item.MDESC)}</Text>
+                                            </View>
+                                            <View style={styles.tableRow}>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
+                                            </View>
+                                            <View style={styles.tableRow}>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
+                                            </View>
+                                            <View style={styles.tableRow}>
+                                                <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.SHIS_REMARKS)}</Text>
+                                            </View>
+                                        </View>
+                                    )
+                                }} />
+                        </View>
+                    ) : null}
+
+
+                    {table4Data.length > 0 ? (
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={[styles.Table, {justifyContent:'space-between'}]}>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Earnings</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Deduction</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text Bold>Total</Text>
+                                </View>
+                            </View>
+                            <FlatList
+                                data={table4Data}
+                                keyExtractor={({ item, index }) => index}
+                                renderItem={({ item, index }) => {
+                                    return (
+                                        <View style={[styles.Table, { justifyContent:'space-between' }]}>
+                                            <View style={styles.tableRow}>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
+                                            </View>
+                                            <View style={styles.tableRow}>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
+                                            </View>
+                                            <View style={styles.tableRow}>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.NET)}</Text>
+                                            </View>
+                                        </View>
+                                    )
+                                }} />
+                        </View>
+                    ) : null}
+
+                    {table2Data.length > 0 ? (
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={styles.Table}>
+                                <Text Bold>General Message</Text>
+                            </View>
+                            <FlatList
+                                data={table2Data}
+                                keyExtractor={({ item, index }) => index}
+                                renderItem={({ item, index }) => {
+                                    return (
+                                        <View style={[styles.Table, { flexDirection: 'column' }]}>
+                                            <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.GLMS_MESSAGES)}</Text>
+
+                                        </View>
+                                    )
+                                }} />
+                        </View>
+                    ) : null}
+
+                    {table3Data.length > 0 ? (
+                        <View style={{ paddingHorizontal:10 }}>
+                            <View style={[styles.Table,]}>
+                                <Text Bold >Employee Message</Text>
+                            </View>
+                                <FlatList
+                                    data={table3Data}
+                                    keyExtractor={({ item, index }) => index}
+                                    renderItem={({ item, index }) => {
+
+                                        return (
+                                            <View style={[styles.Table, { flexDirection: 'column' }]}>
+                                                <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EXMS_MESSAGES)}</Text>
+
+                                            </View>
+                                        )
+
+                                    }} />
+                        </View>
+                    ) : null}
+                </ScrollView>
+
+>>>>>>> 517ba82d60d3770836ead308701c1577ebd00aad
             </View>
           ) : null}
 

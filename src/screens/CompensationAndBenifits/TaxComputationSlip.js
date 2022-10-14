@@ -16,6 +16,7 @@ import { GlobalColor } from '../../constants/Colors';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { showErrorMessage } from '../../Utils/Utils';
 import { Header } from '../../components/reusable/Header';
+import { Decrypt } from '../../Service/Helper';
 
 
 
@@ -101,9 +102,9 @@ const TaxComputationSlip = () => {
                     ListHeaderComponent={FlatList_Header_Approve}
                     keyExtractor={({ item, index }) => index}
                     renderItem={({ item, index }) => (
-                        <View style={styles.textContainer} key={index}>
-                            <Text>{item.SALARY_HEAD}</Text>
-                            <Text>{item.AMOUNT}</Text>
+                        <View style={styles.textContainer}>
+                            <Text>{Decrypt(item.SALARY_HEAD)}</Text>
+                            <Text>{Decrypt(item.AMOUNT)}</Text>
                         </View>
                     )}
                 />

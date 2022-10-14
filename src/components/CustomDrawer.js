@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -65,8 +65,6 @@ function CustomDrawer(props) {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-      // UserName: userId,
-      // Password: "Maruti@131"
     }
     setLoader(true);
     ApiService.PostMethode('/Logout', apiData, token, authContext)
@@ -96,13 +94,14 @@ function CustomDrawer(props) {
   }
   const {navigation} = props;
 
+
+
   if(loader){
     return(
       <LoadingScreen></LoadingScreen>
     )
   }
 
-  
   return (
       <DrawerContentScrollView style={{backgroundColor: '#ffffff'}} {...props}>
         <LinearGradient

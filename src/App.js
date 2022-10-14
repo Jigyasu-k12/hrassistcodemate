@@ -121,6 +121,9 @@ export default function App() {
           return;
         }
         // is not rooted/jailbreak/emulator/simulator
+        if(JailMonkey.isJailBroken()){
+          BackHandler.exitApp();
+        }
       },()=>{
         if(Platform.OS === "ios"){
           RNExitApp.exitApp();

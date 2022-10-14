@@ -136,7 +136,7 @@ const ApplyLeave = ({navigation}) => {
       setLoader(true);
       ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
         .then(result => {
-          console.log("APiresult getleave types", result);
+          console.log("APiresult getleave types", result.Value.Table2);
           setLoader(false);
           if (result.Value) {
             let updatedArray = [];
