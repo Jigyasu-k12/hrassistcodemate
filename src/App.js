@@ -117,7 +117,7 @@ export default function App() {
       JailMonkey.isSafe(params).then(()=>{
         console.log("is not rooted/jailbreak/emulator/simulator");
         if(JailMonkey.isJailBroken()){
-          RNExitApp.exitApp();
+          // RNExitApp.exitApp();
           return;
         }
         // is not rooted/jailbreak/emulator/simulator
@@ -126,12 +126,12 @@ export default function App() {
         }
       },()=>{
         if(Platform.OS === "ios"){
-          RNExitApp.exitApp();
+          // RNExitApp.exitApp();
           return;
         }
         // console.log("is rooted/jailbreak/emulator/simulator")
         // is rooted/jailbreak/emulator/simulator)
-          BackHandler.exitApp();
+          // BackHandler.exitApp();
         })
     }
 

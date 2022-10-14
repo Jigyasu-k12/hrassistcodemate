@@ -156,15 +156,9 @@ const Birthdays = () => {
           />
         </View>
 
-<<<<<<< HEAD
-        <View style={{ flex: 1 ,paddingVertical:10}}>
-          {CurrentPage == 0 ? (
-            <View style={{ flexGrow: 1 }}>                          
-=======
         <View style={{flex: 1, paddingVertical: 10}}>
           {CurrentPage == 0 ? (
             <View style={{flexGrow: 1}}>
->>>>>>> 517ba82d60d3770836ead308701c1577ebd00aad
               <FlatList
                 contentContainerStyle={{flexGrow: 1}}
                 ListEmptyComponent={() => (
