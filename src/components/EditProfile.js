@@ -30,7 +30,7 @@ const EditProfile = ({ navigation, route }) => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-      UserName: userId
+      UserName: AppUserData?.data?.username
     }
     setLoader(true);
     ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)

@@ -53,7 +53,7 @@ const OtherApps = ({ navigation }) => {
     let token = AppUserData.token;
     let userId = AppUserData?.data?.userId
     let apiData = {
-      UserName: userId,
+      UserName: AppUserData?.data?.username,
       LinkName: "HR_ASSIST"
     }
 

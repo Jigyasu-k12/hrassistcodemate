@@ -52,7 +52,7 @@ const AttendancePer = ({ navigation }) => {
     let userId = AppUserData?.data?.userId;
     let token = AppUserData.token;
     let apiData = {
-      "UserName": userId,
+      "UserName": AppUserData?.data?.username,
       "Years":3
     };
     ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)

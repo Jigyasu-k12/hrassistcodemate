@@ -27,7 +27,7 @@ const Benifits = () => {
     let EmplID =  AppUserData?.data?.userId 
     console.log("this empid",EmplID)
     let apiData = {
-      "UserName": EmplID
+      "UserName": AppUserData?.data?.username
     }
 
     //Set Loader

@@ -205,7 +205,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                 "PartyCode" : Alldata.TCAR_PARTY_CODE,
                 "ExtnNo" : Alldata.TCAR_EXT_NO,
                 "SlipNo" : route?.params?.data,
-                "UserName" : userId,
+                "UserName" : AppUserData?.data?.username,
                 "Source" : ""
                 };
         setLoader(true);

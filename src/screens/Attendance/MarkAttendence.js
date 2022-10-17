@@ -135,7 +135,7 @@ const MarkAttendence = () => {
 
 
 
-      let apiData = { "UserName": AppUserData?.data?.userId };
+      let apiData = { "UserName": AppUserData?.data?.username };
       setLoader(true);
 
       /*

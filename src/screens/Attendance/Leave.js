@@ -154,7 +154,7 @@ const Leave = ({ navigation }) => {
   // };
 
   const getleavetypes = () => {
-    let apiData = { "UserName": AppUserData?.data?.userId };
+    let apiData = { "UserName": AppUserData?.data?.username };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
@@ -222,7 +222,7 @@ const Leave = ({ navigation }) => {
 
   const getfinancialyear = () => {
     let apiData = {
-      "UserName": AppUserData?.data?.userId
+      "UserName": AppUserData?.data?.username
     };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;

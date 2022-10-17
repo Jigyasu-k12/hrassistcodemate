@@ -40,7 +40,7 @@ const TaxComputationSlip = () => {
         try {
             //Get Data
             let result = await ApiService.PostMethode('/GetTaxApp', {
-                "UserName": AppUserData?.data?.userId
+                "UserName": AppUserData?.data?.username
             }, AppUserData.token)
             // Stop Loader
             stopLoader()

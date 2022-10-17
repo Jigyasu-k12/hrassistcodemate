@@ -95,7 +95,7 @@ export const ManagerLeave = () => {
         let userId = AppUserData?.data?.userId
         let token = AppUserData.token;
         let apiData = {
-          "UserName": userId,
+          "UserName": AppUserData?.data?.username,
           // "UserName": UserName,
         };
         setLoader(true);
@@ -185,7 +185,7 @@ export const ManagerLeave = () => {
         let apiData = {
             "ApplicationID" : data.LEV_ATTENDANCE_ID,
             "AppRejFlag" : type,
-            "UserName" : userId,
+            "UserName" : AppUserData?.data?.username,
             "Remarks": data.remark
         };
         setLoader(true);

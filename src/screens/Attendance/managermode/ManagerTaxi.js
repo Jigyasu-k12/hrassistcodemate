@@ -94,7 +94,7 @@ export const ManagerTaxi = ({navigation}) => {
         let userId = AppUserData?.data?.userId
         let token = AppUserData.token;
         let apiData = {
-          "UserName": userId//"NSTHAKUR"
+          "UserName": AppUserData?.data?.username//"NSTHAKUR"
         };
         setLoader(true);
         ApiService.PostMethode('/ApprovedTaxiReport', apiData, token, authContext)

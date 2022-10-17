@@ -55,7 +55,7 @@ const Attendance = ({ navigation }) => {
   );
 
   const checkGpsAvailable = () => {
-    let apiData = { "UserName": AppUserData?.data?.userId };
+    let apiData = { "UserName": AppUserData?.data?.username };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);

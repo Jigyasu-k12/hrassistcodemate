@@ -40,7 +40,7 @@ const Plencashment = ({ navigation, route }) => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-      "UserName": userId
+      "UserName": AppUserData?.data?.username
     }
     //set Loader
     setLoader(true);
@@ -109,7 +109,7 @@ const Plencashment = ({ navigation, route }) => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-      "UserName": userId
+      "UserName": AppUserData?.data?.username
     }
     //Set Loader
     setLoader(true);
@@ -133,7 +133,7 @@ const Plencashment = ({ navigation, route }) => {
 
   const getfinancialyear = () => {
     let apiData = {
-      "UserName": AppUserData?.data?.userId
+      "UserName": AppUserData?.data?.username
     };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;

@@ -130,7 +130,7 @@ const ApplyLeave = ({navigation}) => {
     };
   
     const getleavetypes = () => {
-      let apiData = { "UserName": AppUserData?.data?.userId };
+      let apiData = { "UserName": AppUserData?.data?.username };
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
@@ -297,7 +297,7 @@ const ApplyLeave = ({navigation}) => {
 
                         let submitData =
                         {
-                            "UserName": AppUserData?.data?.userId,
+                            "UserName": AppUserData?.data?.username,
                             "StaffNo": AppUserData?.data?.userId,
                             "PlannedUnplanned": values.planned,
                             "LeaveType": values.leave,
