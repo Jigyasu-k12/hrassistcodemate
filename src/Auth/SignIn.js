@@ -186,7 +186,7 @@ const SignIn = ({ navigation }) => {
 
               <Formik
                 // validationSchema={loginValidationSchema}
-                initialValues={{ UserName: '', Password: '' }}
+                initialValues={{ UserName: 'IT_KPMG', Password: 'Maruti@123' }}
                 onSubmit={values => {
                   handleLogin(values);
                 }}>
