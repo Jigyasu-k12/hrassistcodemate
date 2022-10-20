@@ -77,10 +77,10 @@ export default function App() {
                             {
                               text: 'Cancel',
                               style: 'cancel',
-                              // onPress: () => {
-                              //   // Linking.openSettings();
-                              //   BackHandler.exitApp();                                
-                              // },
+                              onPress: () => {
+                                // Linking.openSettings();
+                                BackHandler.exitApp();                                
+                              },
                             },
                           ],
                           { cancelable: false },
@@ -123,7 +123,7 @@ export default function App() {
       },()=>{
         console.log("is rooted/jailbreak/emulator/simulator")
         // is rooted/jailbreak/emulator/simulator)
-          // BackHandler.exitApp();
+          BackHandler.exitApp();
         })
     }
 
