@@ -99,15 +99,16 @@ const SignIn = ({ navigation }) => {
     ApiService.PostMethode('/GetEmployeeProfile', data, token)
       .then(res => {
 
-        console.log(res.Value.Table1[0].EMPL_NAME);
 
         let response = res.Value;
+        console.log(Decrypt(response.Table1[0].EMPL_ID));
         if(response.Table1){
           let userData = {
             EMPL_NAME: Decrypt(response.Table1[0].EMPL_NAME),
             // profile_photo:response.Table1[0].profile_photo,
             profile_photo:null,
-            userId:user,
+            userId:Decrypt(response.Table1[0].EMPL_ID),
+            username:user,
             EMPL_DESG_CODE:Decrypt(response.Table1[0].EMPL_DESG_CODE),
           };
           let contextData = {
@@ -184,7 +185,8 @@ const SignIn = ({ navigation }) => {
 
 
               <Formik
-                // validationSchema={loginValidationSchema}
+                validationSchema={loginValidationSchema}
+                // initialValues={{ UserName: 'IT_KPMG', Password: 'Maruti@123' }}
                 initialValues={{ UserName: '', Password: '' }}
                 onSubmit={values => {
                   handleLogin(values);

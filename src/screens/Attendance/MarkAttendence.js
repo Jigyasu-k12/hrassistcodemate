@@ -138,7 +138,11 @@ const MarkAttendence = () => {
     let apiData = {UserName: AppUserData?.data?.userId};
     setLoader(true);
 
-    /*
+
+      // let apiData = { "UserName": AppUserData?.data?.username };
+      // setLoader(true);
+
+      /*
       if (Platform.OS == 'android') {
         // AppUserData?.data?.userId 222852
         let token = AppUserData.token;

@@ -129,7 +129,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
           let token = AppUserData.token;
           let EmplID = AppUserData?.data?.userId;
           let apiData = {
-            UserName: EmplID,
+            UserName: AppUserData?.data?.username,
             ...values,
           };
 
@@ -147,7 +147,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
             .then(result => {
               stopLoader();
               if (result.Result) {
-                // console.log('submit data result', result.Result);
+                console.log('submit data result', result.Result);
                 Toast.show(result.Result);
                 fromRef.current.resetForm();
                 GetConvElig();

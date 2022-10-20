@@ -78,10 +78,10 @@ export default function App() {
                             {
                               text: 'Cancel',
                               style: 'cancel',
-                              // onPress: () => {
-                              //   // Linking.openSettings();
-                              //   BackHandler.exitApp();                                
-                              // },
+                              onPress: () => {
+                                // Linking.openSettings();
+                                BackHandler.exitApp();                                
+                              },
                             },
                           ],
                           { cancelable: false },
@@ -126,7 +126,7 @@ export default function App() {
         }
       },()=>{
         if(Platform.OS === "ios"){
-          // RNExitApp.exitApp();
+          RNExitApp.exitApp();
           return;
         }
         // console.log("is rooted/jailbreak/emulator/simulator")

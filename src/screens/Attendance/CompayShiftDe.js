@@ -53,7 +53,7 @@ const CompayShiftDe = ({ navigation }) => {
         let userId = AppUserData?.data?.userId
         let token = AppUserData.token;
         let apiData = {
-            "UserName": userId
+            "UserName": AppUserData?.data?.username
         };
         ApiService.PostMethode('/CompanyShiftMaster', apiData, token, authContext)
             .then(result => {

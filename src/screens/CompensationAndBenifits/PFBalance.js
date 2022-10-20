@@ -53,10 +53,10 @@ const PFBalance = () => {
         //Set Data
         let CB1_CB2 = result.Value.Table2[0].CB1_CB2
         let PFST_MUL_CB3 = result.Value.Table3[0].PFST_MUL_CB3
-        let NetBalance = CB1_CB2 + PFST_MUL_CB3;
+        let NetBalance = Decrypt(CB1_CB2) + Decrypt(PFST_MUL_CB3);
         setEmployeePf(Decrypt(CB1_CB2))
         setEmployerPf(Decrypt(PFST_MUL_CB3))
-        setNetBalance(parseFloat(Decrypt(NetBalance)).toFixed(2))
+        setNetBalance(parseFloat(NetBalance).toFixed(2))
       }
 
     } catch (error) {

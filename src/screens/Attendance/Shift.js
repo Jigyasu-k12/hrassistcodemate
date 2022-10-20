@@ -128,7 +128,7 @@ const Shift = ({ navigation }) => {
     let userId = AppUserData?.data?.EMPL_NAME;
     let token = AppUserData.token;
     let apiData = {
-      "UserName": userId,
+      "UserName": AppUserData?.data?.username,
     };
     setLoader(true);
     ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)
@@ -217,7 +217,7 @@ const Shift = ({ navigation }) => {
     let userId = AppUserData?.data?.userId;
     let token = AppUserData.token;
     let apiData = {
-      "UserName": userId,
+      "UserName": AppUserData?.data?.username,
     };
     setLoader(true);
     ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)

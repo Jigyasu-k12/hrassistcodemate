@@ -1,5 +1,5 @@
 //import liraries
-import React, { useEffect, useState, useRef, useContext } from 'react';
+import React, {useEffect, useState, useRef, useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -9,33 +9,33 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Alert,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 import * as yup from 'yup';
 import RadioForm, {
   RadioButton,
   RadioButtonInput,
   RadioButtonLabel,
 } from 'react-native-simple-radio-button';
-import { FlatList } from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
 import SelectDropdown from 'react-native-select-dropdown';
-import { DataTable } from 'react-native-paper';
+import {DataTable} from 'react-native-paper';
 import * as ApiService from '../../Utils/Utils';
-import Toast from 'react-native-simple-toast'
-import { useFocusEffect } from '@react-navigation/native';
+import Toast from 'react-native-simple-toast';
+import {useFocusEffect} from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import { GlobalColor } from '../../constants/Colors';
-import { GlobalFontSize } from '../../constants/FontSize';
+import {GlobalColor} from '../../constants/Colors';
+import {GlobalFontSize} from '../../constants/FontSize';
 import Button from './../../components/reusable/Button';
 import Text from '../../components/reusable/Text';
 import CheckBox from '@react-native-community/checkbox';
@@ -44,37 +44,35 @@ import ApplyLeave from './ApplyLeave';
 import LeaveViewReport from './LeaveViewReport';
 import LeaveBalance from './LeaveBalance';
 import SalaryDeduct from './SalaryDeduct';
-
+import {Decrypt} from '../../Service/Helper';
 
 // create a component
-const Leave = ({ navigation }) => {
- // const [fromDate, setFromDate] = useState(new Date());
- // const [toDate, setToDate] = useState(new Date());
+const Leave = ({navigation}) => {
+  // const [fromDate, setFromDate] = useState(new Date());
+  // const [toDate, setToDate] = useState(new Date());
   const [loader, setLoader] = useState(false);
- // const [ResponseData, setResponseData] = useState([]);
- // const [textinputSecondDate, setTextinputSecondDate] = useState('');
- // const [open, setOpen] = useState(false);
- //const [second, setSecond] = useState(false);
+  // const [ResponseData, setResponseData] = useState([]);
+  // const [textinputSecondDate, setTextinputSecondDate] = useState('');
+  // const [open, setOpen] = useState(false);
+  //const [second, setSecond] = useState(false);
   const [applyLeave, setapplyLeave] = useState([0]);
- // const [isSelected, setSelection] = useState('');
- // const [period, setPeriod] = useState('');
+  // const [isSelected, setSelection] = useState('');
+  // const [period, setPeriod] = useState('');
   const [checked, setChecked] = useState(null);
   const [validReason, setValidReason] = useState('Select Reason');
-  const { authContext, AppUserData } = useContext(AuthContext);
+  const {authContext, AppUserData} = useContext(AuthContext);
   // const [comment, setComment] = useState('');
 
-  // added for leave page 
+  // added for leave page
   const [LeaveTypes, setLeaveTypes] = useState([]);
   const [Leavereason, setLeavereason] = useState([]);
   const [isModalVisible, setModalVisible] = useState(false);
- // const [LeaveDetailModal, setLeaveDetailModal] = useState(false);
+  // const [LeaveDetailModal, setLeaveDetailModal] = useState(false);
   const [FinancialYear, setFinancialYear] = useState([]);
   const [EmpLeaveDetail, setEmpLeaveDetail] = useState([]);
   //const [modalData, setModalData] = useState([]);
   //const [horizental, setHorizental] = useState(false);
-  const [SelectedYear, setSelectedYear] = useState("");
-
-
+  const [SelectedYear, setSelectedYear] = useState('');
 
   // useFocusEffect(
   //   React.useCallback(() => {
@@ -105,7 +103,7 @@ const Leave = ({ navigation }) => {
 
   // const PostSubmitLeave = data => {
   //   console.log('post data', data);
-  //   // let dummydata = 
+  //   // let dummydata =
   //   //   {
   //   //     "UserName" : "222852",
   //   //     "StaffNo" :  "222852",
@@ -128,8 +126,8 @@ const Leave = ({ navigation }) => {
   //         if(result.Result.search("successfully") != -1){
   //           fromRef.current.resetForm();
   //           setChecked(null);
-  //           setValidReason("Select Reason");     
-  //         }   
+  //           setValidReason("Select Reason");
+  //         }
   //       }
   //       Toast.show(result.Result);
   //     })
@@ -154,18 +152,23 @@ const Leave = ({ navigation }) => {
   // };
 
   const getleavetypes = () => {
-    let apiData = { "UserName": AppUserData?.data?.userId };
+    let apiData = {UserName: AppUserData?.data?.username};
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
     ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
       .then(result => {
-        console.log("APiresult getleave types", result.value);
+        console.log('APiresult getleave types', result);
         setLoader(false);
         if (result.Value) {
           let updatedArray = [];
           result.Value.Table2.forEach((element, index) => {
-            updatedArray.push({ ...element, id: index, Type: element.SHORT_NAME, value: element.ABSENCE_ID.replace(/\D/g, "") });
+            updatedArray.push({
+              ...element,
+              id: index,
+              Type: element.SHORT_NAME,
+              value: element.ABSENCE_ID.replace(/\D/g, ''),
+            });
           });
           console.log("Leave Types Array..... ",updatedArray);
           setLeaveTypes(updatedArray);
@@ -178,7 +181,7 @@ const Leave = ({ navigation }) => {
         // console.log('Error occurred==>', error);
         ApiService.showErrorMessage(error, authContext);
       });
-  }
+  };
 
   // const GetLeaveReason = (type) => {
   //   let apiData = { "LeaveType": type };
@@ -219,24 +222,23 @@ const Leave = ({ navigation }) => {
   //     });
   // }
 
-
   const getfinancialyear = () => {
     let apiData = {
-      "UserName": AppUserData?.data?.userId
+      UserName: AppUserData?.data?.username,
     };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
     ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
-        console.log("Get Financial Year .....",result.Value);
+        console.log('Get Financial Year .....', result.Value);
         setLoader(false);
         if (result.Value) {
           let reasons = [];
-          setFinancialYear(result.Value.Table);
-          if (result.Value && result.Value.Table[0].FNYR_YEAR) {
-            setSelectedYear(result.Value.Table[0].FNYR_YEAR);
-            getEmpLeaveDetail(result.Value.Table[0].FNYR_YEAR);
+          setFinancialYear(result.Value.Table1);
+          if (result.Value && result.Value.Table1[0].FNYR_YEAR) {
+            setSelectedYear(Decrypt(result.Value.Table1[0].FNYR_YEAR));
+            getEmpLeaveDetail(Decrypt(result.Value.Table1[0].FNYR_YEAR));
           }
         } else {
           Toast.show('No Leave type found');
@@ -247,22 +249,24 @@ const Leave = ({ navigation }) => {
         // console.log('Error occurred==>', error);
         ApiService.showErrorMessage(error, authContext);
       });
-  }
+  };
 
-  const getEmpLeaveDetail = (fnyear) => {
-
-    var curryear = ((new Date().getFullYear()).toString()).substring(0, 2);
+  const getEmpLeaveDetail = fnyear => {
+    var curryear = new Date().getFullYear().toString().substring(0, 2);
     var from;
-    if (parseInt(((fnyear.toString()).substring(0, 2))) == 99) {
-      from = '01-apr-' + (parseInt(curryear) - 10) + ((fnyear.toString()).substring(0, 2));
+    if (parseInt(fnyear.toString().substring(0, 2)) == 99) {
+      from =
+        '01-apr-' +
+        (parseInt(curryear) - 10) +
+        fnyear.toString().substring(0, 2);
     } else {
-      from = '01-apr-' + curryear + ((fnyear.toString()).substring(0, 2));
+      from = '01-apr-' + curryear + fnyear.toString().substring(0, 2);
     }
-    var to = '31-mar-' + curryear + ((fnyear.toString()).substring(2, 4));
+    var to = '31-mar-' + curryear + fnyear.toString().substring(2, 4);
     let apiData = {
-      "StaffNo": AppUserData?.data?.userId,
-      "FromDate": from,
-      "ToDate": to
+      StaffNo: AppUserData?.data?.userId,
+      FromDate: from,
+      ToDate: to,
     };
 
     // AppUserData?.data?.userId 222852
@@ -272,9 +276,9 @@ const Leave = ({ navigation }) => {
       .then(result => {
         // console.log("APiresult GetEmplLevDetail", result);
         setLoader(false);
-        let arr = []
+        let arr = [];
         if (result.Value) {
-          arr.push(result.Value)
+          arr.push(result.Value);
           // console.log("arr",arr);
           setEmpLeaveDetail(...arr);
         } else {
@@ -286,8 +290,7 @@ const Leave = ({ navigation }) => {
         // console.log('Error occurred==>', error);
         ApiService.showErrorMessage(error, authContext);
       });
-  }
-
+  };
 
   // const DeleteLeavePending = (data) => {
 
@@ -329,7 +332,6 @@ const Leave = ({ navigation }) => {
   //     });
   // }
 
-
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
@@ -337,12 +339,10 @@ const Leave = ({ navigation }) => {
   const handleLeave = index => {
     // console.log(index);
     if (index == 1) {
-      getfinancialyear()
+      // getfinancialyear();
     }
     setapplyLeave(index);
   };
-
-
 
   // const rederReason = ({ item }) => {
   //   return (
@@ -369,20 +369,17 @@ const Leave = ({ navigation }) => {
   // };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1}}>
+      {loader ? (
+        <Spinner
+          visible={loader}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
+      ) : null}
 
-      {
-        loader ?
-          <Spinner
-            visible={loader}
-            textContent={'Loading...'}
-            textStyle={styles.spinnerTextStyle}
-          />
-          : null
-      }
-      
-        <View showsVerticalScrollIndicator={false} style={styles.container}>
-          {/* <TouchableOpacity
+      <View showsVerticalScrollIndicator={false} style={styles.container}>
+        {/* <TouchableOpacity
             style={styles.addtnlBtn}
             onPress={() => {
               horizental == true ? setHorizental(false) : setHorizental(true);
@@ -424,13 +421,22 @@ const Leave = ({ navigation }) => {
             </View>
           ) : null} */}
 
-          <View style={{ width: '100%', alignSelf: 'center', marginTop: 10, paddingHorizontal: 10 }}>
-            <ScrollView
-            horizontal={true}
-            >
+        <View
+          style={{
+            width: '100%',
+            alignSelf: 'center',
+            marginTop: 10,
+            paddingHorizontal: 10,
+          }}>
+          <ScrollView horizontal={true}>
             <SegmentedControlTab
               borderRadius={2}
-              values={['Apply Leave', 'View Report','Leave Balance','Salary Deduction']}
+              values={[
+                'Apply Leave',
+                'View Report',
+                'Leave Balance',
+                'Salary Deduction',
+              ]}
               selectedIndex={applyLeave}
               onTabPress={index => {
                 handleLeave(index);
@@ -441,16 +447,15 @@ const Leave = ({ navigation }) => {
               activeTabStyle={styles.activeTabStyle}
               activeTabTextStyle={styles.activeTabTextStyle}
             />
-            </ScrollView>
-          </View>
-          <View style={{ flexGrow: 1, paddingHorizontal: 10 }}>
-            {applyLeave == 0 ? <ApplyLeave/> : null}
-            {applyLeave == 1 ? <LeaveViewReport/> : null}
-            {applyLeave == 2 ? <LeaveBalance/> : null}
-            {applyLeave == 3 ? <SalaryDeduct/> : null}
-          </View>
+          </ScrollView>
         </View>
-     
+        <View style={{flexGrow: 1, paddingHorizontal: 10}}>
+          {applyLeave == 0 ? <ApplyLeave /> : null}
+          {applyLeave == 1 ? <LeaveViewReport /> : null}
+          {applyLeave == 2 ? <LeaveBalance /> : null}
+          {applyLeave == 3 ? <SalaryDeduct /> : null}
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
@@ -460,23 +465,22 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: GlobalColor.PrimaryLight
+    backgroundColor: GlobalColor.PrimaryLight,
   },
   tabsContainerStyle: {
     marginTop: 10,
     borderRadius: 0,
     width: '100%',
-    
   },
   tabStyle: {
     paddingVertical: 10,
-    paddingHorizontal:15,
+    paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary
+    borderColor: GlobalColor.Secondary,
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P-1,
+    fontSize: GlobalFontSize.P - 1,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },
@@ -489,11 +493,11 @@ const styles = StyleSheet.create({
     color: GlobalColor.Secondary,
   },
   circleBox: {
-    width: "16.6%",
+    width: '16.6%',
     height: 60,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   circle: {
     borderWidth: 1,
@@ -530,26 +534,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#ddd',
-    padding: 10
+    padding: 10,
   },
   spinnerTextStyle: {
-    color: '#fff'
+    color: '#fff',
   },
   addtnlBtn: {
     position: 'absolute',
     right: 10,
     top: 0,
-    zIndex: 55555
+    zIndex: 55555,
   },
   checkboxContainer: {
-    width: "50%",
+    width: '50%',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   checkboxText: {
     marginLeft: 2,
-    paddingHorizontal:10
-  }
+  },
 });
 
 //make this component available to the app

@@ -47,7 +47,7 @@ const VisitorDetails = ({navigation,route}) => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-         "UserName" : userId,
+         "UserName" : AppUserData?.data?.username,
          "Type" : route.params.visitorpayload.VisType,
          "VisitDateFrom" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
          "NoOfPerson" : "1",

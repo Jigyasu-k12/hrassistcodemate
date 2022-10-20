@@ -59,14 +59,14 @@ const LeaveViewReport = () => {
 
   const getfinancialyear = () => {
     let apiData = {
-      UserName: AppUserData?.data?.userId,
+      UserName: AppUserData?.data?.username,
     };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
     setLoader(true);
     ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
-        console.log('get year financial', result.Value);
+        console.log('get year financial', result.Value.Table1);
         stopLoader(false);
         if (result.Value) {
           let reasons = [];
@@ -87,7 +87,6 @@ const LeaveViewReport = () => {
   };
 
   const getEmpLeaveDetail = (fnyear, isrefresh = false) => {
-
     console.log(fnyear);
     if (!isrefresh) {
       setLoader(true);
@@ -111,7 +110,6 @@ const LeaveViewReport = () => {
       FromDate: from,
       ToDate: to,
     };
-
 
     // console.log(apiData);
     // return;
