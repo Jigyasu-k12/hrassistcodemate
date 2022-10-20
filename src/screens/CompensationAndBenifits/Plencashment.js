@@ -74,12 +74,14 @@ const Plencashment = ({navigation, route}) => {
 
   const SubmitPLEncashmentApi = () => {
     let token = AppUserData.token;
-    let userId = AppUserData?.data?.userId;
+    // let userId = AppUserData?.data?.userId;
     let apiData = {
-      UserName: userId,
+      UserName: AppUserData?.data?.username,
       Encashdays: encashDays,
     };
-    // console.log("SubmitPLEncashmentApiapiData", apiData);
+    console.log('token', token)
+    console.log("SubmitPLEncashmentApiapiData", apiData);
+    // return
     setLoader(true);
     ApiService.PostMethode('/SubmitPLEncashment', apiData, token, authContext)
       .then(result => {
