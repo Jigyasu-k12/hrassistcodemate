@@ -66,6 +66,7 @@ const MarkAttendence = () => {
   useEffect(() => {
     const requestLocationPermission = async () => {
       if (Platform.OS === 'ios') {
+        askIOSPermission();
         // getOneTimeLocation();
         // subscribeLocationLocation();
       } else {
@@ -96,6 +97,9 @@ const MarkAttendence = () => {
     };
   }, []);
 
+  const askIOSPermission = async () => {
+    await Geolocation.requestAuthorization('whenInUse');
+  };
   // const getUserCurrentLocation = () => {
   //   Geolocation.getCurrentPosition(position => {
   //     console.log('position', position);
@@ -111,7 +115,7 @@ const MarkAttendence = () => {
   // }
 
   const getMobDevice = async (reset = false) => {
-    if (Platform.OS === 'android') {
+    if (Platform.OS == 'android') {
       const isLocationMocked =
         await RNMockLocationDetector.checkMockLocationProvider();
       if (isLocationMocked) {
@@ -128,19 +132,7 @@ const MarkAttendence = () => {
         return;
       }
     } else {
-      if (JailMonkey.canMockLocation) {
-        Alert.alert('Error', 'Location is mocked please retry', [
-          {
-            text: 'Okay',
-            onPress: () => console.log('Cancel Pressed'),
-            style: 'cancel',
-          },
-          // { text: "OK", onPress: () => {
-          //   Linking.openURL(vesionNo[0]);
-          // } }
-        ]);
-        return;
-      }
+      console.log('ios device');
     }
 
     let apiData = {UserName: AppUserData?.data?.userId};
@@ -192,7 +184,7 @@ const MarkAttendence = () => {
           parseFloat(longitude) +
           '&key=' +
           MapLisenceKey;
-        console.log(url);
+        console.log('location url==>',url);
         ApiService.getRawurl(url)
           .then(result => {
             console.log('APiresult getRawurl', result);
@@ -208,6 +200,7 @@ const MarkAttendence = () => {
             }
           })
           .catch(error => {
+            console.log('Error Occured during location', error);
             CallAPIToStoreAddress();
             setLoader(false);
             Alert.alert('Error', 'Unable to get location name retry', [
@@ -240,7 +233,7 @@ const MarkAttendence = () => {
           ],
         );
       },
-      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+      {enableHighAccuracy: false, timeout: 20000, maximumAge: 15000},
     );
   };
 

@@ -126,7 +126,7 @@ export default function App() {
         }
       },()=>{
         if(Platform.OS === "ios"){
-          RNExitApp.exitApp();
+          // RNExitApp.exitApp();
           return;
         }
         // console.log("is rooted/jailbreak/emulator/simulator")

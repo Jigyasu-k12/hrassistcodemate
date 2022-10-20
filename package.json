@@ -57,7 +57,7 @@
     "react-native-onesignal": "^4.4.0",
     "react-native-pager-view": "^5.4.23",
     "react-native-paper": "^4.11.2",
-    "react-native-permissions": "^3.3.1",
+    "react-native-permissions": "^3.6.1",
     "react-native-pvt-jail-monkey": "^2.4.7",
     "react-native-reanimated": "^2.4.0",
     "react-native-responsive-fontsize": "^0.5.1",
