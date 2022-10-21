@@ -55,7 +55,7 @@ const Leave = ({navigation}) => {
   // const [textinputSecondDate, setTextinputSecondDate] = useState('');
   // const [open, setOpen] = useState(false);
   //const [second, setSecond] = useState(false);
-  const [applyLeave, setapplyLeave] = useState([0]);
+  const [applyLeave, setapplyLeave] = useState(0);
   // const [isSelected, setSelection] = useState('');
   // const [period, setPeriod] = useState('');
   const [checked, setChecked] = useState(null);
@@ -74,12 +74,11 @@ const Leave = ({navigation}) => {
   //const [horizental, setHorizental] = useState(false);
   const [SelectedYear, setSelectedYear] = useState('');
 
-  // useFocusEffect(
-  //   React.useCallback(() => {
-  //     const unsubscribe = getleavetypes();
-  //     return () => unsubscribe;
-  //   }, [])
-  // )
+  useFocusEffect(
+    React.useCallback(() => {
+      getleavetypes();
+    }, [])
+  )
 
   // var radio_props = [
   //   { label: 'Planned', value: "P" },
@@ -152,36 +151,31 @@ const Leave = ({navigation}) => {
   // };
 
   const getleavetypes = () => {
-    let apiData = {UserName: AppUserData?.data?.username};
-    // AppUserData?.data?.userId 222852
-    let token = AppUserData.token;
-    setLoader(true);
-    ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
-      .then(result => {
-        console.log('APiresult getleave types', result);
-        setLoader(false);
-        if (result.Value) {
-          let updatedArray = [];
-          result.Value.Table2.forEach((element, index) => {
-            updatedArray.push({
-              ...element,
-              id: index,
-              Type: element.SHORT_NAME,
-              value: element.ABSENCE_ID.replace(/\D/g, ''),
-            });
-          });
-          console.log("Leave Types Array..... ",updatedArray);
-          setLeaveTypes(updatedArray);
-        } else {
-          Toast.show('No Leave type found');
-        }
-      })
-      .catch(error => {
-        setLoader(false);
-        // console.log('Error occurred==>', error);
-        ApiService.showErrorMessage(error, authContext);
-      });
-  };
+  let apiData = { "UserName": AppUserData?.data?.username };
+  // AppUserData?.data?.userId 222852
+  let token = AppUserData.token;
+  setLoader(true);
+  ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
+    .then(result => {
+      console.log("APiresult getleave types", result.Value.Table2);
+      setLoader(false);
+      if (result.Value) {
+        let updatedArray = [];
+        result.Value.Table2.forEach((element, index) => {
+          updatedArray.push({ ...element, id: index, Type: element.SHORT_NAME, value: element.ABSENCE_ID.replace(/\D/g, "") });
+        });
+        console.log(updatedArray);
+        setLeaveTypes(updatedArray);
+      } else {
+        Toast.show('No Leave type found');
+      }
+    })
+    .catch(error => {
+      setLoader(false);
+    //   console.log('Error occurred==>', error);
+      ApiService.showErrorMessage(error, authContext);
+    });
+}
 
   // const GetLeaveReason = (type) => {
   //   let apiData = { "LeaveType": type };
@@ -336,13 +330,9 @@ const Leave = ({navigation}) => {
     setModalVisible(!isModalVisible);
   };
 
-  const handleLeave = index => {
-    // console.log(index);
-    if (index == 1) {
-      // getfinancialyear();
-    }
-    setapplyLeave(index);
-  };
+  // const handleLeave = index => {
+  //   setapplyLeave(index);
+  // };
 
   // const rederReason = ({ item }) => {
   //   return (
@@ -439,7 +429,7 @@ const Leave = ({navigation}) => {
               ]}
               selectedIndex={applyLeave}
               onTabPress={index => {
-                handleLeave(index);
+                setapplyLeave(index);
               }}
               tabsContainerStyle={styles.tabsContainerStyle}
               tabStyle={styles.tabStyle}

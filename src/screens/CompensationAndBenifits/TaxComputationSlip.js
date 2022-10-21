@@ -38,7 +38,7 @@ const TaxComputationSlip = () => {
             setLoader(true);
         }
         
-        ApiService.PostMethode('/GetTaxApp', {"UserName": AppUserData?.data?.userId}, AppUserData.token, authContext)
+        ApiService.PostMethode('/GetTaxApp', {"UserName": AppUserData?.data?.username}, AppUserData.token, authContext)
           .then(result => {
             console.log('GetSalaryMonth', result);
             // Stop Loader
@@ -68,14 +68,14 @@ const TaxComputationSlip = () => {
     }, [])
 
 
-    // if(loader){
-    //     return(
-    //         <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
-    //             <Header title="Tax Computation Slip" back/>
-    //             <LoadingScreen/>
-    //         </SafeAreaView>          
-    //     )
-    //   }
+    if(loader){
+        return(
+            <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
+                <Header title="Tax Computation Slip" back/>
+                <LoadingScreen/>
+            </SafeAreaView>          
+        )
+      }
     
       const FlatList_Header_Approve = () => {
         return (

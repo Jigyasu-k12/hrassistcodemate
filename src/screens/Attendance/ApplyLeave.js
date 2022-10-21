@@ -130,6 +130,7 @@ const ApplyLeave = ({navigation}) => {
     };
   
     const getleavetypes = () => {
+        console.log('getleavetypes is called')
       let apiData = { "UserName": AppUserData?.data?.username };
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;

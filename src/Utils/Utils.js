@@ -90,16 +90,10 @@ export const PostMethodes =  async (url, data, token, context=null) => {
     }    
 }
 
-export const getRawurl = async (url, data, token) => {
+export const getRawurl = async (url) => {
 
     try {
-        let response = await axios.get(url, {
-            headers: {
-                'Content-Type ': "application/json",
-                // Accept :"application/json",
-                authToken: token,
-            }
-        })
+        let response = await axios.get(url)
         // console.log("Api resp",response)
         return response.data;
     } catch (error) {

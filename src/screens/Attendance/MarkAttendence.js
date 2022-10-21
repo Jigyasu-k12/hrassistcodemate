@@ -92,9 +92,6 @@ const MarkAttendence = () => {
     };
 
     requestLocationPermission();
-    return () => {
-      // Geolocation.clearWatch(watchID);
-    };
   }, []);
 
   const askIOSPermission = async () => {
@@ -114,7 +111,7 @@ const MarkAttendence = () => {
   //   );
   // }
 
-  const getMobDevice = async (reset = false) => {
+  const getMobDevice = async () => {
     if (Platform.OS == 'android') {
       const isLocationMocked =
         await RNMockLocationDetector.checkMockLocationProvider();
@@ -130,19 +127,18 @@ const MarkAttendence = () => {
           // } }
         ]);
         return;
+      }else{
+        getCurrentPosition()
       }
     } else {
+      askIOSPermission()
       console.log('ios device');
+      getCurrentPosition()
     }
+    // let apiData = { "UserName": AppUserData?.data?.username };
+    // setLoader(true);
 
-    let apiData = {UserName: AppUserData?.data?.userId};
-    setLoader(true);
-
-
-      // let apiData = { "UserName": AppUserData?.data?.username };
-      // setLoader(true);
-
-      /*
+    /*
       if (Platform.OS == 'android') {
         // AppUserData?.data?.userId 222852
         let token = AppUserData.token;
@@ -176,28 +172,38 @@ const MarkAttendence = () => {
     // console.log(location);
     // return;
 
+;
+  };
+
+  const getCurrentPosition = ()=>{
     Geolocation.getCurrentPosition(
       position => {
         setLoader(true);
         console.log('position', position);
         const {latitude, longitude} = position.coords;
+        console.log('Lat&Long', latitude, longitude);
         let url =
           'https://maps.googleapis.com/maps/api/geocode/json?latlng=' +
-          parseFloat(latitude) +
+          parseFloat(latitude)+
           ',' +
-          parseFloat(longitude) +
-          '&key=' +
+          parseFloat(longitude)+
+          '&key='+
           MapLisenceKey;
-        console.log('location url==>',url);
+        console.log('location url==>', url);
         ApiService.getRawurl(url)
           .then(result => {
             console.log('APiresult getRawurl', result);
-            // setLoader(false);
+            setLoader(false);
             let userlocation = result.results[0].formatted_address;
             setUserLocation(userlocation);
             let date = moment(new Date()).format('DD-MMM-YYYY');
-
-            if (!reset) {
+            console.log(
+              'CallAPIToStoreAddress payload==>',
+              userlocation,
+              latitude,
+              longitude,
+            );
+            if(userlocation,latitude,longitude,date) {
               CallAPIToStoreAddress(userlocation, date, latitude, longitude);
             } else {
               setLoader(false);
@@ -205,7 +211,7 @@ const MarkAttendence = () => {
           })
           .catch(error => {
             console.log('Error Occured during location', error);
-            CallAPIToStoreAddress();
+            // CallAPIToStoreAddress();
             setLoader(false);
             Alert.alert('Error', 'Unable to get location name retry', [
               {
@@ -238,12 +244,12 @@ const MarkAttendence = () => {
         );
       },
       {enableHighAccuracy: false, timeout: 20000, maximumAge: 15000},
-    );
-  };
+    )
+  }
 
   const CallAPIToStoreAddress = (
     location = '',
-    dati = '',
+    date = '',
     lat = '',
     lon = '',
   ) => {
@@ -255,7 +261,7 @@ const MarkAttendence = () => {
       Longitude: lon,
       Latitude: lat,
       Location: location,
-      PunchDate: dati,
+      PunchDate: date,
     };
 
     console.log(apiData);
