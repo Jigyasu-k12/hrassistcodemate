@@ -283,7 +283,7 @@ const SalarySlip = ({ navigation }) => {
                         />
                     </View>
                 </Modal>
-                <TouchableOpacity
+                <View
                     style={styles.Salary}>
                     <View
                         style={{
@@ -307,9 +307,9 @@ const SalarySlip = ({ navigation }) => {
                             })
 
                         )}
-                        <Feather name="corner-up-right" size={20} />
+                        {/* <Feather name="corner-up-right" size={20} /> */}
                     </View>
-                </TouchableOpacity>
+                </View>
 
 
 

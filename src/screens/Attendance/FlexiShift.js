@@ -172,7 +172,8 @@ const FlexiShift = () => {
         console.log('SubmitFlexiShiftPlan', result);
         setLoader(false);
         let ApiResult = result.Result;
-        alert(ApiResult);
+        // alert(ApiResult);
+        Alert.alert("Success", "Flexi Shift request has been submitted")
         // setSubmitShift(ApiResult)
       })
       .catch(error => {

@@ -43,6 +43,7 @@ const EditProfile = ({ navigation, route }) => {
         setEmpPhone(Phone)
         setNominiData(NominationData)
         setEmployeeData(responseData);
+        setIsEnabled(Decrypt(responseData[0].PRIVATE_FLAG) != "Y"? true: false);
       })
       .catch(error => {
         stopLoader(false);
@@ -63,13 +64,15 @@ const EditProfile = ({ navigation, route }) => {
         "StaffNo" : userId,
         "PresonalNo" : "",
         "ExtensionNo" : empPhone,
-        "EmergencyNo" : ""
+        "EmergencyNo" : "",
+        "Flag": !isEnabled ? "Y" : "N"
     }
     ApiService.PostMethode('/UpdateEmpProf', apiData, token, authContext)
       .then(result => {
         if(result.Result){
           stopLoader(false);
-          Toast.show(result.Result);
+          // Toast.show(result.Result);
+          Toast.show("Profile updated successfully");
         }else{
           Toast.show("Update Failed");
         }

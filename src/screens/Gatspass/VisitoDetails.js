@@ -47,21 +47,22 @@ const VisitorDetails = ({navigation,route}) => {
     let token = AppUserData.token
     let userId = AppUserData?.data?.userId
     let apiData = {
-         "UserName" : AppUserData?.data?.username,
-         "Type" : route.params.visitorpayload.VisType,
-         "VisitDateFrom" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
-         "NoOfPerson" : "1",
-         "VehicleIndicator" : route.params.visitorpayload.Pvehicle,
-         "VehicleNumber" : route.params.visitorpayload.vehicleNumber,
-         "Duration" : route.params.visitorpayload.duration,
-         "Reason" : route.params.visitorpayload.ReasonToCome,
-         "InternalVehicleIndicator" : route.params.visitorpayload.interVehicle,
-         "ExpectedArrivalTime" : route.params.visitorpayload.exArrTime,
-         "SearchLevel" : route.params.visitorpayload.SearchLevel,
-         "LocationCode" : route.params.visitorpayload.location,
-         "VisitDateTo" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
-         "VglmID" : "",
-         "MultipleEmployeeIndicator" : Decrypt(route.params.visitorpayload.empId), 
+      "userName" : AppUserData?.data?.username,
+      "type" : route.params.visitorpayload.VisType,
+      "visitDateFrom" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
+      "noOfPerson" : "1",
+      "vehicleIndicator" : route.params.visitorpayload.Pvehicle,
+      "vehicleNumber" : route.params.visitorpayload.vehicleNumber,
+      "duration" : route.params.visitorpayload.duration,
+      "reason" : route.params.visitorpayload.ReasonToCome,
+      "internalVehicleIndicator" : route.params.visitorpayload.interVehicle,
+      "expectedArrivalTime" : route.params.visitorpayload.exArrTime,
+      "searchLevel" : route.params.visitorpayload.SearchLevel,
+      "locationCode" : route.params.visitorpayload.location,
+      "visitDateTo" : moment(new Date(route.params.visitorpayload.dateDummy)).format('MM-DD-YY'),
+      "vglmID" : "",
+      "multipleEmployeeIndicator" : route.params.visitorpayload.empId, 
+      "mobileNo": route.params.visitorpayload.mobileNo 
       }
     console.log('apiData===>', apiData)
     setLoader(true);
@@ -138,8 +139,9 @@ const VisitorDetails = ({navigation,route}) => {
         let apiData= result.Result
         console.log("APiresult SubmitVSDT",apiData);
         // alert( apiData)
-        Toast.show(apiData);
+        // Toast.show(apiData);
         if(apiData.includes("SUCCESS")){
+          Toast.show("Visitor Detail Submitted successfully");
           // navigation.navigate("Home");
 
           // navigation.dispatch(
@@ -160,6 +162,8 @@ const VisitorDetails = ({navigation,route}) => {
           );
           return;
 
+        }else{
+          Toast.show(apiData);
         }
         setLoader(false);
       })

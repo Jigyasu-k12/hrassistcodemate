@@ -90,7 +90,7 @@ const Birthdays = () => {
     let token = AppUserData.token;
     setmodalLoader(true);
     setModalVisible(true);
-    ApiService.PostMethode('/GetEmployeeProfile', apiData, token, authContext)
+    ApiService.PostMethode('/GetEmpSearch', apiData, token, authContext)
       .then(result => {
         let response = result.Value;
         if (response.Table1) {
@@ -351,19 +351,19 @@ const Birthdays = () => {
                   <Text
                     Bold
                     style={{color: GlobalColor.Primary, lineHeight: 20}}>
-                    {modalItem && modalItem.Name && modalItem.Name}
+                    {modalItem && modalItem.Name && Decrypt(modalItem.Name)}
                   </Text>
                   <Text style={{color: GlobalColor.Primary, lineHeight: 20}}>
-                    {modalItem && modalItem.Email && modalItem.Email}
+                    {modalItem && modalItem.Email && Decrypt(modalItem.Email)}
                   </Text>
 
                   <View style={{flexDirection: 'row'}}>
                     <Text style={{color: GlobalColor.Primary, lineHeight: 20}}>
-                      {modalItem && modalItem.Desg && modalItem.Desg}
+                    {modalItem && modalItem.Desg && Decrypt(modalItem.Desg)}
                     </Text>
                     <Text style={{color: GlobalColor.Primary, lineHeight: 20}}>
                       {' '}
-                      | {modalItem && modalItem.Dept && modalItem.Dept}
+                      | {modalItem && modalItem.Dept && Decrypt(modalItem.Dept)}
                     </Text>
                   </View>
                 </View>
@@ -380,7 +380,7 @@ const Birthdays = () => {
                   }}>
                   <TouchableOpacity
                     onPress={() => {
-                      Linking.openURL(`mailto:${modalItem.Email}`);
+                      Linking.openURL(`mailto:${Decrypt(modalItem.Email)}`);
                     }}
                     style={{
                       borderWidth: 1,
@@ -409,7 +409,7 @@ const Birthdays = () => {
                       alignItems: 'center',
                     }}
                     onPress={() => {
-                      Linking.openURL(`tel:${modalItem.MOB_NO}`);
+                      Linking.openURL(`tel:${Decrypt(modalItem.MOB_NO)}`);
                     }}>
                     <Feather
                       name="phone-call"

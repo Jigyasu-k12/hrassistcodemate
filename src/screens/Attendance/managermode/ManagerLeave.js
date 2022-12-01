@@ -197,7 +197,8 @@ export const ManagerLeave = () => {
                 if(type == "A"){
                   Alert.alert(
                     "Leave",
-                    result.Result,
+                    // result.Result,
+                    "Leave has been approve",
                     [
                       {
                         text: "OK",
@@ -210,7 +211,8 @@ export const ManagerLeave = () => {
                 }else{
                   Alert.alert(
                     "Leave",
-                    result.Result,
+                    // result.Result,
+                    "Leave has been rejected",
                     [
                       {
                         text: "OK",

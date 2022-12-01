@@ -53,9 +53,9 @@ const PFBalance = () => {
         //Set Data
         let CB1_CB2 = Decrypt(result.Value.Table2[0].CB1_CB2)
         let PFST_MUL_CB3 = Decrypt(result.Value.Table3[0].PFST_MUL_CB3)
-        let NetBalance = parseFloat(CB1_CB2)+ parseFloat(PFST_MUL_CB3);
+        let NetBalance = parseFloat(CB1_CB2) + parseFloat(PFST_MUL_CB3);
 
-        // console.log(NetBalance, "|",CB1_CB2,  "|", PFST_MUL_CB3)
+        console.log(NetBalance, "|",CB1_CB2,  "|", PFST_MUL_CB3)
 
         setEmployeePf(CB1_CB2)
         setEmployerPf(PFST_MUL_CB3)

@@ -127,12 +127,13 @@ const Book = () => {
         <Text style={{ paddingVertical: 5, }} Bold>
           Select Date
         </Text>
-        <TouchableOpacity
+        <View
           style={styles.SelectInputContainer}>
           <DatePicker
             modal
             open={open}
             date={date}
+            mode="date"
             onConfirm={date => {
               setOpen(false);
               setDate(date)
@@ -145,7 +146,7 @@ const Book = () => {
           <TouchableOpacity onPress={() => setOpen(true)}>
             <Ionicons name="calendar-outline" size={30} color={GlobalColor.PrimaryGradient} />
           </TouchableOpacity>
-        </TouchableOpacity>
+        </View>
         <View style={{ paddingVertical: 10, }}>
           <Text Bold>Available Shuttle Routes</Text>
         </View>

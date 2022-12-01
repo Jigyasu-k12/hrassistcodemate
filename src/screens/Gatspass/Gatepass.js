@@ -301,6 +301,7 @@ const Gatepass = ({navigation}) => {
           Desig: '',
           noOfPerson: '',
           empId: '',
+          MOB_NO:''
         }}
         onSubmit={values => {
           console.log('values', BuildingData);
@@ -346,12 +347,13 @@ const Gatepass = ({navigation}) => {
             SearchLevel: values.searchLevel.value,
             interVehicle: values.internalVehical.value,
             ReasonToCome: values.reason,
-            perName: values.perName,
-            Desig: values.Desig,
+            perName: Decrypt(values.perName),
+            Desig: Decrypt(values.Desig),
             noOfPerson: '5',
-            empId: values.empId,
+            empId: Decrypt(values.empId),
             vehicleNumber: values.vehicleNumber,
             dateDummy: values.date,
+            mobileNo:Decrypt(values.MOB_NO),
           };
           console.log('payload', newdata);
           navigation.navigate('VisitorDetails', {
@@ -1176,10 +1178,10 @@ const Gatepass = ({navigation}) => {
                     fontSize: 16,
                     fontWeight: 'bold',
                   }}>
-                  Designation
+                  Mobile
                 </Text>
                 <TextInput
-                  value={Decrypt(values.Desig)}
+                  value={Decrypt(values.MOB_NO)}
                   editable={false}
                   style={{
                     marginVertical: 10,
@@ -1257,6 +1259,7 @@ const Gatepass = ({navigation}) => {
                           setFieldValue('perName', item.Name);
                           setFieldValue('empId', item['Staff No']);
                           setFieldValue('Desig', item['Desg']);
+                          setFieldValue('MOB_NO', item['MOB_NO']);
                           // console.log(item);
                           // setSearchedNameData(item)
                           setEmpModalVisible(false);
