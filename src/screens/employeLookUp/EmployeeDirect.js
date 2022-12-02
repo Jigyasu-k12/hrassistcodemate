@@ -111,7 +111,7 @@ const EmployeeDirect = () => {
             SearchEmployee();
           }}>
           <Ionicons
-            style={[styles.searchIcon, {marginLeft: search == '' ? 35 : null}]}
+            style={[styles.searchIcon, {marginLeft: search == '' ? 0 : null}]}
             name="send"
             size={25}
             color="#2980b9"

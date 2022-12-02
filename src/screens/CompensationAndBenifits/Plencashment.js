@@ -90,6 +90,8 @@ const Plencashment = ({navigation, route}) => {
         // Stop Loader
         stopLoader();
         Alert.alert('Payroll', result.Result);
+        InitPLEncashmenApi();
+        ReportPL();
         // createTwoButtonAlert(result.Result)
 
         // setResult(ApiValue)
@@ -303,7 +305,7 @@ const Plencashment = ({navigation, route}) => {
       });
   };
   const encashmentData = () => {
-    if(encashDays > Decrypt(encashment.PL_ENCASHABLE) ){
+    if(parseInt(encashDays) > parseInt(Decrypt(encashment.PL_ENCASHABLE)) ){
       AlertOccurred('Payroll', 'Please enter equal\\lesser than encashable limit', 'Ok');
       return;
     }

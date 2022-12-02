@@ -234,7 +234,7 @@ const EmployProfile = ({navigation, route}) => {
                 <View style={styles.box}>
                   <Text style={styles.header}>Phone No.</Text>
                   <TouchableOpacity
-                    onPress={() => Linking.openURL(`tel:${item.PHNE_PERS}`)}>
+                    onPress={() => Linking.openURL(`tel:${Decrypt(item.PHNE_PERS)}`)}>
                     <Text style={{color: GlobalColor.Secondary}} Bold>
                       {Decrypt(item.PHNE_PERS)}
                     </Text>

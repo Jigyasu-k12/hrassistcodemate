@@ -137,7 +137,7 @@ const LeaveViewReport = () => {
 
   const DeleteLeavePending = data => {
     let apiData = {
-      UserName: AppUserData?.data?.userId,
+      UserName: AppUserData?.data?.username,
       ApplicationID: data['Application ID'],
     };
     // AppUserData?.data?.userId 222852

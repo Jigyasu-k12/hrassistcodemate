@@ -229,7 +229,7 @@ const EditProfile = ({ navigation, route }) => {
                       size={30}
                       color={'#4174D0'}
                       onPress={() => {
-                        Linking.openURL(`tel:${item.HRBP_PHONE}`)
+                        Linking.openURL(`tel:${Decrypt(item.HRBP_PHONE)}`)
                       }}
                     />
                   </View>
