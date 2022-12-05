@@ -325,12 +325,12 @@ const MarkAttendence = () => {
             </TouchableOpacity>
             <Text style={{textAlign: 'center'}}>{userLocation}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => getMobDevice(true)}
             style={styles.resetLocation}>
             <Text style={styles.resetLocationTxt}>Reset Location</Text>
             <Ionicons name="ios-locate-outline" size={30} color={'green'} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           {!locationStatus ? (
             <Text style={{textAlign: 'center', marginTop: 5}}>

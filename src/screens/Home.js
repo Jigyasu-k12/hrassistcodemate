@@ -13,6 +13,7 @@ import { GlobalColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
 import Text from '../components/reusable/Text';
 import * as ApiService from '../Utils/Utils';
+import { Dimensions } from 'react-native';
 
 
 
@@ -177,7 +178,8 @@ const Home = ({ navigation }) => {
             autoplay={true}
             circleLoop={true}
             style={styles.carouselimg}
-            sliderBoxHeight={250}
+            sliderBoxHeight={220}
+            resizeMode={"cover"}
           />
         </View>
         <TouchableCard navigation={navigation} />
@@ -216,9 +218,9 @@ const styles = StyleSheet.create({
     // letterSpacing: 1,
   },
   carousel: {
-    marginTop: -40,
-    height: 180,
-    width: '92%',
+    marginTop: -60,
+    height: 210,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 3,
@@ -230,14 +232,14 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     zIndex: 1,
-    overflow: 'hidden',
+    // overflow: 'hidden',
     marginBottom: 5,
     borderWidth: 0.5,
     borderColor: GlobalColor.Secondary
   },
   carouselimg: {
     minHeight: '100%',
-    width: '100%',
+    minWidth: '100%',
     resizeMode: 'contain',
   },
   tinyLogo:{
