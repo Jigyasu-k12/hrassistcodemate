@@ -82,6 +82,7 @@ export const ManagerAttandance = ({navigation}) => {
   };
 
   const SearchEmployee = () => {
+    let userId = AppUserData?.data?.userId;
     console.log('post data', search);
     if (search === '') {
       // Alert.alert("please enter a valid keyWord ");
@@ -90,6 +91,7 @@ export const ManagerAttandance = ({navigation}) => {
     } else {
       let apiData = {
         Search: search,
+        ReportManager: userId,
       };
       let token = AppUserData.token;
       setLoader(true);

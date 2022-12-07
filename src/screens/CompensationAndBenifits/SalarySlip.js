@@ -24,9 +24,11 @@ import { Decrypt } from '../../Service/Helper';
 const SalarySlip = ({ navigation }) => {
 
     const [isModalVisible, setModalVisible] = useState(false);
+    const [salaryTypeisModalVisible, setsalaryTypeisModalVisible] = useState(false);
     const [month, setMonth] = useState([]);
     const [selectedMonth, setSelectedMonth] = useState('');
     const [defaultDate, setDefaultDate] = useState('Select Month');
+    const [DefaultSalary, setsetDefaultSalary] = useState("");
     const [loader, setLoader] = useState(false)
     const [table1Data, setTable1Data] = useState('')
     const [table2Data, setTable2Data] = useState('')
@@ -35,6 +37,7 @@ const SalarySlip = ({ navigation }) => {
     const [salaryType, setSalaryType = useState] = useState('')
     const { authContext, AppUserData } = useContext(AuthContext);
     const [refresh, setrefresh] = useState(false);
+    
 
 
 
@@ -58,7 +61,6 @@ const SalarySlip = ({ navigation }) => {
                 setDefaultDate(defaultDate);
                 setMonth(responseData);
                 GetSalaryTypeApi(defaultDate)
-                GetSalaryData(defaultDate)
             })
             .catch(error => {
                 // Stop Loader
@@ -82,11 +84,15 @@ const SalarySlip = ({ navigation }) => {
         setLoader(true);
         ApiService.PostMethode('/GetSalaryType', apiData, token, authContext)
             .then(result => {
-                // Stop Loader
                 stopLoader()
-                console.log('GetSalaryType', result);
-                let responseData = result.Value
-                setSalaryType(responseData)
+                if(result.Value){
+                    // console.log('GetSalaryType', result);
+                    let responseData = result.Value
+                    setsetDefaultSalary(result.Value[0]);
+                    setSalaryType(responseData);
+                    GetSalaryData(data, result.Value[0].PYDT_YYMM_RUNNO)
+
+                }
             })
             .catch(error => {
                 // Stop Loader
@@ -96,15 +102,17 @@ const SalarySlip = ({ navigation }) => {
                 ApiService.showErrorMessage(error, authContext);
             });
     };
-    const GetSalaryData = (data) => {
+    const GetSalaryData = (data, salarytype = 0) => {
+
+        console.log(data, salarytype);
         let token = AppUserData.token
         let EmplID = AppUserData?.data?.userId
         let apiData = {
             "EmplID": EmplID,
             "SalaryMonth": Decrypt(data),
-            "SalType": "0"
+            "SalType": Decrypt(salarytype)
         }
-        console.log("GetSalaryData", apiData)
+        // console.log("GetSalaryData", apiData)
         //set Loader
         setLoader(true);
         ApiService.PostMethode('/GetSalaryData', apiData, token, authContext)
@@ -136,7 +144,7 @@ const SalarySlip = ({ navigation }) => {
 
     useEffect(() => {
         GetMonth()
-        GetSalaryData()
+        // GetSalaryData()
         // GetSalaryTypeApi()
     }, [])
     // console.log("month data", month);
@@ -144,6 +152,15 @@ const SalarySlip = ({ navigation }) => {
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
+
+
+    const salaryTypetoggleModal = () => {
+        setsalaryTypeisModalVisible(!salaryTypeisModalVisible);
+    };
+
+
+
+
 
 
 
@@ -240,11 +257,11 @@ const SalarySlip = ({ navigation }) => {
                 </TouchableOpacity>
 
                 {/* salary month modal */}
-
                 <Modal
                     backdropOpacity={0.1}
                     coverScreen={true}
                     isVisible={isModalVisible}>
+                        <SafeAreaView>
                     <View style={styles.modal}>
                         <TouchableOpacity style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
                             <Feather
@@ -273,7 +290,7 @@ const SalarySlip = ({ navigation }) => {
                                         console.log(item.SHIS_YYMM_CODE)
                                         setDefaultDate(item.SHIS_YYMM_CODE)
                                         GetSalaryTypeApi(item.SHIS_YYMM_CODE)
-                                        GetSalaryData(item.SHIS_YYMM_CODE)
+                                        // GetSalaryData(item.SHIS_YYMM_CODE)
                                         toggleModal()
                                     }}
                                     style={styles.textContainer}>
@@ -282,8 +299,12 @@ const SalarySlip = ({ navigation }) => {
                             )}
                         />
                     </View>
+                    </SafeAreaView>
                 </Modal>
-                <View
+                <TouchableOpacity
+                    onPress={()=>{
+                        salaryTypetoggleModal()
+                    }}
                     style={styles.Salary}>
                     <View
                         style={{
@@ -292,24 +313,89 @@ const SalarySlip = ({ navigation }) => {
                             justifyContent: 'space-between',
                             paddingHorizontal: 10,
                         }}>
-                        {salaryType == '' ? (
+                        {DefaultSalary == '' ? (
                             <Text >
                                 Select Type
                             </Text>
                         ) : (
+                            <Text>
+                                {Decrypt(DefaultSalary.PYDT_DESCRIPTION)}
+                            </Text>
 
-                            salaryType && salaryType.map((item) => {
-                                return (
-                                    <Text Bold>
-                                        {Decrypt(item.PYDT_DESCRIPTION)}
-                                    </Text>
-                                )
-                            })
-
+                            // salaryType && salaryType.map((item) => {
+                            //     return (
+                            //         <Text Bold>
+                            //             {Decrypt(item.PYDT_DESCRIPTION)}
+                            //         </Text>
+                            //     )
+                            // })
                         )}
-                        {/* <Feather name="corner-up-right" size={20} /> */}
+                        <Feather name="corner-up-right" size={20} />
                     </View>
-                </View>
+                </TouchableOpacity>
+
+                <Modal
+                    backdropOpacity={0.1}
+                    coverScreen={true}
+                    isVisible={salaryTypeisModalVisible}>
+                        <SafeAreaView>
+                    <View style={styles.modal}>
+                        <TouchableOpacity 
+                            style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
+                            <Feather
+                                name="x-circle"
+                                color={GlobalColor.Danger}
+                                size={25}
+                                onPress={salaryTypetoggleModal}
+                                style={{ margin: 10 }}
+                            />
+                        </TouchableOpacity>
+                        <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={salaryType}
+                            ListEmptyComponent={() => {
+                                return (
+                                    <ListEmptyComponent title="No Data Found"
+                                    // enableRefresh={true}
+                                    // onRefreshCallback={()=>GetShutlPastFutrReportApi(true)} refreshing={refresh}
+                                    ></ListEmptyComponent>
+                                )
+                            }}
+                            keyExtractor={({ item, index }) => index}
+                            renderItem={({ item, index }) => (
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        // console.log(item.PYDT_DESCRIPTION)
+                                        // console.log(item.SHIS_YYMM_CODE)
+                                        // setDefaultDate(item.SHIS_YYMM_CODE)
+                                        // GetSalaryTypeApi(item.SHIS_YYMM_CODE)
+                                        GetSalaryData(defaultDate, item.PYDT_YYMM_RUNNO)
+                                        setsetDefaultSalary(item);
+                                        salaryTypetoggleModal()
+                                    }}
+                                    style={styles.textContainer}>
+                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: GlobalFontSize.P }}>{Decrypt(item.PYDT_DESCRIPTION)}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
+                    </SafeAreaView>
+                </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -48,6 +48,10 @@ export const ManagerLeave = () => {
     const [remarkModal, setremarkModal] = useState(false);
     const [remarkModalText, setremarkModalText] = useState(false);
     const [remarkModalData, setremarkModalData] = useState(false);
+    const [Sublist, setSublist] = useState([]);
+    const [DefaultSub, setDefaultSub] = useState({});
+    const [SublistModalVisible, setSublistModalVisible] = useState(false);
+
 
 
 
@@ -58,21 +62,75 @@ export const ManagerLeave = () => {
     const stopLoader = () => {
         setLoader(false);
         setrefresh(false);        
-    }  
+    }
+    
+    
+
+  //  Load Sublist ID 
+  useEffect(() => {
+    const permission = LoadSublist();
+    return () => {
+      permission;
+    };
+  }, []);
+
+  const LoadSublist = () => {
+    let userId = AppUserData?.data?.username;
+      let apiData = {
+        UserName: userId,
+      };
+      let token = AppUserData.token;
+      setLoader(true);
+      ApiService.PostMethode('/GetSubList', apiData, token, authContext)
+        .then(result => {
+          stopLoader();
+          console.log('ApiResult GetSubList', result);
+          if(result.Value){
+            setSublist(result.Value);
+            setDefaultSub(result.Value[0])
+            GetEmplLevDetail(result.Value[0].STAFFNO)
+          }
 
 
-    const GetEmplLevDetail = () => {
-        let userId = AppUserData?.data?.userId
+
+          // let responseData = result.Value;
+          // console.log('ApiResult', responseData);
+          // setEmploy(responseData);
+        })
+        .catch(error => {
+          stopLoader();
+          // console.log('Error occurred==>', error);
+          if (error.response) {
+            if (error.response.status == 401) {
+              console.log('error from api', error.response);
+            }
+            Toast.show(error.response.data.title);
+          } else if (error) {
+            Toast.show('Network Error');
+          } else {
+            Toast.show('Session expired login again');
+          }
+        });
+  };
+
+
+
+
+    const GetEmplLevDetail = (userId) => {
+        // let userId = AppUserData?.data?.userId
         let token = AppUserData.token;
         let apiData = {
           "StaffNo": userId,
           "FromDate": "01-Feb-2020",
           "ToDate": date
         };
+
+        console.log(token);
+
         setLoader(true);
         ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
           .then(result => {
-            console.log("APiresult `GetEmplLevDetail`", result);
+            // console.log("APiresult `GetEmplLevDetail`", result);
             stopLoader();
             ApiResult = result.Value
             setGetEmplLevDetail(ApiResult)
@@ -111,7 +169,7 @@ export const ManagerLeave = () => {
                 });
                 setGetPendingLeaveReq(newarray)
             }else{
-              setGetPendingLeaveReq([])
+                setGetPendingLeaveReq([])
                 Toast.show("No Pending Request Found");
             }
           })
@@ -204,7 +262,7 @@ export const ManagerLeave = () => {
                         text: "OK",
                         onPress: () => console.log("Cancel Pressed"),
                         style: "cancel"
-                      },                      
+                      },
                     ]
                   );
                     // Toast.show(result.Result);
@@ -218,10 +276,9 @@ export const ManagerLeave = () => {
                         text: "OK",
                         onPress: () => console.log("Cancel Pressed"),
                         style: "cancel"
-                      },                      
+                      },
                     ]
                   );
-                    // Toast.show(result.Result);
                 }
                 GetPendingLeaveReq();
               }else{
@@ -244,7 +301,7 @@ export const ManagerLeave = () => {
 
       const initialLoading = () =>{
         GetPendingLeaveReq();
-        GetEmplLevDetail();
+        // GetEmplLevDetail();
       }
 
     useFocusEffect(
@@ -402,8 +459,11 @@ export const ManagerLeave = () => {
           </View>
         ) : (
           <View style={{ flex: 1 }}>
-            <TouchableOpacity style={styles.reportHeader}>
-              <Text style={{ color: '#000' }}>{userId}  {UserName}</Text>
+            <TouchableOpacity style={styles.reportHeader} onPress={()=>
+            {
+              setSublistModalVisible(true);
+            }}>
+              <Text style={{ color: '#000' }}>{DefaultSub.STAFFNO}  {DefaultSub.NAME}</Text>
               <Ionicons name="send" size={20} color={GlobalColor.Secondary} />
             </TouchableOpacity>            
             <FlatList
@@ -516,7 +576,7 @@ export const ManagerLeave = () => {
                     </View>
                   </Modal>
                     <Modal
-                        transparent={true}
+                        transparent={false}
                         visible={remarkModal}
                     >
                     <View style={styles.centeredView}>
@@ -567,6 +627,52 @@ export const ManagerLeave = () => {
                             }}/>
                         </View>
                     </View>
+                </Modal>
+                
+                <Modal
+                    backdropOpacity={0.1}
+                    // coverScreen={true}
+                    visible={SublistModalVisible}>
+                      <SafeAreaView>
+                    <View style={styles.modal}>
+                        <TouchableOpacity 
+                            style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
+                            <Feather
+                                name="x-circle"
+                                color={GlobalColor.Danger}
+                                size={25}
+                                onPress={()=>{
+                                  setSublistModalVisible(false);
+                                }}
+                                style={{ margin: 10 }}
+                            />
+                        </TouchableOpacity>
+                        <FlatList
+                            showsVerticalScrollIndicator={false}
+                            data={Sublist}
+                            ListEmptyComponent={() => {
+                                return (
+                                    <ListEmptyComponent title="No Data Found"
+                                    // enableRefresh={true}
+                                    // onRefreshCallback={()=>GetShutlPastFutrReportApi(true)} refreshing={refresh}
+                                    ></ListEmptyComponent>
+                                )
+                            }}
+                            keyExtractor={({ item, index }) => index}
+                            renderItem={({ item, index }) => (
+                                <TouchableOpacity
+                                    onPress={() => {
+                                      setSublistModalVisible(false);
+                                      GetEmplLevDetail(item.STAFFNO);
+                                      setDefaultSub(item);
+                                    }}
+                                    style={styles.textContainer}>
+                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: GlobalFontSize.P }}>{item.NAME}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
+                    </SafeAreaView>
                 </Modal>
             </View>      
       </SafeAreaView>
@@ -679,6 +785,29 @@ const styles = StyleSheet.create({
       inputBox:{
         height:100,
         marginBottom:5
-      }
+      },
+      textContainer: {
+        width: '100%',
+        padding: 5,
+        backgroundColor: GlobalColor.White,
+        alignSelf: 'center',
+        // marginVertical: 8.5,
+        // shadowColor: GlobalColor.Black,
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 1,
+        // },
+        // shadowOpacity: 0.18,
+        // shadowRadius: 3.0,
+        // elevation: 5,
+        // borderRadius:3,
+        // paddingVertical: 10,
+        // paddingHorizontal: 7,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 5,
+        borderBottomWidth: 0.5,
+        borderColor: GlobalColor.LightDark
+    },
 })
 

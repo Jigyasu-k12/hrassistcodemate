@@ -122,7 +122,7 @@ const VisitorDetails = ({navigation,route}) => {
       "AddressLine1" : item.adddress,
       "AddressLine2" : "",
       "VisitorDesg" : item.designation,
-      "VisitorPhone" : "+91"+item.phone,
+      "VisitorPhone" : item.phone,
       "VisitorLaptopID" : item.laptop,
       "VisitorTitle" : item.title,
       "VisitorUserID" : userId,
@@ -201,7 +201,7 @@ const VisitorDetails = ({navigation,route}) => {
           title: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
           name: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
           designation: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
-          laptop: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
+          // laptop: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
           adddress: Yup.string().min(1, 'too short').required('Required'), // these constraints take precedence
 
       }),

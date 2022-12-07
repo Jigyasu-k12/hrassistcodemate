@@ -306,7 +306,7 @@ const Plencashment = ({navigation, route}) => {
   };
   const encashmentData = () => {
     if(parseInt(encashDays) > parseInt(Decrypt(encashment.PL_ENCASHABLE)) ){
-      AlertOccurred('Payroll', 'Please enter equal\\lesser than encashable limit', 'Ok');
+      AlertOccurred('Payroll', 'Please enter equal/lesser than encashable limit', 'Ok');
       return;
     }
 
