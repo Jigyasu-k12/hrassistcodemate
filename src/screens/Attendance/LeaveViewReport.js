@@ -468,7 +468,7 @@ const LeaveViewReport = () => {
                         Reason : {modalData.Reason}
                       </Text>
                       <Text style={{fontWeight: '700', marginVertical: 12}}>
-                        Remark :
+                        Remark : {modalData.Comments}
                       </Text>
                       <View
                         style={{

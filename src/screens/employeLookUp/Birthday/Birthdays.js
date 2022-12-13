@@ -85,7 +85,7 @@ const Birthdays = () => {
 
   // emp Profile Data
   const GetUserDetails = item => {
-    let apiData = {UserName: Decrypt(item['Staff No'])};
+    let apiData = {StaffNo: Decrypt(item['Staff No'])};
     console.log('api Data==>', apiData);
     let token = AppUserData.token;
     setmodalLoader(true);
@@ -93,11 +93,11 @@ const Birthdays = () => {
     ApiService.PostMethode('/GetEmpSearch', apiData, token, authContext)
       .then(result => {
         let response = result.Value;
-        if (response.Table1) {
-          // console.log("employeeresult", response.Table1[0].profile_photo,);
+        if (response.Table) {
+          // console.log("employeeresult", response.Table[0].profile_photo,);
           let profile =
-            response.Table1[0] && response.Table1
-              ? response.Table1[0].profile_photo
+            response.Table[0] && response.Table
+              ? response.Table[0].profile_photo
               : '';
           setModalItem(item);
           setEmpPhoto(profile);
@@ -332,7 +332,7 @@ const Birthdays = () => {
                   }}>
                   {empPhoto ? (
                     <Image
-                      source={{uri: 'data:image/png;base64, ' + empPhoto}}
+                      source={{uri:empPhoto}}
                       style={[styles.profileImg, {marginRight: 5}]}
                     />
                   ) : (

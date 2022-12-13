@@ -113,10 +113,7 @@ const Home = ({ navigation }) => {
                 />
                 <Text style={[styles.brand, { marginLeft: 15 }]} Bold>HR Assist</Text>
               </View>
-              <Image
-                style={styles.tinyLogo}
-                source={require('./../assets/Images/mslogo.png')}
-              />
+
 
               <View
                 style={{
@@ -124,6 +121,10 @@ const Home = ({ navigation }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
+                <Image
+                  style={styles.tinyLogo}
+                  source={require('./../assets/Images/mslogo.png')}
+                />
                 <TouchableOpacity
                   onPress={() => {
                     navigation.navigate("Notification");
@@ -145,7 +146,7 @@ const Home = ({ navigation }) => {
             ><TouchableOpacity onPress={() => { navigation.navigate("EditProfile") }}>
                 {AppUserData.data && AppUserData.data.profile_photo ? (
                   <Image
-                    source={{ uri: 'data:image/png;base64, ' + AppUserData.data.profile_photo }}
+                    source={{ uri: AppUserData.data.profile_photo }}
                     style={{ width: 40, height: 40, borderRadius: 50 }}
                   />
                 ) : (
@@ -246,7 +247,7 @@ const styles = StyleSheet.create({
     width:60, 
     height:30, 
     resizeMode:'contain',
-    marginTop:5 
+    marginTop:0
   }
 });
 

@@ -418,6 +418,7 @@ const FlexiShift = () => {
           onCancel={() => {
             setOpenThird(false);
           }}
+          minimumDate={new Date(moment().add(1, 'days'))}
         />
 
         <View style={styles.inputBox}>

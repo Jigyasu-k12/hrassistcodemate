@@ -30,6 +30,7 @@ import TextInput from '../../../components/reusable/TextInput';
 import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
 import CheckBox from '@react-native-community/checkbox';
 import Button from '../../../components/reusable/Button';
+import { Decrypt } from '../../../Service/Helper';
 
 
 
@@ -51,6 +52,7 @@ export const ManagerLeave = () => {
     const [Sublist, setSublist] = useState([]);
     const [DefaultSub, setDefaultSub] = useState({});
     const [SublistModalVisible, setSublistModalVisible] = useState(false);
+    const [SelectedYear, setSelectedYear] = useState('');
 
 
 
@@ -88,7 +90,8 @@ export const ManagerLeave = () => {
           if(result.Value){
             setSublist(result.Value);
             setDefaultSub(result.Value[0])
-            GetEmplLevDetail(result.Value[0].STAFFNO)
+            getfinancialyear(result.Value[0].STAFFNO );
+            // GetEmplLevDetail(result.Value[0].STAFFNO)
           }
 
 
@@ -114,15 +117,55 @@ export const ManagerLeave = () => {
   };
 
 
+  const getfinancialyear = (staffNo) => {
+    let apiData = {
+      UserName: AppUserData?.data?.username,
+    };
+    // AppUserData?.data?.userId 222852
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
+      .then(result => {
+        console.log('get year financial', result.Value.Table1);
+        stopLoader(false);
+        if (result.Value) {
+          let reasons = [];
+          // setFinancialYear(result.Value.Table1);
+          if (result.Value && result.Value.Table1[0].FNYR_YEAR) {
+            setSelectedYear(Decrypt(result.Value.Table1[0].FNYR_YEAR));
+            GetEmplLevDetail(staffNo , Decrypt(result.Value.Table1[0].FNYR_YEAR));
+          }
+        } else {
+          Toast.show('No Leave type found');
+        }
+      })
+      .catch(error => {
+        stopLoader(false);
+        // console.log('Error occurred==>', error);
+        ApiService.showErrorMessage(error, authContext);
+      });
+  };
 
 
-    const GetEmplLevDetail = (userId) => {
+
+
+    const GetEmplLevDetail = (userId,fnyear) => {
+      var curryear = ((new Date().getFullYear()).toString()).substring(0, 2);
+      var from;
+      if (parseInt(((fnyear.toString()).substring(0, 2))) == 99) {
+        from = '01-apr-' + (parseInt(curryear) - 10) + ((fnyear.toString()).substring(0, 2));
+      } else {
+        from = '01-apr-' + curryear + ((fnyear.toString()).substring(0, 2));
+      }
+      var to = '31-mar-' + curryear + ((fnyear.toString()).substring(2, 4));
+
+
         // let userId = AppUserData?.data?.userId
         let token = AppUserData.token;
         let apiData = {
           "StaffNo": userId,
-          "FromDate": "01-Feb-2020",
-          "ToDate": date
+          "FromDate": from,
+          "ToDate": to
         };
 
         console.log(token);
@@ -204,7 +247,7 @@ export const ManagerLeave = () => {
         }
 
         let newData = data;
-        newData.remark = "";
+        newData.remark = remarkModalText;
     
         Alert.alert(
             "Reject",
@@ -222,7 +265,7 @@ export const ManagerLeave = () => {
 
     const approveLeave = (data) =>{
         let newData = data;
-        newData.remark = remarkModalText;
+        newData.remark = "";
         Alert.alert(
             "Approve",
             "Are You sure want to Approve ?",
@@ -244,7 +287,7 @@ export const ManagerLeave = () => {
             "ApplicationID" : data.LEV_ATTENDANCE_ID,
             "AppRejFlag" : type,
             "UserName" : AppUserData?.data?.username,
-            "Remarks": data.remark
+            "Comments": data.remark
         };
         setLoader(true);
         ApiService.PostMethode('/ApproveRejectLeave', apiData, token, authContext)
@@ -318,7 +361,7 @@ export const ManagerLeave = () => {
             setModalData(item)
             setLeaveDetailModal(!LeaveDetailModal)
         }}>
-       <View style={[styles.itemColumn, {flex:0.30}]}>
+       <View style={[styles.itemColumn, {flex:0.35}]}>
          <Text style={styles.itemText}>{item["From Date"]}</Text>
          <Text style={styles.itemText}>{item["To Date"]}</Text>
        </View>
@@ -342,7 +385,7 @@ export const ManagerLeave = () => {
         setLeaveDetailModal(!LeaveDetailModal)
     }}
     >
-       <View style={[styles.itemColumn, {flex:0.30}]}>
+       <View style={[styles.itemColumn, {flex:0.35}]}>
          <Text style={styles.itemText}>{item.EMPL_NAME}</Text>
        </View>
        <View style={styles.itemColumn}>
@@ -382,7 +425,7 @@ export const ManagerLeave = () => {
         backgroundColor:GlobalColor.White,
         flexDirection:'row'
       }}>        
-        <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Date</Text>
+        <Text Bold style={[styles.HeaderColumn, {flex:0.35}]}>Date</Text>
         <Text Bold style={styles.HeaderColumn}>Type</Text>
         <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Period</Text>
         <Text Bold style={styles.HeaderColumn}>Status</Text>
@@ -402,7 +445,7 @@ export const ManagerLeave = () => {
       }}>        
         <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Name</Text>
         <Text Bold style={styles.HeaderColumn}>Type</Text>
-        <Text Bold style={[styles.HeaderColumn, {flex:0.30}]}>Date</Text>
+        <Text Bold style={[styles.HeaderColumn, {flex:0.3}]}>Date</Text>
         <Text Bold style={styles.HeaderColumn}>Approval</Text>
       </View>
     );
@@ -475,7 +518,7 @@ export const ManagerLeave = () => {
                 ListHeaderComponentStyle={{ borderBottomColor: GlobalColor.Secondary, borderBottomWidth: 1 }}
                 ListEmptyComponent={<ListEmptyComponent 
                     title="No Data Found"
-                    enableRefresh={true} onRefreshCallback={() => GetEmplLevDetail(true)} refreshing={refresh}
+                    enableRefresh={true} onRefreshCallback={() => GetEmplLevDetail(DefaultSub.STAFFNO, SelectedYear)} refreshing={refresh}
                     ></ListEmptyComponent>
                 }
             />
@@ -547,7 +590,7 @@ export const ManagerLeave = () => {
                             Reason : {approve? modalData.Reason: modalData.REASON}
                           </Text>
                           <Text style={{ fontWeight: "700", marginVertical: 12 }}>
-                            Remark : {modalData.LEV_REMARKS}
+                            Remark : {modalData.Comments}
                           </Text>
                           <View style={{width:'100%',flexDirection:'row',justifyContent:'flex-end'}}>
                           {/* {
@@ -663,7 +706,7 @@ export const ManagerLeave = () => {
                                 <TouchableOpacity
                                     onPress={() => {
                                       setSublistModalVisible(false);
-                                      GetEmplLevDetail(item.STAFFNO);
+                                      GetEmplLevDetail(item.STAFFNO, SelectedYear);
                                       setDefaultSub(item);
                                     }}
                                     style={styles.textContainer}>

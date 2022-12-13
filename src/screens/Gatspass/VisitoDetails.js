@@ -394,6 +394,10 @@ const VisitorDetails = ({navigation,route}) => {
                                             }, {
                                               label:"MRS",
                                               value:"MRS"
+                                            },
+                                            {
+                                              label:"MS",
+                                              value:"MS"
                                             }
                                           ]}
                                           onSelect={(selectedItem) => {

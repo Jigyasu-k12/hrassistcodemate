@@ -202,6 +202,7 @@ const PastBook = ({navigation, route}) => {
                     open={open}
                     date={fromDate}
                     mode="date"
+                    minimumDate={new Date()}
                     onConfirm={fromDate => {
                         setOpen(false);
                         setFirstDate(fromDate);
@@ -232,6 +233,7 @@ const PastBook = ({navigation, route}) => {
                     open={second}
                     date={toDate}
                     mode="date"
+                    minimumDate={new Date()}
                     onConfirm={toDate => {
                         setSecond(false);
                         setSecondDate(toDate);

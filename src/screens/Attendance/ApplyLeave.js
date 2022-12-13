@@ -74,7 +74,8 @@ const ApplyLeave = ({navigation}) => {
       leave: yup.string().required('Leave type is required'),
       planned: yup.string().required('Choose an option'),
       period: yup.string().required('Please select period'),
-      selectDate: yup.string().required('Date  is required'),
+      selectDate: yup.string().required('Start Date is required'),
+      selectDateSecond: yup.string().required('End Date is required'),
       reason: yup.string().required('Please select a reason'),
     //   comment: yup.string().required('Comment is required'),
     });
@@ -643,18 +644,59 @@ const ApplyLeave = ({navigation}) => {
                                     </TouchableOpacity>
                                 </View>
                             </View>
-                            {errors.selectDateSecond && touched.selectDateSecond && (
-                                <View
+                            <View
+                                style={{
+                                    width: '100%',
+                                    alignSelf: 'center',
+                                    borderWidth: 1,
+                                    borderColor: '#fff',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    flexDirection: 'row',
+                                    padding: 0,
+                                }}>
+                                    <View
                                     style={{
-                                        width: '90%',
-                                        alignSelf: 'center',
-                                        paddingVertical: 2,
+                                        flexDirection: 'row',
+                                        width: '50%',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
-                                        {errors.selectDateSecond}
-                                    </Text>
+                                {errors.selectDate && touched.selectDate && (
+                                        <View
+                                            style={{
+                                                width: '100%',
+                                                alignSelf: 'center',
+                                                paddingVertical: 2,
+                                            }}>
+                                            <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                                {errors.selectDate}
+                                            </Text>
+                                        </View>
+                                    )}
+                                    </View>
+                                    <View
+                                    style={{
+                                        flexDirection: 'row',
+                                        width: '50%',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                    }}>
+                                    {errors.selectDateSecond && touched.selectDateSecond && (
+                                            <View
+                                                style={{
+                                                    width: '100%',
+                                                    alignSelf: 'center',
+                                                    paddingVertical: 2,
+                                                }}>
+                                                <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                                    {errors.selectDateSecond}
+                                                </Text>
+                                            </View>
+                                        )}
+                                    </View>
+
                                 </View>
-                            )}
                             <Text style={{ paddingVertical: 10, paddingHorizontal: 0 }} Bold>
                                 Enter Your Reason
                             </Text>

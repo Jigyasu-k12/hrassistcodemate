@@ -294,6 +294,7 @@ const Plencashment = ({navigation, route}) => {
         let ApiValue = result.Result;
         // alert(ApiValue)
         Alert.alert('Payroll', ApiValue);
+        ReportLTC();
         // createTwoButtonAlert(ApiValue)
       })
       .catch(error => {
@@ -540,9 +541,9 @@ const Plencashment = ({navigation, route}) => {
                 <Text style={{textAlign: 'center'}}>Report</Text>
               </View>
               <View style={styles.reportHeader}>
-                <Text Bold>Name</Text>
-                <Text Bold>Year</Text>
-                <Text Bold>Desc</Text>
+                <Text style={{ flex:0.5 }} Bold>Name</Text>
+                <Text style={{ flex:0.2 }} Bold>Year</Text>
+                <Text style={{ flex:0.3, textAlign:'right'}} Bold>Desc</Text>
               </View>
 
               {ltaReport.length > 0 ? (
@@ -564,9 +565,9 @@ const Plencashment = ({navigation, route}) => {
                               borderColor: GlobalColor.LightDark,
                             },
                           ]}>
-                          <Text>{Decrypt(item.LTCF_FAML_NAME)}</Text>
-                          <Text>{Decrypt(item.LTCF_YEARS)}</Text>
-                          <Text>{Decrypt(item.RLTY_DESC)}</Text>
+                          <Text style={{ flex:0.5 }}>{Decrypt(item.LTCF_FAML_NAME)}</Text>
+                          <Text style={{ flex:0.2 }}>{Decrypt(item.LTCF_YEARS)}</Text>
+                          <Text style={{ flex:0.3, textAlign:'right'}}>{Decrypt(item.RLTY_DESC)}</Text>
                         </TouchableOpacity>
                       );
                     })}

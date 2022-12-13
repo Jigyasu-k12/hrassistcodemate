@@ -140,7 +140,7 @@ const EditProfile = ({ navigation, route }) => {
 
           {AppUserData.data && AppUserData.data.profile_photo ? (
             <Image
-              source={{ uri: 'data:image/png;base64, ' + AppUserData.data.profile_photo }}
+              source={{ uri: AppUserData.data.profile_photo }}
               style={{
                 width: 100,
                 height: 100,

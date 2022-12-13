@@ -134,6 +134,7 @@ const Gatepass = ({navigation}) => {
   };
 
   const SearchEmployee = () => {
+    let userId = AppUserData?.data?.userId;
     console.log('post data', search);
     if (search === '') {
       alert('Please enter a valid keyWord ');
@@ -141,10 +142,11 @@ const Gatepass = ({navigation}) => {
     } else {
       let apiData = {
         Search: search,
+        UserName:userId
       };
       let token = AppUserData.token;
       setLoader(true);
-      ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
+      ApiService.PostMethode('/GetConcernedEmployeeListVGPS', apiData, token, authContext)
         .then(result => {
           setLoader(false);
 
@@ -347,13 +349,13 @@ const Gatepass = ({navigation}) => {
             SearchLevel: values.searchLevel.value,
             interVehicle: values.internalVehical.value,
             ReasonToCome: values.reason,
-            perName: Decrypt(values.perName),
-            Desig: Decrypt(values.Desig),
+            perName: values.perName,
+            Desig: values.Desig,
             noOfPerson: '5',
-            empId: Decrypt(values.empId),
+            empId: values.empId,
             vehicleNumber: values.vehicleNumber,
             dateDummy: values.date,
-            mobileNo:Decrypt(values.MOB_NO),
+            mobileNo:values.MOB_NO,
           };
           console.log('payload', newdata);
           navigation.navigate('VisitorDetails', {
@@ -445,6 +447,7 @@ const Gatepass = ({navigation}) => {
               modal
               mode="datetime"
               open={OpenDateTimePicker}
+              minimumDate={new Date()}
               date={values.date}
               onConfirm={date => {
                 console.log(date);
@@ -1158,7 +1161,30 @@ const Gatepass = ({navigation}) => {
                   Name
                 </Text>
                 <TextInput
-                  value={Decrypt(values.perName)}
+                  value={values.perName}
+                  editable={false}
+                  style={{
+                    marginVertical: 10,
+                    width: '100%',
+                    borderWidth: 1,
+                    paddingVertical: 10,
+                    alignSelf: 'center',
+                    borderRadius: 8,
+                    backgroundColor: GlobalColor.White,
+                    borderColor: GlobalColor.Secondary,
+                  }}
+                />
+
+                <Text
+                  style={{
+                    paddingHorizontal: 0,
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                  }}>
+                  Designation
+                </Text>
+                <TextInput
+                  value={values.Desig}
                   editable={false}
                   style={{
                     marginVertical: 10,
@@ -1181,7 +1207,7 @@ const Gatepass = ({navigation}) => {
                   Mobile
                 </Text>
                 <TextInput
-                  value={Decrypt(values.MOB_NO)}
+                  value={values.MOB_NO}
                   editable={false}
                   style={{
                     marginVertical: 10,
@@ -1259,7 +1285,7 @@ const Gatepass = ({navigation}) => {
                           setFieldValue('perName', item.Name);
                           setFieldValue('empId', item['Staff No']);
                           setFieldValue('Desig', item['Desg']);
-                          setFieldValue('MOB_NO', item['MOB_NO']);
+                          setFieldValue('MOB_NO', item['mobilenumber']);
                           // console.log(item);
                           // setSearchedNameData(item)
                           setEmpModalVisible(false);
@@ -1277,11 +1303,11 @@ const Gatepass = ({navigation}) => {
                             marginLeft: 10,
                           }}>
                           <Text style={{fontSize: 16}}>
-                            {Decrypt(item.Name)}
+                            {item.Name}
                           </Text>
                           <Text>
-                            {Decrypt(item.Desg)} , {Decrypt(item.Dept)} (
-                            {Decrypt(item['Staff No'])})
+                            {item.Desg} , {item.Dept} (
+                            {item['Staff No']})
                           </Text>
                         </View>
                         <TouchableOpacity>

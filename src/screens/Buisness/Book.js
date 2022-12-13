@@ -134,6 +134,8 @@ const Book = () => {
             open={open}
             date={date}
             mode="date"
+            maximumDate={new Date(moment().add(2, 'days'))}
+            minimumDate={new Date()}
             onConfirm={date => {
               setOpen(false);
               setDate(date)

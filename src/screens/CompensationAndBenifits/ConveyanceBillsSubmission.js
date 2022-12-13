@@ -34,6 +34,7 @@ import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import {GlobalFontSize} from '../../constants/FontSize';
 const ConveyanceBillsSubmission = ({navigation, route}) => {
   const fromRef = useRef(null);
+  const dropdownRef = useRef({});
 
   // let pageName = route.params.pageName
   // console.log("pagename", pageName);
@@ -49,10 +50,10 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
   const [FuelValue, setFuelValue] = useState([]);
 
   const loginValidationSchema = yup.object().shape({
-    BillNo: yup.string().required('Bill No. is required'),
+    BillNo: yup.string().required('Bill No. is required').max(10, "Max length 10"),
     BillDate: yup.string().required('Bill Date is required'),
-    BillAmount: yup.string().required('Amount is required'),
-    BillKMR: yup.string().required('Mileage is required'),
+    BillAmount: yup.string().required('Amount is required').max(10, "Max length 10"),
+    BillKMR: yup.string().required('Mileage is required').max(10, "Max length 10"),
     BillType: yup.string().required('Fuel Type is required'),
   });
 
@@ -150,6 +151,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                 console.log('submit data result', result.Result);
                 Toast.show(result.Result);
                 fromRef.current.resetForm();
+                dropdownRef.current.reset();
                 GetConvElig();
               } else {
                 Toast.show('Failed to submit try again');
@@ -328,6 +330,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                         borderColor: GlobalColor.Secondary,
                       }}>
                       <SelectDropdown
+                        ref={dropdownRef}
                         defaultButtonText="Fuel Type"
                         dropdownIconPosition={'right'}
                         data={FuelValue}
