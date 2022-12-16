@@ -444,12 +444,12 @@ const SalarySlip = ({ navigation }) => {
 
 
                     {table4Data.length > 0 ? (
-                        <View style={{ paddingHorizontal:10 }}>
+                        <View style={{ paddingHorizontal:5 }}>
                             <View style={[styles.Table, {justifyContent:'space-between'}]}>
                                 <View style={styles.tableRow}>
                                     <Text Bold>Earnings</Text>
                                 </View>
-                                <View style={styles.tableRow}>
+                                <View style={[styles.tableRow, {flex:1}]}>
                                     <Text Bold>Deduction</Text>
                                 </View>
                                 <View style={styles.tableRow}>
@@ -465,7 +465,7 @@ const SalarySlip = ({ navigation }) => {
                                             <View style={styles.tableRow}>
                                                 <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
                                             </View>
-                                            <View style={styles.tableRow}>
+                                            <View style={[styles.tableRow, {flex:1}]}>
                                                 <Text style={{ color: GlobalColor.Black,fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
                                             </View>
                                             <View style={styles.tableRow}>
@@ -478,7 +478,7 @@ const SalarySlip = ({ navigation }) => {
                     ) : null}
 
                     {table2Data.length > 0 ? (
-                        <View style={{ paddingHorizontal:10 }}>
+                        <View style={{ paddingHorizontal:5 }}>
                             <View style={styles.Table}>
                                 <Text Bold>General Message</Text>
                             </View>
@@ -497,7 +497,7 @@ const SalarySlip = ({ navigation }) => {
                     ) : null}
 
                     {table3Data.length > 0 ? (
-                        <View style={{ paddingHorizontal:10 }}>
+                        <View style={{ paddingHorizontal:5 }}>
                             <View style={[styles.Table,]}>
                                 <Text Bold >Employee Message</Text>
                             </View>
@@ -611,7 +611,7 @@ const styles = StyleSheet.create({
         width: '25%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 5,
+        marginHorizontal: 0,
         alignSelf: 'center'
     }
 });

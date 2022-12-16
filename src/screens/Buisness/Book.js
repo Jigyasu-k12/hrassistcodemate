@@ -164,10 +164,10 @@ const Book = () => {
             </View>
             <View>
               {
-                book.map((item) => {
+                book.map((item, index) => {
                   return (
                     <TouchableOpacity
-                      key={item.SHTL_REGISTRATION_NO}
+                      key={item.SHTL_REGISTRATION_NO+index}
                       onPress={() => {
                         GetSeatsAvailabilityApi(item);
                         // setModalVisible(true)

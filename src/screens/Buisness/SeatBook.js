@@ -22,7 +22,7 @@ import TextInput from '../../components/reusable/TextInput';
 import Text from '../../components/reusable/Text';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import moment from 'moment';
-
+import { Decrypt } from '../../Service/Helper';
 // create a component
 const SeatBook = ({ navigation, route }) => {
     console.log(route.params.data);
@@ -94,7 +94,7 @@ const SeatBook = ({ navigation, route }) => {
             apiData = {
                 "BKDTID":"",
                 "BKDTShtlID": route.params.data.SHTL_ROUT_MAPP_ID,
-                "BKDTEmplID": searchedNameData['Staff No'],
+                "BKDTEmplID": Decrypt(searchedNameData['Staff No']),
                 "StartDate": moment().format("DD-MMMM-YYYY"),
                 "EndDate": moment().format("DD-MMMM-YYYY"),
                 "Reason": "",
@@ -399,7 +399,7 @@ const SeatBook = ({ navigation, route }) => {
                         >
                             <TextInput
                                 style={{paddingHorizontal:10}}
-                                value={searchedNameData.Name}
+                                value={Decrypt(searchedNameData.Name)}
                                 editable={false}
                             />
 
@@ -436,7 +436,7 @@ const SeatBook = ({ navigation, route }) => {
                             <TextInput
                                 style={{paddingHorizontal:10}}
                                 editable={false}
-                                value={searchedNameData.Desg}
+                                value={Decrypt(searchedNameData.Desg)}
                             />
 
 
@@ -510,7 +510,7 @@ const SeatBook = ({ navigation, route }) => {
                                         style={{ width: "100%", marginHorizontal: 10 }}
                                         data={userList}
                                         ListEmptyComponent={() => <ListEmptyComponent subtitle="Please retry with diffrent keyword"/>}
-                                        keyExtractor={({ item, index }) => index}
+                                        keyExtractor={( item, index) => index.toString()}
                                         renderItem={({ item, index }) => (
                                             <TouchableOpacity style={styles.FlatListData}
                                                 onPress={() => {
@@ -526,10 +526,10 @@ const SeatBook = ({ navigation, route }) => {
                                                 />
                                                 <View style={{ flexDirection: 'column', width: '90%' }}>
                                                     <Text style={{ fontSize: 16 }}>
-                                                        {item.Name}
+                                                    {Decrypt(item.Name)}
                                                     </Text>
                                                     <Text>
-                                                        {item.Desg} , {item.Dept} ({item['Staff No']})
+                                                    {Decrypt(item.Desg)} , {Decrypt(item.Dept)} ({Decrypt(item['Staff No'])})
                                                     </Text>
                                                 </View>
                                                 <TouchableOpacity>
