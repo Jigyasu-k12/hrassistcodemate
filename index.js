@@ -14,7 +14,7 @@ import * as RootNavigation from './src/navigations/RootNavigation';
 AppRegistry.registerComponent(appName, () => App);
 
 // OneSignal Initialization
-OneSignal.setAppId("42fcb50a-922f-4b0e-9ba3-701d663beede");
+OneSignal.setAppId("00bd1ef6-7b9f-44a1-98ce-986d3f9654ce");
 
 // promptForPushNotificationsWithUserResponse will show the native iOS or Android notification permission prompt.
 // We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 8)

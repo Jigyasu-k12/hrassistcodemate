@@ -251,7 +251,7 @@ export const ManagerLeave = () => {
     
         Alert.alert(
             "Reject",
-            "Are You sure want to Reject ?",
+            "Are you sure to Reject ?",
             [
               {
                 text: "Cancel",
@@ -268,7 +268,7 @@ export const ManagerLeave = () => {
         newData.remark = "";
         Alert.alert(
             "Approve",
-            "Are You sure want to Approve ?",
+            "Are you sure to Approve ?",
             [
               {
                 text: "Cancel",
@@ -299,7 +299,7 @@ export const ManagerLeave = () => {
                   Alert.alert(
                     "Leave",
                     // result.Result,
-                    "Leave has been approve",
+                    "Leave has been approved",
                     [
                       {
                         text: "OK",
@@ -529,8 +529,9 @@ export const ManagerLeave = () => {
                     transparent={true}
                     visible={LeaveDetailModal}
                   >
-                    <View style={{ width:"100%", justifyContent:'center', alignItems:'center', flex:1, backgroundColor:'rgba(0,0,0,0.5)' }}>
-                    <View style={{ backgroundColor: '#fff', padding: 10 ,borderRadius:0}}>
+                    <SafeAreaView style={{flex:1}}>
+                    <View style={{ width:"100%", justifyContent:'center',alignItems:'center', flex:1, backgroundColor:'rgba(0,0,0,0.5)' }}>
+                    <View style={{ backgroundColor: '#fff', padding: 10 ,borderRadius:0, minHeight:200, width:"95%"}}>
                       <View
                         style={{
                           flexDirection: 'row',
@@ -617,6 +618,7 @@ export const ManagerLeave = () => {
                       </View>                  
                     </View>
                     </View>
+                    </SafeAreaView>
                   </Modal>
                     <Modal
                         transparent={false}

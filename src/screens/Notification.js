@@ -12,6 +12,7 @@ import { LoadingScreen } from '../components/reusable/LoadingScreen';
 import { Header } from '../components/reusable/Header';
 import { GlobalColor } from '../constants/Colors';
 import { showErrorMessage } from '../Utils/Utils';
+import { useFocusEffect } from '@react-navigation/native';
 
 // create a component
 const Notification = ({ navigation }) => {
@@ -46,7 +47,8 @@ const Notification = ({ navigation }) => {
       stopLoader();
       // Set Data
       let result = resp?.data?.notifications
-      setNotifi(result)
+      setNotifi(result);
+      console.log("pull down was suceesful");
     } catch (error) {
       stopLoader();
       showErrorMessage(error)
@@ -54,9 +56,13 @@ const Notification = ({ navigation }) => {
   }
 
 
-  useEffect(() => {
-    NotifiApi()
-  }, [])
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const unsubscribe = NotifiApi()
+      return () => unsubscribe;
+    }, [])
+  );
 
   if (loader) {
     return (
@@ -86,6 +92,8 @@ const Notification = ({ navigation }) => {
             data={notifi}
             ListEmptyComponent={() => <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => NotifiApi(true)} refreshing={refresh} ></ListEmptyComponent>}
             showsVerticalScrollIndicator={false}
+            onRefresh={() => NotifiApi(true)}
+            refreshing={refresh}
             keyExtractor={(item) => item.id}
             renderItem={({ item, index }) => (
               <View

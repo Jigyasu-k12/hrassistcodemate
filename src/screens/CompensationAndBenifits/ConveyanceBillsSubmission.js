@@ -57,16 +57,18 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
     BillType: yup.string().required('Fuel Type is required'),
   });
 
-  const GetConvElig = () => {
+  const GetConvElig = (loader = true) => {
     let token = AppUserData.token;
     let EmplID = AppUserData?.data?.userId;
     console.log('this empid', EmplID);
     let apiData = {
       StaffNo: EmplID,
     };
+    if(loader){
+      setLoader(true);
+    }
 
     //Set Loader
-    setLoader(true);
     ApiService.PostMethode('/reportCONV', apiData, token, authContext)
       .then(result => {
         console.log('reportCONV', result);
@@ -118,7 +120,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
   };
 
   const SubmitConveyance = values => {
-    Alert.alert('Payroll', 'Are you sure want to submit?', [
+    Alert.alert('Payroll', 'Are you sure to submit?', [
       {
         text: 'Cancel',
         onPress: () => console.log('Cancel Pressed'),
@@ -149,10 +151,12 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
               stopLoader();
               if (result.Result) {
                 console.log('submit data result', result.Result);
-                Toast.show(result.Result);
                 fromRef.current.resetForm();
                 dropdownRef.current.reset();
-                GetConvElig();
+                setTimeout(() => {
+                  Toast.show(result.Result);                  
+                }, 100);
+                GetConvElig(false);
               } else {
                 Toast.show('Failed to submit try again');
               }

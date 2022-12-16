@@ -44,7 +44,7 @@ const FlexiShift = () => {
   const [shiftName, setShiftName] = useState('');
   const [currentShift, setCurrentShift] = useState('');
   const [shiftStatus, setShiftStatus] = useState([]);
-  const [flexiShiftElig, setFlexiShiftElig] = useState('');
+  const [flexiShiftElig, setFlexiShiftElig] = useState(false);
   const [flexidate, setFlexiDate] = useState([]);
   const [isModalVisible, setModalVisible] = useState(false);
   const [choseDate, setChoseDate] = useState('');
@@ -172,9 +172,11 @@ const FlexiShift = () => {
         console.log('SubmitFlexiShiftPlan', result);
         setLoader(false);
         let ApiResult = result.Result;
+        Alert.alert("Success", ApiResult);
         // alert(ApiResult);
-        Alert.alert("Success", "Flexi Shift request has been submitted")
+        // Alert.alert("Success", "Flexi Shift request has been submitted")
         // setSubmitShift(ApiResult)
+        RptShiftStatus();
       })
       .catch(error => {
         setLoader(false);
@@ -208,7 +210,7 @@ const FlexiShift = () => {
     let userId = AppUserData?.data?.userId;
     let token = AppUserData.token;
     let apiData = {
-      UserName: AppUserData?.data?.username,
+      StaffNo: AppUserData?.data?.userId,
     };
     setLoader(true);
     ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)
@@ -216,7 +218,15 @@ const FlexiShift = () => {
         console.log('FlexiShiftElig', result.Result);
         setLoader(false);
         let ApiResult = result.Result;
-        setFlexiShiftElig(ApiResult);
+        if(ApiResult){
+          let dataArray = ApiResult.split(';');
+          if(dataArray[1] && dataArray[1] != ""){
+            Alert.alert("Alert", dataArray[1] );
+            setFlexiShiftElig(false);
+          }else{
+            setFlexiShiftElig(true);
+          }
+        }
       })
       .catch(error => {
         setLoader(false);
@@ -281,7 +291,7 @@ const FlexiShift = () => {
     } else if (choseDate == '') {
       alert('Please select Date');
     } else {
-      submitAlert('Warning', 'Are You Sure?', 'yes', 'No');
+      submitAlert('Warning', 'Are you sure to submit?', 'yes', 'No');
     }
   };
 
@@ -295,7 +305,7 @@ const FlexiShift = () => {
         text: btnTxt,
         onPress: () => {
           SubmitFlexiShiftPlan();
-          RptShiftStatus();
+          // RptShiftStatus();
         },
       },
       {
@@ -359,6 +369,7 @@ const FlexiShift = () => {
             </Text>
             <Ionicons name="arrow-forward-outline" color={'#23d'} size={25} />
             <Modal isVisible={isModalVisible}>
+              <SafeAreaView>
               <View
                 style={{
                   height: '100%',
@@ -395,6 +406,7 @@ const FlexiShift = () => {
                   renderItem={rederReason}
                 />
               </View>
+              </SafeAreaView>
             </Modal>
           </TouchableOpacity>
         </View>
@@ -419,6 +431,7 @@ const FlexiShift = () => {
             setOpenThird(false);
           }}
           minimumDate={new Date(moment().add(1, 'days'))}
+          maximumDate={new Date(moment().add(2, 'months'))}
         />
 
         <View style={styles.inputBox}>
@@ -450,7 +463,7 @@ const FlexiShift = () => {
           />
         </View>
         {/* Button */}
-        {flexiShiftElig === 'N' ? (
+        {flexiShiftElig ? (
           <View style={{marginTop: 10, width: '100%', alignSelf: 'center'}}>
             <Button
               onPress={() => {
@@ -480,7 +493,7 @@ const FlexiShift = () => {
 
         <FlatList
           data={shiftStatus}
-          keyExtractor={item => item.id}
+          keyExtractor={(item, index) => index.toString()}
           ListHeaderComponent={FlatList_Header}
           ListHeaderComponentStyle={{
             borderBottomColor: GlobalColor.Secondary,

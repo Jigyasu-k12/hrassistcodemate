@@ -252,7 +252,7 @@ const Plencashment = ({navigation, route}) => {
       });
   };
   const createTwoButtonAlert = () =>
-    Alert.alert('Payroll', 'Are You Sure want to Encash?', [
+    Alert.alert('Payroll', 'Are you sure to Encash?', [
       {
         text: 'Cancel',
         onPress: () => console.log('Cancel Pressed'),

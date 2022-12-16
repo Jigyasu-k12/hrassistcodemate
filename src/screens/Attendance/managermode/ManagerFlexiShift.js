@@ -45,14 +45,17 @@ export const ManagerFlexiShift = () => {
         setrefresh(false);
     }  
 
-    const FlexiShiftPendAppLOV = () => {
+    const FlexiShiftPendAppLOV = (loader = true) => {
       let userId = AppUserData?.data?.userId
       let token = AppUserData.token;
       let apiData = {
         // "UserName": "spnayak",
         "StaffNo": userId,
       };
-      setLoader(true);
+      if(loader){
+        setLoader(true);
+      }
+
       ApiService.PostMethode('/FlexiShiftPendAppLOV', apiData, token, authContext)
         .then(result => {
           console.log("APiresult FlexiShiftPendAppLOV", result);
@@ -74,7 +77,7 @@ export const ManagerFlexiShift = () => {
     const rejectFlexiShift = (data) =>{
         Alert.alert(
             "Reject",
-            "Are You sure want to Reject ?",
+            "Are you sure to Reject ?",
             [
               {
                 text: "Cancel",
@@ -89,7 +92,7 @@ export const ManagerFlexiShift = () => {
     const approveFlexiShift = (data) =>{
         Alert.alert(
             "Approve",
-            "Are You sure want to Approve ?",
+            "Are you sure to Approve ?",
             [
               {
                 text: "Cancel",
@@ -117,13 +120,20 @@ export const ManagerFlexiShift = () => {
             stopLoader();
               if(result.Result){
                 if(type == "A"){
-                    Toast.show(result.Result);
+                  setTimeout(() => {
+                    Toast.show(result.Result);                    
+                  }, 100);
                 }else{
-                    Toast.show(result.Result);
+                  setTimeout(() => {
+                    Toast.show(result.Result);                    
+                  }, 100);
                 }
               }else{
-                Toast.show("Failed");
+                setTimeout(() => {
+                  Toast.show("Failed");
+                }, 100);                
               }
+              FlexiShiftPendAppLOV(false);
           })
           .catch(error => {
             stopLoader();

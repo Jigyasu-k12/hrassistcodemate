@@ -185,7 +185,7 @@ export const ManagerTaxi = ({navigation}) => {
     const rejectFlexiShift = (data) =>{
         Alert.alert(
             "Reject",
-            "Are You sure want to Reject ?",
+            "Are you sure to Reject ?",
             [
               {
                 text: "Cancel",
@@ -200,7 +200,7 @@ export const ManagerTaxi = ({navigation}) => {
     const approveFlexiShift = (data) =>{
         Alert.alert(
             "Approve",
-            "Are You sure want to Approve ?",
+            "Are you sure to Approve ?",
             [
               {
                 text: "Cancel",

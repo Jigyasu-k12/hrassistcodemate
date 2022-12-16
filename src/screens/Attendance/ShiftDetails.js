@@ -218,7 +218,7 @@ const ShiftDetails = () => {
 
                         <FlatList
                             data={shiftData}
-                            keyExtractor={item => Math.floor((Math.random() * 1000) + 1)}
+                            keyExtractor={(item, index) => index.toString()}
                             renderItem={({ item }) => (
                                 <View style={[styles.dataRow, { alignItems: 'center' }]}>
                                     <View style={{ flexDirection: 'column' }}>
