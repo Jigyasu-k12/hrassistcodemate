@@ -97,13 +97,13 @@ const OnboardingScreen = ({ navigation }) => {
             {
                 backgroundColor: '#fff',
                 image: <Image source={require("../assets/Images/onboarding/attandance.png")} style={{width:150, height:150}} resizeMode="cover"/>,
-                title: 'Attandance & Leave',
+                title: 'Attendance & Leave',
                 // subtitle: 'Done with React Native Onboarding Swiper',
             },
             {
                 backgroundColor: '#fff',
                 image: <Image source={require("../assets/Images/onboarding/compbenifit.png")} style={{width:150, height:150}} resizeMode="cover"/>,
-                title: 'Comp. & Benifits',
+                title: 'Comp. & Benefits',
                 // subtitle: 'This is the subtitle that sumplements the title.',
             },
             {

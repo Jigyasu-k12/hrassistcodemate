@@ -81,8 +81,8 @@ const SeatBook = ({ navigation, route }) => {
                 "BKDTID":"",
                 "BKDTShtlID": route.params.data.SHTL_ROUT_MAPP_ID,
                 "BKDTEmplID": userId,
-                "StartDate": moment().format("DD-MMMM-YYYY"),
-                "EndDate": moment().format("DD-MMMM-YYYY"),
+                "StartDate": moment(route.params.date).format("DD-MMMM-YYYY"),
+                "EndDate": moment(route.params.date).format("DD-MMMM-YYYY"),
                 "Reason": "",
                 "BKDTFlag": "I",
                 "BKDTUser": userId
@@ -95,8 +95,8 @@ const SeatBook = ({ navigation, route }) => {
                 "BKDTID":"",
                 "BKDTShtlID": route.params.data.SHTL_ROUT_MAPP_ID,
                 "BKDTEmplID": Decrypt(searchedNameData['Staff No']),
-                "StartDate": moment().format("DD-MMMM-YYYY"),
-                "EndDate": moment().format("DD-MMMM-YYYY"),
+                "StartDate": moment(route.params.date).format("DD-MMMM-YYYY"),
+                "EndDate": moment(route.params.date).format("DD-MMMM-YYYY"),
                 "Reason": "",
                 "BKDTFlag": "I",
                 "BKDTUser": userId

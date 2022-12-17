@@ -202,7 +202,7 @@ const PastBook = ({navigation, route}) => {
                     open={open}
                     date={fromDate}
                     mode="date"
-                    minimumDate={new Date()}
+                    maximumDate={new Date()}
                     onConfirm={fromDate => {
                         setOpen(false);
                         setFirstDate(fromDate);
@@ -233,7 +233,7 @@ const PastBook = ({navigation, route}) => {
                     open={second}
                     date={toDate}
                     mode="date"
-                    minimumDate={new Date()}
+                    maximumDate={new Date()}
                     onConfirm={toDate => {
                         setSecond(false);
                         setSecondDate(toDate);
@@ -269,7 +269,7 @@ const PastBook = ({navigation, route}) => {
                     />
                 ) : null}
 
-                <Button title="UPDATE" onPress={() => { handleSubmit() }}></Button>
+                <Button title="Submit" onPress={() => { handleSubmit() }}></Button>
             </TouchableOpacity>
             {pastFudata.length > 0 ? (
                 <View style={{ flex:1 }}>
