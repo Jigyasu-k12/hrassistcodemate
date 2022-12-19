@@ -38,11 +38,11 @@ const Notification = ({ navigation }) => {
       //Set Axios Header
       let axiosheader = {
         headers: {
-          'authorization': 'Basic NWFlZDkyNTEtNDM2Yi00ZTc2LTkxN2MtMjYxMWY0OTEyODMz'
+          'authorization': 'Basic ZDU5NjEyY2ItYTI3NS00ZTYzLTkyMGItNGE4ODJmYjFiOTVm'
         }
       }
       //Get Data
-      let resp = await axios.get('https://onesignal.com/api/v1/notifications?app_id=00bd1ef6-7b9f-44a1-98ce-986d3f9654ce', axiosheader)
+      let resp = await axios.get('https://onesignal.com/api/v1/notifications?app_id=42fcb50a-922f-4b0e-9ba3-701d663beede', axiosheader)
       // Remove Loader
       stopLoader();
       // Set Data

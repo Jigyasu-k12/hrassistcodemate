@@ -34,7 +34,7 @@ const Home = ({ navigation }) => {
 
 
   const checkAppUpdate = () =>{
-    let versionfromplug = '1.1.1';
+    let versionfromplug = '1.1.3';
     let appname = "HR ASSIST";
     let devicetype = "IOS"
 
