@@ -28,8 +28,7 @@ import Toast from 'react-native-simple-toast';
 
 const myCustomeSharing = async () => {
   const shareOption = {
-    message:
-      'install this app https://play.google.com/store/apps/details?id=com.successfactors.successfactors',
+    message:"You may download latest version of HR Assist mobile app from following link:https://msilappstore.in/HrAssist/",
   };
   try {
     const shareResponse = await Share.open(shareOption);
@@ -328,7 +327,7 @@ function CustomDrawer(props) {
           </View>
         </View>
       <View style={styles.footer}>
-        <Text style={{fontSize: GlobalFontSize.Small-3}}>v1.1.3</Text>
+        <Text style={{fontSize: GlobalFontSize.Small-3}}>v1.1.4</Text>
         <View style={{flexDirection: 'row', padding: 5}}>
           <Text style={{fontSize: GlobalFontSize.Small-3, color: GlobalColor.Text, marginBottom: 15}}>
             Copyright {'\u00A9'} 2018 Maruti Suzuki India Ltd.
