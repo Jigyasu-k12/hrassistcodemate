@@ -19,7 +19,7 @@ export const AuthPost = (url, data)=>{
       },
       headers: {
           Accept: "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "e_platform": "mobile",
-          'Content-Type': 'application/problem+json; charset=utf-8',
+          'Content-Type': 'application/json; charset=utf-8',
       }
   }).then(res=>JSON.parse(res.bodyString))    
   } catch (error) {
