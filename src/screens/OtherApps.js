@@ -52,10 +52,12 @@ const OtherApps = ({ navigation }) => {
 
     let token = AppUserData.token;
     let userId = AppUserData?.data?.userId
-    let apiData = {
-      UserName: AppUserData?.data?.username,
-      LinkName: "HR_ASSIST"
-    }
+    // let apiData = {
+    //   UserName: AppUserData?.data?.username,
+    //   LinkName: "HR_ASSIST"
+    // }
+
+    let apiData = { UserName: AppUserData?.data?.username, LinkName: "HR_ASSIST", LinkCat : "", LinkType: ""};
 
 
     ApiService.PostMethode('/GetAPPLink', apiData, token, authContext)

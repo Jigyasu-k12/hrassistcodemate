@@ -10,6 +10,7 @@ import { showErrorMessage } from '../../Utils/Utils';
 import { Header } from '../../components/reusable/Header';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import { Decrypt } from '../../Service/Helper';
+import moment from 'moment';
 
 
 const PFBalance = () => {
@@ -34,7 +35,7 @@ const PFBalance = () => {
     }
 
    // // Pf Balance Api 
-  const PfBalance = async () => {
+  const PfBalance = async (year) => {
     //set Loader
     setLoader(true);
 
@@ -43,7 +44,7 @@ const PFBalance = () => {
       //get Api Data
       let result = await ApiService.PostMethode('/GetPFStatement', {
         "EmplID": AppUserData?.data?.userId,
-        "FNYR": month
+        "FNYR": year
       }, AppUserData.token)
 
       //stop Loader
@@ -72,8 +73,49 @@ const PFBalance = () => {
   };
 
     useEffect(() => {
-        PfBalance()
-    }, [])
+        // PfBalance()
+        getfinancialyear();
+    }, []);
+
+
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //       const unsubscribe = getfinancialyear();
+    //       return () => unsubscribe;
+    //     }, []),
+    //   );
+    
+      const getfinancialyear = () => {
+        let apiData = {
+          UserName: AppUserData?.data?.username,
+        };
+        // AppUserData?.data?.userId 222852
+        let token = AppUserData.token;
+        setLoader(true);
+        ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
+          .then(result => {
+            console.log('get year financial', result.Value.Table1);
+            stopLoader(false);
+            if (result.Value) {
+            //   setFinancialYear(result.Value.Table1);
+              if (result.Value && result.Value.Table1[0].FNYR_YEAR) {
+                PfBalance(Decrypt(result.Value.Table1[0].FNYR_YEAR));
+              }
+            } else {
+              Toast.show('No Leave type found');
+            }
+          })
+          .catch(error => {
+            stopLoader(false);
+            // console.log('Error occurred==>', error);
+            ApiService.showErrorMessage(error, authContext);
+          });
+      };
+
+
+
+
+
 
 
     if(loader){

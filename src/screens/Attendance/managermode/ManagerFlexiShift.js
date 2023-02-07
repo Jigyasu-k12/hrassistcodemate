@@ -113,6 +113,8 @@ export const ManagerFlexiShift = () => {
             "MgrID"   : userId,
             "AppFlag" :type,
         };
+
+        console.log(apiData);
         setLoader(true);
         ApiService.PostMethode('/ApproveFlexiShift', apiData, token, authContext)
           .then(result => {

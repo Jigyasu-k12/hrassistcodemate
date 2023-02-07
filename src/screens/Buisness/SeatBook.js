@@ -53,7 +53,8 @@ const SeatBook = ({ navigation, route }) => {
             return
         } else {
             let apiData = {
-                Search: search
+                Search: search,
+                ReportManager:"",
             }
             let token = AppUserData.token
             setLoader(true);

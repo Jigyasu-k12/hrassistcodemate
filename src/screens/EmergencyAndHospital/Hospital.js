@@ -45,11 +45,14 @@ const Hospital = ({ locationName }) => {
     let token = AppUserData.token
     let apiData ;
     if(data==undefined){
-      apiData = {};
+      apiData = {
+        "HospLoc" : "ALL"
+      };
     }
     else {
       apiData= {
-        "HospLoc":data}
+        "HospLoc":data
+      }
     }
     setLoader(true);
     ApiService.PostMethode('/GetHospList', apiData, token, authContext)
@@ -194,7 +197,7 @@ const Hospital = ({ locationName }) => {
                       <ListEmptyComponent/>
                     )
                   }}
-                  keyExtractor={({ item, index }) => index}
+                  keyExtractor={( item, index ) => index.toString()}
                   renderItem={({ item, index }) => {
                     return (
                       <TouchableOpacity
@@ -234,7 +237,7 @@ const Hospital = ({ locationName }) => {
               )
             }}
             data={hospitalList}
-            keyExtractor={({ item, index }) => index}
+            keyExtractor={( item, index ) => index.toString()}
             renderItem={({ item, index }) => (
               <View style={styles.box}>
                 <TouchableOpacity

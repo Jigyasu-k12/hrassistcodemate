@@ -116,7 +116,8 @@ const FlexiShift = () => {
     let userId = AppUserData?.data?.EMPL_NAME;
     let token = AppUserData.token;
     let apiData = {
-      UserName: AppUserData?.data?.username,
+      // UserName: AppUserData?.data?.username,
+      "StaffNo":AppUserData?.data?.userId
     };
     setLoader(true);
     ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)

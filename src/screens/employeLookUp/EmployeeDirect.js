@@ -47,6 +47,7 @@ const EmployeeDirect = () => {
     } else {
       let apiData = {
         Search: search,
+        ReportManager:"",
       };
       let token = AppUserData.token;
       setLoader(true);
