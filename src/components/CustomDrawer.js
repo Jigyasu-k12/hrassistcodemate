@@ -327,7 +327,7 @@ function CustomDrawer(props) {
           </View>
         </View>
       <View style={styles.footer}>
-        <Text style={{fontSize: GlobalFontSize.Small-3}}>v1.1.4</Text>
+        <Text style={{fontSize: GlobalFontSize.Small-3}}>v1.1.2</Text>
         <View style={{flexDirection: 'row', padding: 5}}>
           <Text style={{fontSize: GlobalFontSize.Small-3, color: GlobalColor.Text, marginBottom: 15}}>
             Copyright {'\u00A9'} 2018 Maruti Suzuki India Ltd.
