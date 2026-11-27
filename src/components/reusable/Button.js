@@ -9,7 +9,7 @@ import {
   SafeAreaView
 } from 'react-native';
 import { GlobalFontSize } from '../../constants/FontSize';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from './Text';
 
@@ -20,12 +20,17 @@ export default (props) =>{
     <LinearGradient
         style={[{
           margin: 5,
-          borderRadius: 8,
+          borderRadius: 28,
           width: '100%',
           alignSelf: 'center',
-          backgroundColor:GlobalColor.Primary
+          backgroundColor: ThemeColor.Amber,
+          shadowColor: ThemeColor.AmberDark,
+          shadowOffset: {width: 0, height: 3},
+          shadowOpacity: 0.35,
+          shadowRadius: 6,
+          elevation: 3,
         }, {...btnStyle}]}
-        colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]}>
+        colors={[ThemeColor.Amber, ThemeColor.Amber, ThemeColor.Amber]}>
         <TouchableOpacity
           onPress={onPress}
           style={{
@@ -35,8 +40,8 @@ export default (props) =>{
             marginVertical: 5,
           }}>
           <Text
-            style={[{fontSize: GlobalFontSize.P,color: GlobalColor.White}, {...textStyle}]}
-            Bold={true}>
+            style={[{fontSize: 16, fontWeight: '700', color: ThemeColor.OnAmber}, {...textStyle}]}
+            >
             {title}
           </Text>
         </TouchableOpacity>

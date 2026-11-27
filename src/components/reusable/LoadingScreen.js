@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, ActivityIndicator } from "react-native";
-import { GlobalColor } from "../../constants/Colors";
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from "../../constants/FontSize";
 import Text from './Text';
 // import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
@@ -13,7 +13,7 @@ export const LoadingScreen = ({stylesheet, message="Loading Please Wait"}) =>  {
                 style={{
                     transform: [{ scale: 1.5 }]}} 
                     size="large" 
-                    color= {GlobalColor.Secondary} 
+                    color={ThemeColor.Teal} 
                 />
             <Text 
                 Bold

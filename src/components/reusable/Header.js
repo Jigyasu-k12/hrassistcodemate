@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import {AppIcon} from '../icons/AppIcon';
 import { View, ActivityIndicator, TouchableOpacity, Image } from "react-native";
-import { GlobalColor } from "../../constants/Colors";
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from "../../constants/FontSize";
 import Text from './Text';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -14,7 +15,9 @@ export const Header = ({back=false, title="", onPress }) =>  {
     
     
     return (
-        <LinearGradient colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]} style={styles.container}>
+        <LinearGradient colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.TealDark]}
+               start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+                style={styles.container}>
             <View style={{ flex:1,flexDirection:'row' }}>            
                 <View
                     style={{
@@ -67,7 +70,7 @@ export const Header = ({back=false, title="", onPress }) =>  {
             {onPress?(
             <TouchableOpacity 
                 style={{alignSelf:'flex-end'}}>                
-              <Image  source={require("../../assets/Images/setting.png")} style={{width:30,height:30,tintColor:'#fff'}}/>
+              <AppIcon name="settings" size={26} color={'#FFFFFF'} />
             </TouchableOpacity>
             ): null}
         </LinearGradient>

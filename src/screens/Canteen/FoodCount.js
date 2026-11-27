@@ -21,7 +21,7 @@ import Accordion from './CanteenComponent/Accordion';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { GlobalFontSize } from '../../constants/FontSize';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
 import { Location } from './Locations/Location';
@@ -44,7 +44,7 @@ const FoodCount = ({ navigation }) => {
     let token = AppUserData.token
     let userId = AppUserData.data
     let formatedDate = moment(date).format("DD-MMMM-YYYY").toUpperCase();
-    console.log("currentdate", formatedDate);
+// $&
     let apiData;
     if (currentInd == 0) {
       apiData = {
@@ -53,7 +53,7 @@ const FoodCount = ({ navigation }) => {
         MenuDate: formatedDate,
         MenuLocation: "002"
       }
-      console.log("index 0 ", apiData);
+// $&
     }
     else if (currentInd == 1) {
       apiData = {
@@ -62,7 +62,7 @@ const FoodCount = ({ navigation }) => {
         MenuDate: formatedDate,
         MenuLocation: "010"
       }
-      console.log("index 0 ", apiData);
+// $&
     }
     else if (currentInd == 2) {
       apiData = {
@@ -71,7 +71,7 @@ const FoodCount = ({ navigation }) => {
         MenuDate: formatedDate,
         MenuLocation: "011"
       }
-      console.log("index 0 ", apiData);
+// $&
     }
     else if (currentInd == 3) {
       apiData = {
@@ -80,15 +80,15 @@ const FoodCount = ({ navigation }) => {
         MenuDate: formatedDate,
         MenuLocation: "041"
       }
-      console.log("index 0 ", apiData);
+// $&
     }
-    console.log("apiData", apiData);
+// $&
     setLoader(true);
     ApiService.PostMethode('/GetMenuCant', apiData, token, authContext)
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value
-        console.log("setMenu", ApiValue);
+// $&
         let lunch = result.Value.filter(item => {
           if (item.CANT_MEAL === "Lunch") {
             return item
@@ -113,14 +113,14 @@ const FoodCount = ({ navigation }) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
   useEffect(() => {
     GetMenuCanttApi()
-    console.log('index', currentInd);
-    console.log("GetMenuCanttApi", GetMenuCanttApi);
+// $&
+// $&
   }, [currentInd, date])
 
 
@@ -208,6 +208,8 @@ const FoodCount = ({ navigation }) => {
         <Accordion data={lunch} name={'Lunch'} handleDropDown={() => setIsOpen(isOpen === 'lunch' ? '' : 'lunch')} isOpen={isOpen === 'lunch'} />
         <Accordion data={snacks} name={'Snacks'} handleDropDown={() => setIsOpen(isOpen === 'snacks' ? '' : 'snacks')} isOpen={isOpen === 'snacks'} />
         <Accordion data={dinner} name={'Dinner'} handleDropDown={() => setIsOpen(isOpen === 'dinner' ? '' : 'dinner')} isOpen={isOpen === 'dinner'} />
+        
+
      </View>
       </SafeAreaView>
     );
@@ -225,7 +227,8 @@ const FoodCount = ({ navigation }) => {
   return (
     <View style={{ flex: 1, width: '100%', height: '100%' }}>
        <Header title="Food Court"/>        
-
+       <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+        <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
         screenOptions={{
@@ -234,26 +237,34 @@ const FoodCount = ({ navigation }) => {
           tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
-          tabBarStyle: { backgroundColor:GlobalColor.Secondary, elevation: 0 },
+          tabBarStyle: { backgroundColor:'transparent', elevation: 0 },
         }}
       >
         <Tab.Screen name="Gurgaon" component={Location} initialParams={{ MenuLocation: "002", MenuType: "F" }}/>
         <Tab.Screen name="Manesar" component={Location} initialParams={{ MenuLocation: "010", MenuType: "F" }}/>
         <Tab.Screen name="MPT" component={Location} initialParams={{ MenuLocation: "011", MenuType: "F" }}/>
         <Tab.Screen name="Rothak" component={Location} initialParams={{ MenuLocation: "041", MenuType: "F" }} />
+        <Tab.Screen name="Kharkhoda" component={Location} initialParams={{ MenuLocation: "080", MenuType: "F" }} />
       </Tab.Navigator>
+      </View>
+      </LinearGradient>
     </View>
   );
 };
 // define your styles
 const styles = StyleSheet.create({
+
   gradient: {
     padding: 20,
   },
   container: {
     flexDirection: 'row',
   },
-
+ mystyl:{
+    backgroundColor:'transparent',
+    height:'100%',
+    flexDirection:'row',
+  },
   // Gurgaon Lunch section
   lunchBoxContainer: {
     width: '100%',

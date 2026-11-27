@@ -1,5 +1,6 @@
 //import liraries
 import React, {useState} from 'react';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../constants/Colors';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -51,9 +52,9 @@ const VisitDetails = ({navigation}) => {
               padding: 5,
               borderRadius: 5,
               borderTopColor: '#80406A',
-              borderStartColor: '#6ef7ff',
-              borderBottomColor: '#2757C3',
-              borderEndColor: '#6ef7ff',
+              borderStartColor: ThemeColor.TealSoft,
+              borderBottomColor: ThemeColor.TealDark,
+              borderEndColor: ThemeColor.TealSoft,
             }}
           />
           <TextInput
@@ -63,9 +64,9 @@ const VisitDetails = ({navigation}) => {
               padding: 5,
               borderRadius: 5,
               borderTopColor: '#80406A',
-              borderStartColor: '#6ef7ff',
-              borderBottomColor: '#2757C3',
-              borderEndColor: '#6ef7ff',
+              borderStartColor: ThemeColor.TealSoft,
+              borderBottomColor: ThemeColor.TealDark,
+              borderEndColor: ThemeColor.TealSoft,
             }}
           />
         </View>
@@ -97,9 +98,9 @@ const VisitDetails = ({navigation}) => {
                 backgroundColor: 'transparent',
                 borderWidth: 1,
                 borderTopColor: '#80406A',
-                borderStartColor: '#6ef7ff',
-                borderBottomColor: '#2757C3',
-                borderEndColor: '#6ef7ff',
+                borderStartColor: ThemeColor.TealSoft,
+                borderBottomColor: ThemeColor.TealDark,
+                borderEndColor: ThemeColor.TealSoft,
                 width: '30%',
                 height: 40,
                 borderRadius: 5,
@@ -114,7 +115,7 @@ const VisitDetails = ({navigation}) => {
                 );
               }}
               onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
+// $&
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                 return selectedItem;
@@ -130,9 +131,9 @@ const VisitDetails = ({navigation}) => {
                 padding: 5,
                 borderRadius: 5,
                 borderTopColor: '#80406A',
-                borderStartColor: '#6ef7ff',
-                borderBottomColor: '#2757C3',
-                borderEndColor: '#6ef7ff',
+                borderStartColor: ThemeColor.TealSoft,
+                borderBottomColor: ThemeColor.TealDark,
+                borderEndColor: ThemeColor.TealSoft,
               }}
             />
           </View>
@@ -166,9 +167,9 @@ const VisitDetails = ({navigation}) => {
                 padding: 5,
                 borderRadius: 5,
                 borderTopColor: '#80406A',
-                borderStartColor: '#6ef7ff',
-                borderBottomColor: '#2757C3',
-                borderEndColor: '#6ef7ff',
+                borderStartColor: ThemeColor.TealSoft,
+                borderBottomColor: ThemeColor.TealDark,
+                borderEndColor: ThemeColor.TealSoft,
               }}
             />
             <TextInput
@@ -178,9 +179,9 @@ const VisitDetails = ({navigation}) => {
                 padding: 5,
                 borderRadius: 5,
                 borderTopColor: '#80406A',
-                borderStartColor: '#6ef7ff',
-                borderBottomColor: '#2757C3',
-                borderEndColor: '#6ef7ff',
+                borderStartColor: ThemeColor.TealSoft,
+                borderBottomColor: ThemeColor.TealDark,
+                borderEndColor: ThemeColor.TealSoft,
               }}
             />
           </View>
@@ -196,16 +197,16 @@ const VisitDetails = ({navigation}) => {
               padding: 5,
               borderRadius: 5,
               borderTopColor: '#80406A',
-              borderStartColor: '#6ef7ff',
-              borderBottomColor: '#2757C3',
-              borderEndColor: '#6ef7ff',
+              borderStartColor: ThemeColor.TealSoft,
+              borderBottomColor: ThemeColor.TealDark,
+              borderEndColor: ThemeColor.TealSoft,
               alignSelf: 'center',
             }}
           />
         </View>
         <TouchableOpacity style={{padding: 10, paddingStart: 20}}>
           <LinearGradient
-         colors={['#4174D0','#6ef7ff']}
+         colors={[ThemeColor.Teal,ThemeColor.TealSoft]}
             style={{padding: 10, width: '40%', borderRadius: 5}}>
             <Text style={{color: '#fff', textAlign: 'center'}}>
               Add More Person
@@ -221,7 +222,7 @@ const VisitDetails = ({navigation}) => {
               width: '90%',
               alignSelf: 'center',
             }}
-         colors={['#4174D0','#6ef7ff']}>
+         colors={[ThemeColor.Teal,ThemeColor.TealSoft]}>
             <TouchableOpacity
               style={{
                 width: '100%',

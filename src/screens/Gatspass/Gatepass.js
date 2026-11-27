@@ -26,7 +26,7 @@ import Toast from 'react-native-simple-toast';
 import * as ApiService from '../../Utils/Utils';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import Text from '../../components/reusable/Text';
 import TextInput from '../../components/reusable/TextInput';
 import {Header} from '../../components/reusable/Header';
@@ -73,13 +73,13 @@ const Gatepass = ({navigation}) => {
   const GetLocationListVGPSApi = () => {
     let token = AppUserData.token;
     let userId = AppUserData?.data?.userId;
-    console.log('UserName', userId);
+// $&
     let apiData = {UserName: userId};
-    console.log(apiData);
+// $&
     setLoader(true);
     ApiService.PostMethode('/GetLocationListVGPS', apiData, token, authContext)
       .then(result => {
-        console.log('APiresult GetLocationListVGPS', result);
+// $&
         setLoader(false);
         if (result?.Value?.length > 0) {
           setLocations(result.Value);
@@ -97,7 +97,7 @@ const Gatepass = ({navigation}) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -105,9 +105,9 @@ const Gatepass = ({navigation}) => {
   const GetSearchLevelsListVGPSApi = () => {
     let token = AppUserData.token;
     let userId = AppUserData?.data?.userId;
-    console.log('UserName', userId);
+// $&
     let apiData = {UserName: userId};
-    console.log(apiData);
+// $&
     setLoader(true);
     ApiService.PostMethode(
       '/GetSearchLevelsListVGPS',
@@ -116,7 +116,7 @@ const Gatepass = ({navigation}) => {
       authContext,
     )
       .then(result => {
-        console.log('Search level', result);
+// $&
         setLoader(false);
         if (result?.Value?.length > 0) {
           let arrData = result.Value.map(item => {
@@ -128,21 +128,21 @@ const Gatepass = ({navigation}) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
 
   const SearchEmployee = () => {
-    let userId = AppUserData?.data?.userId;
-    console.log('post data', search);
+    let userNT = AppUserData?.data?.userNT;
+// $&
     if (search === '') {
       alert('Please enter a valid keyWord ');
       return;
     } else {
       let apiData = {
         Search: search,
-        UserName:userId
+        UserName:userNT
       };
       let token = AppUserData.token;
       setLoader(true);
@@ -150,30 +150,31 @@ const Gatepass = ({navigation}) => {
         .then(result => {
           setLoader(false);
 
-          console.log('ApiResult', result);
+// $&
 
           let responseData = result.Value;
-          console.log('ApiResult', responseData);
+// $&
           setEmploy(responseData);
           setEmpModalVisible(true);
         })
         .catch(error => {
           setLoader(false);
-          // console.log('Error occurred==>', error);
+          // // console.log($1);
           ApiService.showErrorMessage(error, authContext);
         });
     }
   };
   const GetAccessListVGPSApi = (locationcode = '001') => {
-    let userId = AppUserData?.data?.userId;
+    let userNT = AppUserData?.data?.userNT;
     // let newLoc = empLocCode.split(",")[0]
+
     let apiData = {
-      UserName: userId,
+      UserName: userNT,
       LocationCode: locationcode,
       LevelID: '1',
     };
-    console.log('post data', apiData);
-    console.log('post userId', userId);
+// $&
+// $&
     let token = AppUserData.token;
     setLoader(true);
     ApiService.PostMethode('/GetAccessListVGPS', apiData, token, authContext)
@@ -187,12 +188,12 @@ const Gatepass = ({navigation}) => {
             isSelected: false,
           };
         });
-        // console.log("response data new", responseDataNew);
+        // // console.log($1);
         setBuildingData(responseDataNew);
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -203,7 +204,7 @@ const Gatepass = ({navigation}) => {
     GetAccessListVGPSApi();
   }, []);
   // useEffect(() => {
-  //   console.log(selectBuilding);
+  //   // console.log($1);
   // }, [selectBuilding])
 
   const emptyList = () => {
@@ -306,7 +307,7 @@ const Gatepass = ({navigation}) => {
           MOB_NO:''
         }}
         onSubmit={values => {
-          console.log('values', BuildingData);
+// $&
 
           let buldings = BuildingData.filter(element => {
             if (element.isSelected) {
@@ -338,14 +339,14 @@ const Gatepass = ({navigation}) => {
           let newdata = {
             id: '1',
             location: values.office.CODE.split(',')[0],
-            visitDate: moment(values.date).format('YY/MM/DD'),
+            visitDate: moment(values.date).format('MMM-DD-YYYY hh:mm:ss a'),
             authorizedPerson: AppUserData?.data?.userId,
             Pvehicle: values.persionalVehical.value,
             VisType: 'O',
             visLevel: '1',
-            buildings: buldings,
+            buildings: buldings.join(','),
             duration: values.duration,
-            exArrTime: moment(values.date).format('MM-DD-YY hh:mm'),
+            exArrTime: moment(values.date).format('MMM-DD-YYYY hh:mm:ss a'),
             SearchLevel: values.searchLevel.value,
             interVehicle: values.internalVehical.value,
             ReasonToCome: values.reason,
@@ -357,7 +358,7 @@ const Gatepass = ({navigation}) => {
             dateDummy: values.date,
             mobileNo:values.MOB_NO,
           };
-          console.log('payload', newdata);
+// $&
           navigation.navigate('VisitorDetails', {
             visitorpayload: newdata,
           });
@@ -392,8 +393,8 @@ const Gatepass = ({navigation}) => {
               disabled={LocationDisabled}
               defaultValue={values.office}
               onSelect={(selectedItem, index) => {
-                // console.log(selectedItem, index);
-                console.log(selectedItem);
+                // // console.log($1);
+// $&
                 setBuildingData([]);
                 // setFieldValue('office', selectedItem.CODE);
                 setFieldValue('office', selectedItem);
@@ -450,11 +451,11 @@ const Gatepass = ({navigation}) => {
               minimumDate={new Date()}
               date={values.date}
               onConfirm={date => {
-                console.log(date);
+// $&
                 setFieldValue('date', date);
                 setOpenDateTimePicker(false);
                 // setDate(date);
-                // console.log(date);
+                // // console.log($1);
               }}
               onCancel={() => {
                 setOpenDateTimePicker(false);
@@ -573,8 +574,8 @@ const Gatepass = ({navigation}) => {
                 data={searchLevelData}
                 defaultValue={values.searchLevel}
                 onSelect={(selectedItem, index) => {
-                  console.log(selectedItem, index);
-                  console.log('selectedItem', selectedItem);
+// $&
+// $&
                   // setFieldValue('searchLevel', selectedItem.value);
                   setFieldValue('searchLevel', selectedItem);
                 }}
@@ -698,7 +699,7 @@ const Gatepass = ({navigation}) => {
                     dropdownBackgroundColor={'transparent'}
                     data={options}
                     onSelect={(selectedItem, index) => {
-                      // console.log(selectedItem, index);
+                      // // console.log($1);
                       setFieldValue('persionalVehical', selectedItem);
                     }}
                     buttonStyle={styles.dropdown2BtnStyle}
@@ -756,7 +757,7 @@ const Gatepass = ({navigation}) => {
                     }}
                     data={options}
                     onSelect={(selectedItem, index) => {
-                      // console.log(selectedItem, index);
+                      // // console.log($1);
                       setFieldValue('internalVehical', selectedItem);
                     }}
                     buttonStyle={styles.dropdown2BtnStyle}
@@ -907,12 +908,12 @@ const Gatepass = ({navigation}) => {
                     </ScrollView>
                     <TouchableOpacity onPress={toggleBuilding}>
                       {show == true ? (
-                        <Ionicons name="caret-up" size={30} color={'#4174D0'} />
+                        <Ionicons name="caret-up" size={30} color={ThemeColor.Teal} />
                       ) : (
                         <Ionicons
                           name="caret-down"
                           size={30}
-                          color={'#4174D0'}
+                          color={ThemeColor.Teal}
                         />
                       )}
                     </TouchableOpacity>
@@ -1055,7 +1056,7 @@ const Gatepass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Feather name="search" size={20} color={'#4174D0'} />
+                    <Feather name="search" size={20} color={ThemeColor.Teal} />
                   </View>
 
                   <TextInput
@@ -1099,7 +1100,7 @@ const Gatepass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Ionicons name="send" size={20} color={'#4174D0'} />
+                    <Ionicons name="send" size={20} color={ThemeColor.Teal} />
                   </TouchableOpacity>
                 </View>
 
@@ -1223,7 +1224,7 @@ const Gatepass = ({navigation}) => {
               </View>
 
               {/* Next Button */}
-              <View style={{paddingVertical: 10}}>
+              <View style={{paddingVertical: 10,marginBottom:"30%"}}>
                 <Button
                   title="Next"
                   onPress={() => {
@@ -1286,7 +1287,7 @@ const Gatepass = ({navigation}) => {
                           setFieldValue('empId', item['Staff No']);
                           setFieldValue('Desig', item['Desg']);
                           setFieldValue('MOB_NO', item['mobilenumber']);
-                          // console.log(item);
+                          // // console.log($1);
                           // setSearchedNameData(item)
                           setEmpModalVisible(false);
                         }}>

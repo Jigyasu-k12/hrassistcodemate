@@ -7,7 +7,7 @@ import * as ApiService from '../Utils/Utils';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { Header } from './reusable/Header';
 import Text from './reusable/Text';
-import { GlobalColor } from '../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../constants/Colors';
 import { Decrypt } from '../Service/Helper';
 
 
@@ -35,7 +35,7 @@ const Nomination = ({ navigation, route }) => {
         });
 
 
-        console.log(groups);
+// $&
 
 
 
@@ -48,14 +48,14 @@ const Nomination = ({ navigation, route }) => {
 
         NominationData.forEach(element => {
             let index = ArrayKeys.find((elements )=>elements == element.NOMM_DESC)
-            // console.log(index);
+            // // console.log($1);
             if(responseArr[index]){
                 responseArr[index].push(element);
             }else{
                 responseArr[index] = [element];
             }
         });
-        console.log(responseArr);
+// $&
         setNominiData(NominationData);
         setNominationArrya(responseArr);
         */
@@ -82,7 +82,7 @@ const Nomination = ({ navigation, route }) => {
                 ...item
             }
         })
-        console.log("selectedData", arr)
+// $&
         setNominiData(arr)
     }
     
@@ -99,8 +99,8 @@ const Nomination = ({ navigation, route }) => {
                                 <TouchableOpacity onPress={() => {
                                     handleDropDown(index)
                                 }} style={[styles.tabStyle, { borderBottomLeftRadius: item.isClicked ? 0 : 3, borderBottomRightRadius: item.isClicked ? 0 : 3 }]}>
-                                    <Text Bold style={{  }}>{Decrypt(item.group)}</Text>
-                                    {item.isClicked == true ? (<Ionicons name={'ios-chevron-up'} size={20} />) : (<Ionicons name={'ios-chevron-down'} size={20} />)}
+                                    <Text Bold style={styles.mainTxt}>{Decrypt(item.group)}</Text>
+                                    {item.isClicked == true ? (<Ionicons name={'ios-chevron-up'} size={20} color={ThemeColor.Teal}/>) : (<Ionicons name={'ios-chevron-down'} size={20} color={ThemeColor.Teal}/>)}
                                 </TouchableOpacity>
 
                                 {item.isClicked == true ? (
@@ -109,8 +109,8 @@ const Nomination = ({ navigation, route }) => {
                                             item.nomine.length > 0 && item.nomine.map((dataItem)=>{
                                                 return(
                                                     <View style={[styles.tabStyle, { marginTop: 0, elevation: 0, borderTopEndRadius: 0, borderTopStartRadius: 0 }]}>
-                                                        <Text>{Decrypt(dataItem.split("#")[0])}</Text>
-                                                        <Text>{Decrypt(dataItem.split("#")[1])}%</Text>
+                                                        <Text style={styles.txt}>{Decrypt(dataItem.split("#")[0])}</Text>
+                                                        <Text style={styles.txt}>{Decrypt(dataItem.split("#")[1])}%</Text>
                                                     </View>
                                                 )
                                             })   
@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
     },
     containerBody:{
         paddingHorizontal:10,
-        flex:1
+        flex:1,
+        marginBottom:15
     },
     tabStyle: {
         paddingVertical:16,
@@ -157,6 +158,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 15,
         paddingVertical: 15,
+    },
+    mainTxt:{
+        fontSize:14
+    },
+    txt:{
+        fontSize:13
     }
 })
 export default Nomination

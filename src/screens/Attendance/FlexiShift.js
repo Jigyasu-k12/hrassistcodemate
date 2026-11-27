@@ -22,7 +22,7 @@ import Toast from 'react-native-simple-toast';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {useFocusEffect} from '@react-navigation/native';
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import {GlobalFontSize} from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import TextInput2 from '../../components/reusable/TextInput';
@@ -36,6 +36,7 @@ const FlexiShift = () => {
   const [open, setOpen] = useState(false);
   const [second, setSecond] = useState(false);
   const [textinputDate, setTextinputDate] = useState('');
+  const [flexiZZ, setFlexiZZ] = useState('');
   const [textinputSecondDate, setTextinputSecondDate] = useState('');
   const [openThird, setOpenThird] = useState(false);
   const [Shift, setShift] = useState([]);
@@ -97,14 +98,14 @@ const FlexiShift = () => {
     setLoader(true);
     ApiService.PostMethode('/GetEmplShift', apiData, token, authContext)
       .then(result => {
-        console.log('GetEmplShift', result);
+// $&
         setLoader(false);
         let ApiResult = result.Value;
         setShiftData(ApiResult);
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -122,14 +123,14 @@ const FlexiShift = () => {
     setLoader(true);
     ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)
       .then(result => {
-        console.log('flexiShiftPlanLov', result);
+// $&
         setLoader(false);
         let ApiResult = result.Value;
         setShiftType(ApiResult);
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -143,14 +144,15 @@ const FlexiShift = () => {
     setLoader(true);
     ApiService.PostMethode('/CurrentShift', apiData, token, authContext)
       .then(result => {
-        console.log('CurrentShift', result);
+// $&
         setLoader(false);
         let ApiResult = result.Result;
+        setFlexiZZ(result.Result);
         setCurrentShift(ApiResult);
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -158,19 +160,19 @@ const FlexiShift = () => {
   const SubmitFlexiShiftPlan = () => {
     let userId = AppUserData?.data?.userId;
     let token = AppUserData.token;
-    console.log('token', token);
+// $&
     let apiData = {
       Staffid: userId,
       PlanShift: shiftName.split(' ')[0],
       PlanStdate: Selected,
       OffDay: 'SUNDAY',
     };
-    console.log('Api Data===>', apiData);
+// $&
     // return;
     setLoader(true);
     ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token, authContext)
       .then(result => {
-        console.log('SubmitFlexiShiftPlan', result);
+// $&
         setLoader(false);
         let ApiResult = result.Result;
         Alert.alert("Success", ApiResult);
@@ -181,7 +183,7 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -195,14 +197,14 @@ const FlexiShift = () => {
     setLoader(true);
     ApiService.PostMethode('/RptShiftStatus', apiData, token, authContext)
       .then(result => {
-        console.log('RptShiftStatus', result);
+// $&
         setLoader(false);
         let ApiResult = result.Value;
         setShiftStatus(ApiResult);
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -216,7 +218,7 @@ const FlexiShift = () => {
     setLoader(true);
     ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)
       .then(result => {
-        console.log('FlexiShiftElig', result.Result);
+// $&
         setLoader(false);
         let ApiResult = result.Result;
         if(ApiResult){
@@ -231,7 +233,7 @@ const FlexiShift = () => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -274,14 +276,14 @@ const FlexiShift = () => {
       authContext,
     )
       .then(result => {
-        console.log('FlexiShiftStartDateLOV', result.Result);
+// $&
         setLoader(false);
         let ApiResult = result.Result;
         setFlexiDate(ApiResult);
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -291,7 +293,12 @@ const FlexiShift = () => {
       alert('Please select shift name');
     } else if (choseDate == '') {
       alert('Please select Date');
-    } else {
+    } 
+    else if(flexiZZ == "ZZ ( 07:00 To 16:00 )")
+    {
+      alert("You are not eligible for opting Flexi Shift. Please reach out to your HRBP");
+    }
+    else {
       submitAlert('Warning', 'Are you sure to submit?', 'yes', 'No');
     }
   };
@@ -312,7 +319,7 @@ const FlexiShift = () => {
       {
         text: btnTxt2,
         onPress: () => {
-          console.log('No Pressed');
+// $&
         },
       },
     ]);
@@ -325,17 +332,17 @@ const FlexiShift = () => {
           padding: 10,
           margin: 2,
           borderBottomWidth: 1,
-          borderBottomColor: GlobalColor.Secondary,
+          borderBottomColor: ThemeColor.Teal,
           paddingVertical: 15,
         }}>
         <TouchableOpacity
           onPress={() => {
-            // console.log('selected reason', item);
+            // // console.log($1);
             setShiftName(item.SHIFT_DESCRIPTION);
             setModalVisible(false);
-            console.log('data', shiftName);
+// $&
           }}>
-          <Text style={{paddingHorizontal: 10}}>{item.SHIFT_DESCRIPTION}</Text>
+          <Text style={{paddingHorizontal: 10,fontSize:13}}>{item.SHIFT_DESCRIPTION}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -350,8 +357,8 @@ const FlexiShift = () => {
         />
       ) : null}
 
-      <ScrollView style={{flex: 1, paddingHorizontal: 10}}>
-        <Text style={{paddingVertical: 15, paddingHorizontal: 0}} Bold>
+      <ScrollView style={{flex: 1, paddingHorizontal: 10,marginBottom:"10%"}}>
+        <Text style={{paddingVertical: 15, paddingHorizontal: 0,fontSize:13}} Bold>
           Shift Name
         </Text>
         <View style={styles.box}>
@@ -365,10 +372,10 @@ const FlexiShift = () => {
               justifyContent: 'space-between',
             }}>
             {/* {shiftName==''} */}
-            <Text Bold>
-              {shiftName !== '' ? shiftName : <Text Bold> Select Shift</Text>}
+            <Text  style={{fontSize:13}} Bold>
+              {shiftName !== '' ? shiftName : <Text style={{fontSize:13}} Bold> Select Shift</Text>}
             </Text>
-            <Ionicons name="arrow-forward-outline" color={'#23d'} size={25} />
+            <Ionicons name="arrow-forward-outline" color={ThemeColor.Teal} size={20} />
             <Modal isVisible={isModalVisible}>
               <SafeAreaView>
               <View
@@ -389,14 +396,14 @@ const FlexiShift = () => {
                     Bold
                     style={{
                       color: GlobalColor.Primary,
-                      fontSize: GlobalFontSize.H4,
+                      fontSize: 15,
                     }}>
                     Select Shift
                   </Text>
                   <TouchableOpacity onPress={toggleModal}>
                     <Ionicons
                       name="close-circle-outline"
-                      size={30}
+                      size={25}
                       color={GlobalColor.Danger}
                     />
                   </TouchableOpacity>
@@ -411,7 +418,7 @@ const FlexiShift = () => {
             </Modal>
           </TouchableOpacity>
         </View>
-        <Text Bold style={{paddingVertical: 15, paddingHorizontal: 0}}>
+        <Text Bold style={{paddingVertical: 15, paddingHorizontal: 0,fontSize:13}}>
           Applicable Date
         </Text>
         <DatePicker
@@ -426,7 +433,7 @@ const FlexiShift = () => {
             let otherFormatDate = moment(selectDate).format('DD-MMM-YYYY');
             setSelected(otherFormatDate);
             setChoseDate(formatDate);
-            console.log(choseDate);
+// $&
           }}
           onCancel={() => {
             setOpenThird(false);
@@ -439,6 +446,7 @@ const FlexiShift = () => {
           <TextInput2
             placeholder="Select Date"
             width={'90%'}
+            style={{fontSize:13}}
             editable={false}
             paddingHorizontal={10}
             value={choseDate}
@@ -446,19 +454,20 @@ const FlexiShift = () => {
           <TouchableOpacity onPress={() => setOpenThird(true)}>
             <Ionicons
               name="calendar-outline"
-              size={30}
-              color={GlobalColor.Secondary}
+              size={25}
+              color={ThemeColor.Teal}
             />
           </TouchableOpacity>
         </View>
 
-        <Text Bold style={{paddingVertical: 15, paddingHorizontal: 0}}>
+        <Text Bold style={{paddingVertical: 15, paddingHorizontal: 0,fontSize:13}}>
           Current Shift
         </Text>
         <View style={styles.inputBox}>
           <TextInput2
             value={currentShift}
             width={'80%'}
+            style={{fontSize:15}}
             editable={false}
             paddingHorizontal={10}
           />
@@ -467,6 +476,7 @@ const FlexiShift = () => {
         {flexiShiftElig ? (
           <View style={{marginTop: 10, width: '100%', alignSelf: 'center'}}>
             <Button
+              style={{fontSize:13}}
               onPress={() => {
                 handleSubmit();
               }}
@@ -497,7 +507,7 @@ const FlexiShift = () => {
           keyExtractor={(item, index) => index.toString()}
           ListHeaderComponent={FlatList_Header}
           ListHeaderComponentStyle={{
-            borderBottomColor: GlobalColor.Secondary,
+            borderBottomColor: ThemeColor.Teal,
             borderBottomWidth: 1,
           }}
           renderItem={({item}) => (
@@ -513,15 +523,15 @@ const FlexiShift = () => {
                 borderBottomWidth: 0.4,
                 borderBottomColor: GlobalColor.LightDark,
               }}>
-              <Text style={{flex: 0.4}}>{item.SHFT_START_SHIFT}</Text>
-              <Text style={{flex: 0.4}}>
+              <Text style={{flex: 0.4,fontSize:13}}>{item.SHFT_START_SHIFT}</Text>
+              <Text style={{flex: 0.4,fontSize:13}}>
                 {moment(item.SHFT_START_DATE).format('M/DD/YYYY')}
               </Text>
-              <Text style={{flex: 0.2}}>
+              <Text style={{flex: 0.2,fontSize:13}}>
                 {item.STATUS === 'Approved' ? (
-                  <Text style={{color: 'green'}}>{item.STATUS}</Text>
+                  <Text style={{color: 'green',fontSize:13}}>{item.STATUS}</Text>
                 ) : (
-                  <Text style={{color: 'green'}}>{item.STATUS}</Text>
+                  <Text style={{color: 'green',fontSize:13}}>{item.STATUS}</Text>
                 )}
               </Text>
             </View>
@@ -630,6 +640,7 @@ const styles = StyleSheet.create({
   },
   HeaderColumn: {
     flex: 0.25,
+    fontSize:13
   },
   spinnerTextStyle: {
     color: '#fff',

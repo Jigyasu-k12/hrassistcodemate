@@ -34,7 +34,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import {GlobalFontSize} from '../../constants/FontSize';
 import Button from './../../components/reusable/Button';
 import Text from '../../components/reusable/Text';
@@ -45,6 +45,12 @@ import LeaveViewReport from './LeaveViewReport';
 import LeaveBalance from './LeaveBalance';
 import SalaryDeduct from './SalaryDeduct';
 import {Decrypt} from '../../Service/Helper';
+import ApplyLeaveHome from './ApplyLeaveHome';
+import ViewReportHome from './ViewReportHome';
+import SalaryDeductHome from './SalaryDeductHome';
+import LeaveHome from './LeaveHome';
+import LeaveReportHome from './LeaveReportHome';
+
 
 // create a component
 const Leave = ({navigation}) => {
@@ -67,12 +73,19 @@ const Leave = ({navigation}) => {
   const [LeaveTypes, setLeaveTypes] = useState([]);
   const [Leavereason, setLeavereason] = useState([]);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [ShowZZ, setShowZZ] = useState(false);
   // const [LeaveDetailModal, setLeaveDetailModal] = useState(false);
   const [FinancialYear, setFinancialYear] = useState([]);
   const [EmpLeaveDetail, setEmpLeaveDetail] = useState([]);
+  const [applyLeaveAS, setapplyLeaveAS] = useState(0);
   //const [modalData, setModalData] = useState([]);
   //const [horizental, setHorizental] = useState(false);
   const [SelectedYear, setSelectedYear] = useState('');
+
+  let usrAccess = AppUserData?.data?.userFlag;
+
+// $&
+
 
   useFocusEffect(
     React.useCallback(() => {
@@ -101,7 +114,7 @@ const Leave = ({navigation}) => {
   const fromRef = useRef(null);
 
   // const PostSubmitLeave = data => {
-  //   console.log('post data', data);
+  //   // console.log($1);
   //   // let dummydata =
   //   //   {
   //   //     "UserName" : "222852",
@@ -120,7 +133,7 @@ const Leave = ({navigation}) => {
   //   ApiService.PostMethode('/SubmitLeave', data, token)
   //     .then(result => {
   //       setLoader(false);
-  //       console.log('ApiResult', result);
+  //       // console.log($1);
   //       if(result.Result){
   //         if(result.Result.search("successfully") != -1){
   //           fromRef.current.resetForm();
@@ -132,17 +145,17 @@ const Leave = ({navigation}) => {
   //     })
   //     .catch(error => {
   //       setLoader(false);
-  //       console.log('Error occurred==>', error);
+  //       // console.log($1);
   //       if (error.response) {
   //         if (error.response.status == 401) {
-  //           console.log('error from api', error.response);
+  //           // console.log($1);
   //         }
   //         // client received an error response (5xx, 4xx)
   //         Toast.show(error.response.data.title);
   //       } else if (error) {
   //         // client never received a response, or request never left
   //         Toast.show('Network Error');
-  //         // console.log("error.request", error.request._response);
+  //         // // console.log($1);
   //       } else {
   //         // anything else
   //         Toast.show('Session expired login again');
@@ -157,14 +170,14 @@ const Leave = ({navigation}) => {
   setLoader(true);
   ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
     .then(result => {
-      console.log("APiresult getleave types", result.Value.Table2);
+// $&
       setLoader(false);
       if (result.Value) {
         let updatedArray = [];
         result.Value.Table2.forEach((element, index) => {
           updatedArray.push({ ...element, id: index, Type: element.SHORT_NAME, value: element.ABSENCE_ID.replace(/\D/g, "") });
         });
-        console.log(updatedArray);
+// $&
         setLeaveTypes(updatedArray);
       } else {
         Toast.show('No Leave type found');
@@ -172,7 +185,7 @@ const Leave = ({navigation}) => {
     })
     .catch(error => {
       setLoader(false);
-    //   console.log('Error occurred==>', error);
+    //   // console.log($1);
       ApiService.showErrorMessage(error, authContext);
     });
 }
@@ -184,7 +197,7 @@ const Leave = ({navigation}) => {
   //   setLoader(true);
   //   ApiService.PostMethode('/GetLeaveReason', apiData, token, authContext)
   //     .then(result => {
-  //       console.log("APiresult GetLeaveReason", result);
+  //       // console.log($1);
   //       setLoader(false);
   //       if (result.Value) {
   //         let reasons = [];
@@ -198,17 +211,17 @@ const Leave = ({navigation}) => {
   //     })
   //     .catch(error => {
   //       setLoader(false);
-  //       console.log('Error occurred==>', error);
+  //       // console.log($1);
   //       if (error.response) {
   //         if (error.response.status == 401) {
-  //           console.log('error from api', error.response);
+  //           // console.log($1);
   //         }
   //         // client received an error response (5xx, 4xx)
   //         Toast.show(error.response.data.title);
   //       } else if (error.request) {
   //         // client never received a response, or request never left
   //         Toast.show('Network Error');
-  //         // console.log("error.request", error.request._response);
+  //         // // console.log($1);
   //       } else {
   //         // anything else
   //         Toast.show('Session expired login again');
@@ -225,7 +238,7 @@ const Leave = ({navigation}) => {
     setLoader(true);
     ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
-        console.log('Get Financial Year .....', result.Value);
+// $&
         setLoader(false);
         if (result.Value) {
           let reasons = [];
@@ -240,7 +253,7 @@ const Leave = ({navigation}) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -268,12 +281,12 @@ const Leave = ({navigation}) => {
     setLoader(true);
     ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
       .then(result => {
-        // console.log("APiresult GetEmplLevDetail", result);
+        // // console.log($1);
         setLoader(false);
         let arr = [];
         if (result.Value) {
           arr.push(result.Value);
-          // console.log("arr",arr);
+          // // console.log($1);
           setEmpLeaveDetail(...arr);
         } else {
           Toast.show('No Leave type found');
@@ -281,7 +294,7 @@ const Leave = ({navigation}) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -297,7 +310,7 @@ const Leave = ({navigation}) => {
   //   setLoader(true);
   //   ApiService.PostMethode('/DeleteLeave', apiData, token, authContext)
   //     .then(result => {
-  //       console.log("APiresult DeleteLeave", result);
+  //       // console.log($1);
   //       setLoader(false);
   //       if (result.Result) {
   //         getEmpLeaveDetail(SelectedYear);
@@ -308,17 +321,17 @@ const Leave = ({navigation}) => {
   //     })
   //     .catch(error => {
   //       setLoader(false);
-  //       console.log('Error occurred==>', error);
+  //       // console.log($1);
   //       if (error.response) {
   //         if (error.response.status == 401) {
-  //           console.log('error from api', error.response);
+  //           // console.log($1);
   //         }
   //         // client received an error response (5xx, 4xx)
   //         Toast.show(error.response.data.title);
   //       } else if (error.request) {
   //         // client never received a response, or request never left
   //         Toast.show('Network Error');
-  //         // console.log("error.request", error.request._response);
+  //         // // console.log($1);
   //       } else {
   //         // anything else
   //         Toast.show('Session expired login again');
@@ -330,6 +343,59 @@ const Leave = ({navigation}) => {
     setModalVisible(!isModalVisible);
   };
 
+  const checkZZShift = () => {
+
+let userId = AppUserData?.data?.userId;
+    let apiData = { "UserName": userId }; // created on   9 oct 2025 11:58 AM
+ 
+    // let apiData = { "UserName": AppUserData?.data?.username };  // commented on 9 oct 2025 11:58 AM
+    // AppUserData?.data?.userId 222852
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/GetShrtAccFlg', apiData, token, authContext)
+      .then(result => {
+// $&
+        setLoader(false);
+        if (result.Result == "Y") {
+          setShowZZ(true);
+        } else {
+         setShowZZ(false);
+          // GetRawPunch();
+        }
+      })
+      .catch(error => {        
+        setLoader(false);
+        // setShowAttandanceTabs(false);
+        // setMarkAttandance(1);
+        // setAttendenceReport(0);
+        // // console.log($1);
+        ApiService.showErrorMessage(error, authContext);
+      });
+  }
+
+
+  useFocusEffect(
+      React.useCallback(() => {
+        const unsubscribe =  checkZZShift();
+        return () => unsubscribe;
+      }, [])
+  );
+
+  const handleLeave = index => {
+    // // console.log($1);
+    if (index == 1) {
+      // getfinancialyear();
+    }
+    setapplyLeave(index);
+  };
+
+  const handleLeaveAS = index => {
+// $&
+    if (index == 1) {
+      // getfinancialyear();
+    }
+    setapplyLeaveAS(index);
+  };
   // const handleLeave = index => {
   //   setapplyLeave(index);
   // };
@@ -347,7 +413,7 @@ const Leave = ({navigation}) => {
   //       }}>
   //       <TouchableOpacity
   //         onPress={() => {
-  //           // console.log('selected reason', item);
+  //           // // console.log($1);
   //           setValidReason(item.REASON);
   //           fromRef.current.setFieldValue('reason', item.LOOKUP_CODE);
   //           setModalVisible(false);
@@ -369,82 +435,101 @@ const Leave = ({navigation}) => {
       ) : null}
 
       <View showsVerticalScrollIndicator={false} style={styles.container}>
-        {/* <TouchableOpacity
-            style={styles.addtnlBtn}
-            onPress={() => {
-              horizental == true ? setHorizental(false) : setHorizental(true);
-            }}>
-            <Ionicons
-              name="ellipsis-vertical-circle"
-              size={30}
-              color={'#00B4DB'}
-            />
-          </TouchableOpacity>
-          {horizental == true ? (
-            <View
-              style={{
-                padding: 10,
-                backgroundColor: GlobalColor.Secondary,
-                position: 'absolute',
-                top: 10,
-                right: 50,
-                zIndex: 1000,
-                borderRadius: 0,
+        
+{
+usrAccess == 'Y'?
+(
+  <View
+  style={{
+    width: '100%',
+    alignSelf: 'center',
+    marginTop: 10,
+    paddingHorizontal: 10,
+  }}>
 
-              }}>
-              <TouchableOpacity
-                style={{ borderBottomWidth: 1, paddingVertical: 10 }} onPress={() => {
-                  setHorizental(false)
-                  navigation.navigate('LeaveBalance')
-                }}>
+    
+  <ScrollView horizontal={true}>
+    <SegmentedControlTab
+      borderRadius={2}
+      values={[
+        'Apply Leave',
+        'View Report',
+        'Leave Balance',
+        'Salary Deduction',
+      ]}
+      selectedIndex={applyLeaveAS}
+      onTabPress={index => {
+        handleLeaveAS(index);
+      }}
+      
+      tabsContainerStyle={styles.tabsContainerStyle}
+      tabStyle={styles.tabStyle}
+      tabTextStyle={styles.tabTextStyle}
+      activeTabStyle={styles.activeTabStyle}
+      activeTabTextStyle={styles.activeTabTextStyle}
+    />
+  </ScrollView>
+</View>
+)
+:
+(
+  <View
+  style={{
+    width: '100%',
+    alignSelf: 'center',
+    marginTop: 10,
+    paddingHorizontal: 10,
+  }}>
 
-                <Text style={{ color: '#fff', }}>Leave Balance</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{ paddingVertical: 10 }} onPress={() => {
-                  setHorizental(false)
-                  navigation.navigate('SalaryDeduct')
-                }}>
+    
+  <ScrollView horizontal={true}>
+    <SegmentedControlTab
+      borderRadius={2}
+      values={[
+        'Apply Leave',
+        'View Report',
+        'Leave Balance',
+        'Salary Deduction',
+      ]}
+      selectedIndex={applyLeave}
+      onTabPress={index => {
+        handleLeave(index);
+      }}
+      
+      tabsContainerStyle={styles.tabsContainerStyle}
+      tabStyle={styles.tabStyle}
+      tabTextStyle={styles.tabTextStyle}
+      activeTabStyle={styles.activeTabStyle}
+      activeTabTextStyle={styles.activeTabTextStyle}
+    />
+  </ScrollView>
+</View>
+)
+    }
 
-                <Text style={{ color: '#fff' }}>Salary Deduction</Text>
-              </TouchableOpacity>
-            </View>
-          ) : null} */}
+       
+{
+    usrAccess == 'Y'?
+    (
+      <View style={{flexGrow: 1, paddingHorizontal: 10}}>
+     
+      {applyLeaveAS == 0 ? (ShowZZ == true ? <LeaveHome /> : <ApplyLeave />) : null}
+      {applyLeaveAS == 1 ? <LeaveReportHome /> : null}
+      {applyLeaveAS == 2 ? <LeaveBalance /> : null}
+      {applyLeaveAS == 3 ? (ShowZZ == true ? <SalaryDeductHome /> : <SalaryDeduct />) : null}
+    </View>
+    ) :
+    (
+      <View style={{flexGrow: 1, paddingHorizontal: 10}}>
+      {applyLeave == 0 ? (ShowZZ == true ?<LeaveHome />:<ApplyLeave />) : null}
+      {applyLeave == 1 ? (ShowZZ == true ? <LeaveReportHome /> : <LeaveViewReport /> ) :null}
+      {applyLeave == 2 ? <LeaveBalance /> : null}
+      {applyLeave == 3 ? (ShowZZ == true ? <SalaryDeductHome /> : <SalaryDeduct />):null}
+    </View>
 
-        <View
-          style={{
-            width: '100%',
-            alignSelf: 'center',
-            marginTop: 10,
-            paddingHorizontal: 10,
-          }}>
-          <ScrollView horizontal={true}>
-            <SegmentedControlTab
-              borderRadius={2}
-              values={[
-                'Apply Leave',
-                'View Report',
-                'Leave Balance',
-                'Salary Deduction',
-              ]}
-              selectedIndex={applyLeave}
-              onTabPress={index => {
-                setapplyLeave(index);
-              }}
-              tabsContainerStyle={styles.tabsContainerStyle}
-              tabStyle={styles.tabStyle}
-              tabTextStyle={styles.tabTextStyle}
-              activeTabStyle={styles.activeTabStyle}
-              activeTabTextStyle={styles.activeTabTextStyle}
-            />
-          </ScrollView>
-        </View>
-        <View style={{flexGrow: 1, paddingHorizontal: 10}}>
-          {applyLeave == 0 ? <ApplyLeave /> : null}
-          {applyLeave == 1 ? <LeaveViewReport /> : null}
-          {applyLeave == 2 ? <LeaveBalance /> : null}
-          {applyLeave == 3 ? <SalaryDeduct /> : null}
-        </View>
+
+    )
+   }
       </View>
     </SafeAreaView>
   );
@@ -467,20 +552,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary,
+    borderColor: ThemeColor.Teal,
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P - 1,
+    fontSize: 13,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
     backgroundColor: GlobalColor.PrimaryLight,
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: ThemeColor.Teal,
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: ThemeColor.Teal,
   },
   circleBox: {
     width: '16.6%',
@@ -491,7 +576,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     borderWidth: 1,
-    borderColor: '#00B4DB',
+    borderColor: ThemeColor.Teal,
     width: 40,
     height: 40,
     borderRadius: 40,

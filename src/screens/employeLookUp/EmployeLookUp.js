@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component ,useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -14,11 +14,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import EmployeeDirect from './EmployeeDirect';
 import Birthdays from './Birthday/Birthdays';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Header } from '../../components/reusable/Header';
+import AuthContext from '../../context/AuthContext';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -26,6 +27,9 @@ const Tab = createMaterialTopTabNavigator();
 
 
 const EmployeLookUp = ({ navigation }) => {
+
+  const {authContext, AppUserData} = useContext(AuthContext);
+  let usrAccess = AppUserData?.data?.userFlag;
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('tabPress', (e) => {
       // Prevent default behavior
@@ -43,32 +47,37 @@ const EmployeLookUp = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
       <Header title={"Employee Lookup"}/>
+     <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+       <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
         screenOptions={{
           tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
-          tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },
+          tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
         }}>
         <Tab.Screen name="Employee Directory" component={EmployeeDirect} />
-        <Tab.Screen name="Birthdays" component={Birthdays} />
+        {usrAccess != 'Y' ?( <Tab.Screen name="Birthdays" component={Birthdays} />):null}
       </Tab.Navigator>
+      </View>
+     </LinearGradient>
+     
       {/* <TabView
         renderTabBar={props => {
           return (
-            <LinearGradient  colors={['#5dc0e9', '#5dc0e9']} style={{marginTop:-1,zIndex:-1}}>
+            <LinearGradient  colors={[ThemeColor.Teal, ThemeColor.Teal]} style={{marginTop:-1,zIndex:-1}}>
               <TabBar
                 {...props}
                 style={{
-                  backgroundColor: '#2980b9', elevation: 5
+                  backgroundColor: ThemeColor.Teal, elevation: 5
                 }}
                 renderLabel={({ route, focused, color }) => (
                   <Text style={{ color, fontWeight:'700', textTransform:'uppercase'}}>
                     {route.title}
                   </Text>
                 )}
-                indicatorContainerStyle={{backgroundColor:'#2980b9'}}
+                indicatorContainerStyle={{backgroundColor:ThemeColor.Teal}}
                 indicatorStyle={{color:"#f00", backgroundColor:'#fff',height:5}}
               />
             </LinearGradient>
@@ -96,6 +105,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // flex:1
   },
+
+  mystyl: {
+        backgroundColor: 'transparent',
+        height:'100%',
+        flexDirection: 'row',
+      },
+
   // searchSection: {
   //   top: 10,
   //   width: '90%',

@@ -20,7 +20,7 @@ import * as ApiService from '../../Utils/Utils';
 import Toast from 'react-native-simple-toast'
 import { useFocusEffect } from '@react-navigation/native';
 import moment from 'moment';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 
@@ -41,13 +41,15 @@ const HolidayCalendar = () => {
   const [holidaydescsmg, setholidaydescsmg] = useState([]);
   const [holidaycalendarMNS, setholidaycalendarMNS] = useState([]);
   const [holidaydescmns, setholidaydescmns] = useState([]);
-
- 
+  
 
 
   const { authContext, AppUserData } = useContext(AuthContext);
 
+let usrAccess = AppUserData?.data?.userFlag;
 
+// $&
+ 
 
   // var holidaycalendar249 = [];
   // var holidaydesc249 = [];
@@ -74,7 +76,7 @@ const HolidayCalendar = () => {
     setLoader(true);
     ApiService.PostMethode('/GetEmplCal', apiData, token, authContext)
       .then(result => {
-        // console.log("APiresult GetEmplCal", result);
+        // // console.log($1);
         setLoader(false);
         if (result.Value) {
             let holidaycalendar249data = [];
@@ -142,7 +144,7 @@ const HolidayCalendar = () => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -157,7 +159,7 @@ const HolidayCalendar = () => {
 
   const change249 = (viewdate)=> {
 
-    // console.log(HolidayCalendar);
+// $&
 
     setMonthlyHolidays([]);
 
@@ -207,7 +209,7 @@ const HolidayCalendar = () => {
       }
     }
 
-    // console.log(MonthlyHolidays);
+// $&
 }
 
 useEffect(() => {
@@ -235,12 +237,12 @@ const renderItemHolidaysingle=({item})=>{
   return(
     <View style={styles.itemcontainer}>
       <View style={styles.itemLeft}>
-        <Text>
+        <Text style={{fontSize:13}}>
           {item.date}
         </Text>
       </View>
       <View style={styles.itemRight}>
-        <Text>
+        <Text style={{fontSize:13}}>
           {item.occation}
         </Text>
       </View>
@@ -259,7 +261,11 @@ const renderItemHolidaysingle=({item})=>{
           textContent={'Loading...'}
           textStyle={styles.spinnerTextStyle}
         />
-      <View
+
+{
+usrAccess == 'Y'?
+(
+<View
         style={styles.container}
         // contentContainerStyle={{ flexGrow: 1 }}
       >
@@ -267,7 +273,7 @@ const renderItemHolidaysingle=({item})=>{
       
         <SegmentedControlTab
           borderRadius={5}
-          values={['MSIL 249', 'MSIL 280', 'SMG', 'MNS/HQ']}
+          values={['5 Days', '6 Days']}
           selectedIndex={HolidayCalendar}
           onTabPress={index => {
             handleHolidayCalendar(index);
@@ -280,10 +286,13 @@ const renderItemHolidaysingle=({item})=>{
         />
        
       </View>
-      
+    
       <View style={{paddingHorizontal:10,marginTop:5, flex:1}}>
-        {HolidayCalendar == 0 ? (
-          <View style={{flex:1}}>
+       
+        {HolidayCalendar == 0 ? 
+        (
+
+          <View style={{flex:1}} key="cal249">
               <View style={styles.calenderContainer}>
                 <CalendarPicker
                     onDateChange={(date)=> change249(date)}
@@ -291,11 +300,11 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendar249
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
-                    previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
-                    nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
+                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
                     selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:'#4174D0'}}
+                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
                     selectedDayTextColor="red"
                     selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
                   />
@@ -308,18 +317,21 @@ const renderItemHolidaysingle=({item})=>{
                 backgroundColor:'#fff',
                 marginVertical: 10,
               }}>
-                <Text style={{fontSize:18, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
+                <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
               </View>
               <View style={{flex:1}}>  
                 <FlatList
                   data={MonthlyHolidays}
                   renderItem={renderItemHolidaysingle}
+                  style={{marginBottom:"8%"}}
                   // keyExtractor={item => item.date}
                 />
               </View>
           </View>
-        ) : HolidayCalendar == 1 ? (
-          <View style={{flex:1, marginBottom:0}}>
+        ) 
+        : HolidayCalendar == 1 ? 
+        (
+          <View style={{flex:1, marginBottom:0}} key="cal280">
               <View style={styles.calenderContainer}>
                 <CalendarPicker
                     onDateChange={(date)=> change249(date)}
@@ -327,11 +339,11 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendar280
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
-                    previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
-                    nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
+                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
                     selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:'#4174D0'}}
+                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
                     selectedDayTextColor="red"
                     selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
                   />
@@ -344,18 +356,134 @@ const renderItemHolidaysingle=({item})=>{
                 backgroundColor:'#fff',
                 marginVertical: 5,
               }}>
-                <Text style={{fontSize:18, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
+                <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
               </View>
               <View style={{flex:1}}>  
                 <FlatList
                   data={MonthlyHolidays}
                   renderItem={renderItemHolidaysingle}
                   keyExtractor={item => item.date}
+                  style={{marginBottom:"8%"}}
+                />
+              </View>
+          </View>
+        ) 
+        : HolidayCalendar == 2 ? 
+        (
+          
+          null
+        ) 
+        : 
+        (
+         
+          null
+        )}
+        </View>
+      </View>
+):
+(
+<View
+        style={styles.container}
+        // contentContainerStyle={{ flexGrow: 1 }}
+      >
+      <View style={{width: '100%', paddingHorizontal:5, marginTop:0}}>
+      
+        <SegmentedControlTab
+          borderRadius={5}
+          values={['5 Days', '6 Days', 'BU-H', 'MNS/HQ']}
+          selectedIndex={HolidayCalendar}
+          onTabPress={index => {
+            handleHolidayCalendar(index);
+          }}
+          tabsContainerStyle={styles.tabsContainerStyle}
+          tabStyle={styles.tabStyle}
+          tabTextStyle={styles.tabTextStyle}
+          activeTabStyle={styles.activeTabStyle}
+          activeTabTextStyle={styles.activeTabTextStyle}
+        />
+       
+      </View>
+    
+      <View style={{paddingHorizontal:10,marginTop:5, flex:1}}>
+       
+        {HolidayCalendar == 0 ? (
+          <View style={{flex:1}} key="cal249">
+              <View style={styles.calenderContainer}>
+                <CalendarPicker
+                    onDateChange={(date)=> change249(date)}
+                    onMonthChange={(month)=> change249(new Date(month))}
+                    disabledDates={[
+                      ...holidaycalendar249
+                    ]}
+                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
+                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    selectedDayColor={'#f00'}
+                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
+                    selectedDayTextColor="red"
+                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                  />
+              </View>
+                  
+              <View
+              style={{
+                width: '100%',
+                padding: 10,
+                backgroundColor:'#fff',
+                marginVertical: 10,
+              }}>
+                <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
+              </View>
+              <View style={{flex:1}}>  
+                <FlatList
+                  data={MonthlyHolidays}
+                  renderItem={renderItemHolidaysingle}
+                  style={{marginBottom:"8%"}}
+                  // keyExtractor={item => item.date}
+                />
+              </View>
+          </View>
+        ) : HolidayCalendar == 1 ? (
+          <View style={{flex:1, marginBottom:0}} key="cal280">
+              <View style={styles.calenderContainer}>
+                <CalendarPicker
+                    onDateChange={(date)=> change249(date)}
+                    onMonthChange={(month)=> change249(new Date(month))}
+                    disabledDates={[
+                      ...holidaycalendar280
+                    ]}
+                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
+                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    selectedDayColor={'#f00'}
+                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
+                    selectedDayTextColor="red"
+                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                  />
+              </View>
+                  
+              <View
+              style={{
+                width: '100%',
+                padding: 5,
+                backgroundColor:'#fff',
+                marginVertical: 5,
+              }}>
+                <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
+              </View>
+              <View style={{flex:1}}>  
+                <FlatList
+                  data={MonthlyHolidays}
+                  renderItem={renderItemHolidaysingle}
+                  keyExtractor={item => item.date}
+                  style={{marginBottom:"8%"}}
                 />
               </View>
           </View>
         ) : HolidayCalendar == 2 ? (
-          <View style={{flex:1, marginBottom:0}}>
+          
+          <View style={{flex:1, marginBottom:0}} key="calSMG">
+            
               <View style={styles.calenderContainer}>
                 <CalendarPicker
                     onDateChange={(date)=> change249(date)}
@@ -363,16 +491,18 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendarSMG
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
-                    previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
-                    nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
+                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
                     selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:'#4174D0'}}
+                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
                     selectedDayTextColor="red"
                     selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
                   />
               </View>
-                  
+            
+
+                
               <View
               style={{
                 width: '100%',
@@ -380,18 +510,25 @@ const renderItemHolidaysingle=({item})=>{
                 backgroundColor:'#fff',
                 marginVertical: 5,
               }}>
-                <Text style={{fontSize:18, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
+                <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
               </View>
+              
+
+          
               <View style={{flex:1}}>  
                 <FlatList
                   data={MonthlyHolidays}
                   renderItem={renderItemHolidaysingle}
+                  style={{marginBottom:"8%"}}
                   // keyExtractor={item => item.date}
                 />
               </View>
+               
           </View>
         ) : (
-          <View style={{flex:1, marginBottom:0}}>
+         
+          <View style={{flex:1, marginBottom:0}} key="calMNS">
+            
               <View style={styles.calenderContainer}>
                 <CalendarPicker
                     onDateChange={(date)=> change249(date)}
@@ -399,16 +536,18 @@ const renderItemHolidaysingle=({item})=>{
                     disabledDates={[
                       ...holidaycalendarMNS
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:GlobalColor.Secondary}}
-                    previousTitleStyle={{color:'#4174D0', fontWeight:'700'}}
-                    nextTitleStyle={{color:'#4174D0', fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
+                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
+                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
                     selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:'#4174D0'}}
+                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
                     selectedDayTextColor="red"
                     selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
                   />
               </View>
-                  
+            
+
+                    
               <View
               style={{
                 width: '100%',
@@ -416,19 +555,28 @@ const renderItemHolidaysingle=({item})=>{
                 backgroundColor:'#fff',
                 marginVertical: 5,
               }}>
-                <Text style={{fontSize:18, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
+                <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
               </View>
+
+    
+
+           
               <View style={{flex:1}}>  
                 <FlatList
                   data={MonthlyHolidays}
                   renderItem={renderItemHolidaysingle}
+                  style={{marginBottom:"8%"}}
                   // keyExtractor={item => item.date}
                 />
               </View>
+             
           </View>
         )}
         </View>
       </View>
+)
+}
+   
     </SafeAreaView>
   );
 };
@@ -450,20 +598,20 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius:0,
-    borderColor:GlobalColor.Secondary
+    borderColor:ThemeColor.Teal
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P-1,
+    fontSize: 13,
     color: 'grey',
     fontFamily:'Roboto-Bold',
   },
   activeTabStyle: {
     backgroundColor: GlobalColor.PrimaryLight,
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: ThemeColor.Teal,
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: ThemeColor.Teal,
   },
   content: {
     top: 10,
@@ -494,7 +642,7 @@ const styles = StyleSheet.create({
     paddingVertical:15,
     marginVertical:3,   
     borderLeftWidth: 5,
-    borderLeftColor: GlobalColor.Secondary,   
+    borderLeftColor: ThemeColor.Teal,   
     marginBottom:2,
     padding:10,
     justifyContent:'space-between',

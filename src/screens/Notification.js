@@ -10,7 +10,8 @@ import ListEmptyComponent from '../components/reusable/ListEmptyComponent';
 import Text from '../components/reusable/Text';
 import { LoadingScreen } from '../components/reusable/LoadingScreen';
 import { Header } from '../components/reusable/Header';
-import { GlobalColor } from '../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor, HomePalette } from '../constants/Colors';
+import { AppIcon, IconBadge } from '../components/icons/AppIcon';
 import { showErrorMessage } from '../Utils/Utils';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -25,35 +26,65 @@ const Notification = ({ navigation }) => {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
-  const NotifiApi = async (pulldown = false) => {
-    if (!pulldown) {
-      //Set Loader
-      setLoader(true);
-    }
-    try {
-      //Set Axios Header
-      let axiosheader = {
-        headers: {
-          'authorization': 'Basic ZDU5NjEyY2ItYTI3NS00ZTYzLTkyMGItNGE4ODJmYjFiOTVm'
-        }
-      }
-      //Get Data
-      let resp = await axios.get('https://onesignal.com/api/v1/notifications?app_id=42fcb50a-922f-4b0e-9ba3-701d663beede', axiosheader)
-      // Remove Loader
-      stopLoader();
-      // Set Data
-      let result = resp?.data?.notifications
-      setNotifi(result);
-      console.log("pull down was suceesful");
-    } catch (error) {
-      stopLoader();
-      showErrorMessage(error)
-    }
+//   const NotifiApi = async (pulldown = false) => {
+//     if (!pulldown) {
+//       //Set Loader
+//       setLoader(true);
+//     }
+//     try {
+//       //Set Axios Header
+//       let axiosheader = {
+//         headers: {
+//           'authorization': 'Basic ZDU5NjEyY2ItYTI3NS00ZTYzLTkyMGItNGE4ODJmYjFiOTVm'
+//         }
+//       }
+//       //Get Data
+//       let resp = await axios.get('https://onesignal.com/api/v1/notifications?app_id=42fcb50a-922f-4b0e-9ba3-701d663beede', axiosheader)
+//       // Remove Loader
+//       stopLoader();
+//       // Set Data
+//       let result = resp?.data?.notifications
+//       setNotifi(result);
+// // $&
+//     } catch (error) {
+//       stopLoader();
+//       showErrorMessage(error)
+//     }
+//   }
+
+const NotifiApi = async (pulldown = false) => {
+  if (!pulldown) {
+    //Set Loader
+    setLoader(true);
   }
+  try {
+    //Set Axios Header
+    let axiosheader = {
+      headers: {
+        'authorization': 'Basic os_v2_app_ac6r55t3t5ckdggotbwt7fsuz3i27ag4pu2ufo4zugn2dypmxbpu7pqg4hc55j65asj43aasfktned7cwghmuujeabpb5irdlubm73i'
+      }
+    }
+    //Get Data
+//i27ag4pu2ufo4zugn2dypmxbp
+    //os_v2_app_ac6r55t3t5ckdggotbwt7fsuz3i27ag4pu2ufo4zugn2dypmxbpu7pqg4hc55j65asj43aasfktned7cwghmuujeabpb5irdlubm73i
+    let resp = await axios.get('https://onesignal.com/api/v1/notifications?app_id=00bd1ef6-7b9f-44a1-98ce-986d3f9654ce', axiosheader)
+    // Remove Loader
+    stopLoader();
+    // Set Data
+    let result = resp?.data?.notifications;
+    //// console.log($1);
+    setNotifi(result)
+    // console.log($1);
+  } catch (error) {
+    stopLoader();
+    showErrorMessage(error)
+  }
+}
+
 
 
 
@@ -123,18 +154,28 @@ const Notification = ({ navigation }) => {
                     // paddingVertical: 10,
                   }}>
                   <View style={{ width: '80%' }}>
-                    <Text style={{ fontSize: 16 }}>{item.contents.en}</Text>
+                    <Text style={{ fontSize: 14 }}>{item.contents.en}</Text>
                   </View>
                   <TouchableOpacity style={{ width: '20%', alignItems: 'flex-end' }}>
-                    <Ionicons
-                      name="notifications-circle-outline"
-                      size={30}
-                      color={'#4174D0'}
-                    />
+                    <IconBadge name="bell" size={36} iconSize={19} round />
                   </TouchableOpacity>
                 </View>
-                <Image source={item.global_image ? { uri: item.global_image } : require('./../assets/Images/notification.png')}
-                  style={{ width: '100%', height: 180, resizeMode: 'cover', borderRadius: 0, marginVertical: 10 }} />
+                {/* {item.global_image ==} */}
+                {item.global_image ? (
+                  <Image
+                    source={{ uri: item.global_image }}
+                    style={{ width: '100%', height: 180, resizeMode: 'cover', borderRadius: 14, marginVertical: 10 }}
+                  />
+                ) : (
+                  // No image attached: branded panel instead of a stock picture
+                  <LinearGradient
+                    colors={[HomePalette.tealInk, HomePalette.deep]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={{ width: '100%', height: 120, borderRadius: 14, marginVertical: 10, alignItems: 'center', justifyContent: 'center' }}>
+                    <AppIcon name="bell" size={40} color="rgba(255,255,255,0.4)" strokeWidth={1.4} />
+                  </LinearGradient>
+                )}
 
                 {item.url ? (
                   <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
@@ -160,9 +201,9 @@ const styles = StyleSheet.create({
     // backgroundColor: '#fff',
   },
   Link: {
-    color: 'blue',
+    color: ThemeColor.Teal,
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 14,
   },
   spinnerTextStyle: {
     color: '#fff'

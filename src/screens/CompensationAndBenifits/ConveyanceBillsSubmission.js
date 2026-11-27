@@ -15,7 +15,7 @@ import * as yup from 'yup';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Text from '../../components/reusable/Text';
 import {Header} from '../../components/reusable/Header';
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import Button from '../../components/reusable/Button';
 import {LoadingScreen} from '../../components/reusable/LoadingScreen';
 import SelectDropdown from 'react-native-select-dropdown';
@@ -37,7 +37,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
   const dropdownRef = useRef({});
 
   // let pageName = route.params.pageName
-  // console.log("pagename", pageName);
+  // // console.log($1);
 
   const [loader, setLoader] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -60,7 +60,8 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
   const GetConvElig = (loader = true) => {
     let token = AppUserData.token;
     let EmplID = AppUserData?.data?.userId;
-    console.log('this empid', EmplID);
+    let userNt = AppUserData?.data?.userNT;
+// $&
     let apiData = {
       StaffNo: EmplID,
     };
@@ -71,7 +72,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
     //Set Loader
     ApiService.PostMethode('/reportCONV', apiData, token, authContext)
       .then(result => {
-        console.log('reportCONV', result);
+// $&
         setBill(result.Value);
         //stop Loader
         stopLoader();
@@ -87,7 +88,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
   const FuelConvElig = () => {
     let token = AppUserData.token;
     let EmplID = AppUserData?.data?.userId;
-    console.log('this empid', EmplID);
+// $&
     let apiData = {};
 
     //Set Loader
@@ -95,7 +96,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
 
     ApiService.PostMethode('/getLovmConv', apiData, token, authContext)
       .then(result => {
-        console.log('fuel data', result.Value);
+// $&
         let FuelData = result.Value;
         let FuelValue = [];
 
@@ -105,13 +106,13 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
             title: data.LOVM_VALUE_DESC,
           });
         });
-        console.log('FuelValue', FuelValue);
+// $&
         setFuelValue(FuelValue);
         //stop Loader
         stopLoader();
       })
       .catch(error => {
-        console.log(error);
+// $&
         //stop Loader
         stopLoader();
         //Show Error Massage
@@ -131,13 +132,15 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
         onPress: () => {
           let token = AppUserData.token;
           let EmplID = AppUserData?.data?.userId;
+          let userNt = AppUserData?.data?.userNT;
+// $&
           let apiData = {
-            UserName: AppUserData?.data?.username,
+            UserName: userNt,
             ...values,
           };
 
           apiData.BillDate = moment(apiData.BillDate).format('DD-MMM-YYYY');
-          console.log(apiData);
+// $&
           // return;
           //Set Loader
           setLoader(true);
@@ -150,7 +153,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
             .then(result => {
               stopLoader();
               if (result.Result) {
-                console.log('submit data result', result.Result);
+// $&
                 fromRef.current.resetForm();
                 dropdownRef.current.reset();
                 setTimeout(() => {
@@ -162,7 +165,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
               }
             })
             .catch(error => {
-              console.log(error);
+// $&
               //stop Loader
               stopLoader();
               //Show Error Massage
@@ -192,7 +195,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
           textStyle={styles.spinnerTextStyle}
         />
       ) : null}
-      <Header title="Conveyance Bills Submission" />
+      <Header title="Conveyance Bills" />
       <ScrollView style={styles.container}>
         <Formik
           innerRef={fromRef}
@@ -217,7 +220,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
             touched,
             isValid,
           }) => (
-            <View style={{paddingHorizontal: 10}}>
+            <View style={{paddingHorizontal: 10,}}>
               <View
                 style={{
                   width: '100%',
@@ -238,7 +241,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                   marginBottom: 10,
                 }}>
                 <View style={styles.box}>
-                  <Text Bold>Bill No.</Text>
+                  <Text Bold style={{fontSize:13}}>Bill No.</Text>
                   <View style={{width: '60%'}}>
                     <TextInput
                       style={{
@@ -246,6 +249,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                         borderBottomWidth: 0.5,
                         borderColor: GlobalColor.LightDark,
                         textAlign: 'left',
+                        fontSize:13
                       }}
                       keyboardType={'numeric'}
                       onChangeText={handleChange('BillNo')}
@@ -264,7 +268,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                 </View>
 
                 <View style={[styles.box]}>
-                  <Text Bold>Bill Date</Text>
+                  <Text Bold style={{fontSize:13}}>Bill Date</Text>
                   <View style={{width: '60%'}}>
                     <DatePicker
                       modal
@@ -290,10 +294,10 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                         flexDirection: 'row',
                         padding: 6,
                         alignSelf: 'center',
-                        borderColor: GlobalColor.Secondary,
+                        borderColor: ThemeColor.Teal,
                       }}
                       onPress={() => setOpen(true)}>
-                      <Text style={{color: 'gray'}} Bold>
+                      <Text style={{color: 'gray',fontSize:13}} Bold>
                         {values.BillDate
                           ? moment(values.BillDate).format('MMM Do YYYY')
                           : null}
@@ -307,8 +311,8 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                           }}>
                           <Ionicons
                             name="calendar-outline"
-                            size={25}
-                            color={GlobalColor.PrimaryGradient}
+                            size={20}
+                            color={ThemeColor.Teal}
                           />
                         </View>
                       </View>
@@ -326,12 +330,12 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                 </View>
 
                 <View style={[styles.box, {paddingVertical: 5}]}>
-                  <Text Bold>Fuel Type</Text>
+                  <Text Bold style={{fontSize:13}}>Fuel Type</Text>
                   <View>
                     <View
                       style={{
                         borderWidth: 1,
-                        borderColor: GlobalColor.Secondary,
+                        borderColor: ThemeColor.Teal,
                       }}>
                       <SelectDropdown
                         ref={dropdownRef}
@@ -354,8 +358,8 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                           return (
                             <FontAwesome
                               name={isOpened ? 'chevron-up' : 'chevron-down'}
-                              color={'#444'}
-                              size={18}
+                              color={ThemeColor.Teal}
+                              size={14}
                             />
                           );
                         }}
@@ -377,7 +381,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                 </View>
 
                 <View style={styles.box}>
-                  <Text Bold>Mileage (Kms)</Text>
+                  <Text Bold style={{fontSize:13}}>Mileage (Kms)</Text>
                   <View style={{width: '60%'}}>
                     <TextInput
                       style={{
@@ -391,6 +395,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                       onBlur={handleBlur('BillKMR')}
                       value={values.BillKMR}
                       placeholder="Kms"
+                      style={{fontSize:13}}
                     />
                     {errors.BillKMR && touched.BillKMR && (
                       <View
@@ -404,7 +409,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                 </View>
 
                 <View style={[styles.box, {borderBottomWidth: 0}]}>
-                  <Text Bold>Amount</Text>
+                  <Text Bold style={{fontSize:13}}>Amount</Text>
                   <View style={{width: '60%'}}>
                     <TextInput
                       style={{
@@ -418,6 +423,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                       onBlur={handleBlur('BillAmount')}
                       value={values.BillAmount}
                       placeholder="Rs."
+                      style={{fontSize:13}}
                     />
                     {errors.BillAmount && touched.BillAmount && (
                       <View
@@ -430,13 +436,23 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                   </View>
                 </View>
               </View>
-
+              <View style={{alignItems: 'center', justifyContent: 'center'}}>
+  <Text style={{
+    fontSize: 13,
+    color: '#52CB9B',
+    fontWeight: '700', // moderately bold
+    textAlign: 'center'
+  }}>
+    Claim submission receipts/proofs shall be produced by individuals upon being asked by the authorities
+  </Text>
+</View>
               <View style={{}}>
                 <Button
                   onPress={() => {
                     // SubmitConveyance();
                     handleSubmit();
                   }}
+                  style={{fontSize:13}}
                   title="SUBMIT"></Button>
                 <Text style={{textAlign: 'center'}}>Report</Text>
               </View>
@@ -444,7 +460,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
           )}
         </Formik>
 
-        <View style={{paddingHorizontal: 10, marginBottom: 10}}>
+        <View style={{paddingHorizontal: 10,}}>
           <View style={styles.reportHeader}>
             <Text Bold style={styles.textline}>
               Bill No
@@ -484,6 +500,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: GlobalColor.PrimaryLight,
+    marginBottom:"13%"
   },
   box: {
     width: '100%',
@@ -493,7 +510,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     borderBottomWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: ThemeColor.Teal,
   },
   spinnerTextStyle: {
     color: '#FFF',
@@ -520,9 +537,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: GlobalColor.LightDark,
     marginTop: 10,
+   
   },
   textline: {
     width: '33%',
+    fontSize:13
   },
   reportData: {},
   dropdown2BtnStyle: {
@@ -531,10 +550,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     marginLeft: 10,
   },
-  dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 16},
+  dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 13},
   dropdown2DropdownStyle: {
     backgroundColor: GlobalColor.White,
-    color: GlobalColor.Secondary,
+    color: ThemeColor.Teal,
   },
   dropdown2RowStyle: {
     backgroundColor: GlobalColor.White,

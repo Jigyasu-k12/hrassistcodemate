@@ -10,7 +10,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { useFocusEffect } from '@react-navigation/native';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor, HomePalette } from '../../constants/Colors';
+import { AppIcon } from '../../components/icons/AppIcon';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 
@@ -28,7 +29,7 @@ const EmergencyContacts = ({ navigation }) => {
       setLoader(false);
       setrefresh(false);
     } catch(error){
-        console.log(error)
+// $&
     }
 }
 
@@ -47,12 +48,12 @@ const EmergencyContacts = ({ navigation }) => {
       .then(result => {
         stopLoader(false);
         let ApiValue = result.Value
-        console.log("APi value", ApiValue);
+// $&
         setEmerList(ApiValue)
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -64,28 +65,19 @@ const EmergencyContacts = ({ navigation }) => {
     }, [])
   )
 
+  // Line icon per contact type (Teal Glow icon set)
   const iconBox = (type) => {
     switch (type) {
-      case "Doctor":
-        return require('../../assets/Images/hospital/doctor.png')
-        break;
-      case "Vigilance":
-        return require('../../assets/Images/hospital/camera.png')
-        break;
-      case "Fire Control":
-        return require('../../assets/Images/hospital/fire-extinguisher.png')
-        break;
-      case "Electricity":
-        return require('../../assets/Images/hospital/home.png')
-        break;
-      case "POSH Cell":
-        return require('../../assets/Images/hospital/smartphone.png')
-        break;
-      default:
-        return require('../../assets/Images/user-interface.png')
-        break;
+      case 'Doctor': return 'doctor';
+      case 'Vigilance': return 'vigilance';
+      case 'Fire Control': return 'fire';
+      case 'Electricity': return 'electricity';
+      case 'POSH Cell': return 'posh';
+      case 'Helpdesk': return 'helpdesk';
+      case 'Taxi Helpline': return 'taxi';
+      default: return 'phone';
     }
-  }
+  };
 
 
   if(loader){
@@ -101,7 +93,8 @@ const EmergencyContacts = ({ navigation }) => {
 
     <SafeAreaView style={styles.container}>
           <FlatList
-            contentContainerStyle={{ flex:1}}
+            // contentContainerStyle={{ flex:1}}
+            contentContainerStyle={{ paddingBottom: 50 }}
             data={emerList}
             ListEmptyComponent={() => <ListEmptyComponent enableRefresh={true} onRefreshCallback={()=>GetEmerMain(true)} refreshing={refresh} />}
             renderItem={({ item }) => {
@@ -110,33 +103,49 @@ const EmergencyContacts = ({ navigation }) => {
                 <TouchableOpacity
                   key={item.CONTACT_NUMBER}
                   style={styles.box}
+                  // onPress={() => {
+                  //   myNavigation.navigate("DoctorsContacts", {
+                  //     data: item,
+                  //     pageName: item.EMER_DESC == "Doctor" ? "Doctor" : (item.EMER_DESC == "Vigilance" ? "Vigilance" : (item.EMER_DESC == "Fire Control" ? "Fire Control" : (item.EMER_DESC == "Electricity" ? "Electricity" :  (item.EMER_DESC == "Helpdesk" ? "Helpdesk" : "POSH Cell"))))
+                  //   })
+                  // }}
                   onPress={() => {
                     myNavigation.navigate("DoctorsContacts", {
                       data: item,
-                      pageName: item.EMER_DESC == "Doctor" ? "Doctor" : (item.EMER_DESC == "Vigilance" ? "Vigilance" : (item.EMER_DESC == "Fire Control" ? "Fire Control" : (item.EMER_DESC == "Electricity" ? "Electricity" : "POSH Cell")))
-                    })
-                  }}>
+                      pageName:
+                        item.EMER_DESC == "Doctor"
+                          ? "Doctor"
+                          : item.EMER_DESC == "Vigilance"
+                          ? "Vigilance"
+                          : item.EMER_DESC == "Fire Control"
+                          ? "Fire Control"
+                          : item.EMER_DESC == "Electricity"
+                          ? "Electricity"
+                          : item.EMER_DESC == "Helpdesk"
+                          ? "Helpdesk"
+                          : item.EMER_DESC == "Taxi Helpline"
+                          ? "Taxi Helpline"
+                          : "POSH Cell"
+                    });
+                  }}
+                  >
                   <View style={styles.iconBox}>
                     <View
                       style={{
-                        width: 60,
-                        height: 60,
-                        borderRadius: 100,
-                        borderWidth: 2,
-                        borderColor: GlobalColor.Secondary,
+                        width: 40,
+                        height: 40,
+                        borderRadius: 13,
+                        backgroundColor: HomePalette.mint,
                         justifyContent: 'center',
                         alignItems: 'center',
                         overflow: 'hidden'
                       }}>
-                      <Image
-                        source={image}
-                        style={{ width: 40, height: 40 }}
-                      />
+                      <AppIcon name={image} size={22} />
                     </View>
                   </View>
                   <View style={styles.item}>
-                    <Text>{item.EMER_DESC}</Text>
-                    <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+                    <Text style={{fontSize:13}}>{item.EMER_DESC}</Text>
+                    <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
                   </View>
                 </TouchableOpacity>
               )
@@ -152,7 +161,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: GlobalColor.PrimaryLight,
-    paddingHorizontal:10
+    paddingHorizontal:10,
+    marginBottom:"35%"
   },
   spinnerTextStyle: {
     color: GlobalColor.White

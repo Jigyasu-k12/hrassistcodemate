@@ -21,7 +21,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../../context/AuthContext';
 import moment from 'moment';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../../constants/Colors';
 import Text from '../../../components/reusable/Text';
 import { Header } from '../../../components/reusable/Header';
 import { GlobalFontSize } from '../../../constants/FontSize';
@@ -29,7 +29,7 @@ import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent'
 import TextInput from '../../../components/reusable/TextInput';
 import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
 
-
+import { HeaderMgr } from '../../../components/reusable/HeaderMgr';
 
 
 
@@ -58,7 +58,7 @@ export const ManagerFlexiShift = () => {
 
       ApiService.PostMethode('/FlexiShiftPendAppLOV', apiData, token, authContext)
         .then(result => {
-          console.log("APiresult FlexiShiftPendAppLOV", result);
+// $&
           stopLoader();
             if(result.Value){
                 ApiResult = result.Value
@@ -69,7 +69,7 @@ export const ManagerFlexiShift = () => {
         })
         .catch(error => {
           stopLoader();
-          // console.log('Error occurred==>', error);
+          // // console.log($1);
           ApiService.showErrorMessage(error, authContext);
         });
     }
@@ -114,11 +114,11 @@ export const ManagerFlexiShift = () => {
             "AppFlag" :type,
         };
 
-        console.log(apiData);
+// $&
         setLoader(true);
         ApiService.PostMethode('/ApproveFlexiShift', apiData, token, authContext)
           .then(result => {
-            console.log("APiresult ApproveFlexiShift", result);
+// $&
             stopLoader();
               if(result.Result){
                 if(type == "A"){
@@ -139,7 +139,7 @@ export const ManagerFlexiShift = () => {
           })
           .catch(error => {
             stopLoader();
-            // console.log('Error occurred==>', error);
+            // // console.log($1);
             ApiService.showErrorMessage(error, authContext);
           });
     }
@@ -205,14 +205,14 @@ export const ManagerFlexiShift = () => {
                 textStyle={styles.spinnerTextStyle}
               />
             ) : null}   
-
+  <HeaderMgr title ="Flexi Shift"/>
         <FlatList
             contentContainerStyle={{ flex:1 }}
             data={flexiShift}
             renderItem={ItemRender}
             keyExtractor={item => item.id}
             ListHeaderComponent={FlatList_Header}
-            ListHeaderComponentStyle={{ borderBottomColor: GlobalColor.Secondary, borderBottomWidth: 1 }}
+            ListHeaderComponentStyle={{ borderBottomColor: ThemeColor.Forest, borderBottomWidth: 1 }}
             ListEmptyComponent={<ListEmptyComponent 
                 title="No Data Found"
                 enableRefresh={true} onRefreshCallback={() => FlexiShiftPendAppLOV(true)} refreshing={refresh}
@@ -234,14 +234,19 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         paddingVertical:5,
         borderBottomWidth:0.5,
-        borderBottomColor:GlobalColor.Secondary
+        borderBottomColor:ThemeColor.Forest
     },
     HeaderColumn:{
         flex:0.25,
+        fontSize:13
     },
     itemColumn:{
         flex:0.25,
         justifyContent:'center',
+        fontSize:13
+    },
+    itemText:{
+        fontSize:13
     },
     itemButton:{
         width:30,

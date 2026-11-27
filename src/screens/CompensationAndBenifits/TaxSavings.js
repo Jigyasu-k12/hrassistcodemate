@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import Text from '../../components/reusable/Text';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { showErrorMessage } from '../../Utils/Utils';
 import { Header } from '../../components/reusable/Header';
@@ -59,7 +59,7 @@ const TaxSavings = () => {
           //remove loader
           stopLoader()
           if(result?.Value){
-            console.log(result);
+// $&
             //set Data
             setTaxSaving(result?.Value?.Table3)
           }
@@ -92,13 +92,13 @@ const TaxSavings = () => {
         <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
             <Header title="Tax Savings" back />
             <View style={styles.container}>
-                <View style={[styles.MainCard, {backgroundColor: GlobalColor.White }]}>                                
+                <View style={[styles.MainCard, {backgroundColor: GlobalColor.White ,marginBottom:"13%"}]}>                                
                     <View style={styles.textContainer}>
-                        <Text Bold>Description</Text>
-                        <Text Bold> Amount (Rs.)</Text>
+                        <Text style={{fontSize:13}} Bold>Description</Text>
+                        <Text style={{fontSize:13}} Bold> Amount (Rs.)</Text>
                     </View>
 
-                    <View style={{ borderBottomWidth:1,paddingHorizontal:10, borderColor:GlobalColor.Secondary}}/>
+                    <View style={{ borderBottomWidth:1,paddingHorizontal:10, borderColor:ThemeColor.Teal}}/>
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             data={taxSaving}
@@ -110,8 +110,8 @@ const TaxSavings = () => {
                             keyExtractor={({ item, index }) => index}
                             renderItem={({ item, index }) => (
                                 <View style={styles.textContainerFlatList}>
-                                    <View style={{ width: '70%' }}><Text>{Decrypt(item.SAVG_DESC)}</Text></View>
-                                    <Text>{Decrypt(item.SVDT_AMT)}</Text>
+                                    <View style={{ width: '70%',fontSize:13 }}><Text>{Decrypt(item.SAVG_DESC)}</Text></View>
+                                    <Text style={{fontSize:13}}>{Decrypt(item.SVDT_AMT)}</Text>
                                     {/* <View style={{width:'50%',justifyContent:'flex-end'}}>></View> */}
                                 </View>
                             )}
@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
     container:{
         paddingHorizontal:10,
         flex:1, 
-        paddingVertical:10
+        paddingVertical:10,
+        marginBottom:"10%"
     },  
     textContainer: {
         width: '100%',
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginVertical: 8,        
         borderBottomWidth:0.5,
-        borderColor:GlobalColor.Secondary,
+        borderColor:ThemeColor.Teal,
         paddingBottom:8,
 
     },

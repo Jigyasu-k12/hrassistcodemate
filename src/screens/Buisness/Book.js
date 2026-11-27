@@ -21,7 +21,7 @@ import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import { useNavigation } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
@@ -49,7 +49,7 @@ const Book = () => {
     try {
       setModalLoader(false)
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
@@ -59,7 +59,7 @@ const Book = () => {
     let payloadDate = moment(date).format("DD-MMMM-YYYY").toUpperCase()
     let apiData = { TravelDate: payloadDate }
     let token = AppUserData.token
-    console.log(apiData)
+// $&
     setLoader(true);
     ApiService.PostMethode('/GetShuttleRoutes', apiData, token, authContext)
       .then(result => {
@@ -69,7 +69,7 @@ const Book = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log(error);
+// $&
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -91,13 +91,13 @@ const Book = () => {
       BKAVID: item.SHTL_ROUT_MAPP_ID,
       BKAVStartDate: payloadDate,
     }
-    console.log("apiPayload", apiData)
+// $&
     ApiService.PostMethode('/GetSeatsAvailability', apiData, token, authContext)
       .then(result => {
         stopLoader()
         let ApiValue = result.Result
         setSeatAvility(ApiValue)
-        console.log("GetSeatsAvailabilityApi", ApiValue);
+// $&
       })
       .catch(error => {
         setModalVisible(false);
@@ -124,7 +124,7 @@ const Book = () => {
   return (
     <SafeAreaView style={styles.Container}>
       <View style={{ flex: 1 }}>
-        <Text style={{ paddingVertical: 5, }} Bold>
+        <Text style={{ paddingVertical: 5, fontSize:13}} Bold>
           Select Date
         </Text>
         <View
@@ -144,23 +144,23 @@ const Book = () => {
               setOpen(false);
             }}
           />
-          <Text style={{ color: GlobalColor.Text }}>{moment(date).format("DD-MMMM-YYYY").toUpperCase()}</Text>
+          <Text style={{ color: GlobalColor.Text,fontSize:13 }}>{moment(date).format("DD-MMMM-YYYY").toUpperCase()}</Text>
           <TouchableOpacity onPress={() => setOpen(true)}>
-            <Ionicons name="calendar-outline" size={30} color={GlobalColor.PrimaryGradient} />
+            <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
           </TouchableOpacity>
         </View>
         <View style={{ paddingVertical: 10, }}>
-          <Text Bold>Available Shuttle Routes</Text>
+          <Text style={{fontSize:13}} Bold>Available Shuttle Routes</Text>
         </View>
         {book.length > 0 ? (
           <View
             style={styles.ListContainer}>
             <View
               style={styles.ListContainerCards}>
-              <Text Bold>Registration No.</Text>
-              <Text Bold>Source</Text>
-              <Text Bold>Destination</Text>
-              <Text Bold>Time</Text>
+              <Text style={{fontSize:13}} style={{fontSize:13}} Bold>Registration No.</Text>
+              <Text style={{fontSize:13}} Bold>Source</Text>
+              <Text style={{fontSize:13}} Bold>Destination</Text>
+              <Text style={{fontSize:13}} Bold>Time</Text>
             </View>
             <View>
               {
@@ -172,10 +172,19 @@ const Book = () => {
                         GetSeatsAvailabilityApi(item);
                         // setModalVisible(true)
                       }} style={styles.ListContant}>
-                      <Text>{item.SHTL_REGISTRATION_NO}</Text>
-                      <Text>{item.ROUT_SOURCE}</Text>
-                      <Text>{item.ROUT_DESTINATION}</Text>
-                      <Text>{item.ROUT_START_TIME}</Text>
+
+                      <View style={[styles.itemColumn, {flex: 0.4}]}>
+                      <Text style={{fontSize:13,}}>{item.SHTL_REGISTRATION_NO}</Text>
+                      </View>
+                      <View style={[styles.itemColumn, {flex: 0.6}]}>
+                      <Text style={{fontSize:13,marginLeft:65}}>{item.ROUT_SOURCE}</Text>
+                      </View>
+                      <View style={[styles.itemColumn, {flex: 0.6}]}>
+                      <Text style={{fontSize:13,marginLeft:30}}>{item.ROUT_DESTINATION}</Text>
+                      </View>
+                      <View style={[styles.itemColumn, {flex: 0.4}]}>
+                      <Text style={{fontSize:13,marginLeft:19}}>{item.ROUT_START_TIME}</Text>
+                      </View>
                     </TouchableOpacity>
                   )
                 })
@@ -199,17 +208,17 @@ const Book = () => {
                       </View>
                     ) : (
                       <View style={{ width: '100%' }}>
-                        <Text Bold style={{ fontSize: GlobalFontSize.H4, textAlign: 'left', }}>Available Seats in Shuttle : {seatAvility}</Text>
+                        <Text Bold style={{ fontSize: 13, textAlign: 'left', }}>Available Seats in Shuttle : {seatAvility}</Text>
                         <View style={{ flexDirection: 'row', marginVertical: 10, alignSelf: "center" }}>
                           <View
                             style={{ minWidth: 150 }}>
-                            <Button title="Close" onPress={() => {
+                            <Button title="Close" style={{fontSize:13}} onPress={() => {
                               setModalVisible(false)
                             }} />
                           </View>
                           <View
                             style={{ minWidth: 150, marginLeft: 10 }}>
-                            <Button title="Book Now" onPress={() => {
+                            <Button title="Book Now" style={{fontSize:13}} onPress={() => {
                               setModalVisible(false)
                               navigation.navigate("SeatBook", {data:selectedShuttle, date: date})
                             }} />
@@ -290,6 +299,12 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: GlobalColor.PrimaryGradient
+  },
+  itemColumn: {
+    flex: 0.25,
+    justifyContent: 'center',
+    alignContent:'center',
+    
   },
   ModalContainer: {
     backgroundColor: '#000000aa',

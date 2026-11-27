@@ -19,7 +19,7 @@ import Toast from 'react-native-simple-toast'
 import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
@@ -39,7 +39,7 @@ const AttendancePer = ({ navigation }) => {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
@@ -52,20 +52,21 @@ const AttendancePer = ({ navigation }) => {
     let userId = AppUserData?.data?.userId;
     let token = AppUserData.token;
     let apiData = {
-      "UserName": AppUserData?.data?.username,
+      "UserName": userId,
       "Years":3
     };
     ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)
       .then(result => {
-        console.log("GetAttendancePercentageYearwise", result);
+// $&
         stopLoader(false);
         let ApiResult = result.Value
-        console.log("Api Result Get Attendance Percentage", ApiResult);
+// $&
         setAttendance(ApiResult)
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
+        console.log(error);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 0,    
     borderLeftWidth: 5,
-    borderLeftColor: GlobalColor.Secondary,   
+    borderLeftColor: ThemeColor.Teal,   
     marginBottom:2,
   },
 });

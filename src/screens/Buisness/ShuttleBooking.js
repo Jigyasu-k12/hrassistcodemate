@@ -12,10 +12,11 @@ import FutureBook from './FutureBook';
 import PastBook from './PastBook';
 import Guidelines from './Guidelines';
 import Book from './Book';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import { Header } from '../../components/reusable/Header';
 import Text from '../../components/reusable/Text';
+import LinearGradient from 'react-native-linear-gradient';
 
 const ShuttleBooking = ({ navigation }) => {
   const Tab = createMaterialTopTabNavigator();
@@ -26,7 +27,7 @@ const ShuttleBooking = ({ navigation }) => {
     tabPress: () => {
       setHorizental(false);
       setroute(route.name);
-      console.log(navigation, route);
+// $&
     },
   });
 
@@ -80,21 +81,26 @@ const ShuttleBooking = ({ navigation }) => {
         </View>
       ) : null} */}
       <View style={styles.container}>
+        <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+          <View style={{flex:1,flexDirection:'row'}}>
         <Tab.Navigator
           swipeEnabled={false}
           screenOptions={{
             tabBarScrollEnabled: true,
             tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
             tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
-            tabBarActiveTintColor: GlobalColor.White,
-            tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
-            tabBarStyle: { backgroundColor: GlobalColor.PrimaryGradient, elevation: 0 },
+            tabBarActiveTintColor: ThemeColor.OnDark,
+          tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
+            tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
+            tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
           }}>
           <Tab.Screen name="Book" component={Book} />
           <Tab.Screen name="Past Bookings" component={PastBook} />
           <Tab.Screen name="Future Bookings" component={FutureBook} />
           <Tab.Screen name="Guidelines" component={Guidelines} />
         </Tab.Navigator>
+        </View>
+        </LinearGradient>
       </View>
     </SafeAreaView>
   );
@@ -123,6 +129,11 @@ const styles = StyleSheet.create({
     color: GlobalColor.White,
     marginLeft: 8
   },
+  mystyl:{
+       backgroundColor:'transparent',
+       height:'100%',
+       flexDirection:'row',
+  }
 });
 
 //make this component available to the app

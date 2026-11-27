@@ -7,6 +7,8 @@ import EmployeLookUp from '../screens/employeLookUp/EmployeLookUp';
 import Birthdays from '../screens/employeLookUp/Birthday/Birthdays';
 import EmployProfile from '../screens/employeLookUp/EmployeProfile';
 import Nomination from '../components/Nomination';
+import ReportsToEmpProfile from '../screens/employeLookUp/ReportsToEmpProfile';
+
 const Stack = createNativeStackNavigator();
 
 function EmployeeNavs() {
@@ -17,6 +19,8 @@ function EmployeeNavs() {
         <Stack.Screen name='Birthdays' component={Birthdays}/>
         <Stack.Screen name='EmployProfile' component={EmployProfile}/>
         <Stack.Screen name='Nomination' component={Nomination}/>
+        <Stack.Screen name='ReportsToEmpProfile' component={ReportsToEmpProfile}/>
+       
       </Stack.Navigator>
   );
 }

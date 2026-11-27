@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SafeAreaView, } from "react-native";
-import { GlobalColor } from "../../../constants/Colors";
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from "../../../constants/Colors";
 
 const Calander = () => {
   const [date, setDate] = useState(new Date());
@@ -15,7 +15,7 @@ const Calander = () => {
           onConfirm={date => {
             setOpen(false);
             setDate(date);
-            console.log(date);
+// $&
           }}
           onCancel={() => {
             setOpen(false);
@@ -24,7 +24,7 @@ const Calander = () => {
         <View
           style={{
             marginTop: 10,
-            backgroundColor: '#a9bce7',
+            backgroundColor: ThemeColor.TealSoft,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',            
@@ -36,7 +36,7 @@ const Calander = () => {
           <View>
             <View>
               <TouchableOpacity onPress={() => (setOpen(true))}>
-                <Ionicons name="calendar-outline" size={30} color={GlobalColor.Secondary} />
+                <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
               </TouchableOpacity>
             </View>
           </View>

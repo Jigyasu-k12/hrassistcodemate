@@ -1,6 +1,7 @@
 
 //import liraries
 import React, { useState, useEffect, useContext } from 'react';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView, Linking } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,14 +23,14 @@ const HosLocation = ({ navigation }) => {
     ApiService.PostMethode('/GetHospLocn', apiData, token, authContext)
       .then(result => {
         setLoader(false);
-        // console.log("Apiresult",result);
+        // // console.log($1);
         let ApiValue = result.Value
-        console.log("setHospitalLoc", ApiValue);
+// $&
         setHospitalLoc(ApiValue)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -56,7 +57,7 @@ const HosLocation = ({ navigation }) => {
 
     <View>
           <LinearGradient
-          colors={['#4174D0', '#6ef7ff']}
+          colors={[ThemeColor.Teal, ThemeColor.TealSoft]}
           style={styles.gradient}>
           <View style={styles.container}>
             <View

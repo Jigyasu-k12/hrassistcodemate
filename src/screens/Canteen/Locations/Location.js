@@ -20,7 +20,7 @@ import AuthContext from '../../../context/AuthContext';
 import Accordion from './../CanteenComponent/Accordion';
 
 
-import { GlobalColor } from '../../../constants/Colors'; 
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../../constants/Colors'; 
 import { GlobalFontSize } from '../../../constants/FontSize';
 import Text from '../../../components/reusable/Text';
 import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
@@ -32,6 +32,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
     const [isOpen, setIsOpen] = useState('');
     const [loader, setLoader] = useState(false);
     const { authContext, AppUserData } = useContext(AuthContext);
+    const [breakfast, setBreakfast] = useState([]);
     const [lunch, setLunch] = useState([]);
     const [snacks, setSnacks] = useState([]);
     const [dinner, setDinner] = useState([]);
@@ -61,7 +62,14 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
           .then(result => {
             setLoader(false);
             let ApiValue = result.Value
-            console.log("setMenu location", ApiValue);
+// $&
+
+            let breakfst = result.Value.filter(item => {
+              if (item.CANT_MEAL === "Breakfast") {
+                return item
+              }
+            })
+
             let lunch = result.Value.filter(item => {
               if (item.CANT_MEAL === "Lunch") {
                 return item
@@ -77,13 +85,14 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
                 return item
               }
             })
+            setBreakfast(breakfst);
             setLunch(lunch);
             setSnacks(snacks);
             setDinner(dinner);
           })
           .catch(error => {
             setLoader(false);
-            // console.log('Error occurred==>', error);
+            // // console.log($1);
             ApiService.showErrorMessage(error, authContext);
           });
       };
@@ -94,7 +103,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
         const unsubscribe = navigation.addListener('tabPress', (e) => {
           // Prevent default behavior
           // e.preventDefault();          
-          console.log('Default behavior prevented');
+// $&
           GetMenuCanttApi();
           // Do something manually
           // ...
@@ -106,9 +115,9 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
     return (
       <SafeAreaView style={styles.screenContainer}>
           <View style={styles.calander}>
-            <Text>{moment(date).format('MMM Do YYYY')}</Text>
+            <Text style={{fontSize:13}}>{moment(date).format('MMM Do YYYY')}</Text>
             <TouchableOpacity onPress={() => setOpen(true)}>
-              <Ionicons name="calendar-outline" size={30} color={GlobalColor.PrimaryGradient} />
+              <Ionicons name="calendar-outline" size={23} color={ThemeColor.Teal} />
             </TouchableOpacity>
             <DatePicker
                 modal
@@ -117,7 +126,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
                 onConfirm={date => {
                 setOpen(false);
                 setDate(date)
-                console.log("new", date);
+// $&
                 }}
                 onCancel={() => {
                 setOpen(false);
@@ -130,9 +139,10 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
                 <LoadingScreen/>
             ):(
              <ScrollView style={styles.AccordianContainer}>
-                <Accordion data={lunch} name={'Lunch'} handleDropDown={() => setIsOpen(isOpen === 'lunch' ? '' : 'lunch')} isOpen={isOpen === 'lunch'} />
-                <Accordion data={snacks} name={'Snacks'} handleDropDown={() => setIsOpen(isOpen === 'snacks' ? '' : 'snacks')} isOpen={isOpen === 'snacks'} />
-                <Accordion data={dinner} name={'Dinner'} handleDropDown={() => setIsOpen(isOpen === 'dinner' ? '' : 'dinner')} isOpen={isOpen === 'dinner'} />
+                 {breakfast == ''?null: <Accordion data={lunch} name={'Breakfast'} handleDropDown={() => setIsOpen(isOpen === 'lunch' ? '' : 'lunch')} isOpen={isOpen === 'lunch'} style={{fontSize:13}} />}
+                <Accordion data={lunch} name={'Lunch'} handleDropDown={() => setIsOpen(isOpen === 'lunch' ? '' : 'lunch')} isOpen={isOpen === 'lunch'} style={{fontSize:13}} />
+                <Accordion data={snacks} name={'Snacks'} handleDropDown={() => setIsOpen(isOpen === 'snacks' ? '' : 'snacks')} isOpen={isOpen === 'snacks'} style={{fontSize:13}}/>
+                <Accordion data={dinner} name={'Dinner'} handleDropDown={() => setIsOpen(isOpen === 'dinner' ? '' : 'dinner')} isOpen={isOpen === 'dinner'} style={{fontSize:13}}/>
               </ScrollView>
             )
         }

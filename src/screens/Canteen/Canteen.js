@@ -1,11 +1,12 @@
 //import liraries
 import React from 'react';
+import {AppIcon} from '../../components/icons/AppIcon';
 import { View, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import { GlobalFontSize } from '../../constants/FontSize';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor, HomePalette } from '../../constants/Colors';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
 
@@ -32,22 +33,18 @@ const Canteen = ({ navigation }) => {
               style={{
                 width: 50,
                 height: 50,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: GlobalColor.PrimaryGradient,
+                borderRadius: 14,
+                backgroundColor: HomePalette.mint,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Image
-                source={require('../../assets/Images/canteen/fork.png')}
-                style={{ width: 30, height: 30 }}
-              />
+              <AppIcon name="canteen" size={22} />
             </View>
           </View>
           <View
             style={styles.MenuContainer}>
-            <Text Bold>Canteen Menu</Text>
-            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+            <Text style={{fontSize:13}} Bold>Canteen Menu</Text>
+            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
           </View>
         </TouchableOpacity>
 
@@ -67,22 +64,18 @@ const Canteen = ({ navigation }) => {
               style={{
                 width: 50,
                 height: 50,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: GlobalColor.PrimaryGradient,
+                borderRadius: 14,
+                backgroundColor: HomePalette.mint,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Image
-                source={require('../../assets/Images/canteen/turkey.png')}
-                style={{ width: 30, height: 30 }}
-              />
+              <AppIcon name="foodCourt" size={22} />
             </View>
           </View>
           <View
             style={styles.MenuContainer}>
-            <Text Bold>Food Court</Text>
-            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+            <Text style={{fontSize:13}} Bold>Food Court</Text>
+            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
           </View>
         </TouchableOpacity>
 

@@ -1,20 +1,97 @@
 //import liraries
-import React, {Component} from 'react';
+import React, {Component,useContext,useEffect,useState,useCallback} from 'react';
+import {AppIcon} from '../../components/icons/AppIcon';
 import {View, StyleSheet, TouchableOpacity, Image,SafeAreaView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Header } from '../../components/reusable/Header';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor, HomePalette } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import Home from '../Home';
 import Gst from './GST';
 import ShuttleBooking from './ShuttleBooking';
+import AuthContext from '../../context/AuthContext';
 
+import * as ApiService from '../../Utils/Utils';
+import { useFocusEffect } from '@react-navigation/native'
 
 
 // create a component
 const BuisnessTravel = ({navigation}) => {
+
+  const { authContext, AppUserData } = useContext(AuthContext);
+   let usrAccess = AppUserData?.data?.userFlag;
+
+   const [loader, setLoader] = useState(false)
+   const [refresh, setrefresh] = useState(false);
+ 
+   const [taxiFlag, settaxiFlag] = useState('Y');
+
+
+   useFocusEffect(
+    useCallback(() => {
+      console.log("Runs every time screen is focused");
+      showTaxiRental();
+    }, [AppUserData?.token, AppUserData?.data?.userId])
+  );
+  
+  
+  
+//Stop Loader Function
+const stopLoader = () => {
+  setLoader(false);
+  setrefresh(false);
+}
+  const showTaxiRental = () => {
+    let token = AppUserData.token
+    let EmplID =  AppUserData?.data?.userId;
+    let userNt = AppUserData?.data?.userNT;
+// $&
+    let apiData = {
+      "UserName": userNt
+    }
+ 
+    //Set Loader
+    setLoader(true);
+ 
+    ApiService.PostMethode('/GetTaxiCutoff', apiData, token, authContext)
+      .then(result => {
+// $&
+ 
+        //stop Loader
+        stopLoader();
+ 
+        let responseData = result.Result;
+        settaxiFlag(responseData);
+       
+        console.log("---responseData---",responseData);
+
+        // if(result.Result == 'N')
+        // {
+        //   myNavigation.navigate("PendingAlw");
+         
+        // }
+        // else{
+        //   myNavigation.navigate("ConsentHome");
+        // }
+ 
+       
+        //setHideshow(result.Result);
+// $&
+       
+          // alert(responseData)
+       
+      })
+      .catch(error => {
+        //stop Loader
+        stopLoader();
+        //Show Error Massage
+        ApiService.showErrorMessage(error, authContext);
+      });
+  };
+
+
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
     <Header title={"Business Travel"}/>
@@ -24,7 +101,7 @@ const BuisnessTravel = ({navigation}) => {
         #499fd0      
       <LinearGradient
         style={{padding: 20}}
-        colors={['#437cd5', '#5dc0e9']}>
+        colors={[ThemeColor.Teal, ThemeColor.Teal]}>
         <View style={{flexDirection: 'row'}}>
           <View
             style={{
@@ -67,25 +144,23 @@ const BuisnessTravel = ({navigation}) => {
             style={{
               width: 50,
               height: 50,
-              borderRadius: 100,
-              borderWidth: 1,
-              borderColor: GlobalColor.PrimaryGradient,
+              borderRadius: 14,
+              backgroundColor: HomePalette.mint,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              source={require('../../assets/Images/gstIcon.png')}
-              style={{width: 30, height: 30}}
-            />
+            <AppIcon name="gst" size={22} />
           </View>
         </View>
         <View style={styles.item}>
-          <Text style={{}} Bold>
+          <Text style={{fontSize:14}} Bold>
             MSIL GST Details
           </Text>
-          <Ionicons name="chevron-forward-outline" size={20} color={GlobalColor.Secondary}/>
+          <Ionicons name="chevron-forward-outline" size={18} color={ThemeColor.Teal}/>
         </View>
       </TouchableOpacity>
+
+      {usrAccess == 'Y'?null:
 
       <TouchableOpacity style={styles.box}
       onPress={() => {navigation.navigate("ShuttleBooking")}}>
@@ -94,25 +169,56 @@ const BuisnessTravel = ({navigation}) => {
             style={{
               width: 50,
               height: 50,
-              borderRadius: 100,
-              borderWidth: 1,
-              borderColor: GlobalColor.PrimaryGradient,
+              borderRadius: 14,
+              backgroundColor: HomePalette.mint,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              source={require('../../assets/Images/bookingIcon.png')}
-              style={{width: 30, height: 30}}
-            />
+            <AppIcon name="shuttle" size={22} />
           </View>
         </View>
         <View style={styles.item}>
-          <Text style={{fontSize: 16}} Bold>
+          <Text style={{fontSize: 14}} Bold>
             Shuttle Booking
           </Text>
-          <Ionicons name="chevron-forward-outline" size={20} color={GlobalColor.Secondary}/>
+          <Ionicons name="chevron-forward-outline" size={18} color={ThemeColor.Teal}/>
         </View>
       </TouchableOpacity>
+      
+
+}
+
+{usrAccess !== 'Y' && taxiFlag === 'Y' && (
+  <TouchableOpacity
+    style={styles.box}
+    onPress={() => {
+      navigation.navigate("BusinessTravelMain");
+    }}>
+    
+    <View style={styles.iconBox}>
+      <View
+        style={{
+          width: 45,
+          height: 45,
+          borderRadius: 14,
+          backgroundColor: HomePalette.mint,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <AppIcon name="taxi" size={22} />
+      </View>
+    </View>
+
+    <View style={styles.item}>
+      <Text style={{ fontSize: 14 }} Bold>
+        Taxi Booking
+      </Text>
+      <Ionicons name="chevron-forward-outline" color={ThemeColor.Teal} size={18} />
+    </View>
+
+  </TouchableOpacity>
+)}
+
     </View>
     </SafeAreaView>
   );

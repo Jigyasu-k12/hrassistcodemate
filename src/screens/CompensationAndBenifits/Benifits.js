@@ -10,7 +10,8 @@ import Toast from 'react-native-simple-toast';
 import { useNavigation } from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import Text from '../../components/reusable/Text';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor, HomePalette } from '../../constants/Colors';
+import { AppIcon } from '../../components/icons/AppIcon';
 import { showErrorMessage } from '../../Utils/Utils';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 
@@ -22,10 +23,14 @@ const Benifits = () => {
   const [refresh, setrefresh] = useState(false);
   const { authContext, AppUserData } = useContext(AuthContext);
 
+  let usrAccess = AppUserData?.data?.userFlag;
+
+// $&
+
   const GetConvElig = () => {
     let token = AppUserData.token
     let EmplID =  AppUserData?.data?.userId 
-    console.log("this empid",EmplID)
+// $&
     let apiData = {
       "UserName": AppUserData?.data?.username
     }
@@ -35,13 +40,13 @@ const Benifits = () => {
 
     ApiService.PostMethode('/GetConvElig', apiData, token, authContext)
       .then(result => {
-        console.log( 'This setTaxSaving', result);
+// $&
 
         //stop Loader
         stopLoader();
 
         let responseData = result.Result
-        console.log("This responseData",responseData)
+// $&
         if (responseData == 0) {
           Alert.alert("Payroll", "You are not Authorized");
         }
@@ -61,11 +66,118 @@ const Benifits = () => {
       });
   };
 
+
+  
+  const GetDiwaliGift = () => {
+    let token = AppUserData.token
+    let EmplID =  AppUserData?.data?.userId
+// $&
+    let apiData = {
+      "UserName": AppUserData?.data?.username
+    }
+ 
+    //Set Loader
+    setLoader(true);
+ 
+    ApiService.PostMethode('/CheckDiwaliScreenOpen', apiData, token, authContext)
+      .then(result => {
+// $&
+ 
+        //stop Loader
+        stopLoader();
+ 
+       
+ 
+        if (result.Value == '0') {
+          Alert.alert("Gift & Rewards", "Last date has been passed for updation, Kindly contact to HR");
+        }
+        else {
+          //  myNavigation.navigate("ConveyanceBillsSubmission")
+          myNavigation.navigate("DiwaliGift");
+          // alert(responseData)
+        }
+     
+     
+           
+         
+          // alert(responseData)
+     
+      })
+      .catch(error => {
+        //stop Loader
+        stopLoader();
+        //Show Error Massage
+        ApiService.showErrorMessage(error, authContext);
+      });
+  };
+ 
+ const GoSundayAlwnce = () => {
+   
+    myNavigation.navigate("SundayAllowance");
+     
+   
+  };
+
+
+  const UnApprovedScreen = () => {
+    let token = AppUserData.token
+    let EmplID =  AppUserData?.data?.userId
+// $&
+    let apiData = {
+      "UserName": AppUserData?.data?.username
+    }
+ 
+    //Set Loader
+    setLoader(true);
+ 
+    ApiService.PostMethode('/ShowExtWorkButton', apiData, token, authContext)
+      .then(result => {
+// $&
+ 
+        //stop Loader
+        stopLoader();
+ 
+        let responseData = result.Result
+        if(result.Result == 'N')
+        {
+          myNavigation.navigate("PendingAlw");
+         
+        }
+        else{
+          myNavigation.navigate("ConsentHome");
+        }
+ 
+       
+        //setHideshow(result.Result);
+// $&
+       
+          // alert(responseData)
+       
+      })
+      .catch(error => {
+        //stop Loader
+        stopLoader();
+        //Show Error Massage
+        ApiService.showErrorMessage(error, authContext);
+      });
+  };
+ 
+
   const myNavigation = useNavigation();
   const data = [
-    { id: '1', text: 'PL Encashment' },
-    { id: '2', text: 'LTA Encashment' },
-    { id: '3', text: 'Conveyance Bills (SMGR & Above)' },
+    { id: '1', text: 'PL Encashment', icon: 'encash'},
+    // { id: '2', text: 'LTA Encashment' },
+    { id: '2', text: 'Conveyance Bills', icon: 'conveyance'},
+    { id: '3', text: 'Gift & Rewards', icon: 'gift'},
+    { id: '4', text: 'Extra Working Consent', icon: 'consent' },
+  ];
+
+  const dataMA = [
+    { id: '1', text: 'PL Encashment', icon: 'encash'},
+    { id: '2', text: 'Gift & Rewards', icon: 'gift' },
+    { id: '3', text: 'Extra Working Consent', icon: 'consent' },
+    // { id: '2', text: 'LTA Encashment' },
+   
   ];
 
   //Stop Loader Function
@@ -87,14 +199,22 @@ const Benifits = () => {
   return (
     <ScrollView style={styles.container}>
       <FlatList
-        data={data}
+        data={usrAccess == 'Y'?dataMA:data}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.box}
             onPress={() => {
-              if (item.text === 'Conveyance Bills (SMGR & Above)') {
+              if (item.text === 'Conveyance Bills') {
                 
                 GetConvElig()
+              }
+              else if(item.text === 'Gift & Rewards')
+              {
+                GetDiwaliGift();
+              }
+              else if(item.text === 'Extra Working Consent')
+              {
+                UnApprovedScreen();
               }
               else {
                 myNavigation.navigate("Plencashment", {
@@ -105,14 +225,14 @@ const Benifits = () => {
             <View style={styles.iconBox}>
               <View
                 style={styles.iconBoxContainer}>
-                <Image
-                  source={require('../../assets/Images/bill.png')}
-                  style={{ width: 30, height: 30 }} />
+                <AppIcon name={item.icon} size={22} />
+
+                  
               </View>
             </View>
             <View style={styles.item}>
-              <Text Bold>{item.text}</Text>
-              <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+              <Text style={{fontSize:13}} Bold>{item.text}</Text>
+              <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
             </View>
           </TouchableOpacity>
         )}
@@ -161,11 +281,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   iconBoxContainer: {
-    width: 50,
-    height: 50,
-    borderRadius: 100,
-    borderWidth: 1,
-    borderColor: GlobalColor.Secondary,
+    width: 45,
+    height: 45,
+    borderRadius: 14,
+    backgroundColor: HomePalette.mint,
     justifyContent: 'center',
     alignItems: 'center',
   }

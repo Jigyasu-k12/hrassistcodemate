@@ -7,7 +7,7 @@ import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { useFocusEffect } from '@react-navigation/native';
 import Text from '../../components/reusable/Text';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 
 // create a component
@@ -26,12 +26,12 @@ const NearByHospital = () => {
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value[0].LINK
-        console.log("setHospitallList", ApiValue);
+// $&
         setHosLink(ApiValue)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -58,7 +58,7 @@ const NearByHospital = () => {
 
 
         <View style={styles.box}>
-          <Text style={{fontSize:GlobalFontSize.H4, color:GlobalColor.Primary}} Bold>
+          <Text style={{fontSize:15, color:GlobalColor.Primary}} Bold>
             Near By Panel Hospital
           </Text>
           <TouchableOpacity
@@ -68,20 +68,20 @@ const NearByHospital = () => {
               return
             }
             else{
-              console.log("hoslink",hosLink);
+// $&
               Linking.openURL(hosLink)
             }
             }}
             style={styles.circle}>
-            <Text   style={{textAlign:'center',}}>Click here to</Text>
-            <Text   style={{textAlign:'center',}}>Search</Text>
+            <Text   style={{textAlign:'center',fontSize:13}}>Click here to</Text>
+            <Text   style={{textAlign:'center',fontSize:13}}>Search</Text>
           </TouchableOpacity>
 
         {/* <Image source={require('../.././assets/Images/pin.png')} style={{width:40,height:40,marginVertical:8}}/> */}
-        <Text Bold>Use Any web browser/Google Maps for better experience</Text>
+        <Text style={{fontSize:13}} Bold> Use Any web browser/Google Maps for better experience</Text>
         <View style={{paddingHorizontal:10, flexDirection:'row',justifyContent:'space-between',marginVertical:8}}>
           {/* <Image source={require('../.././assets/Images/medicine.png')} style={{width:40,height:40, marginRight:15}}/> */}
-          <Text Bold>Symbols in the maps are Geo-location of our panel Hospital</Text>
+          <Text style={{fontSize:13}} Bold>  Symbols in the maps are Geo-location of our panel Hospital</Text>
         </View>
         </View>
     </SafeAreaView>
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalColor.PrimaryLight,
     paddingHorizontal:10,
     justifyContent: 'center',
+    marginBottom:"80%"
   },
   spinnerTextStyle: {
     color: '#FFF'
@@ -118,13 +119,14 @@ const styles = StyleSheet.create({
     elevation: 5,
     borderWidth:0.2,
     borderRadius:10,
-    borderColor:GlobalColor.Secondary
+    borderColor:GlobalColor.Secondary,
+    
   },
   circle: {
     height: 100,
     width: 100,
     borderWidth: 5,
-    borderColor: GlobalColor.Secondary,
+    borderColor: ThemeColor.Teal,
     borderRadius: 100,
     alignSelf: 'center',
     justifyContent: 'center',

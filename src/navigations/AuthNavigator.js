@@ -35,7 +35,7 @@ const AuthNavigator = () => {
   const getStorageData = async()=>{
     await EncryptedStorage.getItem('isnotfirstTime').then((data)=>{
       if(data != null){
-        console.log(data);
+// $&
         setIsFirstLaunch(true);
       }      
     }).finally(() => {
@@ -49,12 +49,10 @@ const AuthNavigator = () => {
   
 const FirstRun = ()=>{
     return (
-      <Stack.Navigator initialRouteName='OnboardingScreen' screenOptions={{headerShown:false}}>
+      <Stack.Navigator initialRouteName={!isFirstLaunch ? 'OnboardingScreen' : 'SignIn'} screenOptions={{headerShown:false}}>
         <Stack.Screen name='SignIn' component={SignIn}/>
-
-        {!loading && !isFirstLaunch && (
-          <Stack.Screen name='OnboardingScreen' component={OnboardingScreen}/>
-        )}        
+        {/* DEV: Always include OnboardingScreen for development access */}
+        <Stack.Screen name='OnboardingScreen' component={OnboardingScreen}/>
       </Stack.Navigator>
     );
   }

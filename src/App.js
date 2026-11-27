@@ -1,4 +1,5 @@
 import React, {useEffect, useState } from 'react';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from './constants/Colors';
 import {
   SafeAreaView,
   StyleSheet,
@@ -23,22 +24,59 @@ import RNBootSplash from "react-native-bootsplash";
 import { LogBox } from 'react-native';
 import JailMonkey from 'react-native-pvt-jail-monkey'
 import RNExitApp from 'react-native-exit-app';
+import ScreenGuard, { useSGScreenShot } from 'react-native-screenguard';
 
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
 ]);
+
 export default function App() {
+
+  // Screenshot detection hook
+  useSGScreenShot((event) => {
+    Alert.alert(
+      'Screenshot Restricted',
+      'Screenshots are not allowed in this application for security reasons.',
+      [{ text: 'OK' }],
+      { cancelable: false }
+    );
+  });
 
   useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks
+
+      // 🟩 Initialize and enable screenshot prevention
+      // IMPORTANT: Only works on REAL iOS devices, NOT on simulators
+      if (Platform.OS === 'ios') {
+        try {
+          // Initialize ScreenGuard first
+          await ScreenGuard.initSettings({
+            backgroundColor: 'black',
+          });
+
+          // Register with black color overlay for screenshots
+          await ScreenGuard.register({
+            backgroundColor: '#000000'
+          });
+        } catch (error) {
+          console.error('ScreenGuard error:', error);
+        }
+      }
     };
 
     init().finally(async () => {
       await RNBootSplash.hide({ fade: true });
-      console.log("Bootsplash has been hidden successfully");
+// $&
     });
+
+    // Cleanup on unmount
+    return () => {
+      if (Platform.OS === 'ios') {
+        ScreenGuard.unregister();
+      }
+    };
   }, []);
 
 
@@ -113,9 +151,9 @@ export default function App() {
 
     const checkDeviceSafety = () =>{
       let params = {debug:false,checkEmulator:true}
-      //custom method with all security checking 
+      //custom method with all security checking
       JailMonkey.isSafe(params).then(()=>{
-        console.log("is not rooted/jailbreak/emulator/simulator");
+// $&
         if(JailMonkey.isJailBroken()){
           RNExitApp.exitApp();
           return;
@@ -144,7 +182,7 @@ export default function App() {
         <StatusBar
           StatusBarStyle={'light-content'}
           animated={true}
-          backgroundColor="#61dafb"/>
+          backgroundColor={ThemeColor.Teal}/>
           <Routes />
         </SafeAreaView>
     </>

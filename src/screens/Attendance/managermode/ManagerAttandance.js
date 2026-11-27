@@ -1,401 +1,177 @@
-import React, {Component, useState, useEffect, useContext} from 'react';
+// /import liraries
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  useWindowDimensions,
-  Image,
-  FlatList,
-  SafeAreaView,
-  Modal,
-  Alert,
+    View,
+    StyleSheet,
+    TouchableOpacity,
+    FlatList,
+    ScrollView,
+    SafeAreaView,
+    Pressable,
+    Alert,
+    TextInput
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-import LinearGradient from 'react-native-linear-gradient';
-import SegmentedControlTab from 'react-native-segmented-control-tab';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import * as ApiService from '../../../Utils/Utils';
-import Toast from 'react-native-simple-toast';
-import {useFocusEffect} from '@react-navigation/native';
-import AuthContext from '../../../context/AuthContext';
+import SelectDropdown from 'react-native-select-dropdown';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Modal from 'react-native-modal';
+import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
-import Spinner from 'react-native-loading-spinner-overlay';
-import {GlobalColor} from '../../../constants/Colors';
+import { useFocusEffect } from '@react-navigation/native';
+import Toast from 'react-native-simple-toast'
+import * as ApiService from '../../../Utils/Utils';
+import AuthContext from '../../../context/AuthContext'
+import Spinner from 'react-native-loading-spinner-overlay/lib';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../../constants/Colors';
 import Text from '../../../components/reusable/Text';
-import {Header} from '../../../components/reusable/Header';
-import {GlobalFontSize} from '../../../constants/FontSize';
+// import TextInput from '../../../components/reusable/TextInput';
+import { HeaderMgr } from '../../../components/reusable/HeaderMgr';
+import Button from '../../../components/reusable/Button';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
-import TextInput from '../../../components/reusable/TextInput';
-import {LoadingScreen} from '../../../components/reusable/LoadingScreen';
+import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
 import {Decrypt} from '../../../Service/Helper';
 
-export const ManagerAttandance = ({navigation}) => {
-  const [search, setSearch] = useState('');
-  const [employ, setEmploy] = useState([]);
-  const {authContext, AppUserData} = useContext(AuthContext);
+
+
+
+const ManagerAttandance = ({ navigation, route }) => {
+  const { authContext, AppUserData } = useContext(AuthContext);
+  const [Attendance, setAttendance] = useState('');
   const [loader, setLoader] = useState(false);
   const [refresh, setrefresh] = useState(false);
 
   const stopLoader = () => {
-    setLoader(false);
-    setrefresh(false);
-  };
+    try {
+      setLoader(false);
+      setrefresh(false);
+    } catch (error) {
+// $&
+    }
+  }
 
-  // useFocusEffect(
-  //     React.useCallback(() => {
-  //       const unsubscribe = SearchEmployee();
-  //       return () => unsubscribe;
-  //     }, [])
-  // );
 
-  useEffect(() => {
-    const permission = SearchEmployee();
-    return () => {
-      permission;
-    };
-  }, []);
-
-  const initialLoading = () => {
+  const GetAttendancePercentageYearwise = (pulldown = false) => {
+    if (!pulldown) {
+      //Set Loader
+      setLoader(true);
+    }
     let userId = AppUserData?.data?.userId;
-    let apiData = {
-      Search: '',
-      ReportManager: userId,
-    };
     let token = AppUserData.token;
-    setLoader(true);
-    ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
+
+
+    let apiData = {
+      "UserName": userId,
+      "Years":3
+    };
+
+// $&
+
+    ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)
       .then(result => {
-        stopLoader();
-
-        console.log('ApiResult', result);
-
-        let responseData = result.Value;
-        console.log('ApiResult', responseData);
-        setEmploy(responseData);
+// $&
+        stopLoader(false);
+        let ApiResult = result.Value
+        setAttendance(ApiResult)
       })
       .catch(error => {
-        stopLoader();
-        // console.log('Error occurred==>', error);
+        stopLoader(false);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
-  };
+  }
 
-  const SearchEmployee = () => {
-    let userId = AppUserData?.data?.userId;
-    console.log('post data', search);
-    if (search === '') {
-      // Alert.alert("please enter a valid keyWord ");
-      initialLoading();
-      return;
-    } else {
-      let apiData = {
-        Search: search,
-        ReportManager: userId,
-      };
-      let token = AppUserData.token;
-      setLoader(true);
-      ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
-        .then(result => {
-          stopLoader();
 
-          console.log('ApiResult', result);
 
-          let responseData = result.Value;
-          console.log('ApiResult', responseData);
-          setEmploy(responseData);
-        })
-        .catch(error => {
-          stopLoader();
-          // console.log('Error occurred==>', error);
-          if (error.response) {
-            if (error.response.status == 401) {
-              console.log('error from api', error.response);
-            }
-            Toast.show(error.response.data.title);
-          } else if (error) {
-            Toast.show('Network Error');
-          } else {
-            Toast.show('Session expired login again');
-          }
-        });
-    }
-  };
+//   useFocusEffect(
+//     React.useCallback(() => {
+//       const unsubscribe = GetAttendancePercentageYearwise();
+//       return () => unsubscribe;
+//     }, [])
+// );
 
-  const emptyList = () => {
-    setSearch('');
-  };
+
+ // Update useFocusEffect to include route.params.data as a dependency
+ useFocusEffect(
+  React.useCallback(() => {
+    GetAttendancePercentageYearwise();
+    // No explicit unsubscribe needed since the API call is synchronous
+  }, [route?.params?.data]) // Add route.params.data as a dependency
+);
+
+
+  if (loader) {
+    return (
+      <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
+       
+
+        <HeaderMgr title={"Attendance Percentage"} back/>
+        <LoadingScreen />
+      </SafeAreaView>
+    )
+  }
+
+
+
+
   return (
-    <View
-      style={{
-        flex: 1,
-        width: '100%',
-        paddingHorizontal: 10,
-        backgroundColor: GlobalColor.PrimaryLight,
-      }}>
-      <View
-        style={{
-          marginVertical: 10,
-          width: '100%',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderWidth: 1,
-          borderColor: GlobalColor.Secondary,
-          borderRadius: 3,
-          alignSelf: 'center',
-          backgroundColor: GlobalColor.White,
-          height: 50,
-        }}>
-        <View
-          style={{
-            width: '15%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Feather name="search" size={20} color={GlobalColor.Secondary} />
-        </View>
-        <TextInput
-          placeholder="Search By Name/Dept/Staff/ID"
-          value={search}
-          onChangeText={data => {
-            setSearch(data);
-          }}
-          style={{
-            width: '65%',
-            paddingVertical: 5,
-            fontSize: 16,
-          }}
-        />
-        {search !== '' ? (
-          <TouchableOpacity
-            style={{borderRadius: 8, marginLeft: -20, alignSelf: 'center'}}
-            onPress={() => {
-              emptyList();
-            }}>
-            <Ionicons
-              style={styles.searchIcon}
-              name="close-circle-outline"
-              size={25}
-              color={GlobalColor.Secondary}
-            />
-          </TouchableOpacity>
-        ) : null}
-        <TouchableOpacity
-          onPress={() => {
-            SearchEmployee();
-          }}
-          style={{
-            width: '15%',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Ionicons name="send" size={20} color={GlobalColor.Secondary} />
-        </TouchableOpacity>
-      </View>
-      {loader == true ? (
-        <Spinner
-          visible={loader}
-          textContent={'Loading...'}
-          textStyle={styles.spinnerTextStyle}
-        />
-      ) : null}
-      {employ.length > 0 ? (
+    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
+      <HeaderMgr title={"Attendance Percentage"} back/>
+      <View style={{ flex:1, paddingHorizontal:10 }}>
         <FlatList
-          data={employ}
-          keyExtractor={({item, index}) => index}
-          ListEmptyComponent={() => {
-            return (
-              <ListEmptyComponent title="No Data Found"></ListEmptyComponent>
-            );
-          }}
-          renderItem={({item, index}) => {
+          contentContainerStyle={{ flexGrow: 1 }}
+          data={Attendance}
+          ListEmptyComponent={() =>  <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => GetAttendancePercentageYearwise(true)} refreshing={refresh} ></ListEmptyComponent>}
+          keyExtractor={({ item, index }) => index}
+          renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
-                style={[styles.FlatListData]}
-                onPress={() => {
-                  console.log(item);
-                  navigation.navigate('ManagerAttandancePercentage', {
-                    data: Decrypt(item['Staff No']),
-                  });
-                }}>
-                <Ionicons
-                  style={styles.searchIcon}
-                  name="person-circle-outline"
-                  size={25}
-                  color={GlobalColor.Secondary}
-                />
-                <View style={{flexDirection: 'column', width: '70%'}}>
-                  <Text style={{fontSize: 16}}>{Decrypt(item.Name)}</Text>
-                  <Text>
-                    {Decrypt(item.Desg)} , {Decrypt(item.Dept)} ({Decrypt(item['Staff No'])})
-                  </Text>
-                </View>
-                <TouchableOpacity>
-                  <Ionicons
-                    style={styles.searchIcon}
-                    name="chevron-forward-circle-outline"
-                    size={25}
-                    color={GlobalColor.Secondary}
-                  />
-                </TouchableOpacity>
+                style={styles.canteen}>
+                <Text style={{fontSize: 13}}>Financial year {item.MATT_FNYR_YEAR}</Text>
+                <Text style={{fontSize: 13}}>{item.MATT_PERCENT}%</Text>
               </TouchableOpacity>
-            );
+            )
           }}
         />
-      ) : (
-        <ListEmptyComponent title="No Data Found"></ListEmptyComponent>
-      )}
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
+// define your styles
 const styles = StyleSheet.create({
-  Loadercontainer: {
-    flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
-    paddingHorizontal: 10,
-  },
-
   gradient: {
     padding: 20,
   },
-  tabsContainerStyle: {
-    marginTop: 10,
-    borderRadius: 0,
-    width: '100%',
-  },
-  tabStyle: {
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderRadius: 0,
-    borderColor: GlobalColor.Secondary,
-  },
-  tabTextStyle: {
-    fontSize: GlobalFontSize.P,
-    color: 'grey',
-    fontFamily: 'Roboto-Bold',
-  },
-  activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
-    borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
-  },
-  activeTabTextStyle: {
-    color: GlobalColor.Secondary,
-  },
-  reportHeader: {
-    width: '100%',
-    flexDirection: 'row',
-    alignSelf: 'center',
-    justifyContent: 'space-between',
-    padding: 5,
-    paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.18,
-    shadowRadius: 2.0,
-    elevation: 5,
-    borderRadius: 5,
-  },
-  reportStyle: {
-    width: '100%',
-    flexDirection: 'row',
-    alignSelf: 'center',
-    justifyContent: 'space-between',
-    marginTop: 8,
-    padding: 12,
-    backgroundColor: GlobalColor.White,
-    borderBottomWidth: 0.5,
-    borderBottomColor: GlobalColor.Secondary,
-    shadowColor: GlobalColor.Black,
-    shadowOffset: {
-      width: -0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-
-  activeTabTextStyle: {
-    color: GlobalColor.Secondary,
-  },
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
   },
-
-  searchIcon: {
-    padding: 10,
-  },
-  input: {
-    width: '77%',
-    paddingTop: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
-    paddingLeft: 0,
-    backgroundColor: GlobalColor.White,
-    color: '#424242',
-  },
-  FlatListData: {
+  canteen: {
+    marginVertical: 10,
     width: '100%',
-    flexDirection: 'row',
+    backgroundColor: '#fff',
     alignSelf: 'center',
+    padding: 10,
+    paddingVertical:15,
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 5,
-    marginTop: 10,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#000',
     shadowOffset: {
-      width: -0,
-      height: 1,
+      width: 0,
+      height: 4,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 5,
-    borderRadius: 3,
-  },
-  header: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
-    marginTop: 10,
-    padding: 10,
-    paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-  },
-  spinnerTextStyle: {
-    color: GlobalColor.White,
-  },
-  fullWidthButton: {
-    backgroundColor: GlobalColor.Primary,
-    paddingVertical: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  fullWidthButtonText: {
-    color: GlobalColor.White,
-    marginLeft: 8,
-  },
-  SearchInput: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderWidth: 1,
-    borderColor: GlobalColor.Secondary,
-    borderRadius: 3,
-    alignSelf: 'center',
-    marginBottom: 7,
-    backgroundColor: GlobalColor.White,
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
+    borderRadius: 0,
+    borderLeftWidth: 5,
+    borderLeftColor: ThemeColor.Forest,   
+    marginBottom:2,
   },
 });
 
+// //make this component available to the app
 export default ManagerAttandance;

@@ -12,7 +12,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
+import { IconBadge } from '../../components/icons/AppIcon';
 import Text from '../../components/reusable/Text';
 
 
@@ -35,7 +36,7 @@ const Hospital = ({ locationName }) => {
       setLoader(false);
       setrefresh(false);
     } catch(error){
-        console.log(error)
+// $&
     }
 }
 
@@ -58,7 +59,7 @@ const Hospital = ({ locationName }) => {
     ApiService.PostMethode('/GetHospList', apiData, token, authContext)
       .then(result => {
         setFilterModal(false);
-        console.log("setHospitallList", result);
+// $&
         setLoader(false);
         let ApiValue = result.Value
         setHospitallList(ApiValue)
@@ -66,7 +67,7 @@ const Hospital = ({ locationName }) => {
       .catch(error => {
         setFilterModal(false);
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -79,15 +80,15 @@ const Hospital = ({ locationName }) => {
     ApiService.PostMethode('/GetHospLocn', apiData, token, authContext)
       .then(result => {
         setLoader(false);
-        // console.log("Apiresult",result);
+        // // console.log($1);
         let ApiValue = result.Value
-        console.log("setHospitalLoc", ApiValue);
+// $&
         setHospitalLoc(ApiValue)
         setFilterModal(true)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -129,10 +130,7 @@ const Hospital = ({ locationName }) => {
                 />
               </TouchableOpacity>
               <View style={{ alignItems: 'center' }}>
-                <Image
-                  source={require('../../assets/Images/hospitalnew.png')}
-                  style={styles.modalImage}
-                />
+                <IconBadge name="hospital" size={72} iconSize={36} round style={styles.modalImage} />
                 <Text Bold>
                   {modalItem.HOSP_NAME}
                 </Text>
@@ -144,13 +142,13 @@ const Hospital = ({ locationName }) => {
                       Linking.openURL(`tel:${modalItem.HOSP_PHONE_NO}`)
                     }}
                   >
-                    <Feather name="phone-call" size={30} color={GlobalColor.Secondary} />
+                    <Feather name="phone-call" size={30} color={ThemeColor.Teal} />
                   </TouchableOpacity>
                   <TouchableOpacity
                      onPress={() => {
                       Linking.openURL(`http://maps.google.com/maps?saddr=&daddr=${modalItem.ADDR}`)
                     }}>
-                  <FontAwesome5 name='map-marked-alt' size={30} color={GlobalColor.Secondary}/>
+                  <FontAwesome5 name='map-marked-alt' size={30} color={ThemeColor.Teal}/>
                   </TouchableOpacity>
                 </View>
 
@@ -173,7 +171,7 @@ const Hospital = ({ locationName }) => {
                 <Feather
                   name="x-circle"
                   color={GlobalColor.Primary}
-                  size={25}             
+                  size={20}             
                 />
               </TouchableOpacity>
 
@@ -182,12 +180,12 @@ const Hospital = ({ locationName }) => {
                   GetHospListApi()
                 }}
                 style={{paddingVertical:10 }}>
-                <Text Bold style={{ fontSize: 16, paddingHorizontal: 10, color:GlobalColor.Primary }}>Clear Filter</Text>
+                <Text Bold style={{ fontSize: 14, paddingHorizontal: 10, color:GlobalColor.Primary }}>Clear Filter</Text>
               </TouchableOpacity>
 
 
 
-              <View style={{ paddingHorizontal:10, marginTop:20, flex:1 }}>
+              <View style={{ paddingHorizontal:10, marginTop:20, flex:1, }}>
                 <FlatList
                   contentContainerStyle={{ flexGrow:1 }}
                   data={hospitalLoc}
@@ -205,7 +203,7 @@ const Hospital = ({ locationName }) => {
                           GetHospListApi(item.LOCN_DESC)
                         }}
                         style={{ borderBottomWidth: 0.5, borderBottomColor:GlobalColor.Secondary, paddingVertical:10 }}>
-                        <Text Bold style={{ fontSize: 16, paddingHorizontal: 0 }}>{item.LOCN_DESC}</Text>
+                        <Text Bold style={{ fontSize: 13, paddingHorizontal: 0 }}>{item.LOCN_DESC}</Text>
                       </TouchableOpacity>
                     )
                   }} />
@@ -219,7 +217,7 @@ const Hospital = ({ locationName }) => {
             <TouchableOpacity onPress={() => GetHospLocnApi()}>
               <Ionicons
                 name="ios-filter"
-                size={25}
+                size={22}
                 color={GlobalColor.Primary}                
               />
             </TouchableOpacity>
@@ -229,7 +227,7 @@ const Hospital = ({ locationName }) => {
 
 
           <FlatList
-            contentContainerStyle={{ flexGrow:1 }}
+            contentContainerStyle={{ flexGrow:1,paddingVertical:"2%"}}
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={() => {
               return (
@@ -237,6 +235,7 @@ const Hospital = ({ locationName }) => {
               )
             }}
             data={hospitalList}
+            style={{marginBottom:"45%"}}
             keyExtractor={( item, index ) => index.toString()}
             renderItem={({ item, index }) => (
               <View style={styles.box}>
@@ -246,17 +245,17 @@ const Hospital = ({ locationName }) => {
                     setModalVisible(true);
                   }}
                   style={{ flex:1}}>
-                  <Text Bold style={{ fontSize: 16 }}>
+                  <Text Bold style={{ fontSize: 13 }}>
                     {item.HOSP_NAME}
                   </Text>
-                  <Text style={{ color: '#000' }}>{item.ADDR}</Text>
+                  <Text style={{ color: '#000',fontSize:13 }}>{item.ADDR}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{ width: '10%' }}
                   onPress={() => {
                     Linking.openURL(`tel:${item.HOSP_PHONE_NO}`)
                   }}>
-                  <Feather name="phone-call" size={20} color={'#4174D0'} />
+                  <Feather name="phone-call" size={17} color={ThemeColor.Teal} />
                 </TouchableOpacity>
               </View>
             )}
@@ -326,8 +325,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   modalImage: {
-    width: 80,
-    height: 80,
     marginVertical: 10
   },
   modalIcon: {

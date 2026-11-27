@@ -3,7 +3,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import React, { useState } from 'react';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
 import Text from '../../../components/reusable/Text';
-import { GlobalColor } from '../../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../../constants/Colors';
 import Collapsible from 'react-native-collapsible';
 // import Accordion from 'react-native-collapsible/Accordion';
 const Accordion = ({ data, name, handleDropDown, isOpen }) => {
@@ -15,7 +15,7 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
           setLoader(false);
           setrefresh(false);
         } catch(error){
-            console.log(error)
+// $&
         }
     }    
 
@@ -23,8 +23,8 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
         <View style={{paddingHorizontal:0, flex:1}}>
         <View style={styles.lunchBoxContainer}>
             <TouchableOpacity style={styles.lunchBox} onPress={() => handleDropDown()}>
-                <Text Bold> {name} </Text>
-                <Ionicons name={isOpen == true ? 'ios-chevron-up' : 'ios-chevron-down'} size={20} />
+                <Text style={{fontSize:13}} Bold> {name} </Text>
+                <Ionicons name={isOpen == true ? 'ios-chevron-up' : 'ios-chevron-down'} size={18} color={ThemeColor.Teal} />
             </TouchableOpacity>
             <Collapsible collapsed={!isOpen}>
             <View style={styles.AccordionTab}>
@@ -43,14 +43,21 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
                                     
                                     return (
                                         <View>
-                                            <Text >{item.CANT_SHFT} SHIFT </Text>
-                                            <Text style={{marginTop: 10 }}>{item.CANT_ITEM1}</Text>
-                                            <Text >{item.CANT_ITEM2}</Text>
-                                            <Text >{item.CANT_ITEM3}</Text>
-                                            <Text >{item.CANT_ITEM4}</Text>
-                                            <Text >{item.CANT_ITEM5}</Text>
-                                            <Text >{item.CANT_ITEM6}</Text>
-                                            <Text style={{marginBottom: 30 }}>{item.CANT_ITEM7}</Text>
+                                            <Text style={{fontSize:13}} >{item.CANT_SHFT} SHIFT </Text>
+                                            <Text style={{marginTop: 10,fontSize:13 }}>{item.CANT_ITEM1}</Text>
+                                            <Text style={{fontSize:13}} >{item.CANT_ITEM2}</Text>
+                                            <Text style={{fontSize:13}} >{item.CANT_ITEM3}</Text>
+                                            <Text style={{fontSize:13}} >{item.CANT_ITEM4}</Text>
+                                            <Text style={{fontSize:13}} >{item.CANT_ITEM5}</Text>
+                                            <Text  style={{fontSize:13}} >{item.CANT_ITEM6}</Text>
+                                            <Text style={{fontSize:13 }}>{item.CANT_ITEM7}</Text>
+                                            {item.CANT_ITEM8 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM8}</Text>}
+                                            {item.CANT_ITEM9 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM9}</Text>}
+                                            {item.CANT_ITEM10 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM10}</Text>}
+                                            {item.CANT_ITEM11 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM11}</Text>}
+                                            {item.CANT_ITEM12 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM12}</Text>}
+                                            {item.CANT_ITEM13 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM13}</Text>}
+                                            {item.CANT_ITEM14 == null ? null : <Text  style={{fontSize:13}} >{item.CANT_ITEM14}</Text>}
                                         </View>
                                     )
                                 }
@@ -122,7 +129,7 @@ const styles = StyleSheet.create({
     AccordionTab: {
         padding: 15,
         borderTopWidth: 1.5,
-        borderColor:GlobalColor.Secondary
+        borderColor:ThemeColor.Teal
     },
     lunchBox: {
         flexDirection: 'row',        

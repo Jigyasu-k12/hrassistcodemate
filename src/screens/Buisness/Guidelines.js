@@ -9,7 +9,7 @@ import { Header } from '../../components/reusable/Header';
 const Guidelines = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' ,marginBottom:"30%"}}>
                 <Image style={{ height:450, width: '90%', alignSelf: 'center',resizeMode:'contain' }} source={require('../../assets/Images/guidelineimage.png')} />
             </View>
         </SafeAreaView>

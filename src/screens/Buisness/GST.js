@@ -7,7 +7,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../Utils/Utils';
 import AuthContext from '../../context/AuthContext';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import TextInput from '../../components/reusable/TextInput'
 import { Header } from '../../components/reusable/Header';
@@ -31,7 +31,7 @@ const Gst = ({ navigation }) => {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
@@ -44,12 +44,12 @@ const Gst = ({ navigation }) => {
       .then(result => {
         setLoader(false);
         let ApiValue = result.Value
-        console.log("setGst", ApiValue);
+// $&
         setGst(ApiValue)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -64,7 +64,7 @@ const Gst = ({ navigation }) => {
       });
       setFilteredDataSource(NewData);
       setSearchText(text);
-      console.log("newData", NewData);
+// $&
     }
     else {
       setFilteredDataSource(gst);
@@ -106,12 +106,12 @@ const Gst = ({ navigation }) => {
         <Ionicons
           style={styles.searchIcon}
           name="ios-search"
-          size={25}
-          color="#b2bec3"
+          size={22}
+          color={ThemeColor.Teal}
         />
 
         <TextInput
-          placeholder="Search By StateName"
+          placeholder="Search By State Name"
           secureTextEntry={false}
           // autoCapitalize='characters'
           onChangeText={(text) => {
@@ -123,7 +123,8 @@ const Gst = ({ navigation }) => {
 
       {/* FLATLIST */}
       <FlatList
-      style={{flexGrow:1,}}
+      style={{flexGrow:1,marginBottom:"30%"}}
+
         showsVerticalScrollIndicator={false}
         data={filteredDataSource.length == 0 ? gst : filteredDataSource}
         contentContainerStyle={{ flexGrow:1 }}
@@ -135,17 +136,17 @@ const Gst = ({ navigation }) => {
               <TouchableOpacity style={styles.TouchableOpacity}>
                 <View
                   style={styles.HeadingContainer}>
-                  <Text style={{ fontSize: 16, color: GlobalColor.White, padding: 10, }}>
+                  <Text style={{ fontSize: 13, color: GlobalColor.White, padding: 10, }}>
                     {item.MAPP_GSTN_STATE_NAME}
                   </Text>
                 </View>
                 <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
                   <Text style={styles.GStBox}>GST Number</Text>
-                  <Text style={{ color: GlobalColor.Black }}>{item.MAPP_GSTN_REG_NO}</Text>
+                  <Text style={{ color: GlobalColor.Black,fontSize:13 }}>{item.MAPP_GSTN_REG_NO}</Text>
                   <Text style={styles.GStBox}>Company Name</Text>
-                  <Text style={{ color: GlobalColor.Black }}>{item.MAPP_GSTN_COMPANY_NAME}</Text>
+                  <Text style={{ color: GlobalColor.Black ,fontSize:13 }}>{item.MAPP_GSTN_COMPANY_NAME}</Text>
                   <Text style={styles.GStBox}>Address</Text>
-                  <Text style={{ color: GlobalColor.Black }}>{item.MAPP_GSTN_ADDRESS}</Text>
+                  <Text style={{ color: GlobalColor.Black,fontSize:13  }}>{item.MAPP_GSTN_ADDRESS}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
   },
   HeadingContainer:{
     width: '100%',
-    backgroundColor: GlobalColor.PrimaryGradient,
+    backgroundColor: ThemeColor.Teal,
     alignSelf: 'center',
     overflow: 'hidden',
     borderTopLeftRadius: 8,
@@ -221,7 +222,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   GStBox: {
-    fontSize: 16,
+    fontSize: 13,
     color: GlobalColor.LightDark,
     paddingVertical: 10,
     paddingBottom: 5,

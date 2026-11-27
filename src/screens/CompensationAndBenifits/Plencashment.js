@@ -17,7 +17,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Text from '../../components/reusable/Text';
 import {Header} from '../../components/reusable/Header';
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import Button from '../../components/reusable/Button';
 import {LoadingScreen} from '../../components/reusable/LoadingScreen';
 import {showErrorMessage} from '../../Utils/Utils';
@@ -53,7 +53,7 @@ const Plencashment = ({navigation, route}) => {
         stopLoader();
 
         let ApiValue = result.Value;
-        console.log('setEncashment', ApiValue);
+// $&
         {
           ApiValue.map(item => {
             return setEncashment(item);
@@ -65,7 +65,7 @@ const Plencashment = ({navigation, route}) => {
         // Stop Loader
         stopLoader();
 
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
 
         //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
@@ -74,38 +74,50 @@ const Plencashment = ({navigation, route}) => {
 
   const SubmitPLEncashmentApi = () => {
     let token = AppUserData.token;
-    // let userId = AppUserData?.data?.userId;
+  
     let apiData = {
       UserName: AppUserData?.data?.username,
       Encashdays: encashDays,
     };
-    console.log('token', token)
-    console.log("SubmitPLEncashmentApiapiData", apiData);
-    // return
+  
+    // Validation: encashDays should not be negative
+    if (encashDays < 0) {
+      Alert.alert('Error', 'Encashment days cannot be negative.');
+      return;
+    }
+  
+    // Validation: encashDays should be in increments of 0.5
+    if (encashDays % 0.5 !== 0) {
+      Alert.alert(
+        'Error',
+        'Encashment days must be in increments of 0.5 (e.g., 0.5, 1.0, 1.5, etc.).'
+      );
+      return;
+    }
+  
+    // ✅ Validation: encashDays should have at most two decimal digits
+    const decimalCheck = encashDays.toString().split('.');
+    if (decimalCheck[1] && decimalCheck[1].length > 2) {
+      Alert.alert('Error', 'Encashment days can have at most two decimal places.');
+      return;
+    }
+  
     setLoader(true);
+  
     ApiService.PostMethode('/SubmitPLEncashment', apiData, token, authContext)
       .then(result => {
-        // console.log("SubmitPLEncashmentApi", result);
-
-        // Stop Loader
         stopLoader();
         Alert.alert('Payroll', result.Result);
         InitPLEncashmenApi();
         ReportPL();
-        // createTwoButtonAlert(result.Result)
-
-        // setResult(ApiValue)
       })
       .catch(error => {
-        // Stop Loader
         stopLoader();
-
-        // console.log('Error occurred==>', error);
-
-        //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
       });
   };
+  
+   
 
   //   LTA ENCASHMENT API
   const InitMEDEncashment = () => {
@@ -121,13 +133,13 @@ const Plencashment = ({navigation, route}) => {
         // Stop Loader
         stopLoader();
         let ApiValue = result.Value;
-        console.log('InitMEDEncashment', ApiValue);
+// $&
         setLta(ApiValue);
       })
       .catch(error => {
         // Stop Loader
         stopLoader();
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
       });
@@ -142,10 +154,10 @@ const Plencashment = ({navigation, route}) => {
     setLoader(true);
     ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
-        console.log('Get Financial Year .....', result.Value);
+// $&
         setLoader(false);
         if (result.Value) {
-          console.log('====================================', result.Value);
+// $&
 
           setFinancialYear(result.Value.Table1);
           if (result.Value && result.Value.Table1[0].FNYR_YEAR) {
@@ -182,8 +194,8 @@ const Plencashment = ({navigation, route}) => {
                 .toString()
                 .substring(2, 4);
 
-            console.log('From Year', from);
-            console.log('TO Year', to);
+// $&
+// $&
             setYearFrom(from);
             setYearTo(to);
           }
@@ -193,7 +205,7 @@ const Plencashment = ({navigation, route}) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -209,7 +221,7 @@ const Plencashment = ({navigation, route}) => {
 
     ApiService.PostMethode('/ReportLTC', apiData, token, authContext)
       .then(result => {
-        // console.log("ReportLTC", result);
+        // // console.log($1);
         // Stop Loader
         stopLoader();
         let ApiValue = result.Value;
@@ -219,7 +231,7 @@ const Plencashment = ({navigation, route}) => {
         // Stop Loader
         stopLoader();
 
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
 
         //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
@@ -236,17 +248,17 @@ const Plencashment = ({navigation, route}) => {
     setLoader(true);
     ApiService.PostMethode('/ReportPL', apiData, token, authContext)
       .then(result => {
-        console.log('ReportLTC', result);
+// $&
         // Stop Loader
         stopLoader();
         let ApiValue = result.Value;
-        console.log('Process sfdsfsfsDate', Decrypt(ApiValue.PROCESSDATE));
+// $&
         setPlreport(ApiValue);
       })
       .catch(error => {
         // Stop Loader
         stopLoader();
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
       });
@@ -271,7 +283,7 @@ const Plencashment = ({navigation, route}) => {
       {
         text: btnTxt,
         onPress: () => {
-          console.log(title);
+// $&
         },
       },
     ]);
@@ -288,7 +300,7 @@ const Plencashment = ({navigation, route}) => {
     // createTwoButtonAlert();
     ApiService.PostMethode('/SubmitLtcEnch', apiData, token, authContext)
       .then(result => {
-        // console.log("SubmitMEDEncashment", result);
+        // // console.log($1);
         // Stop Loader
         stopLoader();
         let ApiValue = result.Result;
@@ -300,7 +312,7 @@ const Plencashment = ({navigation, route}) => {
       .catch(error => {
         // Stop Loader
         stopLoader();
-        console.log('Error occurred==>', error);
+// $&
         //Show Error Massage
         ApiService.showErrorMessage(error, authContext);
       });
@@ -383,33 +395,34 @@ const Plencashment = ({navigation, route}) => {
                   marginBottom: 10,
                 }}>
                 <View style={styles.box}>
-                  <Text>Current balance</Text>
-                  <Text Bold>
+                  <Text style={{fontSize:15}}>Current balance</Text>
+                  <Text style={{fontSize:15}} Bold>
                     {Decrypt(encashment.PL_BAL) && Decrypt(encashment.PL_BAL)}
                   </Text>
                 </View>
                 <View style={styles.box}>
-                  <Text>Current year opening balance</Text>
-                  <Text Bold>
+                  <Text style={{fontSize:15}}>Current year opening balance</Text>
+                  <Text  style={{fontSize:15}} Bold>
                     {Decrypt(encashment.PL_CR_FWD) &&
                       Decrypt(encashment.PL_CR_FWD)}
                   </Text>
                 </View>
                 <View style={styles.box}>
-                  <Text>PL encashable</Text>
-                  <Text Bold>
+                  <Text style={{fontSize:15}}>PL encashable</Text>
+                  <Text style={{fontSize:15}} Bold>
                     {Decrypt(encashment.PL_ENCASHABLE) &&
                       Decrypt(encashment.PL_ENCASHABLE)}
                   </Text>
                 </View>
                 <View style={styles.box}>
-                  <Text>Encash</Text>
+                  <Text style={{fontSize:15}}>Encash</Text>
                   <TextInput
                     style={{
                       width: 50,
                       borderBottomWidth: 1,
                       fontWeight: 'bold',
                       textAlign: 'right',
+                      fontSize:15,
                     }}
                     keyboardType={'numeric'}
                     onChangeText={text => {
@@ -424,16 +437,17 @@ const Plencashment = ({navigation, route}) => {
                   onPress={() => {
                     encashmentData();
                   }}
+                  textStyle={{fontSize:15}}
                   title="CLAIM"></Button>
                 <Text style={{textAlign: 'center'}}>Report</Text>
                 <View style={styles.reportHeader}>
-                  <Text Bold>Process Date</Text>
-                  <Text Bold>Process Desc</Text>
-                  <Text Bold>Days</Text>
+                  <Text Bold style={{ fontSize: 15}}>Process Date</Text>
+                  <Text Bold style={{ fontSize: 15}}>Process Desc</Text>
+                      <Text Bold style={{ fontSize: 15}}>Days</Text>
                 </View>
 
                 {Plreport.length > 0 ? (
-                  <View>
+                  <View style={{ marginBottom:"35%"}}>
                     {Plreport &&
                       Plreport.map(item => {
                         console.log(
@@ -445,7 +459,7 @@ const Plencashment = ({navigation, route}) => {
                           Decrypt(item.PROCESS_DESCRIPTION),
                         );
                         return (
-                          <ScrollView>
+                          <ScrollView >
                             <TouchableOpacity
                               style={[
                                 styles.reportHeader,
@@ -462,9 +476,9 @@ const Plencashment = ({navigation, route}) => {
                               ]}>
                               {item.PROCESSDATE ==
                               'WqRbyBS9EWc/IkwRmHW68g==' ? (
-                                <Text></Text>
+                                <Text style={{fontSize:15}}></Text>
                               ) : (
-                                <Text>
+                                <Text style={{ fontSize: 15}}>
                                   {item.PROCESSDATE
                                     ? moment(Decrypt(item.PROCESSDATE)).format(
                                         'MM/DD/YYYY',
@@ -474,11 +488,11 @@ const Plencashment = ({navigation, route}) => {
                               )}
                               {item.PROCESS_DESCRIPTION ==
                               'WqRbyBS9EWc/IkwRmHW68g==' ? (
-                                <Text></Text>
+                                <Text style={{ fontSize: 13}}></Text>
                               ) : (
-                                <Text>{Decrypt(item.PROCESS_DESCRIPTION)}</Text>
+                                <Text style={{ fontSize: 13}}>{Decrypt(item.PROCESS_DESCRIPTION)}</Text>
                               )}
-                              <Text>{Decrypt(item.ENTRY_EARN_VALUE)}</Text>
+                              <Text style={{ fontSize: 13}}>{Decrypt(item.ENTRY_EARN_VALUE)}</Text>
                             </TouchableOpacity>
                           </ScrollView>
                         );
@@ -496,17 +510,17 @@ const Plencashment = ({navigation, route}) => {
                   <View>
                     {lta &&
                       lta.map(item => {
-                        console.log('MENT_FNYR_YEAR', item);
+// $&
                         return (
                           <>
                             <View
                               style={[styles.reportHeader, {marginTop: 15}]}>
-                              <Text>Financial Year</Text>
-                              <Text Bold>{Decrypt(item.MENT_FNYR_YEAR)}</Text>
+                              <Text style={{ fontSize: 13}}>Financial Year</Text>
+                              <Text Bold style={{ fontSize: 13}}> {Decrypt(item.MENT_FNYR_YEAR)}</Text>
                             </View>
                             <View style={[styles.reportHeader, {marginTop: 5}]}>
-                              <Text>Staff No</Text>
-                              <Text Bold>{Decrypt(item.MENT_EMPL_ID)}</Text>
+                              <Text style={{ fontSize: 13}}>Staff No</Text>
+                              <Text Bold style={{ fontSize: 13}}>{Decrypt(item.MENT_EMPL_ID)}</Text>
                             </View>
                           </>
                         );
@@ -515,18 +529,18 @@ const Plencashment = ({navigation, route}) => {
                 ) : (
                   <View>
                     <View style={styles.box}>
-                      <Text>Financial Year</Text>
+                      <Text style={{ fontSize: 13}}>Financial Year</Text>
                       {/* <Text>
                         {moment(YearFrom).format('YYYY')}-
                         {moment(YearTo).format('YYYY')}
                       </Text> */}
-                      <Text>
+                      <Text style={{ fontSize: 13}}>
                         {YearFrom.split('-')[2]}-{YearTo.split('-')[2]}
                       </Text>
                     </View>
                     <View style={styles.box}>
-                      <Text>Staff No</Text>
-                      <Text>{AppUserData?.data?.userId}</Text>
+                      <Text style={{ fontSize: 13}}>Staff No</Text>
+                      <Text style={{ fontSize: 13}}>{AppUserData?.data?.userId}</Text>
                     </View>
                   </View>
                 )}
@@ -537,13 +551,14 @@ const Plencashment = ({navigation, route}) => {
                     // SubmitMEDEncashmentApi();
                     createTwoButtonAlert();
                   }}
+                  style={{ fontSize: 13}}
                   title="ENCASH"></Button>
-                <Text style={{textAlign: 'center'}}>Report</Text>
+                <Text style={{textAlign: 'center',fontSize:13}}>Report</Text>
               </View>
               <View style={styles.reportHeader}>
-                <Text style={{ flex:0.5 }} Bold>Name</Text>
-                <Text style={{ flex:0.2 }} Bold>Year</Text>
-                <Text style={{ flex:0.3, textAlign:'right'}} Bold>Desc</Text>
+                <Text style={{ flex:0.5 ,fontSize:13}} Bold>Name</Text>
+                <Text style={{ flex:0.2,fontSize:13 }} Bold>Year</Text>
+                <Text style={{ flex:0.3,fontSize:13, textAlign:'right'}} Bold>Desc</Text>
               </View>
 
               {ltaReport.length > 0 ? (
@@ -565,9 +580,9 @@ const Plencashment = ({navigation, route}) => {
                               borderColor: GlobalColor.LightDark,
                             },
                           ]}>
-                          <Text style={{ flex:0.5 }}>{Decrypt(item.LTCF_FAML_NAME)}</Text>
-                          <Text style={{ flex:0.2 }}>{Decrypt(item.LTCF_YEARS)}</Text>
-                          <Text style={{ flex:0.3, textAlign:'right'}}>{Decrypt(item.RLTY_DESC)}</Text>
+                          <Text style={{ flex:0.5 , fontSize:13}}>{Decrypt(item.LTCF_FAML_NAME)}</Text>
+                          <Text style={{ flex:0.2 ,fontSize:13}}>{Decrypt(item.LTCF_YEARS)}</Text>
+                          <Text style={{ flex:0.3, fontSize:13, textAlign:'right'}}>{Decrypt(item.RLTY_DESC)}</Text>
                         </TouchableOpacity>
                       );
                     })}
@@ -590,6 +605,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: GlobalColor.PrimaryLight,
+   
   },
   box: {
     width: '100%',

@@ -18,7 +18,7 @@ import Toast from 'react-native-simple-toast'
 import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
@@ -41,7 +41,7 @@ const LeaveBalance = ({ navigation }) => {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
@@ -58,14 +58,14 @@ const LeaveBalance = ({ navigation }) => {
 
     ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
       .then(result => {
-        console.log("APiresult GetInitialLeave", result);
+// $&
         stopLoader(false);
         ApiResult=result.Value.Table1
         setItialLeave(ApiResult)
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -94,13 +94,14 @@ const LeaveBalance = ({ navigation }) => {
           contentContainerStyle={{ flexGrow: 1 }}
           ListEmptyComponent={() =>  <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => GetInitialLeave(true)} refreshing={refresh} ></ListEmptyComponent>}
           data={initialLeave}
+          style={{marginBottom:"10%"}}
           keyExtractor={({ item, index }) => index}
           renderItem={({ item, index }) => {
             return (
               <TouchableOpacity
                 style={styles.canteen}>
-                <Text>{item.TYPE}</Text>
-                <Text>{item.LEV_BAL}</Text>
+                <Text style={{fontSize:13}}>{item.TYPE}</Text>
+                <Text style={{fontSize:13}}>{item.LEV_BAL}</Text>
               </TouchableOpacity>
             )
           }}
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 0,
     borderLeftWidth: 5,
-    borderLeftColor: GlobalColor.Secondary,
+    borderLeftColor: ThemeColor.Teal,
     flexDirection: 'row',
   },
 });

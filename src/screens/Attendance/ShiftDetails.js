@@ -22,7 +22,7 @@ import Toast from 'react-native-simple-toast'
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { useFocusEffect } from '@react-navigation/native';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import TextInput2 from '../../components/reusable/TextInput';
@@ -77,14 +77,14 @@ const ShiftDetails = () => {
         setLoader(true);
         ApiService.PostMethode('/GetEmplShift', apiData, token, authContext)
             .then(result => {
-                console.log("GetEmplShift", result);
+// $&
                 setLoader(false);
                 let ApiResult = result.Value
                 setShiftData(ApiResult)
             })
             .catch(error => {
                 setLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -100,9 +100,9 @@ const ShiftDetails = () => {
             ) : null}
                    
                 <ScrollView
-                    style={{ paddingHorizontal: 10 }}
+                    style={{ paddingHorizontal: 10 ,marginBottom:"10%"}}
                     contentContainerStyle={{ flex: 1 }}>
-                    <Text style={{ paddingVertical: 10, paddingHorizontal: 0, fontSize: 16, fontWeight: '700' }}>
+                    <Text style={{ paddingVertical: 10, paddingHorizontal: 0, fontSize: 13, fontWeight: '700' }}>
                         Select Date
                     </Text>
                     <View
@@ -117,7 +117,7 @@ const ShiftDetails = () => {
                                 setFromDate(fromDate);
                                 let format = moment(fromDate).format('MMM Do YYYY');
                                 setTextinputDate(format);
-                                console.log(setTextinputDate);
+// $&
                             }}
                             onCancel={() => {
                                 setOpen(false);
@@ -132,12 +132,12 @@ const ShiftDetails = () => {
                             }}>
                             <TextInput2
                                 placeholder="From"
-                                style={{ color: '#000' }}
+                                style={{ color: '#000' ,fontSize:12}}
                                 editable={false}
                                 value={textinputDate}
                             />
                             <TouchableOpacity onPress={() => setOpen(true)}>
-                                <Ionicons name="calendar-outline" size={30} color={GlobalColor.Secondary} />
+                                <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
                             </TouchableOpacity>
                         </View>
                         <DatePicker
@@ -150,7 +150,7 @@ const ShiftDetails = () => {
                                 setToDate(toDate);
                                 let formatSecond = moment(toDate).format('MMM Do YYYY');
                                 setTextinputSecondDate(formatSecond);
-                                console.log(setTextinputSecondDate);
+// $&
                             }}
                             onCancel={() => {
                                 setSecond(false);
@@ -164,7 +164,7 @@ const ShiftDetails = () => {
                                 justifyContent: 'space-between',
                             }}>
                             <TextInput2
-                                style={{ color: '#000' }}
+                                style={{ color: '#000' ,fontSize:13}}
                                 placeholder="To"
                                 editable={false}
                                 value={textinputSecondDate}
@@ -172,7 +172,7 @@ const ShiftDetails = () => {
 
 
                             <TouchableOpacity onPress={() => setSecond(true)}>
-                                <Ionicons name="calendar-outline" size={30} color={GlobalColor.Secondary} />
+                                <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -183,6 +183,7 @@ const ShiftDetails = () => {
                                 GetEmplShift()
                             }}
                             title={"Submit"}
+                            style={{fontSize:13}}
                         ></Button>
                     </View>
 
@@ -199,39 +200,40 @@ const ShiftDetails = () => {
                         }}>
                         <DataTable.Header style={{ backgroundColor: '#fff' }}>
                             <DataTable.Title>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: GlobalFontSize.Small }}>Date</Text>
+                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>Date</Text>
                             </DataTable.Title>
                             <DataTable.Title numeric>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: GlobalFontSize.Small }}>
-                                    In
+                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>
+                                In
                                 </Text>
                             </DataTable.Title>
                             <DataTable.Title numeric>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: GlobalFontSize.Small }}>
+                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>
                                     Out
                                 </Text>
                             </DataTable.Title>
                             <DataTable.Title numeric>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: GlobalFontSize.Small }}>Shift</Text>
+                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>Shift</Text>
                             </DataTable.Title>
                         </DataTable.Header>
 
                         <FlatList
                             data={shiftData}
+                            style = {{marginBottom:210,marginTop:10}}
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={({ item }) => (
                                 <View style={[styles.dataRow, { alignItems: 'center' }]}>
                                     <View style={{ flexDirection: 'column' }}>
-                                        <Text>{item.START_DATE}</Text>
-                                        <Text>To</Text>
-                                        <Text>{item.END_DATE}</Text>
+                                        <Text style={{fontSize:13}}>{item.START_DATE}</Text>
+                                        <Text style={{fontSize:13}}>To</Text>
+                                        <Text style={{fontSize:13}}>{item.END_DATE}</Text>
                                     </View>
 
-                                    <Text>{item.STD_START}</Text>
+                                    <Text style={{fontSize:13}}>{item.STD_START}</Text>
 
-                                    <Text>{item.STD_STOP}</Text>
+                                    <Text style={{fontSize:13}}>{item.STD_STOP}</Text>
 
-                                    <Text style={{ marginRight: 10 }}>{item.SHIFT}</Text>
+                                    <Text style={{ marginRight: 10 ,fontSize:13}}>{item.SHIFT}</Text>
                                 </View>
                             )}
                         />

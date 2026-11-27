@@ -1,196 +1,162 @@
-//import liraries
-import React, { useEffect, useState, useContext } from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, FlatList, SafeAreaView } from 'react-native';
+//import libraries
+import React, { useState, useContext, useEffect } from 'react';
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import PFWithdrawal from './PFWithdrawal';
+import PFReport from './PFReport';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
+import { GlobalFontSize } from '../../constants/FontSize';
+import Text from '../../components/reusable/Text';
 import AuthContext from '../../context/AuthContext';
 import * as ApiService from '../../Utils/Utils';
-import Text from '../../components/reusable/Text';
-import { GlobalColor } from '../../constants/Colors';
-import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
-import { showErrorMessage } from '../../Utils/Utils';
-import { Header } from '../../components/reusable/Header';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
-import { Decrypt } from '../../Service/Helper';
-import moment from 'moment';
 
+const Tab = createMaterialTopTabNavigator();
 
-const PFBalance = () => {
-    const [loader, setLoader] = useState(false)
-    const [taxData, setTaxData] = useState([]);
-    const [taxSaving, setTaxSaving] = useState();
-    const [month, setMonth] = useState();
-    const [employeePf, setEmployeePf] = useState();
-    const [employerPf, setEmployerPf] = useState();
-    const [netBalance, setNetBalance] = useState();
-    const { authContext, AppUserData } = useContext(AuthContext);
-    const [refresh, setrefresh] = useState(false);
+const PFBalance = ({ navigation }) => {
+  const [route, setRoute] = useState("PF Withdrawal");
+  const { authContext, AppUserData } = useContext(AuthContext);
 
-    const [isModalVisible, setModalVisible] = useState(false);
-    const [taxModalVisible, setTaxModalVisible] = useState(false);
-    const [pfModalVisible, setPfModalVisible] = useState(false);
-    const [savingModalVisible, setSevingModalVisible] = useState(false);
+  // ---------- Screen Open Configuration ----------
+  const [isPFEnabled, setIsPFEnabled] = useState(false);
+  const [screenConfigLoader, setScreenConfigLoader] = useState(true);
 
-    const stopLoader = () => {
-        setLoader(false);
-        setrefresh(false);
-    }
+  const tabBarListeners = ({ navigation, route }) => ({
+    tabPress: () => {
+      setRoute(route.name);
+    },
+  });
 
-   // // Pf Balance Api 
-  const PfBalance = async (year) => {
-    //set Loader
-    setLoader(true);
-
+  // ---------- Check if PF screen should be shown ----------
+  const checkPFScreenOpen = async () => {
+    setScreenConfigLoader(true);
     try {
+      let result = await ApiService.PostMethode('/GetLOVM', {
+        "SystemName": "PFAUTOMATION",
+        "ReportName": "HR-ASSIST",
+        "LOVName": "SCREEN_OPEN",
+        "LOVCode": "",
+        "UserName": AppUserData?.data?.userId
+      }, AppUserData.token, authContext);
 
-      //get Api Data
-      let result = await ApiService.PostMethode('/GetPFStatement', {
-        "EmplID": AppUserData?.data?.userId,
-        "FNYR": year
-      }, AppUserData.token)
+      setScreenConfigLoader(false);
 
-      //stop Loader
-      stopLoader();
-      if(result.Value){
-        console.log(result.Value);
-        //Set Data
-        let CB1_CB2 = Decrypt(result.Value.Table3[0].PFST_CB1_CB2)
-        let PFST_MUL_CB3 = Decrypt(result.Value.Table3[0].PFST_MUL_CB3)
-        let NetBalance = parseFloat(CB1_CB2) + parseFloat(PFST_MUL_CB3);
-
-        console.log(NetBalance, "|",CB1_CB2,  "|", PFST_MUL_CB3)
-
-        setEmployeePf(CB1_CB2)
-        setEmployerPf(PFST_MUL_CB3)
-        setNetBalance(parseFloat(NetBalance).toFixed(2))
+      if (result.Value && result.Value.length > 0) {
+        const screenConfig = result.Value.find(item => item.LOVM_LOV_NAME === 'SCREEN_OPEN');
+        if (screenConfig && screenConfig.LOVM_VALUE_CODE === 'Y') {
+          setIsPFEnabled(true);
+        } else {
+          setIsPFEnabled(false);
+        }
+      } else {
+        setIsPFEnabled(false);
       }
-
     } catch (error) {
-      //stop Loader
-      stopLoader()
-      //Show Error Massage
+      setScreenConfigLoader(false);
+      setIsPFEnabled(false);
       ApiService.showErrorMessage(error, authContext);
-      
     }
   };
 
-    useEffect(() => {
-        // PfBalance()
-        getfinancialyear();
-    }, []);
+  useEffect(() => {
+    checkPFScreenOpen();
+  }, []);
 
-
-    // useFocusEffect(
-    //     React.useCallback(() => {
-    //       const unsubscribe = getfinancialyear();
-    //       return () => unsubscribe;
-    //     }, []),
-    //   );
-    
-      const getfinancialyear = () => {
-        let apiData = {
-          UserName: AppUserData?.data?.username,
-        };
-        // AppUserData?.data?.userId 222852
-        let token = AppUserData.token;
-        setLoader(true);
-        ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
-          .then(result => {
-            console.log('get year financial', result.Value.Table1);
-            stopLoader(false);
-            if (result.Value) {
-            //   setFinancialYear(result.Value.Table1);
-              if (result.Value && result.Value.Table1[0].FNYR_YEAR) {
-                PfBalance(Decrypt(result.Value.Table1[0].FNYR_YEAR));
-              }
-            } else {
-              Toast.show('No Leave type found');
-            }
-          })
-          .catch(error => {
-            stopLoader(false);
-            // console.log('Error occurred==>', error);
-            ApiService.showErrorMessage(error, authContext);
-          });
-      };
-
-
-
-
-
-
-
-    if(loader){
-        return(
-            <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
-                <Header title="PF Balance" back/>
-                <LoadingScreen/>
-            </SafeAreaView>          
-        )
-      }
-
-    return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
-            <Header title="PF Balance" back />
-            <View style={[styles.MainCard, { padding: 10,backgroundColor: GlobalColor.White }]}>
-                <View>
-                    <View style={styles.textContainer}>
-                        <Text Bold >Employee's</Text>
-                        <Text Bold>
-                            Rs.{employeePf}
-                        </Text>
-                    </View>
-                    <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:GlobalColor.Secondary,}}/>
-                    <View style={styles.textContainer}>
-                        <Text Bold >Employer's</Text>
-                        <Text Bold>
-                            Rs.{employerPf}
-                        </Text>
-                    </View>
-                    <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:GlobalColor.Secondary,}}/>
-                    <View style={styles.textContainer2}>
-                        <Text Bold style={{fontSize:19}}>Net Balance</Text>
-                        <Text Bold style={{fontSize:19}}>
-                            Rs.{netBalance}
-                        </Text>
-                    </View>
-                </View>
+  return (
+    <SafeAreaView style={{ flex: 1, width: '100%', position: 'relative' }}>
+      <LinearGradient
+        colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.container}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: 40,
+              alignItems: 'center',
+            }}>
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: 40,
+              alignItems: 'center',
+            }}>
+              <Ionicons
+                name="chevron-back-outline"
+                size={25}
+                color={'white'}
+                onPress={() => navigation.goBack()}
+              />
+              <Ionicons
+                name="menu-outline"
+                size={20}
+                color={'white'}
+                onPress={() => navigation.openDrawer()}
+              />
             </View>
-        </SafeAreaView>
-    )
-}
+          </View>
 
-export default PFBalance
+          <Text
+            Bold
+            style={{
+              color: '#fff',
+              fontSize: GlobalFontSize.H4,
+              marginLeft: 15,
+            }}>
+            Bhavishya Sanchaya (PF)
+          </Text>
+        </View>
+      </LinearGradient>
 
+      <LinearGradient
+        colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.mystyl}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Tab.Navigator
+            swipeEnabled={false}
+            screenOptions={{
+              tabBarScrollEnabled: true,
+              tabBarLabelStyle: { fontSize: 13, fontWeight: '700' },
+              tabBarActiveTintColor: '#fff',
+              tabBarItemStyle: { paddingHorizontal: 15, width: 'auto' },
+              tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
+              tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+              tabBarAllowFontScaling: false,
+            }}>
+            <Tab.Screen name="PF Withdrawal" component={PFWithdrawal} listeners={tabBarListeners} />
+            {!screenConfigLoader && isPFEnabled && (
+              <Tab.Screen name="Activity Log" component={PFReport} listeners={tabBarListeners} />
+            )}
+          </Tab.Navigator>
+        </View>
+      </LinearGradient>
+
+    </SafeAreaView>
+  );
+};
+
+// define your styles
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    paddingVertical: 20,
+    padding: 10,
+  },
+  mystyl: {
+    backgroundColor: 'transparent',
+    height: '83%',
+    flexDirection: 'row',
+  },
+});
 
-    textContainer: {
-        width: '90%',
-        flexDirection: 'row',
-        alignSelf: 'center',
-        justifyContent: 'space-between',
-        marginVertical: 15,
-
-    },
-    textContainer2:{
-        width: '90%',
-        flexDirection: 'row',
-        alignSelf: 'center',
-        justifyContent: 'space-between',
-        marginVertical: 13,
- 
-    },
-    MainCard: {
-
-        margin: 10,
-        shadowColor: GlobalColor.Black,
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.18,
-        shadowRadius: 3.0,
-        elevation: 3,
-        borderRadius: 4,
-    }
-
-
-})
+export default PFBalance;

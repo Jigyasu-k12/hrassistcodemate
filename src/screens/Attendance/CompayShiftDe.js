@@ -18,7 +18,7 @@ import Toast from 'react-native-simple-toast'
 import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
@@ -41,7 +41,7 @@ const CompayShiftDe = ({ navigation }) => {
             setLoader(false);
             setrefresh(false);
         } catch (error) {
-            console.log(error)
+// $&
         }
     }
 
@@ -57,14 +57,14 @@ const CompayShiftDe = ({ navigation }) => {
         };
         ApiService.PostMethode('/CompanyShiftMaster', apiData, token, authContext)
             .then(result => {
-                console.log("APiresult CompanyShiftMaster", result);
+// $&
                 stopLoader(false);
                 ApiResult = result.Value
                 setCompanyShiftMaster(ApiResult)
             })
             .catch(error => {
                 stopLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -85,7 +85,7 @@ const CompayShiftDe = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
             {/* <Header title={"Company Shift Details"} back /> */}
-            <View style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight, paddingHorizontal: 10, paddingTop: 10 }}>
+            <View style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight, paddingHorizontal: 10, paddingTop: 10,marginBottom:"10%" }}>
 
                 <FlatList
                     contentContainerStyle={{ flexGrow: 1, paddingVertical: 5 }}
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         backgroundColor: GlobalColor.White,
         borderWidth: 1,
-        borderColor: GlobalColor.Secondary,
+        borderColor: ThemeColor.Teal,
         borderRadius: 5,
         padding: 10,
         marginBottom: 10
@@ -209,7 +209,8 @@ const styles = StyleSheet.create({
     },
     cardValueRight: {
         textAlign: 'right',
-        color: GlobalColor.Primary
+        color: GlobalColor.Primary,
+        fontSize:13
     },
     cardLabel: {
         color: GlobalColor.Primary,
@@ -222,6 +223,9 @@ const styles = StyleSheet.create({
     },
     cardColumn:{
         flex:1
+    },
+    cardValue:{
+        fontSize:13
     }
 });
 

@@ -18,21 +18,27 @@ import Toast from 'react-native-simple-toast'
 import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
+import { useNavigation } from '@react-navigation/native';
 
 
 
-const SalaryDeduct = ({ navigation }) => {
+const SalaryDeduct = () => {
   const { authContext, AppUserData } = useContext(AuthContext);
   const [loader, setLoader] = useState(false);
   const [Attendance, setAttendance] = useState([]);
   const [salDedList, setSalDedList] = useState('');
   const [refresh, setrefresh] = useState(false);
+  const navigation = useNavigation();
+
+  let usrAccess = AppUserData?.data?.userFlag;
+
+// $&
 
 
   const stopLoader = () => {
@@ -40,7 +46,7 @@ const SalaryDeduct = ({ navigation }) => {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
@@ -58,14 +64,14 @@ const SalaryDeduct = ({ navigation }) => {
 
     ApiService.PostMethode('/SalDedList', apiData, token, authContext)
       .then(result => {
-        console.log("APiresult SalDedList", result);
+// $&
         stopLoader(false);
         ApiResult=result.Value
         setAttendance(ApiResult)
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -88,22 +94,33 @@ const SalaryDeduct = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight}}>    
       {/* <Header title="Salary Deduction" back/> */}
       <View style={{ flex:1,  }}>
-        <FlatList
-          contentContainerStyle={{ flexGrow: 1 }}
-          ListEmptyComponent={() =>  <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => SalDedList(true)} refreshing={refresh} ></ListEmptyComponent>}
-          data={Attendance}
-          keyExtractor={({ item, index }) => index}
-          renderItem={({ item, index }) => {
-            return (
-              <TouchableOpacity
-                style={styles.canteen}>
-                <Text>{item.Date}</Text>
-                <Text>{item['Half/Full Day']} Deducted</Text>
-              </TouchableOpacity>
-            )
-          }}
-        />
-      </View>
+       
+          <FlatList
+            contentContainerStyle={{ flexGrow: 1 }}
+            ListEmptyComponent={() =>  <ListEmptyComponent title="No Data Found" enableRefresh={true} onRefreshCallback={() => SalDedList(true)} refreshing={refresh} ></ListEmptyComponent>}
+            data={Attendance}
+            keyExtractor={({ item, index }) => index}
+            renderItem={({ item, index }) => {
+              return (
+                <TouchableOpacity
+                 
+                onPress={()=> 
+                  item.Code == 'R'? null :
+                  navigation.navigate('ApplyLeaveDu', {
+                  salDeductPay: item.Date,
+                  period:item['Half/Full Day'],
+                })}
+                  style={styles.canteen}>
+                  <Text Bold style={{fontSize:13,color:ThemeColor.Teal,textDecorationLine:'underline'}}>{item.Date}</Text>
+                  <Text style={{fontSize:13}}>
+                    {item['Half/Full Day']}{' (' +item.Description}{' )'}
+                    </Text>
+                </TouchableOpacity>
+              )
+            }}
+          />
+        </View>
+     
     </SafeAreaView>
   );
 };

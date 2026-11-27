@@ -25,11 +25,11 @@ import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../../Utils/Utils';
 import AuthContext from '../../../context/AuthContext'
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import { GlobalColor } from '../../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../../constants/Colors';
 import Text from '../../../components/reusable/Text';
 // import TextInput from '../../../components/reusable/TextInput';
-import { Header } from '../../../components/reusable/Header';
-import Button from '../../../components/reusable/Button';
+import { HeaderMgrTaxi } from '../../../components/reusable/HeaderMgrTaxi';
+import ButtonMgr from '../../../components/reusable/ButtonMgr';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
@@ -72,7 +72,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         setLoader(true);
         ApiService.PostMethode('/GetRequestDetail', apiData, token, authContext)
             .then(result => {
-                console.log("APiresult GetRequest_Detail", result);
+// $&
                 stopLoader(false);
                 if(result.Value &&result.Value){
                     setTaxiapiData({
@@ -80,11 +80,12 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                         Name:result.Value[0].EMPL_NAME,
                         slipno:result.Value[0].TCAR_SLIP_NO.toString(),
                         Dept:result.Value[0].DEPT_CODE,
-                        Time_OUTSHOW: new Date(result.Value[0].DATE_OUT +" "+result.Value[0].TIME_OUT),
-                        Time_INSHOW : new Date(result.Value[0].DATE_IN +" "+result.Value[0].TIME_IN),
+                        Time_OUTSHOW: result.Value[0].DATE_OUT +" "+result.Value[0].TIME_OUT,
+                        Time_INSHOW : result.Value[0].DATE_IN +" "+result.Value[0].TIME_IN,
                         // Time_OUTSHOW = data.d[0].DATE_OUT + " " +data.d[0].TIME_OUT;
                         // Time_INSHOW = data.d[0].DATE_IN + " " +data.d[0].TIME_IN;+
                         purpose:result.Value[0].TCAR_PURPOSE_VISIT,
+                        VisitType:result.Value[0].TCAR_VISIT_TYPE,
                         StartPoint:result.Value[0].TCAR_START_PLACE,
                         desig:result.Value[0].TCAR_DESTINATION,
                         kms:result.Value[0].TCAR_APPOX_KMS_USAGE.toString(),
@@ -103,7 +104,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
             })
             .catch(error => {
                 stopLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     };
@@ -115,7 +116,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         setLoader(true);
         ApiService.PostMethode('/GetTaxiType', apiData, token, authContext)
             .then(result => {
-                // console.log("APiresult GetTaxiType", result);
+                // // console.log($1);
                 stopLoader(false);
                 if(result.Value &&result.Value.length > 0){
                     settaxitypeList(result.Value);
@@ -125,7 +126,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
             })
             .catch(error => {
                 stopLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -137,7 +138,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         setLoader(true);
         ApiService.PostMethode('/GetCalender', apiData, token, authContext)
             .then(result => {
-                console.log("APiresult GetCalender", result);
+// $&
                 stopLoader(false);
                 if(result.Value &&result.Value.length > 0){
                     // settaxitypeList(result.Value);
@@ -158,7 +159,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
             })
             .catch(error => {
                 stopLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -189,16 +190,19 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
         //     }
 
 
+// $&
+// $&
+
         let apiData = {
-                "TimeOut" : moment(values.Time_OUTSHOW).format("DD-MMMM-YYYY hh:mm"),
-                "TimeIn" : moment(values.Time_INSHOW).format("DD-MMMM-YYYY hh:mm"),
+                "TimeOut" : values.Time_OUTSHOW,
+                "TimeIn" : values.Time_INSHOW,
                 "Origin" : values.StartPoint,
                 "Dest" : values.desig,
                 "Km" : values.kms,
                 "PassCount" : values.Addperson,
-                "AddPerson" : values.Addperson,
+                "AddPerson" : Alldata.TCAR_STAFF_NO_PERSONS,
                 "Purpose" : values.purpose,
-                "VisitType" : values.TCAR_VISIT_TYPE,
+                "VisitType" : values.VisitType,
                 "ReqTaxiType" : Alldata.TCAR_TYPE,
                 "DPMTaxiType" : values.Dpm_Taxi_Type,
                 "SupTaxiType" : values.Dpm_Taxi_Type,
@@ -206,16 +210,17 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                 "ExtnNo" : Alldata.TCAR_EXT_NO,
                 "SlipNo" : route?.params?.data,
                 "UserName" : AppUserData?.data?.username,
-                "Source" : ""
+                "Source" : "MOBILE"
                 };
-        setLoader(true);
+       setLoader(true);
         ApiService.PostMethode('/ApproveTaxiRequest', apiData, token, authContext)
             .then(result => {
-                console.log("APiresult ApproveTaxiRequest", result);
+// $&
                 stopLoader(false);
                 if(result.Value && result.Value.length > 0){
                     if(result.Value[0].P_OUT_ERROR == "SUCCESS"){
                         Toast.show(result.Value[0].P_OUT_ERROR);
+// $&
                         navigation.goBack();
                     }else{
                         Toast.show(result.Value[0].P_OUT_ERROR);
@@ -226,22 +231,31 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
             })
             .catch(error => {
                 stopLoader(false);
-                // console.log('Error occurred==>', error);
+               
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
 
 
 
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //       const unsubscribe = getTaxiDetails();
+    //       return () => unsubscribe;
+    //     }, [])
+    // );
+    
+
     useFocusEffect(
         React.useCallback(() => {
           const unsubscribe = getTaxiDetails();
-          return () => unsubscribe;
-        }, [])
-    );
-    
-
-
+          return () => {
+            setTaxiapiData({}); // Clear state on unmount
+            unsubscribe;
+          };
+        }, [route.params.data]) // Add route.params.data as dependency
+      );
 
     const gatePassScheema = yup.object().shape({
         Dpm_Taxi_Type: yup.string().required('Please select an taxi type'),
@@ -280,7 +294,8 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                         textStyle={styles.spinnerTextStyle}
                     /> : null
                 }
-            <Header title="Taxi Approval" back />
+            {/* <Header title="Taxi Approval" back /> */}
+            <HeaderMgrTaxi title ="Taxi Approval" back/>
                 <View style={{ flexGrow:1, paddingHorizontal:10 }}>
                 <Formik                
                     enableReinitialize
@@ -317,6 +332,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Employee ID
@@ -336,6 +352,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Slip No.
@@ -363,6 +380,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Department
@@ -381,6 +399,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
                                                 }} Bold>
                                                 Name
                                             </Text>
@@ -399,16 +418,17 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                 <DatePicker
                                     modal
                                     mode="datetime"
+                                    theme='light'
                                     open={OpenDateTimePicker}
                                     date={new Date()}
                                     minimumDate={new Date()}
                                     maximumDate={TimeoutMax}
                                     onConfirm={date => {
-                                        console.log(date);
+// $&
                                         setFieldValue('Time_OUTSHOW', date);
                                         setOpenDateTimePicker(false);
                                         // setDate(date);
-                                        // console.log(date);
+                                        // // console.log($1);
                                     }}
                                     onCancel={() => {
                                         setOpenDateTimePicker(false);
@@ -428,6 +448,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
                                                 }} Bold>
                                                 Appx. Time Out
                                             </Text>
@@ -435,8 +456,8 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 style={styles.DateInOut}
                                                 onPress={() => setOpenDateTimePicker(true)}
                                             >
-                                                <Text style={{ color: 'gray' }}>
-                                                    {moment(values.Time_OUTSHOW).format('DD-MM-YY hh:mm')}
+                                                <Text style={{ color: 'gray' ,fontSize:13 }}>
+                                                    {values.Time_OUTSHOW}
                                                 </Text>
 
                                                 <View>
@@ -448,8 +469,8 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                         }}>
                                                         <Ionicons
                                                             name="calendar-outline"
-                                                            size={25}
-                                                            color={GlobalColor.PrimaryGradient}
+                                                            size={22}
+                                                            color={ThemeColor.Forest}
                                                         />
                                                     </View>
                                                 </View>
@@ -459,6 +480,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                         <DatePicker
                                             modal
                                             mode="datetime"
+                                            theme='light'
                                             minimumDate={new Date()}
                                             maximumDate={TimeinMax}
                                             open={OpenDateTimePicker2}
@@ -467,7 +489,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 setFieldValue('Time_INSHOW', date);
                                                 setOpenDateTimePicker2(false);
                                                 // setDate(date);
-                                                // console.log(date);
+                                                // // console.log($1);
                                             }}
                                             onCancel={() => {
                                                 setOpenDateTimePicker2(false);
@@ -479,6 +501,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Appx. Time In
@@ -487,8 +510,8 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 style={styles.DateInOut}
                                                 onPress={() => setOpenDateTimePicker2(true)}
                                             >
-                                                <Text style={{ color: 'gray' }}>
-                                                    {moment(values.Time_INSHOW).format('DD-MM-YY hh:mm')}
+                                                <Text style={{ color: 'gray',fontSize:13 }}>
+                                                    {values.Time_INSHOW}
                                                 </Text>
 
                                                 <View>
@@ -500,8 +523,8 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                         }}>
                                                         <Ionicons
                                                             name="calendar-outline"
-                                                            size={25}
-                                                            color={GlobalColor.PrimaryGradient}
+                                                            size={22}
+                                                            color={ThemeColor.Forest}
                                                         />
                                                     </View>
                                                 </View>
@@ -530,6 +553,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                             style={{
                                                 paddingHorizontal: 0,
                                                 marginVertical: 5,
+                                                fontSize:13,
 
                                             }} Bold>
                                             Purpose of Visit
@@ -574,12 +598,13 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Source
                                             </Text>
                                             <TextInput
-                                                style={[styles.TextInputDesign, {height:40}]}
+                                                style={styles.TextInputDesign}
                                                 onChangeText={handleChange('StartPoint')}
                                                 onBlur={handleBlur('StartPoint')}
                                                 value={values.StartPoint}
@@ -593,13 +618,14 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
 
                                                 }} Bold>
                                                 Destination
                                             </Text>
                                             <TextInput
-                                            style={[styles.TextInputDesign, {height:40}]}
+                                            style={styles.TextInputDesign}
                                                 onChangeText={handleChange('desig')}
                                                 onBlur={handleBlur('desig')}
                                                 value={values.desig}
@@ -625,6 +651,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Kms (Appx.)
@@ -643,6 +670,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Party Code
@@ -672,6 +700,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
                                                 }} Bold>
                                                 Addl. Persons
                                             </Text>
@@ -689,6 +718,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingHorizontal: 0,
                                                     paddingTop: 10,
                                                     paddingVertical: 5,
+                                                    fontSize:13,
 
                                                 }} Bold>
                                                 Persons Staff Id
@@ -711,6 +741,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                         <Text
                                             style={{
                                                 paddingHorizontal: 0,
+                                                fontSize:13,
                                                 // paddingVertical: 5,
 
                                             }} Bold>
@@ -732,7 +763,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                         buttonStyle={styles.dropdown2BtnStyle}
                                         buttonTextStyle={styles.dropdown2BtnTxtStyle}
                                         renderDropdownIcon={isOpened => {
-                                            return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#444'} size={18} />;
+                                            return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Forest} size={14} />;
                                         }}
                                         dropdownIconPosition={'right'}
                                         dropdownStyle={styles.dropdown2DropdownStyle}
@@ -754,15 +785,16 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                 </View>
 
                                 {/* Approve Request Button */}
-                                <View style={{ paddingVertical: 10, flexDirection: "row" }}>
+                                <View style={{ paddingVertical: 10, flexDirection: "row",marginBottom:'35%' }}>
                                     <View style={{ width: "50%", padding: 5 }}>
-                                        <Button title="Approve Request"
+                                        <ButtonMgr title="Approve Request"
+                                               
                                         onPress={() => {handleSubmit();}}
                                         />
                                     </View>
 
                                     <View style={{ width: "50%", padding: 5 }}>
-                                        <Button title="Cancel"
+                                        <ButtonMgr title="Cancel"
                                         onPress={() => {
                                             navigation.goBack()
                                         }}
@@ -793,11 +825,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 3,
         backgroundColor: '#FFF',
-        borderColor: GlobalColor.Secondary,
+        borderColor: ThemeColor.Forest,
+        fontSize:13,
     },
-    dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 16 },
+    dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 13 },
     dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
-    dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: '#C5C5C5' },
+    dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: ThemeColor.Forest },
     dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 16 },
     centeredView: {
         flex: 1,
@@ -817,22 +850,22 @@ const styles = StyleSheet.create({
         paddingVertical: 4
     },
     TextInputStyle: {
-        height:40,
+        height:35,
         // width: '100%',
         backgroundColor: '#fff',
         borderWidth: 1,
         color:GlobalColor.Text,
-        paddingHorizontal:10,
         // padding: 6,
-        borderColor: GlobalColor.Secondary,
-        // fontSize: 16,
+        borderColor: ThemeColor.Forest,
+         fontSize: 13,
     },
     TextInputDesign: {
         width: '100%',
         borderWidth: 1,
         padding: 6,
         backgroundColor: '#fff',
-        borderColor: GlobalColor.Secondary
+        borderColor: ThemeColor.Forest,
+      
     },
     DateInOut:{
         width: '100%',
@@ -843,7 +876,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 6,
         alignSelf: 'center',
-        borderColor: GlobalColor.Secondary
+        borderColor: ThemeColor.Forest
     },
     spinnerTextStyle: {
         color: GlobalColor.White

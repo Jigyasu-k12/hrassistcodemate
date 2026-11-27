@@ -1,5 +1,5 @@
 //import liraries
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, useWindowDimensions, SafeAreaView, Alert, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,7 +8,7 @@ import Payroll from './Payroll';
 import Benifits from './Benifits';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Header } from '../../components/reusable/Header';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import EmergencyContacts from '../EmergencyAndHospital/EmergencyContact';
 import Hospital from '../EmergencyAndHospital/Hospital';
 import NearByHospital from '../EmergencyAndHospital/NearByHospital';
@@ -18,15 +18,15 @@ import LocalAuthentication from 'rn-local-authentication';
 import AuthorisedComp from '../../components/reusable/AuthorisedComp';
 import Button from "../../components/reusable/Button";
 import { GlobalFontSize } from '../../constants/FontSize';
-
-
+import Toast from 'react-native-simple-toast';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Tab = createMaterialTopTabNavigator();
 
 const CompensationBenifits = ({ navigation }) => {
   const [isAuth, setIsAuth] = useState('');
   const [Loading, setLoading] = useState(true);
-
+  const hasAuthenticated = useRef(false);
 
   const optionalConfigObject = {
     title: 'Authentication Required', // Android
@@ -39,11 +39,25 @@ const CompensationBenifits = ({ navigation }) => {
     unifiedErrors: false, // use unified error messages (default false)
     passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
   };
+
+  // Handle authentication when screen comes into focus
+  useFocusEffect(
+    React.useCallback(() => {
+      // Only authenticate if user hasn't authenticated in this session
+      if (!hasAuthenticated.current) {
+        setIsAuth('');
+        setLoading(true);
+        handelBiometric();
+      }
+    }, [])
+  );
+
+  // Reset authentication flag when component unmounts (user leaves screen completely)
   useEffect(() => {
-    handelBiometric();
+    return () => {
+      hasAuthenticated.current = false;
+    };
   }, []);
-
-
 
   const handelBiometric = () => {
     LocalAuthentication.authenticateAsync({
@@ -51,114 +65,113 @@ const CompensationBenifits = ({ navigation }) => {
       fallbackEnabled: true,
       fallbackTitle: "Unlock using passcode",
       fallbackToPinCodeAction: true
-  }).then(response => {
-    console.log(response);
+    }).then(response => {
       if (response.success) {
-          // Alert.alert("Authenticated successfully!");
+        setIsAuth(true);
+        setLoading(false);
+        hasAuthenticated.current = true; // Mark as authenticated
+      }
+      else if (response.error) {
+        if (response.error == 'UserCancel') {
+          setIsAuth(false);
+          setLoading(true);
+          hasAuthenticated.current = false;
+        }
+        else if (response.error == 'SystemCancel') {
+          setIsAuth(false);
+          setLoading(true);
+          hasAuthenticated.current = false;
+        }
+        else {
           setIsAuth(true);
           setLoading(false);
-      } else {
-          setIsAuth(false);
-          setLoading(false);
-          // Alert.alert("Something went wrong");
+          hasAuthenticated.current = true; // Mark as authenticated
+        }
       }
-  })
+      else {
+        setIsAuth(false);
+        setLoading(true);
+        hasAuthenticated.current = false;
+      }
+    })
 
-
-
-
-    return; 
+    return;
     TouchID.isSupported(optionalConfigObject)
       .then(biometryType => {
         // Success code
         if (biometryType === 'FaceID') {
-          console.log('FaceID is supported.');
         } else {
-          console.log('TouchID is supported.');
           TouchID.authenticate('', optionalConfigObject)
             .then(success => {
-              console.log('Authenticated Successfully', success);
               setIsAuth(true);
-              console.log('state data', isAuth)
             })
             .catch(error => {
               // navigation.goBack();
-              console.log('Authentication Failed', error);
             });
         }
       })
       .catch(error => {
         // navigation.goBack();
         // Failure code
-        console.log('not supported', error);
       });
   };
 
-  // const renderScene = SceneMap({
-  //   first: FirstRoute,
-  //   second: SecondRoute,
-  // });
-  // const layout = useWindowDimensions();
-  // const [index, setIndex] = React.useState(0);
-  // const [routes] = React.useState([
-  //   {key: 'first', title: 'Payroll'},
-  //   {key: 'second', title: 'Benifits'},
-  // ]);
-
-  if(Loading){
-    return(
-      <SafeAreaView style={{flexGrow:1}}>
+  if (Loading) {
+    return (
+      <SafeAreaView style={{ flexGrow: 1 }}>
         <Header title="Compensation and Benefits" />
-          <AuthorisedComp title="Authorise" subtitle="Please authorise yur device to access comp. & benefits"/>     
+        <AuthorisedComp title="Authorize" subtitle="Please authorize your device to access compensation & benefits" />
       </SafeAreaView>
     )
   }
 
-
-
   return (
-         <SafeAreaView style={{flexGrow:1}}>
-         <View style={{flex:1}}>
-           {isAuth == true ? ( 
-            <View style={{flex:1}}>
-                <Header title="Compensation and Benefits" />
-                    <Tab.Navigator
-                      screenOptions={{
-                        tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
-                        tabBarActiveTintColor: GlobalColor.White,
-                        tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
-                        tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },
-                        tabBarItemStyle: { paddingHorizontal: 0 }
-                      }}>
-                      <Tab.Screen name="Payroll" component={Payroll} />
-                      <Tab.Screen name="Benefits" component={Benifits} />
-                    </Tab.Navigator>
-            </View>
-             ) : ( 
-             <View style={{backgroundColor:'#fff', flex:1}}>
-              <Header title="Compensation and Benefits" />
-                <View style={{ flex:1, justifyContent:'center', alignItems:'center' }}>
-
-                    <View style={styles.innerContainer}>
-                        <Image
-                        style={styles.tinyLogo}
-                        source={require('./../../assets/Images/accessfailed.png')}
-                        />
-                        <Text style={styles.title} Bold>Unauthorised</Text>                      
-                    </View>              
-
-
-                    <Button 
-                      onPress={()=>{
-                        navigation.goBack()
-                      }}
-                    title="GO BACK" btnStyle={{ width:"50%", alignSelf:'center', marginTop:20, borderRadius:0 }}/>
-                </View>
-             </View> 
-            )      
-           }
+    <SafeAreaView style={{ flexGrow: 1 }}>
+      <View style={{ flex: 1 }}>
+        {isAuth == true ? (
+          <View style={{ flex: 1 }}>
+            <Header title="Compensation and Benefits" />
+            <LinearGradient colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <Tab.Navigator
+                  screenOptions={{
+                    tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
+                    tabBarActiveTintColor: GlobalColor.White,
+                    tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
+                    tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+                    tabBarItemStyle: { paddingHorizontal: 0 }
+                  }}>
+                  <Tab.Screen name="Payroll" component={Payroll} />
+                  <Tab.Screen name="Benefits" component={Benifits} />
+                </Tab.Navigator>
+              </View>
+            </LinearGradient>
           </View>
-         </SafeAreaView>
+        ) : (
+          <View style={{ backgroundColor: '#fff', flex: 1 }}>
+            <Header title="Compensation and Benefits" />
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
+              <View style={styles.innerContainer}>
+                <Image
+                  style={styles.tinyLogo}
+                  source={require('./../../assets/Images/accessfailed.png')}
+                />
+                <Text style={styles.title} Bold>Unauthorised</Text>
+              </View>
+
+              <Button
+                onPress={() => {
+                  navigation.goBack()
+                }}
+                title="GO BACK" btnStyle={{ width: "50%", alignSelf: 'center', marginTop: 20, borderRadius: 0 }} />
+            </View>
+          </View>
+        )
+        }
+
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -168,6 +181,11 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   container: {
+    flexDirection: 'row',
+  },
+  mystyl: {
+    backgroundColor: 'transparent',
+    height: '100%',
     flexDirection: 'row',
   },
   searchSection: {
@@ -192,22 +210,22 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalColor.White,
     color: '#424242',
   },
-  title:{
-    fontSize:GlobalFontSize.H4,
-    textAlign:'center',
-    marginBottom:15, marginTop:10        
+  title: {
+    fontSize: GlobalFontSize.H4,
+    textAlign: 'center',
+    marginBottom: 15,
+    marginTop: 10
   },
-  subtitle:{
-      textAlign:'center',
+  subtitle: {
+    textAlign: 'center',
   },
-  innerContainer:{
-      maxWidth:250
+  innerContainer: {
+    maxWidth: 250
   },
-  tinyLogo:{
-    width:100,
-    height:100,
-    alignSelf:'center'
-},
+  tinyLogo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center'
+  },
 });
 export default CompensationBenifits;
-

@@ -17,7 +17,7 @@ import { date } from 'yup';
 import { useFocusEffect } from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import Button from './../../components/reusable/Button'
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import { LoadingScreen } from './../../components/reusable/LoadingScreen';
@@ -26,6 +26,7 @@ import { DataTable } from 'react-native-paper';
 import MarkAttendence from './MarkAttendence';
 import AttendanceReport from './AttendanceReport';
 import AttendancePer from './AttendancePer';
+import AccumulatedHours from './AccumulatedHours';
 
 
 
@@ -45,6 +46,7 @@ const Attendance = ({ navigation }) => {
   // To Hide or show based on getGpsAvailable
   const [ShowAttandanceTabs, setShowAttandanceTabs] = useState(false);
   const [RawPunches, setRawPunches] = useState([]);
+  const [ShowZZ, setShowZZ] = useState(false);
 
 
   useFocusEffect(
@@ -53,15 +55,44 @@ const Attendance = ({ navigation }) => {
       return () => unsubscribe;
     }, [])
   );
+  const checkZZShift = () => {
+    let userId = AppUserData?.data?.userId;
+    let apiData = { "UserName": userId }; // created on   9 oct 2025 11:58 AM
+ 
+    // let apiData = { "UserName": AppUserData?.data?.username };   // commented on 9 oct 2025 11:58 AM
+    // AppUserData?.data?.userId 222852
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/GetShrtAccFlg', apiData, token, authContext)
+      .then(result => {
+// $&
+        setLoader(false);
+        if (result.Result == "Y") {
+          setShowZZ(true);
+        } else {
+         setShowZZ(false);
+          // GetRawPunch();
+        }
+      })
+      .catch(error => {        
+        setLoader(false);
+        // setShowAttandanceTabs(false);
+        // setMarkAttandance(1);
+        // setAttendenceReport(0);
+        // // console.log($1);
+        ApiService.showErrorMessage(error, authContext);
+      });
+  }
 
   const checkGpsAvailable = () => {
     let apiData = { "UserName": AppUserData?.data?.username };
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
+    checkZZShift();
     setLoader(true);
     ApiService.PostMethode('/GetValidGPSUser', apiData, token, authContext)
       .then(result => {
-        console.log("APiresult GetValidGPSUser", result);
+// $&
         setLoader(false);
         if (result.Result == "Y") {
           setShowAttandanceTabs(true);
@@ -81,7 +112,7 @@ const Attendance = ({ navigation }) => {
         setShowAttandanceTabs(false);
         setMarkAttandance(1);
         setAttendenceReport(0);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -89,7 +120,7 @@ const Attendance = ({ navigation }) => {
 
   const getUserCurrentLocation = () => {
     Geolocation.getCurrentPosition(position => {
-      console.log('position', position);
+// $&
       const { latitude, longitude } = position.coords;
       setLocation({
         latitude,
@@ -110,13 +141,13 @@ const Attendance = ({ navigation }) => {
       "ToDate": moment(toDate).format('DD-MMM-YYYY'),
       "StaffNo": AppUserData?.data?.userId
     };
-    // console.log(apiData);
+    // // console.log($1);
     // AppUserData?.data?.userId
     let token = AppUserData.token;
     setLoader(true);
     ApiService.PostMethode('/GetRawPunch', apiData, token, authContext)
       .then(result => {
-        console.log("APiresult GetRawPunch", result);
+// $&
         setLoader(false);
         if (result.Value) {
           setRawPunches(result.Value);
@@ -124,17 +155,17 @@ const Attendance = ({ navigation }) => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==>', error);
+// $&
         if (error.response) {
           if (error.response.status == 401) {
-            console.log('error from api', error.response);
+// $&
           }
           // client received an error response (5xx, 4xx)
           Toast.show(error.response.data.title);
         } else if (error.request) {
           // client never received a response, or request never left
           Toast.show('Network Error');
-          // console.log("error.request", error.request._response);
+          // // console.log($1);
         } else {
           // anything else
           Toast.show('Session expired login again');
@@ -169,7 +200,7 @@ const Attendance = ({ navigation }) => {
       let token = AppUserData.token;
       ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
         .then(result => {
-          console.log("APiresult GetMobDevice", result);
+// $&
           setLoader(false);
           if (result.Value.length > 0) {
             // DEVC_ID: "1"
@@ -178,7 +209,7 @@ const Attendance = ({ navigation }) => {
             let modelfrmplug = Platform.Model;
 
             if (model.includes(modelfrmplug)) {
-              console.log("inside");
+// $&
               let notSupported = true;
               Toast.show('Session expired login again');
             } else {
@@ -188,17 +219,17 @@ const Attendance = ({ navigation }) => {
         })
         .catch(error => {
           setLoader(false);
-          console.log('Error occurred==> getMobDevice', error);
+// $&
           if (error.response) {
             if (error.response.status == 401) {
-              console.log('error from api', error.response);
+// $&
             }
             // client received an error response (5xx, 4xx)
             Toast.show(error.response.data.title);
           } else if (error.request) {
             // client never received a response, or request never left
             Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
+            // // console.log($1);
           } else {
             // anything else
             Toast.show('Session expired login again');
@@ -208,10 +239,10 @@ const Attendance = ({ navigation }) => {
 
     if (location.latitude && location.longitude) {
       let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(location.latitude) + ',' + parseFloat(location.longitude) + '&key=' + MapLisenceKey
-      console.log(url);
+// $&
       ApiService.getRawurl(url)
         .then(result => {
-          console.log("APiresult getRawurl", result);
+// $&
           setLoader(false);
           let location = result.results[0].formatted_address;
           setUserLocation(location)
@@ -221,17 +252,17 @@ const Attendance = ({ navigation }) => {
         })
         .catch(error => {
           setLoader(false);
-          console.log('Error occurred==> APiresult getRawurl', error);
+// $&
           if (error.response) {
             if (error.response.status == 401) {
-              console.log('error from api', error.response);
+// $&
             }
             // client received an error response (5xx, 4xx)
             Toast.show(error.response.data.title);
           } else if (error.request) {
             // client never received a response, or request never left
             Toast.show('Network Error');
-            // console.log("error.request", error.request._response);
+            // // console.log($1);
           } else {
             // anything else
             Toast.show('Session expired login again');
@@ -254,7 +285,7 @@ const Attendance = ({ navigation }) => {
     ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
       .then(result => {
         setLoader(false);
-        console.log('ApiResult SubmitPunchRO', result);
+// $&
         Alert.alert("Success", result.Result);
         // let responseData = result.Value[0].SHIS_YYMM_CODE
         // console.log('GetMonth', responseData)
@@ -263,10 +294,10 @@ const Attendance = ({ navigation }) => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==> SubmitPunchRO', error);
+// $&
         if (error.response) {
           if (error.response.status == 401) {
-            console.log('error from api', error.response);
+// $&
           }
           Toast.show(error.response.data.title);
         } else if (error) {
@@ -287,7 +318,7 @@ const Attendance = ({ navigation }) => {
     ApiService.PostMethode('/GetMapsLicenseKey', {}, token)
       .then(result => {
         setLoader(false);
-        console.log('ApiResult GetMapsLicenseKey', result);
+// $&
         if (result.Result) {
           setMapLisenceKey(result.Result);
         }
@@ -296,7 +327,7 @@ const Attendance = ({ navigation }) => {
         setLoader(false);
         if (error.response) {
           if (error.response.status == 401) {
-            console.log('error from api', error.response);
+// $&
           }
           Toast.show(error.response.data.title);
         } else if (error) {
@@ -324,48 +355,39 @@ const Attendance = ({ navigation }) => {
     )
   }
 
+  const getHeadings = () => {
+    if (ShowAttandanceTabs && ShowZZ) {
+      return ['Mark Attendance', 'View Report', 'Attendance %', 'Work Time Status'];
+    } else if (ShowAttandanceTabs && !ShowZZ) {
+      return ['Mark Attendance', 'View Report', 'Attendance %'];
+    } else if (!ShowAttandanceTabs && ShowZZ) {
+      return ['View Report', 'Attendance %', 'Work Time Status'];
+    } else {
+      return ['View Report', 'Attendance %'];
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         {
-          ShowAttandanceTabs ? (
-            <ScrollView
-            horizontal={true}
-            >
-            <SegmentedControlTab
-              borderRadius={2}
-              values={['Mark Attendance', 'View Report', 'Attendance Percentage']}
-              selectedIndex={MarkAttandance}
-              onTabPress={index => {
-                handleMarkAttandance(index);
-              }}
-              tabsContainerStyle={styles.tabsContainerStyle}
-              tabStyle={styles.tabStyle}
-              tabTextStyle={styles.tabTextStyle}
-              activeTabStyle={styles.activeTabStyle}
-              activeTabTextStyle={styles.activeTabTextStyle}
-            />
-            </ScrollView>
-          ) : (
-            // <Text style={[styles.titleLabel, {marginTop:10}]} bold>Attendance Report</Text>          
-            <ScrollView
-            horizontal={true}
-            >
-            <SegmentedControlTab
-              borderRadius={2}
-              values={['Attendance Report', 'Attendance Percentage']}
-              selectedIndex={AttendenceReport}
-              onTabPress={index => {
-                handleAttendanceReport(index);
-              }}
-              tabsContainerStyle={styles.tabsContainerStyle}
-              tabStyle={styles.tabStyle}
-              tabTextStyle={styles.tabTextStyle}
-              activeTabStyle={styles.activeTabStyle}
-              activeTabTextStyle={styles.activeTabTextStyle}
-            />
-            </ScrollView>                  
-          )
+          <ScrollView
+          horizontal={true}>
+          <SegmentedControlTab
+          borderRadius={2}
+          values={getHeadings()}
+          // values={['Mark Attendance', 'View Report', 'Attendance %','Accumulated Hours']}
+          selectedIndex={ShowAttandanceTabs? MarkAttandance:AttendenceReport}
+          onTabPress={index => {
+            ShowAttandanceTabs ? handleMarkAttandance(index): handleAttendanceReport(index);
+          }}
+          tabsContainerStyle={styles.tabsContainerStyle}
+          tabStyle={styles.tabStyle}
+          tabTextStyle={styles.tabTextStyle}
+          activeTabStyle={styles.activeTabStyle}
+          activeTabTextStyle={styles.activeTabTextStyle}
+        />
+        </ScrollView>
         }
       </View>
 
@@ -376,11 +398,13 @@ const Attendance = ({ navigation }) => {
                 {ShowAttandanceTabs && MarkAttandance == 0 ? <MarkAttendence /> : null}
                 {ShowAttandanceTabs && MarkAttandance == 1 ? <AttendanceReport /> : null}
                 {ShowAttandanceTabs && MarkAttandance == 2 ? <AttendancePer /> : null}
+                {ShowAttandanceTabs && MarkAttandance == 3 ? <AccumulatedHours /> : null}
             </View>
           ): (
             <View style={{ flex: 1 }}>
                 {!ShowAttandanceTabs && AttendenceReport == 0 ? <AttendanceReport/> :null}
                 {!ShowAttandanceTabs && AttendenceReport == 1 ? <AttendancePer/> :null}
+                {!ShowAttandanceTabs && AttendenceReport == 2 ? <AccumulatedHours /> :null}
             </View>
           )
         }
@@ -443,7 +467,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary
+    borderColor: ThemeColor.Teal
   },
   tabStyle2: {
     paddingVertical: 10, 
@@ -452,17 +476,17 @@ const styles = StyleSheet.create({
     borderColor: GlobalColor.Secondary
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P-1,
+    fontSize: 13,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
     backgroundColor: GlobalColor.PrimaryLight,
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: ThemeColor.Teal,
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: ThemeColor.Teal,
   },
   content: {
     top: 10,

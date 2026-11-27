@@ -1,4 +1,5 @@
 //import liraries
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import React, {useState, useEffect,useContext} from 'react';
 import {
   View,
@@ -50,7 +51,7 @@ const AttendanceAdmin = ({navigation}) => {
   return (
     <View style={{flex: 1, width: '100%', height: '100%'}}>
       <LinearGradient
-     colors={['#4174D0','#6ef7ff']}
+     colors={[ThemeColor.Teal,ThemeColor.TealSoft]}
         style={styles.gradient}>
         <View style={styles.container}>
         {horizental == true ? (
@@ -118,7 +119,7 @@ const AttendanceAdmin = ({navigation}) => {
               bottom: -5,
               right: -20,
               alignItems: 'center',
-              backgroundColor: '#23f',
+              backgroundColor: ThemeColor.Teal,
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
               paddingVertical: 5,
@@ -154,7 +155,7 @@ const AttendanceAdmin = ({navigation}) => {
         renderTabBar={props => {
           return (
             <LinearGradient
-              colors={['#4174D0','#6ef7ff']}
+              colors={[ThemeColor.Teal,ThemeColor.TealSoft]}
               style={{marginTop: -1, zIndex: -1}}>
               <TabBar
                 renderLabel={({route, focused, color}) => (

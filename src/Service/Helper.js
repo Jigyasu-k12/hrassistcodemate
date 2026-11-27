@@ -21,6 +21,6 @@ export const Decrypt = (string="") => {
     let iv = CryptoJS.enc.Latin1.parse("");
     let encrypted = CryptoJS.AES.encrypt(string, parsedkey, {iv:iv});
     return encrypted.toString();
-    // console.log(encrypted.toString());
+    // // console.log($1);
     // return "abcd";
   }

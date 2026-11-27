@@ -1,13 +1,17 @@
 //import liraries
-import React, {Component} from 'react';
+import React, {Component,useContext} from 'react';
 import {View, StyleSheet, TouchableOpacity, Image,FlatList,SafeAreaView } from 'react-native';
 import Share from 'react-native-share';
 import LinearGradient from 'react-native-linear-gradient';
+import myconfig from '../Utils/myconfig'
 
 
-import { GlobalColor } from '../constants/Colors';
+import { GlobalColor, ThemeColor } from '../constants/Colors';
 import { GlobalFontSize } from '../constants/FontSize';
 import Text from './reusable/Text';
+import AuthContext from './../context/AuthContext';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 
 
 
@@ -18,21 +22,26 @@ const myCustomeSharing =async () =>{
   }
   try {const shareResponse = await Share.open(shareOption)}
     catch(error){
-      console.log('error',error);
+// $&
   }
 }
 
 // create a component
 const TouchableCard = ({navigation}) => {
+  const { authContext, AppUserData } = useContext(AuthContext);
+let usrAccess = AppUserData?.data?.userFlag;
+const insets = useSafeAreaInsets(); // dynamically fetch bottom safe area
+
+// // console.log($1);
   const Data = [
     {
       id: '1',
-      name: 'Employee Lookup',
+      name: 'Employee  Lookup',
       images: require('../assets/Images/home/icons8.png'),
     },
     {
       id: '2',
-      name: 'Attendance & Admin',
+      name: 'Attendance &  Admin',
       images: require('../assets/Images/home/calendar.png'),
     },
     {
@@ -42,127 +51,145 @@ const TouchableCard = ({navigation}) => {
     },
     {
       id: '4',
-      name: 'Hospital & Emergency',
+      name: 'Hospital & Quick Dials',
       images: require('../assets/Images/home/transplantation.png'),
     },
+    
+  
     {
-      id: '5',
-      name: 'Canteen Menu',
-      images: require('../assets/Images/home/canteen.png'),
+      
+      id:  usrAccess == 'Y'?'':'5',
+      name: usrAccess == 'Y'?'':'Gatepass & Room Booking',
+      images: usrAccess == 'Y'?'': require('../assets/Images/home/visitor-gatepass.png'),
     },
     {
       id: '6',
-      name: 'Visitor Gatepass',
-      images: require('../assets/Images/home/visitor-gatepass.png'),
+      name: 'Canteen  Menu',
+      images: require('../assets/Images/home/canteen.png'),
     },
     {
       id: '7',
-      name: 'Other Mobile Apps',
+      name: 'Other Mobile \n Apps',
       images: require('../assets/Images/home/otherapps.png'),
     },
     {
       id: '8',
-      name: 'Business Travel',
+      name: 'Business  Travel',
       images: require('../assets/Images/home/btravel.png'),
     },
+   
     {
       id: '9',
-      name: 'Share App',
-      images: require('../assets/Images/home/share.png'),
+      name: 'Add-On Menu',
+      images: require('../assets/Images/home/otherapps.png'),
     },
-
   ];
 
+
     return (
-      <View style={{flex:1, marginTop:10}}>
+      <SafeAreaView style={{ flex: 1, paddingHorizontal: 10 }}>
+
         <FlatList
           scrollEnabled={true}
           showsVerticalScrollIndicator={false}
           numColumns={3}
           data={Data}
+          style={{marginTop:10}}
+          contentContainerStyle={{
+            paddingBottom: 80,  // 👈 reduce from 200 to a more reasonable number
+            paddingTop: 10,
+          }}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.card} onPress = {() =>{
-              if(item.name==='Employee Lookup') {
+              if(item.name==='Employee  Lookup') {
                 navigation.navigate('EmployeeNavs');
               }
-              else if(item.name==='Attendance & Admin') {
-                navigation.navigate('AttendanceAdmin');
+              else if(item.name==='Attendance &  Admin') {
+                navigation.navigate('AttendanceAdminNav');
               }
              else if(item.name==='Comp. & Benefits') {
                 navigation.navigate('CompensationBenifitsNav');
-                // console.log("hello");
+                // // console.log($1);
               }
-              else if(item.name==='Hospital & Emergency') {
+              else if(item.name==='Hospital & Quick Dials') {
                 navigation.navigate('HospitalNavs');
               }
-              else if(item.name==='Canteen Menu') {
-                navigation.navigate('Canteen');
+              else if(item.name==='Canteen  Menu') {
+                navigation.navigate('CanteeNavigator');
               }
-              else if(item.name==='Visitor Gatepass') {
-                 navigation.navigate('Gatepass');
+              else if(item.name==='Gatepass & Room Booking') {
+                navigation.navigate("GatePassNavigator");
                }
-             else if(item.name==='Other Mobile Apps') {
+             else if(item.name==='Other Mobile \n Apps') {
                 navigation.navigate('OtherApps');
               }
-              else if(item.name==='Business Travel') {
-                navigation.navigate('BuisnessTravel');
+              else if(item.name==='Business  Travel') {
+                navigation.navigate('BusinessNavigator');
               }
-             else if(item.name==='Share App') {
-               myCustomeSharing()
-              }
+              else if(item.name==='Add-On Menu') {
+
+                navigation.navigate('OtherMobilityNavigator');
+
+                }
             }}>
             <LinearGradient
               // colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]}
               colors={[GlobalColor.White, GlobalColor.White]}
               style={{padding:5,borderRadius:5}}>
-              <Image source={item.images} style={styles.cardimg} />
+              <Image source={item.images} style={styles.cardimg} resizeMode="contain" />
             </LinearGradient>
             <Text style={styles.cardText}>{item.name}</Text>
           </TouchableOpacity>
            
             )}/>
-            </View>            
+            </SafeAreaView>            
     )
           }
 // define your styles
 const styles = StyleSheet.create({
   card: {
-    width: "28%",
-    padding:5,
-    paddingVertical:10,
-    borderWidth:0.2,
-    borderColor:GlobalColor.Secondary,
+    width: myconfig.deviceWidth * 0.28,
+    height : myconfig.deviceHeight * 0.11,
+    paddingHorizontal:myconfig.deviceHeight * 0.01,
+    //padding:5,
+    paddingVertical:myconfig.deviceWidth * 0.03,
+    borderWidth:0.6,
+    borderColor: ThemeColor.TealSoft,
+    borderRadius: 10,
     backgroundColor: GlobalColor.White,
     // borderBottomLeftRadius: 7,
     // borderBottomRightRadius: 7,
     // marginTop: 5,
-    marginBottom:10,
-    marginLeft:"4%",
+    marginBottom:myconfig.deviceHeight * 0.01,
+    //marginTop:7,
+    marginLeft:"1.7%",
+    marginRight:5,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: "#000",
+    shadowColor: ThemeColor.TealDark,
     shadowOffset: {
       width: -0,
       height: 1,
     },
-    shadowOpacity: 0.22,
+    shadowOpacity: 0.16,
     shadowRadius: 2.22,
     elevation: 5,
     position: 'relative',
   },
   cardimg: {
-    width: 40,
-    height: 40,
+    width: myconfig.deviceWidth * 0.09,
+    height: myconfig.deviceHeight * 0.04,
     margin:5,
-    // tintColor:'#d4fdff'
   },
-  cardText:{
-    textAlign:'center',
-    marginTop:5, 
-    fontSize:GlobalFontSize.Error,
-    color:GlobalColor.Primary,
-  }
+   
+  cardText: {
+    textAlign: 'center',
+    marginTop: 4,
+    fontSize: 12,                  // slightly smaller than 11
+    color: ThemeColor.TealDeep,
+  },
+  
 });
 
 //make this component available to the app

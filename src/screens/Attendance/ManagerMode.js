@@ -22,7 +22,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import moment from 'moment';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
 import { GlobalFontSize } from '../../constants/FontSize';
@@ -33,6 +33,7 @@ import ManagerFlexiShift from './managermode/ManagerFlexiShift';
 import ManagerLeave from './managermode/ManagerLeave';
 import ManagerTaxi from './managermode/ManagerTaxi';
 import ManagerAttandance from './managermode/ManagerAttandance';
+import ManagerRHTKGatePass from './managermode/ManagerRHTKGatePass'
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -42,29 +43,35 @@ const ManagerMode = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
       <Header title="Manager Mode" />
+      <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal,]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+        <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
         screenOptions={{
           tabBarScrollEnabled: true,
           tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
-          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
-          tabBarActiveTintColor: GlobalColor.White,
-          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
-          tabBarStyle: { backgroundColor: GlobalColor.Secondary, elevation: 0 },
+          tabBarLabelStyle: { fontSize: 13, fontWeight:'600'},
+          tabBarActiveTintColor: ThemeColor.OnDark,
+        tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
+          tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
+          tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
         }}>
-        <Tab.Screen name="Leave" component={ManagerLeave} />
+        <Tab.Screen name="Leave." component={ManagerLeave} />
         <Tab.Screen name="FlexiShift" component={ManagerFlexiShift} />
         <Tab.Screen name="Taxi" component={ManagerTaxi} />
-        <Tab.Screen name="Attendance" component={ManagerAttandance} />
+        
+        <Tab.Screen name="Attendance." component={ManagerAttandance} />
+        <Tab.Screen name="GatePass(Rohtak)" component={ManagerRHTKGatePass} />
         
       </Tab.Navigator>
-
+      </View>
+      </LinearGradient>
       <TouchableOpacity style={styles.fullWidthButton}
         onPress={() => {
           navigation.goBack();
         }}>
-        <Image source={require("./../../assets/Images/group.png")} style={{ width: 30, height: 30, tintColor: GlobalColor.White }} />
-        <Text style={styles.fullWidthButtonText} Bold>
+        <Image source={require("./../../assets/Images/group.png")} style={{ width: 25, height: 25, tintColor: GlobalColor.White }} />
+        <Text style={styles.fullWidthButtonText} >
           Back to Employee Mode
         </Text>
       </TouchableOpacity>
@@ -208,7 +215,7 @@ const styles = StyleSheet.create({
     color: GlobalColor.White
   },
   fullWidthButton: {
-    backgroundColor: GlobalColor.Primary,
+    backgroundColor: ThemeColor.Teal,
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -216,7 +223,8 @@ const styles = StyleSheet.create({
   },
   fullWidthButtonText: {
     color: GlobalColor.White,
-    marginLeft: 8
+    marginLeft: 8,
+    fontSize:13
   },
   SearchInput: {
     width: '100%',
@@ -228,7 +236,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 7,
     backgroundColor: GlobalColor.White
-  }
+  },
+  mystyl: {
+        backgroundColor: 'transparent',
+        height:'83%',
+        flexDirection: 'row',
+      },
 
 });
 

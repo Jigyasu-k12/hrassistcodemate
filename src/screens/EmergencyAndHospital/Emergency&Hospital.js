@@ -14,7 +14,7 @@ import NearByHospital from './NearByHospital';
 import EmergencyContacts from './EmergencyContact';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { GlobalFontSize } from '../../constants/FontSize';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import Text from '../../components/reusable/Text';
 import { Header } from '../../components/reusable/Header';
 
@@ -25,21 +25,25 @@ const EmergencyHospital = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-      <Header title="Emergency & Hospital"/>
+      <Header title="Hospital & Quick Dials"/>
+      <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+        <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
         screenOptions={{
           tabBarScrollEnabled: true,
           tabBarItemStyle: { paddingHorizontal:10, width:'auto' },
-          tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
+          tabBarLabelStyle: { fontSize: 13, fontWeight:'600'},
           tabBarActiveTintColor: '#fff',
           tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
-          tabBarStyle: { backgroundColor: '#0083B0', elevation: 0 },
+          tabBarStyle: { backgroundColor: ThemeColor.Teal, elevation: 0 },
         }}>
         <Tab.Screen name="Emergency Contacts" component={EmergencyContacts} />
         <Tab.Screen name="Hospital" component={Hospital} />
         <Tab.Screen name="Near By Hospital" component={NearByHospital} />
       </Tab.Navigator>
+      </View>
+      </LinearGradient>
     </SafeAreaView>
   );
 };
@@ -75,6 +79,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     color: '#424242',
   },
+  mystyl: {
+        backgroundColor: 'transparent',
+        height:'100%',
+        flexDirection: 'row',
+      },
 });
 
 // //make this component available to the app

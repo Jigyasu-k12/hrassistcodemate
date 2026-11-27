@@ -22,7 +22,7 @@ import Toast from 'react-native-simple-toast'
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { useFocusEffect } from '@react-navigation/native';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import TextInput2 from '../../components/reusable/TextInput';
@@ -58,18 +58,23 @@ const Shift = ({ navigation }) => {
   const [loader, setLoader] = useState(false)
   const [horizental, setHorizental] = useState(false);
 
+  const [empShift, setEmpShift] = useState('');
 
+  
+  let usrAccess = AppUserData?.data?.userFlag;
+
+// $&
 
 
 
 
   const LoadInitial = () => {
-    FlexiShiftElig()
+    //FlexiShiftElig()
     GetEmplShift()
-    flexiShiftPlanLov()
-    CurrentShift()
-    FlexiShiftStartDateLOV()
-    RptShiftStatus()
+   // flexiShiftPlanLov()
+   // CurrentShift()
+   // FlexiShiftStartDateLOV()
+   // RptShiftStatus()
   }
 
   // ENd
@@ -82,16 +87,19 @@ const Shift = ({ navigation }) => {
   //   RptShiftStatus()
   // }, [])
 
-  // useFocusEffect(
-  //   React.useCallback(() => {
-  //     const unsubscribe = LoadInitial();
-  //     return () => unsubscribe;
-  //   }, [])
-  // )
+  useFocusEffect(
+    React.useCallback(() => {
+      const unsubscribe = LoadInitial();
+      return () => unsubscribe;
+    }, [])
+  )
 
 
   const handleShift = index => {
-    setShift(index);
+   
+   setShift(index);
+// $&
+
   };
 
 
@@ -109,14 +117,16 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/GetEmplShift', apiData, token, authContext)
       .then(result => {
-        console.log("GetEmplShift", result);
+// $&
         setLoader(false);
         let ApiResult = result.Value
+       // // console.log($1);
+           setEmpShift(result.Value[0]['SHIFT']);
         setShiftData(ApiResult)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -133,14 +143,14 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/flexiShiftPlanLov', apiData, token, authContext)
       .then(result => {
-        console.log("flexiShiftPlanLov", result);
+// $&
         setLoader(false);
         let ApiResult = result.Value
         setShiftType(ApiResult)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -155,14 +165,14 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/CurrentShift', apiData, token, authContext)
       .then(result => {
-        console.log("CurrentShift", result);
+// $&
         setLoader(false);
         let ApiResult = result.Result
         setCurrentShift(ApiResult)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -178,7 +188,7 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/SubmitFlexiShiftPlan', apiData, token, authContext)
       .then(result => {
-        console.log("SubmitFlexiShiftPlan", result);
+// $&
         setLoader(false);
         let ApiResult = result.Result
         alert(ApiResult)
@@ -186,7 +196,7 @@ const Shift = ({ navigation }) => {
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -201,14 +211,14 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/RptShiftStatus', apiData, token, authContext)
       .then(result => {
-        console.log("RptShiftStatus", result);
+// $&
         setLoader(false);
         let ApiResult = result.Value
         setShiftStatus(ApiResult)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -222,14 +232,14 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/FlexiShiftElig', apiData, token, authContext)
       .then(result => {
-        console.log("FlexiShiftElig", result.Result);
+// $&
         setLoader(false);
         let ApiResult = result.Result
         setFlexiShiftElig(ApiResult)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -244,14 +254,14 @@ const Shift = ({ navigation }) => {
     setLoader(true);
     ApiService.PostMethode('/FlexiShiftStartDateLOV', apiData, token, authContext)
       .then(result => {
-        console.log("FlexiShiftStartDateLOV", result.Result);
+// $&
         setLoader(false);
         let ApiResult = result.Result
         setFlexiDate(ApiResult)
       })
       .catch(error => {
         setLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
@@ -287,7 +297,7 @@ const Shift = ({ navigation }) => {
       {
         text: btnTxt2,
         onPress: () => {
-          console.log('No Pressed');
+// $&
         },
       },
     ]);
@@ -306,10 +316,10 @@ const Shift = ({ navigation }) => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            // console.log('selected reason', item);
+            // // console.log($1);
             setShiftName(item.SHIFT_DESCRIPTION);
             setModalVisible(false);
-            console.log('data', shiftName);
+// $&
           }}>
           <Text style={{ paddingHorizontal: 10 }}>
             {item.SHIFT_DESCRIPTION}
@@ -338,14 +348,14 @@ const Shift = ({ navigation }) => {
             <Ionicons
               name="ellipsis-vertical-circle"
               size={25}
-              color={'#00B4DB'}
+              color={ThemeColor.Teal}
             />
           </TouchableOpacity>        
           {horizental == true ? (
             <View
               style={{
                 padding: 5,
-                backgroundColor: '#00B4DB',
+                backgroundColor: ThemeColor.Teal,
                 position: 'absolute',
                 top: 0,
                 right: 50,
@@ -365,12 +375,17 @@ const Shift = ({ navigation }) => {
           ) : null} */}
 
         <View style={{ width: '100%', alignSelf: 'center', marginTop: 10, paddingHorizontal: 0 }}>
-          <ScrollView
+
+        {
+           
+           usrAccess == 'Y'?(
+
+            <ScrollView
             horizontal={true}
           >
             <SegmentedControlTab
               borderRadius={0}
-              values={['Shift Details', 'Flexi Shift', 'Company Shift Details']}
+              values={['Shift Details']}
               selectedIndex={Shift}
               onTabPress={index => {
                 handleShift(index);
@@ -382,10 +397,53 @@ const Shift = ({ navigation }) => {
               activeTabTextStyle={styles.activeTabTextStyle}
             />
           </ScrollView>
+           ) : 
+           (
+            <ScrollView
+            horizontal={true}
+          >
+            {empShift == 'ZZ'?
+             <SegmentedControlTab
+             borderRadius={0}
+             values={['Shift Details','Company Shift Details']}
+             selectedIndex={Shift}
+             onTabPress={index => {
+             
+               handleShift(index);
+             }}
+             tabsContainerStyle={styles.tabsContainerStyle}
+             tabStyle={styles.tabStyle}
+             tabTextStyle={styles.tabTextStyle}
+             activeTabStyle={styles.activeTabStyle}
+             activeTabTextStyle={styles.activeTabTextStyle}
+           />
+           :
+           <SegmentedControlTab
+           borderRadius={0}
+           values={['Shift Details', 'Flexi Shift', 'Company Shift Details']}
+           selectedIndex={Shift}
+           onTabPress={index => {
+           
+             handleShift(index);
+           }}
+           tabsContainerStyle={styles.tabsContainerStyle}
+           tabStyle={styles.tabStyle}
+           tabTextStyle={styles.tabTextStyle}
+           activeTabStyle={styles.activeTabStyle}
+           activeTabTextStyle={styles.activeTabTextStyle}
+         />
+          }
+           
+          </ScrollView>
+           )
+           
+           }
+        
         </View>
       </View>
+      
       {Shift == 0 ? <ShiftDetails /> : null}
-      {Shift == 1 ? <FlexiShift /> : null}
+      {Shift == 1 ? empShift == 'ZZ'? <CompayShiftDe />: <FlexiShift /> : null}
       {Shift == 2 ? <CompayShiftDe /> : null}
 
 
@@ -465,20 +523,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary
+    borderColor: ThemeColor.Teal
   },
   tabTextStyle: {
-    fontSize: GlobalFontSize.P-1,
+    fontSize: 13,
     color: 'grey',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
     backgroundColor: GlobalColor.PrimaryLight,
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: ThemeColor.Teal,
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: ThemeColor.Teal,
   },
   // content: {
   //   top: 10,

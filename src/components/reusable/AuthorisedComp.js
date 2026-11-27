@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Text from './Text';
 import { GlobalFontSize } from '../../constants/FontSize';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 
 
 export default (props) =>{

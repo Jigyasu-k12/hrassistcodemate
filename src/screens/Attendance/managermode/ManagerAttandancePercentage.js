@@ -24,10 +24,10 @@ import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../../Utils/Utils';
 import AuthContext from '../../../context/AuthContext'
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import { GlobalColor } from '../../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../../constants/Colors';
 import Text from '../../../components/reusable/Text';
 // import TextInput from '../../../components/reusable/TextInput';
-import { Header } from '../../../components/reusable/Header';
+import { HeaderMgr } from '../../../components/reusable/HeaderMgr';
 import Button from '../../../components/reusable/Button';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ListEmptyComponent from '../../../components/reusable/ListEmptyComponent';
@@ -48,7 +48,7 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error)
+// $&
     }
   }
 
@@ -63,39 +63,51 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
 
 
     let apiData = {
-      "UserName": route?.params?.data,
+      "UserName": userId,
       "Years":3
     };
 
-    console.log('apiData==>', apiData)
+// $&
 
     ApiService.PostMethode('/GetAttendancePercentageYearwise', apiData, token, authContext)
       .then(result => {
-        console.log("GetAttendancePercentageYearwise", result);
+// $&
         stopLoader(false);
         let ApiResult = result.Value
         setAttendance(ApiResult)
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   }
 
 
 
-  useFocusEffect(
-    React.useCallback(() => {
-      const unsubscribe = GetAttendancePercentageYearwise();
-      return () => unsubscribe;
-    }, [])
+//   useFocusEffect(
+//     React.useCallback(() => {
+//       const unsubscribe = GetAttendancePercentageYearwise();
+//       return () => unsubscribe;
+//     }, [])
+// );
+
+
+ // Update useFocusEffect to include route.params.data as a dependency
+ useFocusEffect(
+  React.useCallback(() => {
+    GetAttendancePercentageYearwise();
+    // No explicit unsubscribe needed since the API call is synchronous
+  }, [route?.params?.data]) // Add route.params.data as a dependency
 );
+
 
   if (loader) {
     return (
       <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-        <Header title={"Attendance Percentage"} back />
+       
+
+        <HeaderMgr title={"Attendance Percentage"} back/>
         <LoadingScreen />
       </SafeAreaView>
     )
@@ -106,7 +118,7 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
-      <Header title="Attendance Percentage" back/>
+      <HeaderMgr title={"Attendance Percentage"} back/>
       <View style={{ flex:1, paddingHorizontal:10 }}>
         <FlatList
           contentContainerStyle={{ flexGrow: 1 }}
@@ -117,8 +129,8 @@ const ManagerAttandancePercentage = ({ navigation, route }) => {
             return (
               <TouchableOpacity
                 style={styles.canteen}>
-                <Text>Financial year {item.MATT_FNYR_YEAR}</Text>
-                <Text>{item.MATT_PERCENT}%</Text>
+                <Text style={{fontSize: 13}}>Financial year {item.MATT_FNYR_YEAR}</Text>
+                <Text style={{fontSize: 13}}>{item.MATT_PERCENT}%</Text>
               </TouchableOpacity>
             )
           }}
@@ -156,7 +168,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 0,
     borderLeftWidth: 5,
-    borderLeftColor: GlobalColor.Secondary,   
+    borderLeftColor: ThemeColor.Forest,   
     marginBottom:2,
   },
 });

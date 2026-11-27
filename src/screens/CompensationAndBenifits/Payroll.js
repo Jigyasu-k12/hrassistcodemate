@@ -1,5 +1,6 @@
 //import liraries
 import React, { useEffect, useState, useContext } from 'react';
+import {AppIcon} from '../../components/icons/AppIcon';
 import { View, StyleSheet, TouchableOpacity, Image, FlatList, SafeAreaView } from 'react-native';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Feather from 'react-native-vector-icons/Feather';
@@ -13,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import Text from '../../components/reusable/Text';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor, HomePalette } from '../../constants/Colors';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import { showErrorMessage } from '../../Utils/Utils';
 
@@ -76,9 +77,9 @@ const Payroll = () => {
     ApiService.PostMethode('/GetSalaryMonth', apiData, token, authContext)
       .then(result => {
         stopLoader()
-        console.log('GetSalaryMonth', result);
+// $&
         let responseData = result.Value[0].SHIS_YYMM_CODE
-        console.log('GetMonth', responseData)
+// $&
         setMonth(responseData)
 
       })
@@ -173,23 +174,20 @@ const Payroll = () => {
         <View style={styles.iconBox}>
           <View
             style={{
-              width: 50,
-              height: 50,
-              borderRadius: 100,
-              borderWidth: 1,
-              borderColor: GlobalColor.Secondary,
+              width: 45,
+              height: 45,
+              borderRadius: 14,
+              backgroundColor: HomePalette.mint,
               justifyContent: 'center',
               alignItems: 'center',
 
             }}>
-            <Image
-              source={require('../../assets/Images/bill.png')}
-              style={{ width: 30, height: 30 }} />
+            <AppIcon name="payslip" size={22} />
           </View>
         </View>
         <View style={styles.item}>
-          <Text Bold>Salary Slip</Text>
-          <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+          <Text Bold style={{ fontSize: 15}}>Salary Slip</Text>
+          <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
         </View>
       </TouchableOpacity>
 
@@ -204,22 +202,19 @@ const Payroll = () => {
           <View style={styles.iconBox}>
             <View
               style={{
-                width: 50,
-                height: 50,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: GlobalColor.Secondary,
+                width: 45,
+                height: 45,
+                borderRadius: 14,
+                backgroundColor: HomePalette.mint,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Image
-                source={require('../../assets/Images/bill.png')}
-                style={{ width: 30, height: 30 }} />
+              <AppIcon name="taxCalc" size={22} />
             </View>
           </View>
           <View style={styles.item}>
-            <Text Bold>Tax Computation Slip</Text>
-            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary} />
+            <Text Bold style={{ fontSize: 15}}>Tax Computation Slip</Text>
+            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal} />
           </View>
         </View>
 
@@ -290,22 +285,19 @@ const Payroll = () => {
           <View style={styles.iconBox}>
             <View
               style={{
-                width: 50,
-                height: 50,
-                borderRadius: 100,
-                borderWidth: 1,
-                borderColor: GlobalColor.Secondary,
+                width: 45,
+                height: 45,
+                borderRadius: 14,
+                backgroundColor: HomePalette.mint,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Image
-                source={require('../../assets/Images/bill.png')}
-                style={{ width: 30, height: 30 }} />
+              <AppIcon name="pf" size={22} />
             </View>
           </View>
           <View style={styles.item}>
-            <Text Bold>PF Balance </Text>
-            <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+            <Text Bold style={{ fontSize: 15}}>Bhavishya Sanchaya (PF) </Text>
+            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
           </View>
         </View>
 
@@ -372,24 +364,49 @@ const Payroll = () => {
         <View style={styles.iconBox}>
           <View
             style={{
-              width: 50,
-              height: 50,
-              borderRadius: 100,
-              borderWidth: 1,
-              borderColor: GlobalColor.Secondary,
+              width: 45,
+              height: 45,
+              borderRadius: 14,
+              backgroundColor: HomePalette.mint,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              source={require('../../assets/Images/bill.png')}
-              style={{ width: 30, height: 30 }} />
+            <AppIcon name="tax" size={22} />
           </View>
         </View>
         <View style={styles.item}>
-          <Text Bold>Tax Savings</Text>
-          <Feather name="corner-up-right" size={20} color={GlobalColor.Secondary}/>
+          <Text Bold style={{ fontSize: 15}}>Tax Savings</Text>
+          <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
         </View>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          myNavigation.navigate('Form16')
+          // setSevingModalVisible(true)
+          // GetTaxSavings();
+        }
+        } style={styles.box}>
+        <View style={styles.iconBox}>
+          <View
+            style={{
+              width: 45,
+              height: 45,
+              borderRadius: 14,
+              backgroundColor: HomePalette.mint,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <AppIcon name="form16" size={22} />
+          </View>
+        </View>
+        <View style={styles.item}>
+        <Text Bold style={{ fontSize: 15}}>Form-16</Text>
+         
+          <Feather name="corner-up-right" color={ThemeColor.Teal} size={18} />
+        </View>
+      </TouchableOpacity>
+
 
 
       <Modal

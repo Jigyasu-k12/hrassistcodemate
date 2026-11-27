@@ -24,7 +24,7 @@ import * as ApiService from '../../Utils/Utils';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
 import { useFocusEffect } from '@react-navigation/native';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import Button from '../../components/reusable/Button';
@@ -56,7 +56,7 @@ const PastBook = ({navigation, route}) => {
         setLoader(true);
         ApiService.PostMethode('/GetShuttlePastFutureReport', data, token)
             .then(result => {
-                console.log("GetShutlPastFutrReportApi", result);
+// $&
                 setLoader(false);
                 let ApiValue = result.Value
                 // {
@@ -69,7 +69,7 @@ const PastBook = ({navigation, route}) => {
 
             .catch(error => {
                 setLoader(false);
-                console.log('Error occurred==>', error);
+// $&
                 ApiService.showErrorMessage(error, authContext);
             });
     };
@@ -82,7 +82,7 @@ const PastBook = ({navigation, route}) => {
         setLoader(true);
         ApiService.PostMethode('/BookingDetail', apiData, token, authContext)
             .then(result => {
-                console.log("BookingDetail", result);
+// $&
 
                 setLoader(false);
                 if(result.Value &&result.Value.length > 0){
@@ -95,7 +95,7 @@ const PastBook = ({navigation, route}) => {
             })
             .catch(error => {
                 setLoader(false);
-                console.log('Error occurred==>', error);
+// $&
                 ApiService.showErrorMessage(error, authContext);
             });
     };
@@ -114,7 +114,7 @@ const PastBook = ({navigation, route}) => {
         setLoader(true);
         ApiService.PostMethode('/ShuttleEligibility', apiData, token, authContext)
             .then(result => {
-                console.log("ShuttleEligibility", result);
+// $&
                 setLoader(false);
                 let ApiResult = result.Result
                 setModalVisible(false);
@@ -136,7 +136,7 @@ const PastBook = ({navigation, route}) => {
             })
             .catch(error => {
                 setLoader(false);
-                console.log('Error occurred==>', error);
+// $&
                 ApiService.showErrorMessage(error, authContext);
             });
     };
@@ -161,7 +161,7 @@ const PastBook = ({navigation, route}) => {
             FromDate: firstDate !== '' ? payloadDate : '',
             ToDate: secondDate !== '' ? payloadDateSecond : '',
         }
-        console.log("payload", apiData);
+// $&
 
         if (firstDate && secondDate == null) {
 
@@ -192,7 +192,7 @@ const PastBook = ({navigation, route}) => {
     return (
         <SafeAreaView
             style={{ flex: 1, paddingHorizontal: 10, width: "100%", alignSelf: 'center', paddingVertical: 5, backgroundColor: GlobalColor.PrimaryLight }}>
-            <Text style={{ paddingVertical: 5, fontSize: 16, fontWeight: 'bold' }}>
+            <Text style={{ paddingVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
                 Select Date
             </Text>
 
@@ -208,7 +208,7 @@ const PastBook = ({navigation, route}) => {
                         setFirstDate(fromDate);
                         let format = moment(fromDate).format('MMM Do YYYY');
                         setTextinputDate(format);
-                        console.log(setTextinputDate);
+// $&
                     }}
                     onCancel={() => {
                         setOpen(false);
@@ -218,13 +218,13 @@ const PastBook = ({navigation, route}) => {
                     style={styles.FromandToInput}>
                     <TextInput
                         placeholder="From"
-                        style={{ color: '#000', flex: 1 }}
+                        style={{ color: '#000', flex: 1 ,fontSize:13}}
                         editable={false}
                         paddingHorizontal={14}
                         value={textinputDate}
                     />
                     <TouchableOpacity onPress={() => setOpen(true)}>
-                        <Ionicons name="calendar-outline" size={30} color={GlobalColor.PrimaryGradient} />
+                        <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
                     </TouchableOpacity>
                 </View>
 
@@ -239,7 +239,7 @@ const PastBook = ({navigation, route}) => {
                         setSecondDate(toDate);
                         let formatSecond = moment(toDate).format('MMM Do YYYY');
                         setTextinputSecondDate(formatSecond);
-                        console.log(setTextinputSecondDate);
+// $&
                     }}
                     onCancel={() => {
                         setSecond(false);
@@ -248,14 +248,14 @@ const PastBook = ({navigation, route}) => {
                 <View
                     style={styles.FromandToInput}>
                     <TextInput
-                        style={{ color: '#000' }}
+                        style={{ color: '#000' ,fontSize:13}}
                         placeholder="To"
                         editable={false}
                         paddingHorizontal={14}
                         value={textinputSecondDate}
                     />
                     <TouchableOpacity onPress={() => setSecond(true)}>
-                        <Ionicons name="calendar-outline" size={30} color={GlobalColor.PrimaryGradient} />
+                        <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -269,7 +269,7 @@ const PastBook = ({navigation, route}) => {
                     />
                 ) : null}
 
-                <Button title="Submit" onPress={() => { handleSubmit() }}></Button>
+                <Button title="Submit" style={{fontSize:13}} onPress={() => { handleSubmit() }}></Button>
             </TouchableOpacity>
             {pastFudata.length > 0 ? (
                 <View style={{ flex:1 }}>
@@ -377,51 +377,51 @@ const PastBook = ({navigation, route}) => {
           <View style={styles.modalView}>
             <Text Bold style={styles.modalTextHeading}>Booking Detail</Text>
             <View style={styles.modalrow}>
-                <Text Bold>Booking Id:</Text>
-                <Text Bold>{bookingDetails.BKDT_ID}</Text>                
+                <Text style={{fontSize:13}} Bold>Booking Id:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.BKDT_ID}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Registration No.:</Text>
-                <Text Bold>{bookingDetails.SHTL_REGISTRATION_NO}</Text>                
+                <Text style={{fontSize:13}} Bold>Registration No.:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.SHTL_REGISTRATION_NO}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Booking For:</Text>
-                <Text Bold>{bookingDetails.BKDT_EMPL_ID}</Text>                
+                <Text style={{fontSize:13}} Bold>Booking For:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.BKDT_EMPL_ID}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Name:</Text>
-                <Text Bold>{bookingDetails.EMPL_NAME}</Text>                
+                <Text style={{fontSize:13}} Bold>Name:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.EMPL_NAME}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Date:</Text>
-                <Text Bold>{moment(bookingDetails.BKDT_START_DATE).format("MM-DD-YY").toUpperCase()}</Text>                
+                <Text style={{fontSize:13}} Bold>Date:</Text>
+                <Text style={{fontSize:13}} Bold>{moment(bookingDetails.BKDT_START_DATE).format("MM-DD-YY").toUpperCase()}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Source:</Text>
-                <Text Bold>{bookingDetails.ROUT_SOURCE}</Text>                
+                <Text style={{fontSize:13}} Bold>Source:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.ROUT_SOURCE}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Destination:</Text>
-                <Text Bold>{bookingDetails.ROUT_DESTINATION}</Text>                
+                <Text style={{fontSize:13}} Bold>Destination:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.ROUT_DESTINATION}</Text>                
             </View>
 
             <View style={styles.modalrow}>
-                <Text Bold>Time:</Text>
-                <Text Bold>{bookingDetails.ROUT_START_TIME}</Text>                
+                <Text style={{fontSize:13}} Bold>Time:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.ROUT_START_TIME}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Status:</Text>
-                <Text Bold>{bookingDetails.BKDT_STATUS_FLAG}</Text>                
+                <Text style={{fontSize:13}} Bold>Status:</Text>
+                <Text style={{fontSize:13}} Bold>{bookingDetails.BKDT_STATUS_FLAG}</Text>                
             </View>        
                 {
                     bookingDetails.BKDT_STATUS_FLAG == "Booked" ? (
                         <View style={styles.modalButtons}>
-                            <Button title="OK" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setModalVisible(!modalVisible)}/>
-                            <Button title="FEEDBACK" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>ShuttleEligibilityApi(bookingDetails.BKDT_ID)}/>
+                            <Button title="OK"  style={{fontSize:13}} btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setModalVisible(!modalVisible)}/>
+                            <Button title="FEEDBACK" style={{fontSize:13}} btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>ShuttleEligibilityApi(bookingDetails.BKDT_ID)}/>
                         </View>                        
                     ):(
                         <View style={styles.modalButtons}>
-                            <Button title="OK" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setModalVisible(!modalVisible)}/>
+                            <Button title="OK" style={{fontSize:13}} btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setModalVisible(!modalVisible)}/>
                         </View>
                     )
                 }                            
@@ -431,7 +431,7 @@ const PastBook = ({navigation, route}) => {
     </View>
             ) : (
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-                    {loader == true ? <Text>We are Loading your data</Text> : <ListEmptyComponent title="No Data Found" subtitle="Please select dates and submit to continue" ></ListEmptyComponent>}
+                    {loader == true ? <Text style={{fontSize:13}} >We are Loading your data</Text> : <ListEmptyComponent title="No Data Found" subtitle="Please select dates and submit to continue" ></ListEmptyComponent>}
                 </View>
             )}
 
@@ -489,7 +489,7 @@ const styles = StyleSheet.create({
         shadowRadius: 1.84,
         elevation: 5,
         borderWidth: 0.5,
-        borderColor: GlobalColor.Secondary,
+        borderColor: ThemeColor.Teal,
         borderRadius: 3,
         padding: 20,
         marginBottom: 10
@@ -500,7 +500,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: GlobalColor.Secondary
+        borderBottomColor: ThemeColor.Teal
     },
     CardData: {
         width: '100%',
@@ -523,7 +523,7 @@ const styles = StyleSheet.create({
     cardContainer:{
         backgroundColor:GlobalColor.White,
         borderWidth:1,
-        borderColor:GlobalColor.Secondary,
+        borderColor:ThemeColor.Teal,
         borderRadius:5, 
         padding:10, 
         marginBottom:10
@@ -535,19 +535,19 @@ const styles = StyleSheet.create({
         marginBottom:10,
     },
     cardValueRight:{
-
+        fontSize:13,
         textAlign:'right',
         color:GlobalColor.Primary
     },
     cardLabel:{
 
         color:GlobalColor.Primary,
-        fontSize:GlobalFontSize.Error
+        fontSize:13
     },
     cardLabelRight:{
         textAlign:'right',
         color:GlobalColor.Primary,
-        fontSize:GlobalFontSize.Error
+        fontSize:13
     },
     centeredView:{
         backgroundColor:'rgba(0,0,0,0.5)',
@@ -562,7 +562,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:15
     },
     modalTextHeading:{
-        fontSize:GlobalFontSize.H4,
+        fontSize:13,
         marginBottom:10
     },
     modalrow:{
@@ -581,7 +581,10 @@ const styles = StyleSheet.create({
         borderRadius:0
     },
     ButtonWidthText:{
-        fontSize:GlobalFontSize.Error
+        fontSize:13
+    },
+    cardValue:{
+        fontSize:13
     }
 
 

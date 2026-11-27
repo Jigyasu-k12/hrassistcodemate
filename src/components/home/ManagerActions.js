@@ -1,0 +1,236 @@
+// "Manager actions" — the manager Home grid. Same data rules as TouchableM:
+//  • /GetEmplShift   → shift 'ZZ' uses the alternate tile order
+//  • /GetTaxiCutoff  → 'N' routes Taxi Approval to ManagerTaxiOld
+import React, {useCallback, useContext, useRef, useState} from 'react';
+import {View, Pressable, StyleSheet, Dimensions} from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
+import moment from 'moment';
+import AuthContext from '../../context/AuthContext';
+import * as ApiService from '../../Utils/Utils';
+import {P, HText, TYPE, RADIUS} from './homeTheme';
+import {AppIcon} from '../icons/AppIcon';
+
+const GAP = 10;
+const PAD = 16;
+const COLS = 3;
+
+// Tile order exactly as TouchableM (Data / Data1)
+const ORDER_DEFAULT = [
+  'leave',
+  'extra',
+  'taxi',
+  'attendance',
+  'rohtak',
+  'hospital',
+];
+const ORDER_ZZ = ['leave', 'taxi', 'attendance', 'rohtak', 'extra', 'hospital'];
+
+const tileDefs = taxiMenu => ({
+  leave: {label: 'Leave Approval', icon: 'teamLeave', route: 'ManagerLeave'},
+  extra: {
+    label: 'Extra Hours Approval',
+    icon: 'extraHours',
+    route: 'ExtraHoursApproval',
+  },
+  taxi: {label: 'Taxi Approval', icon: 'taxi', route: taxiMenu},
+  attendance: {
+    label: 'Team Attendance',
+    icon: 'teamAtt',
+    route: 'ManagerAttandance',
+  },
+  rohtak: {
+    label: 'Rohtak Gatepass Approval',
+    icon: 'gatepass',
+    route: 'ManagerRHTKGatePass',
+  },
+  hospital: {
+    label: 'Hospital Approval',
+    icon: 'hospital',
+    route: 'HospitalApproval',
+  },
+});
+
+const ManagerActions = ({navigation}) => {
+  const {authContext, AppUserData} = useContext(AuthContext);
+  const [shiftData, setShiftData] = useState('');
+  const [taxiMenu, setTaxiMenu] = useState('ManagerTaxi');
+  const [loading, setLoading] = useState(true);
+  const pending = useRef(0);
+  const done = () => {
+    pending.current -= 1;
+    if (pending.current <= 0) {
+      setLoading(false);
+    }
+  };
+
+  // same request as TouchableM.GetEmplShift
+  const GetEmplShift = () => {
+    const today = moment(new Date()).format('DD-MMM-YYYY');
+    return ApiService.PostMethode(
+      '/GetEmplShift',
+      {FromDate: today, ToDate: today, EmplID: AppUserData?.data?.userId},
+      AppUserData.token,
+      authContext,
+    )
+      .then(result => setShiftData(result?.Value?.[0]?.SHIFT || ''))
+      .catch(error => ApiService.showErrorMessage(error, authContext))
+      .finally(done);
+  };
+
+  // same request as TouchableM.showTaxiRental
+  const showTaxiRental = () =>
+    ApiService.PostMethode(
+      '/GetTaxiCutoff',
+      {UserName: AppUserData?.data?.userNT},
+      AppUserData.token,
+      authContext,
+    )
+      .then(result =>
+        setTaxiMenu(result.Result == 'N' ? 'ManagerTaxiOld' : 'ManagerTaxi'),
+      )
+      .catch(error => ApiService.showErrorMessage(error, authContext))
+      .finally(done);
+
+  useFocusEffect(
+    useCallback(() => {
+      pending.current = 2;
+      GetEmplShift();
+      showTaxiRental();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []),
+  );
+
+  const tileW = Math.floor(
+    (Dimensions.get('window').width - PAD * 2 - GAP * (COLS - 1)) / COLS,
+  );
+  const defs = tileDefs(taxiMenu);
+  const order = shiftData === 'ZZ' ? ORDER_ZZ : ORDER_DEFAULT;
+
+  return (
+    <View>
+      <View style={styles.head}>
+        <HText style={styles.title} accessibilityRole="header">
+          Manager actions
+        </HText>
+        <View style={styles.subChip}>
+          <AppIcon
+            name="approve"
+            size={13}
+            color={P.amberInk}
+            strokeWidth={2.2}
+          />
+          <HText style={styles.subChipText}>Approvals & team</HText>
+        </View>
+      </View>
+
+      <View style={styles.grid}>
+        {order.map((id, i) => {
+          const t = defs[id];
+          const style = [
+            styles.tile,
+            {width: tileW, marginRight: i % COLS === COLS - 1 ? 0 : GAP},
+          ];
+          if (loading) {
+            return (
+              <View
+                key={id}
+                style={[style, styles.skeleton]}
+                accessibilityLabel="Loading">
+                <View style={styles.skelChip} />
+                <View style={styles.skelLine} />
+                <View style={[styles.skelLine, {width: '45%'}]} />
+              </View>
+            );
+          }
+          return (
+            <Pressable
+              key={id}
+              onPress={() => navigation.navigate(t.route)}
+              accessibilityRole="button"
+              accessibilityLabel={t.label}
+              android_ripple={{color: P.amberCream}}
+              style={({pressed}) => [...style, pressed && styles.tilePressed]}>
+              <View style={styles.chip}>
+                <AppIcon name={t.icon} size={22} color={P.amberInk} />
+              </View>
+              <HText style={styles.label} numberOfLines={2}>
+                {t.label}
+              </HText>
+            </Pressable>
+          );
+        })}
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  head: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  title: {...TYPE.title, color: P.deep},
+  subChip: {
+    height: 26,
+    paddingHorizontal: 10,
+    borderRadius: 13,
+    backgroundColor: P.amberCream,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  subChipText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: P.amberInk,
+    marginLeft: 5,
+  },
+  grid: {flexDirection: 'row', flexWrap: 'wrap'},
+  tile: {
+    minHeight: 96,
+    marginBottom: GAP,
+    borderRadius: RADIUS.card,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: P.amberSoft,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 6,
+    overflow: 'hidden',
+    shadowColor: P.amberDeep,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 1,
+  },
+  tilePressed: {backgroundColor: '#FFFBF2', transform: [{scale: 0.97}]},
+  chip: {
+    width: 40,
+    height: 40,
+    borderRadius: RADIUS.md,
+    backgroundColor: P.amberCream,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 7,
+  },
+  label: {...TYPE.label, color: P.deep, textAlign: 'center'},
+  skeleton: {borderColor: P.line, elevation: 0, shadowOpacity: 0},
+  skelChip: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: P.mint,
+    marginBottom: 9,
+  },
+  skelLine: {
+    width: '70%',
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: P.mint,
+    marginTop: 4,
+  },
+});
+
+export default ManagerActions;

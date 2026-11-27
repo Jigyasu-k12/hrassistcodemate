@@ -34,15 +34,15 @@ request(PERMISSIONS.IOS.LOCATION_ALWAYS).then((result) => {
       );
       break;
     case RESULTS.LIMITED:
-      console.log("The permission is limited: some actions are possible");
+// $&
       break;
     case RESULTS.GRANTED:
-      console.log("The permission is granted");
+// $&
       // Permission has been granted - app can request location coordinates
       getUserLocation();
       break;
     case RESULTS.BLOCKED:
-      console.log("The permission is denied and not requestable anymore");
+// $&
       break;
   }
 });

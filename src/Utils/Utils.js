@@ -18,7 +18,7 @@ import {fetch} from 'react-native-ssl-pinning';
 
 export const PostMethode = async(url, data, token, context=null) =>{
     let PostUrl = API_SERVICES_URL + url;
-    // console.log("Api url", PostUrl, data);
+    // // console.log($1);
     /*
     fetch(PostUrl, {
         method: "POST" ,
@@ -48,19 +48,20 @@ export const PostMethode = async(url, data, token, context=null) =>{
             method: "POST" ,
             timeoutInterval: 0, // milliseconds
             body: JSON.stringify(data),
-            disableAllSecurity: false,
+            disableAllSecurity: true,
             // your certificates array (needed only in android) ios will pick it automatically
             sslPinning: {
                 certs: ["mycert"] // your certificates name (without extension), for example cert1.cer, cert2.cer
             },
             headers: {
                 Accept: "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "e_platform": "mobile",
+                "x-origin": "com.maruti.hrapp",
                 authToken: token,
               'Content-Type': 'application/json',
             }
         }).then(res=>JSON.parse(res.bodyString))    
     } catch (error) {
-        console.log("error catched in util", error);
+// $&
         throw error.json()
     }
 }
@@ -71,7 +72,7 @@ export const PostMethode = async(url, data, token, context=null) =>{
 
 export const PostMethodes =  async (url, data, token, context=null) => {
     let PostUrl = API_SERVICES_URL + url;
-    console.log("Api url", PostUrl, data);
+// $&
 
     try {
 
@@ -113,7 +114,7 @@ const handleError = (err) => {
 
 
 export const showErrorMessage = (error, context=null) => {
-    console.log(error);
+// $&
     let showErrorMessage = error.bodyString ? JSON.parse(error.bodyString): null;
     if(error && error.status){
         if(error.status == "403" || error.status == "401"){
@@ -143,25 +144,43 @@ export const showErrorMessage = (error, context=null) => {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
-        console.log(error.request);
+// $&
         Toast.show("Network Error");
       } else {
         Toast.show("Something Went Wrong");
         // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
+// $&
       }
 }
 
 
+// Flag to prevent multiple session expiry alerts
+let isSessionExpiredAlertShown = false;
+
 const UseLogout = (context) => {
-    context.signOut(),
+    // Prevent multiple alerts from showing
+    if (isSessionExpiredAlertShown) {
+        return;
+    }
+
+    isSessionExpiredAlertShown = true;
+    context.signOut();
+
     Alert.alert(
         "Unauthorised",
         "Session Expired login again",
         [
-          { text: "OK", 
-        //   onPress: () => context.signOut(),
-           style: "cancel"}
-        ]
+          { text: "OK",
+            onPress: () => {
+                // Reset flag when user dismisses the alert
+                isSessionExpiredAlertShown = false;
+            },
+            style: "cancel"
+          }
+        ],
+        {
+            // Ensure alert can't be dismissed by tapping outside
+            cancelable: false
+        }
       );
 }

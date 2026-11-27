@@ -19,10 +19,11 @@ import Shift from './Shift';
 import HolidayCalendar from './HolidayCalendar';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import {Header} from './../../components/reusable/Header';
 import Text from '../../components/reusable/Text';
+import AuthContext from '../../context/AuthContext';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -31,11 +32,16 @@ const AttendanceAdmin = ({navigation}) => {
   const [route, setroute] = useState("Attendance");
   const [horizental, setHorizental] = useState(false);
 
+  const {authContext, AppUserData} = useContext(AuthContext);
+  let usrAccess = AppUserData?.data?.userFlag;
+
+// $&
+
   const tabBarListeners = ({ navigation, route }) => ({
     tabPress: () => {
       setHorizental(false);
       setroute(route.name);
-      console.log(navigation, route);
+// $&
     },
   });
 
@@ -43,7 +49,10 @@ const AttendanceAdmin = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1, width: '100%', position:'relative'}}>
-      <LinearGradient colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]} style={styles.container}>
+      <LinearGradient
+       colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]}
+       start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+        style={styles.container}>
             <View style={{ flex:1,flexDirection:'row' }}>            
                 <View
                     style={{
@@ -164,32 +173,40 @@ const AttendanceAdmin = ({navigation}) => {
               }
             </View>
           ) : null} */}
-
+        <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+          <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator 
        swipeEnabled={false}
        screenOptions={{
         tabBarScrollEnabled: true,
-        tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
-        tabBarActiveTintColor: '#fff',
+        tabBarLabelStyle: { fontSize: 13, fontWeight:'700'},
+        tabBarActiveTintColor: ThemeColor.OnDark,
+        tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
         tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
-        tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff'},
-        tabBarStyle: { backgroundColor: GlobalColor.SecondryGradient, elevation: 0 },
+        tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
+        tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
       }}>
         <Tab.Screen name="Attendance" component={Attendance} listeners={tabBarListeners} />
         <Tab.Screen name="Leave" component={Leave} listeners={tabBarListeners}/>
         <Tab.Screen name="Shift" component={Shift} listeners={tabBarListeners}/>
         <Tab.Screen name="Holiday Calendar" component={HolidayCalendar} listeners={tabBarListeners}/>
       </Tab.Navigator>
+      </View>
+        </LinearGradient>
+
+        {/* {usrAccess != 'Y' ? ( 
 
       <TouchableOpacity style={styles.fullWidthButton}
         onPress={() => {
           navigation.navigate('ManagerMode');
         }}>
-      <Image  source={require("./../../assets/Images/setting.png")} style={{width:30,height:30,tintColor:'#fff'}}/>
-        <Text style={styles.fullWidthButtonText} Bold>
-          Goto Manager Mode
+      <Image  source={require("./../../assets/Images/setting.png")} style={{width:25,height:25,tintColor:'#fff'}}/>
+        <Text style={styles.fullWidthButtonText}>
+          Go to Manager Mode
         </Text>
       </TouchableOpacity>
+
+):null} */}
 
     </SafeAreaView>
   );
@@ -203,7 +220,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   fullWidthButton:{
-    backgroundColor:GlobalColor.Primary, 
+    backgroundColor:ThemeColor.Teal, 
     paddingVertical:10,
     flexDirection:'row', 
     alignItems:'center', 
@@ -211,14 +228,20 @@ const styles = StyleSheet.create({
   },
   fullWidthButtonText:{
     color:GlobalColor.White, 
-    marginLeft:8
+    marginLeft:8,
+    fontSize:13
   },
   addtnlBtn:{
     // position:'absolute',
     // right:10,
     // top:5,
     zIndex:55555555
-  }
+  },
+  mystyl: {
+        backgroundColor: 'transparent',
+        height:'83%',
+        flexDirection: 'row',
+      },
 });
 
 export default AttendanceAdmin;

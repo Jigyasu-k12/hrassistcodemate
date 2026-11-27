@@ -12,13 +12,14 @@ export const AuthPost = (url, data)=>{
       timeoutInterval: 0, // milliseconds
       body: JSON.stringify(data),
       // body: data,
-      disableAllSecurity: false,
+      disableAllSecurity: true,
       // your certificates array (needed only in android) ios will pick it automatically
       sslPinning: {
           certs: ["mycert"] // your certificates name (without extension), for example cert1.cer, cert2.cer
       },
       headers: {
           Accept: "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "e_platform": "mobile",
+          "x-origin": "com.maruti.hrapp",
           'Content-Type': 'application/json; charset=utf-8',
       }
   }).then(res=>JSON.parse(res.bodyString))    

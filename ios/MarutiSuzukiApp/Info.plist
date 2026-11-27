@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -37,6 +37,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>HR Assist needs camera access to scan business cards</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Enabling Face ID allows you quick and secure access to your account.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -45,6 +47,10 @@
 	<string>We need access to your locationto show your relevant search results. With "Always" access we'll also send you some nice notification</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need access to your locationto show your relevant search results.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>HR Assist needs permission to save photos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>HR Assist needs photo library access to save scanned images</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>fonts/Roboto-Bold.ttf</string>
@@ -76,11 +82,28 @@
 		<string>fonts/SimpleLineIcons.ttf</string>
 		<string>fonts/Zocial.ttf</string>
 	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>SceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

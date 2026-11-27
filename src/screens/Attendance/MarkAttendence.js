@@ -22,12 +22,14 @@ import * as ApiService from '../../Utils/Utils';
 
 import {useFocusEffect} from '@react-navigation/native';
 
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import {GlobalFontSize} from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import {LoadingScreen} from '../../components/reusable/LoadingScreen';
 import RNMockLocationDetector from 'react-native-mock-location-detector';
 import JailMonkey from 'react-native-pvt-jail-monkey';
+
+var mytime = 10000;
 
 const MarkAttendence = () => {
   const [fromDate, setFromDate] = useState(new Date());
@@ -56,6 +58,42 @@ const MarkAttendence = () => {
     }, []),
   );
 
+  const showTimer = () => {
+    let EmplID = AppUserData?.data?.userId
+    let apiData =
+    {
+      "SystemName":"HR-ASSIST",
+      "ReportName":"LOCN_REFR_TIME",
+      "LOVName":"LOCN_REFR_TIME",
+      "LOVCode":"",
+      "UserName":EmplID
+      };
+    // AppUserData?.data?.userId 222852
+    let token = AppUserData.token;
+    setLoader(true);
+    ApiService.PostMethode('/GetLOVM', apiData, token, authContext)
+      .then(result => {
+// $&
+         let tm = result.Value[0].LOVM_VALUE_CODE * 1000;
+
+        // // console.log($1);
+         mytime = tm;
+// $&
+// $&
+        // settimeLocation(tm);
+
+        setLoader(false);
+     
+      })
+      .catch(error => {        
+        setLoader(false);
+       
+        // // console.log($1);
+        ApiService.showErrorMessage(error, authContext);
+      });
+  }
+
+
   const checkGpsAvailable = () => {
     setShowAttandanceTabs(true);
     setMarkAttandance(0);
@@ -63,7 +101,15 @@ const MarkAttendence = () => {
     getLocationLisenceKey();
   };
 
+
+
+
   useEffect(() => {
+    showTimer();
+    const interval = setInterval(() => {
+      getMobDeviceIOS(true);
+    },mytime);
+    
     const requestLocationPermission = async () => {
       if (Platform.OS === 'ios') {
         askIOSPermission();
@@ -92,6 +138,12 @@ const MarkAttendence = () => {
     };
 
     requestLocationPermission();
+    getMobDeviceIOS(true);
+
+    return () => {
+      clearInterval(interval);
+    }
+
   }, []);
 
   const askIOSPermission = async () => {
@@ -99,7 +151,7 @@ const MarkAttendence = () => {
   };
   // const getUserCurrentLocation = () => {
   //   Geolocation.getCurrentPosition(position => {
-  //     console.log('position', position);
+  //     // console.log($1);
   //     const { latitude, longitude } = position.coords;
   //     setLocation({
   //       latitude,
@@ -110,6 +162,95 @@ const MarkAttendence = () => {
   //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
   //   );
   // }
+
+  const getMobDeviceIOS = async () => {
+    if (Platform.OS == 'android') {
+      const isLocationMocked =
+        await RNMockLocationDetector.checkMockLocationProvider();
+      if (isLocationMocked) {
+        Alert.alert('Error', 'Location is mocked please retry', [
+          {
+            text: 'Okay',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          // { text: "OK", onPress: () => {
+          //   Linking.openURL(vesionNo[0]);
+          // } }
+        ]);
+        return;
+      }else{
+        getCurrentPosition()
+      }
+    } else {
+      askIOSPermission()
+// $&
+      Geolocation.getCurrentPosition(position => {
+        // setLoader(true);
+// $&
+         const { latitude, longitude } = position.coords;
+         let url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + parseFloat(latitude) + ',' + parseFloat(longitude) + '&key=' + 'AIzaSyDqQgcT34Ix_8YMXQ-RA5f2U2d2muT7vIE'
+// $&
+         ApiService.getRawurl(url)
+           .then(result => {
+// $&
+// $&
+             // setLoader(false);
+             let userlocation = result.results[0].formatted_address;
+             setUserLocation(userlocation)
+             let date = moment(new Date()).format('DD-MMM-YYYY');
+  
+             if(!reset){              
+               CallAPIToStoreAddress(userlocation, date, latitude, longitude);
+             }else{
+              // setLoader(false);
+             }
+           })
+           .catch(error => {
+             //setLoader(false);
+             // Alert.alert(
+             //   "Error",
+             //   "Unable to get location name retry",
+             //   [
+             //     {
+             //       text: "Okay",
+             //       onPress: () => console.log("Cancel Pressed"),
+             //       style: "cancel"
+             //     },
+                 // { text: "OK", onPress: () => {
+                 //   Linking.openURL(vesionNo[0]);
+                 // } }
+             //   ]
+             // );
+  
+             // // console.log($1);
+             // ApiService.showErrorMessage(error, authContext);
+           });
+  
+  
+       },
+         error => {
+// $&
+           setLoader(false);
+          //  Alert.alert(
+          //    "Error",
+          //    "Unable to detect current location please reset location & retry",
+          //    [
+          //      {
+          //        text: "Okay",
+          //        onPress: () => console.log("Cancel Pressed"),
+          //        style: "cancel"
+          //      },
+          //    ]
+          //  );
+         },
+         { enableHighAccuracy: false, timeout: 4000, maximumAge: 1000 },
+       );
+  
+    }
+
+
+     };
 
   const getMobDevice = async () => {
     if (Platform.OS == 'android') {
@@ -132,7 +273,7 @@ const MarkAttendence = () => {
       }
     } else {
       askIOSPermission()
-      console.log('ios device');
+// $&
       getCurrentPosition()
     }
     // let apiData = { "UserName": AppUserData?.data?.username };
@@ -144,7 +285,7 @@ const MarkAttendence = () => {
         let token = AppUserData.token;
         ApiService.PostMethode('/GetMobDevice', apiData, token, authContext)
           .then(result => {
-            console.log("APiresult GetMobDevice", result);
+// $&
             // setLoader(false);
             if (result.Value.length > 0) {
               // DEVC_ID: "1"
@@ -153,7 +294,7 @@ const MarkAttendence = () => {
               let modelfrmplug = Platform.Model;
   
               if (model.includes(modelfrmplug)) {
-                console.log("inside");
+// $&
                 let notSupported = true;
                 Toast.show('Session expired login again');
               } else {
@@ -163,25 +304,25 @@ const MarkAttendence = () => {
           })
           .catch(error => {
             setLoader(false);
-            // console.log('Error occurred==> getMobDevice', error);
+            // // console.log($1);
             ApiService.showErrorMessage(error, authContext);
           });
       }
       */
 
-    // console.log(location);
+    // // console.log($1);
     // return;
 
-;
+
   };
 
   const getCurrentPosition = ()=>{
     Geolocation.getCurrentPosition(
       position => {
         setLoader(true);
-        console.log('position', position);
+// $&
         const {latitude, longitude} = position.coords;
-        console.log('Lat&Long', latitude, longitude);
+// $&
         let url =
           'https://maps.googleapis.com/maps/api/geocode/json?latlng=' +
           parseFloat(latitude)+
@@ -189,10 +330,10 @@ const MarkAttendence = () => {
           parseFloat(longitude)+
           '&key='+
           MapLisenceKey;
-        console.log('location url==>', url);
+// $&
         ApiService.getRawurl(url)
           .then(result => {
-            console.log('APiresult getRawurl', result);
+// $&
             setLoader(false);
             let userlocation = result.results[0].formatted_address;
             setUserLocation(userlocation);
@@ -210,7 +351,7 @@ const MarkAttendence = () => {
             }
           })
           .catch(error => {
-            console.log('Error Occured during location', error);
+// $&
             // CallAPIToStoreAddress();
             setLoader(false);
             Alert.alert('Error', 'Unable to get location name retry', [
@@ -224,12 +365,12 @@ const MarkAttendence = () => {
               // } }
             ]);
 
-            // console.log('Error occurred==> APiresult getRawurl', error);
+            // // console.log($1);
             // ApiService.showErrorMessage(error, authContext);
           });
       },
       error => {
-        console.log(error);
+// $&
         setLoader(false);
         Alert.alert(
           'Error',
@@ -264,12 +405,12 @@ const MarkAttendence = () => {
       PunchDate: date,
     };
 
-    console.log(apiData);
+// $&
     setLoader(true);
     ApiService.PostMethode('/SubmitPunchRO', apiData, token, authContext)
       .then(result => {
         setLoader(false);
-        console.log('ApiResult SubmitPunchRO', result);
+// $&
         Alert.alert('Success', result.Result);
         // let responseData = result.Value[0].SHIS_YYMM_CODE
         // console.log('GetMonth', responseData)
@@ -277,7 +418,7 @@ const MarkAttendence = () => {
       })
       .catch(error => {
         setLoader(false);
-        console.log('Error occurred==> SubmitPunchRO', error);
+// $&
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -292,7 +433,7 @@ const MarkAttendence = () => {
     ApiService.PostMethode('/GetMapsLicenseKey', {}, token)
       .then(result => {
         setLoader(false);
-        console.log('ApiResult GetMapsLicenseKey', result);
+// $&
         if (result.Result) {
           setMapLisenceKey(result.Result);
         }
@@ -326,7 +467,7 @@ const MarkAttendence = () => {
             <Text style={{textAlign: 'center'}}>{userLocation}</Text>
           </TouchableOpacity>
           {/* <TouchableOpacity
-            onPress={() => getMobDevice(true)}
+            onPress={() => getMobDeviceIOS(true)}
             style={styles.resetLocation}>
             <Text style={styles.resetLocationTxt}>Reset Location</Text>
             <Ionicons name="ios-locate-outline" size={30} color={'green'} />

@@ -5,7 +5,7 @@
  * @format
  */
 
- const jsoMetroPlugin = require("obfuscator-io-metro-plugin")(
+const jsoMetroPlugin = require("obfuscator-io-metro-plugin")(
   {
     // for these option look javascript-obfuscator library options from  above url
     compact: false,
@@ -28,7 +28,9 @@
 );
 
 module.exports = {
+  ...jsoMetroPlugin,
   transformer: {
+    ...jsoMetroPlugin.transformer,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
@@ -36,5 +38,4 @@ module.exports = {
       },
     }),
   },
-  ...jsoMetroPlugin,
 };

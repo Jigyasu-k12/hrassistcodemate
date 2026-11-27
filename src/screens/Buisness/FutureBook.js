@@ -17,7 +17,7 @@ import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../Utils/Utils';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
 import Text from '../../components/reusable/Text';
@@ -43,7 +43,7 @@ export default function FutureBook() {
             setLoader(false);
             setrefresh(false);
             } catch(error){
-                console.log(error)
+// $&
             }
         }
 
@@ -60,7 +60,7 @@ export default function FutureBook() {
         setLoader(true);
         ApiService.PostMethode('/GetShuttlePastFutureReport', apiData, token, authContext)
             .then(result => {
-                console.log("GetShutlPastFutrReportApi", result);
+// $&
                 stopLoader(false);
                 let ApiValue = result.Value
                 setFutureData(ApiValue)
@@ -73,7 +73,7 @@ export default function FutureBook() {
 
             .catch(error => {
                 stopLoader(false);
-                console.log('Error occurred==>', error);
+// $&
                 ApiService.showErrorMessage(error, authContext);
             });
     };
@@ -82,13 +82,13 @@ export default function FutureBook() {
         let apiData = {
             BKDTID: data.BKDT_ID,
         }
-        // console.log("apiPayload", data);
+        // // console.log($1);
         // return;
         // setLoader(true);
         setmodalVisible(true);
         ApiService.PostMethode('/BookingDetail', apiData, token, authContext)
             .then(result => {
-                console.log("BookingDetail", result);
+// $&
                 setLoader(false);
                 if(result.Value &&result.Value.length > 0){
                     let ApiValue = result.Value;
@@ -101,7 +101,7 @@ export default function FutureBook() {
             })
             .catch(error => {
                 setLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                  ApiService.showErrorMessage(error, authContext);
             });
     };
@@ -166,14 +166,14 @@ export default function FutureBook() {
         ApiService.PostMethode('/BookShuttleSeat', apiData, token, authContext)
             .then(result => {
                 setLoader(false);
-                console.log('ApiResult', responseData);
+// $&
                 let responseData = result;
                 Toast.show(result.Result);
                 GetShutlPastFutrReportApi();
             })
             .catch(error => {
                 setLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -234,6 +234,7 @@ export default function FutureBook() {
             <FlatList
                 contentContainerStyle={{ flexGrow:1, marginTop:10, paddingBottom:10 }}
                 data={futureData}
+                style={{marginBottom:"25%"}}
                 renderItem={ItemRender}
                 keyExtractor={item => item.id}                
                 ListEmptyComponent={<ListEmptyComponent 
@@ -256,47 +257,47 @@ export default function FutureBook() {
           <View style={styles.modalView}>
             <Text Bold style={styles.modalTextHeading}>Booking Detail</Text>
             <View style={styles.modalrow}>
-                <Text Bold>Booking Id:</Text>
-                <Text Bold>{BookingDetail.BKDT_ID}</Text>                
+                <Text style={{fontSize:13}} Bold>Booking Id:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.BKDT_ID}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Registration No.:</Text>
-                <Text Bold>{BookingDetail.SHTL_REGISTRATION_NO}</Text>                
+                <Text style={{fontSize:13}} Bold>Registration No.:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.SHTL_REGISTRATION_NO}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Booking For:</Text>
-                <Text Bold>{BookingDetail.BKDT_EMPL_ID}</Text>                
+                <Text style={{fontSize:13}} Bold>Booking For:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.BKDT_EMPL_ID}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Name:</Text>
-                <Text Bold>{BookingDetail.EMPL_NAME}</Text>                
+                <Text style={{fontSize:13}} Bold>Name:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.EMPL_NAME}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Date:</Text>
-                <Text Bold>{moment(BookingDetail.BKDT_START_DATE).format("MM-DD-YY").toUpperCase()}</Text>                
+                <Text style={{fontSize:13}} Bold>Date:</Text>
+                <Text style={{fontSize:13}} Bold>{moment(BookingDetail.BKDT_START_DATE).format("MM-DD-YY").toUpperCase()}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Source:</Text>
-                <Text Bold>{BookingDetail.ROUT_SOURCE}</Text>                
+                <Text style={{fontSize:13}} Bold>Source:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.ROUT_SOURCE}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Destination:</Text>
-                <Text Bold>{BookingDetail.ROUT_DESTINATION}</Text>                
+                <Text style={{fontSize:13}} Bold>Destination:</Text>
+                <Text  style={{fontSize:13}} Bold>{BookingDetail.ROUT_DESTINATION}</Text>                
             </View>
 
             <View style={styles.modalrow}>
-                <Text Bold>Time:</Text>
-                <Text Bold>{BookingDetail.ROUT_START_TIME}</Text>                
+                <Text style={{fontSize:13}} Bold>Time:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.ROUT_START_TIME}</Text>                
             </View>
             <View style={styles.modalrow}>
-                <Text Bold>Status:</Text>
-                <Text Bold>{BookingDetail.BKDT_STATUS_FLAG}</Text>                
+                <Text style={{fontSize:13}} Bold>Status:</Text>
+                <Text style={{fontSize:13}} Bold>{BookingDetail.BKDT_STATUS_FLAG}</Text>                
             </View>
             <View style={styles.modalButtons}>
-                <Button title="Ok" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setmodalVisible(!modalVisible)}/>
+                <Button title="Ok" style={{fontSize:13}} btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>setmodalVisible(!modalVisible)}/>
                 {
                    BookingDetail.BKDT_STATUS_FLAG == 'Booked' ? (
-                        <Button title="Cancel Booking" btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>confirmCancel(BookingDetail)}/>
+                        <Button title="Cancel Booking" style={{fontSize:13}} btnStyle={styles.ButtonWidth} textStyle={styles.ButtonWidthText} onPress={()=>confirmCancel(BookingDetail)}/>
                     ): null
                 }
             </View>
@@ -326,12 +327,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: GlobalColor.PrimaryGradient,
+        borderBottomColor: ThemeColor.Teal,
     },
     cardContainer:{
         backgroundColor:GlobalColor.White,
         borderWidth:1,
-        borderColor:GlobalColor.Secondary,
+        borderColor:ThemeColor.Teal,
         borderRadius:5, 
         padding:10, 
         marginBottom:10
@@ -343,16 +344,21 @@ const styles = StyleSheet.create({
     },
     cardValueRight:{
         textAlign:'right',
-        color:GlobalColor.Primary
+        color:GlobalColor.Primary,
+        fontSize:13
     },
     cardLabel:{
         color:GlobalColor.Primary,
-        fontSize:GlobalFontSize.Error
+        fontSize:13
+    },
+    cardValue:{
+        
+        fontSize:13
     },
     cardLabelRight:{
         textAlign:'right',
         color:GlobalColor.Primary,
-        fontSize:GlobalFontSize.Error
+        fontSize:13
     },
     centeredView:{
         backgroundColor:'rgba(0,0,0,0.5)',
@@ -367,7 +373,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:15
     },
     modalTextHeading:{
-        fontSize:GlobalFontSize.H4,
+        fontSize:13,
         marginBottom:10
     },
     modalrow:{

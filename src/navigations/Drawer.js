@@ -24,6 +24,8 @@ import CompensationBenifitsNav from '../../src/navigations/CompensationBenifitsN
 import HospitalNavs from './HospitalNavigator';
 import CanteeNavigator from './CanteeNavigator';
 import BusinessNavigator from './BusinessNavigator';
+import Whatsnew from '../screens/whatsnew';
+
 
 // import EmployeLookUp from '../screenss/employeLookUp/EmployeLookUp';
 // import Canteen from '../screens/Canteen/Canteen';
@@ -56,7 +58,11 @@ const MyDrawer = () => {
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
       <Drawer.Screen name="Tabs" component={Tabs} />
-      <Drawer.Screen name="EmployeeNavs" component={EmployeeNavs} />
+      <Drawer.Screen name='EditProfile' component={EditProfile}/>
+      <Drawer.Screen name='Notification' component={Notification}/>
+      <Drawer.Screen name='Nomination' component={Nomination}/>
+      <Drawer.Screen name='Whatsnew' component={Whatsnew}/>
+      {/* <Drawer.Screen name="EmployeeNavs" component={EmployeeNavs} />
       <Drawer.Screen name='EmployProfile' component={EmployProfile}/>
       <Drawer.Screen name='EditProfile' component={EditProfile}/>
       <Drawer.Screen name='Notification' component={Notification}/>
@@ -65,7 +71,7 @@ const MyDrawer = () => {
       <Drawer.Screen name="CompensationBenifitsNav" component={CompensationBenifitsNav} options={{unmountOnBlur:true}}/>
       <Drawer.Screen name="HospitalNavs" component={HospitalNavs} />
       <Drawer.Screen name="Canteen" component={CanteeNavigator} />
-      <Drawer.Screen name="BuisnessTravel" component={BusinessNavigator} />
+      <Drawer.Screen name="BuisnessTravel" component={BusinessNavigator} /> */}
 
         
       {/* <Drawer.Screen name="BuisnessTravel" component={BuisnessTravel} />

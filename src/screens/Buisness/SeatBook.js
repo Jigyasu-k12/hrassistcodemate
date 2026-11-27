@@ -13,7 +13,7 @@ import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../Utils/Utils';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import Button from '../../components/reusable/Button';
@@ -25,8 +25,8 @@ import moment from 'moment';
 import { Decrypt } from '../../Service/Helper';
 // create a component
 const SeatBook = ({ navigation, route }) => {
-    console.log(route.params.data);
-    console.log(route.params.date);
+// $&
+// $&
 
     let radio_props = [
         { label: 'Self', value: 0 },
@@ -47,7 +47,7 @@ const SeatBook = ({ navigation, route }) => {
     let inputDegnData = AppUserData.data.EMPL_DESG_CODE
 
     const SearchEmployee = () => {
-        console.log('post data', search);
+// $&
         if (search === '') {
             alert("please enter a valid keyWord ")
             return
@@ -61,14 +61,14 @@ const SeatBook = ({ navigation, route }) => {
             ApiService.PostMethode('/GetEmplLookup', apiData, token, authContext)
                 .then(result => {
                     setLoader(false);
-                    console.log('ApiResult', result);
+// $&
                     let responseData = result.Value;
                     setUserList(responseData)
                     setModalVisible(true)
                 })
                 .catch(error => {
                     setLoader(false);
-                    console.log('Error occurred==>', error);
+// $&
                     ApiService.showErrorMessage(error, authContext);
                 });
         }
@@ -110,14 +110,14 @@ const SeatBook = ({ navigation, route }) => {
             .then(result => {
                 setLoader(false);
                 let responseData = result.Result;
-                console.log('ApiResult', responseData);
+// $&
                 // setBookData(responseData)
                 Alert.alert("Success",responseData);
                 navigation.goBack();
             })
             .catch(error => {
                 setLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -155,15 +155,15 @@ const SeatBook = ({ navigation, route }) => {
                         // console.log(isSelected)
                     }}
                     borderWidth={0.5}
-                    buttonInnerColor={GlobalColor.Secondary}
-                    buttonOuterColor={GlobalColor.PrimaryGradient}
-                    buttonSize={18}
+                    buttonInnerColor={ThemeColor.Teal}
+                    buttonOuterColor={ThemeColor.Teal}
+                    buttonSize={13}
                     buttonOuterSize={28}
                 />
 
             {isSelected == 0 ? (
                 <View style={{  }}>
-                    <Text style={{ color: GlobalColor.Text, fontSize: GlobalFontSize.P, marginVertical: 7 }}>Name</Text>
+                    <Text Bold style={{ color: GlobalColor.Text, fontSize: 13, marginVertical: 7 }}>Name</Text>
 
 
                     {/* <TextInput
@@ -178,7 +178,7 @@ const SeatBook = ({ navigation, route }) => {
                             paddingVertical:10,
                             alignItems: 'center',
                             borderWidth: 0,
-                            borderColor: GlobalColor.PrimaryGradient,
+                            borderColor: ThemeColor.Teal,
                             flexDirection: 'row',
                             justifyContent: 'space-between',
                             backgroundColor: GlobalColor.White,
@@ -196,7 +196,7 @@ const SeatBook = ({ navigation, route }) => {
                     >
 
                         <TextInput
-                            style={{paddingHorizontal:10}}
+                            style={{paddingHorizontal:10,fontSize:13}}
                             // placeholder="Login Id"
                             editable={false}
                             // onChangeText={handleChange('UserName')}
@@ -206,7 +206,7 @@ const SeatBook = ({ navigation, route }) => {
                     </TouchableOpacity>
 
 
-                    <Text style={{ color: GlobalColor.Text, fontSize: GlobalFontSize.P, marginVertical: 7 }}>Designation</Text>
+                    <Text Bold style={{ color: GlobalColor.Text, fontSize: 13, marginVertical: 7 }} >Designation</Text>
 
 
                     <TouchableOpacity
@@ -216,7 +216,7 @@ const SeatBook = ({ navigation, route }) => {
                             paddingVertical:10,
                             alignItems: 'center',
                             borderWidth: 0,
-                            borderColor: GlobalColor.PrimaryGradient,
+                            borderColor: ThemeColor.Teal,
                             flexDirection: 'row',
                             justifyContent: 'space-between',
                             backgroundColor: GlobalColor.White,
@@ -236,7 +236,7 @@ const SeatBook = ({ navigation, route }) => {
                         style={{ marginVertical: 10, width: '100%', borderWidth: 1, paddingVertical: 10, alignSelf: 'center', borderRadius: 8 }} /> */}
 
                         <TextInput
-                             style={{paddingHorizontal:10}}
+                             style={{paddingHorizontal:10,fontSize:13}}
                             value={inputDegnData}
                             editable={false}
 
@@ -259,11 +259,11 @@ const SeatBook = ({ navigation, route }) => {
                             ) : null}
                             {/* <LinearGradient
                                 style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
-                                colors={['#4174D0', '#6ef7ff']}>
+                                colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
                                 <Text style={{ color: '#fff', fontSize: 16 }}>BOOK</Text>
                             </LinearGradient> */}
 
-                            <Button title="BOOK" onPress={() => {
+                            <Button title="BOOK" style={{fontSize:13}} onPress={() => {
                                 BookShuttleSeatApi()
                             }} />
 
@@ -276,11 +276,11 @@ const SeatBook = ({ navigation, route }) => {
                         >
                             {/* <LinearGradient
                                 style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
-                                colors={['#4174D0', '#6ef7ff']}>
+                                colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
                                 <Text style={{ color: '#fff', fontSize: 16 }}>CANCEL</Text>
                             </LinearGradient> */}
 
-                            <Button title="CANCEL" onPress={() => {
+                            <Button title="CANCEL" style={{fontSize:13}} onPress={() => {
                                 navigation.navigate("ShuttleBooking")
                             }} />
                         </TouchableOpacity>
@@ -316,7 +316,7 @@ const SeatBook = ({ navigation, route }) => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                 }}>
-                                <Feather name="search" size={20} color={'#4174D0'} />
+                                <Feather name="search" size={20} color={ThemeColor.Teal} />
                             </View>
                             <TextInput
                                 placeholder="Search By Name/Dept/Staff/ID"
@@ -331,8 +331,8 @@ const SeatBook = ({ navigation, route }) => {
                             <Ionicons
                                 style={styles.searchIcon}
                                 name="ios-search"
-                                size={25}
-                                color="#b2bec3"
+                                size={22}
+                             
                             />
                             <TextInput
                                 style={styles.input}
@@ -353,7 +353,7 @@ const SeatBook = ({ navigation, route }) => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                 }}>
-                                <Ionicons name="send" size={20} color={'#4174D0'} />
+                                <Ionicons name="send" size={18} color={ThemeColor.Teal} />
                             </TouchableOpacity>
                         </View>
 
@@ -384,7 +384,7 @@ const SeatBook = ({ navigation, route }) => {
                                 paddingVertical:10,
                                 alignItems: 'center',
                                 borderWidth: 0,
-                                borderColor: GlobalColor.PrimaryGradient,
+                                borderColor: ThemeColor.Teal,
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
                                 backgroundColor: GlobalColor.White,
@@ -420,7 +420,7 @@ const SeatBook = ({ navigation, route }) => {
                                 paddingVertical:10,
                                 alignItems: 'center',
                                 borderWidth: 0,
-                                borderColor: GlobalColor.PrimaryGradient,
+                                borderColor: ThemeColor.Teal,
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
                                 backgroundColor: GlobalColor.White,
@@ -456,7 +456,7 @@ const SeatBook = ({ navigation, route }) => {
                                 ) : null}
                                 {/* <LinearGradient
                                     style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
-                                    colors={['#4174D0', '#6ef7ff']}>
+                                    colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
                                     <Text style={{ color: '#fff', fontSize: 16 }}>BOOK</Text>
                                 </LinearGradient> */}
 
@@ -470,7 +470,7 @@ const SeatBook = ({ navigation, route }) => {
                             >
                                 {/* <LinearGradient
                                     style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
-                                    colors={['#4174D0', '#6ef7ff']}>
+                                    colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
                                     <Text style={{ color: '#fff', fontSize: 16 }}>CANCEL</Text>
                                 </LinearGradient> */}
 
@@ -515,14 +515,14 @@ const SeatBook = ({ navigation, route }) => {
                                         renderItem={({ item, index }) => (
                                             <TouchableOpacity style={styles.FlatListData}
                                                 onPress={() => {
-                                                    console.log(item);
+// $&
                                                     setSearchedNameData(item)
                                                     setModalVisible(false)
                                                 }}>
                                                 <Ionicons
                                                     style={styles.searchIcon}
                                                     name="person-circle-outline"
-                                                    size={25}
+                                                    size={22}
                                                     color={GlobalColor.Secondary}
                                                 />
                                                 <View style={{ flexDirection: 'column', width: '90%' }}>
@@ -537,8 +537,8 @@ const SeatBook = ({ navigation, route }) => {
                                                     <Ionicons
                                                         style={styles.searchIcon}
                                                         name="chevron-forward-circle-outline"
-                                                        size={25}
-                                                        color="#2757C3" />
+                                                        size={22}
+                                                        color={ThemeColor.Teal} />
                                                 </TouchableOpacity>
                                             </TouchableOpacity>
                                         )}
@@ -596,11 +596,12 @@ const styles = StyleSheet.create({
     },
     searchIcon: {
         padding: 10,
+        color:ThemeColor.Teal,
     },
     FlatListData: {
         width: "100%",
         borderWidth: 1,
-        borderColor:GlobalColor.Secondary,
+        borderColor:ThemeColor.Teal,
         borderRadius: 3,
         flexDirection: 'row',
         alignSelf: 'center',

@@ -18,7 +18,7 @@ import Toast from 'react-native-simple-toast';
 import {useFocusEffect} from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import {GlobalColor} from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import {GlobalFontSize} from '../../constants/FontSize';
 import Text from '../../components/reusable/Text';
 import ListEmptyComponent from '../../components/reusable/ListEmptyComponent';
@@ -41,12 +41,16 @@ const LeaveViewReport = () => {
   const [SelectedYear, setSelectedYear] = useState('');
   const [refresh, setrefresh] = useState(false);
 
+  let usrAccess = AppUserData?.data?.userFlag;
+
+// $&
+
   const stopLoader = () => {
     try {
       setLoader(false);
       setrefresh(false);
     } catch (error) {
-      console.log(error);
+// $&
     }
   };
 
@@ -66,7 +70,7 @@ const LeaveViewReport = () => {
     setLoader(true);
     ApiService.PostMethode('/LeaveStatus', apiData, token, authContext)
       .then(result => {
-        console.log('get year financial', result.Value.Table1);
+// $&
         stopLoader(false);
         if (result.Value) {
           let reasons = [];
@@ -81,13 +85,13 @@ const LeaveViewReport = () => {
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // // console.log($1);
         ApiService.showErrorMessage(error, authContext);
       });
   };
 
   const getEmpLeaveDetail = (fnyear, isrefresh = false) => {
-    console.log(fnyear);
+// $&
     if (!isrefresh) {
       setLoader(true);
     } else {
@@ -111,18 +115,25 @@ const LeaveViewReport = () => {
       ToDate: to,
     };
 
-    // console.log(apiData);
+    // // console.log($1);
     // return;
     // AppUserData?.data?.userId 222852
     let token = AppUserData.token;
+    // TEMP DEBUG: GetEmplLevDetail (stripped from production builds by babel)
+    console.log('[GetEmplLevDetail] request:', JSON.stringify(apiData, null, 2));
     ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
       .then(result => {
-        console.log('APiresult GetEmplLevDetail', result);
+        // TEMP DEBUG: full response
+        console.log('[GetEmplLevDetail] response:', JSON.stringify(result, null, 2));
+        console.log(
+          '[GetEmplLevDetail] Value type:',
+          Array.isArray(result?.Value) ? `array (${result.Value.length} rows)` : typeof result?.Value,
+        );
         stopLoader(false);
         let arr = [];
         if (result.Value) {
           arr.push(result.Value);
-          // console.log("arr",arr);
+          // // console.log($1);
           setEmpLeaveDetail(...arr);
         } else {
           Toast.show('No Leave type found');
@@ -130,7 +141,8 @@ const LeaveViewReport = () => {
       })
       .catch(error => {
         stopLoader(false);
-        // console.log('Error occurred==>', error);
+        // TEMP DEBUG: error details
+        console.log('[GetEmplLevDetail] error:', error?.message || error, error?.response?.data);
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -145,7 +157,7 @@ const LeaveViewReport = () => {
     setLoader(true);
     ApiService.PostMethode('/DeleteLeave', apiData, token, authContext)
       .then(result => {
-        console.log('APiresult DeleteLeave', result);
+// $&
         stopLoader(false);
         if (result.Result) {
           getEmpLeaveDetail(SelectedYear);
@@ -156,7 +168,7 @@ const LeaveViewReport = () => {
       })
       .catch(error => {
         stopLoader(false);
-        console.log('Error occurred==>', error);
+// $&
         ApiService.showErrorMessage(error, authContext);
       });
   };
@@ -241,7 +253,7 @@ const LeaveViewReport = () => {
       ) : null}
       <View style={{flexGrow: 1}}>
         <View style={{flex: 1}}>
-          <Text Bold style={{paddingHorizontal: 0, marginTop: 5}}>
+          <Text Bold style={{paddingHorizontal: 0, marginTop: 5,fontSize:13}}>
             Select Financial Year
           </Text>
           <View
@@ -274,21 +286,21 @@ const LeaveViewReport = () => {
                 borderRadius: 0,
               }}
               dropdownStyle={{borderRadius: 0}}
-              rowTextStyle={{textAlign: 'left', marginLeft: 5}}
-              buttonTextStyle={{textAlign: 'left', marginLeft: 5}}
+              rowTextStyle={{textAlign: 'left', marginLeft: 5,fontSize:14}}
+              buttonTextStyle={{textAlign: 'left', marginLeft: 5,fontSize:14}}
               renderDropdownIcon={isOpened => {
                 return (
                   <FontAwesome
                     name={isOpened ? 'chevron-up' : 'chevron-down'}
                     color={'#444'}
-                    size={18}
+                    size={15}
                   />
                 );
               }}
               onSelect={(selectedItem, index) => {
                 getEmpLeaveDetail(Decrypt(selectedItem.FNYR_YEAR));
                 setSelectedYear(Decrypt(selectedItem.FNYR_YEAR));
-                console.log(Decrypt(selectedItem.FNYR_YEAR), index);
+// $&
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                 return Decrypt(selectedItem.FNYR_YEAR);
@@ -299,7 +311,7 @@ const LeaveViewReport = () => {
             />
           </View>
 
-          <Text style={{textAlign: 'center'}}>
+          <Text style={{textAlign: 'center',fontSize:14}}>
             Tap on Leave To View Details
           </Text>
 
@@ -310,10 +322,11 @@ const LeaveViewReport = () => {
                 contentContainerStyle={{flexGrow: 1}}
                 data={EmpLeaveDetail} //EmpLeaveDetail
                 renderItem={ItemRenderLeave}
+                style={{marginBottom:"12%"}}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={FlatList_Header_Leave}
                 ListHeaderComponentStyle={{
-                  borderBottomColor: GlobalColor.Secondary,
+                  borderBottomColor: ThemeColor.Teal,
                   borderBottomWidth: 1,
                 }}
                 ListEmptyComponent={
@@ -428,7 +441,7 @@ const LeaveViewReport = () => {
                     <Text
                       Bold
                       style={{
-                        fontSize: GlobalFontSize.H4,
+                        fontSize: 14,
                         color: GlobalColor.Primary,
                       }}>
                       Leave Details
@@ -438,7 +451,7 @@ const LeaveViewReport = () => {
                       onPress={() => setLeaveDetailModal(!LeaveDetailModal)}>
                       <Ionicons
                         name="close-circle-outline"
-                        size={30}
+                        size={20}
                         color={GlobalColor.Danger}
                       />
                     </TouchableOpacity>
@@ -446,30 +459,38 @@ const LeaveViewReport = () => {
 
                   <View style={{flexDirection: 'row'}}>
                     <View style={{width: '90%'}}>
-                      <Text style={{fontWeight: '700', marginVertical: 8}}>
+                      <Text style={{fontWeight: '600', fontSize:13, marginVertical: 8}}>
                         Leave Type : {modalData['Leave Type']}
                       </Text>
-                      <Text style={{fontWeight: '700', marginVertical: 8}}>
+                      <Text style={{fontWeight: '600', fontSize:13, marginVertical: 8}}>
                         Leave From : {modalData['From Date']}
                       </Text>
-                      <Text style={{fontWeight: '700', marginVertical: 8}}>
+                      <Text style={{fontWeight: '600', fontSize:13,marginVertical: 8}}>
                         Leave To : {modalData['To Date']}
                       </Text>
-                      <Text style={{fontWeight: '700', marginVertical: 8}}>
+                      <Text style={{fontWeight: '600', fontSize:13, marginVertical: 8}}>
                         No of Days : {modalData.Days}
                       </Text>
                       {/* <Text style={{fontWeight: '700', marginVertical: 8}}>
                         Planned/Unplanned : {modalData['Planned/Unplanned']}
                       </Text> */}
-                      <Text style={{fontWeight: '700', marginVertical: 8}}>
+                      <Text style={{fontWeight: '600', fontSize:13, marginVertical: 8}}>
                         Period : {modalData.Period}
                       </Text>
-                      <Text style={{fontWeight: '700', marginVertical: 8}}>
+                      <Text style={{fontWeight: '600',fontSize:13, marginVertical: 8}}>
                         Reason : {modalData.Reason}
                       </Text>
-                      <Text style={{fontWeight: '700', marginVertical: 12}}>
+                      <Text style={{fontWeight: '600',fontSize:13, marginVertical: 12}}>
                         Remark : {modalData.Comments}
                       </Text>
+                      {
+                        modalData.Status == 'Rejected'?
+                        <Text style={{fontWeight: '600',fontSize:13, marginVertical: 12}}>
+                        Reject Remark : {modalData.REJ_REMARKS}
+                       </Text>
+                       : null
+                      }
+                     
                       <View
                         style={{
                           width: '100%',
@@ -478,12 +499,13 @@ const LeaveViewReport = () => {
                         }}>
                         {modalData.Status &&
                         modalData.Status.toLowerCase() == 'pending' ? (
+                         usrAccess == 'Y'?null:
                           <TouchableOpacity
                             style={{
                               padding: 12,
                               borderRadius: 5,
-                              backgroundColor: GlobalColor.Secondary,
-                              minWidth: 100,
+                              backgroundColor: ThemeColor.Teal,
+                              minWidth: 90,
                               marginRight: 25,
                             }}
                             onPress={() => {
@@ -491,8 +513,8 @@ const LeaveViewReport = () => {
                               DeleteLeavePending(modalData);
                             }}>
                             <Text
-                              style={{color: '#fff', alignSelf: 'center'}}
-                              Bold>
+                              style={{color: '#fff', fontSize:13,alignSelf: 'center'}}
+                              >
                               Delete
                             </Text>
                           </TouchableOpacity>
@@ -501,15 +523,15 @@ const LeaveViewReport = () => {
                           style={{
                             padding: 12,
                             borderRadius: 5,
-                            backgroundColor: GlobalColor.Secondary,
-                            minWidth: 100,
+                            backgroundColor: ThemeColor.Teal,
+                            minWidth: 90,
                           }}
                           onPress={() => {
                             setLeaveDetailModal(!LeaveDetailModal);
                           }}>
                           <Text
-                            style={{color: '#fff', alignSelf: 'center'}}
-                            Bold>
+                            style={{color: '#fff', fontSize:13,alignSelf: 'center'}}
+                            >
                             Okay
                           </Text>
                         </TouchableOpacity>
@@ -567,7 +589,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     borderWidth: 1,
-    borderColor: '#00B4DB',
+    borderColor: ThemeColor.Teal,
     width: 40,
     height: 40,
     borderRadius: 40,
@@ -631,6 +653,7 @@ const styles = StyleSheet.create({
   },
   HeaderColumn: {
     flex: 0.25,
+    fontSize:14
   },
   itemColumn: {
     flex: 0.25,
@@ -652,7 +675,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   itemText: {
-    fontSize: GlobalFontSize.Small,
+    fontSize: 13,
   },
 });
 

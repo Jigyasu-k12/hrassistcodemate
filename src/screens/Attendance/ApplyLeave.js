@@ -23,7 +23,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import AuthContext from '../../context/AuthContext';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import Button from './../../components/reusable/Button';
 import Text from '../../components/reusable/Text';
@@ -82,7 +82,7 @@ const ApplyLeave = ({navigation}) => {
     const fromRef = useRef(null);
   
     const PostSubmitLeave = data => {
-      console.log('post data', data);
+// $&
       // let dummydata = 
       //   {
       //     "UserName" : "222852",
@@ -98,10 +98,12 @@ const ApplyLeave = ({navigation}) => {
   
       let token = AppUserData.token;
       setLoader(true);
+      console.log('SubmitLeave payload =>', JSON.stringify(data, null, 2));
       ApiService.PostMethode('/SubmitLeave', data, token)
         .then(result => {
           setLoader(false);
-          console.log('ApiResult', result);
+          console.log('SubmitLeave response =>', JSON.stringify(result, null, 2));
+// $&
           if(result.Result){
             if(result.Result.search("successfully") != -1){
               fromRef.current.resetForm();
@@ -125,27 +127,27 @@ const ApplyLeave = ({navigation}) => {
         })
         .catch(error => {
           setLoader(false);
-        //   console.log('Error occurred==>', error);
+        //   // console.log($1);
           ApiService.showErrorMessage(error, authContext);
         });
     };
   
     const getleavetypes = () => {
-        console.log('getleavetypes is called')
+// $&
       let apiData = { "UserName": AppUserData?.data?.username };
       // AppUserData?.data?.userId 222852
       let token = AppUserData.token;
       setLoader(true);
       ApiService.PostMethode('/GetInitialLeave', apiData, token, authContext)
         .then(result => {
-          console.log("APiresult getleave types", result.Value.Table2);
+// $&
           setLoader(false);
           if (result.Value) {
             let updatedArray = [];
             result.Value.Table2.forEach((element, index) => {
               updatedArray.push({ ...element, id: index, Type: element.SHORT_NAME, value: element.ABSENCE_ID.replace(/\D/g, "") });
             });
-            console.log(updatedArray);
+// $&
             setLeaveTypes(updatedArray);
           } else {
             Toast.show('No Leave type found');
@@ -153,7 +155,7 @@ const ApplyLeave = ({navigation}) => {
         })
         .catch(error => {
           setLoader(false);
-        //   console.log('Error occurred==>', error);
+        //   // console.log($1);
           ApiService.showErrorMessage(error, authContext);
         });
     }
@@ -165,7 +167,7 @@ const ApplyLeave = ({navigation}) => {
       setLoader(true);
       ApiService.PostMethode('/GetLeaveReason', apiData, token, authContext)
         .then(result => {
-          console.log("APiresult GetLeaveReason", result);
+// $&
           setLoader(false);
           if (result.Value) {
             let reasons = [];
@@ -179,7 +181,7 @@ const ApplyLeave = ({navigation}) => {
         })
         .catch(error => {
           setLoader(false);
-        //   console.log('Error occurred==>', error);
+        //   // console.log($1);
           ApiService.showErrorMessage(error, authContext);
         });
     }
@@ -206,12 +208,12 @@ const ApplyLeave = ({navigation}) => {
       setLoader(true);
       ApiService.PostMethode('/GetEmplLevDetail', apiData, token, authContext)
         .then(result => {
-          // console.log("APiresult GetEmplLevDetail", result);
+          // // console.log($1);
           setLoader(false);
           let arr = []
           if (result.Value) {
             arr.push(result.Value)
-            // console.log("arr",arr);
+            // // console.log($1);
             setEmpLeaveDetail(...arr);
           } else {
             Toast.show('No Leave type found');
@@ -219,7 +221,7 @@ const ApplyLeave = ({navigation}) => {
         })
         .catch(error => {
           setLoader(false);
-        //   console.log('Error occurred==>', error);
+        //   // console.log($1);
           ApiService.showErrorMessage(error, authContext);
         });
     }  
@@ -238,17 +240,17 @@ const ApplyLeave = ({navigation}) => {
               paddingHorizontal: 10,
               margin: 2,
               borderBottomWidth: 1,
-              borderBottomColor: GlobalColor.Secondary,
+              borderBottomColor: ThemeColor.Teal,
               marginVertical: 0,
             }}>
             <TouchableOpacity
               onPress={() => {
-                // console.log('selected reason', item);
+                // // console.log($1);
                 setValidReason(item.REASON);
                 fromRef.current.setFieldValue('reason', item.LOOKUP_CODE);
                 setModalVisible(false);
               }}>
-              <Text style={{}}>{item.REASON}</Text>
+              <Text style={{fontSize:13}}>{item.REASON}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -322,7 +324,7 @@ const ApplyLeave = ({navigation}) => {
                         isValid,
                     }) => (
                         <View style={{ flex: 1 }}>
-                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 }} Bold>
+                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 ,fontSize:13}} Bold>
                                 Leave Type
                             </Text>
                             <View style={styles.box}>
@@ -336,6 +338,7 @@ const ApplyLeave = ({navigation}) => {
                                                 onPress={() => {
                                                     GetLeaveReason(item.value);
                                                     setChecked(item.id);
+                                                    setValidReason('Select Reason');
                                                     fromRef.current.setFieldValue('leave', item.ABSENCE_ID);
                                                     // setFieldValue(item.id);
                                                 }}
@@ -343,13 +346,13 @@ const ApplyLeave = ({navigation}) => {
                                                     styles.circle,
                                                     {
                                                         backgroundColor:
-                                                            checked == item.id ? GlobalColor.Secondary : null,
+                                                            checked == item.id ? ThemeColor.Teal : null,
                                                     },
                                                 ]}>
                                                 <Text
                                                     style={{
                                                         color: checked == item.id ? '#fff' : '#000',
-                                                        fontSize: GlobalFontSize.P-4
+                                                        fontSize: 10
                                                     }}>
                                                     {item.Type}
                                                 </Text>
@@ -371,7 +374,7 @@ const ApplyLeave = ({navigation}) => {
                                 </View>
                             )}
 
-                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 }} Bold>
+                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 ,fontSize:13}} Bold>
                                 Planned/Unplanned
                             </Text>
                             <View style={styles.box}>
@@ -388,7 +391,7 @@ const ApplyLeave = ({navigation}) => {
                           }}
                           borderWidth={0.5}
                           buttonInnerColor={'#e74c3c'}
-                          buttonOuterColor={'#23f'}
+                          buttonOuterColor={ThemeColor.Teal}
                           buttonSize={10}
                           buttonOuterSize={20}                          
                         /> */}
@@ -402,12 +405,12 @@ const ApplyLeave = ({navigation}) => {
                                             tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
                                             boxType="square"
                                             // hideBox
-                                            style={{ height: 20, width: 20, marginRight:5 }}
-                                            onCheckColor={GlobalColor.Secondary}
-                                            onTintColor={GlobalColor.Secondary}
+                                            style={{ height: 20, width: 20, marginRight:8, }}
+                                            onCheckColor={ThemeColor.Teal}
+                                            onTintColor={ThemeColor.Teal}
                                             
                                         />
-                                        <Text style={styles.checkboxText}>Planned</Text>
+                                        <Text style={styles.checkboxText,styles.leaveHeadfer}>Planned</Text>
                                     </View>
 
 
@@ -425,7 +428,7 @@ const ApplyLeave = ({navigation}) => {
                                             onCheckColor={GlobalColor.Secondary}
                                             onTintColor={GlobalColor.Secondary}
                                         />
-                                        <Text style={styles.checkboxText}>Unplanned</Text>
+                                        <Text style={styles.checkboxText,styles.leaveHeadfer}>Unplanned</Text>
                                     </View>
 
 
@@ -444,31 +447,12 @@ const ApplyLeave = ({navigation}) => {
                                 </View>
                             )}
 
-                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 }} Bold>
+                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 ,fontSize:13}} Bold>
                                 Period
                             </Text>
                             <View style={styles.box}>
                                 <View style={{ flexDirection: 'row', paddingTop: 8 }}>
-                                    {/* <RadioForm
-                          borderRadius={0}
-                          radio_props={radio_propsSecond}
-                          initial={period}
-                          onPress={value => {
-                            setPeriod(period);
-                            fromRef.current.setFieldValue(
-                              'period',
-                              value
-                            );
-
-                            console.log('second', value);
-                          }}
-                          borderWidth={0.5}
-                          buttonInnerColor={'#e74c3c'}
-                          buttonOuterColor={'#23f'}
-                          buttonSize={10}
-                          buttonOuterSize={20}
-                        /> */}
-                                    <View style={styles.checkboxContainer}>
+                                <View style={styles.checkboxContainer}>
                                         <CheckBox
                                             disabled={false}
                                             value={values.period == "3" ? true : false}
@@ -482,7 +466,7 @@ const ApplyLeave = ({navigation}) => {
                                             onCheckColor={GlobalColor.Secondary}
                                             onTintColor={GlobalColor.Secondary}
                                         />
-                                        <Text style={styles.checkboxText}>Full Day</Text>
+                                        <Text style={styles.checkboxText,styles.leaveHeadfer}>Full Day</Text>
                                     </View>
                                     <View style={styles.checkboxContainer}>
                                         <CheckBox
@@ -498,7 +482,7 @@ const ApplyLeave = ({navigation}) => {
                                             onCheckColor={GlobalColor.Secondary}
                                             onTintColor={GlobalColor.Secondary}
                                         />
-                                        <Text style={styles.checkboxText}>1st Half</Text>
+                                        <Text style={styles.checkboxText,styles.leaveHeadfer}>1st Half</Text>
                                     </View>
                                 </View>
 
@@ -517,7 +501,7 @@ const ApplyLeave = ({navigation}) => {
                                             onCheckColor={GlobalColor.Secondary}
                                             onTintColor={GlobalColor.Secondary}
                                         />
-                                        <Text style={styles.checkboxText}>2nd Half</Text>
+                                        <Text style={styles.checkboxText,styles.leaveHeadfer}>2nd Half</Text>
                                     </View>
                                 </View>
                             </View>
@@ -536,7 +520,7 @@ const ApplyLeave = ({navigation}) => {
 
 
 
-                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 }} Bold>
+                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 ,fontSize:13}} Bold>
                                 Select Date
                             </Text>
                             <View
@@ -565,17 +549,23 @@ const ApplyLeave = ({navigation}) => {
                                     open={open}
                                     date={fromDate}
                                     mode="date"
+                                
                                     onConfirm={fromDate => {
                                         setOpen(false);
                                         setFromDate(fromDate);
                                         let format = moment(fromDate).format('DD-MMM-YYYY');
                                         // setTextinputDate(format);
-                                        // console.log(setTextinputDate);
+                                        // // console.log($1);
                                         fromRef.current.setFieldValue('selectDate', format);
+                                        
+                                        
                                     }}
+                                   
                                     onCancel={() => {
                                         setOpen(false);
                                     }}
+                                    
+                                    
                                 />
                                 <View
                                     style={{
@@ -588,6 +578,7 @@ const ApplyLeave = ({navigation}) => {
                                         placeholder="Start date"
                                         style={{
                                             color: '#000',
+                                            fontSize:13
                                         }}
                                         editable={false}
                                         paddingHorizontal={14}
@@ -596,8 +587,8 @@ const ApplyLeave = ({navigation}) => {
                                     <TouchableOpacity onPress={() => setOpen(true)}>
                                         <Ionicons
                                             name="calendar-outline"
-                                            size={30}
-                                            color={'#0083B0'}
+                                            size={25}
+                                            color={ThemeColor.Teal}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -611,7 +602,7 @@ const ApplyLeave = ({navigation}) => {
                                         setToDate(toDate);
                                         let formatSecond = moment(toDate).format('DD-MMM-YYYY');
                                         setTextinputSecondDate(formatSecond);
-                                        console.log(setTextinputSecondDate);
+// $&
                                         fromRef.current.setFieldValue(
                                             'selectDateSecond',
                                             formatSecond,
@@ -629,17 +620,17 @@ const ApplyLeave = ({navigation}) => {
                                         justifyContent: 'space-between',
                                     }}>
                                     <TextInput2
-                                        style={{ color: '#000', letterSpacing: 1 }}
+                                        style={{ color: '#000', letterSpacing: 1,fontSize:13 }}
                                         placeholder="End Date"
                                         editable={false}
-                                        paddingHorizontal={14}
+                                        paddingHorizontal={13}
                                         value={values.selectDateSecond}
                                     />
                                     <TouchableOpacity onPress={() => setSecond(true)}>
                                         <Ionicons
                                             name="calendar-outline"
-                                            size={30}
-                                            color={'#0083B0'}
+                                            size={25}
+                                            color={ThemeColor.Teal}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -697,7 +688,7 @@ const ApplyLeave = ({navigation}) => {
                                     </View>
 
                                 </View>
-                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 }} Bold>
+                            <Text style={{ paddingVertical: 10, paddingHorizontal: 0 ,fontSize:13}} Bold>
                                 Enter Your Reason
                             </Text>
 
@@ -716,10 +707,10 @@ const ApplyLeave = ({navigation}) => {
                                         paddingVertical: 10,
                                         justifyContent: 'space-between',
                                     }}>
-                                    <Text style={{}}>{validReason}</Text>
+                                    <Text style={{fontSize:13}}>{validReason}</Text>
                                     <Ionicons
                                         name="arrow-forward-outline"
-                                        color={'#23d'}
+                                        color={ThemeColor.Teal}
                                         size={20}
                                     />
 
@@ -743,15 +734,14 @@ const ApplyLeave = ({navigation}) => {
                                                 <Text
                                                     Bold
                                                     style={{
-                                                        fontSize: GlobalFontSize.H4
-                                                    }}>
+                                                        fontSize: 14}}>
                                                     Select Reason
                                                 </Text>
                                                 <TouchableOpacity onPress={toggleModal}>
                                                     <Ionicons
                                                         name="close-circle-outline"
-                                                        size={30}
-                                                        color={GlobalColor.Danger}
+                                                        size={20}
+                                                        color={ThemeColor.Teal}
                                                     />
                                                 </TouchableOpacity>
                                             </View>
@@ -801,7 +791,7 @@ const ApplyLeave = ({navigation}) => {
                                     </Text>
                                 </View>
                             )}
-                            <View style={{ height: 100, marginTop: 20, width: "100%", alignSelf: 'center' }}>
+                            <View style={{ height: 100, marginTop: 20, width: "100%", alignSelf: 'center',marginBottom:"10%" }}>
                                 <Button
                                     onPress={() => {
                                         handleSubmit();
@@ -858,9 +848,9 @@ const styles = StyleSheet.create({
     },
     circle: {
         borderWidth: 1,
-        borderColor: '#00B4DB',
-        width: 40,
-        height: 40,
+        borderColor: ThemeColor.Teal,
+        width: 35,
+        height: 35,
         borderRadius: 40,
         padding: 5,
         alignItems: 'center',
@@ -907,8 +897,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
+    leaveHeadfer:{
+        fontSize:13
+    },
     checkboxText: {
-        marginLeft: 2
+        marginLeft: 2,
+        fontSize:13
     }
 });
 

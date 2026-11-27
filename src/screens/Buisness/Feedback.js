@@ -13,7 +13,7 @@ import Toast from 'react-native-simple-toast'
 import * as ApiService from '../../Utils/Utils';
 import AuthContext from '../../context/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-import { GlobalColor } from '../../constants/Colors';
+import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../../constants/Colors';
 import { GlobalFontSize } from '../../constants/FontSize';
 import { LoadingScreen } from '../../components/reusable/LoadingScreen';
 import Button from '../../components/reusable/Button';
@@ -51,13 +51,13 @@ const Feedback = ({ navigation, route }) => {
                     Toast.show(responseData);
                     navigation.goBack();
                 }
-                // console.log('ApiResult hjsgdfjhgsjdhfgsjhg', responseData);
+                // // console.log($1);
                 // setBookData(responseData)
                 // alert(responseData)                
             })
             .catch(error => {
                 setLoader(false);
-                // console.log('Error occurred==>', error);
+                // // console.log($1);
                 ApiService.showErrorMessage(error, authContext);
             });
     }
@@ -76,7 +76,7 @@ const Feedback = ({ navigation, route }) => {
             <Header title={"Feedback"} />    
             <View style={{flex:1, paddingHorizontal:10}}>
                 <View style={{ flex:1}}>
-                    <Text Bold style={{ color: GlobalColor.Text, fontSize: GlobalFontSize.P, marginVertical: 7 }}>Give your feedback!</Text>
+                    <Text Bold style={{ color: GlobalColor.Text, fontSize: 13, marginVertical: 7 }}>Give your feedback!</Text>
                     <View style={styles.inputBox}>
                         <TextInput
                                 style={styles.input}
@@ -87,7 +87,7 @@ const Feedback = ({ navigation, route }) => {
                                 numberOfLines={3}     
                             />
                     </View>
-                    <Button title="Submit" onPress={() => {BookShuttleSeatApi()}} />
+                    <Button title="Submit" style={{fontSize:13}} onPress={() => {BookShuttleSeatApi()}} />
                 </View>
             </View>        
         </SafeAreaView>
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor:GlobalColor.White
       },
+     
 });
 
 //make this component available to the app
