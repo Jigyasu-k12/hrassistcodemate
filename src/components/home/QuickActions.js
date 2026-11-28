@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {P, HText, TYPE, RADIUS} from './homeTheme';
 import {AppIcon} from '../icons/AppIcon';
+import Icon3D from './Icon3D';
 import {byId} from './quickActionsCatalog';
 import useQuickActionsLayout from './useQuickActionsLayout';
 import AllMenusSheet from './AllMenusSheet';
@@ -31,18 +32,12 @@ const Tile = ({width, columns, icon, label, onPress, accent = false, a11y}) => {
         accent && styles.tileAccent,
         pressed && styles.tilePressed,
       ]}>
-      <View
-        style={[
-          styles.chip,
-          compact && styles.chipCompact,
-          accent && {backgroundColor: '#F5F5F5'},
-        ]}>
-        <AppIcon
-          name={icon}
-          size={compact ? 20 : 22}
-          color={accent ? '#171C8F' : '#171C8F'}
-        />
-      </View>
+      <Icon3D
+        name={icon}
+        size={compact ? 36 : 40}
+        iconSize={compact ? 20 : 22}
+        color="#171C8F"
+      />
       <HText
         style={[styles.label, compact && styles.labelCompact]}
         numberOfLines={2}>
@@ -65,11 +60,11 @@ const HeaderButton = ({icon, label, onPress, primary = false}) => (
     <AppIcon
       name={icon}
       size={15}
-      color={primary ? '#01044B' : '#171C8F'}
+      color={primary ? '#FFFFFF' : '#171C8F'}
       strokeWidth={2.2}
     />
     <HText
-      style={[styles.headBtnText, {color: primary ? '#01044B' : '#171C8F'}]}>
+      style={[styles.headBtnText, {color: primary ? '#FFFFFF' : '#171C8F'}]}>
       {label}
     </HText>
   </TouchableOpacity>
@@ -88,7 +83,21 @@ const QuickActions = ({navigation, restricted = false}) => {
     job && job();
   };
 
-  const open = item => navigation.navigate(item.route, item.params);
+  const open = item => {
+    const isCanteenMenu =
+      item.route === 'CanteeNavigator' && item.params?.screen === 'CanteenMenu';
+    if (isCanteenMenu) {
+      navigation.navigate(item.route, {
+        ...item.params,
+        params: {
+          ...(item.params?.params || {}),
+          initialTab: layout.canteenLocation || 'Gurgaon',
+        },
+      });
+      return;
+    }
+    navigation.navigate(item.route, item.params);
+  };
 
   const columns = layout.columns;
   const tileW = Math.floor(
@@ -220,7 +229,7 @@ const styles = StyleSheet.create({
   },
   headBtnSoft: {backgroundColor: '#F5F5F5'},
   headBtnPrimary: {
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#171C8F',
     shadowColor: '#01044B',
     shadowOpacity: 0.4,
     shadowRadius: 6,
@@ -246,7 +255,10 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 1},
     elevation: 1,
   },
-  tileAccent: {borderColor: '#FCBE62', backgroundColor: '#FFFFFF'},
+  tileAccent: {
+    borderColor: 'rgba(23,28,143,0.22)',
+    backgroundColor: '#FFFFFF',
+  },
   tilePressed: {
     backgroundColor: '#F5F5F5',
     borderColor: 'rgba(23,28,143,0.18)',
@@ -281,10 +293,10 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 22,
     borderRadius: 20,
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
   },
-  emptyBtnText: {fontSize: 14, fontWeight: '700', color: '#01044B'},
+  emptyBtnText: {fontSize: 14, fontWeight: '700', color: '#FFFFFF'},
 });
 
 export default QuickActions;

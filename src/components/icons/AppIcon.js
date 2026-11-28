@@ -5,7 +5,8 @@
 //   <IconBadge name="canteen" />                  — icon in a mint chip (lists, cards)
 //   <IconBadge name="logout" tone="danger" />     — red-tinted variant
 import React from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Svg, {Path} from 'react-native-svg';
 import {HomePalette as P} from '../../constants/Colors';
 
@@ -188,7 +189,7 @@ const TONES = {
   dark: {bg: 'rgba(255,255,255,0.12)', fg: 'rgba(255,255,255,0.72)'},
 };
 
-// Icon inside a rounded mint chip — the standard way icons sit in lists/cards.
+// Icon inside a soft 3D chip — the standard way icons sit in lists/cards.
 export const IconBadge = ({
   name,
   size = 44,
@@ -198,26 +199,87 @@ export const IconBadge = ({
   style,
 }) => {
   const t = TONES[tone] || TONES.teal;
+  const dark = tone === 'dark';
+  const radius = round ? size / 2 : Math.round(size * 0.3);
   return (
     <View
       style={[
+        styles.badge,
         {
           width: size,
           height: size,
-          borderRadius: round ? size / 2 : Math.round(size * 0.3),
-          backgroundColor: t.bg,
-          alignItems: 'center',
-          justifyContent: 'center',
+          borderRadius: radius,
         },
+        dark ? styles.badgeDark : styles.badgeLight,
         style,
       ]}>
-      <AppIcon
-        name={name}
-        size={iconSize || Math.round(size * 0.52)}
-        color={t.fg}
-      />
+      <LinearGradient
+        colors={
+          dark
+            ? ['rgba(255,255,255,0.30)', 'rgba(255,255,255,0.06)']
+            : ['#FFFFFF', '#F5F5F5']
+        }
+        start={{x: 0.12, y: 0}}
+        end={{x: 0.88, y: 1}}
+        style={[styles.fill, {borderRadius: radius - 2}]}>
+        <View
+          style={[
+            styles.sheen,
+            {borderRadius: radius - 2, height: Math.round(size * 0.46)},
+          ]}
+        />
+        <View
+          style={[
+            styles.shade,
+            {borderRadius: radius - 2, height: Math.round(size * 0.34)},
+          ]}
+        />
+        <AppIcon
+          name={name}
+          size={iconSize || Math.round(size * 0.52)}
+          color={t.fg}
+        />
+      </LinearGradient>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  badge: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeLight: {
+    backgroundColor: '#F5F5F5',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.95)',
+  },
+  badgeDark: {
+    backgroundColor: 'rgba(255,255,255,0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.28)',
+  },
+  fill: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  sheen: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    backgroundColor: 'rgba(255,255,255,0.52)',
+  },
+  shade: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(23,28,143,0.07)',
+  },
+});
 
 export default AppIcon;

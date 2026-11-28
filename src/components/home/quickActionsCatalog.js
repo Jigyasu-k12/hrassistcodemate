@@ -71,7 +71,7 @@ export const CATALOG = [
     label: 'Canteen Menu',
     icon: 'canteen',
     section: 'modules',
-    ...root('CanteeNavigator', 'Canteen'),
+    ...sub('CanteeNavigator', 'CanteenMenu'),
   },
   {
     id: 'apps',
@@ -273,7 +273,17 @@ export const DEFAULT_LAYOUT = {
   ],
   columns: 3, // tiles per row: 3 | 4
   rows: 3, // rows shown on Home: 2 | 3 | 0 (= all)
+  canteenLocation: 'Gurgaon',
 };
+
+export const CANTEEN_LOCATIONS = [
+  {value: 'Gurgaon', label: 'Gurgaon'},
+  {value: 'Manesar', label: 'Manesar'},
+  {value: 'MPT', label: 'MPT'},
+  {value: 'Rohtak', label: 'Rohtak'},
+  {value: 'Kharkhoda', label: 'Kharkhoda'},
+  {value: 'DE', label: 'DE'},
+];
 
 export const COLUMN_OPTIONS = [3, 4];
 export const ROW_OPTIONS = [
@@ -306,5 +316,10 @@ export const normaliseLayout = (raw, restricted) => {
     rows: ROW_OPTIONS.some(o => o.value === base.rows)
       ? base.rows
       : DEFAULT_LAYOUT.rows,
+    canteenLocation: CANTEEN_LOCATIONS.some(
+      o => o.value === base.canteenLocation,
+    )
+      ? base.canteenLocation
+      : DEFAULT_LAYOUT.canteenLocation,
   };
 };

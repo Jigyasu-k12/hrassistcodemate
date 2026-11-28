@@ -1,5 +1,5 @@
-// Manager Home — same Idea C layout as Home, in Manager mode ("dusk" header,
-// amber Manager badge, Manager actions). Behaviour kept from the previous
+// Manager Home — same Idea C layout as Home, in Manager mode (indigo header,
+// White Manager badge, Manager command card + Manager actions). Behaviour kept from the previous
 // HomeM: app-version check, profile call, Diwali theme (same flag & visuals).
 // Business card / Scan card / ID card now live on My Profile.
 import React, {useContext, useEffect, useState, useRef, useMemo, useCallback} from 'react';
@@ -10,7 +10,6 @@ import {
   ScrollView,
   Alert,
   Linking,
-  RefreshControl,
   TouchableOpacity,
   Animated,
   Easing,
@@ -23,7 +22,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useFocusEffect, useIsFocused} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import Svg, {
   Path,
   Circle,
@@ -42,10 +41,8 @@ import Text from '../components/reusable/Text';
 import * as ApiService from '../Utils/Utils';
 import HomeHeader from '../components/home/HomeHeader';
 import ManagerActions from '../components/home/ManagerActions';
-import HappeningsCard from '../components/home/HappeningsCard';
-import ValuesStrip from '../components/home/ValuesStrip';
-import BirthdaysSection from '../components/home/BirthdaysSection';
-import {useReduceMotion} from '../components/home/homeTheme';
+import LeadershipCommunication from '../components/home/LeadershipCommunication';
+import ManagerCommandCard from '../components/home/ManagerCommandCard';
 
 // What's New amber dot — shared with Home so opening it once clears both.
 const WHATS_NEW_SEEN_KEY = 'home_whats_new_seen_v2.2.3';
@@ -1921,18 +1918,10 @@ const HomeM = ({navigation}) => {
   );
 
   // ── Idea C layout (same as Home) ──
-  const isHomeFocused = useIsFocused();
-  const reduceMotion = useReduceMotion();
-  const [homeRefreshKey, setHomeRefreshKey] = useState(0);
-  const [pullRefreshing, setPullRefreshing] = useState(false);
   const [whatsNewSeen, setWhatsNewSeen] = useState(true);
-
-  const bannerImages = useMemo(() => {
-    const t = Date.now();
-    return [1, 2, 3].map(
-      n => `https://swifttest.maruti.co.in/HRAssistWebAPIMVC/Images/${n}.png?t=${t}`,
-    );
-  }, [homeRefreshKey]);
+  const scrollRef = useRef(null);
+  const bodyY = useRef(0);
+  const managerSectionY = useRef(0);
 
   useEffect(() => {
     AsyncStorage.getItem(WHATS_NEW_SEEN_KEY)
@@ -1944,12 +1933,6 @@ const HomeM = ({navigation}) => {
     setWhatsNewSeen(true);
     AsyncStorage.setItem(WHATS_NEW_SEEN_KEY, '1').catch(() => {});
     navigation.navigate('Whatsnew');
-  };
-
-  const handlePullRefresh = () => {
-    setPullRefreshing(true);
-    setHomeRefreshKey(k => k + 1);
-    setTimeout(() => setPullRefreshing(false), 900);
   };
 
   useFocusEffect(
@@ -1977,17 +1960,10 @@ const HomeM = ({navigation}) => {
       )}
 
       <ScrollView
+        ref={scrollRef}
         style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={pullRefreshing}
-            onRefresh={handlePullRefresh}
-            tintColor={'#FCBE62'}
-            colors={['#FCBE62']}
-          />
-        }>
+        showsVerticalScrollIndicator={false}>
         <HomeHeader
           mode="manager"
           name={AppUserData?.data?.EMPL_NAME ? AppUserData?.data?.EMPL_NAME : 'User'}
@@ -1996,34 +1972,38 @@ const HomeM = ({navigation}) => {
           showWhatsNew={usrAccess != 'Y'}
           whatsNewDot={!whatsNewSeen}
           onWhatsNew={openWhatsNew}
-          active={isHomeFocused}
           decor={isDiwaliThemeActive ? <DiwaliHeaderDecor chase={diwaliChase} /> : null}
           bandStyle={isDiwaliThemeActive ? diwaliStyles.headerLightBand : undefined}
         />
 
-        <View style={styles.body}>
+        <View
+          style={styles.body}
+          onLayout={e => {
+            bodyY.current = e.nativeEvent.layout.y;
+          }}>
           <View style={styles.section}>
-            <ManagerActions navigation={navigation} />
+            <LeadershipCommunication />
           </View>
           <View style={styles.section}>
-            <HappeningsCard
-              images={bannerImages}
-              active={isHomeFocused}
-              reduceMotion={reduceMotion}
+            <ManagerCommandCard
+              onOpenTools={() =>
+                scrollRef.current?.scrollTo({
+                  y: Math.max(
+                    0,
+                    bodyY.current + managerSectionY.current - 12,
+                  ),
+                  animated: true,
+                })
+              }
             />
           </View>
-          <View style={styles.section}>
-            <ValuesStrip active={isHomeFocused} reduceMotion={reduceMotion} />
+          <View
+            style={styles.section}
+            onLayout={e => {
+              managerSectionY.current = e.nativeEvent.layout.y;
+            }}>
+            <ManagerActions navigation={navigation} />
           </View>
-          {usrAccess != 'Y' && (
-            <View style={styles.section}>
-              <BirthdaysSection
-                navigation={navigation}
-                active={isHomeFocused}
-                refreshKey={homeRefreshKey}
-              />
-            </View>
-          )}
         </View>
       </ScrollView>
 

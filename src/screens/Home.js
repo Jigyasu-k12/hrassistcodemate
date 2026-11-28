@@ -39,6 +39,7 @@ import {GlobalColor, ThemeColor, HomePalette} from '../constants/Colors';
 import HomeHeader, {HomeTopBar} from '../components/home/HomeHeader';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import QuickActions from '../components/home/QuickActions';
+import LeadershipCommunication from '../components/home/LeadershipCommunication';
 // import ValuesStrip from '../components/home/ValuesStrip'; // Vision/Mission — removed for now
 import BirthdaysSection from '../components/home/BirthdaysSection';
 import {useReduceMotion} from '../components/home/homeTheme';
@@ -3065,7 +3066,7 @@ const Home = ({navigation}) => {
           bandStyle={isDiwaliThemeActive ? diwaliStyles.headerLightBand : undefined}
         />
 
-        {/* Collapses: MSIL Happenings stories + The journey continues */}
+        {/* Collapses: MSIL Happenings stories */}
         <HomeHeader
           collapsible={{scrollY, barHeight}}
           onHeight={setHeaderHeight}
@@ -3101,9 +3102,12 @@ const Home = ({navigation}) => {
 
         <View style={styles.body}>
           <View style={styles.section}>
+            <LeadershipCommunication />
+          </View>
+          <View style={styles.section}>
             <QuickActions navigation={navigation} restricted={usrAccess == 'Y'} />
           </View>
-          {/* MSIL Happenings now live as stories in the header (above The journey continues) */}
+          {/* MSIL Happenings now live as stories in the header */}
           {/* Vision · Mission · Philosophy — removed for now (uncomment to restore)
           <View style={styles.section}>
             <ValuesStrip active={isHomeFocused} reduceMotion={reduceMotion} />

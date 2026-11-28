@@ -1,7 +1,7 @@
 // "Customise" — reorder, hide/add tiles and pick the grid layout. Edits a draft;
 // nothing changes on Home until Save.
 import React, {useEffect, useMemo, useState} from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, ScrollView, TouchableOpacity, StyleSheet} from 'react-native';
 import HomeSheet from './HomeSheet';
 import {P, HText} from './homeTheme';
 import {AppIcon, IconBadge} from '../icons/AppIcon';
@@ -10,6 +10,7 @@ import {
   COLUMN_OPTIONS,
   ROW_OPTIONS,
   DEFAULT_LAYOUT,
+  CANTEEN_LOCATIONS,
   availableCatalog,
   byId,
   normaliseLayout,
@@ -62,11 +63,13 @@ const IconBtn = ({icon, label, onPress, disabled, tone = 'default'}) => (
 
 const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
   const [draft, setDraft] = useState(layout);
+  const [activeSection, setActiveSection] = useState('all');
 
   // Fresh draft each time the sheet opens
   useEffect(() => {
     if (visible) {
       setDraft(layout);
+      setActiveSection('all');
     }
   }, [visible, layout]);
 
@@ -81,6 +84,11 @@ const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
       items: rest.filter(i => i.section === s.id),
     })).filter(g => g.items.length);
   }, [draft.pinned, restricted]);
+
+  const visibleHiddenGroups =
+    activeSection === 'all'
+      ? hiddenGroups
+      : hiddenGroups.filter(g => g.id === activeSection);
 
   const setPinned = pinned => setDraft(d => ({...d, pinned}));
   const move = (from, to) => {
@@ -105,7 +113,7 @@ const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
         onPress={() => onSave(draft)}
         accessibilityRole="button"
         style={[styles.footBtn, styles.footAmber]}>
-        <AppIcon name="check" size={16} color={'#01044B'} strokeWidth={2.6} />
+        <AppIcon name="check" size={16} color={'#FFFFFF'} strokeWidth={2.6} />
         <HText style={styles.footAmberText}>Save</HText>
       </TouchableOpacity>
     </View>
@@ -139,6 +147,40 @@ const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
             options={ROW_OPTIONS}
           />
         </View>
+      </View>
+
+      {/* ── Canteen menu ── */}
+      <HText style={[styles.sectionTitle, {marginTop: 18}]}>
+        Canteen menu
+      </HText>
+      <HText style={styles.hint}>
+        Choose the location your Canteen tile opens directly.
+      </HText>
+      <View style={[styles.card, styles.canteenCard]}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.canteenRow}>
+          {CANTEEN_LOCATIONS.map(loc => {
+            const on = draft.canteenLocation === loc.value;
+            return (
+              <TouchableOpacity
+                key={loc.value}
+                onPress={() =>
+                  setDraft(d => ({...d, canteenLocation: loc.value}))
+                }
+                accessibilityRole="radio"
+                accessibilityState={{selected: on}}
+                accessibilityLabel={`Open canteen at ${loc.label}`}
+                style={[styles.canteenChip, on && styles.canteenChipOn]}>
+                <HText
+                  style={[styles.canteenText, on && styles.canteenTextOn]}>
+                  {loc.label}
+                </HText>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
       </View>
 
       {/* ── On your Home (ordered) ── */}
@@ -210,7 +252,49 @@ const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
           <HText style={[styles.sectionTitle, {marginTop: 18}]}>
             Hidden from Home
           </HText>
-          {hiddenGroups.map(g => (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filterRow}>
+            <TouchableOpacity
+              onPress={() => setActiveSection('all')}
+              accessibilityRole="tab"
+              accessibilityState={{selected: activeSection === 'all'}}
+              style={[
+                styles.filterChip,
+                activeSection === 'all' && styles.filterChipOn,
+              ]}>
+              <HText
+                style={[
+                  styles.filterText,
+                  activeSection === 'all' && styles.filterTextOn,
+                ]}>
+                All
+              </HText>
+            </TouchableOpacity>
+            {hiddenGroups.map(g => {
+              const on = activeSection === g.id;
+              return (
+                <TouchableOpacity
+                  key={g.id}
+                  onPress={() => setActiveSection(g.id)}
+                  accessibilityRole="tab"
+                  accessibilityState={{selected: on}}
+                  style={[styles.filterChip, on && styles.filterChipOn]}>
+                  <HText
+                    style={[styles.filterText, on && styles.filterTextOn]}>
+                    {g.title}
+                  </HText>
+                </TouchableOpacity>
+              );
+            })}
+          </ScrollView>
+          {!visibleHiddenGroups.length && (
+            <HText style={styles.emptyText}>
+              Nothing hidden in this section.
+            </HText>
+          )}
+          {visibleHiddenGroups.map(g => (
             <View key={g.id} style={{marginBottom: 10}}>
               <HText style={styles.groupTitle}>{g.title}</HText>
               <View style={styles.card}>
@@ -295,6 +379,37 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 12,
   },
+  canteenCard: {paddingVertical: 10},
+  canteenRow: {paddingVertical: 2},
+  canteenChip: {
+    height: 34,
+    paddingHorizontal: 13,
+    borderRadius: 17,
+    borderWidth: 1,
+    borderColor: 'rgba(23,28,143,0.14)',
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
+  },
+  canteenChipOn: {backgroundColor: '#171C8F', borderColor: '#171C8F'},
+  canteenText: {fontSize: 12.5, fontWeight: '600', color: '#01044B'},
+  canteenTextOn: {color: '#FFFFFF', fontWeight: '700'},
+  filterRow: {paddingBottom: 10},
+  filterChip: {
+    height: 32,
+    paddingHorizontal: 12,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(23,28,143,0.14)',
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
+  },
+  filterChipOn: {backgroundColor: '#171C8F', borderColor: '#171C8F'},
+  filterText: {fontSize: 12, fontWeight: '600', color: '#01044B'},
+  filterTextOn: {color: '#FFFFFF', fontWeight: '700'},
   optRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -386,7 +501,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   footAmber: {
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#171C8F',
     shadowColor: '#01044B',
     shadowOpacity: 0.45,
     shadowRadius: 10,
@@ -396,7 +511,7 @@ const styles = StyleSheet.create({
   footAmberText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#01044B',
+    color: '#FFFFFF',
     marginLeft: 6,
   },
 });

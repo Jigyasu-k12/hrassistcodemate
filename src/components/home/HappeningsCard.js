@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   },
   dots: {flexDirection: 'row', alignItems: 'center'},
   dotBase: {height: 6, borderRadius: 3, marginRight: 5},
-  dotOn: {width: 20, backgroundColor: '#FCBE62'},
+  dotOn: {width: 20, backgroundColor: '#FFFFFF'},
   dotOff: {width: 6, backgroundColor: 'rgba(255,255,255,0.55)'},
   pos: {fontSize: 12, fontWeight: '600', color: '#FFFFFF'},
   fallback: {flex: 1, alignItems: 'center', justifyContent: 'center'},

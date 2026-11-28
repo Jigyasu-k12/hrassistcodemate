@@ -1,4 +1,4 @@
-// Home header: deep-teal glow backdrop, greeting row and the "The journey continues" road timeline.
+// Home header: indigo glow backdrop, greeting row and the MSIL Happenings stories.
 import React, {useContext, useEffect, useMemo, useRef, useState} from 'react';
 import {
   View,
@@ -184,8 +184,8 @@ const Car = () => (
         stroke={'rgba(255,255,255,0.22)'}
         strokeWidth="2"
       />
-      <Rect x="2" y="13" width="4" height="2.5" rx="1" fill={'#FCBE62'} />
-      <Rect x="51" y="14" width="3" height="3" rx="1" fill="#FCBE62" />
+      <Rect x="2" y="13" width="4" height="2.5" rx="1" fill={'#171C8F'} />
+      <Rect x="51" y="14" width="3" height="3" rx="1" fill="#171C8F" />
     </G>
   </Svg>
 );
@@ -430,7 +430,7 @@ const LegacyRoad = ({years, index, onPick, reduceMotion}) => {
               <View
                 style={[
                   styles.pole,
-                  {backgroundColor: on ? '#FCBE62' : 'rgba(23,28,143,0.4)'},
+                  {backgroundColor: on ? '#FFFFFF' : 'rgba(255,255,255,0.28)'},
                 ]}
               />
             </TouchableOpacity>
@@ -685,7 +685,7 @@ const StorySheet = ({visible, years, index, moment, onClose, onGo}) => {
             <HomeIcon
               name="chevronRight"
               size={16}
-              color={'#01044B'}
+              color={'#FFFFFF'}
               strokeWidth={2.4}
             />
           </TouchableOpacity>
@@ -696,6 +696,8 @@ const StorySheet = ({visible, years, index, moment, onClose, onGo}) => {
 };
 
 // ── "The journey continues · since 1981" ──
+// Kept for reference; the section is no longer rendered on Home.
+// eslint-disable-next-line no-unused-vars
 const LegacySection = ({active, reduceMotion}) => {
   const {AppUserData, authContext} = useContext(AuthContext);
   const [years, setYears] = useState(() => getHistory() || FALLBACK_YEARS);
@@ -888,7 +890,6 @@ const TopRow = ({
   showWhatsNew,
   whatsNewDot,
   devAction,
-  isManager,
   reduceMotion,
 }) => {
   // Long names never get cut: if the name needs more than one line at the
@@ -916,11 +917,6 @@ const TopRow = ({
           <HText style={[styles.greetSoft, {flexShrink: 1}]} numberOfLines={1}>
             {greetingFor()}
           </HText>
-          {isManager && (
-            <View style={styles.roleBadge} accessibilityLabel="Manager mode">
-              <HText style={styles.roleBadgeText}>Manager</HText>
-            </View>
-          )}
         </View>
         <HText
           style={[styles.greet, wrap && styles.greetWrapped]}
@@ -1003,7 +999,6 @@ export const HomeTopBar = ({
         <TopRow
           {...rowProps}
           showWhatsNew={showWhatsNew}
-          isManager={isManager}
           reduceMotion={reduceMotion}
         />
       </View>
@@ -1019,7 +1014,6 @@ const HomeHeader = ({
   onWhatsNew,
   showWhatsNew = true,
   whatsNewDot = false,
-  active = true,
   decor = null,
   bandStyle,
   devAction = null,
@@ -1087,7 +1081,6 @@ const HomeHeader = ({
             {!!stories && stories.length > 0 && (
               <StoriesRow stories={stories} />
             )}
-            <LegacySection active={active} reduceMotion={reduceMotion} />
           </Animated.View>
         </View>
       ) : (
@@ -1101,11 +1094,9 @@ const HomeHeader = ({
             showWhatsNew={showWhatsNew}
             whatsNewDot={whatsNewDot}
             devAction={devAction}
-            isManager={isManager}
             reduceMotion={reduceMotion}
           />
           {!!stories && stories.length > 0 && <StoriesRow stories={stories} />}
-          <LegacySection active={active} reduceMotion={reduceMotion} />
         </View>
       )}
     </View>
@@ -1118,8 +1109,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 28,
     borderBottomRightRadius: 28,
     paddingHorizontal: 16,
-    paddingBottom: 10,
     backgroundColor: '#171C8F',
+    paddingBottom: 24,
   },
   row: {flexDirection: 'row', alignItems: 'center'},
   bar: {paddingHorizontal: 16, zIndex: 10, elevation: 10},
@@ -1170,20 +1161,6 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.72)',
   },
   greetTop: {flexDirection: 'row', alignItems: 'center'},
-  roleBadge: {
-    height: 18,
-    paddingHorizontal: 7,
-    borderRadius: 9,
-    marginLeft: 8,
-    backgroundColor: '#FCBE62',
-    justifyContent: 'center',
-  },
-  roleBadgeText: {
-    fontSize: 10.5,
-    fontWeight: '700',
-    letterSpacing: 0.3,
-    color: '#01044B',
-  },
   glassBtn: {
     width: 44,
     height: 44,
@@ -1198,14 +1175,14 @@ const styles = StyleSheet.create({
     width: 9,
     height: 9,
     borderRadius: 4.5,
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1.5,
-    borderColor: '#171C8F',
+    borderColor: 'rgba(23,28,143,0.35)',
   },
   dotHalo: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 4.5,
-    backgroundColor: '#FCBE62',
+    backgroundColor: 'rgba(255,255,255,0.72)',
   },
 
   legacy: {marginTop: 6},
@@ -1232,18 +1209,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   infoBtn: {height: 58, justifyContent: 'center'},
-  infoYear: {...TYPE.display, color: '#171C8F'},
+  infoYear: {...TYPE.display, color: '#FFFFFF'},
   infoChip: {
     marginLeft: 10,
     height: 22,
     paddingHorizontal: 9,
     borderRadius: 11,
     justifyContent: 'center',
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.35)',
+    borderColor: 'rgba(255,255,255,0.55)',
   },
-  infoChipText: {fontSize: 11, fontWeight: '700', color: '#171C8F'},
+  infoChipText: {fontSize: 11, fontWeight: '700', color: '#01044B'},
   infoHead: {
     fontSize: 14,
     fontWeight: '600',
@@ -1292,7 +1269,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   signOn: {
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#FFFFFF',
     shadowColor: '#01044B',
     shadowOpacity: 0.6,
     shadowRadius: 8,
@@ -1392,7 +1369,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   btnAmber: {
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#171C8F',
     shadowColor: '#01044B',
     shadowOpacity: 0.45,
     shadowRadius: 10,
@@ -1402,7 +1379,7 @@ const styles = StyleSheet.create({
   btnAmberText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#01044B',
+    color: '#FFFFFF',
     marginRight: 4,
   },
 });

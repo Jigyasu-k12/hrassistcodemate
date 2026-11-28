@@ -424,23 +424,9 @@ const StoryViewer = ({
         ]}
       />
       <Animated.View style={[styles.viewer, sheetStyle]} {...pan.panHandlers}>
-        {/* blurred fill + full image, so banners are never cropped */}
-        {!!uri && !failed && (
-          <Image
-            source={{uri}}
-            style={StyleSheet.absoluteFill}
-            resizeMode="cover"
-            blurRadius={24}
-          />
-        )}
-        <LinearGradient
-          colors={[
-            '#01044B',
-            '#01044B',
-            '#01044B',
-          ]}
-          style={StyleSheet.absoluteFill}
-        />
+        {/* Opaque Ink stage. The full image below is contained, so there is
+            no need for an expensive full-screen blurred fill behind it. */}
+
         <View
           style={[
             styles.stage,
@@ -470,6 +456,8 @@ const StoryViewer = ({
                 borderRadius: 18,
               }}
               resizeMode="contain"
+              resizeMethod="resize"
+              fadeDuration={0}
               onLoad={() => setLoaded(true)}
               onError={() => setFailed(true)}
               accessibilityLabel={`MSIL highlight ${index + 1} of ${
@@ -717,7 +705,7 @@ const StoriesRow = ({stories = []}) => {
         {bubbles}
       </ScrollView>
 
-      {/* soft hand-off into "The journey continues" */}
+      {/* soft hand-off into the Home content */}
       <LinearGradient
         colors={[
           'rgba(255,255,255,0)',
@@ -818,13 +806,13 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'rgba(255,255,255,0.28)',
   },
-  barFill: {height: '100%', backgroundColor: '#FCBE62', borderRadius: 2},
+  barFill: {height: '100%', backgroundColor: '#FFFFFF', borderRadius: 2},
   topRow: {flexDirection: 'row', alignItems: 'center', marginTop: 12},
   brandDot: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,

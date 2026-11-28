@@ -52,14 +52,14 @@ const MSIL_RATIO = 867 / 8340;
 const HR_LOGO = require('../assets/Images/hrass.png');
 
 // ─── Tokens ───
-// New MSIL palette (forest green · teal glow · amber), applied to this screen only for now
+// Corporate Accent palette: Indigo, Ink, Mist and White.
 const C = {
   forest: '#171C8F', // page base
   forestDeep: '#01044B',
   forestMid: '#171C8F',
   teal: '#171C8F', // Teal glow
-  amber: '#FCBE62', // Amber — the one highlighted action
-  amberPressed: '#FCBE62',
+  amber: '#171C8F', // Primary action
+  amberPressed: '#01044B',
   mint: 'rgba(255,255,255,0.72)',
   cream: '#FFFFFF',
   glass: 'rgba(1,4,75,0.86)',
@@ -139,10 +139,10 @@ const PillButton = ({title, onPress, style, busy, busyTitle}) => {
         onPressOut={() => press(1)}
         accessibilityRole="button"
         accessibilityState={{busy: !!busy, disabled: !!busy}}
-        style={({pressed}) => [styles.pill, (pressed || busy) && {backgroundColor: '#FCBE62'}]}>
+        style={({pressed}) => [styles.pill, (pressed || busy) && {backgroundColor: '#01044B'}]}>
         {busy ? (
           <View style={styles.pillBusy}>
-            <ActivityIndicator size="small" color={'#01044B'} />
+            <ActivityIndicator size="small" color={'#FFFFFF'} />
             <RNText style={[styles.pillText, styles.pillBusyText]}>{busyTitle || title}</RNText>
           </View>
         ) : (
@@ -621,7 +621,7 @@ const SignIn = ({navigation}) => {
     );
   }
 
-  const msilW = Math.min(winW * 0.64, 290);
+  const msilW = Math.min(winW * 0.5, 220);
   const io = (a, b, r = [0, 1]) => enter.interpolate({inputRange: r, outputRange: [a, b], extrapolate: 'clamp'});
   const focusProps = name => ({onFocus: () => setFocused(name)});
   const blurWith = (name, handleBlur) => e => {
@@ -684,7 +684,7 @@ const SignIn = ({navigation}) => {
         <Pressable
           onPress={Keyboard.dismiss}
           accessible={false}
-          style={[styles.brandArea, {paddingTop: insets.top + 44}]}>
+          style={[styles.brandArea, {paddingTop: insets.top + 28}]}>
           {!kb.open && (
             <Animated.View style={[styles.brand, {opacity: io(0, 1, [0, 0.5]), transform: [{scale: io(1.06, 1)}]}]}>
               <View style={styles.msilPlate}>
@@ -913,27 +913,27 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
   },
   msilPlate: {
-    paddingHorizontal: 18,
-    paddingVertical: 13,
-    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderRadius: 12,
     backgroundColor: '#FFFFFF',
     shadowColor: '#01044B',
-    shadowOpacity: 0.28,
-    shadowRadius: 16,
-    shadowOffset: {width: 0, height: 8},
-    elevation: 6,
+    shadowOpacity: 0.24,
+    shadowRadius: 14,
+    shadowOffset: {width: 0, height: 7},
+    elevation: 5,
   },
   brandRule: {
-    width: 28,
+    width: 22,
     height: 2,
     borderRadius: 1,
-    marginVertical: 18,
-    backgroundColor: '#FCBE62',
+    marginVertical: 14,
+    backgroundColor: 'rgba(255,255,255,0.55)',
   },
   hrLogo: {
-    width: '74%',
-    maxWidth: 300,
-    height: 86,
+    width: '54%',
+    maxWidth: 210,
+    height: 60,
     tintColor: '#FFFFFF',
   },
 
@@ -1124,14 +1124,14 @@ const styles = StyleSheet.create({
   pill: {
     height: 54,
     borderRadius: 27,
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#171C8F',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pillText: {
     fontSize: 17,
     fontWeight: '600',
-    color: '#01044B',
+    color: '#FFFFFF',
   },
   pillBusy: {
     flexDirection: 'row',
@@ -1206,7 +1206,7 @@ const styles = StyleSheet.create({
   welcomeBarFill: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#FFFFFF',
   },
 });
 

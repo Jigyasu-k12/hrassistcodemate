@@ -59,7 +59,7 @@ const font = weight => {
   return {fontFamily: map[weight]};
 };
 
-// MSIL palette — forest green · Teal glow #171C8F · Amber #FCBE62 (shared with SignIn.js)
+// Corporate Accent palette — Indigo, Ink, Mist and White (shared with SignIn.js).
 const COLOR = {
   forest: '#171C8F',
   forestDeep: '#01044B',
@@ -67,7 +67,7 @@ const COLOR = {
   teal: '#171C8F',
   tealLight: 'rgba(255,255,255,0.72)',
   mint: 'rgba(255,255,255,0.72)',
-  amber: '#FCBE62',
+  amber: '#FFFFFF',
   cream: '#FFFFFF',
   bloomTop: '#171C8F',
   bloomMid: '#171C8F',
@@ -79,7 +79,6 @@ const COLOR = {
 };
 const teal = a => `rgba(23,28,143,${a})`;
 const tealLight = a => `rgba(255,255,255,${a})`;
-const amber = a => `#FCBE62`;
 
 // Easing curves, straight from the Figma captions
 const E_BLOOM = Easing.bezier(0.4, 0, 0.2, 1);
@@ -675,7 +674,7 @@ const OnboardingScreen = ({navigation}) => {
               style={{width: 282 * s, height: 282 * s * (867 / 8340)}}
             />
           </View>
-          <View style={{width: 34 * s, height: 2 * s, borderRadius: s, marginTop: 22 * s, marginBottom: 14 * s, backgroundColor: '#FCBE62'}} />
+          <View style={{width: 34 * s, height: 2 * s, borderRadius: s, marginTop: 22 * s, marginBottom: 14 * s, backgroundColor: '#FFFFFF'}} />
           <Image source={IMG.hrLogo} resizeMode="contain" style={{width: 270 * s, height: 82 * s, tintColor: '#FFFFFF'}} />
         </Animated.View>
 
@@ -854,8 +853,8 @@ const OnboardingScreen = ({navigation}) => {
                 height: 142 * s,
                 borderRadius: 71 * s,
                 borderWidth: 1.5 * s,
-                borderTopColor: amber(0.95),
-                borderRightColor: amber(0.3),
+                borderTopColor: '#FFFFFF',
+                borderRightColor: '#FFFFFF',
                 borderBottomColor: 'rgba(23,28,143,0)',
                 borderLeftColor: 'rgba(23,28,143,0)',
                 opacity: Animated.multiply(glow, io(engineV, 1, 0)),
@@ -894,7 +893,7 @@ const OnboardingScreen = ({navigation}) => {
             </View>
           </Animated.View>
 
-          {/* Engine on: lit amber ring, one flash */}
+          {/* Engine on: lit white ring, one flash */}
           <Animated.View
             pointerEvents="none"
             style={[
@@ -913,7 +912,7 @@ const OnboardingScreen = ({navigation}) => {
                 width: 128 * s,
                 height: 128 * s,
                 borderRadius: 64 * s,
-                backgroundColor: '#FCBE62',
+                backgroundColor: '#FFFFFF',
                 opacity: flashV.interpolate({inputRange: [0, 0.5, 1], outputRange: [0, 0.55, 0]}),
               },
             ]}
@@ -1000,14 +999,14 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 0},
   },
   halfTopRight: {
-    borderTopColor: '#FCBE62',
-    borderRightColor: '#FCBE62',
+    borderTopColor: '#FFFFFF',
+    borderRightColor: '#FFFFFF',
     borderBottomColor: 'rgba(23,28,143,0)',
     borderLeftColor: 'rgba(23,28,143,0)',
   },
   halfBottomLeft: {
-    borderBottomColor: '#FCBE62',
-    borderLeftColor: '#FCBE62',
+    borderBottomColor: '#FFFFFF',
+    borderLeftColor: '#FFFFFF',
     borderTopColor: 'rgba(23,28,143,0)',
     borderRightColor: 'rgba(23,28,143,0)',
   },

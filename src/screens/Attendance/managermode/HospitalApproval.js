@@ -86,7 +86,7 @@ const HospitalApproval = ({ navigation }) => {
               tabBarActiveTintColor: ThemeColor.OnDark,
               tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
               tabBarItemStyle: { paddingHorizontal: 15, width: 'auto' },
-              tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+              tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FFFFFF' },
               tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
             }}>
             <Tab.Screen

@@ -71,7 +71,7 @@ const PersonRow = ({p, today}) => {
           accessibilityRole="button"
           accessibilityLabel={`Send birthday wishes to ${p.name}`}
           style={styles.wishBtn}>
-          <HomeIcon name="mail" size={16} color={'#01044B'} strokeWidth={2} />
+          <HomeIcon name="mail" size={16} color={'#FFFFFF'} strokeWidth={2} />
           <HText style={styles.wishText}>Wish</HText>
         </TouchableOpacity>
       )}
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: 8,
   },
-  rowToday: {borderColor: '#FCBE62'},
+  rowToday: {borderColor: 'rgba(23,28,143,0.22)'},
   rowTomorrow: {borderColor: 'rgba(23,28,143,0.1)', backgroundColor: '#FFFFFF'},
   avatar: {
     width: 42,
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     minWidth: 88,
     paddingHorizontal: 12,
     borderRadius: 22,
-    backgroundColor: '#FCBE62',
+    backgroundColor: '#171C8F',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 4},
     elevation: 2,
   },
-  wishText: {fontSize: 13, fontWeight: '700', color: '#01044B', marginLeft: 6},
+  wishText: {fontSize: 13, fontWeight: '700', color: '#FFFFFF', marginLeft: 6},
 });
 
 export default BirthdaysSection;

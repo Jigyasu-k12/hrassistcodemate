@@ -9,10 +9,11 @@ import AuthContext from '../../context/AuthContext';
 import * as ApiService from '../../Utils/Utils';
 import {P, HText, TYPE, RADIUS} from './homeTheme';
 import {AppIcon} from '../icons/AppIcon';
+import Icon3D from './Icon3D';
+import useQuickActionsLayout from './useQuickActionsLayout';
 
 const GAP = 10;
 const PAD = 16;
-const COLS = 3;
 
 // Tile order exactly as TouchableM (Data / Data1)
 const ORDER_DEFAULT = [
@@ -26,25 +27,34 @@ const ORDER_DEFAULT = [
 const ORDER_ZZ = ['leave', 'taxi', 'attendance', 'rohtak', 'extra', 'hospital'];
 
 const tileDefs = taxiMenu => ({
-  leave: {label: 'Leave Approval', icon: 'teamLeave', route: 'ManagerLeave'},
+  leave: {
+    label: 'Leave Approval',
+    short: 'Leave',
+    icon: 'teamLeave',
+    route: 'ManagerLeave',
+  },
   extra: {
     label: 'Extra Hours Approval',
+    short: 'Extra hours',
     icon: 'extraHours',
     route: 'ExtraHoursApproval',
   },
-  taxi: {label: 'Taxi Approval', icon: 'taxi', route: taxiMenu},
+  taxi: {label: 'Taxi Approval', short: 'Taxi', icon: 'taxi', route: taxiMenu},
   attendance: {
     label: 'Team Attendance',
+    short: 'Attendance',
     icon: 'teamAtt',
     route: 'ManagerAttandance',
   },
   rohtak: {
     label: 'Rohtak Gatepass Approval',
+    short: 'Rohtak gate',
     icon: 'gatepass',
     route: 'ManagerRHTKGatePass',
   },
   hospital: {
     label: 'Hospital Approval',
+    short: 'Hospital',
     icon: 'hospital',
     route: 'HospitalApproval',
   },
@@ -52,6 +62,9 @@ const tileDefs = taxiMenu => ({
 
 const ManagerActions = ({navigation}) => {
   const {authContext, AppUserData} = useContext(AuthContext);
+  const {layout} = useQuickActionsLayout();
+  const columns = layout.columns || 3;
+  const compact = columns >= 4;
   const [shiftData, setShiftData] = useState('');
   const [taxiMenu, setTaxiMenu] = useState('ManagerTaxi');
   const [loading, setLoading] = useState(true);
@@ -101,7 +114,7 @@ const ManagerActions = ({navigation}) => {
   );
 
   const tileW = Math.floor(
-    (Dimensions.get('window').width - PAD * 2 - GAP * (COLS - 1)) / COLS,
+    (Dimensions.get('window').width - PAD * 2 - GAP * (columns - 1)) / columns,
   );
   const defs = tileDefs(taxiMenu);
   const order = shiftData === 'ZZ' ? ORDER_ZZ : ORDER_DEFAULT;
@@ -128,7 +141,11 @@ const ManagerActions = ({navigation}) => {
           const t = defs[id];
           const style = [
             styles.tile,
-            {width: tileW, marginRight: i % COLS === COLS - 1 ? 0 : GAP},
+            {
+              width: tileW,
+              minHeight: compact ? 84 : 92,
+              marginRight: i % columns === columns - 1 ? 0 : GAP,
+            },
           ];
           if (loading) {
             return (
@@ -136,7 +153,12 @@ const ManagerActions = ({navigation}) => {
                 key={id}
                 style={[style, styles.skeleton]}
                 accessibilityLabel="Loading">
-                <View style={styles.skelChip} />
+                <View
+                  style={[
+                    styles.skelChip,
+                    {width: compact ? 36 : 40, height: compact ? 36 : 40},
+                  ]}
+                />
                 <View style={styles.skelLine} />
                 <View style={[styles.skelLine, {width: '45%'}]} />
               </View>
@@ -150,11 +172,16 @@ const ManagerActions = ({navigation}) => {
               accessibilityLabel={t.label}
               android_ripple={{color: 'rgba(1,4,75,0.45)'}}
               style={({pressed}) => [...style, pressed && styles.tilePressed]}>
-              <View style={styles.chip}>
-                <AppIcon name={t.icon} size={22} color={'#171C8F'} />
-              </View>
-              <HText style={styles.label} numberOfLines={2}>
-                {t.label}
+              <Icon3D
+                name={t.icon}
+                size={compact ? 36 : 40}
+                iconSize={compact ? 20 : 22}
+                color="#171C8F"
+              />
+              <HText
+                style={[styles.label, compact && styles.labelCompact]}
+                numberOfLines={2}>
+                {t.short || t.label}
               </HText>
             </Pressable>
           );
@@ -193,7 +220,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.card,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#FCBE62',
+    borderColor: 'rgba(23,28,143,0.12)',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 10,
@@ -216,6 +243,7 @@ const styles = StyleSheet.create({
     marginBottom: 7,
   },
   label: {...TYPE.label, color: '#01044B', textAlign: 'center'},
+  labelCompact: {fontSize: 11, lineHeight: 14},
   skeleton: {borderColor: 'rgba(23,28,143,0.1)', elevation: 0, shadowOpacity: 0},
   skelChip: {
     width: 40,

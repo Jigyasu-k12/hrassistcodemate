@@ -34,7 +34,7 @@ const Tab = createMaterialTopTabNavigator();
 
  
 
-const CanteenMenu = ({ navigation }) => {
+const CanteenMenu = ({ navigation, route }) => {
 
   const { authContext, AppUserData } = useContext(AuthContext);
 
@@ -120,7 +120,18 @@ const CanteenMenu = ({ navigation }) => {
 
   }
 
- 
+  const initialTab = route?.params?.initialTab;
+  const availableTabs = [
+    'Gurgaon',
+    'Manesar',
+    'MPT',
+    'Rohtak',
+    'Kharkhoda',
+    ...(showDETab ? ['DE'] : []),
+  ];
+  const startTab = availableTabs.includes(initialTab)
+    ? initialTab
+    : 'Gurgaon';
 
   return (
 
@@ -143,6 +154,10 @@ const CanteenMenu = ({ navigation }) => {
         <View style={{ flex: 1, flexDirection: 'row' }}>
 
           <Tab.Navigator
+
+            key={startTab}
+
+            initialRouteName={startTab}
 
             swipeEnabled={false}
 

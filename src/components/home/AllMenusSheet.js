@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 8,
   },
-  pinOn: {backgroundColor: '#FCBE62', borderColor: '#FCBE62'},
+  pinOn: {backgroundColor: '#F5F5F5', borderColor: '#171C8F'},
   pinText: {
     fontSize: 12,
     fontWeight: '700',

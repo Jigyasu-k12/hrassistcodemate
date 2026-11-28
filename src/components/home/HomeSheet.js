@@ -32,6 +32,7 @@ const HomeSheet = ({
       onBackButtonPress={onClose}
       onSwipeComplete={onClose}
       swipeDirection="down"
+      swipeThreshold={100}
       propagateSwipe
       backdropColor={P.deeper}
       backdropOpacity={0.55}
@@ -66,6 +67,10 @@ const HomeSheet = ({
         <ScrollView
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+          nestedScrollEnabled
+          overScrollMode="never"
+          scrollEventThrottle={16}
           contentContainerStyle={{paddingBottom: 6}}>
           {children}
         </ScrollView>

@@ -91,7 +91,7 @@ const ShuttleBooking = ({ navigation }) => {
             tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
             tabBarActiveTintColor: ThemeColor.OnDark,
           tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
-            tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+            tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FFFFFF' },
             tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
           }}>
           <Tab.Screen name="Book" component={Book} />
