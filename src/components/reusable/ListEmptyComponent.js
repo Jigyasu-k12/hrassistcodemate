@@ -49,7 +49,7 @@ export default (props) =>{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#FFFFFF',
       height:"100%",   
       width:"100%",    
     },

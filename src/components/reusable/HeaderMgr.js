@@ -15,7 +15,7 @@ export const HeaderMgr = ({back=false, title="", onPress }) =>  {
     
     return (
         <LinearGradient
-       colors={[ThemeColor.Forest, ThemeColor.Forest, ThemeColor.ForestDeep]}
+       colors={['#171C8F', '#171C8F', '#01044B']}
        start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
         style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>           
@@ -30,7 +30,7 @@ export const HeaderMgr = ({back=false, title="", onPress }) =>  {
                         <Ionicons
                         name="chevron-back-outline"
                         size={25}
-                        color={'white'}
+                        color={'#FFFFFF'}
                         onPress={() => navigation.goBack()}
                     />
                     ): (
@@ -43,13 +43,13 @@ export const HeaderMgr = ({back=false, title="", onPress }) =>  {
                             <Ionicons
                                 name="chevron-back-outline"
                                 size={25}
-                                color={'white'}
+                                color={'#FFFFFF'}
                                 onPress={() => navigation.goBack()}
                             />
                             <Ionicons
                                 name="menu-outline"
                                 size={20}
-                                color={'white'}
+                                color={'#FFFFFF'}
                                 onPress={() => navigation.openDrawer()}
                             />
                         </View>
@@ -59,7 +59,7 @@ export const HeaderMgr = ({back=false, title="", onPress }) =>  {
                 <Text
                 Bold
                 style={{
-                    color: '#fff',
+                    color: '#FFFFFF',
                     fontSize: GlobalFontSize.H4,
                     marginLeft: 15,
                 }}>
@@ -70,7 +70,7 @@ export const HeaderMgr = ({back=false, title="", onPress }) =>  {
             {onPress?(
             <TouchableOpacity 
                 style={{alignSelf:'flex-end'}}>                
-              <Image  source={require("../../assets/Images/setting.png")} style={{width:30,height:30,tintColor:'#fff'}}/>
+              <Image  source={require("../../assets/Images/setting.png")} style={{width:30,height:30,tintColor:'#FFFFFF'}}/>
             </TouchableOpacity>
             ): null}
         </LinearGradient>

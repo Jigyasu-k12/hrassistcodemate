@@ -53,12 +53,12 @@ export default function App() {
         try {
           // Initialize ScreenGuard first
           await ScreenGuard.initSettings({
-            backgroundColor: 'black',
+            backgroundColor: '#01044B',
           });
 
           // Register with black color overlay for screenshots
           await ScreenGuard.register({
-            backgroundColor: '#000000'
+            backgroundColor: '#01044B'
           });
         } catch (error) {
           console.error('ScreenGuard error:', error);
@@ -182,7 +182,7 @@ export default function App() {
         <StatusBar
           StatusBarStyle={'light-content'}
           animated={true}
-          backgroundColor={ThemeColor.Teal}/>
+          backgroundColor={'#171C8F'}/>
           <Routes />
         </SafeAreaView>
     </>

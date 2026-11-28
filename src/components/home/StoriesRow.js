@@ -187,7 +187,7 @@ const Bubble = ({seen, onPress, index, count}) => {
           <View style={[styles.ring, styles.ringSeen]}>{inner}</View>
         ) : (
           <LinearGradient
-            colors={[P.amberSoft, P.amber, P.amberStrong, P.teal]}
+            colors={['#171C8F', '#171C8F', '#171C8F', '#171C8F']}
             locations={[0, 0.35, 0.62, 1]}
             start={{x: 0.15, y: 0}}
             end={{x: 0.85, y: 1}}
@@ -206,7 +206,7 @@ const Emblem = ({n, seen}) => (
     colors={
       seen
         ? ['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.02)']
-        : [P.glow, P.deep]
+        : ['rgba(23,28,143,0.18)', '#01044B']
     }
     start={{x: 0.3, y: 0}}
     end={{x: 0.7, y: 1}}
@@ -435,9 +435,9 @@ const StoryViewer = ({
         )}
         <LinearGradient
           colors={[
-            'rgba(7,30,32,0.78)',
-            'rgba(7,30,32,0.55)',
-            'rgba(7,30,32,0.85)',
+            '#01044B',
+            '#01044B',
+            '#01044B',
           ]}
           style={StyleSheet.absoluteFill}
         />
@@ -451,7 +451,7 @@ const StoryViewer = ({
               <AppIcon
                 name="sparkle"
                 size={44}
-                color="rgba(255,255,255,0.4)"
+                color="rgba(255,255,255,0.45)"
                 strokeWidth={1.4}
               />
               <HText style={styles.failText}>
@@ -481,7 +481,7 @@ const StoryViewer = ({
             <View
               style={[StyleSheet.absoluteFill, styles.center]}
               pointerEvents="none">
-              <ActivityIndicator color={P.amber} />
+              <ActivityIndicator color={'#FFFFFF'} />
             </View>
           )}
         </View>
@@ -535,7 +535,7 @@ const StoryViewer = ({
               <AppIcon
                 name="sparkle"
                 size={14}
-                color={P.onAmber}
+                color={'#01044B'}
                 strokeWidth={2.2}
               />
             </View>
@@ -702,7 +702,7 @@ const StoriesRow = ({stories = []}) => {
           style={styles.watch}>
           <HText style={styles.watchText}>Watch</HText>
           <View style={styles.watchBtn}>
-            <AppIcon name="play" size={11} color={P.mutedOnDark} />
+            <AppIcon name="play" size={11} color={'rgba(255,255,255,0.72)'} />
           </View>
         </TouchableOpacity>
       </View>
@@ -720,9 +720,9 @@ const StoriesRow = ({stories = []}) => {
       {/* soft hand-off into "The journey continues" */}
       <LinearGradient
         colors={[
-          'rgba(156,189,182,0)',
-          'rgba(156,189,182,0.28)',
-          'rgba(156,189,182,0)',
+          'rgba(255,255,255,0)',
+          '#171C8F',
+          'rgba(255,255,255,0)',
         ]}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
@@ -752,9 +752,9 @@ const styles = StyleSheet.create({
     height: 34,
   },
   rowTitle: {flex: 1, fontSize: 15, fontWeight: '600', color: '#FFFFFF'},
-  rowMeta: {fontSize: 15, fontWeight: '500', color: P.mutedOnDark},
+  rowMeta: {fontSize: 15, fontWeight: '500', color: 'rgba(255,255,255,0.72)'},
   watch: {flexDirection: 'row', alignItems: 'center', height: 34},
-  watchText: {fontSize: 12, fontWeight: '600', color: P.mutedOnDark},
+  watchText: {fontSize: 12, fontWeight: '600', color: 'rgba(255,255,255,0.72)'},
   watchBtn: {
     width: 34,
     height: 34,
@@ -776,14 +776,14 @@ const styles = StyleSheet.create({
     borderRadius: BUBBLE / 2,
     padding: 2.5,
     marginRight: 0,
-    shadowColor: P.amber,
+    shadowColor: '#01044B',
     shadowOpacity: 0.28,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 0},
   },
   ringSeen: {
     borderWidth: 1.5,
-    borderColor: 'rgba(156,189,182,0.42)',
+    borderColor: 'rgba(255,255,255,0.42)',
     padding: 2,
     shadowOpacity: 0,
   },
@@ -791,20 +791,20 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: BUBBLE / 2,
     padding: 2.5,
-    backgroundColor: P.deep,
+    backgroundColor: '#171C8F',
   },
   emblem: {flex: 1, borderRadius: BUBBLE / 2, overflow: 'hidden'},
   emblemNum: {
     fontSize: 17,
     fontWeight: '300',
     letterSpacing: -0.4,
-    color: P.amber,
+    color: '#171C8F',
   },
-  emblemNumSeen: {color: P.mutedOnDark},
+  emblemNumSeen: {color: 'rgba(255,255,255,0.72)'},
   divider: {height: 1, marginTop: 14, marginHorizontal: 8},
 
-  scrim: {...StyleSheet.absoluteFillObject, backgroundColor: P.deeper},
-  viewer: {flex: 1, overflow: 'hidden', backgroundColor: P.deeper},
+  scrim: {...StyleSheet.absoluteFillObject, backgroundColor: '#01044B'},
+  viewer: {flex: 1, overflow: 'hidden', backgroundColor: '#01044B'},
   stage: {flex: 1, alignItems: 'center', justifyContent: 'center'},
   failText: {fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 10},
   zones: {...StyleSheet.absoluteFillObject, flexDirection: 'row', top: 110},
@@ -818,19 +818,19 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'rgba(255,255,255,0.28)',
   },
-  barFill: {height: '100%', backgroundColor: P.amber, borderRadius: 2},
+  barFill: {height: '100%', backgroundColor: '#FCBE62', borderRadius: 2},
   topRow: {flexDirection: 'row', alignItems: 'center', marginTop: 12},
   brandDot: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
   },
   topTitle: {fontSize: 14, fontWeight: '700', color: '#FFFFFF'},
-  topSub: {fontSize: 12, color: P.mutedOnDark, marginTop: 1},
+  topSub: {fontSize: 12, color: 'rgba(255,255,255,0.72)', marginTop: 1},
   closeBtn: {
     width: 38,
     height: 38,

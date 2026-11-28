@@ -130,7 +130,7 @@ const CanteenMenu = ({ navigation }) => {
 
       <LinearGradient
 
-        colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]}
+        colors={['#171C8F', '#171C8F', '#171C8F']}
 
         start={{ x: 0, y: 0 }}
 
@@ -160,11 +160,11 @@ const CanteenMenu = ({ navigation }) => {
 
                 borderBottomWidth: 5,
 
-                borderBottomColor: GlobalColor.White,
+                borderBottomColor: 'rgba(255,255,255,0.22)',
 
               },
 
-              tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+              tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
 
             }}
 
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
 
   mystyl: {
 
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0)',
 
     height: '100%',
 

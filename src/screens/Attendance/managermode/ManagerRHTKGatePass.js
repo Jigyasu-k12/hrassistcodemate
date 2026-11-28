@@ -901,7 +901,7 @@ console.log(result);
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.4}]}>
@@ -927,7 +927,7 @@ console.log(result);
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.4}]}>
@@ -974,20 +974,20 @@ console.log(result);
             <Ionicons
               name="checkmark-done-sharp"
               size={18}
-              color={GlobalColor.Primary}
+              color={'#01044B'}
             />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.itemButton}
             onPress={() => rejectVSDTGatePass(item, true)}>
-            <Ionicons name="close-sharp" size={18} color={GlobalColor.Danger} />
+            <Ionicons name="close-sharp" size={18} color={'#01044B'} />
           </TouchableOpacity>
         </View>
       </View>
     </TouchableOpacity>
   );
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       {loader == true ? (
         <Spinner
           visible={loader}
@@ -1028,7 +1028,7 @@ console.log(result);
                 keyExtractor={item => item.RQST_ID}
                 ListHeaderComponent={FlatList_Header}
                 ListHeaderComponentStyle={{
-                  borderBottomColor: ThemeColor.Forest,
+                  borderBottomColor: '#171C8F',
                   borderBottomWidth: 1,
                 }}
                 ListEmptyComponent={
@@ -1051,7 +1051,7 @@ console.log(result);
                 keyExtractor={item => item.RQST_ID}
                 ListHeaderComponent={FlatList_HeaderVisitor}
                 ListHeaderComponentStyle={{
-                  borderBottomColor: ThemeColor.Forest,
+                  borderBottomColor: '#171C8F',
                   borderBottomWidth: 1,
                 }}
                 ListEmptyComponent={
@@ -1075,7 +1075,7 @@ console.log(result);
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -1091,8 +1091,8 @@ console.log(result);
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalText(text)}
                 />
@@ -1130,7 +1130,7 @@ console.log(result);
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -1146,8 +1146,8 @@ console.log(result);
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalTextEMP(text)}
                 />
@@ -1182,11 +1182,11 @@ console.log(result);
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -1205,7 +1205,7 @@ console.log(result);
                   Bold
                   style={{
                     fontSize: 15,
-                    color:ThemeColor.Teal,
+                    color:'#171C8F',
                     textDecorationLine:'underline'
                   }}>
                   Employee GatePass Detail
@@ -1223,7 +1223,7 @@ console.log(result);
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -1329,7 +1329,7 @@ console.log(result);
                         return (
                           <FontAwesome
                             name={isOpened ? 'chevron-up' : 'chevron-down'}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                             size={14}
                           />
                         );
@@ -1390,7 +1390,7 @@ console.log(result);
                           return (
                             <FontAwesome
                               name={isOpened ? 'chevron-up' : 'chevron-down'}
-                              color={ThemeColor.Teal}
+                              color={'#171C8F'}
                               size={14}
                             />
                           );
@@ -1436,8 +1436,8 @@ console.log(result);
                           paddingVertical: 10,
                           alignSelf: 'center',
                           borderRadius: 8,
-                          backgroundColor: GlobalColor.White,
-                          borderColor: ThemeColor.Teal,
+                          backgroundColor: '#FFFFFF',
+                          borderColor: '#171C8F',
                           fontSize: 13,
                           height: 100,
                         }}
@@ -1526,9 +1526,9 @@ console.log(result);
 // $&
                           }}
                           style={{ height: 20, width: 20, marginRight:5 }}
-                          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                          onCheckColor={GlobalColor.Secondary}
-                          onTintColor={GlobalColor.Secondary}
+                          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                          onCheckColor={'#171C8F'}
+                          onTintColor={'#171C8F'}
                         />
                         <Text style={styles.checkboxText}>ALL</Text>
                       </View>
@@ -1547,9 +1547,9 @@ console.log(result);
 // $&
                           }}
                           style={{ height: 20, width: 20, marginRight:5 }}
-                          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                          onCheckColor={GlobalColor.Secondary}
-                          onTintColor={GlobalColor.Secondary}
+                          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                          onCheckColor={'#171C8F'}
+                          onTintColor={'#171C8F'}
                         />
                         <Text style={styles.checkboxText}>EV</Text>
                       </View>
@@ -1571,9 +1571,9 @@ console.log(result);
 // $&
                           }}
                           style={{ height: 20, width: 20, marginRight:5 }}
-                          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                          onCheckColor={GlobalColor.Secondary}
-                          onTintColor={GlobalColor.Secondary}
+                          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                          onCheckColor={'#171C8F'}
+                          onTintColor={'#171C8F'}
                         />
                         <Text style={styles.checkboxText}>FORKLIFT</Text>
                       </View>
@@ -1595,9 +1595,9 @@ console.log(result);
 // $&
                           }}
                           style={{ height: 20, width: 20, marginRight:5 }}
-                          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                          onCheckColor={GlobalColor.Secondary}
-                          onTintColor={GlobalColor.Secondary}
+                          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                          onCheckColor={'#171C8F'}
+                          onTintColor={'#171C8F'}
                         />
                         <Text style={styles.checkboxText}>LHD</Text>
                       </View>
@@ -1616,9 +1616,9 @@ console.log(result);
 // $&
                           }}
                           style={{ height: 20, width: 20, marginRight:5 }}
-                          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                          onCheckColor={GlobalColor.Secondary}
-                          onTintColor={GlobalColor.Secondary}
+                          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                          onCheckColor={'#171C8F'}
+                          onTintColor={'#171C8F'}
                         />
                         <Text style={styles.checkboxText}>RHD</Text>
                       </View>
@@ -1640,9 +1640,9 @@ console.log(result);
                         );
                       }}
                       style={{ height: 20, width: 20, marginRight:5 }}
-                      tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                      onCheckColor={GlobalColor.Secondary}
-                      onTintColor={GlobalColor.Secondary}
+                      tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                      onCheckColor={'#171C8F'}
+                      onTintColor={'#171C8F'}
                     />
                     <Text style={styles.checkboxText}>
                       Authorized to Drive in R&D Centre
@@ -1664,7 +1664,7 @@ console.log(result);
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Teal,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                         marginTop:10
                       }}
@@ -1758,7 +1758,7 @@ console.log(result);
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -1771,7 +1771,7 @@ console.log(result);
                         padding: 12,
                         marginLeft: 10,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Teal,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                         marginTop:10
                       }}
@@ -1821,7 +1821,7 @@ console.log(result);
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -1843,11 +1843,11 @@ console.log(result);
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -1866,7 +1866,7 @@ console.log(result);
                   Bold
                   style={{
                     fontSize: 15,
-                    color:ThemeColor.Teal,
+                    color:'#171C8F',
                     textDecorationLine:'underline'
                   }}>
                   Visitor GatePass Detail
@@ -1877,7 +1877,7 @@ console.log(result);
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -2046,7 +2046,7 @@ console.log(result);
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Teal,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                         marginTop:10
                       }}
@@ -2055,7 +2055,7 @@ console.log(result);
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -2079,13 +2079,13 @@ export default ManagerFlexiShift;
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 10,
     marginTop: 5,
     justifyContent: 'space-between',
     paddingVertical: 5,
     borderBottomWidth: 0.5,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   HeaderColumn: {
     flex: 0.25,
@@ -2102,12 +2102,12 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -2117,7 +2117,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
   },
   modalText: {
@@ -2148,7 +2148,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -2160,27 +2160,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   dropdown2BtnStyle: {
     width: '100%',
     height: 30,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 14},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   modalView: {
     position: 'relative',
     width: '90%',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     padding: 20,
     // minHeight:200
   },
@@ -2188,21 +2188,21 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.Forest,
+    borderColor: '#171C8F',
     marginTop: 5,
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Forest,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Forest,
+    color: '#171C8F',
   },
   itemColumnButtons: {
     flex: 0.25,
@@ -2216,6 +2216,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
 });

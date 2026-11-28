@@ -243,7 +243,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
               paddingHorizontal: 10,
               margin: 2,
               borderBottomWidth: 1,
-              borderBottomColor: ThemeColor.Teal,
+              borderBottomColor: '#171C8F',
               marginVertical: 0,
             }}>
             <TouchableOpacity
@@ -357,12 +357,12 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                                     styles.circle,
                                                     {
                                                         backgroundColor:
-                                                            checked == item.id ? ThemeColor.Teal : null,
+                                                            checked == item.id ? '#171C8F' : null,
                                                     },
                                                 ]}>
                                                 <Text
                                                     style={{
-                                                        color: checked == item.id ? '#fff' : '#000',
+                                                        color: checked == item.id ? '#FFFFFF' : '#FFFFFF',
                                                         fontSize: 10
                                                     }}>
                                                     {item.Type}
@@ -379,7 +379,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.leave}
                                     </Text>
                                 </View>
@@ -401,7 +401,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                             fromRef.current.setFieldValue('planned', value);
                           }}
                           borderWidth={0.5}
-                          buttonInnerColor={'#e74c3c'}
+                          buttonInnerColor={'#01044B'}
                           buttonOuterColor={ThemeColor.Teal}
                           buttonSize={10}
                           buttonOuterSize={20}                          
@@ -413,12 +413,12 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                             onValueChange={(newValue) =>
                                                 fromRef.current.setFieldValue('planned', "P")
                                             }
-                                            tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
                                             boxType="square"
                                             // hideBox
                                             style={{ height: 20, width: 20, marginRight:8, }}
-                                            onCheckColor={ThemeColor.Teal}
-                                            onTintColor={ThemeColor.Teal}
+                                            onCheckColor={'#171C8F'}
+                                            onTintColor={'#171C8F'}
                                             
                                         />
                                         <Text style={styles.checkboxText,styles.leaveHeadfer}>Planned</Text>
@@ -432,12 +432,12 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                             onValueChange={(newValue) => {
                                                 fromRef.current.setFieldValue('planned', "U")
                                             }}
-                                            tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
+                                            tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
                                             boxType="square"
                                             // hideBox
                                             style={{ height: 20, width: 20, marginRight:5 }}
-                                            onCheckColor={GlobalColor.Secondary}
-                                            onTintColor={GlobalColor.Secondary}
+                                            onCheckColor={'#171C8F'}
+                                            onTintColor={'#171C8F'}
                                         />
                                         <Text style={styles.checkboxText,styles.leaveHeadfer}>Unplanned</Text>
                                     </View>
@@ -452,7 +452,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.planned}
                                     </Text>
                                 </View>
@@ -471,9 +471,9 @@ const ApplyLeaveDu = ({navigation,route}) => {
         onValueChange={() => setFieldValue('period', '3')}
         boxType="square"
         style={{ height: 20, width: 20, marginRight: 5 }}
-        tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-        onCheckColor={GlobalColor.Secondary}
-        onTintColor={GlobalColor.Secondary}
+        tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+        onCheckColor={'#171C8F'}
+        onTintColor={'#171C8F'}
       />
       <Text style={[styles.checkboxText, styles.leaveHeadfer]}>Full Day</Text>
     </View>
@@ -485,9 +485,9 @@ const ApplyLeaveDu = ({navigation,route}) => {
         onValueChange={() => setFieldValue('period', '1')}
         boxType="square"
         style={{ height: 20, width: 20, marginRight: 5 }}
-        tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-        onCheckColor={GlobalColor.Secondary}
-        onTintColor={GlobalColor.Secondary}
+        tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+        onCheckColor={'#171C8F'}
+        onTintColor={'#171C8F'}
       />
       <Text style={[styles.checkboxText, styles.leaveHeadfer]}>1st Half</Text>
     </View>
@@ -501,9 +501,9 @@ const ApplyLeaveDu = ({navigation,route}) => {
         onValueChange={() => setFieldValue('period', '2')}
         boxType="square"
         style={{ height: 20, width: 20, marginRight: 5 }}
-        tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-        onCheckColor={GlobalColor.Secondary}
-        onTintColor={GlobalColor.Secondary}
+        tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+        onCheckColor={'#171C8F'}
+        onTintColor={'#171C8F'}
       />
       <Text style={[styles.checkboxText, styles.leaveHeadfer]}>2nd Half</Text>
     </View>
@@ -517,7 +517,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.period}
                                     </Text>
                                 </View>
@@ -533,14 +533,14 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                     width: '100%',
                                     alignSelf: 'center',
                                     borderWidth: 1,
-                                    borderColor: '#fff',
+                                    borderColor: 'rgba(23,28,143,0.1)',
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     flexDirection: 'row',
                                     padding: 10,
                                     marginVertical: 0,
-                                    backgroundColor: '#fff',
-                                    shadowColor: '#000',
+                                    backgroundColor: '#FFFFFF',
+                                    shadowColor: '#01044B',
                                     shadowOffset: {
                                         width: 0,
                                         height: 2,
@@ -592,7 +592,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         <Ionicons
                                             name="calendar-outline"
                                             size={25}
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -634,7 +634,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         <Ionicons
                                             name="calendar-outline"
                                             size={25}
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -644,7 +644,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                     width: '100%',
                                     alignSelf: 'center',
                                     borderWidth: 1,
-                                    borderColor: '#fff',
+                                    borderColor: 'rgba(23,28,143,0.1)',
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     flexDirection: 'row',
@@ -664,7 +664,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                                 alignSelf: 'center',
                                                 paddingVertical: 2,
                                             }}>
-                                            <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                            <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                                 {errors.selectDate}
                                             </Text>
                                         </View>
@@ -684,7 +684,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                                     alignSelf: 'center',
                                                     paddingVertical: 2,
                                                 }}>
-                                                <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                                <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                                     {errors.selectDateSecond}
                                                 </Text>
                                             </View>
@@ -714,7 +714,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                     <Text style={{fontSize:13}}>{validReason}</Text>
                                     <Ionicons
                                         name="arrow-forward-outline"
-                                        color={ThemeColor.Teal}
+                                        color={'#171C8F'}
                                         size={20}
                                     />
 
@@ -724,7 +724,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         <View
                                             style={{
                                                 height: '100%',
-                                                backgroundColor: GlobalColor.White,
+                                                backgroundColor: '#FFFFFF',
                                                 borderRadius: 0,
                                             }}>
                                             <View
@@ -745,7 +745,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                                     <Ionicons
                                                         name="close-circle-outline"
                                                         size={20}
-                                                        color={ThemeColor.Teal}
+                                                        color={'#171C8F'}
                                                     />
                                                 </TouchableOpacity>
                                             </View>
@@ -766,7 +766,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.reason}
                                     </Text>
                                 </View>
@@ -790,7 +790,7 @@ const ApplyLeaveDu = ({navigation,route}) => {
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.comment}
                                     </Text>
                                 </View>
@@ -815,7 +815,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         width: '100%',
-        backgroundColor: GlobalColor.PrimaryLight
+        backgroundColor: '#F5F5F5'
     },
     tabsContainerStyle: {
         marginTop: 10,
@@ -828,20 +828,20 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderWidth: 1,
         borderRadius: 0,
-        borderColor: GlobalColor.Secondary
+        borderColor: '#171C8F'
     },
     tabTextStyle: {
         fontSize: GlobalFontSize.P,
-        color: 'grey',
+        color: 'rgba(1,4,75,0.62)',
         fontFamily: 'Roboto-Bold',
     },
     activeTabStyle: {
-        backgroundColor: GlobalColor.PrimaryLight,
+        backgroundColor: '#F5F5F5',
         borderBottomWidth: 4,
-        borderBottomColor: GlobalColor.Secondary,
+        borderBottomColor: '#171C8F',
     },
     activeTabTextStyle: {
-        color: GlobalColor.Secondary,
+        color: '#171C8F',
     },
     circleBox: {
         width: "16.6%",
@@ -852,7 +852,7 @@ const styles = StyleSheet.create({
     },
     circle: {
         borderWidth: 1,
-        borderColor: ThemeColor.Teal,
+        borderColor: '#171C8F',
         width: 35,
         height: 35,
         borderRadius: 40,
@@ -867,8 +867,8 @@ const styles = StyleSheet.create({
     box: {
         // width: '90%',
         padding: 5,
-        backgroundColor: '#FFF',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -883,13 +883,13 @@ const styles = StyleSheet.create({
         width: '100%',
         maxHeight: 100,
         
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        borderColor: '#ddd',
+        borderColor: 'rgba(23,28,143,0.1)',
         padding: 10,
     },
     spinnerTextStyle: {
-        color: '#fff'
+        color: '#FFFFFF'
     },
     addtnlBtn: {
         position: 'absolute',

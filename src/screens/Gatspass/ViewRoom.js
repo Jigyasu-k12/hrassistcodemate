@@ -329,7 +329,7 @@ const ViewRoom = ({navigation, route}) => {
   // }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
 
 {
                 loader ?
@@ -439,7 +439,7 @@ const ViewRoom = ({navigation, route}) => {
                   alignSelf: 'center',
                   paddingVertical: 2,
                 }}>
-                <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                   {errors.office}
                 </Text>
               </View>
@@ -493,20 +493,20 @@ const ViewRoom = ({navigation, route}) => {
                   <TouchableOpacity
                     style={{
                       width: '100%',
-                      backgroundColor: GlobalColor.White,
+                      backgroundColor: '#FFFFFF',
                       borderWidth: 1,
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       flexDirection: 'row',
                       padding: 6,
                       alignSelf: 'center',
-                      borderColor: ThemeColor.Teal,
+                      borderColor: '#171C8F',
                     }}
                     onPress={() => setOpenDateTimePicker(true)}>
-                    <Text style={{color: 'gray', fontSize: 13}}>
+                    <Text style={{color: 'rgba(1,4,75,0.62)', fontSize: 13}}>
                       {moment(values.date).format('DD-MMM-YYYY')}
                     </Text>
-                    {/* <Text style={{ color: 'gray' }}>
+                    {/* <Text style={{ color: 'rgba(1,4,75,0.62)' }}>
                     {moment(selectTime).format('LT')}
                   </Text> */}
                     <View>
@@ -519,7 +519,7 @@ const ViewRoom = ({navigation, route}) => {
                         <Ionicons
                           name="calendar-outline"
                           size={22}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       </View>
                     </View>
@@ -534,7 +534,7 @@ const ViewRoom = ({navigation, route}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{fontSize: 14, color: 'red', textAlign: 'right'}}>
+                    style={{fontSize: 14, color: '#01044B', textAlign: 'right'}}>
                     {errors.duration}
                   </Text>
                 </View>
@@ -571,12 +571,12 @@ const ViewRoom = ({navigation, route}) => {
                         style={[
                           styles.circle,
                           {
-                            backgroundColor: checked == item.ROOM_ID ? ThemeColor.Teal : null,
+                            backgroundColor: checked == item.ROOM_ID ? '#171C8F' : null,
                           },
                         ]}>
                         <Text
                           style={{
-                            color: checked == item.ROOM_ID ? '#fff' : '#000',
+                            color: checked == item.ROOM_ID ? '#FFFFFF' : '#FFFFFF',
                             fontSize: 9,
                           }}>
                           {item.ROOM_NO.split('/')[1]}
@@ -593,7 +593,7 @@ const ViewRoom = ({navigation, route}) => {
               Bold>
              Select Booking for More Detail
             </Text>
-              <View style={{marginTop: 10, backgroundColor: '#fff',marginBottom:"30%"}}>
+              <View style={{marginTop: 10, backgroundColor: '#FFFFFF',marginBottom:"30%"}}>
                 {/* <Calendar
                   events={events == ''?
                   [
@@ -638,7 +638,7 @@ const ViewRoom = ({navigation, route}) => {
               transparent={true}>
               <View
                 style={{
-                  backgroundColor: '#fff',
+                  backgroundColor: '#FFFFFF',
                   padding: 10,
                   borderRadius: 0,
                   height: '42%',
@@ -657,7 +657,7 @@ const ViewRoom = ({navigation, route}) => {
                     Bold
                     style={{
                       fontSize: 15,
-                      color: ThemeColor.Teal,
+                      color: '#171C8F',
                       textDecorationLine: 'underline',
                     }}>
                     Room Booking Detail
@@ -668,7 +668,7 @@ const ViewRoom = ({navigation, route}) => {
                     <Ionicons
                       name="close-circle-outline"
                       size={25}
-                      color={GlobalColor.Danger}
+                      color={'#01044B'}
                     />
                   </TouchableOpacity>
                 </View>
@@ -742,7 +742,7 @@ const ViewRoom = ({navigation, route}) => {
                           fontWeight: '700',
                           fontSize: 13,
                           marginVertical: 5,
-                          color: GlobalColor.Secondary
+                          color: '#171C8F'
                         }}>
                         {modalData == '' ? '':modalData[0].MB_NO}
                       </Text>
@@ -765,7 +765,7 @@ const ViewRoom = ({navigation, route}) => {
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: GlobalColor.Secondary,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                         marginTop: 10,
                         marginRight:10
@@ -784,7 +784,7 @@ const ViewRoom = ({navigation, route}) => {
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -799,7 +799,7 @@ const ViewRoom = ({navigation, route}) => {
                     style={{
                       padding: 12,
                       borderRadius: 5,
-                      backgroundColor: GlobalColor.Secondary,
+                      backgroundColor: '#171C8F',
                       minWidth: 100,
                       marginTop: 10,
                     }}
@@ -807,7 +807,7 @@ const ViewRoom = ({navigation, route}) => {
                       setReportModal(!ReportModal);
                     }}>
                     <Text
-                      style={{color: '#fff', alignSelf: 'center', fontSize: 13}}
+                      style={{color: '#FFFFFF', alignSelf: 'center', fontSize: 13}}
                       Bold>
                       Okay
                     </Text>
@@ -833,12 +833,12 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    backgroundColor: 'blue',
+    backgroundColor: '#01044B',
     padding: 10,
     borderRadius: 5,
   },
   buttonText: {
-    color: '#000',
+    color: '#01044B',
   },
   circle: {
     width: 24,
@@ -849,11 +849,11 @@ const styles = StyleSheet.create({
   rowContainer: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
     flexDirection: 'row',
   },
   rowText: {
-    color: 'white',
+    color: '#FFFFFF',
     fontWeight: 'bold',
   },
   FlatListData: {
@@ -867,8 +867,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
   circleBox: {
     width: '4%',
@@ -879,7 +879,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     width: 35,
     height: 35,
     borderRadius: 40,
@@ -894,8 +894,8 @@ const styles = StyleSheet.create({
   box: {
     // width: '90%',
     padding: 5,
-    backgroundColor: '#FFF',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -910,25 +910,25 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 12},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 12},
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -938,7 +938,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
   },
   checkboxLabel: {
@@ -946,7 +946,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   spinnerTextStyle: {
-    color: '#fff'
+    color: '#FFFFFF'
 },
   ModalHeading: {
     fontSize: 15,

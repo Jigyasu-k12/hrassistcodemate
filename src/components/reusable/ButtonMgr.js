@@ -23,14 +23,14 @@ export default (props) =>{
           borderRadius: 28,
           width: '100%',
           alignSelf: 'center',
-          backgroundColor: ThemeColor.Amber,
-          shadowColor: ThemeColor.AmberDark,
+          backgroundColor: '#FCBE62',
+          shadowColor: '#01044B',
           shadowOffset: {width: 0, height: 3},
           shadowOpacity: 0.35,
           shadowRadius: 6,
           elevation: 3,
         }, {...btnStyle}]}
-        colors={[ThemeColor.Amber, ThemeColor.Amber, ThemeColor.Amber]}>
+        colors={['#FCBE62', '#FCBE62', '#FCBE62']}>
         <TouchableOpacity
           onPress={onPress}
           style={{
@@ -40,7 +40,7 @@ export default (props) =>{
             marginVertical: 5,
           }}>
           <Text
-            style={[{fontSize: 16, fontWeight: '700', color: ThemeColor.OnAmber}, {...textStyle}] }
+            style={[{fontSize: 16, fontWeight: '700', color: '#01044B'}, {...textStyle}] }
             
            >
             {title} 

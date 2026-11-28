@@ -131,12 +131,12 @@ const NotifiApi = async (pulldown = false) => {
                 key={index}
                 style={{
                   width: '100%',
-                  backgroundColor: '#fff',
+                  backgroundColor: '#FFFFFF',
                   alignSelf: 'center',
                   marginTop: 14,
                   padding: 15,
                   paddingVertical: 10,
-                  shadowColor: '#000',
+                  shadowColor: '#01044B',
                   shadowOffset: {
                     width: 0,
                     height: 2,
@@ -169,11 +169,11 @@ const NotifiApi = async (pulldown = false) => {
                 ) : (
                   // No image attached: branded panel instead of a stock picture
                   <LinearGradient
-                    colors={[HomePalette.tealInk, HomePalette.deep]}
+                    colors={['#171C8F', '#01044B']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     style={{ width: '100%', height: 120, borderRadius: 14, marginVertical: 10, alignItems: 'center', justifyContent: 'center' }}>
-                    <AppIcon name="bell" size={40} color="rgba(255,255,255,0.4)" strokeWidth={1.4} />
+                    <AppIcon name="bell" size={40} color="rgba(255,255,255,0.45)" strokeWidth={1.4} />
                   </LinearGradient>
                 )}
 
@@ -197,16 +197,16 @@ const NotifiApi = async (pulldown = false) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight
-    // backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5'
+    // backgroundColor: '#F5F5F5',
   },
   Link: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     fontWeight: '700',
     fontSize: 14,
   },
   spinnerTextStyle: {
-    color: '#fff'
+    color: '#FFFFFF'
   }
 });
 

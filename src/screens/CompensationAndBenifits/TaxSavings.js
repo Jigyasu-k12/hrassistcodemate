@@ -78,7 +78,7 @@ const TaxSavings = () => {
 
     if(loader){
         return(
-            <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
+            <SafeAreaView style={{ flex: 1,backgroundColor: '#F5F5F5'  }}>
                 <Header title="Tax Savings" back/>
                 <LoadingScreen/>
             </SafeAreaView>          
@@ -89,16 +89,16 @@ const TaxSavings = () => {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
             <Header title="Tax Savings" back />
             <View style={styles.container}>
-                <View style={[styles.MainCard, {backgroundColor: GlobalColor.White ,marginBottom:"13%"}]}>                                
+                <View style={[styles.MainCard, {backgroundColor: '#FFFFFF' ,marginBottom:"13%"}]}>                                
                     <View style={styles.textContainer}>
                         <Text style={{fontSize:13}} Bold>Description</Text>
                         <Text style={{fontSize:13}} Bold> Amount (Rs.)</Text>
                     </View>
 
-                    <View style={{ borderBottomWidth:1,paddingHorizontal:10, borderColor:ThemeColor.Teal}}/>
+                    <View style={{ borderBottomWidth:1,paddingHorizontal:10, borderColor:'#171C8F'}}/>
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             data={taxSaving}
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginVertical: 8,        
         borderBottomWidth:0.5,
-        borderColor:ThemeColor.Teal,
+        borderColor:'#171C8F',
         paddingBottom:8,
 
     },
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
          flex:1,
         paddingHorizontal:10,
         paddingVertical:10,
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,

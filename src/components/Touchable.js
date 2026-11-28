@@ -135,7 +135,7 @@ const insets = useSafeAreaInsets(); // dynamically fetch bottom safe area
             }}>
             <LinearGradient
               // colors={[GlobalColor.PrimaryGradient, GlobalColor.SecondryGradient]}
-              colors={[GlobalColor.White, GlobalColor.White]}
+              colors={['#FFFFFF', '#FFFFFF']}
               style={{padding:5,borderRadius:5}}>
               <Image source={item.images} style={styles.cardimg} resizeMode="contain" />
             </LinearGradient>
@@ -155,9 +155,9 @@ const styles = StyleSheet.create({
     //padding:5,
     paddingVertical:myconfig.deviceWidth * 0.03,
     borderWidth:0.6,
-    borderColor: ThemeColor.TealSoft,
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 10,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     // borderBottomLeftRadius: 7,
     // borderBottomRightRadius: 7,
     // marginTop: 5,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     marginRight:5,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: ThemeColor.TealDark,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
     fontSize: 12,                  // slightly smaller than 11
-    color: ThemeColor.TealDeep,
+    color: '#01044B',
   },
   
 });

@@ -59,27 +59,27 @@ const font = weight => {
   return {fontFamily: map[weight]};
 };
 
-// MSIL palette — forest green · Teal glow #2B8379 · Amber #F2CB8A (shared with SignIn.js)
+// MSIL palette — forest green · Teal glow #171C8F · Amber #FCBE62 (shared with SignIn.js)
 const COLOR = {
-  forest: '#0E2421',
-  forestDeep: '#0A1B19',
-  forestMid: '#163B35',
-  teal: '#2B8379',
-  tealLight: '#5FC7B5',
-  mint: '#9ED8CB',
-  amber: '#F2CB8A',
-  cream: '#F4F2EC',
-  bloomTop: '#2F7268',
-  bloomMid: '#1B4A43',
-  bloomBottom: '#0C2220',
-  tagline: '#F2CB8A',
-  title: '#F4F2EC',
-  body: 'rgba(244,242,236,0.66)',
-  cockpitBase: '#0A1B19',
+  forest: '#171C8F',
+  forestDeep: '#01044B',
+  forestMid: '#171C8F',
+  teal: '#171C8F',
+  tealLight: 'rgba(255,255,255,0.72)',
+  mint: 'rgba(255,255,255,0.72)',
+  amber: '#FCBE62',
+  cream: '#FFFFFF',
+  bloomTop: '#171C8F',
+  bloomMid: '#171C8F',
+  bloomBottom: '#01044B',
+  tagline: '#FFFFFF',
+  title: '#FFFFFF',
+  body: 'rgba(255,255,255,0.66)',
+  cockpitBase: '#01044B',
 };
-const teal = a => `rgba(43,131,121,${a})`;
-const tealLight = a => `rgba(95,199,181,${a})`;
-const amber = a => `rgba(242,203,138,${a})`;
+const teal = a => `rgba(23,28,143,${a})`;
+const tealLight = a => `rgba(255,255,255,${a})`;
+const amber = a => `#FCBE62`;
 
 // Easing curves, straight from the Figma captions
 const E_BLOOM = Easing.bezier(0.4, 0, 0.2, 1);
@@ -562,10 +562,10 @@ const OnboardingScreen = ({navigation}) => {
 
   return (
     <Pressable style={styles.root} onPress={onScreenPress} accessible={false}>
-      <StatusBar translucent backgroundColor="transparent" barStyle={barStyle} />
+      <StatusBar translucent backgroundColor="rgba(255,255,255,0)" barStyle={barStyle} />
 
       {/* ── 01.3 base: forest page with the teal wash ── */}
-      <View style={[StyleSheet.absoluteFill, {backgroundColor: COLOR.forest}]} />
+      <View style={[StyleSheet.absoluteFill, {backgroundColor: '#171C8F'}]} />
       <Animated.View style={[styles.abs, {left: 0, top: 0, width: W, height: 300 * s, opacity: toWhite}]}>
         <LinearGradient
           colors={[teal(0.75), teal(0.28), teal(0)]}
@@ -577,7 +577,7 @@ const OnboardingScreen = ({navigation}) => {
       {/* ── 01.1 / 01.2 bloom: light blooms out of the centre ── */}
       <Animated.View style={[StyleSheet.absoluteFill, {opacity: io(toWhite, 1, 0)}]} pointerEvents="none">
         <LinearGradient
-          colors={[COLOR.bloomTop, COLOR.bloomMid, '#112F2B', COLOR.bloomBottom]}
+          colors={['#171C8F', '#01044B', '#171C8F', '#01044B']}
           locations={[0, 0.38, 0.72, 1]}
           start={{x: 0.95, y: 0}}
           end={{x: 0.1, y: 1}}
@@ -591,7 +591,7 @@ const OnboardingScreen = ({navigation}) => {
             style={[
               styles.abs,
               {
-                tintColor: i === 2 ? COLOR.tealLight : COLOR.teal,
+                tintColor: i === 2 ? '#FFFFFF' : '#171C8F',
                 left: 10 * s,
                 top: 190 * s,
                 width: 420 * s,
@@ -615,7 +615,7 @@ const OnboardingScreen = ({navigation}) => {
 
         <Animated.View style={[styles.abs, {left: 0, top: 427.6 * s, width: W, height: fadeH, opacity: toWhite}]}>
           <LinearGradient
-            colors={['rgba(14,36,33,0)', 'rgba(14,36,33,0.84)', COLOR.forest, COLOR.forest]}
+            colors={['rgba(255,255,255,0)', '#171C8F', '#171C8F', '#171C8F']}
             locations={[0, 0.186 * fadeK, 0.31 * fadeK, 1]}
             style={StyleSheet.absoluteFill}
           />
@@ -626,13 +626,13 @@ const OnboardingScreen = ({navigation}) => {
             styles.abs,
             {left: 28 * s, top: 640 * s, width: 384 * s, opacity: carouselCopy, transform: [{translateY: io(carouselCopy, 14 * s, 0)}]},
           ]}>
-          <Text allowFontScaling={false} style={[font('700'), {fontSize: 11.5 * s, letterSpacing: 2 * s, color: COLOR.amber, marginBottom: 8 * s}]}>
+          <Text allowFontScaling={false} style={[font('700'), {fontSize: 11.5 * s, letterSpacing: 2 * s, color: '#FFFFFF', marginBottom: 8 * s}]}>
             MADE FOR THE EVERYDAY
           </Text>
-          <Text allowFontScaling={false} style={[font('700'), {fontSize: 27 * s, lineHeight: 33 * s, color: COLOR.title}]}>
+          <Text allowFontScaling={false} style={[font('700'), {fontSize: 27 * s, lineHeight: 33 * s, color: '#FFFFFF'}]}>
             Meet the new HR Assist
           </Text>
-          <Text allowFontScaling={false} style={[font('400'), {marginTop: 13 * s, fontSize: 16.5 * s, lineHeight: 23 * s, color: COLOR.body}]}>
+          <Text allowFontScaling={false} style={[font('400'), {marginTop: 13 * s, fontSize: 16.5 * s, lineHeight: 23 * s, color: '#FFFFFF'}]}>
             Leave, attendance, gatepasses and more, all in one simple app
           </Text>
         </Animated.View>
@@ -662,7 +662,7 @@ const OnboardingScreen = ({navigation}) => {
               paddingVertical: 13 * s,
               borderRadius: 14 * s,
               backgroundColor: '#FFFFFF',
-              shadowColor: '#000',
+              shadowColor: '#01044B',
               shadowOpacity: 0.28,
               shadowRadius: 16 * s,
               shadowOffset: {width: 0, height: 8 * s},
@@ -675,14 +675,14 @@ const OnboardingScreen = ({navigation}) => {
               style={{width: 282 * s, height: 282 * s * (867 / 8340)}}
             />
           </View>
-          <View style={{width: 34 * s, height: 2 * s, borderRadius: s, marginTop: 22 * s, marginBottom: 14 * s, backgroundColor: COLOR.amber}} />
+          <View style={{width: 34 * s, height: 2 * s, borderRadius: s, marginTop: 22 * s, marginBottom: 14 * s, backgroundColor: '#FCBE62'}} />
           <Image source={IMG.hrLogo} resizeMode="contain" style={{width: 270 * s, height: 82 * s, tintColor: '#FFFFFF'}} />
         </Animated.View>
 
         <View style={[styles.abs, {left: (W - TAG_W * s) / 2, top: 474 * s, width: TAG_W * s, height: 36 * s, overflow: 'hidden'}]}>
           <Animated.View style={[StyleSheet.absoluteFill, {overflow: 'hidden', transform: [{translateX: io(tagline, -TAG_W * s, 0)}]}]}>
             <Animated.View style={[StyleSheet.absoluteFill, {transform: [{translateX: io(tagline, TAG_W * s, 0)}]}]}>
-              <Text allowFontScaling={false} style={[font('500'), {fontSize: 23 * s, lineHeight: 33 * s, letterSpacing: 0.4 * s, color: COLOR.tagline, textAlign: 'center'}]}>
+              <Text allowFontScaling={false} style={[font('500'), {fontSize: 23 * s, lineHeight: 33 * s, letterSpacing: 0.4 * s, color: '#FFFFFF', textAlign: 'center'}]}>
                 {TAGLINE}
               </Text>
             </Animated.View>
@@ -692,7 +692,7 @@ const OnboardingScreen = ({navigation}) => {
 
       {/* ── 02 hero card → 03 photos ── */}
       <Animated.View style={[StyleSheet.absoluteFill, {opacity: heroVisible ? 1 : 0}]} pointerEvents="none">
-        <Animated.View style={[StyleSheet.absoluteFill, {backgroundColor: COLOR.cockpitBase, opacity: cockpitIn}]} />
+        <Animated.View style={[StyleSheet.absoluteFill, {backgroundColor: '#01044B', opacity: cockpitIn}]} />
         <Animated.View style={[StyleSheet.absoluteFill, {transform: [{scale: io(photoDrift[0], 1, 1.03)}]}]}>
           <Animated.View
             style={[
@@ -731,7 +731,7 @@ const OnboardingScreen = ({navigation}) => {
               style={[
                 StyleSheet.absoluteFill,
                 {
-                  backgroundColor: COLOR.cockpitBase,
+                  backgroundColor: '#01044B',
                   opacity: photoFade[i],
                   transform: [{scale: Animated.multiply(io(photoFade[i], 1.04, 1), io(photoDrift[i], 1, 1.03))}],
                 },
@@ -745,7 +745,7 @@ const OnboardingScreen = ({navigation}) => {
       {/* ── 03 cockpit: top shade, dash (26px lift), copy ── */}
       <Animated.View pointerEvents="box-none" style={[StyleSheet.absoluteFill, {opacity: cockpitIn}]}>
         <LinearGradient
-          colors={['rgba(10,27,25,0.62)', 'rgba(10,27,25,0.3)', 'rgba(10,27,25,0)']}
+          colors={['#01044B', '#01044B', 'rgba(255,255,255,0)']}
           locations={[0, 0.55, 1]}
           style={[styles.abs, {left: 0, top: 0, width: W, height: 300 * s}]}
           pointerEvents="none"
@@ -762,7 +762,7 @@ const OnboardingScreen = ({navigation}) => {
         {/* 04 · cockpit fades to near black */}
         <Animated.View pointerEvents="none" style={[styles.abs, {left: 0, bottom: 0, width: W, height: 468.4 * s, opacity: darkV}]}>
           <LinearGradient
-            colors={['rgba(6,16,15,0)', 'rgba(6,16,15,0.8)', 'rgba(6,16,15,0.92)', 'rgba(6,16,15,0.97)']}
+            colors={['rgba(255,255,255,0)', '#01044B', '#01044B', '#01044B']}
             locations={[0, 0.2, 0.45, 1]}
             style={StyleSheet.absoluteFill}
           />
@@ -773,12 +773,12 @@ const OnboardingScreen = ({navigation}) => {
             key={c.title}
             pointerEvents="none"
             style={[styles.abs, {left: 28 * s, top: 102.2 * s, width: 384 * s, opacity: copyV[i], transform: [{translateY: io(copyV[i], 10 * s, 0)}]}]}>
-            <Text allowFontScaling={false} style={[font('700'), styles.copyShadow, {fontSize: 31 * s, lineHeight: 37 * s, color: '#fff'}]}>
+            <Text allowFontScaling={false} style={[font('700'), styles.copyShadow, {fontSize: 31 * s, lineHeight: 37 * s, color: '#FFFFFF'}]}>
               {c.title}
             </Text>
             <Text
               allowFontScaling={false}
-              style={[font('400'), styles.copyShadow, {marginTop: 14 * s, fontSize: 20 * s, lineHeight: 28 * s, color: 'rgba(255,255,255,0.82)'}]}>
+              style={[font('400'), styles.copyShadow, {marginTop: 14 * s, fontSize: 20 * s, lineHeight: 28 * s, color: 'rgba(255,255,255,0.72)'}]}>
               {c.line}
             </Text>
           </Animated.View>
@@ -796,44 +796,44 @@ const OnboardingScreen = ({navigation}) => {
           hitSlop={8}
           style={[styles.abs, {left: (W - B) / 2, bottom: fromBottom(951.8), width: B, height: B}]}>
           {/* dark pool + teal light on the dash */}
-          <Image source={IMG.bloomCore} resizeMode="stretch" style={[styles.abs, {left: C - 150 * s, top: C - 160 * s, width: 300 * s, height: 320 * s, tintColor: '#000', opacity: 0.28}]} />
+          <Image source={IMG.bloomCore} resizeMode="stretch" style={[styles.abs, {left: C - 150 * s, top: C - 160 * s, width: 300 * s, height: 320 * s, tintColor: '#01044B', opacity: 0.28}]} />
           <Animated.Image
             source={IMG.bloomCore}
             resizeMode="stretch"
-            style={[styles.abs, {left: C - 165 * s, top: C - 180 * s, width: 330 * s, height: 360 * s, tintColor: COLOR.tealLight, opacity: Animated.multiply(glow, 0.22)}]}
+            style={[styles.abs, {left: C - 165 * s, top: C - 180 * s, width: 330 * s, height: 360 * s, tintColor: '#FFFFFF', opacity: Animated.multiply(glow, 0.22)}]}
           />
           <Animated.Image
             source={IMG.bloomCore}
             resizeMode="stretch"
-            style={[styles.abs, {left: C - 120 * s, top: C - 135 * s, width: 240 * s, height: 270 * s, tintColor: COLOR.teal, opacity: Animated.multiply(glow, 0.75)}]}
+            style={[styles.abs, {left: C - 120 * s, top: C - 135 * s, width: 240 * s, height: 270 * s, tintColor: '#171C8F', opacity: Animated.multiply(glow, 0.75)}]}
           />
           {/* dim ring line */}
           <View style={[styles.abs, {left: C - RING / 2, top: C - RING / 2, width: RING, height: RING, borderRadius: RING / 2, borderWidth: 1.5 * s, borderColor: tealLight(0.28)}]} />
           {/* glass */}
           <View style={[styles.abs, styles.glassShadow, {left: C - 64 * s, top: C - 64 * s, width: 128 * s, height: 128 * s, borderRadius: 64 * s}]}>
             <LinearGradient
-              colors={['#46645F', '#24403B', '#17302C']}
+              colors={['#171C8F', '#171C8F', '#01044B']}
               locations={[0, 0.55, 1]}
               start={{x: 0.3, y: 0}}
               end={{x: 0.7, y: 1}}
-              style={[styles.fill, {borderRadius: 64 * s, borderWidth: 1.3 * s, borderColor: 'rgba(158,216,203,0.28)'}]}
+              style={[styles.fill, {borderRadius: 64 * s, borderWidth: 1.3 * s, borderColor: 'rgba(255,255,255,0.28)'}]}
             />
             <View style={[styles.abs, {left: 29 * s, top: 11 * s, width: 70 * s, height: 30 * s, borderRadius: 35 * s, backgroundColor: 'rgba(255,255,255,0.08)'}]} />
             <View style={[styles.fill, {alignItems: 'center', justifyContent: 'center'}]}>
               <View style={{width: 34 * s, height: 34 * s}}>
-                <Ionicons name="power" size={34 * s} color="rgba(244,242,236,0.85)" style={styles.abs} />
+                <Ionicons name="power" size={34 * s} color="rgba(255,255,255,0.72)" style={styles.abs} />
                 <Animated.View style={[styles.abs, {opacity: Animated.add(engineV, hold.interpolate({inputRange: [0, 1], outputRange: [0, 0.6]}))}]}>
-                  <Ionicons name="power" size={34 * s} color={COLOR.amber} />
+                  <Ionicons name="power" size={34 * s} color={'#FFFFFF'} />
                 </Animated.View>
               </View>
-              <Text allowFontScaling={false} style={[font('600'), {marginTop: 8 * s, fontSize: 10 * s, letterSpacing: 2.4 * s, color: 'rgba(244,242,236,0.5)'}]}>
+              <Text allowFontScaling={false} style={[font('600'), {marginTop: 8 * s, fontSize: 10 * s, letterSpacing: 2.4 * s, color: 'rgba(255,255,255,0.5)'}]}>
                 START
               </Text>
             </View>
           </View>
           <Text
             allowFontScaling={false}
-            style={[styles.abs, font('500'), {left: 0, right: 0, top: 266 * s, textAlign: 'center', fontSize: 14 * s, color: startLabel === 'Engine on' ? COLOR.amber : 'rgba(244,242,236,0.62)'}]}>
+            style={[styles.abs, font('500'), {left: 0, right: 0, top: 266 * s, textAlign: 'center', fontSize: 14 * s, color: startLabel === 'Engine on' ? '#FFFFFF' : 'rgba(255,255,255,0.62)'}]}>
             {startLabel}
           </Text>
 
@@ -856,8 +856,8 @@ const OnboardingScreen = ({navigation}) => {
                 borderWidth: 1.5 * s,
                 borderTopColor: amber(0.95),
                 borderRightColor: amber(0.3),
-                borderBottomColor: 'transparent',
-                borderLeftColor: 'transparent',
+                borderBottomColor: 'rgba(23,28,143,0)',
+                borderLeftColor: 'rgba(23,28,143,0)',
                 opacity: Animated.multiply(glow, io(engineV, 1, 0)),
                 transform: [{rotate: spin.interpolate({inputRange: [0, 1], outputRange: ['0deg', '360deg']})}],
               },
@@ -900,7 +900,7 @@ const OnboardingScreen = ({navigation}) => {
             style={[
               styles.abs,
               styles.ringGlow,
-              {left: C - RING / 2, top: C - RING / 2, width: RING, height: RING, borderRadius: RING / 2, borderWidth: STROKE, borderColor: COLOR.amber, opacity: engineV},
+              {left: C - RING / 2, top: C - RING / 2, width: RING, height: RING, borderRadius: RING / 2, borderWidth: STROKE, borderColor: '#171C8F', opacity: engineV},
             ]}
           />
           <Animated.View
@@ -913,7 +913,7 @@ const OnboardingScreen = ({navigation}) => {
                 width: 128 * s,
                 height: 128 * s,
                 borderRadius: 64 * s,
-                backgroundColor: COLOR.amber,
+                backgroundColor: '#FCBE62',
                 opacity: flashV.interpolate({inputRange: [0, 0.5, 1], outputRange: [0, 0.55, 0]}),
               },
             ]}
@@ -933,13 +933,13 @@ const OnboardingScreen = ({navigation}) => {
             height: 520 * s,
             borderRadius: 260 * s,
             overflow: 'hidden',
-            backgroundColor: COLOR.teal,
+            backgroundColor: '#171C8F',
             opacity: orbV.interpolate({inputRange: [0, 0.12, 1], outputRange: [0, 1, 1]}),
             transform: [{scale: io(orbV, 0.2, orbScale)}],
           },
         ]}>
-        <Image source={IMG.bloomCore} resizeMode="stretch" style={[styles.abs, {left: 120 * s, top: 110 * s, width: 280 * s, height: 300 * s, tintColor: COLOR.amber, opacity: 0.35}]} />
-        <Image source={IMG.bloomCore} resizeMode="stretch" style={[styles.abs, {left: 40 * s, top: 20 * s, width: 440 * s, height: 480 * s, tintColor: COLOR.tealLight, opacity: 0.45}]} />
+        <Image source={IMG.bloomCore} resizeMode="stretch" style={[styles.abs, {left: 120 * s, top: 110 * s, width: 280 * s, height: 300 * s, tintColor: '#171C8F', opacity: 0.35}]} />
+        <Image source={IMG.bloomCore} resizeMode="stretch" style={[styles.abs, {left: 40 * s, top: 20 * s, width: 440 * s, height: 480 * s, tintColor: '#FFFFFF', opacity: 0.45}]} />
       </Animated.View>
     </Pressable>
   );
@@ -948,7 +948,7 @@ const OnboardingScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: COLOR.forest,
+    backgroundColor: '#171C8F',
     overflow: 'hidden',
   },
   abs: {
@@ -964,14 +964,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   logoShadow: {
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOpacity: 0.35,
     shadowRadius: 13.5,
     shadowOffset: {width: 0, height: 12},
   },
   cardShadow: {
-    backgroundColor: COLOR.forestMid,
-    shadowColor: '#000',
+    backgroundColor: '#171C8F',
+    shadowColor: '#01044B',
     shadowOpacity: 0.4,
     shadowRadius: 13,
     shadowOffset: {width: 0, height: 10},
@@ -980,36 +980,36 @@ const styles = StyleSheet.create({
   cardClip: {
     flex: 1,
     overflow: 'hidden',
-    borderColor: 'rgba(158,216,203,0.22)',
+    borderColor: 'rgba(255,255,255,0.22)',
   },
   copyShadow: {
-    textShadowColor: 'rgba(0,0,0,0.35)',
+    textShadowColor: 'rgba(1,4,75,0.35)',
     textShadowRadius: 14,
     textShadowOffset: {width: 0, height: 1},
   },
   glassShadow: {
-    shadowColor: '#5FC7B5',
+    shadowColor: '#01044B',
     shadowOpacity: 0.35,
     shadowRadius: 18,
     shadowOffset: {width: 0, height: 0},
   },
   ringGlow: {
-    shadowColor: '#F2CB8A',
+    shadowColor: '#01044B',
     shadowOpacity: 0.9,
     shadowRadius: 8,
     shadowOffset: {width: 0, height: 0},
   },
   halfTopRight: {
-    borderTopColor: '#F2CB8A',
-    borderRightColor: '#F2CB8A',
-    borderBottomColor: 'transparent',
-    borderLeftColor: 'transparent',
+    borderTopColor: '#FCBE62',
+    borderRightColor: '#FCBE62',
+    borderBottomColor: 'rgba(23,28,143,0)',
+    borderLeftColor: 'rgba(23,28,143,0)',
   },
   halfBottomLeft: {
-    borderBottomColor: '#F2CB8A',
-    borderLeftColor: '#F2CB8A',
-    borderTopColor: 'transparent',
-    borderRightColor: 'transparent',
+    borderBottomColor: '#FCBE62',
+    borderLeftColor: '#FCBE62',
+    borderTopColor: 'rgba(23,28,143,0)',
+    borderRightColor: 'rgba(23,28,143,0)',
   },
 });
 

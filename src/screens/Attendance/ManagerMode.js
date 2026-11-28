@@ -41,9 +41,9 @@ const Tab = createMaterialTopTabNavigator();
 
 const ManagerMode = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
+    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: '#F5F5F5' }}>
       <Header title="Manager Mode" />
-      <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal,]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+      <LinearGradient colors={['#171C8F','#171C8F','#171C8F',]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
         <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
@@ -53,8 +53,8 @@ const ManagerMode = ({ navigation }) => {
           tabBarLabelStyle: { fontSize: 13, fontWeight:'600'},
           tabBarActiveTintColor: ThemeColor.OnDark,
         tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
-          tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
-          tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+          tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+          tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
         }}>
         <Tab.Screen name="Leave." component={ManagerLeave} />
         <Tab.Screen name="FlexiShift" component={ManagerFlexiShift} />
@@ -70,7 +70,7 @@ const ManagerMode = ({ navigation }) => {
         onPress={() => {
           navigation.goBack();
         }}>
-        <Image source={require("./../../assets/Images/group.png")} style={{ width: 25, height: 25, tintColor: GlobalColor.White }} />
+        <Image source={require("./../../assets/Images/group.png")} style={{ width: 25, height: 25, tintColor: '#FFFFFF' }} />
         <Text style={styles.fullWidthButtonText} >
           Back to Employee Mode
         </Text>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 
   Loadercontainer: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal: 10,
   },
 
@@ -107,20 +107,20 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary
+    borderColor: '#171C8F'
   },
   tabTextStyle: {
     fontSize: GlobalFontSize.P,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
   },
   reportHeader: {
     width: '100%',
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 5,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -147,10 +147,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 8,
     padding: 12,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderBottomWidth: 0.5,
-    borderBottomColor: GlobalColor.Secondary,
-    shadowColor: GlobalColor.Black,
+    borderBottomColor: '#171C8F',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
 
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
   },
   container: {
     flexDirection: 'row',
@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
-    backgroundColor: GlobalColor.White,
-    color: '#424242',
+    backgroundColor: '#FFFFFF',
+    color: 'rgba(1,4,75,0.62)',
   },
   FlatListData: {
     width: "100%",    
@@ -189,8 +189,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 5,
     marginTop: 10,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -205,24 +205,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'rgba(23,28,143,0.1)',
     marginTop: 10,
     padding: 10,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White
+    backgroundColor: '#FFFFFF'
   },
   spinnerTextStyle: {
-    color: GlobalColor.White
+    color: '#FFFFFF'
   },
   fullWidthButton: {
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
   fullWidthButtonText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     marginLeft: 8,
     fontSize:13
   },
@@ -231,14 +231,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 1,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
     borderRadius: 3,
     alignSelf: 'center',
     marginBottom: 7,
-    backgroundColor: GlobalColor.White
+    backgroundColor: '#FFFFFF'
   },
   mystyl: {
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(255,255,255,0)',
         height:'83%',
         flexDirection: 'row',
       },

@@ -353,13 +353,13 @@ const ScanBizCardModal = ({
             Scan Biz Card
           </Text>
           <TouchableOpacity onPress={onClose}>
-            <Ionicons name="close-circle-outline" size={26} color={GlobalColor.Danger} />
+            <Ionicons name="close-circle-outline" size={26} color={'#01044B'} />
           </TouchableOpacity>
         </View>
 
         {loading ? (
           <View style={scanStyles.loaderWrap}>
-            <ActivityIndicator size="large" color={ThemeColor.Teal} />
+            <ActivityIndicator size="large" color={'#171C8F'} />
             <Text style={scanStyles.loaderText}>Reading card details…</Text>
           </View>
         ) : scannedContact ? (
@@ -403,9 +403,9 @@ const ScanBizCardModal = ({
               onPress={onSaveContact}
               disabled={savingContact}>
               {savingContact ? (
-                <ActivityIndicator size="small" color={ThemeColor.OnAmber} />
+                <ActivityIndicator size="small" color={'#01044B'} />
               ) : (
-                <Ionicons name="person-add-outline" size={18} color={ThemeColor.OnAmber} />
+                <Ionicons name="person-add-outline" size={18} color={'#01044B'} />
               )}
               <Text style={scanStyles.primaryBtnText}>
                 {savingContact ? 'Opening…' : 'Save to Contacts'}
@@ -419,9 +419,9 @@ const ScanBizCardModal = ({
                 onPress={onSaveToGallery}
                 disabled={savingToGallery}>
                 {savingToGallery ? (
-                  <ActivityIndicator size="small" color={ThemeColor.Teal} />
+                  <ActivityIndicator size="small" color={'#171C8F'} />
                 ) : (
-                  <Ionicons name="images-outline" size={18} color={ThemeColor.Teal} />
+                  <Ionicons name="images-outline" size={18} color={'#171C8F'} />
                 )}
                 <Text style={scanStyles.galleryBtnText}>
                   {savingToGallery ? 'Saving…' : 'Save Image to Gallery'}
@@ -444,9 +444,9 @@ const ScanBizCardModal = ({
               onPress={onSaveToGallery}
               disabled={savingToGallery}>
               {savingToGallery ? (
-                <ActivityIndicator size="small" color={ThemeColor.Teal} />
+                <ActivityIndicator size="small" color={'#171C8F'} />
               ) : (
-                <Ionicons name="images-outline" size={18} color={ThemeColor.Teal} />
+                <Ionicons name="images-outline" size={18} color={'#171C8F'} />
               )}
               <Text style={scanStyles.galleryBtnText}>
                 {savingToGallery ? 'Saving…' : 'Save Image to Gallery'}
@@ -458,7 +458,7 @@ const ScanBizCardModal = ({
                 <Text style={scanStyles.secondaryBtnText}>Retake</Text>
               </TouchableOpacity>
               <TouchableOpacity style={scanStyles.primaryBtn} onPress={onSubmit}>
-                <Ionicons name="cloud-upload-outline" size={18} color={ThemeColor.OnAmber} />
+                <Ionicons name="cloud-upload-outline" size={18} color={'#01044B'} />
                 <Text style={scanStyles.primaryBtnText}>Submit</Text>
               </TouchableOpacity>
             </View>
@@ -466,18 +466,18 @@ const ScanBizCardModal = ({
         ) : (
           // ── Empty state, open camera or pick from gallery ──
           <View style={scanStyles.emptyWrap}>
-            <Ionicons name="camera-outline" size={64} color={ThemeColor.Teal} />
+            <Ionicons name="camera-outline" size={64} color={'#171C8F'} />
             <Text style={scanStyles.emptyText}>
               Capture a clear photo of the business card, or choose one from
               your gallery
             </Text>
             <View style={scanStyles.emptyBtnRow}>
               <TouchableOpacity style={scanStyles.primaryBtn} onPress={onCapture}>
-                <Ionicons name="camera" size={18} color={ThemeColor.OnAmber} />
+                <Ionicons name="camera" size={18} color={'#01044B'} />
                 <Text style={scanStyles.primaryBtnText}>Open Camera</Text>
               </TouchableOpacity>
               <TouchableOpacity style={scanStyles.secondaryBtn} onPress={onChooseGallery}>
-                <Ionicons name="images" size={18} color={ThemeColor.Teal} />
+                <Ionicons name="images" size={18} color={'#171C8F'} />
                 <Text style={scanStyles.secondaryBtnText}>  Choose from Gallery</Text>
               </TouchableOpacity>
             </View>
@@ -1422,12 +1422,12 @@ const handleChooseFromGallery = () => {
             <TouchableOpacity
               style={bcStyles.closeButton}
               onPress={() => setBusinessCardModal(false)}>
-              <Ionicons name="close-circle" size={scale(22)} color={ThemeColor.Teal} />
+              <Ionicons name="close-circle" size={scale(22)} color={'#171C8F'} />
             </TouchableOpacity>
 
             {bcLoading ? (
               <View style={bcStyles.loaderWrap}>
-                <ActivityIndicator size="large" color={ThemeColor.Teal} />
+                <ActivityIndicator size="large" color={'#171C8F'} />
                 <Text style={bcStyles.loaderText}>Loading card…</Text>
               </View>
             ) : (
@@ -1454,7 +1454,7 @@ const handleChooseFromGallery = () => {
                         logo={{uri: base64Logo}}
                         logoSize={scale(6)}
                         size={scale(65)}
-                        logoBackgroundColor="transparent"
+                        logoBackgroundColor="rgba(255,255,255,0)"
                       />
                     </View>
                     {/* Action buttons below QR code */}
@@ -1466,7 +1466,7 @@ const handleChooseFromGallery = () => {
                           <Ionicons
                             name="refresh-outline"
                             size={scale(24)}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                           />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -1475,7 +1475,7 @@ const handleChooseFromGallery = () => {
                           <Ionicons
                             name="share-social-outline"
                             size={scale(24)}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                           />
                         </TouchableOpacity>
                       </View>
@@ -1531,7 +1531,7 @@ const handleChooseFromGallery = () => {
                         <TouchableOpacity
                           onPress={() => Linking.openURL(`tel:${bcMobile}`)}>
                           <View style={bcStyles.contactRow}>
-                            <Ionicons name="call-outline" size={scale(14)} color="#000" />
+                            <Ionicons name="call-outline" size={scale(14)} color="#01044B" />
                             <Text style={bcStyles.contactText}>{bcMobile}</Text>
                           </View>
                         </TouchableOpacity>
@@ -1542,7 +1542,7 @@ const handleChooseFromGallery = () => {
                         <TouchableOpacity
                           onPress={() => Linking.openURL(`mailto:${bcEmail}`)}>
                           <View style={bcStyles.contactRow}>
-                            <Ionicons name="mail-outline" size={scale(14)} color="#000" />
+                            <Ionicons name="mail-outline" size={scale(14)} color="#01044B" />
                             <Text style={bcStyles.contactText}>
                               {(() => {
                                 const [localPart, domain] = bcEmail.split('@');
@@ -1561,7 +1561,7 @@ const handleChooseFromGallery = () => {
                         <TouchableOpacity
                           onPress={() => Linking.openURL(bcSocialMedia.linkedin)}>
                           <View style={bcStyles.contactRow}>
-                            <Ionicons name="logo-linkedin" size={scale(14)} color="#0077B5" />
+                            <Ionicons name="logo-linkedin" size={scale(14)} color="#171C8F" />
                             <Text style={bcStyles.contactText}>LinkedIn</Text>
                           </View>
                         </TouchableOpacity>
@@ -1572,7 +1572,7 @@ const handleChooseFromGallery = () => {
                         <TouchableOpacity
                           onPress={() => Linking.openURL(bcSocialMedia.instagram)}>
                           <View style={bcStyles.contactRow}>
-                            <Ionicons name="logo-instagram" size={scale(14)} color="#E4405F" />
+                            <Ionicons name="logo-instagram" size={scale(14)} color="#01044B" />
                             <Text style={bcStyles.contactText}>Instagram</Text>
                           </View>
                         </TouchableOpacity>
@@ -1583,7 +1583,7 @@ const handleChooseFromGallery = () => {
                         <TouchableOpacity
                           onPress={() => Linking.openURL(bcSocialMedia.facebook)}>
                           <View style={bcStyles.contactRow}>
-                            <Ionicons name="logo-facebook" size={scale(14)} color="#1877F2" />
+                            <Ionicons name="logo-facebook" size={scale(14)} color="#171C8F" />
                             <Text style={bcStyles.contactText}>Facebook</Text>
                           </View>
                         </TouchableOpacity>
@@ -1594,7 +1594,7 @@ const handleChooseFromGallery = () => {
                         <TouchableOpacity
                           onPress={() => Linking.openURL(bcSocialMedia.twitter)}>
                           <View style={bcStyles.contactRow}>
-                            <Ionicons name="logo-twitter" size={scale(14)} color="#1DA1F2" />
+                            <Ionicons name="logo-twitter" size={scale(14)} color="#171C8F" />
                             <Text style={bcStyles.contactText}>Twitter</Text>
                           </View>
                         </TouchableOpacity>
@@ -1602,7 +1602,7 @@ const handleChooseFromGallery = () => {
 
                       {/* Address */}
                       <View style={bcStyles.contactRow}>
-                        <Ionicons name="location-outline" size={scale(14)} color="#000" style={{marginTop: 2}} />
+                        <Ionicons name="location-outline" size={scale(14)} color="#01044B" style={{marginTop: 2}} />
                         <Text style={bcStyles.addressText}>{bcAddress}</Text>
                       </View>
                     </View>
@@ -1695,7 +1695,7 @@ const bcStyles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
     elevation: 10,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.25,
     shadowRadius: 8,
@@ -1735,7 +1735,7 @@ const bcStyles = StyleSheet.create({
   loaderText: {
     marginTop: 12,
     fontSize: scale(12),
-    color: '#555555',
+    color: 'rgba(1,4,75,0.62)',
     fontWeight: '500',
   },
 
@@ -1770,7 +1770,7 @@ const bcStyles = StyleSheet.create({
     marginBottom: scale(16),
     borderRadius: scale(40),
     borderWidth: 2,
-    borderColor: '#666666',
+    borderColor: '#171C8F',
     overflow: 'hidden',
   },
 
@@ -1780,7 +1780,7 @@ const bcStyles = StyleSheet.create({
   },
 
   avatarPlaceholder: {
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -1788,7 +1788,7 @@ const bcStyles = StyleSheet.create({
   },
 
   avatarInitial: {
-    color: '#ffffff',
+    color: '#FFFFFF',
     fontSize: scale(28),
     fontWeight: '700',
   },
@@ -1801,7 +1801,7 @@ const bcStyles = StyleSheet.create({
   nameText: {
     fontSize: scale(14),
     fontWeight: '700',
-    color: '#000000',
+    color: '#01044B',
     lineHeight: scale(18),
     textTransform: 'uppercase',
     marginBottom: 3,
@@ -1810,7 +1810,7 @@ const bcStyles = StyleSheet.create({
   designationText: {
     fontSize: scale(11),
     fontWeight: '400',
-    color: '#000000',
+    color: '#01044B',
     lineHeight: scale(15),
     textTransform: 'uppercase',
     marginBottom: 2,
@@ -1819,7 +1819,7 @@ const bcStyles = StyleSheet.create({
   departmentText: {
     fontSize: scale(10),
     fontWeight: '400',
-    color: '#000000',
+    color: '#01044B',
     lineHeight: scale(14),
     textTransform: 'uppercase',
     marginBottom: 2,
@@ -1856,7 +1856,7 @@ const bcStyles = StyleSheet.create({
 
   divider: {
     height: 1,
-    backgroundColor: '#CCCCCC',
+    backgroundColor: '#F5F5F5',
     marginTop: 14,
     marginBottom: 0, // was -12: let the image start below the line, never over it
     position: 'relative',
@@ -1877,7 +1877,7 @@ const bcStyles = StyleSheet.create({
   contactText: {
     fontSize: scale(10),
     fontWeight: '400',
-    color: '#000000',
+    color: '#01044B',
     marginLeft: 8,
     flex: 1,
   },
@@ -1885,7 +1885,7 @@ const bcStyles = StyleSheet.create({
   addressText: {
     fontSize: scale(10),
     fontWeight: '400',
-    color: '#000000',
+    color: '#01044B',
     lineHeight: scale(14),
     marginLeft: 8,
     flex: 1,
@@ -1895,7 +1895,7 @@ const bcStyles = StyleSheet.create({
     // height is set inline to exactly the image height (no empty bands)
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     borderRadius: 4,
     marginTop: 6, // was -10: small gap below the divider instead of overlapping it
     marginBottom: 0,
@@ -1924,7 +1924,7 @@ const scanStyles = StyleSheet.create({
   container: {
     width: Dimensions.get('window').width * 0.9,
     maxHeight: Dimensions.get('window').height * 0.8,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 16,
   },
@@ -1936,7 +1936,7 @@ const scanStyles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    color: ThemeColor.TealDeep,
+    color: '#01044B',
   },
   loaderWrap: {
     minHeight: 220,
@@ -1946,7 +1946,7 @@ const scanStyles = StyleSheet.create({
   loaderText: {
     marginTop: 12,
     fontSize: 14,
-    color: '#555555',
+    color: 'rgba(1,4,75,0.62)',
   },
   emptyWrap: {
     minHeight: 240,
@@ -1957,7 +1957,7 @@ const scanStyles = StyleSheet.create({
     marginTop: 12,
     marginBottom: 20,
     fontSize: 14,
-    color: '#555555',
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     paddingHorizontal: 20,
   },
@@ -1989,19 +1989,19 @@ const scanStyles = StyleSheet.create({
   },
   resultName: {
     fontSize: 18,
-    color: '#000000',
+    color: '#01044B',
     marginBottom: 8,
   },
   resultRow: {
     fontSize: 14,
-    color: '#333333',
+    color: '#01044B',
     marginBottom: 8,
     lineHeight: 20,
     
   },
   primaryBtn: {
     flexDirection: 'row',
-    backgroundColor: ThemeColor.Amber,
+    backgroundColor: '#FCBE62',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 24,
@@ -2009,14 +2009,14 @@ const scanStyles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 12,
     gap: 8,
-    shadowColor: ThemeColor.AmberDark,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.35,
     shadowRadius: 4,
     elevation: 2,
   },
   primaryBtnText: {
-    color: ThemeColor.OnAmber,
+    color: '#01044B',
     fontWeight: '700',
     fontSize: 14,
   },
@@ -2029,18 +2029,18 @@ const scanStyles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 12,
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     gap: 8,
   },
   secondaryBtnText: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     fontWeight: '600',
     fontSize: 14,
   },
   // === SCAN BIZ CARD: manual "Save Image to Gallery" button ===
   galleryBtn: {
     flexDirection: 'row',
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 24,
@@ -2048,11 +2048,11 @@ const scanStyles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 12,
     borderWidth: 1,
-    borderColor: ThemeColor.TealSoft,
+    borderColor: 'rgba(23,28,143,0.1)',
     gap: 8,
   },
   galleryBtnText: {
-    color: ThemeColor.TealDark,
+    color: '#171C8F',
     fontWeight: '700',
     fontSize: 14,
   },

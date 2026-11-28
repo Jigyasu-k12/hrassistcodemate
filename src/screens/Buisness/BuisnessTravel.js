@@ -98,7 +98,7 @@ const stopLoader = () => {
     <View style={styles.container}>
       {/*
       
-        #499fd0      
+        #171C8F      
       <LinearGradient
         style={{padding: 20}}
         colors={[ThemeColor.Teal, ThemeColor.Teal]}>
@@ -113,20 +113,20 @@ const stopLoader = () => {
             <Ionicons
               name="chevron-back-outline"
               size={25}
-              color={'white'}
+              color={'#FFFFFF'}
               onPress={() => navigation.navigate("Home")}
             />
             <Ionicons
               name="menu-outline"
               size={25}
-              color={'white'}
+              color={'#FFFFFF'}
               onPress={() => navigation.openDrawer()}
             />
           </View>
 
           <Text
             style={{
-              color: '#fff',
+              color: '#F5F5F5',
               
               letterSpacing: 1,
               marginLeft: 30,
@@ -145,7 +145,7 @@ const stopLoader = () => {
               width: 50,
               height: 50,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -156,7 +156,7 @@ const stopLoader = () => {
           <Text style={{fontSize:14}} Bold>
             MSIL GST Details
           </Text>
-          <Ionicons name="chevron-forward-outline" size={18} color={ThemeColor.Teal}/>
+          <Ionicons name="chevron-forward-outline" size={18} color={'#171C8F'}/>
         </View>
       </TouchableOpacity>
 
@@ -170,7 +170,7 @@ const stopLoader = () => {
               width: 50,
               height: 50,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -181,7 +181,7 @@ const stopLoader = () => {
           <Text style={{fontSize: 14}} Bold>
             Shuttle Booking
           </Text>
-          <Ionicons name="chevron-forward-outline" size={18} color={ThemeColor.Teal}/>
+          <Ionicons name="chevron-forward-outline" size={18} color={'#171C8F'}/>
         </View>
       </TouchableOpacity>
       
@@ -201,7 +201,7 @@ const stopLoader = () => {
           width: 45,
           height: 45,
           borderRadius: 14,
-          backgroundColor: HomePalette.mint,
+          backgroundColor: '#F5F5F5',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -213,7 +213,7 @@ const stopLoader = () => {
       <Text style={{ fontSize: 14 }} Bold>
         Taxi Booking
       </Text>
-      <Ionicons name="chevron-forward-outline" color={ThemeColor.Teal} size={18} />
+      <Ionicons name="chevron-forward-outline" color={'#171C8F'} size={18} />
     </View>
 
   </TouchableOpacity>
@@ -228,7 +228,7 @@ const stopLoader = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal:10
   },
   box: {
@@ -239,8 +239,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: GlobalColor.White,
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,

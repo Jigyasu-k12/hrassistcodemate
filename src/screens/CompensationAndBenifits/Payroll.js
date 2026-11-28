@@ -177,7 +177,7 @@ const Payroll = () => {
               width: 45,
               height: 45,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
 
@@ -187,7 +187,7 @@ const Payroll = () => {
         </View>
         <View style={styles.item}>
           <Text Bold style={{ fontSize: 15}}>Salary Slip</Text>
-          <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+          <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
         </View>
       </TouchableOpacity>
 
@@ -205,7 +205,7 @@ const Payroll = () => {
                 width: 45,
                 height: 45,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -214,7 +214,7 @@ const Payroll = () => {
           </View>
           <View style={styles.item}>
             <Text Bold style={{ fontSize: 15}}>Tax Computation Slip</Text>
-            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal} />
+            <Feather name="corner-up-right" size={18} color={'#171C8F'} />
           </View>
         </View>
 
@@ -288,7 +288,7 @@ const Payroll = () => {
                 width: 45,
                 height: 45,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -297,7 +297,7 @@ const Payroll = () => {
           </View>
           <View style={styles.item}>
             <Text Bold style={{ fontSize: 15}}>Bhavishya Sanchaya (PF) </Text>
-            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+            <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
           </View>
         </View>
 
@@ -367,7 +367,7 @@ const Payroll = () => {
               width: 45,
               height: 45,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -376,7 +376,7 @@ const Payroll = () => {
         </View>
         <View style={styles.item}>
           <Text Bold style={{ fontSize: 15}}>Tax Savings</Text>
-          <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+          <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
         </View>
       </TouchableOpacity>
 
@@ -393,7 +393,7 @@ const Payroll = () => {
               width: 45,
               height: 45,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -403,7 +403,7 @@ const Payroll = () => {
         <View style={styles.item}>
         <Text Bold style={{ fontSize: 15}}>Form-16</Text>
          
-          <Feather name="corner-up-right" color={ThemeColor.Teal} size={18} />
+          <Feather name="corner-up-right" color={'#171C8F'} size={18} />
         </View>
       </TouchableOpacity>
 
@@ -417,7 +417,7 @@ const Payroll = () => {
           <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
             <Feather
               name="x-circle"
-              color={GlobalColor.Black}
+              color={'#01044B'}
               size={20}
               onPress={() => { setSevingModalVisible(false) }}
               style={{ margin: 10 }}
@@ -460,7 +460,7 @@ const Payroll = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal: 10,
   },
   box: {
@@ -471,8 +471,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -499,9 +499,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignSelf: 'center',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderRadius: 3,
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,

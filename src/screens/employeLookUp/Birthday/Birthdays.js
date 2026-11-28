@@ -55,7 +55,7 @@ const initialsOf = name => {
     (w[0][0] || '') + (w.length > 1 ? w[w.length - 1][0] : '')
   ).toUpperCase();
 };
-const HUES = ['#F6E6C4', '#E3ECE7', '#EAF4F2', '#CFE6E2'];
+const HUES = ['#F5F5F5', '#F5F5F5', '#F5F5F5', '#F5F5F5'];
 const hueFor = key => {
   let h = 0;
   for (let i = 0; i < key.length; i++) {
@@ -113,7 +113,7 @@ const BirthdayTile = ({person, isToday, wished, onPress, onWish, onCall}) => {
   const when = isToday ? `Today · ${dayLabel(0)}` : `Tomorrow · ${dayLabel(1)}`;
   const Body = isToday ? LinearGradient : View;
   const bodyProps = isToday
-    ? {colors: ['#FFFFFF', '#FDF7EA'], start: {x: 0, y: 0}, end: {x: 0.4, y: 1}}
+    ? {colors: ['#FFFFFF', '#F5F5F5'], start: {x: 0, y: 0}, end: {x: 0.4, y: 1}}
     : {};
   return (
     <Animated.View style={{transform: [{scale: press}]}}>
@@ -140,7 +140,7 @@ const BirthdayTile = ({person, isToday, wished, onPress, onWish, onCall}) => {
                 <AppIcon
                   name="cake"
                   size={11}
-                  color={P.amberInk}
+                  color={'#171C8F'}
                   strokeWidth={2}
                 />
               </View>
@@ -167,7 +167,7 @@ const BirthdayTile = ({person, isToday, wished, onPress, onWish, onCall}) => {
               <AppIcon
                 name="phone"
                 size={18}
-                color={P.tealInk}
+                color={'#171C8F'}
                 strokeWidth={2}
               />
             </TouchableOpacity>
@@ -188,14 +188,14 @@ const BirthdayTile = ({person, isToday, wished, onPress, onWish, onCall}) => {
                   <AppIcon
                     name="check"
                     size={14}
-                    color={P.tealInk}
+                    color={'#171C8F'}
                     strokeWidth={2.4}
                   />
                   <HText style={styles.wishDoneText}>Wished</HText>
                 </View>
               ) : (
                 <LinearGradient
-                  colors={[P.teal, P.tealInk]}
+                  colors={['#171C8F', '#171C8F']}
                   start={{x: 0, y: 0}}
                   end={{x: 1, y: 1}}
                   style={styles.wishBtn}>
@@ -212,7 +212,7 @@ const BirthdayTile = ({person, isToday, wished, onPress, onWish, onCall}) => {
 
 const SkeletonTile = () => (
   <View style={[styles.tile, styles.tileSoon, styles.skeleton]}>
-    <View style={[styles.avatar, {backgroundColor: P.mint}]} />
+    <View style={[styles.avatar, {backgroundColor: '#F5F5F5'}]} />
     <View style={styles.tileText}>
       <View style={[styles.skelLine, {width: '60%', height: 12}]} />
       <View style={[styles.skelLine, {width: '44%'}]} />
@@ -224,7 +224,7 @@ const SkeletonTile = () => (
 const EmptyState = ({title, sub}) => (
   <View style={styles.empty}>
     <View style={styles.emptyArt}>
-      <AppIcon name="cake" size={34} color={P.tealInk} strokeWidth={1.7} />
+      <AppIcon name="cake" size={34} color={'#171C8F'} strokeWidth={1.7} />
     </View>
     <HText style={styles.emptyTitle}>{title}</HText>
     {!!sub && <HText style={styles.emptySub}>{sub}</HText>}
@@ -452,14 +452,14 @@ const Birthdays = () => {
   };
 
   return (
-    <LinearGradient colors={[P.canvas, P.mint]} style={styles.container}>
+    <LinearGradient colors={['#F5F5F5', '#F5F5F5']} style={styles.container}>
       {/* search (local filter) */}
       <View style={[styles.searchBar, focused && styles.searchBarFocused]}>
-        <AppIcon name="search" size={18} color="#1C2B27" strokeWidth={2} />
+        <AppIcon name="search" size={18} color="#171C8F" strokeWidth={2} />
         <TextInput
           style={styles.input}
           placeholder="Search name or department"
-          placeholderTextColor="#66716D"
+          placeholderTextColor="rgba(1,4,75,0.62)"
           value={search}
           onChangeText={setSearch}
           onFocus={() => setFocused(true)}
@@ -476,7 +476,7 @@ const Birthdays = () => {
             accessibilityLabel="Clear search"
             hitSlop={{top: 8, bottom: 8, left: 8, right: 8}}
             style={styles.clearBtn}>
-            <AppIcon name="close" size={14} color="#66716D" strokeWidth={2.4} />
+            <AppIcon name="close" size={14} color="rgba(1,4,75,0.62)" strokeWidth={2.4} />
           </TouchableOpacity>
         )}
       </View>
@@ -508,8 +508,8 @@ const Birthdays = () => {
               <RefreshControl
                 refreshing={refresh}
                 onRefresh={() => PostBirthdayData(true)}
-                tintColor={P.teal}
-                colors={[P.teal]}
+                tintColor={'#171C8F'}
+                colors={['#171C8F']}
               />
             }
             contentContainerStyle={[
@@ -585,7 +585,7 @@ const Birthdays = () => {
         useNativeDriverForBackdrop>
         <View style={styles.card}>
           <LinearGradient
-            colors={modalIsToday ? ['#FDF7EA', '#FFFFFF'] : [P.mint, '#FFFFFF']}
+            colors={modalIsToday ? ['#F5F5F5', '#FFFFFF'] : ['#F5F5F5', '#FFFFFF']}
             style={styles.cardTop}
           />
           <TouchableOpacity
@@ -594,19 +594,19 @@ const Birthdays = () => {
             accessibilityLabel="Close"
             hitSlop={{top: 8, bottom: 8, left: 8, right: 8}}
             style={styles.closeBtn}>
-            <AppIcon name="close" size={16} color="#3D4744" strokeWidth={2.4} />
+            <AppIcon name="close" size={16} color="#171C8F" strokeWidth={2.4} />
           </TouchableOpacity>
 
           {modalLoader || !modalPerson ? (
             <View style={styles.cardLoading}>
-              <ActivityIndicator color={P.teal} size="large" />
+              <ActivityIndicator color={'#171C8F'} size="large" />
             </View>
           ) : (
             <View style={styles.cardBody}>
               <View
                 style={[
                   styles.photoRing,
-                  modalIsToday && {borderColor: P.amber},
+                  modalIsToday && {borderColor: '#FCBE62'},
                 ]}>
                 {empPhoto ? (
                   <Image source={{uri: empPhoto}} style={styles.photo} />
@@ -633,13 +633,13 @@ const Birthdays = () => {
                 <AppIcon
                   name="cake"
                   size={13}
-                  color={modalIsToday ? P.amberInk : P.tealInk}
+                  color={modalIsToday ? '#171C8F' : '#171C8F'}
                   strokeWidth={2}
                 />
                 <HText
                   style={[
                     styles.whenChipText,
-                    modalIsToday && {color: P.amberInk},
+                    modalIsToday && {color: '#171C8F'},
                   ]}>
                   {modalIsToday
                     ? `Birthday today · ${dayLabel(0)}`
@@ -672,7 +672,7 @@ const Birthdays = () => {
                   <AppIcon
                     name="mail"
                     size={17}
-                    color={P.onAmber}
+                    color={'#01044B'}
                     strokeWidth={2}
                   />
                   <HText style={styles.cardBtnPrimaryText}>
@@ -687,7 +687,7 @@ const Birthdays = () => {
                   <AppIcon
                     name="phone"
                     size={17}
-                    color={P.tealInk}
+                    color={'#171C8F'}
                     strokeWidth={2}
                   />
                   <HText style={styles.cardBtnGhostText}>Call</HText>
@@ -704,10 +704,10 @@ const Birthdays = () => {
 const GLASS = {
   backgroundColor: 'rgba(255,255,255,0.66)',
   borderWidth: 1,
-  borderColor: 'rgba(255,255,255,0.9)',
+  borderColor: 'rgba(23,28,143,0.1)',
 };
 const SHADOW = {
-  shadowColor: '#1D3D36',
+  shadowColor: '#01044B',
   shadowOpacity: 0.1,
   shadowRadius: 14,
   shadowOffset: {width: 0, height: 8},
@@ -731,7 +731,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
   },
   searchBarFocused: {
-    borderColor: P.teal,
+    borderColor: '#171C8F',
     backgroundColor: 'rgba(255,255,255,0.86)',
   },
   input: {
@@ -739,14 +739,14 @@ const styles = StyleSheet.create({
     minWidth: 0,
     marginLeft: 10,
     fontSize: 15,
-    color: '#1C2B27',
+    color: '#171C8F',
     paddingVertical: 0,
   },
   clearBtn: {
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: 'rgba(28,43,39,0.06)',
+    backgroundColor: 'rgba(23,28,143,0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -757,7 +757,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     padding: 4,
     borderRadius: 14,
-    backgroundColor: 'rgba(43,131,121,0.08)',
+    backgroundColor: 'rgba(23,28,143,0.08)',
   },
   tab: {
     flex: 1,
@@ -769,27 +769,27 @@ const styles = StyleSheet.create({
   },
   tabActive: {
     backgroundColor: '#FFFFFF',
-    shadowColor: '#1D3D36',
+    shadowColor: '#01044B',
     shadowOpacity: 0.1,
     shadowRadius: 8,
     shadowOffset: {width: 0, height: 3},
     elevation: 2,
   },
-  tabText: {fontSize: 13.5, fontWeight: '600', color: P.sub},
-  tabTextActive: {color: P.tealInk, fontWeight: '700'},
+  tabText: {fontSize: 13.5, fontWeight: '600', color: 'rgba(1,4,75,0.62)'},
+  tabTextActive: {color: '#171C8F', fontWeight: '700'},
   tabCount: {
     minWidth: 22,
     height: 20,
     paddingHorizontal: 6,
     borderRadius: 10,
     marginLeft: 6,
-    backgroundColor: 'rgba(28,43,39,0.06)',
+    backgroundColor: 'rgba(23,28,143,0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  tabCountActive: {backgroundColor: P.amber},
-  tabCountText: {fontSize: 11, fontWeight: '700', color: '#66716D'},
-  tabCountTextActive: {color: P.onAmber},
+  tabCountActive: {backgroundColor: '#FCBE62'},
+  tabCountText: {fontSize: 11, fontWeight: '700', color: 'rgba(1,4,75,0.62)'},
+  tabCountTextActive: {color: '#01044B'},
 
   list: {paddingHorizontal: 16, paddingTop: 4, paddingBottom: 140},
   groupRow: {
@@ -802,18 +802,18 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
     letterSpacing: 0.2,
-    color: P.amberDeep || '#C99A55',
+    color: '#171C8F' || '#171C8F',
   },
-  groupLabelSoon: {color: P.tealInk},
+  groupLabelSoon: {color: '#171C8F'},
   countPill: {
     marginLeft: 8,
     paddingHorizontal: 8,
     height: 20,
     borderRadius: 10,
-    backgroundColor: '#EAF4F2',
+    backgroundColor: '#F5F5F5',
     justifyContent: 'center',
   },
-  countText: {fontSize: 11, fontWeight: '700', color: '#66716D'},
+  countText: {fontSize: 11, fontWeight: '700', color: 'rgba(1,4,75,0.62)'},
 
   tile: {
     borderRadius: 18,
@@ -823,23 +823,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     ...SHADOW,
   },
-  tileToday: {borderColor: '#F5D9AE', backgroundColor: '#FFFFFF'},
+  tileToday: {borderColor: 'rgba(23,28,143,0.1)', backgroundColor: '#FFFFFF'},
   tileSoon: {...GLASS},
   avatar: {
     width: 48,
     height: 48,
     borderRadius: 24,
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(255,255,255,0.22)',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#1D3D36',
+    shadowColor: '#01044B',
     shadowOpacity: 0.12,
     shadowRadius: 6,
     shadowOffset: {width: 0, height: 3},
     elevation: 1,
   },
-  avatarText: {fontSize: 16, fontWeight: '700', color: '#1C2B27'},
+  avatarText: {fontSize: 16, fontWeight: '700', color: '#171C8F'},
   cakeDot: {
     position: 'absolute',
     right: -4,
@@ -847,24 +847,24 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: P.amberCream || '#FDF1DC',
+    backgroundColor: '#F5F5F5' || '#F5F5F5',
     borderWidth: 1.5,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(23,28,143,0.1)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   tileText: {flex: 1, minWidth: 0, marginHorizontal: 12},
-  name: {fontSize: 15, fontWeight: '700', lineHeight: 20, color: '#1C2B27'},
-  sub: {fontSize: 12, color: '#66716D', marginTop: 1},
-  when: {fontSize: 12, fontWeight: '600', color: '#66716D', marginTop: 3},
-  whenToday: {color: P.amberDeep || '#C99A55'},
+  name: {fontSize: 15, fontWeight: '700', lineHeight: 20, color: '#171C8F'},
+  sub: {fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 1},
+  when: {fontSize: 12, fontWeight: '600', color: 'rgba(1,4,75,0.62)', marginTop: 3},
+  whenToday: {color: '#171C8F' || '#171C8F'},
 
   callBtn: {
     ...GLASS,
     width: 44,
     height: 44,
     borderRadius: 12,
-    borderColor: '#E3ECE7',
+    borderColor: 'rgba(23,28,143,0.1)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -879,11 +879,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   wishText: {fontSize: 14, fontWeight: '700', color: '#FFFFFF'},
-  wishDone: {backgroundColor: '#E3ECE7'},
+  wishDone: {backgroundColor: '#F5F5F5'},
   wishDoneText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#1F6B62',
+    color: '#171C8F',
     marginLeft: 4,
   },
 
@@ -891,7 +891,7 @@ const styles = StyleSheet.create({
   skelLine: {
     height: 9,
     borderRadius: 5,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     marginVertical: 3,
   },
 
@@ -906,16 +906,16 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: '#E3ECE7',
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 14,
   },
-  emptyTitle: {fontSize: 16, fontWeight: '700', color: '#1C2B27'},
+  emptyTitle: {fontSize: 16, fontWeight: '700', color: '#171C8F'},
   emptySub: {
     fontSize: 13,
     lineHeight: 19,
-    color: '#66716D',
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     marginTop: 6,
   },
@@ -936,7 +936,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: 'rgba(28,43,39,0.06)',
+    backgroundColor: 'rgba(23,28,143,0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -957,14 +957,14 @@ const styles = StyleSheet.create({
     height: 116,
     borderRadius: 58,
     borderWidth: 3,
-    borderColor: P.teal,
+    borderColor: '#171C8F',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
   },
   photo: {width: 104, height: 104, borderRadius: 52},
   photoFallback: {alignItems: 'center', justifyContent: 'center'},
-  photoInitials: {fontSize: 32, fontWeight: '700', color: '#1C2B27'},
+  photoInitials: {fontSize: 32, fontWeight: '700', color: '#171C8F'},
   whenChip: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -972,24 +972,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     height: 26,
     borderRadius: 13,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
   },
-  whenChipToday: {backgroundColor: P.amberCream || '#FDF1DC'},
+  whenChipToday: {backgroundColor: '#F5F5F5' || '#F5F5F5'},
   whenChipText: {
     fontSize: 12,
     fontWeight: '700',
-    color: P.tealInk,
+    color: '#171C8F',
     marginLeft: 6,
   },
   cardName: {
     fontSize: 19,
     fontWeight: '700',
-    color: '#1C2B27',
+    color: '#171C8F',
     textAlign: 'center',
     marginTop: 10,
   },
-  cardSub: {fontSize: 13, color: '#3D4744', textAlign: 'center', marginTop: 4},
-  cardMail: {fontSize: 12.5, color: '#66716D', marginTop: 4},
+  cardSub: {fontSize: 13, color: '#171C8F', textAlign: 'center', marginTop: 4},
+  cardMail: {fontSize: 12.5, color: 'rgba(1,4,75,0.62)', marginTop: 4},
   cardActions: {flexDirection: 'row', marginTop: 20, alignSelf: 'stretch'},
   cardBtn: {
     flex: 1,
@@ -999,22 +999,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cardBtnPrimary: {backgroundColor: P.amber, marginRight: 10},
+  cardBtnPrimary: {backgroundColor: '#FCBE62', marginRight: 10},
   cardBtnPrimaryText: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: P.onAmber,
+    color: '#01044B',
     marginLeft: 8,
   },
   cardBtnGhost: {
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     borderWidth: 1,
-    borderColor: P.line || '#E3ECE7',
+    borderColor: 'rgba(23,28,143,0.1)' || 'rgba(23,28,143,0.1)',
   },
   cardBtnGhostText: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: P.tealInk,
+    color: '#171C8F',
     marginLeft: 8,
   },
 });

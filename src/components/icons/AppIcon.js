@@ -147,7 +147,7 @@ const FILLED = {
 export const AppIcon = ({
   name,
   size = 22,
-  color = P.tealInk,
+  color = '#171C8F',
   strokeWidth = 1.8,
   style,
 }) => {
@@ -182,10 +182,10 @@ export const AppIcon = ({
 };
 
 const TONES = {
-  teal: {bg: P.mint, fg: P.tealInk},
-  amber: {bg: P.amberCream, fg: P.amberInk},
-  danger: {bg: '#FCEBEA', fg: '#C2362F'},
-  dark: {bg: 'rgba(255,255,255,0.12)', fg: '#FFFFFF'},
+  teal: {bg: '#F5F5F5', fg: '#01044B'},
+  amber: {bg: '#F5F5F5', fg: '#01044B'},
+  danger: {bg: '#F5F5F5', fg: '#01044B'},
+  dark: {bg: 'rgba(255,255,255,0.12)', fg: 'rgba(255,255,255,0.72)'},
 };
 
 // Icon inside a rounded mint chip — the standard way icons sit in lists/cards.

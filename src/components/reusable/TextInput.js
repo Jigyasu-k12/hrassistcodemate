@@ -26,12 +26,12 @@ export default (props) =>{
         value={value}
         style={[{
           flex:1,
-          color:GlobalColor.Primary,
+          color:'#01044B',
           fontSize:GlobalFontSize.Small,
           fontFamily:'Roboto-Regular',
           textAlign:'left',                           
         }, props.style]}
-        placeholderTextColor={GlobalColor.LightDark}
+        placeholderTextColor={'rgba(1,4,75,0.62)'}
       />
     )
 }

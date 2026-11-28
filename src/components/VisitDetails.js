@@ -51,10 +51,10 @@ const VisitDetails = ({navigation}) => {
               borderWidth: 1,
               padding: 5,
               borderRadius: 5,
-              borderTopColor: '#80406A',
-              borderStartColor: ThemeColor.TealSoft,
-              borderBottomColor: ThemeColor.TealDark,
-              borderEndColor: ThemeColor.TealSoft,
+              borderTopColor: '#01044B',
+              borderStartColor: 'rgba(23,28,143,0.1)',
+              borderBottomColor: '#171C8F',
+              borderEndColor: 'rgba(23,28,143,0.1)',
             }}
           />
           <TextInput
@@ -63,10 +63,10 @@ const VisitDetails = ({navigation}) => {
               borderWidth: 1,
               padding: 5,
               borderRadius: 5,
-              borderTopColor: '#80406A',
-              borderStartColor: ThemeColor.TealSoft,
-              borderBottomColor: ThemeColor.TealDark,
-              borderEndColor: ThemeColor.TealSoft,
+              borderTopColor: '#01044B',
+              borderStartColor: 'rgba(23,28,143,0.1)',
+              borderBottomColor: '#171C8F',
+              borderEndColor: 'rgba(23,28,143,0.1)',
             }}
           />
         </View>
@@ -95,12 +95,12 @@ const VisitDetails = ({navigation}) => {
             defaultButtonText='Mr'
               data={Gender}
               buttonStyle={{
-                backgroundColor: 'transparent',
+                backgroundColor: 'rgba(255,255,255,0)',
                 borderWidth: 1,
-                borderTopColor: '#80406A',
-                borderStartColor: ThemeColor.TealSoft,
-                borderBottomColor: ThemeColor.TealDark,
-                borderEndColor: ThemeColor.TealSoft,
+                borderTopColor: '#01044B',
+                borderStartColor: 'rgba(23,28,143,0.1)',
+                borderBottomColor: '#171C8F',
+                borderEndColor: 'rgba(23,28,143,0.1)',
                 width: '30%',
                 height: 40,
                 borderRadius: 5,
@@ -109,7 +109,7 @@ const VisitDetails = ({navigation}) => {
                 return (
                   <FontAwesome
                     name={isOpened ? 'chevron-up' : 'chevron-down'}
-                    color={'#444'}
+                    color={'rgba(1,4,75,0.62)'}
                     size={18}
                   />
                 );
@@ -130,10 +130,10 @@ const VisitDetails = ({navigation}) => {
                 borderWidth: 1,
                 padding: 5,
                 borderRadius: 5,
-                borderTopColor: '#80406A',
-                borderStartColor: ThemeColor.TealSoft,
-                borderBottomColor: ThemeColor.TealDark,
-                borderEndColor: ThemeColor.TealSoft,
+                borderTopColor: '#01044B',
+                borderStartColor: 'rgba(23,28,143,0.1)',
+                borderBottomColor: '#171C8F',
+                borderEndColor: 'rgba(23,28,143,0.1)',
               }}
             />
           </View>
@@ -166,10 +166,10 @@ const VisitDetails = ({navigation}) => {
                 borderWidth: 1,
                 padding: 5,
                 borderRadius: 5,
-                borderTopColor: '#80406A',
-                borderStartColor: ThemeColor.TealSoft,
-                borderBottomColor: ThemeColor.TealDark,
-                borderEndColor: ThemeColor.TealSoft,
+                borderTopColor: '#01044B',
+                borderStartColor: 'rgba(23,28,143,0.1)',
+                borderBottomColor: '#171C8F',
+                borderEndColor: 'rgba(23,28,143,0.1)',
               }}
             />
             <TextInput
@@ -178,10 +178,10 @@ const VisitDetails = ({navigation}) => {
                 borderWidth: 1,
                 padding: 5,
                 borderRadius: 5,
-                borderTopColor: '#80406A',
-                borderStartColor: ThemeColor.TealSoft,
-                borderBottomColor: ThemeColor.TealDark,
-                borderEndColor: ThemeColor.TealSoft,
+                borderTopColor: '#01044B',
+                borderStartColor: 'rgba(23,28,143,0.1)',
+                borderBottomColor: '#171C8F',
+                borderEndColor: 'rgba(23,28,143,0.1)',
               }}
             />
           </View>
@@ -196,19 +196,19 @@ const VisitDetails = ({navigation}) => {
               borderWidth: 1,
               padding: 5,
               borderRadius: 5,
-              borderTopColor: '#80406A',
-              borderStartColor: ThemeColor.TealSoft,
-              borderBottomColor: ThemeColor.TealDark,
-              borderEndColor: ThemeColor.TealSoft,
+              borderTopColor: '#01044B',
+              borderStartColor: 'rgba(23,28,143,0.1)',
+              borderBottomColor: '#171C8F',
+              borderEndColor: 'rgba(23,28,143,0.1)',
               alignSelf: 'center',
             }}
           />
         </View>
         <TouchableOpacity style={{padding: 10, paddingStart: 20}}>
           <LinearGradient
-         colors={[ThemeColor.Teal,ThemeColor.TealSoft]}
+         colors={['#171C8F','rgba(23,28,143,0.1)']}
             style={{padding: 10, width: '40%', borderRadius: 5}}>
-            <Text style={{color: '#fff', textAlign: 'center'}}>
+            <Text style={{color: '#FFFFFF', textAlign: 'center'}}>
               Add More Person
             </Text>
           </LinearGradient>
@@ -222,7 +222,7 @@ const VisitDetails = ({navigation}) => {
               width: '90%',
               alignSelf: 'center',
             }}
-         colors={[ThemeColor.Teal,ThemeColor.TealSoft]}>
+         colors={['#171C8F','rgba(23,28,143,0.1)']}>
             <TouchableOpacity
               style={{
                 width: '100%',
@@ -234,7 +234,7 @@ const VisitDetails = ({navigation}) => {
                 style={{
                   fontSize: 16,
                   fontWeight: 'bold',
-                  color: '#fff',
+                  color: '#FFFFFF',
                   letterSpacing: 2,
                 }}>
                 Submit

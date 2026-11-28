@@ -232,7 +232,7 @@ const Benifits = () => {
             </View>
             <View style={styles.item}>
               <Text style={{fontSize:13}} Bold>{item.text}</Text>
-              <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+              <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
             </View>
           </TouchableOpacity>
         )}
@@ -245,7 +245,7 @@ const Benifits = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal: 10,
   },
   box: {
@@ -256,8 +256,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 14,
-    backgroundColor: HomePalette.mint,
+    backgroundColor: '#F5F5F5',
     justifyContent: 'center',
     alignItems: 'center',
   }

@@ -266,13 +266,13 @@ const HospitalReportScreens = () => {
  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
  <style>
  * { margin:0; padding:0; box-sizing:border-box; }
- html,body { width:100%; height:100%; background-color:#525659; overflow:auto; -webkit-overflow-scrolling:touch; }
+ html,body { width:100%; height:100%; background-color:#01044B; overflow:auto; -webkit-overflow-scrolling:touch; }
  #zoom-container { transform-origin:top left; width:100%; }
  #pdf-container { display:flex; flex-direction:column; align-items:center; padding:10px 0; gap:10px; width:100%; }
- canvas { display:block; width:100% !important; height:auto !important; box-shadow:0 2px 8px rgba(0,0,0,0.4); }
- #loading { color:#fff; font-size:16px; text-align:center; margin-top:40vh; font-family:sans-serif; }
- #error { color:#ff6b6b; font-size:14px; text-align:center; margin-top:40vh; font-family:sans-serif; padding:20px; display:none; }
- #page-info { color:#ccc; font-size:13px; text-align:center; font-family:sans-serif; padding:5px 0 10px 0; }
+ canvas { display:block; width:100% !important; height:auto !important; box-shadow:0 2px 8px rgba(1,4,75,0.4); }
+ #loading { color:#FFFFFF; font-size:16px; text-align:center; margin-top:40vh; font-family:sans-serif; }
+ #error { color:#01044B; font-size:14px; text-align:center; margin-top:40vh; font-family:sans-serif; padding:20px; display:none; }
+ #page-info { color:rgba(1,4,75,0.62); font-size:13px; text-align:center; font-family:sans-serif; padding:5px 0 10px 0; }
  </style>
  </head>
  <body>
@@ -334,14 +334,14 @@ const HospitalReportScreens = () => {
  * { margin: 0; padding: 0; box-sizing: border-box; }
  html, body {
  width: 100%; height: 100%;
- background-color: #525659;
+ background-color: #01044B;
  display: flex; justify-content: center; align-items: flex-start;
  overflow: auto; -webkit-overflow-scrolling: touch;
  }
  #zoom-container { transform-origin: top center; width: 100%; display: flex; justify-content: center; padding: 10px 0; }
- img { max-width: 100%; height: auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.5); background: #fff; }
- #loading { color: #fff; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; position: absolute; width: 100%; }
- #error { color: #ff6b6b; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; position: absolute; width: 100%; }
+ img { max-width: 100%; height: auto; display: block; box-shadow: 0 2px 8px rgba(1,4,75,0.5); background: #FFFFFF; }
+ #loading { color: #FFFFFF; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; position: absolute; width: 100%; }
+ #error { color: #01044B; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; position: absolute; width: 100%; }
  </style>
  </head>
  <body>
@@ -502,12 +502,12 @@ const HospitalReportScreens = () => {
  <Text Bold style={styles.sectionTitle}>Amount Details</Text>
  <View style={styles.detailRow}>
  <Text style={styles.detailLabel}>Advance Requested:</Text>
- <Text Bold style={[styles.detailValue, { color: ThemeColor.Forest }]}>₹{data.HSTR_ADV_REQ_AMT || '0'}</Text>
+ <Text Bold style={[styles.detailValue, { color: '#171C8F' }]}>₹{data.HSTR_ADV_REQ_AMT || '0'}</Text>
  </View>
  {data.HSTR_ADV_APP_AMT && (
  <View style={styles.detailRow}>
  <Text style={styles.detailLabel}>Advance Approved:</Text>
- <Text Bold style={[styles.detailValue, { color: '#4CAF50' }]}>₹{data.HSTR_ADV_APP_AMT}</Text>
+ <Text Bold style={[styles.detailValue, { color: '#171C8F' }]}>₹{data.HSTR_ADV_APP_AMT}</Text>
  </View>
  )}
  {data.HSTR_CMO_APP_HOSP_AMT && (
@@ -531,7 +531,7 @@ const HospitalReportScreens = () => {
  {data.HSTR_TOTAL_AMT && (
  <View style={styles.detailRow}>
  <Text style={styles.detailLabel}>Total Amount:</Text>
- <Text Bold style={[styles.detailValue, { color: '#333' }]}>₹{data.HSTR_TOTAL_AMT}</Text>
+ <Text Bold style={[styles.detailValue, { color: '#01044B' }]}>₹{data.HSTR_TOTAL_AMT}</Text>
  </View>
  )}
  </View>
@@ -548,7 +548,7 @@ const HospitalReportScreens = () => {
  return (
  <View style={styles.attachmentCard}>
  <View style={styles.attachmentHeader}>
- <MaterialIcons name="attach-file" size={24} color={ThemeColor.Forest} />
+ <MaterialIcons name="attach-file" size={24} color={'#171C8F'} />
  <View style={{ flex: 1, marginLeft: 10 }}>
  <Text style={styles.attachmentFileName} Bold>{item.WFAT_FILE_NAME || '-'}</Text>
  <Text style={styles.attachmentFileDesc}>{item.WFAT_FILE_DESC || '-'}</Text>
@@ -571,7 +571,7 @@ const HospitalReportScreens = () => {
  <TouchableOpacity
  style={[styles.viewPdfButton, isImage && styles.viewImageButton]}
  onPress={() => openFileViewer(item.WFAT_ATTACHMENT, item.WFAT_FILE_NAME)}>
- <Ionicons name={isImage ? 'image-outline' : 'eye-outline'} size={18} color="#fff" />
+ <Ionicons name={isImage ? 'image-outline' : 'eye-outline'} size={18} color="#FFFFFF" />
  <Text style={styles.viewPdfButtonText}>{isImage ? 'View Image' : 'View PDF'}</Text>
  </TouchableOpacity>
  </View>
@@ -645,7 +645,7 @@ const HospitalReportScreens = () => {
  <TouchableOpacity
  style={[styles.actionBtn, styles.attachmentButton]}
  onPress={() => { setSelectedRequestId(item.HSTR_REQ_ID); fetchAttachments(item.HSTR_REQ_ID); }}>
- <MaterialIcons name="attach-file" size={18} color="#fff" />
+ <MaterialIcons name="attach-file" size={18} color="#FFFFFF" />
  <Text style={styles.actionButtonText}>Attachments</Text>
  </TouchableOpacity>
  </View>
@@ -655,8 +655,8 @@ const HospitalReportScreens = () => {
  // ─── RENDER ───────────────────────────────────────────────────────────────
 
  return (
- <View style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
- <Spinner visible={loader} textContent={'Loading...'} textStyle={{ color: '#fff' }} />
+ <View style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
+ <Spinner visible={loader} textContent={'Loading...'} textStyle={{ color: '#01044B' }} />
 
  {/* Inner Sub-Tab */}
  <View style={styles.subTabContainer}>
@@ -677,7 +677,7 @@ const HospitalReportScreens = () => {
  {hasData && (
  <View style={styles.filterContainer}>
  <TouchableOpacity style={styles.filterToggleButton} onPress={() => setShowFilters(!showFilters)}>
- <Ionicons name={showFilters ? 'chevron-up' : 'chevron-down'} size={20} color={ThemeColor.Forest} />
+ <Ionicons name={showFilters ? 'chevron-up' : 'chevron-down'} size={20} color={'#171C8F'} />
  <Text Bold style={styles.filterToggleText}>{showFilters ? 'Hide Filters' : 'Show Filters'}</Text>
  </TouchableOpacity>
  {showFilters && (
@@ -699,17 +699,17 @@ const HospitalReportScreens = () => {
  <Text style={styles.dropdownButtonText}>
  {finYearFilter ? finYearOptions.find(o => o.value === finYearFilter)?.label : 'Select Financial Year'}
  </Text>
- <Ionicons name="chevron-down" size={20} color="#666" />
+ <Ionicons name="chevron-down" size={20} color="rgba(1,4,75,0.62)" />
  </TouchableOpacity>
  </View>
  </View>
  <View style={styles.filterButtonContainer}>
  <TouchableOpacity style={[styles.filterButton, styles.searchButton]} onPress={handleSearch}>
- <Ionicons name="search" size={18} color={ThemeColor.OnAmber} />
+ <Ionicons name="search" size={18} color={'#01044B'} />
  <Text Bold style={styles.filterButtonText}>Search</Text>
  </TouchableOpacity>
  <TouchableOpacity style={[styles.filterButton, styles.clearButton]} onPress={handleClearFilters}>
- <Ionicons name="close-circle" size={18} color={ThemeColor.DisabledText} />
+ <Ionicons name="close-circle" size={18} color={'rgba(1,4,75,0.62)'} />
  <Text Bold style={styles.filterButtonText}>Clear</Text>
  </TouchableOpacity>
  </View>
@@ -731,7 +731,7 @@ const HospitalReportScreens = () => {
  refreshing={refresh}
  ListEmptyComponent={
  <View style={styles.emptyContainer}>
- <Ionicons name="document-text-outline" size={60} color="#ccc" />
+ <Ionicons name="document-text-outline" size={60} color="rgba(1,4,75,0.62)" />
  <Text style={styles.emptyText}>
  {activeTab === 0 ? 'No intimation report data' : 'No advance report data'}
  </Text>
@@ -754,7 +754,7 @@ const HospitalReportScreens = () => {
  )}
  </View>
  <TouchableOpacity onPress={() => setIntimationDetailModal(false)}>
- <Ionicons name="close-circle-outline" size={23} color={GlobalColor.Danger} />
+ <Ionicons name="close-circle-outline" size={23} color={'#01044B'} />
  </TouchableOpacity>
  </View>
  <ScrollView showsVerticalScrollIndicator={false}>
@@ -776,7 +776,7 @@ const HospitalReportScreens = () => {
  {/* Read-only notice */}
  <View style={[styles.detailSection, { borderBottomWidth: 0 }]}>
  <View style={styles.readOnlyBadge}>
- <Ionicons name="information-circle-outline" size={16} color={ThemeColor.Teal} />
+ <Ionicons name="information-circle-outline" size={16} color={'#171C8F'} />
  <Text style={styles.readOnlyText}>This is a view-only report</Text>
  </View>
  </View>
@@ -799,7 +799,7 @@ const HospitalReportScreens = () => {
  )}
  </View>
  <TouchableOpacity onPress={() => setAdvanceDetailModal(false)}>
- <Ionicons name="close-circle-outline" size={23} color={GlobalColor.Danger} />
+ <Ionicons name="close-circle-outline" size={23} color={'#01044B'} />
  </TouchableOpacity>
  </View>
  <ScrollView showsVerticalScrollIndicator={false}>
@@ -821,7 +821,7 @@ const HospitalReportScreens = () => {
  {/* Read-only notice */}
  <View style={[styles.detailSection, { borderBottomWidth: 0 }]}>
  <View style={styles.readOnlyBadge}>
- <Ionicons name="information-circle-outline" size={16} color={ThemeColor.Teal} />
+ <Ionicons name="information-circle-outline" size={16} color={'#171C8F'} />
  <Text style={styles.readOnlyText}>This is a view-only report</Text>
  </View>
  </View>
@@ -837,18 +837,18 @@ const HospitalReportScreens = () => {
  <View style={styles.modalHeader}>
  <Text Bold style={styles.modalTitle}>Select Financial Year</Text>
  <TouchableOpacity onPress={() => setShowFinYearModal(false)}>
- <Ionicons name="close-circle-outline" size={23} color={GlobalColor.Danger} />
+ <Ionicons name="close-circle-outline" size={23} color={'#01044B'} />
  </TouchableOpacity>
  </View>
  <ScrollView showsVerticalScrollIndicator={false}>
  <TouchableOpacity style={[styles.dropdownItem, finYearFilter === '' && styles.dropdownItemSelected]} onPress={() => { setFinYearFilter(''); setShowFinYearModal(false); }}>
  <Text style={[styles.dropdownItemText, finYearFilter === '' && styles.dropdownItemTextSelected]}>All</Text>
- {finYearFilter === '' && <Ionicons name="checkmark" size={20} color={ThemeColor.Forest} />}
+ {finYearFilter === '' && <Ionicons name="checkmark" size={20} color={'#171C8F'} />}
  </TouchableOpacity>
  {finYearOptions.map((option) => (
  <TouchableOpacity key={option.value} style={[styles.dropdownItem, finYearFilter === option.value && styles.dropdownItemSelected]} onPress={() => { setFinYearFilter(option.value); setShowFinYearModal(false); }}>
  <Text style={[styles.dropdownItemText, finYearFilter === option.value && styles.dropdownItemTextSelected]}>{option.label}</Text>
- {finYearFilter === option.value && <Ionicons name="checkmark" size={20} color={ThemeColor.Forest} />}
+ {finYearFilter === option.value && <Ionicons name="checkmark" size={20} color={'#171C8F'} />}
  </TouchableOpacity>
  ))}
  </ScrollView>
@@ -865,7 +865,7 @@ const HospitalReportScreens = () => {
  <Text style={styles.modalSubtitle}>Request ID: {selectedRequestId}</Text>
  </View>
  <TouchableOpacity onPress={() => setAttachmentModal(false)} style={styles.closeButton}>
- <Ionicons name="close" size={28} color="#333" />
+ <Ionicons name="close" size={28} color="#01044B" />
  </TouchableOpacity>
  </View>
  <FlatList
@@ -875,7 +875,7 @@ const HospitalReportScreens = () => {
  contentContainerStyle={styles.modalListContainer}
  ListEmptyComponent={
  <View style={styles.emptyContainer}>
- <MaterialIcons name="attach-file" size={60} color="#ccc" />
+ <MaterialIcons name="attach-file" size={60} color="rgba(1,4,75,0.62)" />
  <Text style={styles.emptyText}>No attachments available</Text>
  </View>
  }
@@ -891,7 +891,7 @@ const HospitalReportScreens = () => {
  <Text style={styles.pdfTitle} Bold numberOfLines={1}>{fileViewerFileName}</Text>
  </View>
  <TouchableOpacity onPress={closeFileViewer} style={styles.pdfCloseButton}>
- <Ionicons name="close-circle" size={32} color="#fff" />
+ <Ionicons name="close-circle" size={32} color="#FFFFFF" />
  </TouchableOpacity>
  </View>
  {selectedFileBase64 ? (
@@ -912,7 +912,7 @@ const HospitalReportScreens = () => {
  onError={() => Toast.show('Error loading file', Toast.SHORT)}
  renderLoading={() => (
  <View style={styles.pdfLoadingContainer}>
- <ActivityIndicator size="large" color={ThemeColor.Forest} />
+ <ActivityIndicator size="large" color={'#FFFFFF'} />
  <Text style={styles.pdfLoadingText}>
  {fileViewerType === 'image' ? 'Loading image...' : 'Loading PDF...'}
  </Text>
@@ -921,7 +921,7 @@ const HospitalReportScreens = () => {
  />
  ) : (
  <View style={styles.pdfLoadingContainer}>
- <ActivityIndicator size="large" color={ThemeColor.Forest} />
+ <ActivityIndicator size="large" color={'#FFFFFF'} />
  <Text style={styles.pdfLoadingText}>Preparing file...</Text>
  </View>
  )}
@@ -937,8 +937,8 @@ export default HospitalReportScreens;
 const styles = StyleSheet.create({
  subTabContainer: {
  padding: 15,
- backgroundColor: '#fff',
- shadowColor: '#000',
+ backgroundColor: '#FFFFFF',
+ shadowColor: '#01044B',
  shadowOffset: { width: 0, height: 2 },
  shadowOpacity: 0.1,
  shadowRadius: 4,
@@ -946,102 +946,102 @@ const styles = StyleSheet.create({
  },
  contentContainer: { paddingHorizontal: 10, flex: 1 },
  tabsContainerStyle: { borderRadius: 8, width: '100%' },
- tabStyle: { paddingVertical: 10, borderWidth: 1, borderRadius: 8, borderColor: ThemeColor.Forest },
- tabTextStyle: { fontSize: 13, color: 'grey', fontFamily: 'Roboto-Bold' },
- activeTabStyle: { backgroundColor: ThemeColor.Forest },
- activeTabTextStyle: { color: '#fff' },
+ tabStyle: { paddingVertical: 10, borderWidth: 1, borderRadius: 8, borderColor: '#171C8F' },
+ tabTextStyle: { fontSize: 13, color: 'rgba(1,4,75,0.62)', fontFamily: 'Roboto-Bold' },
+ activeTabStyle: { backgroundColor: '#171C8F' },
+ activeTabTextStyle: { color: '#FFFFFF' },
  filterContainer: {
- backgroundColor: '#fff', marginHorizontal: 10, marginVertical: 8, borderRadius: 8,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
+ backgroundColor: '#FFFFFF', marginHorizontal: 10, marginVertical: 8, borderRadius: 8,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
  },
  filterToggleButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 12, gap: 8 },
- filterToggleText: { fontSize: 14, color: ThemeColor.Forest },
- filterContent: { padding: 15, borderTopWidth: 1, borderTopColor: '#E0E0E0' },
+ filterToggleText: { fontSize: 14, color: '#171C8F' },
+ filterContent: { padding: 15, borderTopWidth: 1, borderTopColor: 'rgba(23,28,143,0.1)' },
  filterRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 10, marginBottom: 15 },
  filterInputContainer: { flex: 1 },
- filterLabel: { fontSize: 13, color: '#333', marginBottom: 8 },
- filterInput: { borderWidth: 1, borderColor: ThemeColor.Forest, borderRadius: 8, padding: 10, fontSize: 13, backgroundColor: '#fff' },
- dropdownButton: { borderWidth: 1, borderColor: ThemeColor.Forest, borderRadius: 8, padding: 12, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
- dropdownButtonText: { fontSize: 13, color: '#333', flex: 1, marginRight: 5 },
+ filterLabel: { fontSize: 13, color: '#01044B', marginBottom: 8 },
+ filterInput: { borderWidth: 1, borderColor: '#171C8F', borderRadius: 8, padding: 10, fontSize: 13, backgroundColor: '#FFFFFF' },
+ dropdownButton: { borderWidth: 1, borderColor: '#171C8F', borderRadius: 8, padding: 12, backgroundColor: '#FFFFFF', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+ dropdownButtonText: { fontSize: 13, color: '#01044B', flex: 1, marginRight: 5 },
  filterButtonContainer: { flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
  filterButton: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 12, borderRadius: 24, gap: 8 },
- searchButton: { backgroundColor: ThemeColor.Amber },
- clearButton: { backgroundColor: ThemeColor.DisabledBg, borderWidth: 1, borderColor: ThemeColor.DisabledBorder },
- filterButtonText: { color: ThemeColor.OnAmber, fontSize: 14 },
+ searchButton: { backgroundColor: '#FCBE62' },
+ clearButton: { backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)' },
+ filterButtonText: { color: '#01044B', fontSize: 14 },
  listContainer: { padding: 10, paddingBottom: 20 },
  reportCard: {
- backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
+ backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
  },
- cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: '#E0E0E0' },
- requestId: { fontSize: 15, color: '#333' },
+ cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)' },
+ requestId: { fontSize: 15, color: '#01044B' },
  statusBadge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 5 },
- statusText: { fontSize: 11, color: '#fff', fontWeight: 'bold' },
- statusClosed: { backgroundColor: '#4CAF50' },
- statusApproved: { backgroundColor: ThemeColor.Teal },
- statusRejected: { backgroundColor: '#F44336' },
- statusSubmitted: { backgroundColor: '#FF9800' },
- statusDefault: { backgroundColor: '#9E9E9E' },
+ statusText: { fontSize: 11, color: '#FFFFFF', fontWeight: 'bold' },
+ statusClosed: { backgroundColor: '#171C8F' },
+ statusApproved: { backgroundColor: '#171C8F' },
+ statusRejected: { backgroundColor: '#171C8F' },
+ statusSubmitted: { backgroundColor: '#171C8F' },
+ statusDefault: { backgroundColor: '#171C8F' },
  cardRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 },
  cardColumn: { flex: 1, marginRight: 10 },
- label: { fontSize: 12, color: '#666', marginBottom: 3 },
- value: { fontSize: 13, color: '#333', fontWeight: '500' },
+ label: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginBottom: 3 },
+ value: { fontSize: 13, color: '#01044B', fontWeight: '500' },
  buttonRow: { marginTop: 10 },
  actionBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 12, borderRadius: 6 },
- attachmentButton: { backgroundColor: '#FF9800' },
- actionButtonText: { color: '#fff', fontSize: 13, fontWeight: 'bold', marginLeft: 6 },
+ attachmentButton: { backgroundColor: '#171C8F' },
+ actionButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: 'bold', marginLeft: 6 },
  emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 100 },
- emptyText: { fontSize: 16, color: '#999', marginTop: 10 },
- centeredView: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' },
- modalViewDetail: { width: '90%', maxHeight: '85%', backgroundColor: GlobalColor.White, padding: 20, borderRadius: 8 },
- modalViewDropdown: { width: '85%', maxHeight: '70%', backgroundColor: GlobalColor.White, padding: 20, borderRadius: 8 },
- modalHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: '#E0E0E0', marginBottom: 15 },
- modalTitle: { fontSize: 16, color: '#333' },
- detailSection: { marginBottom: 20, paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
- sectionTitle: { fontSize: 14, color: ThemeColor.Forest, marginBottom: 12 },
+ emptyText: { fontSize: 16, color: 'rgba(1,4,75,0.62)', marginTop: 10 },
+ centeredView: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(1,4,75,0.5)' },
+ modalViewDetail: { width: '90%', maxHeight: '85%', backgroundColor: '#FFFFFF', padding: 20, borderRadius: 8 },
+ modalViewDropdown: { width: '85%', maxHeight: '70%', backgroundColor: '#FFFFFF', padding: 20, borderRadius: 8 },
+ modalHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)', marginBottom: 15 },
+ modalTitle: { fontSize: 16, color: '#01044B' },
+ detailSection: { marginBottom: 20, paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)' },
+ sectionTitle: { fontSize: 14, color: '#171C8F', marginBottom: 12 },
  detailRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
- detailLabel: { fontSize: 13, color: '#666', flex: 0.45 },
- detailValue: { fontSize: 13, color: '#333', fontWeight: '500', flex: 0.55, textAlign: 'right' },
- commentItem: { backgroundColor: '#F9F9F9', padding: 12, borderRadius: 6, marginBottom: 10, borderLeftWidth: 3, borderLeftColor: ThemeColor.Forest },
+ detailLabel: { fontSize: 13, color: 'rgba(1,4,75,0.62)', flex: 0.45 },
+ detailValue: { fontSize: 13, color: '#01044B', fontWeight: '500', flex: 0.55, textAlign: 'right' },
+ commentItem: { backgroundColor: '#FFFFFF', padding: 12, borderRadius: 6, marginBottom: 10, borderLeftWidth: 3, borderLeftColor: '#171C8F' },
  commentHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
- commentUser: { fontSize: 12, color: '#333' },
- commentDate: { fontSize: 11, color: '#999' },
- commentText: { fontSize: 13, color: '#555' },
- readOnlyBadge: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: ThemeColor.TealLight, padding: 10, borderRadius: 6, gap: 6, marginBottom: 10 },
- readOnlyText: { fontSize: 13, color: ThemeColor.Teal },
- dropdownItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 15, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
- dropdownItemSelected: { backgroundColor: '#FFF5F5' },
- dropdownItemText: { fontSize: 14, color: '#333' },
- dropdownItemTextSelected: { color: ThemeColor.Forest, fontWeight: 'bold' },
- modalContainer: { flex: 1, backgroundColor: GlobalColor.PrimaryLight },
+ commentUser: { fontSize: 12, color: '#01044B' },
+ commentDate: { fontSize: 11, color: 'rgba(1,4,75,0.62)' },
+ commentText: { fontSize: 13, color: 'rgba(1,4,75,0.62)' },
+ readOnlyBadge: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F5F5F5', padding: 10, borderRadius: 6, gap: 6, marginBottom: 10 },
+ readOnlyText: { fontSize: 13, color: '#171C8F' },
+ dropdownItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 15, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)' },
+ dropdownItemSelected: { backgroundColor: '#FFFFFF' },
+ dropdownItemText: { fontSize: 14, color: '#01044B' },
+ dropdownItemTextSelected: { color: '#171C8F', fontWeight: 'bold' },
+ modalContainer: { flex: 1, backgroundColor: '#F5F5F5' },
  modalHeaderFull: {
  flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
- padding: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#E0E0E0',
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
+ padding: 15, backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)',
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
  },
- modalTitleFull: { fontSize: 20, color: ThemeColor.Forest },
- modalSubtitle: { fontSize: 13, color: '#666', marginTop: 2 },
+ modalTitleFull: { fontSize: 20, color: '#171C8F' },
+ modalSubtitle: { fontSize: 13, color: 'rgba(1,4,75,0.62)', marginTop: 2 },
  closeButton: { padding: 5 },
  modalListContainer: { padding: 15, paddingBottom: 30 },
  attachmentCard: {
- backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
+ backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
  },
- attachmentHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: ThemeColor.Forest },
- attachmentFileName: { fontSize: 14, color: '#333' },
- attachmentFileDesc: { fontSize: 12, color: '#666', marginTop: 3 },
+ attachmentHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: '#171C8F' },
+ attachmentFileName: { fontSize: 14, color: '#01044B' },
+ attachmentFileDesc: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 3 },
  attachmentDetails: { marginBottom: 10 },
- tableRow: { flexDirection: 'row', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
- tableLabel: { flex: 0.4, fontSize: 12, color: '#666', fontWeight: '600' },
- tableValue: { flex: 0.6, fontSize: 12, color: '#333' },
- viewPdfButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#4CAF50', paddingVertical: 10, paddingHorizontal: 15, borderRadius: 6, marginTop: 10 },
- viewImageButton: { backgroundColor: ThemeColor.Teal },
- viewPdfButtonText: { color: '#fff', fontSize: 14, fontWeight: 'bold', marginLeft: 8 },
- pdfModalContainer: { flex: 1, backgroundColor: '#525659' },
- pdfHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 15, backgroundColor: ThemeColor.Forest },
- pdfTitle: { fontSize: 16, color: '#fff' },
+ tableRow: { flexDirection: 'row', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)' },
+ tableLabel: { flex: 0.4, fontSize: 12, color: 'rgba(1,4,75,0.62)', fontWeight: '600' },
+ tableValue: { flex: 0.6, fontSize: 12, color: '#01044B' },
+ viewPdfButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#171C8F', paddingVertical: 10, paddingHorizontal: 15, borderRadius: 6, marginTop: 10 },
+ viewImageButton: { backgroundColor: '#171C8F' },
+ viewPdfButtonText: { color: '#FFFFFF', fontSize: 14, fontWeight: 'bold', marginLeft: 8 },
+ pdfModalContainer: { flex: 1, backgroundColor: '#01044B' },
+ pdfHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 15, backgroundColor: '#171C8F' },
+ pdfTitle: { fontSize: 16, color: '#FFFFFF' },
  pdfCloseButton: { padding: 5 },
- webView: { flex: 1, backgroundColor: '#525659' },
- pdfLoadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#525659' },
- pdfLoadingText: { fontSize: 16, color: '#fff', marginTop: 15 },
+ webView: { flex: 1, backgroundColor: '#01044B' },
+ pdfLoadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#01044B' },
+ pdfLoadingText: { fontSize: 16, color: '#FFFFFF', marginTop: 15 },
 });

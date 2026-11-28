@@ -87,7 +87,7 @@ const Nomination = ({ navigation, route }) => {
     }
     
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor:GlobalColor.PrimaryLight }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor:'#F5F5F5' }}>
             <Header title="Nomination" back></Header>
             <View style={ styles.containerBody}>
                 <FlatList
@@ -100,7 +100,7 @@ const Nomination = ({ navigation, route }) => {
                                     handleDropDown(index)
                                 }} style={[styles.tabStyle, { borderBottomLeftRadius: item.isClicked ? 0 : 3, borderBottomRightRadius: item.isClicked ? 0 : 3 }]}>
                                     <Text Bold style={styles.mainTxt}>{Decrypt(item.group)}</Text>
-                                    {item.isClicked == true ? (<Ionicons name={'ios-chevron-up'} size={20} color={ThemeColor.Teal}/>) : (<Ionicons name={'ios-chevron-down'} size={20} color={ThemeColor.Teal}/>)}
+                                    {item.isClicked == true ? (<Ionicons name={'ios-chevron-up'} size={20} color={'#171C8F'}/>) : (<Ionicons name={'ios-chevron-down'} size={20} color={'#171C8F'}/>)}
                                 </TouchableOpacity>
 
                                 {item.isClicked == true ? (
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
         width: '99%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,

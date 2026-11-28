@@ -1158,9 +1158,9 @@ showBanner();
                                             boxType="square"
                                             // hideBox
                                             style={{ height: 20, width: 20, marginRight:5 }}
-                                            tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                                            onCheckColor={GlobalColor.Secondary}
-                                            onTintColor={GlobalColor.Secondary}
+                                            tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                                            onCheckColor={'#171C8F'}
+                                            onTintColor={'#171C8F'}
                                         />  
 
                      </TouchableOpacity>     
@@ -1171,13 +1171,13 @@ showBanner();
           <Ionicons
             name="checkmark-done-sharp"
             size={17}
-            color={GlobalColor.Primary}
+            color={'#01044B'}
           />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.itemButton}
           onPress={() => rejectLeave(item, true)}>
-          <Ionicons name="close-sharp" size={17} color={GlobalColor.Danger} />
+          <Ionicons name="close-sharp" size={17} color={'#01044B'} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -1214,9 +1214,9 @@ showBanner();
           // hideBox
           onChange={() => testshrt(!item.selected, item)}
           style={{ height: 20, width: 20, marginRight:5 }}
-          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-          onCheckColor={GlobalColor.Secondary}
-          onTintColor={GlobalColor.Secondary}
+          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+          onCheckColor={'#171C8F'}
+          onTintColor={'#171C8F'}
         />
 </TouchableOpacity>
         <TouchableOpacity
@@ -1225,13 +1225,13 @@ showBanner();
           <Ionicons
             name="checkmark-done-sharp"
             size={17}
-            color={GlobalColor.Primary}
+            color={'#01044B'}
           />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.itemButton}
           onPress={() => rejectLeaveShrt(item, true)}>
-          <Ionicons name="close-sharp" size={17} color={GlobalColor.Danger} />
+          <Ionicons name="close-sharp" size={17} color={'#01044B'} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -1245,7 +1245,7 @@ showBanner();
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.35}]}>
@@ -1273,7 +1273,7 @@ showBanner();
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.39}]}>
@@ -1303,7 +1303,7 @@ showBanner();
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.3}]}>
@@ -1330,7 +1330,7 @@ showBanner();
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.3}]}>
@@ -1350,7 +1350,7 @@ showBanner();
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       {loader == true ? (
         <Spinner
           visible={loader}
@@ -1468,9 +1468,9 @@ showBanner();
                 boxType="square"
                 // hideBox
                 style={{ height: 20, width: 20, marginRight:5 }}
-                tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                onCheckColor={ThemeColor.Forest}
-                onTintColor={ThemeColor.Forest}
+                tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                onCheckColor={'#171C8F'}
+                onTintColor={'#171C8F'}
               />
               <Text Bold style={styles.checkboxText}>
                 Select All
@@ -1485,7 +1485,7 @@ showBanner();
               style={{marginBottom:"2%"}}
               ListHeaderComponent={FlatList_Header_Leave}
               ListHeaderComponentStyle={{
-                borderBottomColor: ThemeColor.Forest,
+                borderBottomColor: '#171C8F',
                 borderBottomWidth: 1,
               }}
               ListEmptyComponent={
@@ -1511,9 +1511,9 @@ showBanner();
           boxType="square"
           // hideBox
           style={{ height: 20, width: 20, marginRight:5 }}
-          tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-          onCheckColor={ThemeColor.Forest}
-                onTintColor={ThemeColor.Forest}
+          tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+          onCheckColor={'#171C8F'}
+                onTintColor={'#171C8F'}
         />
         <Text Bold style={styles.checkboxText}>
           Select All
@@ -1528,7 +1528,7 @@ showBanner();
         style={{marginBottom:"10%"}}
         ListHeaderComponent={FlatList_Header_LeaveShrt}
         ListHeaderComponentStyle={{
-          borderBottomColor: ThemeColor.Teal,
+          borderBottomColor: '#171C8F',
           borderBottomWidth: 1,
         }}
         ListEmptyComponent={
@@ -1551,7 +1551,7 @@ showBanner();
               onPress={() => {
                // setSublistModalVisible(true);
               }}>
-             {usrAccess == 'Y'?<Text></Text>: <Text style={{color: '#000', fontSize: 13}}>
+             {usrAccess == 'Y'?<Text></Text>: <Text style={{color: '#01044B', fontSize: 13}}>
                 {staffId} {Nem}
               </Text>}
               {/* <Ionicons name="send" size={17} color={ThemeColor.Forest} /> */}
@@ -1562,10 +1562,10 @@ showBanner();
               onPress={() => {
                 setSublistModalVisibleType(true);
               }}>
-             {usrAccess == 'Y'?<Text></Text>: <Text style={{color: '#000', fontSize: 13}}>
+             {usrAccess == 'Y'?<Text></Text>: <Text style={{color: '#01044B', fontSize: 13}}>
                 {DefaultSubLeave}
               </Text>}
-              <Ionicons name="send" size={17} color={ThemeColor.Teal} />
+              <Ionicons name="send" size={17} color={'#171C8F'} />
             </TouchableOpacity>
             :null
             }
@@ -1579,7 +1579,7 @@ showBanner();
               keyExtractor={item => item.id}
               ListHeaderComponent={FlatList_Header}
               ListHeaderComponentStyle={{
-                borderBottomColor: ThemeColor.Forest,
+                borderBottomColor: '#171C8F',
                 borderBottomWidth: 1,
               }}
               ListEmptyComponent={
@@ -1601,7 +1601,7 @@ showBanner();
               keyExtractor={item => item.id}
               ListHeaderComponent={FlatList_HeaderShortfall}
               ListHeaderComponentStyle={{
-                borderBottomColor: ThemeColor.Teal,
+                borderBottomColor: '#171C8F',
                 borderBottomWidth: 1,
               }}
               ListEmptyComponent={
@@ -1624,11 +1624,11 @@ showBanner();
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -1645,7 +1645,7 @@ showBanner();
                   Bold
                   style={{
                     fontSize: 15,
-                    color: GlobalColor.Primary,
+                    color: '#01044B',
                   }}>
                   Leave Details
                 </Text>
@@ -1655,7 +1655,7 @@ showBanner();
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -1755,7 +1755,7 @@ showBanner();
                                   setLeaveDetailModal(!LeaveDetailModal);
                                   DeleteLeavePending(modalData);
                                 }}>
-                                <Text style={{color:'#fff', alignSelf:'center'}} Bold>Delete</Text>
+                                <Text style={{color:'#F5F5F5', alignSelf:'center'}} Bold>Delete</Text>
                               </TouchableOpacity>
                               ) : null
                             } */}
@@ -1763,7 +1763,7 @@ showBanner();
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Forest,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                       }}
                       onPress={() => {
@@ -1771,7 +1771,7 @@ showBanner();
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -1796,11 +1796,11 @@ showBanner();
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -1817,7 +1817,7 @@ showBanner();
                   Bold
                   style={{
                     fontSize: 15,
-                    color: GlobalColor.Primary,
+                    color: '#01044B',
                   }}>
                   Leave Details
                 </Text>
@@ -1827,7 +1827,7 @@ showBanner();
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -1910,7 +1910,7 @@ showBanner();
                                   setLeaveDetailModal(!LeaveDetailModal);
                                   DeleteLeavePending(modalData);
                                 }}>
-                                <Text style={{color:'#fff', alignSelf:'center'}} Bold>Delete</Text>
+                                <Text style={{color:'#F5F5F5', alignSelf:'center'}} Bold>Delete</Text>
                               </TouchableOpacity>
                               ) : null
                             } */}
@@ -1918,7 +1918,7 @@ showBanner();
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Forest,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                       }}
                       onPress={() => {
@@ -1926,7 +1926,7 @@ showBanner();
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -1954,11 +1954,11 @@ showBanner();
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -1975,7 +1975,7 @@ showBanner();
                   Bold
                   style={{
                     fontSize: 15,
-                    color: GlobalColor.Primary,
+                    color: '#01044B',
                   }}>
                  Flexi Time Adj. Details
                 </Text>
@@ -1985,7 +1985,7 @@ showBanner();
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -2068,7 +2068,7 @@ showBanner();
                                   setLeaveDetailModal(!LeaveDetailModal);
                                   DeleteLeavePending(modalData);
                                 }}>
-                                <Text style={{color:'#fff', alignSelf:'center'}} Bold>Delete</Text>
+                                <Text style={{color:'#F5F5F5', alignSelf:'center'}} Bold>Delete</Text>
                               </TouchableOpacity>
                               ) : null
                             } */}
@@ -2076,7 +2076,7 @@ showBanner();
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Forest,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                       }}
                       onPress={() => {
@@ -2084,7 +2084,7 @@ showBanner();
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -2111,7 +2111,7 @@ showBanner();
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -2127,8 +2127,8 @@ showBanner();
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalText(text)}
                 />
@@ -2167,7 +2167,7 @@ showBanner();
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -2183,8 +2183,8 @@ showBanner();
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalTextShrt(text)}
                 />
@@ -2230,7 +2230,7 @@ showBanner();
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -2246,8 +2246,8 @@ showBanner();
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalTextBulk(text)}
                 />
@@ -2291,7 +2291,7 @@ showBanner();
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -2307,8 +2307,8 @@ showBanner();
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalTextBulkShrt(text)}
                 />
@@ -2349,7 +2349,7 @@ showBanner();
               style={{position: 'absolute', top: 15, right: 5, zIndex: 55555}}>
               <Feather
                 name="x-circle"
-                color={GlobalColor.Danger}
+                color={'#01044B'}
                 size={23}
                 onPress={() => {
                   setSublistModalVisible(false);
@@ -2385,7 +2385,7 @@ showBanner();
                     style={{
                       paddingVertical: 5,
                       paddingHorizontal: 8,
-                      color: '#000',
+                      color: '#01044B',
                       fontSize: 13,
                       
                     }}>
@@ -2408,7 +2408,7 @@ showBanner();
               style={{position: 'absolute', top: 15, right: 5, zIndex: 55555}}>
               <Feather
                 name="x-circle"
-                color={GlobalColor.Danger}
+                color={'#01044B'}
                 size={23}
                 onPress={() => {
                   setSublistModalVisibleType(false);
@@ -2448,7 +2448,7 @@ showBanner();
                     style={{
                       paddingVertical: 5,
                       paddingHorizontal: 8,
-                      color: '#000',
+                      color: '#01044B',
                       fontSize: 13,
                       
                     }}>
@@ -2553,13 +2553,13 @@ export default ManagerLeave;
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 10,
     marginTop: 5,
     justifyContent: 'space-between',
     paddingVertical: 5,
     borderBottomWidth: 0.5,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   HeaderColumn: {
     flex: 0.25,
@@ -2573,7 +2573,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -2589,7 +2589,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   tabsContainerStyle: {
     marginTop: 10,
@@ -2605,35 +2605,35 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.Forest,
+    borderColor: '#171C8F',
   },
   tabStyle1: {
     paddingVertical: 12,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.TealDark,
+    borderColor: '#171C8F',
     width:150
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Forest,
+    borderBottomColor: '#171C8F',
   },
   activeTabStyle1: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.TealDark,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Forest,
+    color: '#171C8F',
   },
   activeTabTextStyle1: {
-    color: ThemeColor.TealDark,
+    color: '#171C8F',
   },
   checkboxContainer: {
     // width: '100%',
@@ -2650,8 +2650,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -2671,7 +2671,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15,
     backgroundColor: 'lightgrey',
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -2687,12 +2687,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   modalView: {
     position: 'relative',
     width: '90%',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     padding: 20,
     // minHeight:200
   },
@@ -2713,7 +2713,7 @@ const styles = StyleSheet.create({
   textContainer: {
     width: '100%',
     padding: 5,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     // marginVertical: 8.5,
     // shadowColor: GlobalColor.Black,
@@ -2731,7 +2731,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 5,
     borderBottomWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   itemText: {
     fontSize: 13,

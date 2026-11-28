@@ -567,7 +567,7 @@ const DiwaliGift = ({navigation}) => {
   // }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       <Spinner
         visible={loader}
         textContent={'Loading...'}
@@ -875,7 +875,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Mobile {<Text style  ={{color :'red'}}>*</Text>}
+                  Mobile {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   value={ContactNum}
@@ -889,8 +889,8 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -906,7 +906,7 @@ const DiwaliGift = ({navigation}) => {
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}>
-                Choose Gift Type  {<Text style  ={{color :'red'}}>*</Text>}
+                Choose Gift Type  {<Text style  ={{color :'#01044B'}}>*</Text>}
               </Text>
              
             
@@ -927,7 +927,7 @@ const DiwaliGift = ({navigation}) => {
                  
                   defaultButtonText={GiftType}
                   
-                  dropdownBackgroundColor={'transparent'}
+                  dropdownBackgroundColor={'rgba(255,255,255,0)'}
                   
                   data={GFT_OPTION}
                   onSelect={(selectedItem, index) => {
@@ -966,7 +966,7 @@ const DiwaliGift = ({navigation}) => {
                     return (
                       <FontAwesome
                         name={isOpened ? 'chevron-up' : 'chevron-down'}
-                        color={ThemeColor.Teal}
+                        color={'#171C8F'}
                         size={14}
                       />
                     );
@@ -984,7 +984,7 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                    style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.reason}
                   </Text>
                 </View>
@@ -1002,7 +1002,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  {updateData == true?'Update':'Choose'} Your  Gift Option  {<Text style  ={{color :'red'}}>*</Text>}
+                  {updateData == true?'Update':'Choose'} Your  Gift Option  {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                
               
@@ -1023,7 +1023,7 @@ const DiwaliGift = ({navigation}) => {
                    
                     defaultButtonText={DiwaliData}
                     
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     
                     data={DiwaliGFT == ''?DummyDataGIFT:DiwaliGFT}
                     onSelect={(selectedItem, index) => {
@@ -1075,7 +1075,7 @@ const DiwaliGift = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1093,7 +1093,7 @@ const DiwaliGift = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -1110,7 +1110,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Address Line 1 {<Text style  ={{color :'red'}}>*</Text>}
+                  Address Line 1 {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   value={EMP_ADDR1}
@@ -1124,8 +1124,8 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1138,7 +1138,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Address Line 2 {<Text style  ={{color :'red'}}>*</Text>}
+                  Address Line 2 {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   value={EMP_ADDR2}
@@ -1152,8 +1152,8 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1166,7 +1166,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  State {<Text style  ={{color :'red'}}>*</Text>}
+                  State {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   value={EMP_STTE}
@@ -1180,8 +1180,8 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1193,7 +1193,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  City {<Text style  ={{color :'red'}}>*</Text>}
+                  City {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   value={EMP_CTY}
@@ -1207,8 +1207,8 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1220,7 +1220,7 @@ const DiwaliGift = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Pin Code {<Text style  ={{color :'red'}}>*</Text>}
+                  Pin Code {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   value={EMP_PINCDE}
@@ -1234,8 +1234,8 @@ const DiwaliGift = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1253,7 +1253,7 @@ const DiwaliGift = ({navigation}) => {
                 <Text
                   style={{
                     paddingHorizontal: 0,
-                    color: ThemeColor.Teal,
+                    color: '#171C8F',
                     fontSize: 13,
                     fontWeight: 'bold',
                     marginLeft: 45,
@@ -1328,7 +1328,7 @@ const DiwaliGift = ({navigation}) => {
             style={{
               minHeight: 230,
               borderRadius: 15,
-              backgroundColor: GlobalColor.White,
+              backgroundColor: '#FFFFFF',
             }}>
             {/* {
             modalLoader ? (
@@ -1390,7 +1390,7 @@ const DiwaliGift = ({navigation}) => {
                   style={{
                     // height: '23%',
                     marginTop: 5,
-                    // backgroundColor:'yellow',
+                    // backgroundColor:'#FCBE62',
                     flexDirection: 'row',
                     alignSelf: 'center',
                     justifyContent: 'space-around',
@@ -1431,12 +1431,12 @@ const DiwaliGift = ({navigation}) => {
                   // minHeight: 230,
                   height: Dimensions.get('window').height / 1.4,
                   borderRadius: 15,
-                  backgroundColor: GlobalColor.White,
+                  backgroundColor: '#FFFFFF',
                 }}>
                 <TouchableOpacity style={styles.ModalCloseIcon}>
                   <Feather
                     name="x-circle"
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                     size={25}
                     onPress={toggleModal1}
                   />
@@ -1475,7 +1475,7 @@ const styles = StyleSheet.create({
     flex:1,
     alignContent:'center', 
     width:'100%',
-    borderColor:ThemeColor.Teal,
+    borderColor:'#171C8F',
     borderWidth:1
 } ,
 ModalCloseIcon: {
@@ -1502,7 +1502,7 @@ modal: {
   height: Dimensions.get('window').height/7.1,
   width: '100%',
   alignSelf: 'center',
-  backgroundColor: GlobalColor.PrimaryLight,
+  backgroundColor: '#F5F5F5',
   borderTopLeftRadius: 15,
   borderTopRightRadius: 15,
   borderBottomLeftRadius: 50,
@@ -1520,12 +1520,12 @@ modal: {
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
   rowContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: '#fff',
+    borderBottomColor: 'rgba(255,255,255,0.22)',
     flexDirection: 'row',
     marginLeft:10,
     flexWrap: 'wrap',
@@ -1536,7 +1536,7 @@ modal: {
   },
   rowContainerType: {
     borderBottomWidth: 1,
-    borderBottomColor: '#fff',
+    borderBottomColor: 'rgba(255,255,255,0.22)',
     flexDirection: 'row',
     marginLeft:10,
     flexWrap: 'wrap',
@@ -1551,8 +1551,8 @@ modal: {
     height: "auto",
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
     flexWrap:'wrap',
     overflow:'scroll',
     
@@ -1578,8 +1578,8 @@ modal: {
     height: "auto",
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
     flexWrap:'wrap',
     overflow:'scroll',
     
@@ -1587,16 +1587,16 @@ modal: {
 
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 12},
   dropdown2BtnTxtStyleType: {textAlign: 'left', fontSize: 12,height:30,paddingVertical:5},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White,height:'25%'},
-  dropdown2DropdownStyle1: {backgroundColor: GlobalColor.White,height:'auto'},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF',height:'25%'},
+  dropdown2DropdownStyle1: {backgroundColor: '#FFFFFF',height:'auto'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
     width:'100%',
     height:'100%',
     paddingVertical:10,
     flex:1,
-    borderColor:ThemeColor.Teal,
+    borderColor:'#171C8F',
     borderWidth:1,
    
     
@@ -1605,12 +1605,12 @@ modal: {
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -1620,7 +1620,7 @@ modal: {
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize:13,
   },
   checkboxLabel: {

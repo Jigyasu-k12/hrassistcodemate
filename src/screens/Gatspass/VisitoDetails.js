@@ -406,7 +406,7 @@ const VisitorDetails = ({navigation,route}) => {
 
   return (
 
-    <SafeAreaView style={{flex: 1, backgroundColor:GlobalColor.PrimaryLight}}>           
+    <SafeAreaView style={{flex: 1, backgroundColor:'#F5F5F5'}}>           
 
         <Header title='Visitor Details'/>
 
@@ -768,7 +768,7 @@ const VisitorDetails = ({navigation,route}) => {
 
                                           defaultButtonText={values.actionPlans[index].title}
 
-                                          dropdownBackgroundColor={'transparent'}
+                                          dropdownBackgroundColor={'rgba(255,255,255,0)'}
 
                                           data={[
 
@@ -810,7 +810,7 @@ const VisitorDetails = ({navigation,route}) => {
 
                                           renderDropdownIcon={isOpened => {
 
-                                            return <Icon name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />;
+                                            return <Icon name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />;
 
                                           }}
 
@@ -1232,7 +1232,7 @@ const VisitorDetails = ({navigation,route}) => {
 
                             style={{
 
-                              backgroundColor: '#fff',
+                              backgroundColor: '#FFFFFF',
 
                               marginTop: 20,
 
@@ -1316,7 +1316,7 @@ const VisitorDetails = ({navigation,route}) => {
 
     spinnerTextStyle:{
 
-      color:'#fff'
+      color:'#FFFFFF'
 
     },
 
@@ -1334,7 +1334,7 @@ const VisitorDetails = ({navigation,route}) => {
 
     card:{
 
-      backgroundColor:'#fff',
+      backgroundColor:'#FFFFFF',
 
       marginTop:10,
 
@@ -1342,7 +1342,7 @@ const VisitorDetails = ({navigation,route}) => {
 
       padding:10,
 
-      shadowColor: "#000",
+      shadowColor: "#01044B",
 
       shadowOffset: {
 
@@ -1362,7 +1362,7 @@ const VisitorDetails = ({navigation,route}) => {
 
     iconTrash: {
 
-      color: '#f00',
+      color: '#01044B',
 
     },
 
@@ -1384,7 +1384,7 @@ const VisitorDetails = ({navigation,route}) => {
 
     errorLabel: {
 
-      color: '#f00',
+      color: '#01044B',
 
     },
 
@@ -1394,7 +1394,7 @@ const VisitorDetails = ({navigation,route}) => {
 
       borderWidth: 1,
 
-      borderColor:ThemeColor.Teal,
+      borderColor:'#171C8F',
 
       padding: 5,
 
@@ -1436,7 +1436,7 @@ const VisitorDetails = ({navigation,route}) => {
 
       borderWidth: 1,
 
-      borderColor:ThemeColor.Teal,
+      borderColor:'#171C8F',
 
       paddingLeft: 5,
 
@@ -1480,7 +1480,7 @@ const VisitorDetails = ({navigation,route}) => {
 
       marginBottom:10,
 
-      color:GlobalColor.Primary
+      color:'#01044B'
 
     },
 
@@ -1496,21 +1496,21 @@ const VisitorDetails = ({navigation,route}) => {
 
       borderRadius: 0,
 
-      backgroundColor: '#FFF',
+      backgroundColor: '#FFFFFF',
 
-      borderColor:ThemeColor.Teal,
+      borderColor:'#171C8F',
 
       fontSize:13
 
     },
 
-    dropdown2BtnTxtStyle: {color: '#444', textAlign: 'left', fontSize:13},
+    dropdown2BtnTxtStyle: {color: 'rgba(1,4,75,0.62)', textAlign: 'left', fontSize:13},
 
-    dropdown2DropdownStyle: {backgroundColor: '#EFEFEF'},
+    dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
 
-    dropdown2RowStyle: {backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5'},
+    dropdown2RowStyle: {backgroundColor: '#FFFFFF', borderBottomColor: 'rgba(23,28,143,0.1)'},
 
-    dropdown2RowTxtStyle: {color: '#444', textAlign: 'left', fontSize:13},
+    dropdown2RowTxtStyle: {color: 'rgba(1,4,75,0.62)', textAlign: 'left', fontSize:13},
 
  
 

@@ -115,19 +115,19 @@ const LeaveBalance = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight
-    // backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5'
+    // backgroundColor: '#F5F5F5',
   },
   canteen: {
     marginTop: 10,
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     padding: 10,
     paddingVertical:15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 0,
     borderLeftWidth: 5,
-    borderLeftColor: ThemeColor.Teal,
+    borderLeftColor: '#171C8F',
     flexDirection: 'row',
   },
 });

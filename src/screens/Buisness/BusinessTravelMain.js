@@ -48,7 +48,7 @@ const BusinessTravelMain = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, width: '100%', position: 'relative'}}>
       <LinearGradient
-       colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]}
+       colors={['#171C8F', '#171C8F', '#171C8F']}
        start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
         style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -69,13 +69,13 @@ const BusinessTravelMain = ({navigation}) => {
               <Ionicons
                 name="chevron-back-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.goBack()}
               />
               <Ionicons
                 name="menu-outline"
                 size={20}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.openDrawer()}
               />
             </View>
@@ -84,7 +84,7 @@ const BusinessTravelMain = ({navigation}) => {
           <Text
             Bold
             style={{
-              color: '#fff',
+              color: '#FFFFFF',
               fontSize: GlobalFontSize.H4,
               marginLeft: 15,
             }}>
@@ -97,7 +97,7 @@ const BusinessTravelMain = ({navigation}) => {
 
       
 
-      <LinearGradient  colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}   > 
+      <LinearGradient  colors={['#171C8F', '#171C8F', '#171C8F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}   > 
       <View style={{flex: 1, flexDirection: 'row'}}>
         <Tab.Navigator
           swipeEnabled={false}
@@ -111,8 +111,8 @@ const BusinessTravelMain = ({navigation}) => {
           tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
             tabBarItemStyle: {paddingHorizontal: 15, width: 'auto'},
 
-             tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
-            tabBarStyle: {backgroundColor: 'transparent', elevation: 0},
+             tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+            tabBarStyle: {backgroundColor: 'rgba(255,255,255,0)', elevation: 0},
           }}>
           <Tab.Screen
             name="Initiate Request"
@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
   },
 
   fullWidthButton: {
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
   fullWidthButtonText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     marginLeft: 8,
     fontSize:13
   },
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     zIndex: 55555555,
   },
   mystyl: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0)',
     height:'83%',
     flexDirection: 'row',
   },

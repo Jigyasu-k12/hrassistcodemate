@@ -51,14 +51,14 @@ const AttendanceAdmin = ({navigation}) => {
   return (
     <View style={{flex: 1, width: '100%', height: '100%'}}>
       <LinearGradient
-     colors={[ThemeColor.Teal,ThemeColor.TealSoft]}
+     colors={['#171C8F','rgba(23,28,143,0.1)']}
         style={styles.gradient}>
         <View style={styles.container}>
         {horizental == true ? (
             <View
               style={{
                 padding: 5,
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 position: 'absolute',
                 top: 30,
                 right: 50,
@@ -78,19 +78,19 @@ const AttendanceAdmin = ({navigation}) => {
             <Ionicons
               name="chevron-back-outline"
               size={25}
-              color={'white'}
+              color={'#FFFFFF'}
               onPress={() => navigation.goBack()}
             />
             <Ionicons
               name="menu-outline"
               size={25}
-              color={'white'}
+              color={'#FFFFFF'}
               onPress={() => navigation.openDrawer()}
             />
           </View>
           <Text
             style={{
-              color: '#fff',
+              color: '#FFFFFF',
               fontSize: 18,
               letterSpacing: 1,
               marginLeft: 30,
@@ -107,7 +107,7 @@ const AttendanceAdmin = ({navigation}) => {
             <Ionicons
               name="ellipsis-vertical-circle"
               size={25}
-              color={'white'}
+              color={'#FFFFFF'}
             />
           </TouchableOpacity>
 
@@ -119,7 +119,7 @@ const AttendanceAdmin = ({navigation}) => {
               bottom: -5,
               right: -20,
               alignItems: 'center',
-              backgroundColor: ThemeColor.Teal,
+              backgroundColor: '#171C8F',
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
               paddingVertical: 5,
@@ -129,7 +129,7 @@ const AttendanceAdmin = ({navigation}) => {
                 style={{marginLeft: '5%'}}
                 name="ios-person-circle-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => {
                   manager == true ? setManager(false) : setManager(true);
                 }}
@@ -141,7 +141,7 @@ const AttendanceAdmin = ({navigation}) => {
                 navigation.navigate('ManagerMode');
               }}>
               {manager == true ? (
-                <Text style={{color: '#fff', marginLeft: 0}}>
+                <Text style={{color: '#FFFFFF', marginLeft: 0}}>
                   Go-To Manager-Mode
                 </Text>
               ) : null}
@@ -155,16 +155,16 @@ const AttendanceAdmin = ({navigation}) => {
         renderTabBar={props => {
           return (
             <LinearGradient
-              colors={[ThemeColor.Teal,ThemeColor.TealSoft]}
+              colors={['#171C8F','rgba(23,28,143,0.1)']}
               style={{marginTop: -1, zIndex: -1}}>
               <TabBar
                 renderLabel={({route, focused, color}) => (
-                  <Text style={{fontSize: 13, color: '#fff'}}>
+                  <Text style={{fontSize: 13, color: '#FFFFFF'}}>
                     {route.title}
                   </Text>
                 )}
                 {...props}
-                style={{backgroundColor: 'transparent', elevation: 0}}
+                style={{backgroundColor: 'rgba(255,255,255,0)', elevation: 0}}
               />
             </LinearGradient>
           );
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#d9d9d9',
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 7,
   },
   searchIcon: {
@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
-    backgroundColor: '#fff',
-    color: '#424242',
+    backgroundColor: '#FFFFFF',
+    color: 'rgba(1,4,75,0.62)',
   },
 });
 

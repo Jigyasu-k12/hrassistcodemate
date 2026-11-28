@@ -163,7 +163,7 @@ const SeatBook = ({ navigation, route }) => {
 
             {isSelected == 0 ? (
                 <View style={{  }}>
-                    <Text Bold style={{ color: GlobalColor.Text, fontSize: 13, marginVertical: 7 }}>Name</Text>
+                    <Text Bold style={{ color: 'rgba(1,4,75,0.62)', fontSize: 13, marginVertical: 7 }}>Name</Text>
 
 
                     {/* <TextInput
@@ -178,10 +178,10 @@ const SeatBook = ({ navigation, route }) => {
                             paddingVertical:10,
                             alignItems: 'center',
                             borderWidth: 0,
-                            borderColor: ThemeColor.Teal,
+                            borderColor: '#171C8F',
                             flexDirection: 'row',
                             justifyContent: 'space-between',
-                            backgroundColor: GlobalColor.White,
+                            backgroundColor: '#FFFFFF',
                             shadowOffset: {
                                 width: 0,
                                 height: 2,
@@ -206,7 +206,7 @@ const SeatBook = ({ navigation, route }) => {
                     </TouchableOpacity>
 
 
-                    <Text Bold style={{ color: GlobalColor.Text, fontSize: 13, marginVertical: 7 }} >Designation</Text>
+                    <Text Bold style={{ color: 'rgba(1,4,75,0.62)', fontSize: 13, marginVertical: 7 }} >Designation</Text>
 
 
                     <TouchableOpacity
@@ -216,10 +216,10 @@ const SeatBook = ({ navigation, route }) => {
                             paddingVertical:10,
                             alignItems: 'center',
                             borderWidth: 0,
-                            borderColor: ThemeColor.Teal,
+                            borderColor: '#171C8F',
                             flexDirection: 'row',
                             justifyContent: 'space-between',
-                            backgroundColor: GlobalColor.White,
+                            backgroundColor: '#FFFFFF',
                             shadowOffset: {
                                 width: 0,
                                 height: 2,
@@ -254,13 +254,13 @@ const SeatBook = ({ navigation, route }) => {
                                 <Spinner
                                     visible={Loader}
                                     textContent={'Loading...'}
-                                    textStyle={{ color: '#fff' }}
+                                    textStyle={{ color: '#01044B' }}
                                 />
                             ) : null}
                             {/* <LinearGradient
                                 style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
                                 colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
-                                <Text style={{ color: '#fff', fontSize: 16 }}>BOOK</Text>
+                                <Text style={{ color: '#F5F5F5', fontSize: 16 }}>BOOK</Text>
                             </LinearGradient> */}
 
                             <Button title="BOOK" style={{fontSize:13}} onPress={() => {
@@ -277,7 +277,7 @@ const SeatBook = ({ navigation, route }) => {
                             {/* <LinearGradient
                                 style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
                                 colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
-                                <Text style={{ color: '#fff', fontSize: 16 }}>CANCEL</Text>
+                                <Text style={{ color: '#F5F5F5', fontSize: 16 }}>CANCEL</Text>
                             </LinearGradient> */}
 
                             <Button title="CANCEL" style={{fontSize:13}} onPress={() => {
@@ -292,16 +292,16 @@ const SeatBook = ({ navigation, route }) => {
                     <View style={{ width: '100%' }}>
                         <View
                             style={{  
-                            backgroundColor: '#fff',
+                            backgroundColor: '#FFFFFF',
                             width: '100%',
                             flexDirection: 'row',
                             alignItems: 'center',
                             alignSelf: 'center',
                             margin:10,
                             borderWidth: 1,
-                            borderColor:'#cacaca',
-                            backgroundColor:'#fff',
-                            shadowColor: "#444",
+                            borderColor:'rgba(23,28,143,0.1)',
+                            backgroundColor:'#FFFFFF',
+                            shadowColor: "#01044B",
                             shadowOffset: {
                               width: 0,
                               height: 2,
@@ -353,7 +353,7 @@ const SeatBook = ({ navigation, route }) => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                 }}>
-                                <Ionicons name="send" size={18} color={ThemeColor.Teal} />
+                                <Ionicons name="send" size={18} color={'#171C8F'} />
                             </TouchableOpacity>
                         </View>
 
@@ -367,11 +367,11 @@ const SeatBook = ({ navigation, route }) => {
                         <Spinner
                             visible={Loader}
                             textContent={'Loading...'}
-                            textStyle={{ color: '#fff' }}
+                            textStyle={{ color: '#01044B' }}
                         />
                     ) : null}
                     <View style={{ width: '100%', alignSelf: 'center', marginVertical: 10 }}>
-                        <Text style={{ color: GlobalColor.Text, fontSize: GlobalFontSize.P, marginVertical: 7 }}>Name</Text>
+                        <Text style={{ color: 'rgba(1,4,75,0.62)', fontSize: GlobalFontSize.P, marginVertical: 7 }}>Name</Text>
                         {/* <TextInput
                             value={searchedNameData.Name}
                             editable={false}
@@ -384,10 +384,10 @@ const SeatBook = ({ navigation, route }) => {
                                 paddingVertical:10,
                                 alignItems: 'center',
                                 borderWidth: 0,
-                                borderColor: ThemeColor.Teal,
+                                borderColor: '#171C8F',
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
-                                backgroundColor: GlobalColor.White,
+                                backgroundColor: '#FFFFFF',
                                 shadowOffset: {
                                     width: 0,
                                     height: 2,
@@ -407,7 +407,7 @@ const SeatBook = ({ navigation, route }) => {
 
                         </TouchableOpacity>
 
-                        <Text style={{ color: GlobalColor.Text, fontSize: GlobalFontSize.P, marginVertical: 7 }}>Designation</Text>
+                        <Text style={{ color: 'rgba(1,4,75,0.62)', fontSize: GlobalFontSize.P, marginVertical: 7 }}>Designation</Text>
                         {/* <TextInput
                             value={searchedNameData.Desg}
                             editable={false}
@@ -420,10 +420,10 @@ const SeatBook = ({ navigation, route }) => {
                                 paddingVertical:10,
                                 alignItems: 'center',
                                 borderWidth: 0,
-                                borderColor: ThemeColor.Teal,
+                                borderColor: '#171C8F',
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
-                                backgroundColor: GlobalColor.White,
+                                backgroundColor: '#FFFFFF',
                                 shadowOffset: {
                                     width: 0,
                                     height: 2,
@@ -451,13 +451,13 @@ const SeatBook = ({ navigation, route }) => {
                                     <Spinner
                                         visible={Loader}
                                         textContent={'Loading...'}
-                                        textStyle={{ color: '#fff' }}
+                                        textStyle={{ color: '#01044B' }}
                                     />
                                 ) : null}
                                 {/* <LinearGradient
                                     style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
                                     colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
-                                    <Text style={{ color: '#fff', fontSize: 16 }}>BOOK</Text>
+                                    <Text style={{ color: '#F5F5F5', fontSize: 16 }}>BOOK</Text>
                                 </LinearGradient> */}
 
                                 <Button title="BOOK" onPress={() => {
@@ -471,7 +471,7 @@ const SeatBook = ({ navigation, route }) => {
                                 {/* <LinearGradient
                                     style={{ padding: 20, margin: 5, borderRadius: 8, alignItems: 'center' }}
                                     colors={[ThemeColor.Teal, ThemeColor.TealSoft]}>
-                                    <Text style={{ color: '#fff', fontSize: 16 }}>CANCEL</Text>
+                                    <Text style={{ color: '#F5F5F5', fontSize: 16 }}>CANCEL</Text>
                                 </LinearGradient> */}
 
                                 <Button title="CANCEL" onPress={() => {
@@ -489,7 +489,7 @@ const SeatBook = ({ navigation, route }) => {
                                 setModalVisible(false)
                             }}
                             style={{
-                                backgroundColor: '#000000aa',
+                                backgroundColor: 'rgba(1,4,75,0.55)',
                                 flex: 1,
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -499,7 +499,7 @@ const SeatBook = ({ navigation, route }) => {
 
                             <View
                                 style={{
-                                    backgroundColor: '#fff',
+                                    backgroundColor: '#FFFFFF',
                                     padding: 10,
                                     width: '100%',
                                     justifyContent: 'center',
@@ -523,7 +523,7 @@ const SeatBook = ({ navigation, route }) => {
                                                     style={styles.searchIcon}
                                                     name="person-circle-outline"
                                                     size={22}
-                                                    color={GlobalColor.Secondary}
+                                                    color={'#171C8F'}
                                                 />
                                                 <View style={{ flexDirection: 'column', width: '90%' }}>
                                                     <Text style={{ fontSize: 16 }}>
@@ -538,7 +538,7 @@ const SeatBook = ({ navigation, route }) => {
                                                         style={styles.searchIcon}
                                                         name="chevron-forward-circle-outline"
                                                         size={22}
-                                                        color={ThemeColor.Teal} />
+                                                        color={'#171C8F'} />
                                                 </TouchableOpacity>
                                             </TouchableOpacity>
                                         )}
@@ -559,8 +559,8 @@ const SeatBook = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        backgroundColor:GlobalColor.PrimaryLight,
+        backgroundColor: '#FFFFFF',
+        backgroundColor:'#F5F5F5',
     },
     box: {
         flexDirection: 'row',
@@ -570,8 +570,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
         paddingHorizontal: 10,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -596,12 +596,12 @@ const styles = StyleSheet.create({
     },
     searchIcon: {
         padding: 10,
-        color:ThemeColor.Teal,
+        color:'#171C8F',
     },
     FlatListData: {
         width: "100%",
         borderWidth: 1,
-        borderColor:ThemeColor.Teal,
+        borderColor:'#171C8F',
         borderRadius: 3,
         flexDirection: 'row',
         alignSelf: 'center',
@@ -609,7 +609,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 5,
         marginBottom: 10,
-        backgroundColor: '#fff'
+        backgroundColor: '#FFFFFF'
     }
 });
 

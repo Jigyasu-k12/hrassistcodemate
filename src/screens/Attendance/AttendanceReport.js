@@ -243,10 +243,10 @@ useFocusEffect(
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     borderBottomWidth: 1,
-                    borderBottomColor: 'gray',
+                    borderBottomColor: 'rgba(23,28,143,0.1)',
                     padding: 3,
                   }}>
-                  <Text style={{ color: 'gray' ,fontSize:13}}>
+                  <Text style={{ color: 'rgba(1,4,75,0.62)' ,fontSize:13}}>
                     {moment(fromDate).format('MMM Do YYYY')}
                   </Text>
                   <View>
@@ -255,7 +255,7 @@ useFocusEffect(
                         <Ionicons
                           name="calendar-outline"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       </TouchableOpacity>
                     </View>
@@ -274,10 +274,10 @@ useFocusEffect(
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     borderBottomWidth: 1,
-                    borderBottomColor: 'gray',
+                    borderBottomColor: 'rgba(23,28,143,0.1)',
                     padding: 3,
                   }}>
-                  <Text style={{ color: 'gray' ,fontSize:13}}>
+                  <Text style={{ color: 'rgba(1,4,75,0.62)' ,fontSize:13}}>
                     {moment(toDate).format('MMM Do YYYY')}
                   </Text>
                   <View>
@@ -287,7 +287,7 @@ useFocusEffect(
                         <Ionicons
                           name="calendar-outline"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       </TouchableOpacity>
                     </View>
@@ -351,25 +351,25 @@ useFocusEffect(
             <DataTable
               style={{
                 width: '100%',
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 marginVertical: 10,
                 flex: 1
               }}>
 
-              <DataTable.Header style={{ backgroundColor: '#fff' }}>
+              <DataTable.Header style={{ backgroundColor: '#FFFFFF' }}>
                 <DataTable.Title>
-                  <Text Bold style={{ color: GlobalColor.Primary, fontSize: 14 }}>Staff Id</Text>
+                  <Text Bold style={{ color: '#01044B', fontSize: 14 }}>Staff Id</Text>
                 </DataTable.Title>
                 <DataTable.Title numeric >
-                  <Text Bold style={{ color: GlobalColor.Primary, fontSize: 14 }}>
+                  <Text Bold style={{ color: '#01044B', fontSize: 14 }}>
                     Date
                   </Text>
                 </DataTable.Title>
                 <DataTable.Title numeric>
-                  <Text Bold style={{ color: GlobalColor.Primary, fontSize: 14 }}>Time</Text>
+                  <Text Bold style={{ color: '#01044B', fontSize: 14 }}>Time</Text>
                 </DataTable.Title>
                 <DataTable.Title numeric>
-                  <Text Bold style={{ color: GlobalColor.Primary, fontSize: 14 }}>Source</Text>
+                  <Text Bold style={{ color: '#01044B', fontSize: 14 }}>Source</Text>
                 </DataTable.Title>
               </DataTable.Header>
 
@@ -392,7 +392,7 @@ useFocusEffect(
             style={{
               minHeight: 230,
               borderRadius: 15,
-              backgroundColor: GlobalColor.White,
+              backgroundColor: '#FFFFFF',
             }}>
             {modalLoader ? (
               <LoadingScreen />
@@ -401,7 +401,7 @@ useFocusEffect(
                 <TouchableOpacity style={styles.ModalCloseIcon}>
                   <Feather
                     name="x-circle"
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                     size={25}
                     onPress={toggleModal}
                     style ={{marginVertical:10,marginHorizontal:10}}
@@ -415,7 +415,7 @@ useFocusEffect(
                     width: 90,
                     height: 90,
                     borderWidth: 3,
-                    borderColor: ThemeColor.Teal,
+                    borderColor: '#171C8F',
                     borderRadius: 65,
                     marginTop: 20,
                   }}>
@@ -487,7 +487,7 @@ useFocusEffect(
                   style={{
                     // height: '23%',
                     marginTop: 5,
-                    // backgroundColor:'yellow',
+                    // backgroundColor:'#FCBE62',
                     flexDirection: 'row',
                     alignSelf: 'center',
                     justifyContent: 'space-around',
@@ -512,19 +512,19 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,      
       position: 'relative',
-      backgroundColor: GlobalColor.PrimaryLight
+      backgroundColor: '#F5F5F5'
     },
     reportView: {
       width: '100%',
       borderWidth: 1,
-      borderColor: '#fff',
+      borderColor: 'rgba(23,28,143,0.1)',
       justifyContent: 'space-between',
       alignItems: 'center',
       flexDirection: 'row',
       padding: 10,
       marginVertical: 10,
-      backgroundColor: '#fff',
-      shadowColor: '#000',
+      backgroundColor: '#FFFFFF',
+      shadowColor: '#01044B',
       shadowOffset: {
         width: 0,
         height: 2,
@@ -539,7 +539,7 @@ const styles = StyleSheet.create({
       height: 105,
       width: '100%',
       alignSelf: 'center',
-      backgroundColor: GlobalColor.PrimaryLight,
+      backgroundColor: '#F5F5F5',
       borderTopLeftRadius: 15,
       borderTopRightRadius: 15,
       borderBottomLeftRadius: 50,
@@ -551,9 +551,9 @@ const styles = StyleSheet.create({
       top: 10,
       alignItems: 'center',
       padding: 10,
-      backgroundColor: 'white',
+      backgroundColor: '#FFFFFF',
       borderRadius: 5,
-      shadowColor: '#000',
+      shadowColor: '#01044B',
       shadowOffset: {
         width: 0,
         height: 1,
@@ -567,7 +567,7 @@ const styles = StyleSheet.create({
       height: 100,
       width: 100,
       borderWidth: 3,
-      borderColor: 'green',
+      borderColor: '#171C8F',
       borderRadius: 100,
       alignSelf: 'center',
       justifyContent: 'center',
@@ -580,14 +580,14 @@ const styles = StyleSheet.create({
       paddingHorizontal: 10,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      backgroundColor: '#fff',
+      backgroundColor: '#FFFFFF',
       marginTop: 10,
       borderWidth: 0.5,
-      borderColor: GlobalColor.LightDark,
+      borderColor: 'rgba(23,28,143,0.1)',
       
     },
     titleLabel: {
-      color: GlobalColor.Primary,
+      color: '#01044B',
       fontWeight: '500',
       fontSize: 14
     },

@@ -284,7 +284,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight, }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5', }}>
             <KeyboardAwareScrollView style={ {flexGrow:1} }>
                 {
                     loader ?
@@ -456,7 +456,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 style={styles.DateInOut}
                                                 onPress={() => setOpenDateTimePicker(true)}
                                             >
-                                                <Text style={{ color: 'gray' ,fontSize:13 }}>
+                                                <Text style={{ color: 'rgba(1,4,75,0.62)' ,fontSize:13 }}>
                                                     {values.Time_OUTSHOW}
                                                 </Text>
 
@@ -470,7 +470,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                         <Ionicons
                                                             name="calendar-outline"
                                                             size={22}
-                                                            color={ThemeColor.Forest}
+                                                            color={'#171C8F'}
                                                         />
                                                     </View>
                                                 </View>
@@ -510,7 +510,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 style={styles.DateInOut}
                                                 onPress={() => setOpenDateTimePicker2(true)}
                                             >
-                                                <Text style={{ color: 'gray',fontSize:13 }}>
+                                                <Text style={{ color: 'rgba(1,4,75,0.62)',fontSize:13 }}>
                                                     {values.Time_INSHOW}
                                                 </Text>
 
@@ -524,7 +524,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                         <Ionicons
                                                             name="calendar-outline"
                                                             size={22}
-                                                            color={ThemeColor.Forest}
+                                                            color={'#171C8F'}
                                                         />
                                                     </View>
                                                 </View>
@@ -538,7 +538,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 alignSelf: 'center',
                                                 paddingVertical: 2,
                                             }}>
-                                            <Text style={{ color: 'red', textAlign: 'right' }}>
+                                            <Text style={{ color: '#01044B', textAlign: 'right' }}>
                                                 {errors.duration}
                                             </Text>
                                         </View>
@@ -574,7 +574,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                     paddingVertical: 2,
                                                 }}>
                                                 <Text
-                                                    style={{ color: 'red', textAlign: 'left' }}>
+                                                    style={{ color: '#01044B', textAlign: 'left' }}>
                                                     {errors.reason}
                                                 </Text>
                                             </View>
@@ -763,7 +763,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                         buttonStyle={styles.dropdown2BtnStyle}
                                         buttonTextStyle={styles.dropdown2BtnTxtStyle}
                                         renderDropdownIcon={isOpened => {
-                                            return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Forest} size={14} />;
+                                            return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />;
                                         }}
                                         dropdownIconPosition={'right'}
                                         dropdownStyle={styles.dropdown2DropdownStyle}
@@ -777,7 +777,7 @@ const ManagerTaxiApproval = ({ navigation, route }) => {
                                                 alignSelf: 'center',
                                                 paddingVertical: 2,
                                             }}>
-                                            <Text style={{ color: 'red', textAlign: 'left' }}>
+                                            <Text style={{ color: '#01044B', textAlign: 'left' }}>
                                                 {errors.Dpm_Taxi_Type}
                                             </Text>
                                         </View>
@@ -824,24 +824,24 @@ const styles = StyleSheet.create({
         height: 40,
         borderWidth: 1,
         borderRadius: 3,
-        backgroundColor: '#FFF',
-        borderColor: ThemeColor.Forest,
+        backgroundColor: '#FFFFFF',
+        borderColor: '#171C8F',
         fontSize:13,
     },
     dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 13 },
-    dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
-    dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: ThemeColor.Forest },
+    dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
+    dropdown2RowStyle: { backgroundColor: '#FFFFFF', borderBottomColor: '#171C8F' },
     dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 16 },
     centeredView: {
         flex: 1,
         position: 'relative',
-        backgroundColor: '#fff'
+        backgroundColor: '#FFFFFF'
 
     },
     Modalclose: {
         position: 'absolute',
         right: 0,
-        backgroundColor: GlobalColor.Primary,
+        backgroundColor: '#171C8F',
         justifyContent: 'center',
         // alignItems: 'center',
         zIndex: 55,
@@ -852,34 +852,34 @@ const styles = StyleSheet.create({
     TextInputStyle: {
         height:35,
         // width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        color:GlobalColor.Text,
+        color:'rgba(1,4,75,0.62)',
         // padding: 6,
-        borderColor: ThemeColor.Forest,
+        borderColor: '#171C8F',
          fontSize: 13,
     },
     TextInputDesign: {
         width: '100%',
         borderWidth: 1,
         padding: 6,
-        backgroundColor: '#fff',
-        borderColor: ThemeColor.Forest,
+        backgroundColor: '#FFFFFF',
+        borderColor: '#171C8F',
       
     },
     DateInOut:{
         width: '100%',
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderWidth: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
         padding: 6,
         alignSelf: 'center',
-        borderColor: ThemeColor.Forest
+        borderColor: '#171C8F'
     },
     spinnerTextStyle: {
-        color: GlobalColor.White
+        color: '#FFFFFF'
     },
 
 });

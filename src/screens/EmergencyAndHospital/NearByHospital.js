@@ -58,7 +58,7 @@ const NearByHospital = () => {
 
 
         <View style={styles.box}>
-          <Text style={{fontSize:15, color:GlobalColor.Primary}} Bold>
+          <Text style={{fontSize:15, color:'#01044B'}} Bold>
             Near By Panel Hospital
           </Text>
           <TouchableOpacity
@@ -93,13 +93,13 @@ const NearByHospital = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal:10,
     justifyContent: 'center',
     marginBottom:"80%"
   },
   spinnerTextStyle: {
-    color: '#FFF'
+    color: '#FFFFFF'
   },
   box: {
     padding: 10,
@@ -108,8 +108,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -119,14 +119,14 @@ const styles = StyleSheet.create({
     elevation: 5,
     borderWidth:0.2,
     borderRadius:10,
-    borderColor:GlobalColor.Secondary,
+    borderColor:'#171C8F',
     
   },
   circle: {
     height: 100,
     width: 100,
     borderWidth: 5,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderRadius: 100,
     alignSelf: 'center',
     justifyContent: 'center',

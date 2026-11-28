@@ -197,7 +197,7 @@ const Whatsnew = ({ navigation }) => {
                     source={{ uri: item.LINK_LINK3 }}
                     style={{ width: "90%", height: 550 }}
                   />
-                  {/* <Text Bold style={{ fontSize: 15, paddingVertical: 5, color: '#4a4a4a' }}>
+                  {/* <Text Bold style={{ fontSize: 15, paddingVertical: 5, color: '#171C8F' }}>
                     {item.LINK_DESC}
                   </Text> */}
                 </TouchableOpacity>
@@ -212,18 +212,18 @@ const Whatsnew = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',    
+    backgroundColor: '#FFFFFF',    
   },
   button:{
     minWidth:"90%",
     maxWidth:"90%",
     justifyContent: 'center',
-    borderColor:ThemeColor.Teal,
+    borderColor:'#171C8F',
     borderWidth:0.5,
     margin:17,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,

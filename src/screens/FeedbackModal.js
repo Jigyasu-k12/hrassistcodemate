@@ -46,7 +46,7 @@ const SUCCESS_CHECK_LENGTH = 70; // safe upper bound for the path above
 
 // === THANK YOU: confetti burst config ===
 const CONFETTI_COUNT = 10;
-const CONFETTI_COLORS = ['#33A852', '#FFC94D', '#FF9F5C', '#4C6FFF', '#FF5C8A'];
+const CONFETTI_COLORS = ['#171C8F', 'rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', '#171C8F', 'rgba(23,28,143,0.85)'];
 
 const RATING_LABELS = {
   1: 'Very Poor',
@@ -58,11 +58,11 @@ const RATING_LABELS = {
 
 // Emoji-based rating scale (Myntra/Zomato-style), each with its own accent color
 const RATING_CONFIG = [
-  {value: 1, emoji: '😞', color: '#FF5C5C'},
-  {value: 2, emoji: '😕', color: '#FF9F5C'},
-  {value: 3, emoji: '😐', color: '#FFC94D'},
-  {value: 4, emoji: '🙂', color: '#8BC34A'},
-  {value: 5, emoji: '😍', color: '#33A852'},
+  {value: 1, emoji: '😞', color: '#01044B'},
+  {value: 2, emoji: '😕', color: '#171C8F'},
+  {value: 3, emoji: '😐', color: '#171C8F'},
+  {value: 4, emoji: '🙂', color: '#171C8F'},
+  {value: 5, emoji: '😍', color: '#171C8F'},
 ];
 
 // Reused purely to time a round trip for NetRTT — using dynamic API base URL
@@ -563,7 +563,7 @@ const FeedbackModal = ({
                   cx={50}
                   cy={50}
                   r={SUCCESS_CIRCLE_R}
-                  stroke="#33A852"
+                  stroke="#171C8F"
                   strokeWidth={6}
                   fill="none"
                   strokeLinecap="round"
@@ -577,7 +577,7 @@ const FeedbackModal = ({
                 />
                 <AnimatedPath
                   d={SUCCESS_CHECK_PATH}
-                  stroke="#33A852"
+                  stroke="#171C8F"
                   strokeWidth={7}
                   fill="none"
                   strokeLinecap="round"
@@ -619,7 +619,7 @@ const FeedbackModal = ({
               <TouchableOpacity
                 onPress={handleDismiss}
                 hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-                <Ionicons name="close" size={22} color="#9B9B9B" />
+                <Ionicons name="close" size={22} color="rgba(1,4,75,0.62)" />
               </TouchableOpacity>
             </View>
 
@@ -695,7 +695,7 @@ const FeedbackModal = ({
                   {tagsLoading ? (
                     <ActivityIndicator
                       size="small"
-                      color={ThemeColor.TealDark}
+                      color={'#171C8F'}
                       style={{marginTop: 16, marginBottom: 8}}
                     />
                   ) : (
@@ -715,7 +715,7 @@ const FeedbackModal = ({
                               <Ionicons
                                 name="checkmark-circle"
                                 size={15}
-                                color="#ffffff"
+                                color="#FFFFFF"
                                 style={{marginRight: 5}}
                               />
                             )}
@@ -741,7 +741,7 @@ const FeedbackModal = ({
                             ? 'Please tell us more…'
                             : 'Additional comments (optional)'
                         }
-                        placeholderTextColor="#A6A6A6"
+                        placeholderTextColor="rgba(1,4,75,0.62)"
                         multiline
                         numberOfLines={4}
                         value={commentText}
@@ -768,14 +768,14 @@ const FeedbackModal = ({
                 <LinearGradient
                   colors={
                     isSubmitDisabled()
-                      ? [ThemeColor.TealSoft, ThemeColor.TealSoft]
-                      : [ThemeColor.TealDark, ThemeColor.TealDark]
+                      ? ['rgba(23,28,143,0.1)', 'rgba(23,28,143,0.1)']
+                      : ['#01044B', '#01044B']
                   }
                   start={{x: 0, y: 0}}
                   end={{x: 1, y: 0}}
                   style={fbStyles.submitGradient}>
                   {submitting ? (
-                    <ActivityIndicator size="small" color="#ffffff" />
+                    <ActivityIndicator size="small" color="#FFFFFF" />
                   ) : (
                     <>
                       <Text style={fbStyles.submitBtnText} Bold>
@@ -784,7 +784,7 @@ const FeedbackModal = ({
                       <Ionicons
                         name="arrow-forward"
                         size={16}
-                        color="#ffffff"
+                        color="#FFFFFF"
                         style={{marginLeft: 6}}
                       />
                     </>
@@ -816,13 +816,13 @@ const fbStyles = StyleSheet.create({
   sheet: {
     width: SCREEN_W,
     maxHeight: Dimensions.get('window').height * 0.85,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     paddingTop: 10,
     paddingBottom: 20,
     paddingHorizontal: 20,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: -4},
     shadowOpacity: 0.15,
     shadowRadius: 12,
@@ -833,7 +833,7 @@ const fbStyles = StyleSheet.create({
     width: 40,
     height: 4,
     borderRadius: 3,
-    backgroundColor: '#E2E2E2',
+    backgroundColor: '#F5F5F5',
     marginBottom: 14,
   },
   header: {
@@ -842,10 +842,10 @@ const fbStyles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 4,
   },
-  headerTitle: {fontSize: 19, color: '#1A1A2E'},
+  headerTitle: {fontSize: 19, color: '#171C8F'},
   headerSubtitle: {
     fontSize: 12.5,
-    color: '#8A8A8F',
+    color: 'rgba(1,4,75,0.62)',
     marginTop: 3,
   },
   scrollContent: {paddingBottom: 4},
@@ -864,8 +864,8 @@ const fbStyles = StyleSheet.create({
     height: 52,
     borderRadius: 26,
     borderWidth: 1.5,
-    borderColor: 'transparent',
-    backgroundColor: '#F5F5F8',
+    borderColor: 'rgba(23,28,143,0)',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -888,7 +888,7 @@ const fbStyles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   tagSection: {marginTop: 20},
-  tagPrompt: {fontSize: 14, color: '#1A1A2E', marginBottom: 12, fontWeight: '600'},
+  tagPrompt: {fontSize: 14, color: '#171C8F', marginBottom: 12, fontWeight: '600'},
   tagWrap: {flexDirection: 'row', flexWrap: 'wrap', gap: 10},
   tagChip: {
     flexDirection: 'row',
@@ -897,32 +897,32 @@ const fbStyles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 22,
     borderWidth: 1,
-    borderColor: '#E1E2ED',
-    backgroundColor: '#F9F9FC',
+    borderColor: 'rgba(23,28,143,0.1)',
+    backgroundColor: '#FFFFFF',
   },
   tagChipActive: {
-    backgroundColor: ThemeColor.TealDark,
-    borderColor: ThemeColor.TealDark,
-    shadowColor: ThemeColor.TealDark,
+    backgroundColor: '#171C8F',
+    borderColor: '#171C8F',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 3},
     shadowOpacity: 0.25,
     shadowRadius: 5,
     elevation: 3,
   },
-  tagChipText: {fontSize: 13, color: '#4C4C57', fontWeight: '500'},
-  tagChipTextActive: {color: '#ffffff'},
+  tagChipText: {fontSize: 13, color: '#171C8F', fontWeight: '500'},
+  tagChipTextActive: {color: '#FFFFFF'},
   commentCard: {
     marginTop: 16,
     borderWidth: 1,
-    borderColor: '#EAEAF2',
-    backgroundColor: '#FAFAFD',
+    borderColor: 'rgba(23,28,143,0.1)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 14,
     padding: 4,
   },
   commentBox: {
     padding: 12,
     fontSize: 13.5,
-    color: '#333333',
+    color: '#01044B',
     textAlignVertical: 'top',
     minHeight: 90,
   },
@@ -940,7 +940,7 @@ const fbStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   submitBtnText: {
-    color: '#ffffff',
+    color: '#FFFFFF',
     fontSize: 15,
     letterSpacing: 0.3,
   },
@@ -952,13 +952,13 @@ const fbStyles = StyleSheet.create({
   },
   secondaryLink: {
     fontSize: 13,
-    color: '#6B6B76',
+    color: 'rgba(1,4,75,0.62)',
     fontWeight: '600',
   },
   secondaryDivider: {
     width: 1,
     height: 12,
-    backgroundColor: '#DCDCE3',
+    backgroundColor: '#F5F5F5',
     marginHorizontal: 16,
   },
   // === THANK YOU: success panel styles ===
@@ -983,12 +983,12 @@ const fbStyles = StyleSheet.create({
   },
   thankYouTitle: {
     fontSize: 21,
-    color: '#1A1A2E',
+    color: '#171C8F',
     marginBottom: 8,
   },
   thankYouSubtitle: {
     fontSize: 13.5,
-    color: '#8A8A8F',
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     lineHeight: 20,
     paddingHorizontal: 12,

@@ -118,7 +118,7 @@ const TaxComputationSlip = () => {
 
     if (loader) {
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
                 <Header title="Tax Computation Slip" back />
                 <LoadingScreen />
             </SafeAreaView>
@@ -135,9 +135,9 @@ const TaxComputationSlip = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
             <Header title="Tax Computation Slip" back />
-            <View style={[styles.MainCard, { padding: 10, backgroundColor: GlobalColor.White }]}>
+            <View style={[styles.MainCard, { padding: 10, backgroundColor: '#FFFFFF' }]}>
                 {TaxData == '' ? null : (
                     <FlatList
                         data={TaxData}
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     MainCard: {
         flex: 1,
         margin: 10,
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,

@@ -13,7 +13,7 @@ import { Header } from '../../components/reusable/Header';
 const Canteen = ({ navigation }) => {
   // ]);
   return (
-    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
+    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: '#F5F5F5' }}>
       <Header title="Canteen" />
       
       <View style={{width:"100%",paddingHorizontal:10}}>
@@ -34,7 +34,7 @@ const Canteen = ({ navigation }) => {
                 width: 50,
                 height: 50,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -44,7 +44,7 @@ const Canteen = ({ navigation }) => {
           <View
             style={styles.MenuContainer}>
             <Text style={{fontSize:13}} Bold>Canteen Menu</Text>
-            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+            <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
           </View>
         </TouchableOpacity>
 
@@ -65,7 +65,7 @@ const Canteen = ({ navigation }) => {
                 width: 50,
                 height: 50,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -75,7 +75,7 @@ const Canteen = ({ navigation }) => {
           <View
             style={styles.MenuContainer}>
             <Text style={{fontSize:13}} Bold>Food Court</Text>
-            <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+            <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
           </View>
         </TouchableOpacity>
 
@@ -97,12 +97,12 @@ const styles = StyleSheet.create({
   canteen: {
     top: 10,
     marginVertical: 10,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,

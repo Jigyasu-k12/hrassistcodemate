@@ -904,7 +904,7 @@ export const HospitalApprovalScreens = () => {
 
             height: 100%;
 
-            background-color: #525659;
+            background-color: #01044B;
 
             overflow: auto;
 
@@ -938,15 +938,15 @@ export const HospitalApprovalScreens = () => {
 
             height: auto !important;
 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 8px rgba(1,4,75,0.4);
 
           }
 
-          #loading { color: #fff; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
+          #loading { color: #FFFFFF; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
 
-         #error { color: #ff6b6b; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
+         #error { color: #01044B; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
 
-          #page-info { color: #ccc; font-size: 13px; text-align: center; font-family: sans-serif; padding: 5px 0 10px 0; }
+          #page-info { color: rgba(1,4,75,0.62); font-size: 13px; text-align: center; font-family: sans-serif; padding: 5px 0 10px 0; }
 
         </style>
 
@@ -1178,7 +1178,7 @@ export const HospitalApprovalScreens = () => {
 
             height: 100%;
 
-            background-color: #525659;
+            background-color: #01044B;
 
             display: flex;
 
@@ -1214,15 +1214,15 @@ export const HospitalApprovalScreens = () => {
 
             display: block;
 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 8px rgba(1,4,75,0.5);
 
-            background: #fff;
+            background: #FFFFFF;
 
           }
 
-          #loading { color: #fff; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; position: absolute; width: 100%; }
+          #loading { color: #FFFFFF; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; position: absolute; width: 100%; }
 
-          #error { color: #ff6b6b; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; position: absolute; width: 100%; }
+          #error { color: #01044B; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; position: absolute; width: 100%; }
 
         </style>
 
@@ -2194,7 +2194,7 @@ export const HospitalApprovalScreens = () => {
 
         <View style={styles.attachmentHeader}>
 
-          <MaterialIcons name="attach-file" size={24} color={ThemeColor.Forest} />
+          <MaterialIcons name="attach-file" size={24} color={'#171C8F'} />
 
           <View style={{ flex: 1, marginLeft: 10 }}>
 
@@ -2240,7 +2240,7 @@ export const HospitalApprovalScreens = () => {
 
           onPress={() => openFileViewer(item.WFAT_ATTACHMENT, item.WFAT_FILE_NAME)}>
 
-          <Ionicons name={isImage ? 'image-outline' : 'eye-outline'} size={18} color="#fff" />
+          <Ionicons name={isImage ? 'image-outline' : 'eye-outline'} size={18} color="#FFFFFF" />
 
           <Text style={styles.viewPdfButtonText}>{isImage ? 'View Image' : 'View PDF'}</Text>
 
@@ -2320,13 +2320,13 @@ export const HospitalApprovalScreens = () => {
         <TouchableOpacity
           style={[styles.actionButton, styles.activityLogButton]}
           onPress={() => handleActivityLogPress(item.HSTR_REQ_ID)}>
-          <MaterialIcons name="history" size={18} color="#fff" />
+          <MaterialIcons name="history" size={18} color="#FFFFFF" />
           <Text style={styles.actionButtonText}>{'Activity Log'}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.actionButton, styles.attachmentButton]} onPress={() => handleAttachmentPress(item.HSTR_REQ_ID)}>
 
-          <MaterialIcons name="attach-file" size={18} color="#fff" />
+          <MaterialIcons name="attach-file" size={18} color="#FFFFFF" />
 
           <Text style={styles.actionButtonText}>{'Attachments'}</Text>
 
@@ -2398,13 +2398,13 @@ export const HospitalApprovalScreens = () => {
         <TouchableOpacity
           style={[styles.actionButton, styles.activityLogButton]}
           onPress={() => handleActivityLogPress(item.HSTR_REQ_ID)}>
-          <MaterialIcons name="history" size={18} color="#fff" />
+          <MaterialIcons name="history" size={18} color="#FFFFFF" />
           <Text style={styles.actionButtonText}>{'Activity Log'}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.actionButton, styles.attachmentButton]} onPress={() => handleAttachmentPress(item.HSTR_REQ_ID)}>
 
-          <MaterialIcons name="attach-file" size={18} color="#fff" />
+          <MaterialIcons name="attach-file" size={18} color="#FFFFFF" />
 
           <Text style={styles.actionButtonText}>{'Attachments'}</Text>
 
@@ -2422,7 +2422,7 @@ export const HospitalApprovalScreens = () => {
 
   return (
 
-    <View style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+    <View style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
 
       <Spinner visible={loader} textContent={'Loading...'} textStyle={styles.spinnerTextStyle} />
 
@@ -2468,7 +2468,7 @@ export const HospitalApprovalScreens = () => {
 
             onPress={() => setShowFilters(!showFilters)}>
 
-            <Ionicons name={showFilters ? 'chevron-up' : 'chevron-down'} size={20} color={ThemeColor.Forest} />
+            <Ionicons name={showFilters ? 'chevron-up' : 'chevron-down'} size={20} color={'#171C8F'} />
 
             <Text Bold style={styles.filterToggleText}>
 
@@ -2516,7 +2516,7 @@ export const HospitalApprovalScreens = () => {
 
                     </Text>
 
-                    <Ionicons name="chevron-down" size={20} color="#666" />
+                    <Ionicons name="chevron-down" size={20} color="rgba(1,4,75,0.62)" />
 
                   </TouchableOpacity>
 
@@ -2528,7 +2528,7 @@ export const HospitalApprovalScreens = () => {
 
                 <TouchableOpacity style={[styles.filterButton, styles.searchButton]} onPress={handleSearch}>
 
-                  <Ionicons name="search" size={18} color={ThemeColor.OnAmber} />
+                  <Ionicons name="search" size={18} color={'#01044B'} />
 
                   <Text Bold style={styles.filterButtonText}>{'Search'}</Text>
 
@@ -2536,7 +2536,7 @@ export const HospitalApprovalScreens = () => {
 
                 <TouchableOpacity style={[styles.filterButton, styles.clearButton]} onPress={handleClearFilters}>
 
-                  <Ionicons name="close-circle" size={18} color={ThemeColor.DisabledText} />
+                  <Ionicons name="close-circle" size={18} color={'rgba(1,4,75,0.62)'} />
 
                   <Text Bold style={styles.filterButtonText}>{'Clear'}</Text>
 
@@ -2576,7 +2576,7 @@ export const HospitalApprovalScreens = () => {
 
               <View style={styles.emptyContainer}>
 
-                <Ionicons name="document-text-outline" size={60} color="#ccc" />
+                <Ionicons name="document-text-outline" size={60} color="rgba(1,4,75,0.62)" />
 
                 <Text style={styles.emptyText}>{'No pending intimations'}</Text>
 
@@ -2606,7 +2606,7 @@ export const HospitalApprovalScreens = () => {
 
               <View style={styles.emptyContainer}>
 
-                <Ionicons name="document-text-outline" size={60} color="#ccc" />
+                <Ionicons name="document-text-outline" size={60} color="rgba(1,4,75,0.62)" />
 
                 <Text style={styles.emptyText}>{'No pending advances'}</Text>
 
@@ -2648,7 +2648,7 @@ export const HospitalApprovalScreens = () => {
 
                 <TouchableOpacity onPress={() => { setIntimationDetailModal(false); setActionComment(''); setApprovedAmount(''); setIntimationHospitalData(null); }}>
 
-                  <Ionicons name="close-circle-outline" size={23} color={GlobalColor.Danger} />
+                  <Ionicons name="close-circle-outline" size={23} color={'#01044B'} />
 
                 </TouchableOpacity>
 
@@ -2774,9 +2774,9 @@ export const HospitalApprovalScreens = () => {
 
                     <Text Bold style={styles.sectionTitle}>{'Amount Details'}</Text>
 
-                    <View style={styles.detailRow}><Text style={styles.detailLabel}>{'Advance Requested:'}</Text><Text Bold style={[styles.detailValue, { color: ThemeColor.Forest }]}>{'₹' + safeStr(modalDataIntimation.HSTR_ADV_REQ_AMT)}</Text></View>
+                    <View style={styles.detailRow}><Text style={styles.detailLabel}>{'Advance Requested:'}</Text><Text Bold style={[styles.detailValue, { color: '#171C8F' }]}>{'₹' + safeStr(modalDataIntimation.HSTR_ADV_REQ_AMT)}</Text></View>
 
-                    {modalDataIntimation.HSTR_ADV_APP_AMT != null && (<View style={styles.detailRow}><Text style={styles.detailLabel}>{'Advance Approved:'}</Text><Text Bold style={[styles.detailValue, { color: '#4CAF50' }]}>{'₹' + safeStr(modalDataIntimation.HSTR_ADV_APP_AMT)}</Text></View>)}
+                    {modalDataIntimation.HSTR_ADV_APP_AMT != null && (<View style={styles.detailRow}><Text style={styles.detailLabel}>{'Advance Approved:'}</Text><Text Bold style={[styles.detailValue, { color: '#171C8F' }]}>{'₹' + safeStr(modalDataIntimation.HSTR_ADV_APP_AMT)}</Text></View>)}
 
                   </View>
 
@@ -2826,7 +2826,7 @@ export const HospitalApprovalScreens = () => {
 
                         <Text Bold style={styles.inputLabel}>{'Approved Amount '}</Text>
 
-                        <Text style={[styles.inputLabel, { color: ThemeColor.Forest }]}>{'*'}</Text>
+                        <Text style={[styles.inputLabel, { color: '#171C8F' }]}>{'*'}</Text>
 
                       </View>
 
@@ -2898,7 +2898,7 @@ export const HospitalApprovalScreens = () => {
 
                   }}>
 
-                    <Ionicons name="arrow-undo" size={20} color="#fff" />
+                    <Ionicons name="arrow-undo" size={20} color="#FFFFFF" />
 
                     <Text Bold style={styles.actionButtonText}>{'Send Back'}</Text>
 
@@ -2906,7 +2906,7 @@ export const HospitalApprovalScreens = () => {
 
                   <TouchableOpacity style={[styles.actionButton, styles.approveButton]} onPress={() => { performIntimationAction(modalDataIntimation, 'Approve', actionComment, approvedAmount); }}>
 
-                    <Ionicons name="checkmark-circle" size={20} color="#fff" />
+                    <Ionicons name="checkmark-circle" size={20} color="#FFFFFF" />
 
                     <Text Bold style={styles.actionButtonText}>{'Approve'}</Text>
 
@@ -2952,7 +2952,7 @@ export const HospitalApprovalScreens = () => {
 
                 <TouchableOpacity onPress={() => { setAdvanceDetailModal(false); setActionComment(''); setApprovedAmount(''); setAdvanceHospitalData(null); }}>
 
-                  <Ionicons name="close-circle-outline" size={23} color={GlobalColor.Danger} />
+                  <Ionicons name="close-circle-outline" size={23} color={'#01044B'} />
 
                 </TouchableOpacity>
 
@@ -3064,9 +3064,9 @@ export const HospitalApprovalScreens = () => {
 
                   <Text Bold style={styles.sectionTitle}>{'Amount Details'}</Text>
 
-                  <View style={styles.detailRow}><Text style={styles.detailLabel}>{'Advance Requested:'}</Text><Text Bold style={[styles.detailValue, { color: ThemeColor.Forest }]}>{'₹' + safeStr(modalDataAdvance.HSTR_ADV_REQ_AMT)}</Text></View>
+                  <View style={styles.detailRow}><Text style={styles.detailLabel}>{'Advance Requested:'}</Text><Text Bold style={[styles.detailValue, { color: '#171C8F' }]}>{'₹' + safeStr(modalDataAdvance.HSTR_ADV_REQ_AMT)}</Text></View>
 
-                  {modalDataAdvance.HSTR_ADV_APP_AMT != null && (<View style={styles.detailRow}><Text style={styles.detailLabel}>{'Approved Amount:'}</Text><Text Bold style={[styles.detailValue, { color: '#4CAF50' }]}>{'₹' + safeStr(modalDataAdvance.HSTR_ADV_APP_AMT)}</Text></View>)}
+                  {modalDataAdvance.HSTR_ADV_APP_AMT != null && (<View style={styles.detailRow}><Text style={styles.detailLabel}>{'Approved Amount:'}</Text><Text Bold style={[styles.detailValue, { color: '#171C8F' }]}>{'₹' + safeStr(modalDataAdvance.HSTR_ADV_APP_AMT)}</Text></View>)}
 
                 </View>
 
@@ -3124,7 +3124,7 @@ export const HospitalApprovalScreens = () => {
 
                       <Text Bold style={styles.inputLabel}>{'Approved Amount '}</Text>
 
-                      <Text style={[styles.inputLabel, { color: ThemeColor.Forest }]}>{'*'}</Text>
+                      <Text style={[styles.inputLabel, { color: '#171C8F' }]}>{'*'}</Text>
 
                     </View>
 
@@ -3194,7 +3194,7 @@ export const HospitalApprovalScreens = () => {
 
                   }}>
 
-                    <Ionicons name="arrow-undo" size={20} color="#fff" />
+                    <Ionicons name="arrow-undo" size={20} color="#FFFFFF" />
 
                     <Text Bold style={styles.actionButtonText}>{'Send Back'}</Text>
 
@@ -3202,7 +3202,7 @@ export const HospitalApprovalScreens = () => {
 
                   <TouchableOpacity style={[styles.actionButton, styles.approveButton]} onPress={() => { performAdvanceAction(modalDataAdvance, 'Approve', actionComment, approvedAmount); }}>
 
-                    <Ionicons name="checkmark-circle" size={20} color="#fff" />
+                    <Ionicons name="checkmark-circle" size={20} color="#FFFFFF" />
 
                     <Text Bold style={styles.actionButtonText}>{'Approve'}</Text>
 
@@ -3234,7 +3234,7 @@ export const HospitalApprovalScreens = () => {
 
                 <TouchableOpacity onPress={() => setShowFinYearModal(false)}>
 
-                  <Ionicons name="close-circle-outline" size={23} color={GlobalColor.Danger} />
+                  <Ionicons name="close-circle-outline" size={23} color={'#01044B'} />
 
                 </TouchableOpacity>
 
@@ -3246,7 +3246,7 @@ export const HospitalApprovalScreens = () => {
 
                   <Text style={[styles.dropdownItemText, finYearFilter === '' && styles.dropdownItemTextSelected]}>{'All'}</Text>
 
-                  {finYearFilter === '' && <Ionicons name="checkmark" size={20} color={ThemeColor.Forest} />}
+                  {finYearFilter === '' && <Ionicons name="checkmark" size={20} color={'#171C8F'} />}
 
                 </TouchableOpacity>
 
@@ -3256,7 +3256,7 @@ export const HospitalApprovalScreens = () => {
 
                     <Text style={[styles.dropdownItemText, finYearFilter === option.value && styles.dropdownItemTextSelected]}>{option.label}</Text>
 
-                    {finYearFilter === option.value && <Ionicons name="checkmark" size={20} color={ThemeColor.Forest} />}
+                    {finYearFilter === option.value && <Ionicons name="checkmark" size={20} color={'#171C8F'} />}
 
                   </TouchableOpacity>
 
@@ -3287,7 +3287,7 @@ export const HospitalApprovalScreens = () => {
               <TouchableOpacity
                 onPress={() => setActivityLogModal(false)}
                 style={styles.closeButton}>
-                <Ionicons name="close" size={28} color="#333" />
+                <Ionicons name="close" size={28} color="#01044B" />
               </TouchableOpacity>
             </View>
             <FlatList
@@ -3297,7 +3297,7 @@ export const HospitalApprovalScreens = () => {
               contentContainerStyle={styles.modalListContainer}
               ListEmptyComponent={
                 <View style={styles.emptyContainer}>
-                  <MaterialIcons name="history" size={60} color="#ccc" />
+                  <MaterialIcons name="history" size={60} color="rgba(1,4,75,0.62)" />
                   <Text style={styles.emptyText}>{'No activity log available'}</Text>
                 </View>
               }
@@ -3325,7 +3325,7 @@ export const HospitalApprovalScreens = () => {
 
               <TouchableOpacity onPress={() => setAttachmentModal(false)} style={styles.closeButton}>
 
-                <Ionicons name="close" size={28} color="#333" />
+                <Ionicons name="close" size={28} color="#01044B" />
 
               </TouchableOpacity>
 
@@ -3345,7 +3345,7 @@ export const HospitalApprovalScreens = () => {
 
                 <View style={styles.emptyContainer}>
 
-                  <MaterialIcons name="attach-file" size={60} color="#ccc" />
+                  <MaterialIcons name="attach-file" size={60} color="rgba(1,4,75,0.62)" />
 
                   <Text style={styles.emptyText}>{'No attachments available'}</Text>
 
@@ -3377,7 +3377,7 @@ export const HospitalApprovalScreens = () => {
 
               <TouchableOpacity onPress={closeFileViewer} style={styles.pdfCloseButton}>
 
-                <Ionicons name="close-circle" size={32} color="#fff" />
+                <Ionicons name="close-circle" size={32} color="#FFFFFF" />
 
               </TouchableOpacity>
 
@@ -3431,7 +3431,7 @@ export const HospitalApprovalScreens = () => {
 
                   <View style={styles.pdfLoadingContainer}>
 
-                    <ActivityIndicator size="large" color={ThemeColor.Forest} />
+                    <ActivityIndicator size="large" color={'#FFFFFF'} />
 
                     <Text style={styles.pdfLoadingText}>
 
@@ -3449,7 +3449,7 @@ export const HospitalApprovalScreens = () => {
 
               <View style={styles.pdfLoadingContainer}>
 
-                <ActivityIndicator size="large" color={ThemeColor.Forest} />
+                <ActivityIndicator size="large" color={'#FFFFFF'} />
 
                 <Text style={styles.pdfLoadingText}>{'Preparing file...'}</Text>
 
@@ -3483,13 +3483,13 @@ const styles = StyleSheet.create({
 
     padding: 15,
 
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
 
     marginTop: 10,
 
     marginBottom: 10,
 
-    shadowColor: '#000',
+    shadowColor: '#01044B',
 
     shadowOffset: { width: 0, height: 2 },
 
@@ -3503,21 +3503,21 @@ const styles = StyleSheet.create({
 
   contentContainer: { paddingHorizontal: 10, flex: 1 },
 
-  spinnerTextStyle: { color: '#fff' },
+  spinnerTextStyle: { color: '#FFFFFF' },
 
   tabsContainerStyle: { borderRadius: 8, width: '100%' },
 
-  tabStyle: { paddingVertical: 10, borderWidth: 1, borderRadius: 8, borderColor: ThemeColor.Forest },
+  tabStyle: { paddingVertical: 10, borderWidth: 1, borderRadius: 8, borderColor: '#171C8F' },
 
-  tabTextStyle: { fontSize: 13, color: 'grey', fontFamily: 'Roboto-Bold' },
+  tabTextStyle: { fontSize: 13, color: 'rgba(1,4,75,0.62)', fontFamily: 'Roboto-Bold' },
 
-  activeTabStyle: { backgroundColor: ThemeColor.Forest },
+  activeTabStyle: { backgroundColor: '#171C8F' },
 
-  activeTabTextStyle: { color: '#fff' },
+  activeTabTextStyle: { color: '#FFFFFF' },
 
   filterContainer: {
 
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
 
     marginHorizontal: 10,
 
@@ -3525,7 +3525,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 8,
 
-    shadowColor: '#000',
+    shadowColor: '#01044B',
 
     shadowOffset: { width: 0, height: 2 },
 
@@ -3539,79 +3539,79 @@ const styles = StyleSheet.create({
 
   filterToggleButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 12, gap: 8 },
 
-  filterToggleText: { fontSize: 14, color: ThemeColor.Forest },
+  filterToggleText: { fontSize: 14, color: '#171C8F' },
 
-  filterContent: { padding: 15, borderTopWidth: 1, borderTopColor: '#E0E0E0' },
+  filterContent: { padding: 15, borderTopWidth: 1, borderTopColor: 'rgba(23,28,143,0.1)' },
 
   filterRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 10, marginBottom: 15 },
 
   filterInputContainer: { flex: 1 },
 
-  filterLabel: { fontSize: 13, color: '#333', marginBottom: 8 },
+  filterLabel: { fontSize: 13, color: '#01044B', marginBottom: 8 },
 
-  filterInput: { borderWidth: 1, borderColor: ThemeColor.Forest, borderRadius: 8, padding: 10, fontSize: 13, backgroundColor: '#fff' },
+  filterInput: { borderWidth: 1, borderColor: '#171C8F', borderRadius: 8, padding: 10, fontSize: 13, backgroundColor: '#FFFFFF' },
 
-  dropdownButton: { borderWidth: 1, borderColor: ThemeColor.Forest, borderRadius: 8, padding: 12, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  dropdownButton: { borderWidth: 1, borderColor: '#171C8F', borderRadius: 8, padding: 12, backgroundColor: '#FFFFFF', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
 
-  dropdownButtonText: { fontSize: 13, color: '#333' },
+  dropdownButtonText: { fontSize: 13, color: '#01044B' },
 
-  modalViewDropdown: { width: '85%', maxHeight: '70%', backgroundColor: GlobalColor.White, padding: 20, borderRadius: 8 },
+  modalViewDropdown: { width: '85%', maxHeight: '70%', backgroundColor: '#FFFFFF', padding: 20, borderRadius: 8 },
 
-  dropdownItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 15, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
+  dropdownItem: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 15, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)' },
 
-  dropdownItemSelected: { backgroundColor: '#FFF5F5' },
+  dropdownItemSelected: { backgroundColor: '#FFFFFF' },
 
-  dropdownItemText: { fontSize: 14, color: '#333' },
+  dropdownItemText: { fontSize: 14, color: '#01044B' },
 
-  dropdownItemTextSelected: { color: ThemeColor.Forest, fontWeight: 'bold' },
+  dropdownItemTextSelected: { color: '#171C8F', fontWeight: 'bold' },
 
   filterButtonContainer: { flexDirection: 'row', justifyContent: 'space-between', gap: 10 },
 
   filterButton: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 12, borderRadius: 24, gap: 8 },
 
-  searchButton: { backgroundColor: ThemeColor.Amber },
+  searchButton: { backgroundColor: '#FCBE62' },
 
-  clearButton: { backgroundColor: ThemeColor.DisabledBg, borderWidth: 1, borderColor: ThemeColor.DisabledBorder },
+  clearButton: { backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)' },
 
-  filterButtonText: { color: ThemeColor.OnAmber, fontSize: 14 },
+  filterButtonText: { color: '#01044B', fontSize: 14 },
 
   listContainer: { padding: 10, paddingBottom: 20 },
 
   reportCard: {
 
-    backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
+    backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
 
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+    shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 },
 
     shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
 
   },
 
-  cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: '#E0E0E0' },
+  cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)' },
 
-  requestId: { fontSize: 15, color: '#333' },
+  requestId: { fontSize: 15, color: '#01044B' },
 
   statusBadge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 5 },
 
-  statusText: { fontSize: 11, color: '#fff', fontWeight: 'bold' },
+  statusText: { fontSize: 11, color: '#FFFFFF', fontWeight: 'bold' },
 
-  statusClosed: { backgroundColor: '#4CAF50' },
+  statusClosed: { backgroundColor: '#171C8F' },
 
-  statusApproved: { backgroundColor: ThemeColor.Teal },
+  statusApproved: { backgroundColor: '#171C8F' },
 
-  statusRejected: { backgroundColor: '#F44336' },
+  statusRejected: { backgroundColor: '#171C8F' },
 
-  statusSubmitted: { backgroundColor: '#FF9800' },
+  statusSubmitted: { backgroundColor: '#171C8F' },
 
-  statusDefault: { backgroundColor: '#9E9E9E' },
+  statusDefault: { backgroundColor: '#171C8F' },
 
   cardRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 },
 
   cardColumn: { flex: 1, marginRight: 10 },
 
-  label: { fontSize: 12, color: '#666', marginBottom: 3 },
+  label: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginBottom: 3 },
 
-  value: { fontSize: 13, color: '#333', fontWeight: '500' },
+  value: { fontSize: 13, color: '#01044B', fontWeight: '500' },
 
   // ── UPDATED: flex row to hold Activity Log + Attachments side by side ────────
   buttonRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, gap: 10 },
@@ -3619,66 +3619,66 @@ const styles = StyleSheet.create({
   // ── UPDATED: flex: 1 so both card buttons split width evenly ─────────────────
   actionButton: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 10, paddingHorizontal: 12, borderRadius: 6 },
 
-  attachmentButton: { backgroundColor: '#FF9800' },
+  attachmentButton: { backgroundColor: '#171C8F' },
 
   // ── NEW: Activity Log button colour (teal, matching IntimationReport) ─────────
-  activityLogButton: { backgroundColor: ThemeColor.Teal },
+  activityLogButton: { backgroundColor: '#171C8F' },
 
-  actionButtonText: { color: '#fff', fontSize: 13, fontWeight: 'bold', marginLeft: 6 },
+  actionButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: 'bold', marginLeft: 6 },
 
   emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 100 },
 
-  emptyText: { fontSize: 16, color: '#999', marginTop: 10 },
+  emptyText: { fontSize: 16, color: 'rgba(1,4,75,0.62)', marginTop: 10 },
 
-  centeredView: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' },
+  centeredView: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(1,4,75,0.5)' },
 
-  modalView: { position: 'relative', width: '90%', maxHeight: '80%', backgroundColor: GlobalColor.White, padding: 20, borderRadius: 8 },
+  modalView: { position: 'relative', width: '90%', maxHeight: '80%', backgroundColor: '#FFFFFF', padding: 20, borderRadius: 8 },
 
-  modalViewDetail: { position: 'relative', width: '90%', maxHeight: '85%', backgroundColor: GlobalColor.White, padding: 20, borderRadius: 8 },
+  modalViewDetail: { position: 'relative', width: '90%', maxHeight: '85%', backgroundColor: '#FFFFFF', padding: 20, borderRadius: 8 },
 
-  modalHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: '#E0E0E0', marginBottom: 15 },
+  modalHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)', marginBottom: 15 },
 
-  modalTitle: { fontSize: 16, color: '#333' },
+  modalTitle: { fontSize: 16, color: '#01044B' },
 
-  detailSection: { marginBottom: 20, paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
+  detailSection: { marginBottom: 20, paddingBottom: 15, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)' },
 
-  sectionTitle: { fontSize: 14, color: ThemeColor.Forest, marginBottom: 12 },
+  sectionTitle: { fontSize: 14, color: '#171C8F', marginBottom: 12 },
 
   detailRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
 
-  detailLabel: { fontSize: 13, color: '#666', flex: 0.4 },
+  detailLabel: { fontSize: 13, color: 'rgba(1,4,75,0.62)', flex: 0.4 },
 
-  detailValue: { fontSize: 13, color: '#333', fontWeight: '500', flex: 0.6, textAlign: 'right' },
+  detailValue: { fontSize: 13, color: '#01044B', fontWeight: '500', flex: 0.6, textAlign: 'right' },
 
-  commentItem: { backgroundColor: '#F9F9F9', padding: 12, borderRadius: 6, marginBottom: 10, borderLeftWidth: 3, borderLeftColor: ThemeColor.Forest },
+  commentItem: { backgroundColor: '#FFFFFF', padding: 12, borderRadius: 6, marginBottom: 10, borderLeftWidth: 3, borderLeftColor: '#171C8F' },
 
   commentHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
 
-  commentUser: { fontSize: 12, color: '#333' },
+  commentUser: { fontSize: 12, color: '#01044B' },
 
-  commentDate: { fontSize: 11, color: '#999' },
+  commentDate: { fontSize: 11, color: 'rgba(1,4,75,0.62)' },
 
-  commentText: { fontSize: 13, color: '#555' },
+  commentText: { fontSize: 13, color: 'rgba(1,4,75,0.62)' },
 
   actionButtonContainer: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 20, gap: 10 },
 
-  approveButton: { flex: 1, backgroundColor: '#4CAF50' },
+  approveButton: { flex: 1, backgroundColor: '#171C8F' },
 
-  sendBackButton: { flex: 1, backgroundColor: '#FF9800' },
+  sendBackButton: { flex: 1, backgroundColor: '#171C8F' },
 
   inputContainer: { marginBottom: 20 },
 
-  inputLabel: { fontSize: 13, color: '#333', marginBottom: 8 },
+  inputLabel: { fontSize: 13, color: '#01044B', marginBottom: 8 },
 
-  input: { borderWidth: 1, borderColor: ThemeColor.Forest, borderRadius: 8, padding: 10, fontSize: 13, backgroundColor: '#fff' },
+  input: { borderWidth: 1, borderColor: '#171C8F', borderRadius: 8, padding: 10, fontSize: 13, backgroundColor: '#FFFFFF' },
 
   // Disabled / non-editable approved amount styles
 
   inputDisabled: {
 
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#FFFFFF',
 
-    borderColor: '#BDBDBD',
+    borderColor: 'rgba(23,28,143,0.1)',
 
     justifyContent: 'center',
 
@@ -3690,7 +3690,7 @@ const styles = StyleSheet.create({
 
     fontSize: 13,
 
-    color: '#757575',
+    color: 'rgba(1,4,75,0.62)',
 
   },
 
@@ -3698,7 +3698,7 @@ const styles = StyleSheet.create({
 
     fontSize: 11,
 
-    color: '#9E9E9E',
+    color: 'rgba(1,4,75,0.62)',
 
     marginTop: 4,
 
@@ -3706,21 +3706,21 @@ const styles = StyleSheet.create({
 
   },
 
-  modalContainer: { flex: 1, backgroundColor: GlobalColor.PrimaryLight },
+  modalContainer: { flex: 1, backgroundColor: '#F5F5F5' },
 
   modalHeaderFull: {
 
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
 
-    padding: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#E0E0E0',
+    padding: 15, backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)',
 
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
+    shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
 
   },
 
-  modalTitleFull: { fontSize: 20, color: ThemeColor.Forest },
+  modalTitleFull: { fontSize: 20, color: '#171C8F' },
 
-  modalSubtitle: { fontSize: 13, color: '#666', marginTop: 2 },
+  modalSubtitle: { fontSize: 13, color: 'rgba(1,4,75,0.62)', marginTop: 2 },
 
   closeButton: { padding: 5 },
 
@@ -3728,53 +3728,53 @@ const styles = StyleSheet.create({
 
   attachmentCard: {
 
-    backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
+    backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
 
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
+    shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
 
   },
 
-  attachmentHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: ThemeColor.Forest },
+  attachmentHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 15, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: '#171C8F' },
 
-  attachmentFileName: { fontSize: 14, color: '#333' },
+  attachmentFileName: { fontSize: 14, color: '#01044B' },
 
-  attachmentFileDesc: { fontSize: 12, color: '#666', marginTop: 3 },
+  attachmentFileDesc: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 3 },
 
   attachmentDetails: { marginBottom: 10 },
 
-  tableRow: { flexDirection: 'row', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#F0F0F0' },
+  tableRow: { flexDirection: 'row', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)' },
 
-  tableLabel: { flex: 0.4, fontSize: 12, color: '#666', fontWeight: '600' },
+  tableLabel: { flex: 0.4, fontSize: 12, color: 'rgba(1,4,75,0.62)', fontWeight: '600' },
 
-  tableValue: { flex: 0.6, fontSize: 12, color: '#333' },
+  tableValue: { flex: 0.6, fontSize: 12, color: '#01044B' },
 
-  viewPdfButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#4CAF50', paddingVertical: 10, paddingHorizontal: 15, borderRadius: 6, marginTop: 10 },
+  viewPdfButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#171C8F', paddingVertical: 10, paddingHorizontal: 15, borderRadius: 6, marginTop: 10 },
 
-  viewImageButton: { backgroundColor: ThemeColor.Teal },
+  viewImageButton: { backgroundColor: '#171C8F' },
 
-  viewPdfButtonText: { color: '#fff', fontSize: 14, fontWeight: 'bold', marginLeft: 8 },
+  viewPdfButtonText: { color: '#FFFFFF', fontSize: 14, fontWeight: 'bold', marginLeft: 8 },
 
-  pdfModalContainer: { flex: 1, backgroundColor: '#525659' },
+  pdfModalContainer: { flex: 1, backgroundColor: '#01044B' },
 
-  pdfHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 15, backgroundColor: ThemeColor.Forest },
+  pdfHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 15, backgroundColor: '#171C8F' },
 
-  pdfTitle: { fontSize: 16, color: '#fff' },
+  pdfTitle: { fontSize: 16, color: '#FFFFFF' },
 
   pdfCloseButton: { padding: 5 },
 
-  webView: { flex: 1, backgroundColor: '#525659' },
+  webView: { flex: 1, backgroundColor: '#01044B' },
 
-  pdfLoadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#525659' },
+  pdfLoadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#01044B' },
 
-  pdfLoadingText: { fontSize: 16, color: '#fff', marginTop: 15 },
+  pdfLoadingText: { fontSize: 16, color: '#FFFFFF', marginTop: 15 },
 
   // ── NEW: Activity Log card styles (matching IntimationReport) ─────────────────
   activityLogCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     padding: 15,
     marginBottom: 15,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
@@ -3787,12 +3787,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingBottom: 10,
     borderBottomWidth: 2,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
-  activitySeqNo: { fontSize: 16, color: ThemeColor.Teal },
-  activityStatus: { fontSize: 13, color: '#666', fontWeight: '600' },
+  activitySeqNo: { fontSize: 16, color: '#171C8F' },
+  activityStatus: { fontSize: 13, color: 'rgba(1,4,75,0.62)', fontWeight: '600' },
   activityLogTable: { width: '100%' },
-  actionTaken: { color: '#4CAF50', fontWeight: 'bold' },
-  newStatus: { color: ThemeColor.Teal, fontWeight: 'bold' },
+  actionTaken: { color: '#171C8F', fontWeight: 'bold' },
+  newStatus: { color: '#171C8F', fontWeight: 'bold' },
 
 });

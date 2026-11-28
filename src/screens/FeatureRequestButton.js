@@ -281,12 +281,12 @@ export default function FeatureRequestButton({
           />
           <View style={styles.floatingButton}>
             <LinearGradient
-              colors={[GlobalColor.Secondary, GlobalColor.SecondryGradient]}
+              colors={['#171C8F', '#01044B']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.floatingButtonGradient}
             >
-              <MaterialCommunityIcons name="lightbulb-on" size={24} color={GlobalColor.White} />
+              <MaterialCommunityIcons name="lightbulb-on" size={24} color={'#FFFFFF'} />
             </LinearGradient>
           </View>
         </Animated.View>
@@ -316,7 +316,7 @@ export default function FeatureRequestButton({
                   { transform: [{ scale: modalScaleAnim }], opacity: modalOpacityAnim },
                 ]}
               >
-                <LinearGradient colors={[ThemeColor.TealLight, ThemeColor.TealSoft]} style={styles.modalGradient}>
+                <LinearGradient colors={['#F5F5F5', 'rgba(23,28,143,0.1)']} style={styles.modalGradient}>
                   <View style={styles.modalIconWrapper}>
                     <Animated.View
                       style={[styles.burstRing, { transform: [{ scale: burstScale2 }], opacity: burstOpacity2 }]}
@@ -326,7 +326,7 @@ export default function FeatureRequestButton({
                     />
                     <View style={styles.modalIconCircle}>
                       <Animated.View style={{ transform: [{ rotate: iconSpin }] }}>
-                        <MaterialCommunityIcons name="lightbulb-on-outline" size={30} color={GlobalColor.Primary} />
+                        <MaterialCommunityIcons name="lightbulb-on-outline" size={30} color={'#01044B'} />
                       </Animated.View>
                     </View>
                   </View>
@@ -355,7 +355,7 @@ export default function FeatureRequestButton({
                               ]
                             }}
                           >
-                            <MaterialCommunityIcons name="check-circle" size={50} color="#4CAF50" />
+                            <MaterialCommunityIcons name="check-circle" size={50} color="#171C8F" />
                           </Animated.View>
                         </View>
                       </View>
@@ -370,7 +370,7 @@ export default function FeatureRequestButton({
                       <TextInput
                         style={styles.modalInput}
                         placeholder="Request a new feature..."
-                        placeholderTextColor={GlobalColor.LightDark}
+                        placeholderTextColor={'rgba(1,4,75,0.62)'}
                         multiline
                         numberOfLines={4}
                         value={featureText}
@@ -431,14 +431,14 @@ const styles = StyleSheet.create({
     width: 54,
     height: 54,
     borderRadius: 27,
-    backgroundColor: GlobalColor.Secondary,
+    backgroundColor: '#171C8F',
   },
   floatingButton: {
     width: 46,
     height: 46,
     borderRadius: 23,
     elevation: 10,
-    shadowColor: GlobalColor.Secondary,
+    shadowColor: '#01044B',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
@@ -457,20 +457,20 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderWidth: 1.5,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 6,
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -484,7 +484,7 @@ const styles = StyleSheet.create({
     width: width * 0.85,
     borderRadius: 24,
     elevation: 15,
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.3,
     shadowRadius: 15,
@@ -507,13 +507,13 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 28,
     borderWidth: 2,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
   },
   modalIconCircle: {
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 4,
@@ -521,30 +521,30 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: GlobalColor.Primary,
+    color: '#01044B',
     marginBottom: 4,
   },
   modalSubtitle: {
     fontSize: 13,
-    color: GlobalColor.Text,
+    color: 'rgba(1,4,75,0.62)',
     marginBottom: 16,
     textAlign: 'center',
   },
   modalInput: {
     width: '100%',
     minHeight: 100,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderRadius: 14,
     padding: 14,
     fontSize: 14,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     borderWidth: 1,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
     marginBottom: 8,
   },
   characterCounter: {
     fontSize: 12,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'right',
     marginBottom: 12,
   },
@@ -559,12 +559,12 @@ const styles = StyleSheet.create({
     marginRight: 8,
     borderRadius: 12,
     alignItems: 'center',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
   },
   modalCancelText: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
     fontWeight: '700',
   },
   modalSubmitBtn: {
@@ -573,13 +573,13 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     borderRadius: 12,
     alignItems: 'center',
-    backgroundColor: GlobalColor.Secondary,
+    backgroundColor: '#171C8F',
   },
   modalSubmitBtnDisabled: {
-    backgroundColor: GlobalColor.LightDark,
+    backgroundColor: '#F5F5F5',
   },
   modalSubmitText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     fontWeight: '700',
   },
   successIconWrapper: {
@@ -595,13 +595,13 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 35,
     borderWidth: 3,
-    borderColor: '#4CAF50',
+    borderColor: '#171C8F',
   },
   successIconCircle: {
     width: 70,
     height: 70,
     borderRadius: 35,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 6,
@@ -612,7 +612,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dismissButtonText: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
     fontSize: 13,
     textDecorationLine: 'underline',
   },

@@ -675,7 +675,7 @@ const CreateRequestRhtk = ({navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       <Spinner
         visible={loader}
         textContent={'Loading...'}
@@ -737,21 +737,21 @@ const CreateRequestRhtk = ({navigation}) => {
             {/* Selct Date And Time */}
 
             <Text style={{ paddingVertical: 10, paddingHorizontal: 0,fontSize:13 }} Bold>
-                                Select Date {<Text style  ={{color :'red'}}>*</Text>}
+                                Select Date {<Text style  ={{color :'#01044B'}}>*</Text>}
                             </Text>
                             <View
                                 style={{
                                     width: '100%',
                                     alignSelf: 'center',
                                     borderWidth: 1,
-                                    borderColor: '#fff',
+                                    borderColor: 'rgba(23,28,143,0.1)',
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     flexDirection: 'row',
                                     padding: 10,
                                     marginVertical: 0,
-                                    backgroundColor: '#fff',
-                                    shadowColor: '#000',
+                                    backgroundColor: '#FFFFFF',
+                                    shadowColor: '#01044B',
                                     shadowOffset: {
                                         width: 0,
                                         height: 2,
@@ -812,7 +812,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                     <TextInput2
                                         placeholder="Start date"
                                         style={{
-                                            color: '#000',
+                                            color: '#01044B',
                                             fontSize:13
                                         }}
                                         editable={false}
@@ -823,7 +823,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                         <Ionicons
                                             name="calendar-outline"
                                             size={25}
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -859,7 +859,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                         justifyContent: 'space-between',
                                     }}>
                                     <TextInput2
-                                        style={{ color: '#000', letterSpacing: 1,fontSize:13 }}
+                                        style={{ color: '#01044B', letterSpacing: 1,fontSize:13 }}
                                         placeholder="End Date"
                                         editable={false}
                                         paddingHorizontal={14}
@@ -869,7 +869,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                         <Ionicons
                                             name="calendar-outline"
                                             size={25}
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -898,13 +898,13 @@ const CreateRequestRhtk = ({navigation}) => {
                 onChangeText={text => setInputValue(text)}
                 style={{
                   width: '100%',
-                  backgroundColor: '#fff',
+                  backgroundColor: '#FFFFFF',
                   borderWidth: 1,
                   alignItems: 'center',
                   flexDirection: 'row',
                   padding: 6,
                   alignSelf: 'center',
-                  borderColor: ThemeColor.Teal,
+                  borderColor: '#171C8F',
                   fontSize: 13,
                 }}
               />
@@ -916,7 +916,7 @@ const CreateRequestRhtk = ({navigation}) => {
                     alignSelf: 'center',
                     paddingVertical: 2,
                   }}>
-                  <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                  <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.reason}
                   </Text>
                 </View>
@@ -946,7 +946,7 @@ const CreateRequestRhtk = ({navigation}) => {
                 onChangeText={text => setvehNo(text)}
                 style={{
                   width: '100%',
-                  backgroundColor: '#fff',
+                  backgroundColor: '#F5F5F5',
                   borderWidth: 1,
                   alignItems: 'center',
                   flexDirection: 'row',
@@ -963,7 +963,7 @@ const CreateRequestRhtk = ({navigation}) => {
                     alignSelf: 'center',
                     paddingVertical: 2,
                   }}>
-                  <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                  <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.reason}
                   </Text>
                 </View>
@@ -980,7 +980,7 @@ const CreateRequestRhtk = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Purpose  {<Text style  ={{color :'red'}}>*</Text>}
+                  Purpose  {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 {/* <TextInput
                   placeholder="Reason"
@@ -991,7 +991,7 @@ const CreateRequestRhtk = ({navigation}) => {
                  onChangeText={text => setreson(text)}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#F5F5F5',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
@@ -1015,7 +1015,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={Purpose}
                     onSelect={(selectedItem, index) => {
 // $&
@@ -1029,7 +1029,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1047,7 +1047,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -1066,15 +1066,15 @@ const CreateRequestRhtk = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Select Area {<Text style  ={{color :'red'}}>*</Text>}
+                  Select Area {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <View
                   style={{
                     width: '100%',
                     borderWidth: 1,
                     borderRadius: 5,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1094,7 +1094,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               key={index}
                               style={{
                                 padding: 5,
-                                backgroundColor: ThemeColor.Teal,
+                                backgroundColor: '#171C8F',
                                 margin: 5,
                                 borderRadius: 20,
                                 flexDirection: 'row',
@@ -1105,7 +1105,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               <TextInput
                                 editable={false}
                                 style={{
-                                  color: '#fff',
+                                  color: '#FFFFFF',
                                   padding: 5,
                                   fontSize: 13,
                                 }}>
@@ -1122,7 +1122,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={27}
-                                  color={ThemeColor.Teal}
+                                  color={'#FFFFFF'}
                                 />
                               </TouchableOpacity>
                             </View>
@@ -1132,12 +1132,12 @@ const CreateRequestRhtk = ({navigation}) => {
                     </ScrollView>
                     <TouchableOpacity onPress={toggleBuilding}>
                       {show == true ? (
-                        <Ionicons name="caret-up" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="caret-up" size={25} color={'#171C8F'} />
                       ) : (
                         <Ionicons
                           name="caret-down"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       )}
                     </TouchableOpacity>
@@ -1172,13 +1172,13 @@ const CreateRequestRhtk = ({navigation}) => {
                               width: '48%',
                               padding: 10,
                               // borderWidth: 1,
-                              borderColor: GlobalColor.Secondary,
+                              borderColor: '#171C8F',
                               flexDirection: 'row',
                               justifyContent: 'space-between',
                               margin: 2,
                               backgroundColor: item.isSelected
-                                ? '#C9EFD9'
-                                : '#eee',
+                                ? '#F5F5F5'
+                                : '#FFFFFF',
                             }}
                             onPress={() => {
                               let newState = [...BuildingData];
@@ -1206,13 +1206,13 @@ const CreateRequestRhtk = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               ) : (
                                 <Ionicons
                                   name="add-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               )}
                             </View>
@@ -1231,7 +1231,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.building}
                     </Text>
                   </View>
@@ -1244,7 +1244,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               alignSelf: 'center',
                               paddingVertical: 2,
                             }}>
-                            <Text style={{ fontSize: 12, color: 'red' }}>
+                            <Text style={{ fontSize: 12, color: '#01044B' }}>
                              {errors.building}
                             </Text>
                           </View>
@@ -1269,8 +1269,8 @@ const CreateRequestRhtk = ({navigation}) => {
                     width: '100%',
                     borderWidth: 1,
                     borderRadius: 5,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1291,7 +1291,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               key={index}
                               style={{
                                 padding: 5,
-                                backgroundColor: ThemeColor.Teal,
+                                backgroundColor: '#171C8F',
                                 margin: 5,
                                 borderRadius: 20,
                                 flexDirection: 'row',
@@ -1302,7 +1302,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               <TextInput
                                 editable={false}
                                 style={{
-                                  color: '#fff',
+                                  color: '#FFFFFF',
                                   padding: 5,
                                   fontSize: 13,
                                 }}>
@@ -1319,7 +1319,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={27}
-                                  color={ThemeColor.Teal}
+                                  color={'#FFFFFF'}
                                 />
                               </TouchableOpacity>
                             </View>
@@ -1329,12 +1329,12 @@ const CreateRequestRhtk = ({navigation}) => {
                     </ScrollView>
                     <TouchableOpacity onPress={toggleTestTrack}>
                       {isTrackShow == true ? (
-                        <Ionicons name="caret-up" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="caret-up" size={25} color={'#171C8F'} />
                       ) : (
                         <Ionicons
                           name="caret-down"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       )}
                     </TouchableOpacity>
@@ -1369,13 +1369,13 @@ const CreateRequestRhtk = ({navigation}) => {
                               width: '48%',
                               padding: 10,
                               // borderWidth: 1,
-                              borderColor: GlobalColor.Secondary,
+                              borderColor: '#171C8F',
                               flexDirection: 'row',
                               justifyContent: 'space-between',
                               margin: 2,
                               backgroundColor: item.isSelected
-                                ? '#C9EFD9'
-                                : '#eee',
+                                ? '#F5F5F5'
+                                : '#FFFFFF',
                             }}
                             onPress={() => {
                               let newState = [...TestTrackData];
@@ -1403,13 +1403,13 @@ const CreateRequestRhtk = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               ) : (
                                 <Ionicons
                                   name="add-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               )}
                             </View>
@@ -1428,7 +1428,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.building}
                     </Text>
                   </View>
@@ -1441,7 +1441,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               alignSelf: 'center',
                               paddingVertical: 2,
                             }}>
-                            <Text style={{ fontSize: 12, color: 'red' }}>
+                            <Text style={{ fontSize: 12, color: '#01044B' }}>
                              {errors.building}
                             </Text>
                           </View>
@@ -1470,13 +1470,13 @@ const CreateRequestRhtk = ({navigation}) => {
                   onChangeText={text => setActivityDone(text)}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FFFFFF',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
                     padding: 6,
                     alignSelf: 'center',
-                    borderColor: ThemeColor.Teal,
+                    borderColor: '#171C8F',
                     fontSize: 13,
                   }}
                 />
@@ -1488,7 +1488,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -1518,8 +1518,8 @@ const CreateRequestRhtk = ({navigation}) => {
                     width: '100%',
                     borderWidth: 1,
                     borderRadius: 5,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1540,7 +1540,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               key={index}
                               style={{
                                 padding: 5,
-                                backgroundColor: ThemeColor.Teal,
+                                backgroundColor: '#171C8F',
                                 margin: 5,
                                 borderRadius: 20,
                                 flexDirection: 'row',
@@ -1551,7 +1551,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               <TextInput
                                 editable={false}
                                 style={{
-                                  color: '#fff',
+                                  color: '#FFFFFF',
                                   padding: 5,
                                   fontSize: 13,
                                 }}>
@@ -1568,7 +1568,7 @@ const CreateRequestRhtk = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={27}
-                                  color={ThemeColor.Teal}
+                                  color={'#FFFFFF'}
                                 />
                               </TouchableOpacity>
                             </View>
@@ -1578,12 +1578,12 @@ const CreateRequestRhtk = ({navigation}) => {
                     </ScrollView>
                     <TouchableOpacity onPress={toggleAuthVeh}>
                       {isAuthVeh == true ? (
-                        <Ionicons name="caret-up" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="caret-up" size={25} color={'#171C8F'} />
                       ) : (
                         <Ionicons
                           name="caret-down"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       )}
                     </TouchableOpacity>
@@ -1618,13 +1618,13 @@ const CreateRequestRhtk = ({navigation}) => {
                               width: '48%',
                               padding: 10,
                               // borderWidth: 1,
-                              borderColor: GlobalColor.Secondary,
+                              borderColor: '#171C8F',
                               flexDirection: 'row',
                               justifyContent: 'space-between',
                               margin: 2,
                               backgroundColor: item.isSelected
-                                ? '#C9EFD9'
-                                : '#eee',
+                                ? '#F5F5F5'
+                                : '#FFFFFF',
                             }}
                             onPress={() => {
                               let newState = [...AuthVehData];
@@ -1652,13 +1652,13 @@ const CreateRequestRhtk = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               ) : (
                                 <Ionicons
                                   name="add-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               )}
                             </View>
@@ -1677,7 +1677,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.building}
                     </Text>
                   </View>
@@ -1690,7 +1690,7 @@ const CreateRequestRhtk = ({navigation}) => {
                               alignSelf: 'center',
                               paddingVertical: 2,
                             }}>
-                            <Text style={{ fontSize: 12, color: 'red' }}>
+                            <Text style={{ fontSize: 12, color: '#01044B' }}>
                              {errors.building}
                             </Text>
                           </View>
@@ -1716,7 +1716,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}>
-                    DQR {<Text style  ={{color :'red'}}>*</Text>}
+                    DQR {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <SelectDropdown
                     buttonTextAfterSelection={(selectedItem, index) => {
@@ -1731,7 +1731,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={options}
                     onSelect={(selectedItem, index) => {
 // $&
@@ -1745,7 +1745,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1763,7 +1763,7 @@ const CreateRequestRhtk = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.Dqr}
                       </Text>
                     </View>
@@ -1781,7 +1781,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}>
-                    Supervision Required {<Text style  ={{color :'red'}}>*</Text>}
+                    Supervision Required {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <SelectDropdown
                     buttonTextAfterSelection={(selectedItem, index) => {
@@ -1813,7 +1813,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1831,7 +1831,7 @@ const CreateRequestRhtk = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.internalVehical}
                       </Text>
                     </View>
@@ -1858,7 +1858,7 @@ const CreateRequestRhtk = ({navigation}) => {
                 <Spinner
                   visible={loader}
                   textContent={'Loading...'}
-                  textStyle={{color: '#fff'}}
+                  textStyle={{color: '#01044B'}}
                 />
               ) : null}
               {SuperReq == 'Y' ? (
@@ -1908,7 +1908,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1926,7 +1926,7 @@ const CreateRequestRhtk = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.internalVehical}
                       </Text>
                     </View>
@@ -1947,9 +1947,9 @@ const CreateRequestRhtk = ({navigation}) => {
                                             boxType="square"
                                             // hideBox
                                             style={{ height: 20, width: 20, marginRight:5 }}
-                                            tintColors={{ true: GlobalColor.Secondary, false: GlobalColor.LightDark }}
-                                            onCheckColor={GlobalColor.Secondary}
-                                            onTintColor={GlobalColor.Secondary}
+                                            tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
+                                            onCheckColor={'#171C8F'}
+                                            onTintColor={'#171C8F'}
                                         />  
               <Text Bold style={styles.checkboxText}>
               Required to drive vehicle in R&D Centre
@@ -1974,7 +1974,7 @@ const CreateRequestRhtk = ({navigation}) => {
                 }}>
                 <View
                   style={{
-                    backgroundColor: GlobalColor.White,
+                    backgroundColor: '#FFFFFF',
                     padding: 0,
                     borderRadius: 0,
                     width: '100%',
@@ -1991,7 +1991,7 @@ const CreateRequestRhtk = ({navigation}) => {
                       style={styles.searchIcon}
                       name="close-circle-outline"
                       size={30}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                     />
                   </TouchableOpacity>
 
@@ -2025,7 +2025,7 @@ const CreateRequestRhtk = ({navigation}) => {
                           style={styles.searchIcon}
                           name="person-circle-outline"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                         <View
                           style={{
@@ -2043,7 +2043,7 @@ const CreateRequestRhtk = ({navigation}) => {
                             style={styles.searchIcon}
                             name="chevron-forward-circle-outline"
                             size={25}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                           />
                         </TouchableOpacity>
                       </TouchableOpacity>
@@ -2085,8 +2085,8 @@ const styles = StyleSheet.create({
   box: {
     // width: '90%',
     padding: 5,
-    backgroundColor: '#FFF',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -2106,8 +2106,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
 
   // Dropdown styles
@@ -2116,25 +2116,25 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 14},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   centeredView: {
     flex: 0.9,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: GlobalColor.Primary,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -2144,7 +2144,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
   },
   checkboxLabel: {

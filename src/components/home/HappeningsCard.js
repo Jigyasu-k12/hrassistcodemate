@@ -11,13 +11,13 @@ const STACK_OFFSET = 18; // room for the two layers peeking above the card
 const Banner = ({uri, width, height}) => {
   const [failed, setFailed] = useState(false);
   return (
-    <View style={{width, height, backgroundColor: P.deep}}>
+    <View style={{width, height, backgroundColor: '#171C8F'}}>
       {failed ? (
-        <LinearGradient colors={[P.tealInk, P.deep]} style={styles.fallback}>
+        <LinearGradient colors={['#171C8F', '#01044B']} style={styles.fallback}>
           <HomeIcon
             name="sparkle"
             size={36}
-            color="rgba(255,255,255,0.35)"
+            color="rgba(255,255,255,0.45)"
             strokeWidth={1.4}
           />
           <HText style={styles.fallbackText}>Highlights will appear here</HText>
@@ -66,7 +66,7 @@ const HappeningsCard = ({images = [], active = true, reduceMotion = false}) => {
           <HomeIcon
             name="sparkle"
             size={18}
-            color={P.amberInk}
+            color={'#171C8F'}
             strokeWidth={2}
           />
           <HText style={styles.title} accessibilityRole="header">
@@ -113,7 +113,7 @@ const HappeningsCard = ({images = [], active = true, reduceMotion = false}) => {
           />
           <LinearGradient
             pointerEvents="none"
-            colors={['rgba(7,30,32,0)', 'rgba(7,30,32,0.7)']}
+            colors={['rgba(255,255,255,0)', '#01044B']}
             style={styles.scrim}>
             <View style={styles.dots}>
               {images.map((_, i) => (
@@ -144,28 +144,28 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   titleRow: {flexDirection: 'row', alignItems: 'center'},
-  title: {...TYPE.title, color: P.deep, marginLeft: 8},
+  title: {...TYPE.title, color: '#01044B', marginLeft: 8},
   countChip: {
     height: 24,
     paddingHorizontal: 10,
     borderRadius: 12,
-    backgroundColor: P.amberCream,
+    backgroundColor: '#F5F5F5',
     justifyContent: 'center',
   },
-  countText: {fontSize: 12, fontWeight: '700', color: P.amberInk},
+  countText: {fontSize: 12, fontWeight: '700', color: '#171C8F'},
   layer: {position: 'absolute', height: 120, borderRadius: 18},
   layerBack: {
     left: 28,
     right: 28,
     top: 0,
-    backgroundColor: P.amberDeep,
+    backgroundColor: '#171C8F',
     opacity: 0.45,
   },
   layerMid: {
     left: 14,
     right: 14,
     top: 8,
-    backgroundColor: P.amberInk,
+    backgroundColor: '#171C8F',
     opacity: 0.7,
   },
   card: {
@@ -173,8 +173,8 @@ const styles = StyleSheet.create({
     left: 0,
     borderRadius: 20,
     overflow: 'hidden',
-    backgroundColor: P.deep,
-    shadowColor: P.deeper,
+    backgroundColor: '#171C8F',
+    shadowColor: '#01044B',
     shadowOpacity: 0.18,
     shadowRadius: 12,
     shadowOffset: {width: 0, height: 10},
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   },
   dots: {flexDirection: 'row', alignItems: 'center'},
   dotBase: {height: 6, borderRadius: 3, marginRight: 5},
-  dotOn: {width: 20, backgroundColor: P.amber},
+  dotOn: {width: 20, backgroundColor: '#FCBE62'},
   dotOff: {width: 6, backgroundColor: 'rgba(255,255,255,0.55)'},
   pos: {fontSize: 12, fontWeight: '600', color: '#FFFFFF'},
   fallback: {flex: 1, alignItems: 'center', justifyContent: 'center'},

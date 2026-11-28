@@ -543,7 +543,7 @@ const AccumulatedHours = () => {
   
             flex: 0.3,
   
-            color: item.CURR_OST < 0 ? 'red' : 'green',
+            color: item.CURR_OST < 0 ? '#01044B' : '#171C8F',
   
            
   
@@ -624,7 +624,7 @@ const AccumulatedHours = () => {
               const rad = (angle * Math.PI) / 180;
               const x = size / 2 + radius * Math.cos(rad);
               const y = size / 2 + radius * Math.sin(rad);
-              return <Circle key={index} cx={x} cy={y} r={6} fill="#E0E0E0" />;
+              return <Circle key={index} cx={x} cy={y} r={6} fill="#F5F5F5" />;
             })}
             {[...Array(20)].map((_, index) => {
               const angle = (index / 20) * 360 - 90;
@@ -637,7 +637,7 @@ const AccumulatedHours = () => {
                   cx={x}
                   cy={y}
                   r={6}
-                  fill={ThemeColor.Teal}
+                  fill={'#171C8F'}
                   opacity={dotOpacity.interpolate({
                     inputRange: [index / 20, (index + 1) / 20],
                     outputRange: [0, 1],
@@ -655,17 +655,17 @@ const AccumulatedHours = () => {
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke="#E0E0E0"
+              stroke="rgba(23,28,143,0.1)"
               strokeWidth={strokeWidth}
-              fill="transparent"
+              fill="rgba(255,255,255,0)"
             />
             <AnimatedCircle
               cx={size / 2}
               cy={size / 2}
               r={radius}
-              stroke={ThemeColor.Teal}
+              stroke={'#171C8F'}
               strokeWidth={strokeWidth}
-              fill="transparent"
+              fill="rgba(255,255,255,0)"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
               strokeLinecap="round"
@@ -705,7 +705,7 @@ const AccumulatedHours = () => {
             <FontAwesome
               name="circle"
               size={8}
-              color={graphicTheme === 'dotarc' ? ThemeColor.Teal : '#E0E0E0'}
+              color={graphicTheme === 'dotarc' ? '#171C8F' : 'rgba(1,4,75,0.45)'}
               style={[
                 styles.themeIcon,
                 graphicTheme === 'dotarc' && styles.themeIconActive,
@@ -716,7 +716,7 @@ const AccumulatedHours = () => {
             <FontAwesome
               name="circle-o"
               size={8}
-              color={graphicTheme === 'ring' ? ThemeColor.Teal : '#E0E0E0'}
+              color={graphicTheme === 'ring' ? '#171C8F' : 'rgba(1,4,75,0.45)'}
               style={[
                 styles.themeIcon,
                 graphicTheme === 'ring' && styles.themeIconActive,
@@ -734,23 +734,23 @@ const AccumulatedHours = () => {
         </View>
 
         {/* <View style ={{backgroundColor:ThemeColor.Teal}}>
-          <Text style = {{textAlign:'center',color:'#fff',fontWeight:'bold'}}>
+          <Text style = {{textAlign:'center',color:'#F5F5F5',fontWeight:'bold'}}>
           
             {convertToHoursMinutes(accum_os)}
             </Text>
-          <Text style = {{textAlign:'center',color:'#fff',fontWeight:'bold'}}>Accumulated Outstanding</Text>
+          <Text style = {{textAlign:'center',color:'#F5F5F5',fontWeight:'bold'}}>Accumulated Outstanding</Text>
         </View> */}
         {/* <View style={styles.accumulatedContainer}>
 <Text
       style={{
         fontSize: 18,
         fontWeight: 'bold',
-        color: accum_os < 0 ? 'red' : 'green',
+        color: accum_os < 0 ? '#01044B' : '#171C8F',
       }}
 >
       {convertToHoursMinutes(accum_os)}
 </Text>
-<Text style={{fontSize: 12, color: '#555'}}>Accumulated Outstanding</Text>
+<Text style={{fontSize: 12, color: '#171C8F'}}>Accumulated Outstanding</Text>
 </View> */}
 
         <View style={styles.separator} />
@@ -770,7 +770,7 @@ const AccumulatedHours = () => {
                   fontWeight: 'bold',
                 }}
               >
-                Year {<Text style={{ color: 'red' }}>*</Text>}
+                Year {<Text style={{ color: '#01044B' }}>*</Text>}
               </Text> */}
               <SelectDropdown
                 buttonTextAfterSelection={(selectedItem, index) => {
@@ -798,7 +798,7 @@ const AccumulatedHours = () => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   );
@@ -819,7 +819,7 @@ const AccumulatedHours = () => {
                   fontWeight: 'bold',
                 }}
               >
-                Payroll Month {<Text style={{ color: 'red' }}>*</Text>}
+                Payroll Month {<Text style={{ color: '#01044B' }}>*</Text>}
               </Text> */}
               <SelectDropdown
                 ref={payrollMonthRef}
@@ -848,7 +848,7 @@ const AccumulatedHours = () => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   );
@@ -894,7 +894,7 @@ const AccumulatedHours = () => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   );
@@ -910,13 +910,13 @@ const AccumulatedHours = () => {
         <DataTable
           style={{
             width: '100%',
-            backgroundColor: '#fff',
+            backgroundColor: '#FFFFFF',
             marginVertical: 15,
             flex: 1,
           }}>
        <DataTable.Header
   style={{
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     width: '100%', // ✅ Fit within screen
   }}
 >
@@ -964,7 +964,7 @@ const AccumulatedHours = () => {
           style={{
             minHeight: 230,
             borderRadius: 15,
-            backgroundColor: GlobalColor.White,
+            backgroundColor: '#FFFFFF',
           }}>
           {modalLoader ? (
             <LoadingScreen />
@@ -973,7 +973,7 @@ const AccumulatedHours = () => {
               <TouchableOpacity style={styles.ModalCloseIcon}>
                 <Feather
                   name="x-circle"
-                  color={ThemeColor.Teal}
+                  color={'#171C8F'}
                   size={25}
                   onPress={toggleModal}
                   style={{marginVertical: 10, marginHorizontal: 10}}
@@ -987,7 +987,7 @@ const AccumulatedHours = () => {
                   width: 90,
                   height: 90,
                   borderWidth: 3,
-                  borderColor: ThemeColor.Teal,
+                  borderColor: '#171C8F',
                   borderRadius: 65,
                   marginTop: 20,
                 }}>
@@ -1063,7 +1063,7 @@ const AccumulatedHours = () => {
                 style={{
                   // height: '23%',
                   marginTop: 5,
-                  // backgroundColor:'yellow',
+                  // backgroundColor:'#FCBE62',
                   flexDirection: 'row',
                   alignSelf: 'center',
                   justifyContent: 'space-around',
@@ -1097,7 +1097,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tableHeaderText: {
-    color: GlobalColor.Primary,
+    color: '#01044B',
     fontSize: 11, // ✅ Slightly smaller so it fits
     fontWeight: 'bold',
   },
@@ -1106,16 +1106,16 @@ const styles = StyleSheet.create({
   hoursText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#01044B',
   },
   label: {
     fontSize: 14,
-    color: '#666',
+    color: 'rgba(1,4,75,0.62)',
     marginTop: 4,
   },
   separator: {
     height: 1,
-    backgroundColor: '#E0E0E0',
+    backgroundColor: '#F5F5F5',
     width: '100%',
     marginVertical: 20,
   },
@@ -1127,7 +1127,7 @@ const styles = StyleSheet.create({
     height: 105,
     width: '100%',
     alignSelf: 'center',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     borderBottomLeftRadius: 50,
@@ -1139,16 +1139,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#F0F0F0',
+    borderBottomColor: 'rgba(255,255,255,0.22)',
   },
   detailLabel: {
     fontSize: 16,
-    color: '#666',
+    color: 'rgba(1,4,75,0.62)',
     fontWeight: '500',
   },
   detailValue: {
     fontSize: 16,
-    color: '#333',
+    color: '#01044B',
     fontWeight: 'bold',
   },
   gradient: {
@@ -1165,8 +1165,8 @@ const styles = StyleSheet.create({
   },
   box: {
     padding: 5,
-    backgroundColor: '#FFF',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -1186,8 +1186,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
   profileImg: {
     height: 50,
@@ -1200,25 +1200,25 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 14},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     borderRadius: 3,
     paddingHorizontal: 10,
@@ -1226,7 +1226,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
   },
   checkboxLabel: {
@@ -1244,10 +1244,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     marginTop: 10,
     borderWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   themeIconsContainer: {
     flexDirection: 'row',
@@ -1263,10 +1263,10 @@ const styles = StyleSheet.create({
   },
   ableRow: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 10,
     borderBottomWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   tableCell: {
     fontSize: 13,

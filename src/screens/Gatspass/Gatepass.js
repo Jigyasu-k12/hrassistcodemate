@@ -270,7 +270,7 @@ const Gatepass = ({navigation}) => {
   // }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       <Spinner
         visible={loader}
         textContent={'Loading...'}
@@ -419,7 +419,7 @@ const Gatepass = ({navigation}) => {
                 return (
                   <FontAwesome
                     name={isOpened ? 'chevron-up' : 'chevron-down'}
-                    color={'#444'}
+                    color={'rgba(1,4,75,0.62)'}
                     size={18}
                   />
                 );
@@ -436,7 +436,7 @@ const Gatepass = ({navigation}) => {
                   alignSelf: 'center',
                   paddingVertical: 2,
                 }}>
-                <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                   {errors.office}
                 </Text>
               </View>
@@ -483,20 +483,20 @@ const Gatepass = ({navigation}) => {
                   <TouchableOpacity
                     style={{
                       width: '100%',
-                      backgroundColor: GlobalColor.White,
+                      backgroundColor: '#FFFFFF',
                       borderWidth: 1,
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       flexDirection: 'row',
                       padding: 6,
                       alignSelf: 'center',
-                      borderColor: GlobalColor.Secondary,
+                      borderColor: '#171C8F',
                     }}
                     onPress={() => setOpenDateTimePicker(true)}>
-                    <Text style={{color: 'gray'}}>
+                    <Text style={{color: 'rgba(1,4,75,0.62)'}}>
                       {moment(values.date).format('YY/MM/DD hh:mm')}
                     </Text>
-                    {/* <Text style={{ color: 'gray' }}>
+                    {/* <Text style={{ color: 'rgba(1,4,75,0.62)' }}>
                     {moment(selectTime).format('LT')}
                   </Text> */}
                     <View>
@@ -509,7 +509,7 @@ const Gatepass = ({navigation}) => {
                         <Ionicons
                           name="calendar-outline"
                           size={25}
-                          color={GlobalColor.PrimaryGradient}
+                          color={'#171C8F'}
                         />
                       </View>
                     </View>
@@ -531,8 +531,8 @@ const Gatepass = ({navigation}) => {
                       width: '100%',
                       borderWidth: 1,
                       padding: 6,
-                      backgroundColor: '#fff',
-                      borderColor: GlobalColor.Secondary,
+                      backgroundColor: '#FFFFFF',
+                      borderColor: '#171C8F',
                     }}
                     onChangeText={handleChange('duration')}
                     onBlur={handleBlur('duration')}
@@ -549,7 +549,7 @@ const Gatepass = ({navigation}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{fontSize: 14, color: 'red', textAlign: 'right'}}>
+                    style={{fontSize: 14, color: '#01044B', textAlign: 'right'}}>
                     {errors.duration}
                   </Text>
                 </View>
@@ -596,7 +596,7 @@ const Gatepass = ({navigation}) => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={'#444'}
+                      color={'rgba(1,4,75,0.62)'}
                       size={18}
                     />
                   );
@@ -613,7 +613,7 @@ const Gatepass = ({navigation}) => {
                     alignSelf: 'center',
                     paddingVertical: 2,
                   }}>
-                  <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                  <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.searchLevel}
                   </Text>
                 </View>
@@ -639,13 +639,13 @@ const Gatepass = ({navigation}) => {
                   value={values.reason}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FFFFFF',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
                     padding: 6,
                     alignSelf: 'center',
-                    borderColor: GlobalColor.Secondary,
+                    borderColor: '#171C8F',
                     fontSize: 16,
                   }}
                 />
@@ -657,7 +657,7 @@ const Gatepass = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -696,7 +696,7 @@ const Gatepass = ({navigation}) => {
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={options}
                     onSelect={(selectedItem, index) => {
                       // // console.log($1);
@@ -708,7 +708,7 @@ const Gatepass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={'#444'}
+                          color={'rgba(1,4,75,0.62)'}
                           size={18}
                         />
                       );
@@ -726,7 +726,7 @@ const Gatepass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.persionalVehical}
                       </Text>
                     </View>
@@ -766,7 +766,7 @@ const Gatepass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={'#444'}
+                          color={'rgba(1,4,75,0.62)'}
                           size={18}
                         />
                       );
@@ -784,7 +784,7 @@ const Gatepass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.internalVehical}
                       </Text>
                     </View>
@@ -814,13 +814,13 @@ const Gatepass = ({navigation}) => {
                     value={values.vehicleNumber}
                     style={{
                       width: '100%',
-                      backgroundColor: '#fff',
+                      backgroundColor: '#FFFFFF',
                       borderWidth: 1,
                       alignItems: 'center',
                       flexDirection: 'row',
                       padding: 6,
                       alignSelf: 'center',
-                      borderColor: GlobalColor.Secondary,
+                      borderColor: '#171C8F',
                       fontSize: 16,
                       paddingVertical:8
                     }}
@@ -833,7 +833,7 @@ const Gatepass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.vehicleNumber}
                       </Text>
                     </View>
@@ -859,8 +859,8 @@ const Gatepass = ({navigation}) => {
                     width: '100%',
                     borderWidth: 1,
                     borderRadius: 5,
-                    backgroundColor: '#fff',
-                    borderColor: GlobalColor.Secondary,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -880,7 +880,7 @@ const Gatepass = ({navigation}) => {
                               key={index}
                               style={{
                                 padding: 5,
-                                backgroundColor: GlobalColor.Secondary,
+                                backgroundColor: '#171C8F',
                                 margin: 5,
                                 borderRadius: 20,
                                 flexDirection: 'row',
@@ -889,7 +889,7 @@ const Gatepass = ({navigation}) => {
                               }}>
                               <TextInput
                                 editable={false}
-                                style={{color: '#fff', padding: 5}}>
+                                style={{color: '#FFFFFF', padding: 5}}>
                                 {element.BNAME}
                               </TextInput>
                               <TouchableOpacity
@@ -908,12 +908,12 @@ const Gatepass = ({navigation}) => {
                     </ScrollView>
                     <TouchableOpacity onPress={toggleBuilding}>
                       {show == true ? (
-                        <Ionicons name="caret-up" size={30} color={ThemeColor.Teal} />
+                        <Ionicons name="caret-up" size={30} color={'#171C8F'} />
                       ) : (
                         <Ionicons
                           name="caret-down"
                           size={30}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       )}
                     </TouchableOpacity>
@@ -948,13 +948,13 @@ const Gatepass = ({navigation}) => {
                               width: '48%',
                               padding: 10,
                               // borderWidth: 1,
-                              borderColor: GlobalColor.Secondary,
+                              borderColor: '#171C8F',
                               flexDirection: 'row',
                               justifyContent: 'space-between',
                               margin: 2,
                               backgroundColor: item.isSelected
-                                ? '#C9EFD9'
-                                : '#eee',
+                                ? '#F5F5F5'
+                                : '#FFFFFF',
                             }}
                             onPress={() => {
                               let newState = [...BuildingData];
@@ -982,13 +982,13 @@ const Gatepass = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={25}
-                                  color={'#27ae60'}
+                                  color={'#171C8F'}
                                 />
                               ) : (
                                 <Ionicons
                                   name="add-circle"
                                   size={25}
-                                  color={GlobalColor.Secondary}
+                                  color={'#171C8F'}
                                 />
                               )}
                             </View>
@@ -1007,7 +1007,7 @@ const Gatepass = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.building}
                     </Text>
                   </View>
@@ -1020,7 +1020,7 @@ const Gatepass = ({navigation}) => {
                               alignSelf: 'center',
                               paddingVertical: 2,
                             }}>
-                            <Text style={{ fontSize: 12, color: 'red' }}>
+                            <Text style={{ fontSize: 12, color: '#01044B' }}>
                              {errors.building}
                             </Text>
                           </View>
@@ -1047,8 +1047,8 @@ const Gatepass = ({navigation}) => {
                     borderWidth: 1,
                     borderRadius: 5,
                     alignSelf: 'center',
-                    backgroundColor: '#fff',
-                    borderColor: GlobalColor.Secondary,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1056,7 +1056,7 @@ const Gatepass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Feather name="search" size={20} color={ThemeColor.Teal} />
+                    <Feather name="search" size={20} color={'#171C8F'} />
                   </View>
 
                   <TextInput
@@ -1087,7 +1087,7 @@ const Gatepass = ({navigation}) => {
                         style={styles.searchIcon}
                         name="close-circle-outline"
                         size={25}
-                        color="#b2bec3"
+                        color="rgba(1,4,75,0.62)"
                       />
                     </TouchableOpacity>
                   ) : null}
@@ -1100,7 +1100,7 @@ const Gatepass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                    <Ionicons name="send" size={20} color={'#171C8F'} />
                   </TouchableOpacity>
                 </View>
 
@@ -1111,7 +1111,7 @@ const Gatepass = ({navigation}) => {
                       alignSelf: 'center',
                       paddingVertical: 2,
                     }}>
-                    <Text style={{fontSize: 14, color: 'red', marginTop: 10}}>
+                    <Text style={{fontSize: 14, color: '#01044B', marginTop: 10}}>
                       {errors.searchEmp}
                     </Text>
                   </View>
@@ -1119,7 +1119,7 @@ const Gatepass = ({navigation}) => {
 
                 {/* {search == '' ? (
                     <View>
-                      <Text style={{ fontSize: 14, color: 'red', marginTop: 10 }}>
+                      <Text style={{ fontSize: 14, color: '#01044B', marginTop: 10 }}>
                         {errors.searchEmp}
                       </Text>
                     </View>
@@ -1132,7 +1132,7 @@ const Gatepass = ({navigation}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{ fontSize: 12, color: 'red', textAlign: 'left' }}>
+                    style={{ fontSize: 12, color: '#01044B', textAlign: 'left' }}>
                     {searchAlert}
                   </Text>
                 </View>) : null} */}
@@ -1144,7 +1144,7 @@ const Gatepass = ({navigation}) => {
                 <Spinner
                   visible={loader}
                   textContent={'Loading...'}
-                  textStyle={{color: '#fff'}}
+                  textStyle={{color: '#01044B'}}
                 />
               ) : null}
               <View
@@ -1171,8 +1171,8 @@ const Gatepass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: GlobalColor.Secondary,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                 />
 
@@ -1194,8 +1194,8 @@ const Gatepass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: GlobalColor.Secondary,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                 />
 
@@ -1217,8 +1217,8 @@ const Gatepass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: GlobalColor.Secondary,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                 />
               </View>
@@ -1244,7 +1244,7 @@ const Gatepass = ({navigation}) => {
                 }}>
                 <View
                   style={{
-                    backgroundColor: GlobalColor.White,
+                    backgroundColor: '#FFFFFF',
                     padding: 0,
                     borderRadius: 0,
                     width: '100%',
@@ -1261,7 +1261,7 @@ const Gatepass = ({navigation}) => {
                       style={styles.searchIcon}
                       name="close-circle-outline"
                       size={30}
-                      color={GlobalColor.Primary}
+                      color={'#01044B'}
                     />
                   </TouchableOpacity>
 
@@ -1295,7 +1295,7 @@ const Gatepass = ({navigation}) => {
                           style={styles.searchIcon}
                           name="person-circle-outline"
                           size={25}
-                          color={GlobalColor.Secondary}
+                          color={'#171C8F'}
                         />
                         <View
                           style={{
@@ -1316,7 +1316,7 @@ const Gatepass = ({navigation}) => {
                             style={styles.searchIcon}
                             name="chevron-forward-circle-outline"
                             size={25}
-                            color={GlobalColor.Secondary}
+                            color={'#171C8F'}
                           />
                         </TouchableOpacity>
                       </TouchableOpacity>
@@ -1355,8 +1355,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: GlobalColor.Secondary,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
 
   // Dropdown styles
@@ -1365,25 +1365,25 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: GlobalColor.Secondary,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 16},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: '#C5C5C5',
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   centeredView: {
     flex: 0.9,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: GlobalColor.Primary,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -1393,7 +1393,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
   },
   checkboxLabel: {
     fontWeight: '700',

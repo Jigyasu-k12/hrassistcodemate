@@ -193,7 +193,7 @@ const OtherApps = ({ navigation }) => {
                 />
                 <Text
                   Bold
-                  style={{ fontSize: 15, paddingVertical: 5, color: '#4a4a4a', marginTop: 5 }}>
+                  style={{ fontSize: 15, paddingVertical: 5, color: 'rgba(1,4,75,0.62)', marginTop: 5 }}>
                   {item.LINK_DESC}
                 </Text>
               </TouchableOpacity>
@@ -209,7 +209,7 @@ const OtherApps = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   button: {
     display: 'flex',
@@ -218,11 +218,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: 17,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderWidth: 0.5,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: 'gray',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,

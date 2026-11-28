@@ -54,25 +54,25 @@ const HR_LOGO = require('../assets/Images/hrass.png');
 // ─── Tokens ───
 // New MSIL palette (forest green · teal glow · amber), applied to this screen only for now
 const C = {
-  forest: '#0E2421', // page base
-  forestDeep: '#0A1B19',
-  forestMid: '#163B35',
-  teal: '#2B8379', // Teal glow
-  amber: '#F2CB8A', // Amber — the one highlighted action
-  amberPressed: '#E4B56D',
-  mint: '#9ED8CB',
-  cream: '#F4F2EC',
-  glass: 'rgba(14,38,34,0.86)',
-  glassEdge: 'rgba(158,216,203,0.14)',
+  forest: '#171C8F', // page base
+  forestDeep: '#01044B',
+  forestMid: '#171C8F',
+  teal: '#171C8F', // Teal glow
+  amber: '#FCBE62', // Amber — the one highlighted action
+  amberPressed: '#FCBE62',
+  mint: 'rgba(255,255,255,0.72)',
+  cream: '#FFFFFF',
+  glass: 'rgba(1,4,75,0.86)',
+  glassEdge: 'rgba(255,255,255,0.14)',
   fill: 'rgba(255,255,255,0.06)',
   fillBorder: 'rgba(255,255,255,0.13)',
-  focus: '#F2CB8A',
-  link: '#9ED8CB',
+  focus: '#171C8F',
+  link: '#171C8F',
   white: '#FFFFFF',
-  text2: 'rgba(244,242,236,0.66)',
-  text3: 'rgba(244,242,236,0.38)',
-  danger: '#FF9C8F',
-  ink: '#16302B',
+  text2: 'rgba(255,255,255,0.66)',
+  text3: 'rgba(255,255,255,0.38)',
+  danger: '#FFFFFF',
+  ink: '#01044B',
 };
 const E_LOGO = Easing.bezier(0.32, 0.72, 0, 1);
 const E_OPEN = Easing.bezier(0.65, 0, 0.35, 1);
@@ -104,10 +104,10 @@ const GlassField = ({label, focused, invalid, right, inputRef, ...input}) => (
     onPress={() => inputRef?.current?.focus()}
     style={[styles.field, focused && styles.fieldFocused, invalid && styles.fieldInvalid]}>
     <View style={styles.flex}>
-      <RNText style={[styles.fieldLabel, focused && {color: C.focus}, invalid && {color: C.danger}]}>{label}</RNText>
+      <RNText style={[styles.fieldLabel, focused && {color: '#FFFFFF'}, invalid && {color: '#FFFFFF'}]}>{label}</RNText>
       <RNTextInput
         ref={inputRef}
-        placeholderTextColor={C.text3}
+        placeholderTextColor={'rgba(255,255,255,0.45)'}
         selectionColor={C.focus}
         keyboardAppearance="dark"
         autoCapitalize="none"
@@ -122,7 +122,7 @@ const GlassField = ({label, focused, invalid, right, inputRef, ...input}) => (
 
 const FieldError = ({children}) => (
   <View style={styles.errorRow}>
-    <Ionicons name="alert-circle" size={14} color={C.danger} />
+    <Ionicons name="alert-circle" size={14} color={'#FFFFFF'} />
     <Text style={styles.error}>{children}</Text>
   </View>
 );
@@ -139,10 +139,10 @@ const PillButton = ({title, onPress, style, busy, busyTitle}) => {
         onPressOut={() => press(1)}
         accessibilityRole="button"
         accessibilityState={{busy: !!busy, disabled: !!busy}}
-        style={({pressed}) => [styles.pill, (pressed || busy) && {backgroundColor: C.amberPressed}]}>
+        style={({pressed}) => [styles.pill, (pressed || busy) && {backgroundColor: '#FCBE62'}]}>
         {busy ? (
           <View style={styles.pillBusy}>
-            <ActivityIndicator size="small" color={C.ink} />
+            <ActivityIndicator size="small" color={'#01044B'} />
             <RNText style={[styles.pillText, styles.pillBusyText]}>{busyTitle || title}</RNText>
           </View>
         ) : (
@@ -583,7 +583,7 @@ const SignIn = ({navigation}) => {
         onPress={() => welcome.payload && finishSignIn(welcome.payload)}
         disabled={!welcome.payload}
         accessibilityLabel={welcome.payload ? 'Continue' : 'Signing in'}>
-        <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+        <StatusBar translucent backgroundColor="rgba(255,255,255,0)" barStyle="light-content" />
         <Animated.Image
           source={COCKPIT}
           resizeMode="cover"
@@ -591,7 +591,7 @@ const SignIn = ({navigation}) => {
           style={[styles.fill, {opacity: wi(0, 1), transform: [{scale: wi(1.06, 1)}]}]}
         />
         <LinearGradient
-          colors={['rgba(10,27,25,0.92)', 'rgba(14,40,36,0.62)', 'rgba(12,34,31,0.74)', 'rgba(10,27,25,0.96)']}
+          colors={['#01044B', '#171C8F', '#171C8F', '#01044B']}
           locations={[0, 0.4, 0.65, 1]}
           style={StyleSheet.absoluteFill}
         />
@@ -639,14 +639,14 @@ const SignIn = ({navigation}) => {
           setShowPass(false);
         }
       }}>
-      <Ionicons name={showPass == true ? 'eye-outline' : 'eye-off-outline'} size={21} color={C.text2} />
+      <Ionicons name={showPass == true ? 'eye-outline' : 'eye-off-outline'} size={21} color={'rgba(255,255,255,0.66)'} />
     </TouchableOpacity>
   );
   const codeStep = MarkAttandance != '0' && isFieldOTP == true;
 
   return (
     <View style={styles.root}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar translucent backgroundColor="rgba(255,255,255,0)" barStyle="light-content" />
 
       {/* Background: the last onboarding scene, blurred */}
       <Animated.Image
@@ -656,7 +656,7 @@ const SignIn = ({navigation}) => {
         style={[styles.fill, {transform: [{scale: drift.interpolate({inputRange: [0, 1], outputRange: [1.04, 1.12]})}, {translateY: drift.interpolate({inputRange: [0, 1], outputRange: [0, -14]})}]}]}
       />
       <LinearGradient
-        colors={['rgba(14,36,33,0.62)', 'rgba(16,44,40,0.18)', 'rgba(12,32,29,0.42)', 'rgba(10,27,25,0.92)']}
+        colors={['#171C8F', '#171C8F', '#171C8F', '#01044B']}
         locations={[0, 0.34, 0.6, 1]}
         style={StyleSheet.absoluteFill}
       />
@@ -670,12 +670,12 @@ const SignIn = ({navigation}) => {
           position: 'absolute',
           top: insets.top + 8,
           right: 12,
-          backgroundColor: '#FF6B6B',
+          backgroundColor: '#FFFFFF',
           padding: 10,
           borderRadius: 8,
           zIndex: 999,
         }}>
-        <Text style={{color: '#fff', fontSize: 12, fontWeight: 'bold'}}>DEV: View Onboarding</Text>
+        <Text style={{color: '#01044B', fontSize: 12, fontWeight: 'bold'}}>DEV: View Onboarding</Text>
       </TouchableOpacity>
       {/* END DEV ONLY */}
 
@@ -729,7 +729,7 @@ const SignIn = ({navigation}) => {
                       accessibilityLabel="Back"
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
                       style={styles.backBtn}>
-                      <Ionicons name="chevron-back" size={20} color={C.white} />
+                      <Ionicons name="chevron-back" size={20} color={'#FFFFFF'} />
                     </TouchableOpacity>
                     <RNText style={styles.title}>Enter the code</RNText>
                   </View>
@@ -856,7 +856,7 @@ const SignIn = ({navigation}) => {
 
       {/* Hand-off from the onboarding orb */}
       <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, {opacity: arrival}]}>
-        <LinearGradient colors={[C.teal, '#3A9488', C.teal]} style={StyleSheet.absoluteFill} />
+        <LinearGradient colors={['#171C8F', '#171C8F', '#171C8F']} style={StyleSheet.absoluteFill} />
       </Animated.View>
     </View>
   );
@@ -866,11 +866,11 @@ const SignIn = ({navigation}) => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: C.forest,
+    backgroundColor: '#171C8F',
   },
   glow: {
     position: 'absolute',
-    tintColor: C.teal,
+    tintColor: '#171C8F',
   },
   glowTop: {
     width: 520,
@@ -907,7 +907,7 @@ const styles = StyleSheet.create({
   brand: {
     alignItems: 'center',
     paddingHorizontal: 24,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOpacity: 0.35,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 2},
@@ -917,7 +917,7 @@ const styles = StyleSheet.create({
     paddingVertical: 13,
     borderRadius: 14,
     backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOpacity: 0.28,
     shadowRadius: 16,
     shadowOffset: {width: 0, height: 8},
@@ -928,24 +928,24 @@ const styles = StyleSheet.create({
     height: 2,
     borderRadius: 1,
     marginVertical: 18,
-    backgroundColor: C.amber,
+    backgroundColor: '#FCBE62',
   },
   hrLogo: {
     width: '74%',
     maxWidth: 300,
     height: 86,
-    tintColor: C.white,
+    tintColor: '#FFFFFF',
   },
 
   // Glass sheet
   sheet: {
     marginTop: 28,
-    backgroundColor: C.glass,
+    backgroundColor: 'rgba(1,4,75,0.55)',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     borderWidth: 1,
     borderBottomWidth: 0,
-    borderColor: C.glassEdge,
+    borderColor: 'rgba(255,255,255,0.22)',
     paddingHorizontal: 20,
     paddingTop: 10,
   },
@@ -962,19 +962,19 @@ const styles = StyleSheet.create({
     fontSize: 11.5,
     fontWeight: '700',
     letterSpacing: 2,
-    color: C.amber,
+    color: '#171C8F',
   },
   title: {
     fontSize: 27,
     lineHeight: 33,
     fontWeight: '700',
-    color: C.white,
+    color: '#FFFFFF',
   },
   subtitle: {
     marginTop: 4,
     fontSize: 15.5,
     lineHeight: 21,
-    color: C.text2,
+    color: 'rgba(255,255,255,0.66)',
   },
 
   // Segmented
@@ -992,9 +992,9 @@ const styles = StyleSheet.create({
     bottom: 3,
     left: 3,
     borderRadius: 9,
-    backgroundColor: 'rgba(43,131,121,0.55)',
+    backgroundColor: 'rgba(23,28,143,0.55)',
     borderWidth: 1,
-    borderColor: 'rgba(158,216,203,0.28)',
+    borderColor: 'rgba(255,255,255,0.28)',
   },
   segmentItem: {
     flex: 1,
@@ -1005,10 +1005,10 @@ const styles = StyleSheet.create({
   segmentText: {
     fontSize: 14.5,
     fontWeight: '500',
-    color: C.text2,
+    color: 'rgba(255,255,255,0.66)',
   },
   segmentTextActive: {
-    color: C.white,
+    color: '#FFFFFF',
     fontWeight: '600',
   },
 
@@ -1022,25 +1022,25 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 13,
     borderWidth: 1,
-    borderColor: C.fillBorder,
-    backgroundColor: C.fill,
+    borderColor: 'rgba(255,255,255,0.22)',
+    backgroundColor: 'rgba(255,255,255,0.14)',
   },
   fieldFocused: {
-    borderColor: C.focus,
+    borderColor: '#171C8F',
     borderWidth: 1.5,
   },
   fieldInvalid: {
-    borderColor: C.danger,
+    borderColor: '#01044B',
   },
   fieldLabel: {
     fontSize: 12.5,
-    color: C.text2,
+    color: 'rgba(255,255,255,0.66)',
   },
   fieldInput: {
     marginTop: 2,
     paddingVertical: 0,
     fontSize: 17,
-    color: C.white,
+    color: '#FFFFFF',
   },
   errorRow: {
     flexDirection: 'row',
@@ -1050,7 +1050,7 @@ const styles = StyleSheet.create({
   },
   error: {
     marginLeft: 5,
-    color: C.danger,
+    color: '#FFFFFF',
     fontSize: 12.5,
   },
 
@@ -1079,22 +1079,22 @@ const styles = StyleSheet.create({
     marginHorizontal: 6,
     borderRadius: 13,
     borderWidth: 1.2,
-    borderColor: C.fillBorder,
-    backgroundColor: C.fill,
+    borderColor: 'rgba(255,255,255,0.22)',
+    backgroundColor: 'rgba(255,255,255,0.14)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   codeBoxFilled: {
-    borderColor: 'rgba(158,216,203,0.6)',
+    borderColor: 'rgba(255,255,255,0.6)',
   },
   codeBoxActive: {
-    borderColor: C.focus,
+    borderColor: '#171C8F',
     borderWidth: 1.6,
   },
   codeDigit: {
     fontSize: 26,
     fontWeight: '600',
-    color: C.white,
+    color: '#FFFFFF',
   },
   codeHidden: {
     position: 'absolute',
@@ -1106,7 +1106,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     textAlign: 'center',
     fontSize: 13.5,
-    color: C.text3,
+    color: 'rgba(255,255,255,0.45)',
   },
 
   // Buttons & links
@@ -1115,7 +1115,7 @@ const styles = StyleSheet.create({
   },
   pillShadow: {
     borderRadius: 27,
-    shadowColor: C.amber,
+    shadowColor: '#01044B',
     shadowOpacity: 0.28,
     shadowRadius: 14,
     shadowOffset: {width: 0, height: 6},
@@ -1124,14 +1124,14 @@ const styles = StyleSheet.create({
   pill: {
     height: 54,
     borderRadius: 27,
-    backgroundColor: C.amber,
+    backgroundColor: '#FCBE62',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pillText: {
     fontSize: 17,
     fontWeight: '600',
-    color: C.ink,
+    color: '#01044B',
   },
   pillBusy: {
     flexDirection: 'row',
@@ -1147,7 +1147,7 @@ const styles = StyleSheet.create({
   link: {
     fontSize: 14.5,
     fontWeight: '500',
-    color: C.link,
+    color: '#171C8F',
   },
   copyRight: {
     marginTop: 8,
@@ -1159,7 +1159,7 @@ const styles = StyleSheet.create({
   // Welcome
   welcome: {
     flex: 1,
-    backgroundColor: C.forestDeep,
+    backgroundColor: '#01044B',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 32,
@@ -1168,14 +1168,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
     letterSpacing: 2.4,
-    color: C.amber,
+    color: '#171C8F',
   },
   welcomeTitle: {
     marginTop: 10,
     fontSize: 32,
     lineHeight: 38,
     fontWeight: '700',
-    color: C.white,
+    color: '#FFFFFF',
     textAlign: 'center',
   },
   welcomeName: {
@@ -1184,7 +1184,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 30,
     fontWeight: '600',
-    color: C.white,
+    color: '#FFFFFF',
     textAlign: 'center',
     textTransform: 'capitalize', // same as Home
     alignSelf: 'stretch',
@@ -1192,7 +1192,7 @@ const styles = StyleSheet.create({
   welcomeSub: {
     marginTop: 8,
     fontSize: 16,
-    color: C.text2,
+    color: 'rgba(255,255,255,0.66)',
   },
   welcomeBar: {
     position: 'absolute',
@@ -1201,12 +1201,12 @@ const styles = StyleSheet.create({
     height: 3,
     borderRadius: 2,
     overflow: 'hidden',
-    backgroundColor: 'rgba(244,242,236,0.12)',
+    backgroundColor: 'rgba(255,255,255,0.12)',
   },
   welcomeBarFill: {
     width: '100%',
     height: '100%',
-    backgroundColor: C.amber,
+    backgroundColor: '#FCBE62',
   },
 });
 

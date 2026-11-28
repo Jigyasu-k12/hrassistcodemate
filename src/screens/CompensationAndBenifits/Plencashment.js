@@ -382,8 +382,8 @@ const Plencashment = ({navigation, route}) => {
                   justifyContent: 'center',
                   marginTop: 30,
                   paddingVertical: 10,
-                  backgroundColor: GlobalColor.White,
-                  shadowColor: GlobalColor.Black,
+                  backgroundColor: '#FFFFFF',
+                  shadowColor: '#01044B',
                   shadowOffset: {
                     width: -0,
                     height: 1,
@@ -468,10 +468,10 @@ const Plencashment = ({navigation, route}) => {
                                   paddingHorizontal: 10,
                                   flexDirection: 'row',
                                   justifyContent: 'space-between',
-                                  backgroundColor: '#fff',
+                                  backgroundColor: '#FFFFFF',
                                   marginBottom: 3,
                                   borderWidth: 0.5,
-                                  borderColor: GlobalColor.LightDark,
+                                  borderColor: 'rgba(23,28,143,0.1)',
                                 },
                               ]}>
                               {item.PROCESSDATE ==
@@ -574,10 +574,10 @@ const Plencashment = ({navigation, route}) => {
                               paddingHorizontal: 10,
                               flexDirection: 'row',
                               justifyContent: 'space-between',
-                              backgroundColor: '#fff',
+                              backgroundColor: '#FFFFFF',
                               marginBottom: 3,
                               borderWidth: 0.5,
-                              borderColor: GlobalColor.LightDark,
+                              borderColor: 'rgba(23,28,143,0.1)',
                             },
                           ]}>
                           <Text style={{ flex:0.5 , fontSize:13}}>{Decrypt(item.LTCF_FAML_NAME)}</Text>
@@ -604,7 +604,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
    
   },
   box: {
@@ -614,23 +614,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     borderWidth: 0,
-    borderColor: GlobalColor.PrimaryGradient,
+    borderColor: '#171C8F',
   },
   spinnerTextStyle: {
-    color: '#FFF',
+    color: '#FFFFFF',
   },
   reportHeader: {
     width: '100%',
     alignSelf: 'center',
     marginVertical: 7,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingVertical: 15,
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 8,
     borderWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
 
   reportData: {},

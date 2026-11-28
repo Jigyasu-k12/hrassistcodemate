@@ -1,104 +1,102 @@
 export const GlobalColor = {
-    PrimaryGradient:'#499fd0',
-    SecondryGradient:'#0083B0',
-    Primary:'#192a56',
-    PrimaryLight:"#ebf4fa",
-    Secondary:'#43C6DB',
-    Text:"#444",
-    Dark:"#000",
-    Light:"#f8f9fa",
-    LightDark:'#7f8c8d',
-    White:"#fff",
-    Black:"#000",
-    ShadowColor:"#000",
+    PrimaryGradient:'#171C8F',
+    SecondryGradient:'#01044B',
+    Primary:'#01044B',
+    PrimaryLight:"#F5F5F5",
+    Secondary:'#171C8F',
+    Text:"rgba(1,4,75,0.62)",
+    Dark:"#01044B",
+    Light:"#F5F5F5",
+    LightDark:'rgba(1,4,75,0.62)',
+    White:"#FFFFFF",
+    Black:"#01044B",
+    ShadowColor:"#01044B",
 
 
-    Danger:'#f00'
+    Danger:'#01044B'
 }
 
 // ─────────────────────────────────────────────────────────────
-// "Teal Glow" theme — new brand palette.
-// Primary  : Teal  #2B8379 (replaces the old blues)
-// Accent   : Amber #F2CB8A (action buttons)
-// Being rolled out screen by screen; use these instead of hex literals.
+// Corporate Accent theme — Ink, Indigo, Mist, White and one Gold accent.
+// Primary  : Indigo #171C8F — headers, icons, links, selected states
+// Accent   : Gold   #FCBE62 — solid only; never used as text
 // ─────────────────────────────────────────────────────────────
 export const ThemeColor = {
-    // Teal scale
-    Teal: '#2B8379',          // primary — icons, links, brand text (4.5:1 on white)
-    TealDark: '#1F6B62',      // pressed states, emphasised text
-    TealDeep: '#163F3A',      // headings / high-contrast text
-    TealSoft: '#CFE6E2',      // borders, dividers, hairlines
-    TealLight: '#EAF4F2',     // tinted surfaces, header wash
-    TealGlow: 'rgba(43, 131, 121, 0.18)', // soft glow / shadow tint
+    // Indigo scale
+    Teal: '#171C8F',          // primary — icons, links, brand text (4.5:1 on white)
+    TealDark: '#171C8F',      // pressed states, emphasised text
+    TealDeep: '#01044B',      // headings / high-contrast text
+    TealSoft: 'rgba(23,28,143,0.10)', // borders, dividers, hairlines
+    TealLight: '#F5F5F5',     // tinted surfaces, header wash
+    TealGlow: 'rgba(23,28,143,0.18)', // soft glow / shadow tint
 
-    // Amber accent (action buttons)
-    Amber: '#F2CB8A',         // default
-    AmberLight: '#F5D9AE',    // hover / subtle
-    AmberDark: '#E2B983',     // pressed
-    OnAmber: '#1C2B27',       // text & icons on amber
-    FocusRing: '#3B6B5E',     // focus/selected outline around amber
+    // Gold accent (action buttons) — solid only
+    Amber: '#FCBE62',         // default
+    AmberLight: '#FCBE62',    // hover / subtle
+    AmberDark: '#01044B',     // pressed / shadow
+    OnAmber: '#01044B',       // text & icons on gold
+    FocusRing: '#171C8F',     // focus/selected outline
 
-    // Forest — deep surfaces (hero cards, sidebar). Also used as the
+    // Deep surfaces (hero cards, sidebar). Also used as the
     // Manager-mode colour so managers can still tell which mode they are in.
-    Forest: '#1D3D36',
-    ForestDeep: '#16302A',
+    Forest: '#171C8F',
+    ForestDeep: '#01044B',
 
-    // Neutrals (warm, from the MSIL EX reference)
-    Canvas: '#F6F4EE',        // page background
+    // Neutrals
+    Canvas: '#F5F5F5',        // page background
     Card: '#FFFFFF',          // card surface
-    CardBorder: '#E4E2DA',    // card outline
-    Sage: '#E3ECE7',          // icon tiles, chips, inactive pills
-    SageMid: '#B9CFC4',       // decorative accents on Forest
-    TextPrimary: '#1C2B27',
-    TextSecondary: '#3D4744',
-    TextMuted: '#66716D',
+    CardBorder: 'rgba(23,28,143,0.10)', // card outline
+    Sage: '#F5F5F5',          // icon tiles, chips, inactive pills
+    SageMid: 'rgba(23,28,143,0.18)', // decorative accents on Forest
+    TextPrimary: '#01044B',
+    TextSecondary: 'rgba(1,4,75,0.62)',
+    TextMuted: 'rgba(1,4,75,0.62)',
     OnDark: '#FFFFFF',
-    OnDarkMuted: 'rgba(255, 255, 255, 0.72)',
+    OnDarkMuted: 'rgba(255,255,255,0.72)',
 
     // Disabled action
-    DisabledBg: '#EEEFEA',
-    DisabledBorder: '#7D827C',
-    DisabledText: '#5E645E',
+    DisabledBg: '#F5F5F5',
+    DisabledBorder: 'rgba(23,28,143,0.30)',
+    DisabledText: 'rgba(1,4,75,0.62)',
 }
 
 // Drop-in replacement for GlobalColor (same keys) for screens already moved
-// to the Teal Glow theme:
+// to the Corporate Accent theme:
 //   import { ThemeGlobalColor as GlobalColor, ThemeColor } from '../constants/Colors';
 export const ThemeGlobalColor = {
     ...GlobalColor,
-    PrimaryGradient: ThemeColor.Teal,
-    SecondryGradient: ThemeColor.TealDark,
-    Primary: ThemeColor.TealDeep,        // was navy  — headings / strong text
-    PrimaryLight: ThemeColor.Canvas,     // was ice-blue — page & row backgrounds
-    Secondary: ThemeColor.Teal,          // was cyan  — accents, borders, labels
-    Text: ThemeColor.TextSecondary,
-    LightDark: ThemeColor.TextMuted,
+    PrimaryGradient: '#171C8F',
+    SecondryGradient: '#01044B',
+    Primary: '#01044B',        // headings / strong text
+    PrimaryLight: '#F5F5F5',   // page & row backgrounds
+    Secondary: '#171C8F',      // accents, borders, labels
+    Text: 'rgba(1,4,75,0.62)',
+    LightDark: 'rgba(1,4,75,0.62)',
 }
 // ─────────────────────────────────────────────────────────────
-// Home "Idea C" palette — deep-teal header, mint surfaces, amber accents.
-// Source: HomeIdeaC design tokens.
+// Home palette — indigo header, mist surfaces, gold accents.
 // ─────────────────────────────────────────────────────────────
 export const HomePalette = {
-    deep: '#0C3335',          // header base, primary ink
-    deeper: '#071E20',        // header gradient end
-    glow: '#0F4547',          // header glow
-    teal: '#2B8379',          // brand teal
-    tealInk: '#1E6A62',       // icons, links on light
-    body: '#12403F',          // long-form text
-    sub: '#4F6E6A',           // secondary text on light
-    mint: '#EAF6F2',          // icon chips, segmented bg
-    canvas: '#F6FBF9',        // page background
-    line: '#D6E6E1',          // card borders
-    lineStrong: '#BFD7D1',    // outline buttons, handles
+    deep: '#171C8F',          // header base
+    deeper: '#01044B',        // header gradient end
+    glow: 'rgba(23,28,143,0.18)', // header glow
+    teal: '#171C8F',          // brand indigo
+    tealInk: '#171C8F',       // icons, links on light
+    body: '#01044B',          // long-form text
+    sub: 'rgba(1,4,75,0.62)', // secondary text on light
+    mint: '#F5F5F5',          // icon chips, segmented bg
+    canvas: '#F5F5F5',        // page background
+    line: 'rgba(23,28,143,0.10)', // card borders
+    lineStrong: 'rgba(23,28,143,0.18)', // outline buttons, handles
     inkOnDark: '#FFFFFF',
-    mutedOnDark: '#9CBDB6',
-    softOnDark: '#D6E6E1',
-    amber: '#F2CB8A',
-    amberSoft: '#F7DDB0',
-    amberStrong: '#E8B865',
-    amberDeep: '#C99A4E',
-    amberInk: '#8A6212',      // amber-tinted text on light
-    amberCream: '#FBF1DA',
-    onAmber: '#10302F',
-    alert: '#FF7468',
+    mutedOnDark: 'rgba(255,255,255,0.72)',
+    softOnDark: 'rgba(255,255,255,0.72)',
+    amber: '#FCBE62',
+    amberSoft: '#FCBE62',
+    amberStrong: '#FCBE62',
+    amberDeep: '#FCBE62',
+    amberInk: '#171C8F',      // accent text on light
+    amberCream: '#F5F5F5',
+    onAmber: '#01044B',
+    alert: '#01044B',
 }

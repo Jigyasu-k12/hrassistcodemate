@@ -30,7 +30,7 @@ const Othermobility = ({navigation}) => {
               width: 45,
               height: 45,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -41,7 +41,7 @@ const Othermobility = ({navigation}) => {
           <Text style={{fontSize:14}} Bold>
           Uniform Management
           </Text>
-          <Ionicons name="chevron-forward-outline" color={ThemeColor.Teal} size={18} />
+          <Ionicons name="chevron-forward-outline" color={'#171C8F'} size={18} />
         </View>
       </TouchableOpacity>
 
@@ -54,7 +54,7 @@ const Othermobility = ({navigation}) => {
               width: 45,
               height: 45,
               borderRadius: 14,
-              backgroundColor: HomePalette.mint,
+              backgroundColor: '#F5F5F5',
               justifyContent: 'center',
               alignItems: 'center',
             }}>
@@ -65,7 +65,7 @@ const Othermobility = ({navigation}) => {
           <Text style={{fontSize:14}} Bold>
           Hospitalization System
           </Text>
-          <Ionicons name="chevron-forward-outline" color={ThemeColor.Teal} size={18} />
+          <Ionicons name="chevron-forward-outline" color={'#171C8F'} size={18} />
         </View>
       </TouchableOpacity>
 
@@ -78,7 +78,7 @@ const Othermobility = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal:10
   },
   box: {
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: GlobalColor.White,
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,

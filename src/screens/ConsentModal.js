@@ -23,7 +23,7 @@ const ConsentHtmlContent = memo(({html, contentWidth}) => {
   const tagsStyles = useMemo(() => ({
     body: {
       fontSize: 14,
-      color: GlobalColor.Text,
+      color: 'rgba(1,4,75,0.62)',
       lineHeight: 22,
       textAlign: 'left',
     },
@@ -40,7 +40,7 @@ const ConsentHtmlContent = memo(({html, contentWidth}) => {
     h1: {
       fontSize: 19,
       fontWeight: 'bold',
-      color: GlobalColor.Primary,
+      color: '#01044B',
       marginBottom: 12,
       marginTop: 0,
       textAlign: 'left',
@@ -49,7 +49,7 @@ const ConsentHtmlContent = memo(({html, contentWidth}) => {
     h2: {
       fontSize: 17,
       fontWeight: 'bold',
-      color: GlobalColor.Primary,
+      color: '#01044B',
       marginBottom: 10,
       marginTop: 16,
       textAlign: 'left',
@@ -58,7 +58,7 @@ const ConsentHtmlContent = memo(({html, contentWidth}) => {
     h3: {
       fontSize: 15,
       fontWeight: '600',
-      color: GlobalColor.Primary,
+      color: '#01044B',
       marginBottom: 8,
       marginTop: 14,
       textAlign: 'left',
@@ -82,18 +82,18 @@ const ConsentHtmlContent = memo(({html, contentWidth}) => {
     },
     strong: {
       fontWeight: '600',
-      color: GlobalColor.Primary,
+      color: '#01044B',
     },
     b: {
       fontWeight: '600',
-      color: GlobalColor.Primary,
+      color: '#01044B',
     },
     em: {
       fontStyle: 'italic',
-      color: GlobalColor.Text,
+      color: 'rgba(1,4,75,0.62)',
     },
     a: {
-      color: GlobalColor.Secondary,
+      color: '#171C8F',
       textDecorationLine: 'underline',
     },
   }), []);
@@ -558,7 +558,7 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
                 {/* Main Success Circle with Gradient Border */}
                 <View style={styles.successCircleBorder}>
                   <LinearGradient
-                    colors={[ThemeColor.Teal, ThemeColor.TealDark]}
+                    colors={['#171C8F', '#01044B']}
                     start={{x: 0, y: 0}}
                     end={{x: 1, y: 1}}
                     style={styles.successCircleGradient}>
@@ -568,7 +568,7 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
                         style={{
                           transform: [{scale: successCheckmarkScale}],
                         }}>
-                        <Ionicons name="checkmark-circle" size={70} color={ThemeColor.Teal} />
+                        <Ionicons name="checkmark-circle" size={70} color={'#171C8F'} />
                       </Animated.View>
                     </View>
                   </LinearGradient>
@@ -596,7 +596,7 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
             <View style={styles.header}>
               <View style={styles.headerContentWrapper}>
                 <View style={styles.headerIconBg}>
-                  <Ionicons name="shield-checkmark" size={32} color={GlobalColor.Primary} />
+                  <Ionicons name="shield-checkmark" size={32} color={'#01044B'} />
                 </View>
                 <View style={styles.headerTextWrapper}>
                   <Text style={styles.headerTitle} Bold>
@@ -713,11 +713,11 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
                   onPress={scrollToBottom}
                   activeOpacity={0.8}>
                   <LinearGradient
-                    colors={[ThemeColor.Teal, ThemeColor.TealDark]}
+                    colors={['#171C8F', '#01044B']}
                     style={styles.scrollButtonGradient}
                     start={{x: 0, y: 0}}
                     end={{x: 1, y: 1}}>
-                    <Ionicons name="arrow-down" size={24} color={GlobalColor.White} />
+                    <Ionicons name="arrow-down" size={24} color={'#FFFFFF'} />
                   </LinearGradient>
                 </TouchableOpacity>
               )}
@@ -727,7 +727,7 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
             <View style={styles.bottomContainer}>
               {!hasScrolledToBottom && (
                 <View style={styles.scrollHintCard}>
-                  <Ionicons name="arrow-down-circle" size={20} color={GlobalColor.Secondary} />
+                  <Ionicons name="arrow-down-circle" size={20} color={'#171C8F'} />
                   <Text style={styles.scrollHintText}>
                     Please scroll to read the full document
                   </Text>
@@ -738,7 +738,7 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
               {!hasScrolledToBottom ? (
                 <View style={styles.buttonWrapper}>
                   <View style={styles.submitButtonDisabled}>
-                    <Ionicons name="lock-closed" size={20} color={GlobalColor.LightDark} />
+                    <Ionicons name="lock-closed" size={20} color={'rgba(1,4,75,0.62)'} />
                     <Text style={styles.submitButtonTextDisabled}>
                       I Confirm
                     </Text>
@@ -751,15 +751,15 @@ const ConsentModal = ({visible, onClose, onSubmitted, consentData}) => {
                   disabled={submitting}
                   activeOpacity={0.85}>
                   <LinearGradient
-                    colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.TealSoft]}
+                    colors={['#171C8F', '#171C8F', 'rgba(23,28,143,0.1)']}
                     style={styles.submitButton}
                     start={{x: 0, y: 0}}
                     end={{x: 1, y: 0}}>
                     {submitting ? (
-                      <ActivityIndicator size="small" color={GlobalColor.White} />
+                      <ActivityIndicator size="small" color={'#FFFFFF'} />
                     ) : (
                       <>
-                        <Ionicons name="checkmark-circle" size={22} color={GlobalColor.White} />
+                        <Ionicons name="checkmark-circle" size={22} color={'#FFFFFF'} />
                         <Text style={styles.submitButtonText} Bold>
                            I Confirm
                         </Text>
@@ -784,12 +784,12 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   container: {
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     borderRadius: 24,
     maxHeight: Dimensions.get('window').height * 0.85,
     width: Dimensions.get('window').width * 0.94,
     overflow: 'hidden',
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 12},
     shadowOpacity: 0.3,
     shadowRadius: 24,
@@ -804,12 +804,12 @@ const styles = StyleSheet.create({
 
   // Header Styles
   header: {
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: ThemeColor.TealLight,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   headerContentWrapper: {
     alignItems: 'center',
@@ -820,11 +820,11 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
-    shadowColor: GlobalColor.Primary,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -836,14 +836,14 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     letterSpacing: 0.3,
     marginBottom: 4,
     textAlign: 'center',
   },
   headerSubtitle: {
     fontSize: 13,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     letterSpacing: 0.2,
     textAlign: 'center',
   },
@@ -852,10 +852,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
     alignSelf: 'center',
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     borderRadius: 20,
     padding: 3,
-    shadowColor: GlobalColor.Primary,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.08,
     shadowRadius: 4,
@@ -870,8 +870,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   languageButtonActive: {
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Primary,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.15,
     shadowRadius: 3,
@@ -879,11 +879,11 @@ const styles = StyleSheet.create({
   },
   languageButtonText: {
     fontSize: 14,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     letterSpacing: 0.2,
   },
   languageButtonTextActive: {
-    color: GlobalColor.Primary,
+    color: '#01044B',
     letterSpacing: 0.3,
   },
   closeButton: {
@@ -893,10 +893,10 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -908,35 +908,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 12,
     paddingBottom: 10,
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
   },
   progressBarBackground: {
     height: 6,
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     borderRadius: 3,
     overflow: 'hidden',
     marginBottom: 8,
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: GlobalColor.Secondary,
+    backgroundColor: '#171C8F',
     borderRadius: 3,
   },
   progressText: {
     fontSize: 12,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     textAlign: 'center',
     fontWeight: '600',
   },
 
   // Content Card
   contentCard: {
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     marginHorizontal: 20,
     marginTop: 6,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: GlobalColor.PrimaryLight,
+    borderColor: 'rgba(23,28,143,0.1)',
     overflow: 'hidden',
   },
   contentScroll: {
@@ -953,7 +953,7 @@ const styles = StyleSheet.create({
   },
   noDataText: {
     fontSize: 15,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     marginVertical: 40,
     fontStyle: 'italic',
@@ -965,7 +965,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -984,24 +984,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 12,
     paddingBottom: 16,
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
   },
   scrollHintCard: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 12,
     marginBottom: 8,
     gap: 8,
     borderWidth: 1,
-    borderColor: ThemeColor.TealLight,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   scrollHintText: {
     fontSize: 13,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     fontWeight: '600',
   },
 
@@ -1018,31 +1018,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 10,
-    shadowColor: GlobalColor.Secondary,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 6,
   },
   submitButtonText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     fontSize: 16,
     letterSpacing: 0.4,
   },
   submitButtonDisabled: {
     flexDirection: 'row',
-    backgroundColor: GlobalColor.Light,
+    backgroundColor: '#F5F5F5',
     paddingVertical: 14,
     paddingHorizontal: 32,
     justifyContent: 'center',
     alignItems: 'center',
     gap: 10,
     borderWidth: 1.5,
-    borderColor: GlobalColor.PrimaryLight,
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 14,
   },
   submitButtonTextDisabled: {
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     fontSize: 16,
     letterSpacing: 0.4,
     fontWeight: '600',
@@ -1078,15 +1078,15 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
   },
   successCircleBorder: {
     width: 140,
     height: 140,
     borderRadius: 70,
     padding: 4,
-    backgroundColor: GlobalColor.White,
-    shadowColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.25,
     shadowRadius: 12,
@@ -1104,7 +1104,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 63,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -1116,14 +1116,14 @@ const styles = StyleSheet.create({
   },
   successTitle: {
     fontSize: 24,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     textAlign: 'center',
     marginBottom: 10,
     letterSpacing: 0.3,
   },
   successSubtitle: {
     fontSize: 15,
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     textAlign: 'center',
     marginBottom: 16,
     fontWeight: '600',
@@ -1132,7 +1132,7 @@ const styles = StyleSheet.create({
   },
   successMessage: {
     fontSize: 13,
-    color: '#666666',
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     lineHeight: 21,
     paddingHorizontal: 8,

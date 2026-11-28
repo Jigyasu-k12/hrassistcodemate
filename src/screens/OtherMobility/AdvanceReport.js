@@ -234,7 +234,7 @@ const AdvanceReport = () => {
  html, body {
  width: 100%;
  height: 100%;
- background-color: #525659;
+ background-color: #01044B;
  overflow: auto;
  -webkit-overflow-scrolling: touch;
  }
@@ -254,17 +254,17 @@ const AdvanceReport = () => {
  display: block;
  width: 100% !important;
  height: auto !important;
- box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+ box-shadow: 0 2px 8px rgba(1,4,75,0.4);
  }
  #loading {
- color: #fff;
+ color: #FFFFFF;
  font-size: 16px;
  text-align: center;
  margin-top: 40vh;
  font-family: sans-serif;
  }
  #error {
- color: #ff6b6b;
+ color: #01044B;
  font-size: 14px;
  text-align: center;
  margin-top: 40vh;
@@ -273,7 +273,7 @@ const AdvanceReport = () => {
  display: none;
  }
  #page-info {
- color: #ccc;
+ color: rgba(1,4,75,0.62);
  font-size: 13px;
  text-align: center;
  font-family: sans-serif;
@@ -405,9 +405,9 @@ const AdvanceReport = () => {
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
  <style>
  * { margin: 0; padding: 0; box-sizing: border-box; }
- html, body { width: 100%; height: 100%; background-color: #525659; overflow: auto; -webkit-overflow-scrolling: touch; }
- #loading { color: #fff; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
- #error { color: #ff6b6b; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
+ html, body { width: 100%; height: 100%; background-color: #01044B; overflow: auto; -webkit-overflow-scrolling: touch; }
+ #loading { color: #FFFFFF; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
+ #error { color: #01044B; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
  img { display: block; width: 100%; height: auto; margin: 10px 0; }
  </style>
  </head>
@@ -493,9 +493,9 @@ const AdvanceReport = () => {
  const renderAttachmentItem = ({item, index}) => {
  const fileType = getFileType(item.WFAT_FILE_NAME);
  const getFileIcon = () => {
- if (fileType === 'pdf') return <MaterialIcons name="picture-as-pdf" size={24} color="#E53935" />;
- if (fileType === 'image' || fileType === 'tif') return <MaterialIcons name="image" size={24} color="#43A047" />;
- return <MaterialIcons name="attach-file" size={24} color={ThemeColor.Teal} />;
+ if (fileType === 'pdf') return <MaterialIcons name="picture-as-pdf" size={24} color="#01044B" />;
+ if (fileType === 'image' || fileType === 'tif') return <MaterialIcons name="image" size={24} color="#171C8F" />;
+ return <MaterialIcons name="attach-file" size={24} color={'#171C8F'} />;
  };
  return (
  <View style={styles.attachmentCard}>
@@ -524,7 +524,7 @@ const AdvanceReport = () => {
  style={[styles.viewPdfButton, (fileType === 'image' || fileType === 'tif') ? styles.viewImageButton : {}]}
  onPress={() => openFileViewer(item.WFAT_ATTACHMENT, item.WFAT_FILE_NAME)}
  >
- <Ionicons name={fileType === 'pdf' ? 'document-outline' : 'eye-outline'} size={18} color={ThemeColor.TealDeep} />
+ <Ionicons name={fileType === 'pdf' ? 'document-outline' : 'eye-outline'} size={18} color={'#01044B'} />
  <Text style={styles.viewPdfButtonText}>
  {fileType === 'pdf' ? 'View PDF' : (fileType === 'image' || fileType === 'tif') ? 'View Image' : 'View File'}
  </Text>
@@ -624,14 +624,14 @@ const AdvanceReport = () => {
  style={[styles.actionButton, styles.activityLogButton]}
  onPress={() => handleActivityLogPress(item.HSTR_REQ_ID)}
  >
- <MaterialIcons name="history" size={18} color={ThemeColor.TealDeep} />
+ <MaterialIcons name="history" size={18} color={'#01044B'} />
  <Text style={styles.actionButtonText}>Activity Log</Text>
  </TouchableOpacity>
  <TouchableOpacity
  style={[styles.actionButton, styles.attachmentButton]}
  onPress={() => handleAttachmentPress(item.HSTR_REQ_ID)}
  >
- <MaterialIcons name="attach-file" size={18} color={ThemeColor.TealDeep} />
+ <MaterialIcons name="attach-file" size={18} color={'#01044B'} />
  <Text style={styles.actionButtonText}>Attachments</Text>
  </TouchableOpacity>
  </View>
@@ -652,7 +652,7 @@ const AdvanceReport = () => {
  if (!selectedFileBase64) {
  return (
  <View style={styles.pdfLoadingContainer}>
- <ActivityIndicator size="large" color={ThemeColor.Teal} />
+ <ActivityIndicator size="large" color={'#FFFFFF'} />
  <Text style={styles.pdfLoadingText}>Preparing file...</Text>
  </View>
  );
@@ -679,7 +679,7 @@ const AdvanceReport = () => {
  }}
  renderLoading={() => (
  <View style={styles.pdfLoadingContainer}>
- <ActivityIndicator size="large" color={ThemeColor.Teal} />
+ <ActivityIndicator size="large" color={'#FFFFFF'} />
  <Text style={styles.pdfLoadingText}>Loading PDF...</Text>
  </View>
  )}
@@ -692,7 +692,7 @@ const AdvanceReport = () => {
  const mimeType = getMimeType(selectedFileName);
  return (
  <ScrollView
- style={{ flex: 1, backgroundColor: '#525659' }}
+ style={{ flex: 1, backgroundColor: '#01044B' }}
  contentContainerStyle={styles.imageScrollContainer}
  maximumZoomScale={5}
  minimumZoomScale={1}
@@ -724,7 +724,7 @@ const AdvanceReport = () => {
  onError={() => Toast.show('Error loading image', Toast.SHORT)}
  renderLoading={() => (
  <View style={styles.pdfLoadingContainer}>
- <ActivityIndicator size="large" color={ThemeColor.Teal} />
+ <ActivityIndicator size="large" color={'#FFFFFF'} />
  <Text style={styles.pdfLoadingText}>Loading image...</Text>
  </View>
  )}
@@ -735,7 +735,7 @@ const AdvanceReport = () => {
  // Unknown file type
  return (
  <View style={styles.pdfLoadingContainer}>
- <MaterialIcons name="insert-drive-file" size={60} color="#ccc" />
+ <MaterialIcons name="insert-drive-file" size={60} color="#FFFFFF" />
  <Text style={styles.pdfLoadingText}>Unsupported file type</Text>
  </View>
  );
@@ -761,7 +761,7 @@ const AdvanceReport = () => {
  buttonStyle={styles.dropdown2BtnStyle}
  buttonTextStyle={styles.dropdown2BtnTxtStyle}
  renderDropdownIcon={isOpened => (
- <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />
+ <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
  )}
  dropdownIconPosition={'right'}
  dropdownStyle={styles.dropdown2DropdownStyle}
@@ -778,7 +778,7 @@ const AdvanceReport = () => {
  contentContainerStyle={styles.listContainer}
  ListEmptyComponent={
  <View style={styles.emptyContainer}>
- <Ionicons name="document-text-outline" size={60} color="#ccc" />
+ <Ionicons name="document-text-outline" size={60} color="rgba(1,4,75,0.62)" />
  <Text style={styles.emptyText}>No reports available</Text>
  </View>
  }
@@ -794,7 +794,7 @@ const AdvanceReport = () => {
  <Text style={styles.modalSubtitle}>Request ID: {selectedRequestId}</Text>
  </View>
  <TouchableOpacity onPress={() => setActivityLogModal(false)} style={styles.closeButton}>
- <Ionicons name="close" size={28} color="#333" />
+ <Ionicons name="close" size={28} color="#01044B" />
  </TouchableOpacity>
  </View>
  <FlatList
@@ -804,7 +804,7 @@ const AdvanceReport = () => {
  contentContainerStyle={styles.modalListContainer}
  ListEmptyComponent={
  <View style={styles.emptyContainer}>
- <MaterialIcons name="history" size={60} color="#ccc" />
+ <MaterialIcons name="history" size={60} color="rgba(1,4,75,0.62)" />
  <Text style={styles.emptyText}>No activity log available</Text>
  </View>
  }
@@ -821,7 +821,7 @@ const AdvanceReport = () => {
  <Text style={styles.modalSubtitle}>Request ID: {selectedRequestId}</Text>
  </View>
  <TouchableOpacity onPress={() => setAttachmentModal(false)} style={styles.closeButton}>
- <Ionicons name="close" size={28} color="#333" />
+ <Ionicons name="close" size={28} color="#01044B" />
  </TouchableOpacity>
  </View>
  <FlatList
@@ -831,7 +831,7 @@ const AdvanceReport = () => {
  contentContainerStyle={styles.modalListContainer}
  ListEmptyComponent={
  <View style={styles.emptyContainer}>
- <MaterialIcons name="attach-file" size={60} color="#ccc" />
+ <MaterialIcons name="attach-file" size={60} color="rgba(1,4,75,0.62)" />
  <Text style={styles.emptyText}>No attachments available</Text>
  </View>
  }
@@ -847,7 +847,7 @@ const AdvanceReport = () => {
  <Text style={styles.pdfTitle} Bold numberOfLines={1}>{selectedFileName}</Text>
  </View>
  <TouchableOpacity onPress={closeFileViewer} style={styles.pdfCloseButton}>
- <Ionicons name="close-circle" size={32} color="#fff" />
+ <Ionicons name="close-circle" size={32} color="#FFFFFF" />
  </TouchableOpacity>
  </View>
  {renderFileViewerContent()}
@@ -859,118 +859,118 @@ const AdvanceReport = () => {
 
 // define your styles
 const styles = StyleSheet.create({
- container: { flex: 1, backgroundColor: GlobalColor.PrimaryLight },
+ container: { flex: 1, backgroundColor: '#F5F5F5' },
  headerContainer: {
- padding: 15, backgroundColor: '#fff', marginTop: 10, marginBottom: 10,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+ padding: 15, backgroundColor: '#FFFFFF', marginTop: 10, marginBottom: 10,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 },
  shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
  },
- headerText: { fontSize: 18, color: ThemeColor.Teal, marginBottom: 10 },
+ headerText: { fontSize: 18, color: '#171C8F', marginBottom: 10 },
  filterContainer: { marginTop: 10 },
- filterLabel: { fontSize: 13, fontWeight: 'bold', marginBottom: 5, color: '#333' },
+ filterLabel: { fontSize: 13, fontWeight: 'bold', marginBottom: 5, color: '#01044B' },
  dropdown2BtnStyle: {
  width: '100%', height: 40, borderWidth: 1, borderRadius: 8,
- backgroundColor: '#FFF', borderColor: ThemeColor.Teal,
+ backgroundColor: '#FFFFFF', borderColor: '#171C8F',
  },
  dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 13 },
- dropdown2DropdownStyle: { backgroundColor: GlobalColor.White, maxHeight: 300 },
- dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: ThemeColor.Teal },
+ dropdown2DropdownStyle: { backgroundColor: '#FFFFFF', maxHeight: 300 },
+ dropdown2RowStyle: { backgroundColor: '#FFFFFF', borderBottomColor: '#171C8F' },
  dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 13 },
  listContainer: { padding: 10, paddingBottom: 20 },
  reportCard: {
- backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+ backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 },
  shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
  },
  cardHeader: {
  flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
- marginBottom: 15, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: '#E0E0E0',
+ marginBottom: 15, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)',
  },
  cardHeaderRight: { flexDirection: 'row', alignItems: 'center' },
- requestId: { fontSize: 15, color: '#333' },
+ requestId: { fontSize: 15, color: '#01044B' },
  statusBadge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 5 },
- statusText: { fontSize: 11, color: '#fff', fontWeight: 'bold' },
- statusClosed: { backgroundColor: '#4CAF50' },
- statusApproved: { backgroundColor: ThemeColor.Teal },
- statusRejected: { backgroundColor: '#F44336' },
- statusSubmitted: { backgroundColor: '#FF9800' },
- statusDefault: { backgroundColor: '#9E9E9E' },
+ statusText: { fontSize: 11, color: '#FFFFFF', fontWeight: 'bold' },
+ statusClosed: { backgroundColor: '#171C8F' },
+ statusApproved: { backgroundColor: '#171C8F' },
+ statusRejected: { backgroundColor: '#171C8F' },
+ statusSubmitted: { backgroundColor: '#171C8F' },
+ statusDefault: { backgroundColor: '#171C8F' },
  cardRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 },
  cardColumn: { flex: 1, marginRight: 10 },
- label: { fontSize: 12, color: '#666', marginBottom: 3 },
- value: { fontSize: 13, color: '#333', fontWeight: '500' },
+ label: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginBottom: 3 },
+ value: { fontSize: 13, color: '#01044B', fontWeight: '500' },
  buttonRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, gap: 10 },
  actionButton: {
  flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
  paddingVertical: 10, paddingHorizontal: 12, borderRadius: 20,
  },
- activityLogButton: { backgroundColor: ThemeColor.Sage, borderWidth: 1, borderColor: ThemeColor.TealSoft },
- attachmentButton: { backgroundColor: ThemeColor.Sage, borderWidth: 1, borderColor: ThemeColor.TealSoft },
- actionButtonText: { color: ThemeColor.TextPrimary, fontSize: 13, fontWeight: 'bold', marginLeft: 6 },
+ activityLogButton: { backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.1)' },
+ attachmentButton: { backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.1)' },
+ actionButtonText: { color: '#01044B', fontSize: 13, fontWeight: 'bold', marginLeft: 6 },
  emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 100 },
- emptyText: { fontSize: 16, color: '#999', marginTop: 10 },
- spinnerTextStyle: { color: '#fff' },
- modalContainer: { flex: 1, backgroundColor: GlobalColor.PrimaryLight },
+ emptyText: { fontSize: 16, color: 'rgba(1,4,75,0.62)', marginTop: 10 },
+ spinnerTextStyle: { color: '#FFFFFF' },
+ modalContainer: { flex: 1, backgroundColor: '#F5F5F5' },
  modalHeader: {
  flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
- padding: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#E0E0E0',
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+ padding: 15, backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)',
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 },
  shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
  },
- modalTitle: { fontSize: 20, color: ThemeColor.Teal },
- modalSubtitle: { fontSize: 13, color: '#666', marginTop: 2 },
+ modalTitle: { fontSize: 20, color: '#171C8F' },
+ modalSubtitle: { fontSize: 13, color: 'rgba(1,4,75,0.62)', marginTop: 2 },
  closeButton: { padding: 5 },
  modalListContainer: { padding: 15, paddingBottom: 30 },
  activityLogCard: {
- backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+ backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 },
  shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
  },
  activityLogHeader: {
  flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
- marginBottom: 15, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: ThemeColor.Teal,
+ marginBottom: 15, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: '#171C8F',
  },
- activitySeqNo: { fontSize: 16, color: ThemeColor.Teal },
- activityStatus: { fontSize: 13, color: '#666', fontWeight: '600' },
+ activitySeqNo: { fontSize: 16, color: '#171C8F' },
+ activityStatus: { fontSize: 13, color: 'rgba(1,4,75,0.62)', fontWeight: '600' },
  activityLogTable: { width: '100%' },
  tableRow: {
  flexDirection: 'row', paddingVertical: 8,
- borderBottomWidth: 1, borderBottomColor: '#F0F0F0',
+ borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.22)',
  },
- tableLabel: { flex: 0.4, fontSize: 12, color: '#666', fontWeight: '600' },
- tableValue: { flex: 0.6, fontSize: 12, color: '#333' },
- actionTaken: { color: '#4CAF50', fontWeight: 'bold' },
- newStatus: { color: ThemeColor.Teal, fontWeight: 'bold' },
+ tableLabel: { flex: 0.4, fontSize: 12, color: 'rgba(1,4,75,0.62)', fontWeight: '600' },
+ tableValue: { flex: 0.6, fontSize: 12, color: '#01044B' },
+ actionTaken: { color: '#171C8F', fontWeight: 'bold' },
+ newStatus: { color: '#171C8F', fontWeight: 'bold' },
  attachmentCard: {
- backgroundColor: '#fff', padding: 15, marginBottom: 15, borderRadius: 8,
- shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+ backgroundColor: '#FFFFFF', padding: 15, marginBottom: 15, borderRadius: 8,
+ shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 },
  shadowOpacity: 0.1, shadowRadius: 3.84, elevation: 5,
  },
  attachmentHeader: {
  flexDirection: 'row', alignItems: 'center', marginBottom: 15,
- paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: ThemeColor.Teal,
+ paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: '#171C8F',
  },
- attachmentFileName: { fontSize: 14, color: '#333' },
- attachmentFileDesc: { fontSize: 12, color: '#666', marginTop: 3 },
+ attachmentFileName: { fontSize: 14, color: '#01044B' },
+ attachmentFileDesc: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 3 },
  attachmentDetails: { marginBottom: 10 },
  viewPdfButton: {
  flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
- backgroundColor: ThemeColor.Sage, paddingVertical: 10, paddingHorizontal: 15,
- borderRadius: 20, marginTop: 10, borderWidth: 1, borderColor: ThemeColor.TealSoft },
- viewImageButton: { backgroundColor: ThemeColor.Sage, borderWidth: 1, borderColor: ThemeColor.TealSoft },
- viewPdfButtonText: { color: ThemeColor.TealDeep, fontSize: 14, fontWeight: 'bold', marginLeft: 8 },
- pdfModalContainer: { flex: 1, backgroundColor: '#525659' },
+ backgroundColor: '#F5F5F5', paddingVertical: 10, paddingHorizontal: 15,
+ borderRadius: 20, marginTop: 10, borderWidth: 1, borderColor: 'rgba(23,28,143,0.1)' },
+ viewImageButton: { backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.1)' },
+ viewPdfButtonText: { color: '#01044B', fontSize: 14, fontWeight: 'bold', marginLeft: 8 },
+ pdfModalContainer: { flex: 1, backgroundColor: '#01044B' },
  pdfHeader: {
  flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
- padding: 15, backgroundColor: ThemeColor.Teal,
+ padding: 15, backgroundColor: '#171C8F',
  },
- pdfTitle: { fontSize: 16, color: '#fff' },
+ pdfTitle: { fontSize: 16, color: '#FFFFFF' },
  pdfCloseButton: { padding: 5 },
- webView: { flex: 1, backgroundColor: '#525659' },
+ webView: { flex: 1, backgroundColor: '#01044B' },
  pdfLoadingContainer: {
- flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#525659',
+ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#01044B',
  },
- pdfLoadingText: { fontSize: 16, color: '#fff', marginTop: 15 },
+ pdfLoadingText: { fontSize: 16, color: '#FFFFFF', marginTop: 15 },
  imageScrollContainer: {
  flexGrow: 1, justifyContent: 'center', alignItems: 'center', padding: 10,
  },

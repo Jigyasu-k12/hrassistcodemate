@@ -228,8 +228,8 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                   justifyContent: 'center',
                   marginTop: 10,
                   paddingVertical: 10,
-                  backgroundColor: GlobalColor.White,
-                  shadowColor: GlobalColor.Black,
+                  backgroundColor: '#FFFFFF',
+                  shadowColor: '#01044B',
                   shadowOffset: {
                     width: -0,
                     height: 1,
@@ -247,7 +247,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                       style={{
                         height: 35,
                         borderBottomWidth: 0.5,
-                        borderColor: GlobalColor.LightDark,
+                        borderColor: 'rgba(23,28,143,0.1)',
                         textAlign: 'left',
                         fontSize:13
                       }}
@@ -287,17 +287,17 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                     <TouchableOpacity
                       style={{
                         width: '100%',
-                        backgroundColor: GlobalColor.White,
+                        backgroundColor: '#FFFFFF',
                         borderWidth: 1,
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         flexDirection: 'row',
                         padding: 6,
                         alignSelf: 'center',
-                        borderColor: ThemeColor.Teal,
+                        borderColor: '#171C8F',
                       }}
                       onPress={() => setOpen(true)}>
-                      <Text style={{color: 'gray',fontSize:13}} Bold>
+                      <Text style={{color: 'rgba(1,4,75,0.62)',fontSize:13}} Bold>
                         {values.BillDate
                           ? moment(values.BillDate).format('MMM Do YYYY')
                           : null}
@@ -312,7 +312,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                           <Ionicons
                             name="calendar-outline"
                             size={20}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                           />
                         </View>
                       </View>
@@ -335,7 +335,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                     <View
                       style={{
                         borderWidth: 1,
-                        borderColor: ThemeColor.Teal,
+                        borderColor: '#171C8F',
                       }}>
                       <SelectDropdown
                         ref={dropdownRef}
@@ -358,7 +358,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                           return (
                             <FontAwesome
                               name={isOpened ? 'chevron-up' : 'chevron-down'}
-                              color={ThemeColor.Teal}
+                              color={'#171C8F'}
                               size={14}
                             />
                           );
@@ -387,7 +387,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                       style={{
                         height: 35,
                         borderBottomWidth: 0.5,
-                        borderColor: GlobalColor.LightDark,
+                        borderColor: 'rgba(23,28,143,0.1)',
                         textAlign: 'left',
                       }}
                       keyboardType={'numeric'}
@@ -415,7 +415,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
                       style={{
                         height: 35,
                         borderBottomWidth: 0.5,
-                        borderColor: GlobalColor.LightDark,
+                        borderColor: 'rgba(23,28,143,0.1)',
                         textAlign: 'left',
                       }}
                       keyboardType={'numeric'}
@@ -439,7 +439,7 @@ const ConveyanceBillsSubmission = ({navigation, route}) => {
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
   <Text style={{
     fontSize: 13,
-    color: '#52CB9B',
+    color: '#171C8F',
     fontWeight: '700', // moderately bold
     textAlign: 'center'
   }}>
@@ -499,7 +499,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     width: '100%',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     marginBottom:"13%"
   },
   box: {
@@ -510,32 +510,32 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     borderBottomWidth: 0.5,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
   },
   spinnerTextStyle: {
-    color: '#FFF',
+    color: '#FFFFFF',
   },
   reportHeader: {
     width: '100%',
     marginVertical: 7,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingVertical: 15,
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
 
   reportHeaderBody: {
     width: '100%',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingVertical: 15,
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
     marginTop: 10,
    
   },
@@ -547,21 +547,21 @@ const styles = StyleSheet.create({
   dropdown2BtnStyle: {
     // width: "50%",
     height: 40,
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     marginLeft: 10,
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 13},
   dropdown2DropdownStyle: {
-    backgroundColor: GlobalColor.White,
-    color: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    color: '#171C8F',
   },
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: '#C5C5C5',
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   error: {
-    color: GlobalColor.Danger,
+    color: '#01044B',
     fontSize: GlobalFontSize.Error,
   },
 });

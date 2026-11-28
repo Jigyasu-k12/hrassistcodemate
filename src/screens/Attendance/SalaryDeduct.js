@@ -91,7 +91,7 @@ const SalaryDeduct = () => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight}}>    
+    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: '#F5F5F5'}}>    
       {/* <Header title="Salary Deduction" back/> */}
       <View style={{ flex:1,  }}>
        
@@ -111,7 +111,7 @@ const SalaryDeduct = () => {
                   period:item['Half/Full Day'],
                 })}
                   style={styles.canteen}>
-                  <Text Bold style={{fontSize:13,color:ThemeColor.Teal,textDecorationLine:'underline'}}>{item.Date}</Text>
+                  <Text Bold style={{fontSize:13,color:'#171C8F',textDecorationLine:'underline'}}>{item.Date}</Text>
                   <Text style={{fontSize:13}}>
                     {item['Half/Full Day']}{' (' +item.Description}{' )'}
                     </Text>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     // flexGrow: 1,
-    backgroundColor: GlobalColor.PrimaryLight
+    backgroundColor: '#F5F5F5'
   },
   gradient: {
     padding: 20,
@@ -142,14 +142,14 @@ const styles = StyleSheet.create({
     top: 10,
     marginVertical: 10,
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     padding: 10,
     paddingVertical:15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,

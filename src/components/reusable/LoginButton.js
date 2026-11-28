@@ -23,9 +23,9 @@ export default (props) =>{
           borderRadius: 8,
           width: '100%',
           alignSelf: 'center',
-          backgroundColor:GlobalColor.Primary
+          backgroundColor:'#171C8F'
         }, {...btnStyle}]}
-        colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.TealSoft]}>
+        colors={['#171C8F', '#171C8F', '#01044B']}>
         <TouchableOpacity
           onPress={onPress}
           style={{
@@ -35,7 +35,7 @@ export default (props) =>{
             marginVertical: 5,
           }}>
           <Text
-            style={[{fontSize: 17,color: GlobalColor.White}, {...textStyle}]}
+            style={[{fontSize: 17,color: '#FFFFFF'}, {...textStyle}]}
             Bold={true}>
             {title}
           </Text>

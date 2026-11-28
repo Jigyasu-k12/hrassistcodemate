@@ -132,12 +132,12 @@ const ShiftDetails = () => {
                             }}>
                             <TextInput2
                                 placeholder="From"
-                                style={{ color: '#000' ,fontSize:12}}
+                                style={{ color: '#01044B' ,fontSize:12}}
                                 editable={false}
                                 value={textinputDate}
                             />
                             <TouchableOpacity onPress={() => setOpen(true)}>
-                                <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
+                                <Ionicons name="calendar-outline" size={25} color={'#171C8F'} />
                             </TouchableOpacity>
                         </View>
                         <DatePicker
@@ -164,7 +164,7 @@ const ShiftDetails = () => {
                                 justifyContent: 'space-between',
                             }}>
                             <TextInput2
-                                style={{ color: '#000' ,fontSize:13}}
+                                style={{ color: '#01044B' ,fontSize:13}}
                                 placeholder="To"
                                 editable={false}
                                 value={textinputSecondDate}
@@ -172,7 +172,7 @@ const ShiftDetails = () => {
 
 
                             <TouchableOpacity onPress={() => setSecond(true)}>
-                                <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
+                                <Ionicons name="calendar-outline" size={25} color={'#171C8F'} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -195,25 +195,25 @@ const ShiftDetails = () => {
                     <DataTable
                         style={{
                             width: '100%',
-                            backgroundColor: '#fff',
+                            backgroundColor: '#FFFFFF',
                             marginVertical: 10,
                         }}>
-                        <DataTable.Header style={{ backgroundColor: '#fff' }}>
+                        <DataTable.Header style={{ backgroundColor: '#FFFFFF' }}>
                             <DataTable.Title>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>Date</Text>
+                                <Text Bold style={{ color: '#01044B', fontSize: 13 }}>Date</Text>
                             </DataTable.Title>
                             <DataTable.Title numeric>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>
+                                <Text Bold style={{ color: '#01044B', fontSize: 13 }}>
                                 In
                                 </Text>
                             </DataTable.Title>
                             <DataTable.Title numeric>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>
+                                <Text Bold style={{ color: '#01044B', fontSize: 13 }}>
                                     Out
                                 </Text>
                             </DataTable.Title>
                             <DataTable.Title numeric>
-                                <Text Bold style={{ color: GlobalColor.Primary, fontSize: 13 }}>Shift</Text>
+                                <Text Bold style={{ color: '#01044B', fontSize: 13 }}>Shift</Text>
                             </DataTable.Title>
                         </DataTable.Header>
 
@@ -249,15 +249,15 @@ const ShiftDetails = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: GlobalColor.PrimaryLight
+        backgroundColor: '#F5F5F5'
     },
     box: {
         width: '100%',
         padding: 5,
         paddingVertical: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFFFFF',
         // alignSelf: 'center',
-        shadowColor: '#000',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -271,14 +271,14 @@ const styles = StyleSheet.create({
         width: '100%',
         alignSelf: 'center',
         borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: 'rgba(23,28,143,0.1)',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
         padding: 10,
         marginVertical: 0,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -290,12 +290,12 @@ const styles = StyleSheet.create({
     inputBox: {
         width: '100%',
         // alignSelf: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingRight: 10,
         alignItems: 'center',
-        shadowColor: '#000',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -315,23 +315,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderWidth: 1,
         borderRadius: 0,
-        borderColor: GlobalColor.Secondary
+        borderColor: '#171C8F'
     },
     tabTextStyle: {
         fontSize: GlobalFontSize.P,
-        color: 'grey',
+        color: 'rgba(1,4,75,0.62)',
         fontFamily: 'Roboto-Bold',
     },
     activeTabStyle: {
-        backgroundColor: GlobalColor.PrimaryLight,
+        backgroundColor: '#F5F5F5',
         borderBottomWidth: 4,
-        borderBottomColor: GlobalColor.Secondary,
+        borderBottomColor: '#171C8F',
     },
     activeTabTextStyle: {
-        color: GlobalColor.Secondary,
+        color: '#171C8F',
     },
     spinnerTextStyle:{
-        color:GlobalColor.White
+        color:'#FFFFFF'
     },
     dataRow: {
         width: '100%',

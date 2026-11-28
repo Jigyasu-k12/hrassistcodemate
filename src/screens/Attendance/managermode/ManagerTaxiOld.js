@@ -274,7 +274,7 @@ export const ManagerTaxiOld = ({navigation}) => {
         justifyContent: 'space-between',
         paddingHorizontal:10,
         paddingVertical:15,
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         flexDirection:'row'
       }}>        
         <Text Bold style={[styles.HeaderColumn]}>Date</Text>
@@ -293,7 +293,7 @@ export const ManagerTaxiOld = ({navigation}) => {
         justifyContent: 'space-between',
         paddingHorizontal:10,
         paddingVertical:15,
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         flexDirection:'row'
       }}>        
         <Text Bold style={[styles.HeaderColumn,{flex:0.40}]}>Travel Date </Text>
@@ -305,7 +305,7 @@ export const ManagerTaxiOld = ({navigation}) => {
   }
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>  
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>  
             {loader == true ? (
               <Spinner
                 visible={loader}
@@ -344,7 +344,7 @@ export const ManagerTaxiOld = ({navigation}) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                <Feather name="search" size={17} color={ThemeColor.Forest} />
+                <Feather name="search" size={17} color={'#171C8F'} />
               </View>
               <TextInput
                 placeholder="Search By Slip No/Staff ID"
@@ -366,7 +366,7 @@ export const ManagerTaxiOld = ({navigation}) => {
                     style={{ paddingVertical: 10 }}
                     name="close-circle-outline"
                     size={25}
-                    color={ThemeColor.Forest}
+                    color={'#171C8F'}
                   />
                 </TouchableOpacity>
               ) : null}
@@ -381,7 +381,7 @@ export const ManagerTaxiOld = ({navigation}) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
-                <Ionicons name="send" size={16} color={ThemeColor.Forest} />
+                <Ionicons name="send" size={16} color={'#171C8F'} />
               </TouchableOpacity>
             </View>
 
@@ -392,7 +392,7 @@ export const ManagerTaxiOld = ({navigation}) => {
               style={{marginBottom:'30%'}}
               ListHeaderComponent={FlatList_Header_Approve}
               keyExtractor={({ item, index }) => index}
-              ListHeaderComponentStyle={{ borderBottomColor: ThemeColor.Forest, borderBottomWidth: 1 }}
+              ListHeaderComponentStyle={{ borderBottomColor: '#171C8F', borderBottomWidth: 1 }}
               ListEmptyComponent={() => {
                 return (
                     <ListEmptyComponent 
@@ -413,7 +413,7 @@ export const ManagerTaxiOld = ({navigation}) => {
                 style={{marginBottom:'30%'}}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={FlatList_Header}
-                ListHeaderComponentStyle={{ borderBottomColor: ThemeColor.Forest, borderBottomWidth: 1 }}
+                ListHeaderComponentStyle={{ borderBottomColor: '#171C8F', borderBottomWidth: 1 }}
                 ListEmptyComponent={<ListEmptyComponent 
                     title="No Data Found"
                     enableRefresh={true} onRefreshCallback={() => ApprovedTaxiReport(true)} refreshing={refresh}
@@ -432,13 +432,13 @@ export default ManagerTaxiOld;
 const styles = StyleSheet.create({
     item:{
         flexDirection:'row',
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         paddingHorizontal:10, 
         marginTop:5,
         justifyContent:'space-between',
         paddingVertical:5,
         borderBottomWidth:0.5,
-        borderBottomColor:GlobalColor.Secondary
+        borderBottomColor:'#171C8F'
     },
     HeaderColumn:{
         flex:0.25,
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
         width:30,
         height:30,
         borderRadius:15,
-        backgroundColor:GlobalColor.PrimaryLight,
+        backgroundColor:'#F5F5F5',
         alignItems:'center',
         justifyContent:'center',
     },
@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
     },
     spinnerTextStyle: {
-        color: '#fff'
+        color: '#FFFFFF'
     },
     tabsContainerStyle: {
         paddingHorizontal:10,
@@ -484,33 +484,33 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderWidth: 1,
         borderRadius: 0,
-        borderColor: ThemeColor.Forest
+        borderColor: '#171C8F'
       },
       tabTextStyle: {
         fontSize: 13,
-        color: 'grey',
+        color: 'rgba(1,4,75,0.62)',
         fontFamily: 'Roboto-Bold',
       },
       activeTabStyle: {
-        backgroundColor: GlobalColor.PrimaryLight,
+        backgroundColor: '#F5F5F5',
         borderBottomWidth: 4,
-        borderBottomColor: ThemeColor.Forest,
+        borderBottomColor: '#171C8F',
       },
       activeTabTextStyle: {
-        color: ThemeColor.Forest,
+        color: '#171C8F',
       },
       SearchInput: {
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         borderWidth: 1,
-        borderColor: ThemeColor.Forest,
+        borderColor: '#171C8F',
         borderRadius: 3,
         alignSelf: 'center',
         marginBottom: 5,
         marginTop:5,
         height:50,
-        backgroundColor: GlobalColor.White
+        backgroundColor: '#FFFFFF'
       },
       FlatListData: {
         width: "100%",    
@@ -520,8 +520,8 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal:5,
         marginTop: 10,
-        backgroundColor: GlobalColor.White,
-        shadowColor: GlobalColor.Black,
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
           width: -0,
           height: 1,

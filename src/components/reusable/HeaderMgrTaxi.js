@@ -59,7 +59,7 @@ export const HeaderMgrTaxi = ({ back = false, title = "", onPress }) => {
 
   return (
     <LinearGradient
-      colors={[ThemeColor.Forest, ThemeColor.Forest, ThemeColor.ForestDeep]}
+      colors={['#171C8F', '#171C8F', '#01044B']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
       style={styles.container}
@@ -70,7 +70,7 @@ export const HeaderMgrTaxi = ({ back = false, title = "", onPress }) => {
             <Ionicons
               name="chevron-back-outline"
               size={25}
-              color={'white'}
+              color={'#FFFFFF'}
               onPress={() => navigation.navigate(taxiMenu)} // Now uses dynamic screen
             />
           ) : (
@@ -78,20 +78,20 @@ export const HeaderMgrTaxi = ({ back = false, title = "", onPress }) => {
               <Ionicons
                 name="chevron-back-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.goBack()}
               />
               <Ionicons
                 name="menu-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.openDrawer()}
               />
             </>
           )}
         </View>
 
-        <Text Bold style={{ color: '#fff', fontSize: GlobalFontSize.H4, marginLeft: 15 }}>
+        <Text Bold style={{ color: '#FFFFFF', fontSize: GlobalFontSize.H4, marginLeft: 15 }}>
           {title}
         </Text>
       </View>
@@ -100,7 +100,7 @@ export const HeaderMgrTaxi = ({ back = false, title = "", onPress }) => {
         <TouchableOpacity onPress={onPress} style={{ position: 'absolute', right: 10, top: 15 }}>
           <Image
             source={require("../../assets/Images/setting.png")}
-            style={{ width: 30, height: 30, tintColor: '#fff' }}
+            style={{ width: 30, height: 30, tintColor: '#FFFFFF' }}
           />
         </TouchableOpacity>
       ) : null}

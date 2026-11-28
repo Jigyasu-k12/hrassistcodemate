@@ -300,8 +300,8 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
             paddingVertical: 10,
             marginVertical: 10,
             alignSelf: 'center',
-            backgroundColor: '#fff',
-            shadowColor: '#000',
+            backgroundColor: '#FFFFFF',
+            shadowColor: '#01044B',
             shadowOffset: {
               width: 0,
               height: 4,
@@ -335,7 +335,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
 
           {usrAccess !== 'Y' && (
 <TouchableOpacity onPress={() => Linking.openURL(`tel:${groupedPoshData[designation][0].CONTACT_NUMBER}`)}>
-<Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+<Feather name="phone-call" size={18} color={'#171C8F'} />
 </TouchableOpacity>
 
           )}
@@ -345,7 +345,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
 <View style={styles.responseBox}>
 <Text style={styles.linkcolor}>{groupedPoshData[designation][0].EMAIL_ID}</Text>
 <TouchableOpacity onPress={() => Linking.openURL(`mailto:${groupedPoshData[designation][0].EMAIL_ID}`)}>
-<Feather name="mail" size={18} color={ThemeColor.Teal} />
+<Feather name="mail" size={18} color={'#171C8F'} />
 </TouchableOpacity>
 </View>
 
@@ -378,13 +378,13 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
 
               justifyContent: 'center',
 
-              borderTopColor: '#80406A',
+              borderTopColor: '#01044B',
 
-              borderStartColor: GlobalColor.Secondary,
+              borderStartColor: '#171C8F',
 
-              borderBottomColor: ThemeColor.TealDark,
+              borderBottomColor: '#171C8F',
 
-              borderEndColor: GlobalColor.Secondary,
+              borderEndColor: '#171C8F',
 
               flexDirection: 'row',
 
@@ -396,7 +396,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
 
                 {usrAccess !== 'Y' && item.CONTACT_NUMBER && (
 <TouchableOpacity onPress={() => Linking.openURL(`tel:${item.CONTACT_NUMBER}`)}>
-<Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+<Feather name="phone-call" size={18} color={'#171C8F'} />
 </TouchableOpacity>
 
                 )}
@@ -406,7 +406,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
 <View style={styles.responseBox}>
 <Text style={styles.linkcolor}>{item.EMAIL_ID}</Text>
 <TouchableOpacity onPress={() => Linking.openURL(`mailto:${item.EMAIL_ID}`)}>
-<Feather name="mail" size={18} color={ThemeColor.Teal} />
+<Feather name="mail" size={18} color={'#171C8F'} />
 </TouchableOpacity>
 </View>
 
@@ -452,7 +452,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -478,7 +478,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -505,7 +505,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -531,7 +531,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -559,7 +559,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -585,7 +585,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -610,7 +610,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -641,7 +641,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   Linking.openURL(`tel:${item.EMER_XNUM}`)
                                 }}
                               >
-                                <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                <Feather name="phone-call" size={18} color={'#171C8F'} />
                               </TouchableOpacity>
                             </View>
                           )
@@ -667,7 +667,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -693,7 +693,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   Linking.openURL(`tel:${item.EMER_XNUM}`)
                                 }}
                               >
-                                <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                <Feather name="phone-call" size={18} color={'#171C8F'} />
                               </TouchableOpacity>
                             </View>
                           )
@@ -718,7 +718,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -744,7 +744,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   Linking.openURL(`tel:${item.EMER_XNUM}`)
                                 }}
                               >
-                                <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                <Feather name="phone-call" size={18} color={'#171C8F'} />
                               </TouchableOpacity>
                             </View>
                           )
@@ -770,7 +770,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -802,7 +802,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -828,7 +828,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -854,7 +854,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   Linking.openURL(`tel:${item.EMER_XNUM}`)
                                 }}
                               >
-                                <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                <Feather name="phone-call" size={18} color={'#171C8F'} />
                               </TouchableOpacity>
                             </View>
                           )
@@ -879,7 +879,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   Linking.openURL(`tel:${item.EMER_PNUM}`)
                                 }}
                               >
-                                <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                <Feather name="phone-call" size={18} color={'#171C8F'} />
                               </TouchableOpacity>
                             </View>
                           )
@@ -905,7 +905,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -931,7 +931,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -962,7 +962,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -988,7 +988,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                       Linking.openURL(`tel:${item.EMER_XNUM}`)
                                     }}
                                   >
-                                    <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                    <Feather name="phone-call" size={18} color={'#171C8F'} />
                                   </TouchableOpacity>
                                 </View>
                               )
@@ -1008,7 +1008,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                           <TouchableOpacity onPress={() => {
                             Linking.openURL(`tel:${manesar[0].EMER_XNUM}`)
                           }}>
-                            <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                            <Feather name="phone-call" size={18} color={'#171C8F'} />
                           </TouchableOpacity>
                         </View>}
                     </View>
@@ -1025,7 +1025,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                           <TouchableOpacity onPress={() => {
                             Linking.openURL(`tel:${casting[0].EMER_XNUM}`)
                           }}>
-                            <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                            <Feather name="phone-call" size={18} color={'#171C8F'} />
                           </TouchableOpacity>
                         </View>}
                     </View>
@@ -1042,7 +1042,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                           <TouchableOpacity onPress={() => {
                             Linking.openURL(`tel:${rothak[0].EMER_XNUM}`)
                           }}>
-                            <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                            <Feather name="phone-call" size={18} color={'#171C8F'} />
                           </TouchableOpacity>
                         </View>}
                     </View>
@@ -1066,7 +1066,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -1107,7 +1107,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
     style={{ width: '20%', alignItems: 'flex-end' }}
     onPress={() => Linking.openURL(`tel:${item.EMER_XNUM}`)}
   >
-    <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+    <Feather name="phone-call" size={18} color={'#171C8F'} />
   </TouchableOpacity>
 
 </View>
@@ -1145,7 +1145,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   style={{ width: '20%', alignItems: 'flex-end' }}
                                   onPress={() => Linking.openURL(`tel:${item.EMER_XNUM}`)}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               
                               </View>
@@ -1185,7 +1185,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
     style={{ width: '20%', alignItems: 'flex-end' }}
     onPress={() => Linking.openURL(`tel:${item.EMER_XNUM}`)}
   >
-    <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+    <Feather name="phone-call" size={18} color={'#171C8F'} />
   </TouchableOpacity>
 
 </View>
@@ -1231,7 +1231,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   style={{ width: '20%', alignItems: 'flex-end' }}
                                   onPress={() => Linking.openURL(`tel:${item.EMER_XNUM}`)}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               
                               </View>
@@ -1277,7 +1277,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
     style={{ width: '20%', alignItems: 'flex-end' }}
     onPress={() => Linking.openURL(`tel:${item.EMER_XNUM}`)}
   >
-    <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+    <Feather name="phone-call" size={18} color={'#171C8F'} />
   </TouchableOpacity>
 
 </View>
@@ -1322,7 +1322,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
     style={{ width: '20%', alignItems: 'flex-end' }}
     onPress={() => Linking.openURL(`tel:${item.EMER_XNUM}`)}
   >
-    <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+    <Feather name="phone-call" size={18} color={'#171C8F'} />
   </TouchableOpacity>
 
 </View>
@@ -1357,7 +1357,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                   Linking.openURL(`tel:${item.EMER_XNUM}`)
                                 }}
                               >
-                                <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                <Feather name="phone-call" size={18} color={'#171C8F'} />
                               </TouchableOpacity>
                             </View>
                           )
@@ -1383,7 +1383,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -1403,7 +1403,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                         <TouchableOpacity onPress={() => {
                           Linking.openURL(`tel:${manesar[0].EMER_XNUM}`)
                         }}>
-                          <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                          <Feather name="phone-call" size={18} color={'#171C8F'} />
                         </TouchableOpacity>
                       </View>}
                   </View>
@@ -1420,7 +1420,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                         <TouchableOpacity onPress={() => {
                           Linking.openURL(`tel:${casting[0].EMER_XNUM}`)
                         }}>
-                          <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                          <Feather name="phone-call" size={18} color={'#171C8F'} />
                         </TouchableOpacity>
                       </View>}
                   </View>
@@ -1437,7 +1437,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                         <TouchableOpacity onPress={() => {
                           Linking.openURL(`tel:${rothak[0].EMER_XNUM}`)
                         }}>
-                          <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                          <Feather name="phone-call" size={18} color={'#171C8F'} />
                         </TouchableOpacity>
                       </View>}
                   </View>
@@ -1461,7 +1461,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_PNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -1488,7 +1488,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
                                     Linking.openURL(`tel:${item.EMER_XNUM}`)
                                   }}
                                 >
-                                  <Feather name="phone-call" size={18} color={ThemeColor.Teal} />
+                                  <Feather name="phone-call" size={18} color={'#171C8F'} />
                                 </TouchableOpacity>
                               </View>
                             )
@@ -1516,7 +1516,7 @@ const [groupedPoshData, setGroupedPoshData] = useState({});
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
   responseBox: {
     width: '100%',
@@ -1538,17 +1538,17 @@ const styles = StyleSheet.create({
   //   fontSize: 18,
   //   fontWeight: 'bold',
   //   marginTop: 20,
-  //   color: '#333',
+  //   color: '#171C8F',
   // },
   cardContainer: {
     padding: 10,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#FFFFFF',
     borderRadius: 8,
     marginVertical: 5,
   },
   memberText: {
     fontSize: 14,
-    color: '#555',
+    color: 'rgba(1,4,75,0.62)',
   },
   headerText: {
     padding: 5,
@@ -1558,7 +1558,7 @@ const styles = StyleSheet.create({
   boxsingle:{
     marginBottom:10,
     borderBottomWidth: 0.5,
-    borderBottomColor:GlobalColor.LightDark,
+    borderBottomColor:'rgba(23,28,143,0.1)',
     paddingHorizontal:5, 
     borderBottomWidth:0.5, 
     paddingBottom:10,
@@ -1571,8 +1571,8 @@ const styles = StyleSheet.create({
     height: height * 0.06,        // 8% of screen height
     marginHorizontal: width * 0.01, // 5% horizontal margin
     marginVertical: height * 0.02,  // 2% vertical margin
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
@@ -1583,29 +1583,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: -4,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     minWidth: 50,             // ensures enough room for short labels
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabTextStyle: {
     fontSize: 11,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
     textAlign: 'center',
     flexShrink: 1,            // allow text to shrink if needed
     flexWrap: 'wrap',         // allow text to wrap to 2 lines if needed
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
   },
   linkcolor:{
-    color:ThemeColor.Teal,
+    color:'#171C8F',
     fontSize:13
   }
 });

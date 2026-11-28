@@ -48,14 +48,14 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
           <View style={styles.header}>
             <Text style={styles.headerTitle}>Scan Business Card</Text>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-              <Ionicons name="close-circle-outline" size={28} color="#666" />
+              <Ionicons name="close-circle-outline" size={28} color="rgba(1,4,75,0.62)" />
             </TouchableOpacity>
           </View>
 
           {/* Camera Icon */}
           <View style={styles.iconContainer}>
             <Animated.View style={{transform: [{scale: pulseAnim}]}}>
-              <Ionicons name="camera" size={70} color={ThemeColor.TealDark} />
+              <Ionicons name="camera" size={70} color={'#171C8F'} />
             </Animated.View>
           </View>
 
@@ -84,7 +84,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 
                 {/* Card icon in center */}
                 <View style={styles.cardIconWrapper}>
-                  <Ionicons name="card-outline" size={50} color="#4CAF50" />
+                  <Ionicons name="card-outline" size={50} color="#FFFFFF" />
                   <Text style={styles.centerText}>Align Here</Text>
                 </View>
               </View>
@@ -92,7 +92,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 
             {/* Instructional Label */}
             <View style={styles.labelContainer}>
-              <Ionicons name="information-circle" size={16} color="#2E7D32" />
+              <Ionicons name="information-circle" size={16} color="#171C8F" />
               <Text style={styles.labelText}>
                 You'll see this frame in the camera
               </Text>
@@ -105,7 +105,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 
             <View style={styles.instructionRow}>
               <View style={styles.bulletContainer}>
-                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Ionicons name="checkmark-circle" size={20} color="#171C8F" />
               </View>
               <Text style={styles.instructionText}>
                 Place card on a flat surface with solid background
@@ -114,7 +114,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 
             <View style={styles.instructionRow}>
               <View style={styles.bulletContainer}>
-                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Ionicons name="checkmark-circle" size={20} color="#171C8F" />
               </View>
               <Text style={styles.instructionText}>
                 Ensure bright, even lighting without shadows
@@ -123,7 +123,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 
             <View style={styles.instructionRow}>
               <View style={styles.bulletContainer}>
-                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Ionicons name="checkmark-circle" size={20} color="#171C8F" />
               </View>
               <Text style={styles.instructionText}>
                 Hold phone directly above the card (parallel)
@@ -132,7 +132,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 
             <View style={styles.instructionRow}>
               <View style={styles.bulletContainer}>
-                <Ionicons name="checkmark-circle" size={20} color="#4CAF50" />
+                <Ionicons name="checkmark-circle" size={20} color="#171C8F" />
               </View>
               <Text style={styles.instructionText}>
                 Fit all 4 corners within the green frame
@@ -145,7 +145,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
             style={styles.openCameraBtn}
             onPress={onOpenCamera}
             activeOpacity={0.8}>
-            <Ionicons name="camera" size={22} color="#fff" />
+            <Ionicons name="camera" size={22} color="#FFFFFF" />
             <Text style={styles.openCameraBtnText}>Open Camera</Text>
           </TouchableOpacity>
 
@@ -162,7 +162,7 @@ const BusinessCardGuide = ({onOpenCamera, onClose}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   scrollContent: {
     flexGrow: 1,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
   content: {
     width: SCREEN_WIDTH * 0.92,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 16,
     padding: 20,
     alignItems: 'center',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '700',
-    color: ThemeColor.TealDark,
+    color: '#171C8F',
   },
   closeBtn: {
     padding: 4,
@@ -198,13 +198,13 @@ const styles = StyleSheet.create({
   guideTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#333',
+    color: '#01044B',
     marginBottom: 8,
     textAlign: 'center',
   },
   guideSubtitle: {
     fontSize: 14,
-    color: '#666',
+    color: 'rgba(1,4,75,0.62)',
     marginBottom: 24,
     textAlign: 'center',
     paddingHorizontal: 10,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   frameContainer: {
     width: FRAME_WIDTH,
     height: FRAME_HEIGHT,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#01044B',
     borderRadius: 12,
     position: 'relative',
     justifyContent: 'center',
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   cutoutFrame: {
     width: FRAME_WIDTH * 0.85,
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: 'rgba(255,255,255,0.05)',
   },
   frameBorder: {
     position: 'absolute',
@@ -247,14 +247,14 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     borderWidth: 2,
-    borderColor: '#4CAF50',
+    borderColor: '#171C8F',
     borderRadius: 8,
   },
   corner: {
     position: 'absolute',
     width: 28,
     height: 28,
-    borderColor: '#4CAF50',
+    borderColor: '#171C8F',
     zIndex: 1,
   },
   topLeft: {
@@ -290,26 +290,26 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   centerText: {
-    color: '#4CAF50',
+    color: '#171C8F',
     fontSize: 12,
     fontWeight: '600',
     marginTop: 4,
   },
   labelContainer: {
     marginTop: 12,
-    backgroundColor: '#F0F9F4',
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#4CAF50',
+    borderColor: '#171C8F',
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
   },
   labelText: {
     fontSize: 13,
-    color: '#2E7D32',
+    color: '#171C8F',
     fontWeight: '600',
   },
   instructionsContainer: {
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   instructionTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#333',
+    color: '#01044B',
     marginBottom: 14,
   },
   instructionRow: {
@@ -334,12 +334,12 @@ const styles = StyleSheet.create({
   instructionText: {
     flex: 1,
     fontSize: 14,
-    color: '#555',
+    color: 'rgba(1,4,75,0.62)',
     lineHeight: 20,
   },
   openCameraBtn: {
     flexDirection: 'row',
-    backgroundColor: ThemeColor.TealDark,
+    backgroundColor: '#171C8F',
     paddingVertical: 14,
     paddingHorizontal: 32,
     borderRadius: 8,
@@ -348,19 +348,19 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     elevation: 3,
-    shadowColor: ThemeColor.TealDark,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
   openCameraBtnText: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '700',
   },
   footnote: {
     fontSize: 12,
-    color: '#999',
+    color: 'rgba(1,4,75,0.62)',
     marginTop: 12,
     fontStyle: 'italic',
     textAlign: 'center',

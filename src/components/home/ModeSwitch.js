@@ -123,7 +123,7 @@ export const RoleToken = forwardRef(({isManager, onPress, disabled}, ref) => {
               },
             ]}>
             <LinearGradient
-              colors={[P.tealInk, P.deep]}
+              colors={['#171C8F', '#01044B']}
               start={{x: 0.5, y: 0}}
               end={{x: 0.5, y: 1}}
               style={styles.faceFill}>
@@ -144,14 +144,14 @@ export const RoleToken = forwardRef(({isManager, onPress, disabled}, ref) => {
               },
             ]}>
             <LinearGradient
-              colors={[P.amberSoft, P.amberDeep]}
+              colors={['#171C8F', '#171C8F']}
               start={{x: 0.5, y: 0}}
               end={{x: 0.5, y: 1}}
               style={styles.faceFill}>
               <AppIcon
                 name="manager"
                 size={26}
-                color={P.onAmber}
+                color={'#FFFFFF'}
                 strokeWidth={1.9}
               />
             </LinearGradient>
@@ -162,13 +162,13 @@ export const RoleToken = forwardRef(({isManager, onPress, disabled}, ref) => {
         <AppIcon
           name="swap"
           size={11}
-          color={isManager ? P.amberInk : P.deep}
+          color={isManager ? '#171C8F' : '#01044B'}
           strokeWidth={2.6}
         />
         <HText
           style={[
             styles.tokenLabelText,
-            {color: isManager ? P.amberInk : P.deep},
+            {color: isManager ? '#171C8F' : '#01044B'},
           ]}>
           {isManager ? 'Manager' : 'Employee'}
         </HText>
@@ -185,9 +185,9 @@ const COPY = {
     sub: 'Approvals, attendance and your team — all in one place.',
     chips: ['Approvals', 'Team attendance', 'Taxi'],
     icon: 'manager',
-    colors: [P.amberSoft, P.amber, P.amberDeep],
-    ink: P.onAmber,
-    soft: 'rgba(16,48,47,0.72)',
+    colors: ['#171C8F', '#171C8F', '#171C8F'],
+    ink: '#FFFFFF',
+    soft: 'rgba(255,255,255,0.72)',
     glass: 'rgba(255,255,255,0.32)',
   },
   employee: {
@@ -196,10 +196,10 @@ const COPY = {
     sub: 'Your own attendance, pay, travel and services.',
     chips: ['Attendance', 'Payslip', 'Canteen'],
     icon: 'profile',
-    colors: [P.tealInk, P.deep, P.deeper],
+    colors: ['#171C8F', '#171C8F', '#01044B'],
     ink: '#FFFFFF',
     soft: P.mutedOnDark,
-    glass: 'rgba(255,255,255,0.10)',
+    glass: 'rgba(255,255,255,0.1)',
   },
 };
 
@@ -359,9 +359,9 @@ const styles = StyleSheet.create({
     height: TOKEN,
     borderRadius: TOKEN / 2,
     borderWidth: 4,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(23,28,143,0.1)',
     backgroundColor: '#FFFFFF',
-    shadowColor: P.deep,
+    shadowColor: '#01044B',
     shadowOpacity: 0.32,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 8},

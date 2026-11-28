@@ -413,7 +413,7 @@ const Form16 = ({ navigation }) => {
 
     return (
 
-        <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
+        <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: '#F5F5F5' }}>
             {loader == true ? (
                 <Spinner
                     visible={loader}
@@ -445,7 +445,7 @@ const Form16 = ({ navigation }) => {
                         <Text  style={{fontSize:13}} Bold>
                             {defaultDate}
                         </Text>
-                        <Feather name="corner-up-right" size={18} color={ThemeColor.Teal} />
+                        <Feather name="corner-up-right" size={18} color={'#171C8F'} />
                     </View>
                 </TouchableOpacity>
 
@@ -458,7 +458,7 @@ const Form16 = ({ navigation }) => {
                         <TouchableOpacity style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
                             <Feather
                                 name="x-circle"
-                                color={GlobalColor.Danger}
+                                color={'#01044B'}
                                 size={22}
                                 onPress={toggleModal}
                                 style={{ margin: 10 }}
@@ -488,7 +488,7 @@ const Form16 = ({ navigation }) => {
                                         toggleModal()
                                     }}
                                     style={styles.textContainer}>
-                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: 13 }}>{item.FNYR_YEAR_CODE}</Text>
+                                    <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#01044B", fontSize: 13 }}>{item.FNYR_YEAR_CODE}</Text>
                                 </TouchableOpacity>
                             )}
                         />
@@ -523,7 +523,7 @@ const Form16 = ({ navigation }) => {
                             //     )
                             // })
                         )}
-                        <Feather name="corner-up-right" size={18}  color={ThemeColor.Teal} />
+                        <Feather name="corner-up-right" size={18}  color={'#171C8F'} />
                     </View>
                 </TouchableOpacity>
 
@@ -536,7 +536,7 @@ const Form16 = ({ navigation }) => {
                             style={{ position:'absolute', top:5, right:5, zIndex:55555 }}>
                             <Feather
                                 name="x-circle"
-                                color={GlobalColor.Danger}
+                                color={'#01044B'}
                                 size={22}
                                 onPress={salaryTypetoggleModal}
                                 style={{ margin: 10 }}
@@ -574,7 +574,7 @@ const Form16 = ({ navigation }) => {
                                         }}
                                         style={styles.textContainer}
                                     >
-                                        <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: 13 }}>
+                                        <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#01044B", fontSize: 13 }}>
                                             {item.LOVM_VALUE_DESC}
                                         </Text>
                                     </TouchableOpacity>
@@ -614,7 +614,7 @@ const styles = StyleSheet.create({
     containerLoading: {
         flex: 1,
         width: '100%', height: '100%',
-        backgroundColor: GlobalColor.PrimaryLight
+        backgroundColor: '#F5F5F5'
     },
     container: {
         flexDirection: 'row',
@@ -628,9 +628,9 @@ const styles = StyleSheet.create({
        
         width: '100%',
         alignSelf: 'center',
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderRadius: 3,
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -644,12 +644,12 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         paddingVertical:15,
         width: '100%',
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         alignSelf: 'center',
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: -0,
             height: 1,
@@ -662,7 +662,7 @@ const styles = StyleSheet.create({
     textContainer: {
         width: '100%',
         padding: 5,
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         alignSelf: 'center',
         // marginVertical: 8.5,
         // shadowColor: GlobalColor.Black,
@@ -680,7 +680,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 5,
         borderBottomWidth: 0.5,
-        borderColor: GlobalColor.LightDark
+        borderColor: 'rgba(23,28,143,0.1)'
     },
     Table: {
         width: '100%',
@@ -689,7 +689,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         paddingHorizontal: 0,
         borderBottomWidth: 0.5,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
         paddingVertical:15
     },
     tableRow: {

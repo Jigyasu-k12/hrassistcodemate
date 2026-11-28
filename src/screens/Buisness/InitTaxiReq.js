@@ -913,7 +913,7 @@ const InitTaxiReq = ({ }) => {
           <View style={{ marginHorizontal: 2, marginBottom: "35%", flex: 1 }}>
             <View style={{ width: '100%', paddingRight: 10, marginVertical: 10 }}>
               <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                Booking Type {<Text style={{ color: 'red' }}>*</Text>}
+                Booking Type {<Text style={{ color: '#01044B' }}>*</Text>}
               </Text>
               <SelectDropdown
                 ref={bookingTypeDropdownRef}
@@ -924,7 +924,7 @@ const InitTaxiReq = ({ }) => {
                     : "Select Booking Type"
                 }
                 rowTextForSelection={(item) => item.label}
-                dropdownBackgroundColor={'transparent'}
+                dropdownBackgroundColor={'rgba(255,255,255,0)'}
                 data={BookingTypes}
                 onSelect={(selectedItem) => {
                   setSelectedBookingType(selectedItem.value);
@@ -932,7 +932,7 @@ const InitTaxiReq = ({ }) => {
                 buttonStyle={styles.dropdown2BtnStyle}
                 buttonTextStyle={styles.dropdown2BtnTxtStyle}
                 renderDropdownIcon={isOpened => (
-                  <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />
+                  <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
                 )}
                 dropdownIconPosition={'right'}
                 dropdownStyle={styles.dropdown2DropdownStyle}
@@ -946,9 +946,9 @@ const InitTaxiReq = ({ }) => {
                   <Text style={{ paddingHorizontal: 0, paddingTop: 10, paddingVertical: 5, fontSize: 13 }} Bold>
                     On Behalf
                   </Text>
-                  <View style={{ width: '100%', flexDirection: 'row', borderWidth: 1, borderRadius: 5, alignSelf: 'center', backgroundColor: '#fff', borderColor: ThemeColor.Teal }}>
+                  <View style={{ width: '100%', flexDirection: 'row', borderWidth: 1, borderRadius: 5, alignSelf: 'center', backgroundColor: '#FFFFFF', borderColor: '#171C8F' }}>
                     <View style={{ width: '15%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Feather name="search" size={18} color={ThemeColor.Teal} />
+                      <Feather name="search" size={18} color={'#171C8F'} />
                     </View>
                     <TextInput
                       placeholder="Search By Staff ID"
@@ -958,11 +958,11 @@ const InitTaxiReq = ({ }) => {
                     />
                     {search !== '' && (
                       <TouchableOpacity style={{ borderRadius: 8, marginLeft: -10, alignSelf: 'center' }} onPress={emptyList}>
-                        <Ionicons name="close-circle-outline" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="close-circle-outline" size={25} color={'#171C8F'} />
                       </TouchableOpacity>
                     )}
                     <TouchableOpacity onPress={() => SearchEmployee(search)} style={{ width: '15%', alignItems: 'center', justifyContent: 'center' }}>
-                      <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                      <Ionicons name="send" size={20} color={'#171C8F'} />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -981,8 +981,8 @@ const InitTaxiReq = ({ }) => {
                       paddingVertical: 5,
                       alignSelf: 'center',
                       borderRadius: 8,
-                      backgroundColor: '#E0E0E0', // light gray background
-                      borderColor: ThemeColor.Teal,
+                      backgroundColor: '#F5F5F5', // light gray background
+                      borderColor: '#171C8F',
                       fontSize: 13,
                       height: 40
                     }}
@@ -999,8 +999,8 @@ const InitTaxiReq = ({ }) => {
                       paddingVertical: 12,
                       alignSelf: 'center',
                       borderRadius: 8,
-                      backgroundColor: '#E0E0E0', // light gray background
-                      borderColor: ThemeColor.Teal,
+                      backgroundColor: '#F5F5F5', // light gray background
+                      borderColor: '#171C8F',
                       height: 40,
                       fontSize: 13
                     }}
@@ -1022,8 +1022,8 @@ const InitTaxiReq = ({ }) => {
                     paddingVertical: 12,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize: 13,
                     height: 40
                   }}
@@ -1066,8 +1066,8 @@ const InitTaxiReq = ({ }) => {
                     paddingVertical: 12,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize: 13,
                     height: 40
                   }}
@@ -1095,7 +1095,7 @@ const InitTaxiReq = ({ }) => {
                       }
                     }}
                   >
-                    <Text style={{ padding: 10, backgroundColor: '#f0f0f0', borderBottomWidth: 1 }}>
+                    <Text style={{ padding: 10, backgroundColor: '#FFFFFF', borderBottomWidth: 1 }}>
                       {item.description}
                     </Text>
                   </TouchableOpacity>
@@ -1138,8 +1138,8 @@ const InitTaxiReq = ({ }) => {
                               paddingVertical: 12,
                               paddingRight: 35, // space for X button
                               borderRadius: 8,
-                              backgroundColor: '#fff',
-                              borderColor: ThemeColor.Teal,
+                              backgroundColor: '#FFFFFF',
+                              borderColor: '#171C8F',
                               fontSize: 13,
                               height: 40
                             }}
@@ -1152,7 +1152,7 @@ const InitTaxiReq = ({ }) => {
                                 position: "absolute",
                                 right: 10,
                                 top: 12,
-                                backgroundColor: "#f8d7da",
+                                backgroundColor: "#F5F5F5",
                                 width: 24,
                                 height: 24,
                                 justifyContent: "center",
@@ -1160,7 +1160,7 @@ const InitTaxiReq = ({ }) => {
                                 borderRadius: 12
                               }}
                             >
-                              <Text style={{ color: "red", fontWeight: "bold", fontSize: 16 }}>×</Text>
+                              <Text style={{ color: "#01044B", fontWeight: "bold", fontSize: 16 }}>×</Text>
                             </TouchableOpacity>
                           )}
                         </View>
@@ -1194,7 +1194,7 @@ const InitTaxiReq = ({ }) => {
                             <Text
                               style={{
                                 padding: 10,
-                                backgroundColor: '#f0f0f0',
+                                backgroundColor: '#FFFFFF',
                                 borderBottomWidth: 1
                               }}
                             >
@@ -1208,19 +1208,19 @@ const InitTaxiReq = ({ }) => {
                     <TouchableOpacity
                       style={{
                         width: '100%',
-                        backgroundColor: 'transparent',
+                        backgroundColor: 'rgba(255,255,255,0)',
                         borderWidth: 1,
                         justifyContent: 'center',
                         alignItems: 'center',
                         borderRadius: 10,
                         padding: 10,
                         alignSelf: 'center',
-                        borderColor: ThemeColor.Teal,
+                        borderColor: '#171C8F',
                         marginVertical: 10
                       }}
                       onPress={handleAddWaypoint}
                     >
-                      <Text style={{ fontSize: 13, fontWeight: 'bold', color: ThemeColor.Teal }}>
+                      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#171C8F' }}>
                         + Add Waypoint
                       </Text>
                     </TouchableOpacity>
@@ -1234,7 +1234,7 @@ const InitTaxiReq = ({ }) => {
                 </View>
               </View>
               <Text style={{ marginBottom: 5, fontSize: 13, fontWeight: 'bold', marginVertical: 5 }}>
-                Approx KM <Text style={{ color: 'red' }}>*</Text>
+                Approx KM <Text style={{ color: '#01044B' }}>*</Text>
               </Text>
               <TextInput
                 value={ApproxKm}
@@ -1245,8 +1245,8 @@ const InitTaxiReq = ({ }) => {
                   borderWidth: 1,
                   paddingVertical: 12,
                   borderRadius: 8,
-                  backgroundColor: '#F3F2F1',
-                  borderColor: ThemeColor.Teal,
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#171C8F',
                   fontSize: 13,
                   height: 40,
                   marginVertical: 10
@@ -1254,14 +1254,14 @@ const InitTaxiReq = ({ }) => {
               />
               <View>
                 <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                  Purpose {<Text style={{ color: 'red' }}>*</Text>}
+                  Purpose {<Text style={{ color: '#01044B' }}>*</Text>}
                 </Text>
                 <View style={{ width: '100%', marginVertical: 10 }}>
                   <TextInput
                     value={tripPurpose}
                     placeholder="Enter Purpose"
                     onChangeText={handlePurpose}
-                    style={{ width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: GlobalColor.White, borderColor: ThemeColor.Teal, fontSize: 13, height: 40 }}
+                    style={{ width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: '#FFFFFF', borderColor: '#171C8F', fontSize: 13, height: 40 }}
                   />
                   {formErrors.purpose && (
                     <Text style={styles.errorText}>{formErrors.purpose}</Text>
@@ -1272,14 +1272,14 @@ const InitTaxiReq = ({ }) => {
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginVertical: 10 }}>
                 <View style={{ width: '48%', paddingRight: 2 }}>
                   <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                    Taxi Model {<Text style={{ color: 'red' }}>*</Text>}
+                    Taxi Model {<Text style={{ color: '#01044B' }}>*</Text>}
                   </Text>
                   <SelectDropdown
                     ref={taxiDropdownRef}
                     buttonTextAfterSelection={(selectedItem) => selectedItem.label}
                     defaultButtonText={selectedTaxi ? selectedTaxi : 'Select Taxi'}
                     rowTextForSelection={(item) => item.label}
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={taxiModal}
                     onSelect={(selectedItem) => {
                       // console.log("Tour Type 1",selectedItem.value);
@@ -1292,7 +1292,7 @@ const InitTaxiReq = ({ }) => {
                     buttonStyle={styles.dropdown2BtnStyle}
                     buttonTextStyle={styles.dropdown2BtnTxtStyle}
                     renderDropdownIcon={isOpened => (
-                      <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />
+                      <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
                     )}
                     dropdownIconPosition={'right'}
                     dropdownStyle={styles.dropdown2DropdownStyle}
@@ -1305,12 +1305,12 @@ const InitTaxiReq = ({ }) => {
                 </View>
                 <View style={{ width: '48%', paddingLeft: 2 }}>
                   <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                    Cost Center {<Text style={{ color: 'red' }}>*</Text>}
+                    Cost Center {<Text style={{ color: '#01044B' }}>*</Text>}
                   </Text>
                   <TextInput
                     value={CostC}
                     editable={false}
-                    style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: '#F3F2F1', borderColor: ThemeColor.Teal, fontSize: 13, height: 40 }}
+                    style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: '#FFFFFF', borderColor: '#171C8F', fontSize: 13, height: 40 }}
                   />
                 </View>
               </View>
@@ -1332,16 +1332,16 @@ const InitTaxiReq = ({ }) => {
               <View style={{ width: '100%', marginBottom: 30 }}>
                 <View style={{ width: '100%', paddingRight: 10, marginVertical: 10 }}>
                   <Text style={{ paddingHorizontal: 0, paddingTop: 10, paddingVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                    Expected Pickup Time: {<Text style={{ color: 'red' }}>*</Text>}
+                    Expected Pickup Time: {<Text style={{ color: '#01044B' }}>*</Text>}
                   </Text>
                   <TouchableOpacity
-                    style={{ width: '100%', backgroundColor: GlobalColor.White, borderWidth: 1, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', padding: 12, alignSelf: 'center', borderColor: ThemeColor.Teal, borderRadius: 8 }}
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', borderWidth: 1, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', padding: 12, alignSelf: 'center', borderColor: '#171C8F', borderRadius: 8 }}
                     onPress={showDatePickera}
                   >
-                    <Text style={{ color: timeExp ? 'black' : 'gray', fontSize: 13 }}>
+                    <Text style={{ color: timeExp ? '#01044B' : 'rgba(1,4,75,0.62)', fontSize: 13 }}>
                       {timeExp ? moment(timeExp).format('YYYY-MM-DD HH:mm') : 'Select Pickup Time'}
                     </Text>
-                    <Ionicons name="calendar-outline" size={22} color={ThemeColor.Teal} />
+                    <Ionicons name="calendar-outline" size={22} color={'#171C8F'} />
                   </TouchableOpacity>
                   {formErrors.pickupTime && (
                     <Text style={styles.errorText}>{formErrors.pickupTime}</Text>
@@ -1364,16 +1364,16 @@ const InitTaxiReq = ({ }) => {
                 />
                 <View style={{ width: '100%', paddingRight: 10, marginVertical: 10 }}>
                   <Text style={{ paddingHorizontal: 0, paddingTop: 10, paddingVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                    Expected Arrival Time: {<Text style={{ color: 'red' }}>*</Text>}
+                    Expected Arrival Time: {<Text style={{ color: '#01044B' }}>*</Text>}
                   </Text>
                   <TouchableOpacity
-                    style={{ width: '100%', backgroundColor: GlobalColor.White, borderWidth: 1, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', padding: 12, alignSelf: 'center', borderColor: ThemeColor.Teal, borderRadius: 8 }}
+                    style={{ width: '100%', backgroundColor: '#FFFFFF', borderWidth: 1, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', padding: 12, alignSelf: 'center', borderColor: '#171C8F', borderRadius: 8 }}
                     onPress={showDatePickera1}
                   >
-                    <Text style={{ color: timeExp1 ? 'black' : 'gray', fontSize: 13 }}>
+                    <Text style={{ color: timeExp1 ? '#01044B' : 'rgba(1,4,75,0.62)', fontSize: 13 }}>
                      {timeExp1 ? moment(timeExp1).format('YYYY-MM-DD HH:mm') : 'Select Arrival Time'}
                     </Text>
-                    <Ionicons name="calendar-outline" size={22} color={ThemeColor.Teal} />
+                    <Ionicons name="calendar-outline" size={22} color={'#171C8F'} />
                   </TouchableOpacity>
                   {formErrors.arrivalTime && (
                     <Text style={styles.errorText}>{formErrors.arrivalTime}</Text>
@@ -1384,12 +1384,12 @@ const InitTaxiReq = ({ }) => {
                 <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', marginBottom: 10 }}>
                   <View style={{ width: '50%', paddingRight: 10 }}>
                     <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                      Reporting manager {<Text style={{ color: 'red' }}>*</Text>}
+                      Reporting manager {<Text style={{ color: '#01044B' }}>*</Text>}
                     </Text>
                     <TextInput
                       value={RM}
                       editable={false}
-                      style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: '#F3F2F1', borderColor: ThemeColor.Teal, fontSize: 13, height: 40 }}
+                      style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: '#FFFFFF', borderColor: '#171C8F', fontSize: 13, height: 40 }}
                     />
                   </View>
                   <View style={{ width: '50%', paddingRight: 10, flexDirection: 'row', alignItems: 'center', marginTop: 25 }}>
@@ -1400,7 +1400,7 @@ const InitTaxiReq = ({ }) => {
                       disabled={false}
                       value={!isSelected}
                       onChange={() => setSelection(!isSelected)}
-                      tintColors={{ true: ThemeColor.Teal, false: GlobalColor.LightDark }}
+                      tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
                       boxType="square"
                       style={{ height: 20, width: 20, marginRight: 5, marginLeft: 10 }}
                     />
@@ -1417,7 +1417,7 @@ const InitTaxiReq = ({ }) => {
                     buttonTextAfterSelection={(selectedItem) => selectedItem.label}
                     defaultButtonText={AdnAprv ? AdnAprv : 'Select Approver'}
                     rowTextForSelection={(item) => item.label}
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={additionAprv}
                     onSelect={(selectedItem) => {
                       setAdnAprv(selectedItem.value);
@@ -1425,7 +1425,7 @@ const InitTaxiReq = ({ }) => {
                     buttonStyle={styles.dropdown2BtnStyle}
                     buttonTextStyle={styles.dropdown2BtnTxtStyle}
                     renderDropdownIcon={isOpened => (
-                      <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />
+                      <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
                     )}
                     dropdownIconPosition={'right'}
                     dropdownStyle={styles.dropdown2DropdownStyle}
@@ -1447,9 +1447,9 @@ const InitTaxiReq = ({ }) => {
                 const isSelfOrFirstOnBehalf = form.id === 'self' || (selectedBookingType === 'B' && index === 0);
                 const isEditableMobile = true; // ✅ Make mobile editable for all passengers (previously restricted, now always editable)
                 return (
-                <View key={form.id} style={{ marginBottom: "15%", marginTop: "3%", borderColor: ThemeColor.Teal, borderWidth: 1, borderRadius: 10, padding: 10 }}>
+                <View key={form.id} style={{ marginBottom: "15%", marginTop: "3%", borderColor: '#171C8F', borderWidth: 1, borderRadius: 10, padding: 10 }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Text style={{ textAlign: "left", marginBottom: 5, backgroundColor: ThemeColor.TealDark, color: "#fff", borderRadius: 5, fontWeight: "bold", fontSize: 16, paddingHorizontal: 10, paddingVertical: 5 }}>
+                    <Text style={{ textAlign: "left", marginBottom: 5, backgroundColor: '#171C8F', color: "#FFFFFF", borderRadius: 5, fontWeight: "bold", fontSize: 16, paddingHorizontal: 10, paddingVertical: 5 }}>
                       Passenger Details {index + 1}
                     </Text>
                     {index > 0 && (
@@ -1457,14 +1457,14 @@ const InitTaxiReq = ({ }) => {
                         onPress={() => handleRemovePassenger(form.id)}
                         style={{}}
                       >
-                        <Ionicons name="trash" size={25} color={GlobalColor.Danger} />
+                        <Ionicons name="trash" size={25} color={'#01044B'} />
                       </TouchableOpacity>
                     )}
                   </View>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
                     <View style={{ width: '49%', paddingRight: 5 }}>
                       <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                        Passenger Type {<Text style={{ color: 'red' }}>*</Text>}
+                        Passenger Type {<Text style={{ color: '#01044B' }}>*</Text>}
                       </Text>
                       <SelectDropdown
                         ref={passengerDropdownRef}
@@ -1479,7 +1479,7 @@ const InitTaxiReq = ({ }) => {
                                 : 'Select Type'
                         }
                         rowTextForSelection={(item) => item.label}
-                        dropdownBackgroundColor={'transparent'}
+                        dropdownBackgroundColor={'rgba(255,255,255,0)'}
                         data={PassengerType}
                         onSelect={(selectedItem) => {
                           const updatedForms = [...passengerForms];
@@ -1497,12 +1497,12 @@ const InitTaxiReq = ({ }) => {
                           ...styles.dropdown2BtnStyle,
                           backgroundColor:
                             form.id === 'self' || (selectedBookingType === 'B' && index === 0)
-                              ? '#F3F2F1' // grey background for auto-selected employee
+                              ? '#FFFFFF' // grey background for auto-selected employee
                               : '#FFFFFF', // white for normal selection
                         }}
                         buttonTextStyle={styles.dropdown2BtnTxtStyle}
                         renderDropdownIcon={isOpened => (
-                          <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />
+                          <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
                         )}
                         dropdownIconPosition={'right'}
                         dropdownStyle={styles.dropdown2DropdownStyle}
@@ -1516,9 +1516,9 @@ const InitTaxiReq = ({ }) => {
                     </View>
                     <View style={{ width: '49%', paddingLeft: 5 }}>
                       <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                        Passenger Staff Id {<Text style={{ color: 'red' }}>*</Text>}
+                        Passenger Staff Id {<Text style={{ color: '#01044B' }}>*</Text>}
                       </Text>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 8, borderColor: ThemeColor.Teal, backgroundColor: form.pFlag === 'E' ? '#F3F2F1' : '#F3F2F1', height: 40, width: '100%' }}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 8, borderColor: '#171C8F', backgroundColor: form.pFlag === 'E' ? '#FFFFFF' : '#FFFFFF', height: 40, width: '100%' }}>
                         <TextInput
                           value={form.pStaffId}
                           placeholder="Enter Staff Id"
@@ -1531,11 +1531,11 @@ const InitTaxiReq = ({ }) => {
                             }
                           }}
                           editable={form.id !== 'self' && form.pFlag === 'E' && !(selectedBookingType === 'B' && index === 0)}
-                          style={{ flex: 1, paddingVertical: 12, paddingHorizontal: 10, fontSize: 13, backgroundColor: (form.id !== 'self' && form.pFlag === 'E' && !(selectedBookingType === 'B' && index === 0)) ? GlobalColor.White : 'transparent' }}
+                          style={{ flex: 1, paddingVertical: 12, paddingHorizontal: 10, fontSize: 13, backgroundColor: (form.id !== 'self' && form.pFlag === 'E' && !(selectedBookingType === 'B' && index === 0)) ? '#FFFFFF' : 'rgba(255,255,255,0)' }}
                         />
                         {form.pFlag === 'E' && form.id !== 'self' && !(selectedBookingType === 'B' && index === 0) && (
                           <TouchableOpacity onPress={() => SearchEmployee(form.pStaffId, index)} style={{ width: 40, alignItems: 'center', justifyContent: 'center' }}>
-                            <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                            <Ionicons name="send" size={20} color={'#171C8F'} />
                           </TouchableOpacity>
                         )}
                       </View>
@@ -1546,7 +1546,7 @@ const InitTaxiReq = ({ }) => {
                   </View>
                   <View style={{ width: '100%' }}>
                     <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                      Passenger Name {<Text style={{ color: 'red' }}>*</Text>}
+                      Passenger Name {<Text style={{ color: '#01044B' }}>*</Text>}
                     </Text>
                     <TextInput
                       value={form.pName}
@@ -1557,7 +1557,7 @@ const InitTaxiReq = ({ }) => {
                         setPassengerForms(updatedForms);
                       }}
                       editable={form.pFlag === 'G'}
-                      style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: form.pFlag === 'E' ? '#F3F2F1' : GlobalColor.White, borderColor: ThemeColor.Teal, fontSize: 13, height: 40 }}
+                      style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: form.pFlag === 'E' ? '#FFFFFF' : '#FFFFFF', borderColor: '#171C8F', fontSize: 13, height: 40 }}
                     />
                     {passengerErrors[index]?.pName && (
                       <Text style={styles.errorText}>{passengerErrors[index].pName}</Text>
@@ -1565,7 +1565,7 @@ const InitTaxiReq = ({ }) => {
                   </View>
                   <View style={{ width: '100%', marginBottom: 10 }}>
                     <Text style={{ paddingHorizontal: 4, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                      Passenger Mobile No {<Text style={{ color: 'red' }}>*</Text>}
+                      Passenger Mobile No {<Text style={{ color: '#01044B' }}>*</Text>}
                     </Text>
                     <TextInput
                       value={form.pMob}
@@ -1578,7 +1578,7 @@ const InitTaxiReq = ({ }) => {
                       editable={isEditableMobile} // ✅ Now always editable
                       keyboardType="numeric"
                       maxLength={10}
-                      style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingHorizontal: 12, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: GlobalColor.White, borderColor: ThemeColor.Teal, fontSize: 13, height: 40 }}
+                      style={{ marginVertical: 1, width: '100%', borderWidth: 1, paddingHorizontal: 12, paddingVertical: 12, alignSelf: 'center', borderRadius: 8, backgroundColor: '#FFFFFF', borderColor: '#171C8F', fontSize: 13, height: 40 }}
                     />
                     {passengerErrors[index]?.pMob && (
                       <Text style={styles.errorText}>{passengerErrors[index].pMob}</Text>
@@ -1587,18 +1587,18 @@ const InitTaxiReq = ({ }) => {
                 </View>
               )})}
               <TouchableOpacity
-                style={{ width: '100%', backgroundColor: 'transparent', borderWidth: 1, justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 12, alignSelf: 'center', borderColor: ThemeColor.Teal, marginVertical: 10 }}
+                style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0)', borderWidth: 1, justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 12, alignSelf: 'center', borderColor: '#171C8F', marginVertical: 10 }}
                 onPress={handleAddPassenger}
               >
-                <Text style={{ fontSize: 13, fontWeight: 'bold', color: ThemeColor.Teal }}>
+                <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#171C8F' }}>
                   + Add Passenger
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={{ width: '100%', backgroundColor: ThemeColor.Amber, justifyContent: 'center', alignItems: 'center', borderRadius: 24, padding: 12, alignSelf: 'center', marginVertical: 10 }}
+                style={{ width: '100%', backgroundColor: '#FCBE62', justifyContent: 'center', alignItems: 'center', borderRadius: 24, padding: 12, alignSelf: 'center', marginVertical: 10 }}
                 onPress={AvailableTours}
               >
-                <Text style={{ color: ThemeColor.OnAmber, fontSize: 13, fontWeight: 'bold' }}>
+                <Text style={{ color: '#01044B', fontSize: 13, fontWeight: 'bold' }}>
                   Submit
                 </Text>
               </TouchableOpacity>
@@ -1608,9 +1608,9 @@ const InitTaxiReq = ({ }) => {
       </ScrollView>
       <Modal transparent={false} visible={empModalVisible}>
         <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={{ backgroundColor: GlobalColor.White, padding: 0, borderRadius: 0, width: '100%', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+          <View style={{ backgroundColor: '#FFFFFF', padding: 0, borderRadius: 0, width: '100%', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
             <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0 }} onPress={() => setEmpModalVisible(false)}>
-              <Ionicons name="close-circle-outline" size={30} color={ThemeColor.Teal} />
+              <Ionicons name="close-circle-outline" size={30} color={'#171C8F'} />
             </TouchableOpacity>
             <FlatList
               style={{ width: '100%', marginHorizontal: 0, marginTop: 40 }}
@@ -1628,12 +1628,12 @@ const InitTaxiReq = ({ }) => {
                     setEmpModalVisible(false);
                   }}
                 >
-                  <Ionicons name="person-circle-outline" size={25} color={ThemeColor.Teal} />
+                  <Ionicons name="person-circle-outline" size={25} color={'#171C8F'} />
                   <View style={{ flexDirection: 'column', flex: 1, marginLeft: 10 }}>
                     <Text style={{ fontSize: 16 }}>{item.EMPL_NAME}</Text>
                     <Text>{item.EMPL_DESG_CODE} , {item.EMPL_DEPT_CODE} ({item.EMPL_ID})</Text>
                   </View>
-                  <Ionicons name="chevron-forward-circle-outline" size={25} color={ThemeColor.Teal} />
+                  <Ionicons name="chevron-forward-circle-outline" size={25} color={'#171C8F'} />
                 </TouchableOpacity>
               )}
             />
@@ -1643,7 +1643,7 @@ const InitTaxiReq = ({ }) => {
       {/* Merge Request Id Start*/}
       <Modal isVisible={ReportModal} transparent={true}>
         <View style={{
-          backgroundColor: '#fff',
+          backgroundColor: '#FFFFFF',
           padding: 10,
           borderRadius: 8,
           width: '100%',
@@ -1656,30 +1656,30 @@ const InitTaxiReq = ({ }) => {
             justifyContent: 'space-between',
             paddingBottom: 10,
             borderBottomWidth: 1,
-            borderColor: '#ddd'
+            borderColor: 'rgba(23,28,143,0.1)'
           }}>
-            <Text style={{ fontSize: 16, fontWeight: 'bold', color: ThemeColor.Teal }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#171C8F' }}>
               Available Trips For Merge
             </Text>
             <TouchableOpacity onPress={() => setReportModal(false)}>
-              <Ionicons name="close-circle-outline" size={28} color={GlobalColor.Danger} />
+              <Ionicons name="close-circle-outline" size={28} color={'#01044B'} />
             </TouchableOpacity>
           </View>
           {/* ✅ Scrollable Trip List */}
           <ScrollView style={{ marginTop: 10, maxHeight: 400 }}>
             {modalData.length === 0 ? (
-              <Text style={{ fontSize: 14, color: 'gray', textAlign: 'center', marginVertical: 20 }}>
+              <Text style={{ fontSize: 14, color: 'rgba(1,4,75,0.62)', textAlign: 'center', marginVertical: 20 }}>
                 No data available for merge
               </Text>
             ) : (
               modalData.map((item, index) => (
                 <View key={index} style={{
                   borderWidth: 1,
-                  borderColor: '#ccc',
+                  borderColor: 'rgba(23,28,143,0.1)',
                   borderRadius: 6,
                   padding: 10,
                   marginBottom: 12,
-                  backgroundColor: '#f9f9f9'
+                  backgroundColor: '#FFFFFF'
                 }}>
                   {/* ✅ Bold title + normal data */}
                   <Text style={{ fontSize: 13, marginBottom: 4 }}>
@@ -1715,14 +1715,14 @@ const InitTaxiReq = ({ }) => {
                     style={{
                       paddingVertical: 10,
                       borderRadius: 24,
-                      backgroundColor: ThemeColor.Amber,
+                      backgroundColor: '#FCBE62',
                       marginTop: 10,
                       alignSelf: 'flex-start',
                       width: 120
                     }}
                     onPress={() => handleButtonPress(item.RQST_ID, 'Merge')}
                   >
-                    <Text style={{ color: ThemeColor.OnAmber, fontSize: 14, textAlign: 'center' }}>Merge Trip</Text>
+                    <Text style={{ color: '#01044B', fontSize: 14, textAlign: 'center' }}>Merge Trip</Text>
                   </TouchableOpacity>
                 </View>
               ))
@@ -1734,7 +1734,7 @@ const InitTaxiReq = ({ }) => {
             flexDirection: 'row',
             justifyContent: 'flex-end',
             borderTopWidth: 1,
-            borderColor: '#ddd',
+            borderColor: 'rgba(23,28,143,0.1)',
             marginTop: 10,
             paddingTop: 10
           }}>
@@ -1742,12 +1742,12 @@ const InitTaxiReq = ({ }) => {
               style={{
                 paddingVertical: 10,
                 borderRadius: 24,
-                backgroundColor: ThemeColor.Amber,
+                backgroundColor: '#FCBE62',
                 minWidth: 120
               }}
               onPress={() => handleButtonPress("", 'Submit')}
             >
-              <Text style={{ color: ThemeColor.OnAmber, fontSize: 14, textAlign: 'center' }}>Skip Merge</Text>
+              <Text style={{ color: '#01044B', fontSize: 14, textAlign: 'center' }}>Skip Merge</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -1756,7 +1756,7 @@ const InitTaxiReq = ({ }) => {
       {/* Terms and Condition Start*/}
       <Modal isVisible={TandCModal} transparent={true}>
         <View style={{
-          backgroundColor: '#fff',
+          backgroundColor: '#FFFFFF',
           padding: 10,
           borderRadius: 8,
          width: '100%',
@@ -1769,9 +1769,9 @@ const InitTaxiReq = ({ }) => {
             justifyContent: 'space-between',
             paddingBottom: 10,
             borderBottomWidth: 1,
-            borderColor: '#ddd'
+            borderColor: 'rgba(23,28,143,0.1)'
           }}>
-            <Text style={{ fontSize: 16, fontWeight: 'bold', color: ThemeColor.Teal }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#171C8F' }}>
               Terms and Condition
             </Text>
             <View style={styles.container}>
@@ -1782,8 +1782,8 @@ const InitTaxiReq = ({ }) => {
           </View>
           {loadingImages ? (
             <View style={{ alignItems: "center", justifyContent: "center", height: 200 }}>
-              <ActivityIndicator size="large" color={ThemeColor.Teal} />
-              <Text style={{ marginTop: 10, color: "#555" }}>Loading...</Text>
+              <ActivityIndicator size="large" color={'#171C8F'} />
+              <Text style={{ marginTop: 10, color: "rgba(1,4,75,0.62)" }}>Loading...</Text>
             </View>
           ) : (
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
@@ -1809,7 +1809,7 @@ const InitTaxiReq = ({ }) => {
             flexDirection: 'row',
             justifyContent: 'flex-end',
             borderTopWidth: 1,
-            borderColor: '#ddd',
+            borderColor: 'rgba(23,28,143,0.1)',
             marginTop: 10,
             paddingTop: 10
           }}>
@@ -1818,7 +1818,7 @@ const InitTaxiReq = ({ }) => {
                 disabled={false}
                 value={!isSelectedTerm}
                 onChange={() => setSelectionTerm(!isSelectedTerm)}
-                tintColors={{ true: ThemeColor.Teal, false: GlobalColor.LightDark }}
+                tintColors={{ true: '#171C8F', false: 'rgba(1,4,75,0.45)' }}
                 boxType="square"
                 // hideBox
                 style={{ height: 20, width: 20, marginRight: 5 }}
@@ -1826,7 +1826,7 @@ const InitTaxiReq = ({ }) => {
               <Text style={{ fontSize: 13, fontWeight: 'bold', marginVertical: 5 }}>
                 I accept the{' '}
                 <Text
-                  style={{ color: 'blue', fontSize: 13, fontWeight: 'bold' }}
+                  style={{ color: '#171C8F', fontSize: 13, fontWeight: 'bold' }}
                   onPress={() => Linking.openURL('https://swifttest.maruti.co.in/HrAssist/Images/T&c.pdf')}
                 >
                   terms and conditions
@@ -1839,13 +1839,13 @@ const InitTaxiReq = ({ }) => {
               style={{
                 paddingVertical: 10,
                 borderRadius: 24,
-                backgroundColor: ThemeColor.Amber,
+                backgroundColor: '#FCBE62',
                 minWidth: 120,
                 marginTop: 10
               }}
               onPress={() => setTandC(false)}
             >
-              <Text style={{ color: ThemeColor.OnAmber, fontSize: 14, textAlign: 'center' }}>I Agree</Text>
+              <Text style={{ color: '#01044B', fontSize: 14, textAlign: 'center' }}>I Agree</Text>
             </TouchableOpacity>
             : null}
         </View>
@@ -1860,12 +1860,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   Link: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     fontWeight: '600',
     fontSize: 13,
   },
   spinnerTextStyle: {
-    color: '#fff'
+    color: '#FFFFFF'
   },
   FlatListData: {
     width: '100%',
@@ -1878,29 +1878,29 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
   dropdown2BtnStyle: {
     width: '100%',
     height: 40,
     borderWidth: 1,
     borderRadius: 8,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 14 },
-  dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
-  dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: ThemeColor.Teal },
+  dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
+  dropdown2RowStyle: { backgroundColor: '#FFFFFF', borderBottomColor: '#171C8F' },
   dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 16 },
   clearButton: {
-    backgroundColor: ThemeColor.DisabledBg,
+    backgroundColor: '#F5F5F5',
     padding: 10,
     borderRadius: 24,
     alignItems: 'center',
-    margin: 10, borderWidth: 1, borderColor: ThemeColor.DisabledBorder },
+    margin: 10, borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)' },
   clearButtonText: {
-    color: ThemeColor.DisabledText,
+    color: 'rgba(1,4,75,0.62)',
     fontSize: 16,
     fontWeight: 'bold',
   },
@@ -1911,7 +1911,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   errorText: {
-    color: 'red',
+    color: '#01044B',
     fontSize: 12,
     marginTop: 5,
     textAlign: 'left',

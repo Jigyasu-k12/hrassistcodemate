@@ -266,7 +266,7 @@ const PFWithdrawal = () => {
             setEligLoader(false);
 
             if (result.Value) {
-                // Format: "124014.17#124014.17~186021.255#"
+                // Format: "124014.17#171C8F.17~186021.255#"
                 // sharePart -> "employeeShare#employerShare", eligPart -> "eligibleAmount#"
                 // Error format: "#~#YOU ARE ELIGIBIL FOR ADVANCE PF MAX 0 TIMES DURING "
                 const [sharePart, eligPart] = result.Value.split('~');
@@ -485,14 +485,14 @@ const PFWithdrawal = () => {
 
     if(loader || screenConfigLoader){
         return(
-            <SafeAreaView style={{ flex: 1,backgroundColor: GlobalColor.PrimaryLight  }}>
+            <SafeAreaView style={{ flex: 1,backgroundColor: '#F5F5F5'  }}>
                 <LoadingScreen/>
             </SafeAreaView>
         )
       }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
             <KeyboardAvoidingView
                 style={{ flex: 1 }}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -504,7 +504,7 @@ const PFWithdrawal = () => {
                     keyboardShouldPersistTaps="handled"
                     showsVerticalScrollIndicator={false}
                 >
-                    <View style={[styles.MainCard, { padding: 10,backgroundColor: GlobalColor.White }]}>
+                    <View style={[styles.MainCard, { padding: 10,backgroundColor: '#FFFFFF' }]}>
                         <View>
                             <View style={styles.textContainer}>
                                 <Text Bold style={{ fontSize: 13}} >Employee's</Text>
@@ -512,14 +512,14 @@ const PFWithdrawal = () => {
                                     Rs.{employeePf}
                                 </Text>
                             </View>
-                            <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:GlobalColor.Secondary,}}/>
+                            <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:'#171C8F',}}/>
                             <View style={styles.textContainer}>
                                 <Text Bold style={{ fontSize: 13}} >Employer's</Text>
                                 <Text Bold style={{ fontSize: 13}}>
                                     Rs.{employerPf}
                                 </Text>
                             </View>
-                            <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:GlobalColor.Secondary,}}/>
+                            <View style={{ borderBottomWidth:0.5,marginHorizontal:5, borderColor:'#171C8F',}}/>
                             <View style={styles.textContainer2}>
                                 <Text Bold style={{fontSize:16}}>Net Balance</Text>
                                 <Text Bold style={{fontSize:16}}>
@@ -531,7 +531,7 @@ const PFWithdrawal = () => {
 
                     {/* ---------- PF Withdrawal Section ---------- */}
                     {isPFWithdrawalEnabled && (
-                    <View style={[styles.MainCard, { padding: 15, backgroundColor: GlobalColor.White }]}>
+                    <View style={[styles.MainCard, { padding: 15, backgroundColor: '#FFFFFF' }]}>
                         <Text Bold style={{ fontSize: 15, marginBottom: 10 }}>PF Withdrawal</Text>
 
                         {/* Purpose Dropdown Trigger */}
@@ -540,7 +540,7 @@ const PFWithdrawal = () => {
                             onPress={() => setPurposeModalVisible(true)}
                             disabled={purposeLoader}
                         >
-                            <Text style={{ fontSize: 13, color: selectedPurpose ? GlobalColor.Black : GlobalColor.Secondary }}>
+                            <Text style={{ fontSize: 13, color: selectedPurpose ? '#01044B' : '#171C8F' }}>
                                 {purposeLoader ? 'Loading purposes...' : (selectedPurpose ? selectedPurpose.label : 'Select Purpose')}
                             </Text>
                         </TouchableOpacity>
@@ -548,7 +548,7 @@ const PFWithdrawal = () => {
                         {/* Eligibility loader */}
                         {eligLoader && (
                             <View style={{ marginTop: 15 }}>
-                                <Text style={{ fontSize: 12, color: GlobalColor.Secondary }}>Fetching eligibility...</Text>
+                                <Text style={{ fontSize: 12, color: '#171C8F' }}>Fetching eligibility...</Text>
                             </View>
                         )}
 
@@ -563,7 +563,7 @@ const PFWithdrawal = () => {
                                     <Text style={{ fontSize: 13 }}>Employer Share</Text>
                                     <Text style={{ fontSize: 13 }}>Rs.{parseFloat(employerShare).toFixed(2)}</Text>
                                 </View>
-                                <View style={{ borderBottomWidth: 0.5, marginHorizontal: 5, borderColor: GlobalColor.Secondary }} />
+                                <View style={{ borderBottomWidth: 0.5, marginHorizontal: 5, borderColor: '#171C8F' }} />
                                 <View style={styles.textContainer2}>
                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                         <Text Bold style={{ fontSize: 14 }}>Eligible Amount</Text>
@@ -571,7 +571,7 @@ const PFWithdrawal = () => {
                                             onPress={() => getWithdrawMaster(selectedPurpose?.code)}
                                             style={{ marginLeft: 8 }}
                                         >
-                                            <Ionicons name="information-circle" size={20} color={GlobalColor.Primary} />
+                                            <Ionicons name="information-circle" size={20} color={'#01044B'} />
                                         </TouchableOpacity>
                                     </View>
                                     <Text Bold style={{ fontSize: 14 }}>Rs.{Math.floor(parseFloat(eligibleAmount))}</Text>
@@ -583,7 +583,7 @@ const PFWithdrawal = () => {
                                     style={{ marginTop: 10, width: '90%', alignSelf: 'center' }}
                                     onLayout={() => {}}
                                 >
-                                    <Text style={{ fontSize: 12, marginBottom: 5, color: GlobalColor.Secondary }}>Enter Withdrawal Amount (whole numbers only)</Text>
+                                    <Text style={{ fontSize: 12, marginBottom: 5, color: '#171C8F' }}>Enter Withdrawal Amount (whole numbers only)</Text>
                                     <TextInput
                                         style={styles.amountInput}
                                         keyboardType="number-pad"
@@ -606,25 +606,25 @@ const PFWithdrawal = () => {
                                         }}
                                     />
                                     {!!amountError && (
-                                        <Text style={{ fontSize: 11, color: 'red', marginTop: 5 }}>{amountError}</Text>
+                                        <Text style={{ fontSize: 11, color: '#01044B', marginTop: 5 }}>{amountError}</Text>
                                     )}
                                 </View>
 
                                 {/* Declaration Statement HTML */}
                                 {declarationLoader && (
                                     <View style={{ marginTop: 15, width: '90%', alignSelf: 'center' }}>
-                                        <Text style={{ fontSize: 12, color: GlobalColor.Secondary }}>Loading declaration...</Text>
+                                        <Text style={{ fontSize: 12, color: '#171C8F' }}>Loading declaration...</Text>
                                     </View>
                                 )}
 
                                 {!declarationLoader && declarationHTML !== '' && (
-                                    <View style={{ marginTop: 15, width: '90%', alignSelf: 'center', backgroundColor: '#F5F5F5', padding: 10, borderRadius: 8 }}>
+                                    <View style={{ marginTop: 15, width: '90%', alignSelf: 'center', backgroundColor: '#FFFFFF', padding: 10, borderRadius: 8 }}>
                                         <RenderHtml
                                             contentWidth={width * 0.8}
                                             source={{ html: declarationHTML }}
                                             tagsStyles={{
-                                                p: { fontSize: 12, lineHeight: 18, marginVertical: 5, color: GlobalColor.Black },
-                                                strong: { fontWeight: 'bold', color: GlobalColor.Primary },
+                                                p: { fontSize: 12, lineHeight: 18, marginVertical: 5, color: '#01044B' },
+                                                strong: { fontWeight: 'bold', color: '#01044B' },
                                                 div: { marginVertical: 5 }
                                             }}
                                         />
@@ -636,9 +636,9 @@ const PFWithdrawal = () => {
                                     style={styles.declarationRow}
                                     onPress={() => setDeclarationChecked(!declarationChecked)}
                                 >
-                                    <View style={[styles.checkbox, declarationChecked && { backgroundColor: GlobalColor.Primary, borderColor: GlobalColor.Primary }]}>
+                                    <View style={[styles.checkbox, declarationChecked && { backgroundColor: '#171C8F', borderColor: '#171C8F' }]}>
                                         {declarationChecked && (
-                                            <Ionicons name="checkmark" size={14} color={GlobalColor.White} />
+                                            <Ionicons name="checkmark" size={14} color={'#01044B'} />
                                         )}
                                     </View>
                                     <Text style={{ fontSize: 11, flex: 1, marginLeft: 8 }}>
@@ -653,12 +653,12 @@ const PFWithdrawal = () => {
         styles.submitButtonGradient,
         isSubmitDisabled() && { opacity: 0.5 }
     ]}
-    colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.TealSoft]}>
+    colors={['#171C8F', '#171C8F', 'rgba(23,28,143,0.1)']}>
     <TouchableOpacity
         onPress={submitPFWithdrawal}
         disabled={isSubmitDisabled()}
         style={styles.submitButtonInner}>
-        <Text Bold style={{ color: GlobalColor.White, fontSize: 14 }}>
+        <Text Bold style={{ color: '#FFFFFF', fontSize: 14 }}>
             {submitLoader ? 'Submitting...' : 'Submit'}
         </Text>
     </TouchableOpacity>
@@ -682,7 +682,7 @@ const PFWithdrawal = () => {
                         <View style={styles.modalHeader}>
                             <Text Bold style={{ fontSize: 15 }}>Select Purpose</Text>
                             <TouchableOpacity onPress={() => setPurposeModalVisible(false)}>
-                                <Text style={{ fontSize: 14, color: GlobalColor.Secondary }}>Close</Text>
+                                <Text style={{ fontSize: 14, color: '#171C8F' }}>Close</Text>
                             </TouchableOpacity>
                         </View>
                         <SectionList
@@ -717,18 +717,18 @@ const PFWithdrawal = () => {
                         <View style={styles.modalHeader}>
                             <Text Bold style={{ fontSize: 16, flex: 1 }}>Eligibility Calculation</Text>
                             <TouchableOpacity onPress={() => setCalculationModalVisible(false)}>
-                                <Feather name="x-circle" size={22} color={GlobalColor.Black} />
+                                <Feather name="x-circle" size={22} color={'#01044B'} />
                             </TouchableOpacity>
                         </View>
 
                         {masterLoader ? (
                             <View style={{ padding: 20, alignItems: 'center' }}>
-                                <Text style={{ fontSize: 13, color: GlobalColor.Secondary }}>Loading...</Text>
+                                <Text style={{ fontSize: 13, color: '#171C8F' }}>Loading...</Text>
                             </View>
                         ) : withdrawMasterData ? (
                             <ScrollView style={{ padding: 15 }} showsVerticalScrollIndicator={false}>
                                 <View style={styles.infoCard}>
-                                    <Text Bold style={{ fontSize: 14, marginBottom: 10, color: GlobalColor.Primary }}>
+                                    <Text Bold style={{ fontSize: 14, marginBottom: 10, color: '#01044B' }}>
                                         Purpose Details
                                     </Text>
 
@@ -748,13 +748,13 @@ const PFWithdrawal = () => {
                                 </View>
 
                                 <View style={styles.infoCard}>
-                                    <Text Bold style={{ fontSize: 14, marginBottom: 10, color: GlobalColor.Primary }}>
+                                    <Text Bold style={{ fontSize: 14, marginBottom: 10, color: '#01044B' }}>
                                         Eligibility Criteria
                                     </Text>
 
                                     <View style={styles.infoRow}>
                                         <Text style={styles.infoLabel}>Max % of Balance:</Text>
-                                        <Text Bold style={[styles.infoValue, { color: '#4CAF50' }]}>
+                                        <Text Bold style={[styles.infoValue, { color: '#171C8F' }]}>
                                             {withdrawMasterData['MAX PERCENT OF BALANCE'] ? `${withdrawMasterData['MAX PERCENT OF BALANCE']}%` : 'N/A'}
                                         </Text>
                                     </View>
@@ -785,22 +785,22 @@ const PFWithdrawal = () => {
                                     )}
                                 </View>
 
-                                <View style={[styles.infoCard, { backgroundColor: ThemeColor.TealLight }]}>
-                                    <Text Bold style={{ fontSize: 13, marginBottom: 8, color: GlobalColor.Primary }}>
+                                <View style={[styles.infoCard, { backgroundColor: '#F5F5F5' }]}>
+                                    <Text Bold style={{ fontSize: 13, marginBottom: 8, color: '#01044B' }}>
                                         Calculation Formula:
                                     </Text>
-                                    <Text style={{ fontSize: 12, lineHeight: 18, color: GlobalColor.Black }}>
+                                    <Text style={{ fontSize: 12, lineHeight: 18, color: '#01044B' }}>
                                         Eligible Amount = (Employee Share + Employer Share) × {withdrawMasterData['MAX PERCENT OF BALANCE'] ? `${withdrawMasterData['MAX PERCENT OF BALANCE']}%` : 'N/A'}
                                     </Text>
                                     {employeeShare && employerShare && withdrawMasterData['MAX PERCENT OF BALANCE'] && (
                                         <View style={{ marginTop: 10 }}>
-                                            <Text style={{ fontSize: 12, color: GlobalColor.Secondary }}>
+                                            <Text style={{ fontSize: 12, color: '#171C8F' }}>
                                                 = (Rs.{parseFloat(employeeShare).toFixed(2)} + Rs.{parseFloat(employerShare).toFixed(2)}) × {withdrawMasterData['MAX PERCENT OF BALANCE']}%
                                             </Text>
-                                            <Text style={{ fontSize: 12, color: GlobalColor.Secondary, marginTop: 5 }}>
+                                            <Text style={{ fontSize: 12, color: '#171C8F', marginTop: 5 }}>
                                                 = Rs.{(parseFloat(employeeShare) + parseFloat(employerShare)).toFixed(2)} × {withdrawMasterData['MAX PERCENT OF BALANCE']}%
                                             </Text>
-                                            <Text Bold style={{ fontSize: 13, color: '#4CAF50', marginTop: 5 }}>
+                                            <Text Bold style={{ fontSize: 13, color: '#171C8F', marginTop: 5 }}>
                                                 = Rs.{Math.floor(parseFloat(eligibleAmount))}
                                             </Text>
                                         </View>
@@ -809,7 +809,7 @@ const PFWithdrawal = () => {
                             </ScrollView>
                         ) : (
                             <View style={{ padding: 20, alignItems: 'center' }}>
-                                <Text style={{ fontSize: 13, color: GlobalColor.Secondary }}>No data available</Text>
+                                <Text style={{ fontSize: 13, color: '#171C8F' }}>No data available</Text>
                             </View>
                         )}
                     </View>
@@ -842,7 +842,7 @@ const styles = StyleSheet.create({
     MainCard: {
 
         margin: 10,
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -854,14 +854,14 @@ const styles = StyleSheet.create({
     },
     dropdownTrigger: {
         borderWidth: 1,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
         borderRadius: 4,
         paddingVertical: 12,
         paddingHorizontal: 10,
     },
     amountInput: {
         borderWidth: 1,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
         borderRadius: 4,
         paddingVertical: 8,
         paddingHorizontal: 10,
@@ -878,7 +878,7 @@ const styles = StyleSheet.create({
         width: 18,
         height: 18,
         borderWidth: 1,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
         borderRadius: 3,
         justifyContent: 'center',
         alignItems: 'center',
@@ -898,11 +898,11 @@ submitButtonInner: {
 },
     modalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.4)',
+        backgroundColor: 'rgba(1,4,75,0.45)',
         justifyContent: 'flex-end',
     },
     modalContent: {
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         maxHeight: '70%',
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
@@ -914,11 +914,11 @@ submitButtonInner: {
         alignItems: 'center',
         padding: 15,
         borderBottomWidth: 0.5,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
     },
     sectionHeader: {
         fontSize: 12,
-        backgroundColor: GlobalColor.PrimaryLight,
+        backgroundColor: '#F5F5F5',
         paddingVertical: 6,
         paddingHorizontal: 15,
     },
@@ -926,21 +926,21 @@ submitButtonInner: {
         paddingVertical: 12,
         paddingHorizontal: 15,
         borderBottomWidth: 0.5,
-        borderColor: GlobalColor.PrimaryLight,
+        borderColor: 'rgba(23,28,143,0.1)',
     },
     calculationModalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(1,4,75,0.5)',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
     },
     calculationModalContent: {
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderRadius: 12,
         width: '100%',
         maxHeight: '80%',
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -950,12 +950,12 @@ submitButtonInner: {
         elevation: 5,
     },
     infoCard: {
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderRadius: 8,
         padding: 12,
         marginBottom: 15,
         borderWidth: 1,
-        borderColor: GlobalColor.PrimaryLight,
+        borderColor: 'rgba(23,28,143,0.1)',
     },
     infoRow: {
         flexDirection: 'row',
@@ -965,11 +965,11 @@ submitButtonInner: {
     },
     infoLabel: {
         fontSize: 13,
-        color: GlobalColor.Secondary,
+        color: '#171C8F',
     },
     infoValue: {
         fontSize: 13,
-        color: GlobalColor.Black,
+        color: '#01044B',
     },
 
 })

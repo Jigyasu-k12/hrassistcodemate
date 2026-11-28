@@ -18,7 +18,7 @@ const HomeSheet = ({
   eyebrow,
   title,
   children,
-  background = '#FFFFFF',
+  background = '#F5F5F5',
   header = null, // pinned under the title (e.g. a search field)
   footer = null, // pinned at the bottom (e.g. Save / Reset)
   onHidden, // fires after the close animation — safe point to navigate
@@ -59,7 +59,7 @@ const HomeSheet = ({
             accessibilityRole="button"
             accessibilityLabel="Close"
             style={styles.close}>
-            <HomeIcon name="close" size={18} color={P.deep} strokeWidth={2} />
+            <HomeIcon name="close" size={18} color={'#01044B'} strokeWidth={2} />
           </TouchableOpacity>
         </View>
         {header}
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   footer: {
     paddingTop: 12,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: P.line,
+    borderTopColor: 'rgba(23,28,143,0.1)',
     marginHorizontal: -20,
     paddingHorizontal: 20,
   },
@@ -95,20 +95,20 @@ const styles = StyleSheet.create({
     width: 40,
     height: 4,
     borderRadius: 2,
-    backgroundColor: P.lineStrong,
+    backgroundColor: '#F5F5F5',
     alignSelf: 'center',
     marginBottom: 14,
   },
   headRow: {flexDirection: 'row', alignItems: 'flex-start', marginBottom: 14},
-  eyebrow: {...TYPE.eyebrow, color: P.amberInk},
-  title: {...TYPE.sheetTitle, color: P.deep, marginTop: 4},
+  eyebrow: {...TYPE.eyebrow, color: '#171C8F'},
+  title: {...TYPE.sheetTitle, color: '#01044B', marginTop: 4},
   close: {
     width: 44,
     height: 44,
     borderRadius: 22,
     borderWidth: 1,
-    borderColor: P.line,
-    backgroundColor: P.canvas,
+    borderColor: 'rgba(23,28,143,0.1)',
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 12,

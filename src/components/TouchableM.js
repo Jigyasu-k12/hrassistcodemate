@@ -188,7 +188,7 @@ const TouchableCardM = ({ navigation }) => {
             renderItem={({ item }) => (
               <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.name)}>
                 <LinearGradient
-                  colors={[GlobalColor.White, GlobalColor.White]}
+                  colors={['#FFFFFF', '#FFFFFF']}
                   style={{ padding: 5, borderRadius: 5 }}
                 >
                   <Image source={item.images} style={styles.cardimg} resizeMode="contain" />
@@ -215,8 +215,8 @@ const styles = StyleSheet.create({
     height: myconfig.deviceHeight * 0.10,
     margin: 8,
     borderWidth: 0.2,
-    borderColor: GlobalColor.Secondary,
-    backgroundColor: GlobalColor.White,
+    borderColor: '#171C8F',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 5,
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   cardText: {
     textAlign: 'center',
     fontSize: 11,
-    color: GlobalColor.Primary,
+    color: '#01044B',
   },
 });
  

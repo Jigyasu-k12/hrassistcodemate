@@ -148,7 +148,7 @@ const GlassCircle = ({icon, onPress, label}) => (
     accessibilityLabel={label}
     activeOpacity={0.8}
     style={styles.glassCircle}>
-    <AppIcon name={icon} size={20} color={P.deep} strokeWidth={2} />
+    <AppIcon name={icon} size={20} color={'#01044B'} strokeWidth={2} />
   </TouchableOpacity>
 );
 
@@ -199,7 +199,7 @@ const RowButton = ({icon, label, onPress, text}) => (
     {text ? (
       <HText style={styles.rowBtnText}>{text}</HText>
     ) : (
-      <AppIcon name={icon} size={18} color={P.tealInk} strokeWidth={1.9} />
+      <AppIcon name={icon} size={18} color={'#171C8F'} strokeWidth={1.9} />
     )}
   </TouchableOpacity>
 );
@@ -231,7 +231,7 @@ const VehicleCard = ({v, index, total}) => (
         <AppIcon
           name="conveyance"
           size={20}
-          color={P.tealInk}
+          color={'#171C8F'}
           strokeWidth={1.8}
         />
       </View>
@@ -311,12 +311,12 @@ const ColleagueProfile = ({navigation, staffNo}) => {
     useCallback(() => {
       StatusBar.setBarStyle('dark-content');
       if (Platform.OS === 'android') {
-        StatusBar.setBackgroundColor(P.canvas);
+        StatusBar.setBackgroundColor('#F5F5F5');
       }
       return () => {
         StatusBar.setBarStyle('light-content');
         if (Platform.OS === 'android') {
-          StatusBar.setBackgroundColor(ThemeColor.Teal);
+          StatusBar.setBackgroundColor('#171C8F');
         }
       };
     }, []),
@@ -362,7 +362,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
   const primaryCall = canSeeContact ? mobile || extension : '';
 
   return (
-    <LinearGradient colors={[P.canvas, P.mint]} style={styles.root}>
+    <LinearGradient colors={['#F5F5F5', '#F5F5F5']} style={styles.root}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -419,7 +419,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
 
             {loader && !emp ? (
               <ActivityIndicator
-                color={P.amber}
+                color={'#FFFFFF'}
                 style={{marginTop: 18, marginBottom: 8}}
               />
             ) : (
@@ -434,7 +434,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
                       <AppIcon
                         name="employeePass"
                         size={13}
-                        color="rgba(255,255,255,0.75)"
+                        color="rgba(255,255,255,0.72)"
                         strokeWidth={2}
                       />
                       <HText style={styles.chipText}>{staffId}</HText>
@@ -445,7 +445,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
                       <AppIcon
                         name="pin"
                         size={13}
-                        color="rgba(255,255,255,0.75)"
+                        color="rgba(255,255,255,0.72)"
                         strokeWidth={2}
                       />
                       <HText style={styles.chipText} numberOfLines={1}>
@@ -473,7 +473,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
                 <AppIcon
                   name="phone"
                   size={18}
-                  color={P.onAmber}
+                  color={'#01044B'}
                   strokeWidth={1.9}
                 />
                 <HText style={styles.actionAmberText}>Call</HText>
@@ -513,7 +513,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
               <AppIcon
                 name="reset"
                 size={16}
-                color={P.onAmber}
+                color={'#01044B'}
                 strokeWidth={2.2}
               />
               <HText style={styles.retryBtnText}>Try again</HText>
@@ -573,7 +573,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
                     <AppIcon
                       name="vigilance"
                       size={14}
-                      color={P.sub}
+                      color={'rgba(1,4,75,0.62)'}
                       strokeWidth={2}
                     />
                     <HText style={styles.noteText}>
@@ -637,7 +637,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
                         <AppIcon
                           name="chevronRight"
                           size={18}
-                          color={P.sub}
+                          color={'rgba(1,4,75,0.62)'}
                           strokeWidth={2}
                         />
                       ) : null
@@ -655,7 +655,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
                         <AppIcon
                           name="people"
                           size={18}
-                          color={P.sub}
+                          color={'rgba(1,4,75,0.62)'}
                           strokeWidth={1.8}
                         />
                       </View>
@@ -674,7 +674,7 @@ const ColleagueProfile = ({navigation, staffNo}) => {
 const GLASS = {
   backgroundColor: 'rgba(255,255,255,0.62)',
   borderWidth: 1,
-  borderColor: 'rgba(255,255,255,0.9)',
+  borderColor: 'rgba(23,28,143,0.1)',
 };
 
 const styles = StyleSheet.create({
@@ -692,7 +692,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: P.deep,
+    shadowColor: '#01044B',
     shadowOpacity: 0.12,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 6},
@@ -704,10 +704,10 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     overflow: 'hidden',
     padding: 20,
-    backgroundColor: P.deep,
+    backgroundColor: '#171C8F',
     borderWidth: 1,
-    borderColor: 'rgba(234,244,242,0.10)',
-    shadowColor: '#16302A',
+    borderColor: 'rgba(255,255,255,0.1)',
+    shadowColor: '#01044B',
     shadowOpacity: 0.32,
     shadowRadius: 24,
     shadowOffset: {width: 0, height: 16},
@@ -724,7 +724,7 @@ const styles = StyleSheet.create({
   },
   avatar: {width: '100%', height: '100%'},
   avatarFallback: {
-    backgroundColor: '#F6E6C4',
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -732,7 +732,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '300',
     letterSpacing: -0.6,
-    color: P.deep,
+    color: '#01044B',
   },
   heroName: {
     marginTop: 12,
@@ -747,7 +747,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontSize: 14,
     lineHeight: 19,
-    color: '#E3ECE7',
+    color: 'rgba(1,4,75,0.45)',
     textAlign: 'center',
   },
   chips: {
@@ -762,9 +762,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 14,
     margin: 4,
-    backgroundColor: 'rgba(234,244,242,0.07)',
+    backgroundColor: 'rgba(255,255,255,0.07)',
     borderWidth: 1,
-    borderColor: 'rgba(234,244,242,0.16)',
+    borderColor: 'rgba(255,255,255,0.16)',
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -785,9 +785,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   actionAmber: {
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     marginRight: 10,
-    shadowColor: P.amber,
+    shadowColor: '#01044B',
     shadowOpacity: 0.45,
     shadowRadius: 12,
     shadowOffset: {width: 0, height: 8},
@@ -796,13 +796,13 @@ const styles = StyleSheet.create({
   actionAmberText: {
     fontSize: 15,
     fontWeight: '600',
-    color: P.onAmber,
+    color: '#01044B',
     marginLeft: 8,
   },
   actionGlass: {
-    backgroundColor: 'rgba(234,244,242,0.07)',
+    backgroundColor: 'rgba(255,255,255,0.07)',
     borderWidth: 1,
-    borderColor: 'rgba(234,244,242,0.28)',
+    borderColor: 'rgba(255,255,255,0.28)',
   },
   actionGlassText: {
     fontSize: 15,
@@ -817,7 +817,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     letterSpacing: 0.2,
-    color: '#66716D',
+    color: 'rgba(1,4,75,0.62)',
     marginBottom: 10,
     paddingHorizontal: 4,
   },
@@ -825,7 +825,7 @@ const styles = StyleSheet.create({
     ...GLASS,
     borderRadius: 18,
     overflow: 'hidden',
-    shadowColor: '#16302A',
+    shadowColor: '#01044B',
     shadowOpacity: 0.08,
     shadowRadius: 14,
     shadowOffset: {width: 0, height: 6},
@@ -839,17 +839,17 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 12,
   },
-  rowDivider: {borderTopWidth: 1, borderTopColor: '#E4E2DA'},
+  rowDivider: {borderTopWidth: 1, borderTopColor: 'rgba(23,28,143,0.1)'},
   rowText: {flex: 1, minWidth: 0, marginRight: 8},
-  rowLabel: {fontSize: 12.5, color: '#66716D'},
+  rowLabel: {fontSize: 12.5, color: 'rgba(1,4,75,0.62)'},
   rowValue: {
     fontSize: 15,
     fontWeight: '500',
     lineHeight: 21,
-    color: '#1C2B27',
+    color: '#171C8F',
     marginTop: 3,
   },
-  rowSub: {fontSize: 12.5, color: '#66716D', marginTop: 2},
+  rowSub: {fontSize: 12.5, color: 'rgba(1,4,75,0.62)', marginTop: 2},
   rowBtn: {
     ...GLASS,
     height: 44,
@@ -858,7 +858,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  rowBtnText: {fontSize: 13, fontWeight: '600', color: P.tealInk},
+  rowBtnText: {fontSize: 13, fontWeight: '600', color: '#171C8F'},
   note: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -870,7 +870,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 12,
     lineHeight: 17,
-    color: '#66716D',
+    color: 'rgba(1,4,75,0.62)',
     marginLeft: 8,
   },
   sectionHead: {
@@ -883,7 +883,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     letterSpacing: 0.2,
-    color: '#66716D',
+    color: 'rgba(1,4,75,0.62)',
   },
   countChip: {
     minWidth: 22,
@@ -891,11 +891,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     borderRadius: 10,
     marginLeft: 8,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  countText: {fontSize: 11.5, fontWeight: '700', color: P.tealInk},
+  countText: {fontSize: 11.5, fontWeight: '700', color: '#171C8F'},
   vehicle: {padding: 14},
   vehicleGap: {marginTop: 10},
   vehicleTop: {flexDirection: 'row', alignItems: 'center'},
@@ -903,13 +903,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 12,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
   vehicleTitle: {flex: 1, minWidth: 0, marginHorizontal: 10},
-  vehicleModel: {fontSize: 15.5, fontWeight: '700', color: '#1C2B27'},
-  vehicleIdx: {fontSize: 12, color: '#66716D', marginTop: 2},
+  vehicleModel: {fontSize: 15.5, fontWeight: '700', color: '#171C8F'},
+  vehicleIdx: {fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 2},
   // HSRP-style plate: blue IND strip + spaced registration
   plate: {
     height: 30,
@@ -917,13 +917,13 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     borderRadius: 6,
     borderWidth: 1.5,
-    borderColor: '#1C2B27',
+    borderColor: '#171C8F',
     backgroundColor: '#FFFFFF',
     overflow: 'hidden',
   },
   plateStrip: {
     width: 16,
-    backgroundColor: '#1F4FA3',
+    backgroundColor: '#171C8F',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -939,36 +939,36 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     letterSpacing: 1,
-    color: '#1C2B27',
+    color: '#171C8F',
   },
   specs: {
     flexDirection: 'row',
     marginTop: 12,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: '#E4E2DA',
+    borderTopColor: 'rgba(23,28,143,0.1)',
   },
   spec: {flex: 1, minWidth: 0},
-  specDivider: {width: 1, backgroundColor: '#E4E2DA', marginHorizontal: 10},
-  specLabel: {fontSize: 11.5, color: '#66716D'},
+  specDivider: {width: 1, backgroundColor: '#F5F5F5', marginHorizontal: 10},
+  specLabel: {fontSize: 11.5, color: 'rgba(1,4,75,0.62)'},
   specValue: {
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 19,
-    color: '#1C2B27',
+    color: '#171C8F',
     marginTop: 3,
   },
   mgrAvatar: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#F6E6C4',
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
   },
-  mgrAvatarNone: {backgroundColor: P.mint},
-  mgrInitials: {fontSize: 13, fontWeight: '600', color: '#1C2B27'},
+  mgrAvatarNone: {backgroundColor: '#F5F5F5'},
+  mgrInitials: {fontSize: 13, fontWeight: '600', color: '#171C8F'},
 
   retryCard: {
     marginHorizontal: 16,
@@ -976,20 +976,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 22,
   },
-  retryText: {fontSize: 14, color: P.body},
+  retryText: {fontSize: 14, color: '#01044B'},
   retryBtn: {
     marginTop: 12,
     height: 40,
     paddingHorizontal: 18,
     borderRadius: 20,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     flexDirection: 'row',
     alignItems: 'center',
   },
   retryBtnText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.onAmber,
+    color: '#01044B',
     marginLeft: 6,
   },
 });

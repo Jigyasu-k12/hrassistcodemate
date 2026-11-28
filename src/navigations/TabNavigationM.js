@@ -38,13 +38,13 @@ let usrAccess = AppUserData?.data?.userFlag;
       initialRouteName="HomeM"
       screenOptions={{
       headerShown: false,
-      tabBarActiveTintColor: '#43C6DB',
-      tabBarLabelStyle:{ fontSize:GlobalFontSize.Error, color:GlobalColor.Primary},   
+      tabBarActiveTintColor: '#171C8F',
+      tabBarLabelStyle:{ fontSize:GlobalFontSize.Error, color:'#01044B'},   
       tabBarInactiveTintColor:GlobalColor.Primary,   
-      tabBarStyle:{height:70,backgroundColor:'transparent',borderTopLeftRadius:15,borderTopRightRadius:15,paddingBottom:10,} ,
+      tabBarStyle:{height:70,backgroundColor:'rgba(255,255,255,0)',borderTopLeftRadius:15,borderTopRightRadius:15,paddingBottom:10,} ,
       tabBarBackground:() =>(
         <LinearGradient    
-        colors={['#fff', '#fff']} style={{
+        colors={['#FFFFFF', '#FFFFFF']} style={{
           height:80,
           borderTopLeftRadius:22,
           borderTopRightRadius:22

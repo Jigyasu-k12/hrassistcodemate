@@ -252,22 +252,22 @@ const UniformMgmt = ({ navigation }) => {
 
       {/* SEARCH BOX */}
       <View style={styles.MainContainer}>
-        <DataTable style={{ backgroundColor: '#fff' }}>
+        <DataTable style={{ backgroundColor: '#FFFFFF' }}>
           <DataTable.Header>
             <DataTable.Title style={{ flex: 2 }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 14, color: GlobalColor.Primary }}>Item</Text>
+              <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#01044B' }}>Item</Text>
             </DataTable.Title>
             <DataTable.Title numeric style={{ flex: 1.2 }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 14, color: GlobalColor.Primary }}>Size</Text>
+              <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#01044B' }}>Size</Text>
             </DataTable.Title>
             <DataTable.Title numeric style={{ flex: 1.3 }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 14, color: GlobalColor.Primary }}>Quantity</Text>
+              <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#01044B' }}>Quantity</Text>
             </DataTable.Title>
             {uniformAccess === 'Y' && (
 
 <DataTable.Title numeric style={{ flex: 1 }}>
 
-  <Text style={{ fontWeight: 'bold', fontSize: 14, color: GlobalColor.Primary }}>Action</Text>
+  <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#01044B' }}>Action</Text>
 
 </DataTable.Title>
 
@@ -300,7 +300,7 @@ const UniformMgmt = ({ navigation }) => {
 
   >
 
-    <Text style={{ color: 'blue' }}>Edit</Text>
+    <Text style={{ color: '#171C8F' }}>Edit</Text>
 
   </TouchableOpacity>
 
@@ -318,12 +318,12 @@ const UniformMgmt = ({ navigation }) => {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            backgroundColor: 'rgba(1,4,75,0.5)',
           }}
         >
           <View
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: '#FFFFFF',
               padding: 20,
               borderRadius: 10,
               width: '90%',
@@ -340,14 +340,14 @@ const UniformMgmt = ({ navigation }) => {
                 width: '100%',
                 paddingBottom: 10,
                 borderBottomWidth: 0.5,
-                borderColor: ThemeColor.Teal,
+                borderColor: '#171C8F',
               }}
             >
               <Text
                 Bold
                 style={{
                   fontSize: 16,
-                  color: ThemeColor.Teal,
+                  color: '#171C8F',
                   textDecorationLine: 'underline',
                 }}
               >
@@ -358,7 +358,7 @@ const UniformMgmt = ({ navigation }) => {
                   setLeaveDetailModal(false);
                 }}
               >
-                <Ionicons name="close-circle-outline" size={24} color={ThemeColor.Teal} />
+                <Ionicons name="close-circle-outline" size={24} color={'#171C8F'} />
               </TouchableOpacity>
             </View>
 
@@ -383,8 +383,8 @@ const UniformMgmt = ({ navigation }) => {
                       borderWidth: 1,
                       paddingVertical: 8,
                       borderRadius: 8,
-                      backgroundColor: GlobalColor.White,
-                      borderColor: ThemeColor.Teal,
+                      backgroundColor: '#FFFFFF',
+                      borderColor: '#171C8F',
                       fontSize: 14,
                       height: 40,
                     }}
@@ -421,7 +421,7 @@ const UniformMgmt = ({ navigation }) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -453,7 +453,7 @@ const UniformMgmt = ({ navigation }) => {
                       paddingVertical: 8,
                       borderRadius: 8,
                       backgroundColor: 'lightgrey',
-                      borderColor: ThemeColor.Teal,
+                      borderColor: '#171C8F',
                       fontSize: 14,
                       height: 40,
                     }}
@@ -469,14 +469,14 @@ const UniformMgmt = ({ navigation }) => {
                 justifyContent: 'flex-end',
                 paddingTop: 15,
                 borderTopWidth: 0.5,
-                borderColor: ThemeColor.Teal,
+                borderColor: '#171C8F',
               }}
             >
               <TouchableOpacity
                 style={{
                   padding: 12,
                   borderRadius: 24,
-                  backgroundColor: ThemeColor.Amber,
+                  backgroundColor: '#FCBE62',
                   minWidth: 100,
                   alignItems: 'center',
                 }}
@@ -486,7 +486,7 @@ const UniformMgmt = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: ThemeColor.OnAmber,
+                    color: '#01044B',
                     fontSize: 14,
                   }}
                   Bold
@@ -499,9 +499,9 @@ const UniformMgmt = ({ navigation }) => {
                   padding: 12,
                   marginLeft: 10,
                   borderRadius: 24,
-                  backgroundColor: 'transparent',
+                  backgroundColor: 'rgba(255,255,255,0)',
                   borderWidth: 1.5,
-                  borderColor: ThemeColor.Teal,
+                  borderColor: '#171C8F',
                   minWidth: 100,
                   alignItems: 'center',
                 }}
@@ -511,7 +511,7 @@ const UniformMgmt = ({ navigation }) => {
               >
                 <Text
                   style={{
-                    color: ThemeColor.Teal,
+                    color: '#171C8F',
                     fontSize: 14,
                   }}
                   Bold
@@ -531,7 +531,7 @@ const UniformMgmt = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
   MainContainer: {
     flex: 1,
@@ -542,10 +542,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     marginTop: 10,
     borderWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   SearchContainer: {
     marginVertical: 10,
@@ -554,8 +554,8 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 5,
     alignSelf: 'center',
-    backgroundColor: '#fff',
-    color: GlobalColor.Primary,
+    backgroundColor: '#FFFFFF',
+    color: '#01044B',
     fontSize: GlobalFontSize.Small,
     fontFamily: 'Roboto-Regular',
     textAlign: 'left',
@@ -572,11 +572,11 @@ const styles = StyleSheet.create({
   TouchableOpacity: {
     width: '100%',
     paddingTop: 1,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     margin: 10,
     paddingVertical: 10,
-    shadowColor: GlobalColor.ShadowColor,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -588,7 +588,7 @@ const styles = StyleSheet.create({
   },
   HeadingContainer: {
     width: '100%',
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     alignSelf: 'center',
     overflow: 'hidden',
     borderTopLeftRadius: 8,
@@ -599,25 +599,25 @@ const styles = StyleSheet.create({
   },
   GStBox: {
     fontSize: 13,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     letterSpacing: 1,
   },
   spinnerTextStyle: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
   },
   dropdown2BtnStyle: {
     flex: 1,
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 14 },
-  dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
+  dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 16 },
 });

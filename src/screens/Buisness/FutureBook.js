@@ -120,7 +120,7 @@ export default function FutureBook() {
         return (
             <SafeAreaView style={{
                 flex: 1,
-                backgroundColor: GlobalColor.White,
+                backgroundColor: '#FFFFFF',
             }}>
                 <LoadingScreen />
             </SafeAreaView>
@@ -227,7 +227,7 @@ export default function FutureBook() {
                 <Spinner
                     visible={loader}
                     textContent={'Loading...'}
-                    textStyle={{ color: '#fff' }}
+                    textStyle={{ color: '#01044B' }}
                 />
             ) : null}
 
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        backgroundColor: GlobalColor.PrimaryLight, 
+        backgroundColor: '#F5F5F5', 
         paddingHorizontal:10,
     },
 
@@ -327,12 +327,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: ThemeColor.Teal,
+        borderBottomColor: '#171C8F',
     },
     cardContainer:{
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         borderWidth:1,
-        borderColor:ThemeColor.Teal,
+        borderColor:'#171C8F',
         borderRadius:5, 
         padding:10, 
         marginBottom:10
@@ -344,11 +344,11 @@ const styles = StyleSheet.create({
     },
     cardValueRight:{
         textAlign:'right',
-        color:GlobalColor.Primary,
+        color:'#01044B',
         fontSize:13
     },
     cardLabel:{
-        color:GlobalColor.Primary,
+        color:'#01044B',
         fontSize:13
     },
     cardValue:{
@@ -357,18 +357,18 @@ const styles = StyleSheet.create({
     },
     cardLabelRight:{
         textAlign:'right',
-        color:GlobalColor.Primary,
+        color:'#01044B',
         fontSize:13
     },
     centeredView:{
-        backgroundColor:'rgba(0,0,0,0.5)',
+        backgroundColor:'rgba(1,4,75,0.5)',
         flex:1, 
         justifyContent:'center',
         alignItems:'center'
     },
     modalView:{
         width:"80%",
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         padding:10,
         paddingHorizontal:15
     },

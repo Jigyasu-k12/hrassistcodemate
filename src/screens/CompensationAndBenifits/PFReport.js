@@ -339,10 +339,10 @@ const PFReport = () => {
       {item['REJECTION REASON'] && (
         <View style={styles.cardRow}>
           <View style={[styles.cardColumn, {flex: 1}]}>
-            <Text style={[styles.label, {color: '#F44336'}]}>
+            <Text style={[styles.label, {color: '#01044B'}]}>
               Rejection Reason
             </Text>
-            <Text style={[styles.value, {color: '#F44336'}]}>
+            <Text style={[styles.value, {color: '#01044B'}]}>
               {item['REJECTION REASON']}
             </Text>
           </View>
@@ -353,7 +353,7 @@ const PFReport = () => {
         <TouchableOpacity
           style={[styles.actionButton, styles.activityLogButton]}
           onPress={() => handleActivityLogPress(item['REQ NO'])}>
-          <MaterialIcons name="history" size={18} color="#fff" />
+          <MaterialIcons name="history" size={18} color="#FFFFFF" />
           <Text style={styles.actionButtonText}>Activity Log</Text>
         </TouchableOpacity>
       </View>
@@ -387,7 +387,7 @@ const PFReport = () => {
           contentContainerStyle={styles.listContainer}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
-              <Ionicons name="document-text-outline" size={60} color="#ccc" />
+              <Ionicons name="document-text-outline" size={60} color="rgba(1,4,75,0.62)" />
               <Text style={styles.emptyText}>No reports available</Text>
             </View>
           }
@@ -413,7 +413,7 @@ const PFReport = () => {
             <TouchableOpacity
               onPress={() => setActivityLogModal(false)}
               style={styles.closeButton}>
-              <Ionicons name="close" size={28} color="#333" />
+              <Ionicons name="close" size={28} color="#01044B" />
             </TouchableOpacity>
           </View>
           <FlatList
@@ -423,7 +423,7 @@ const PFReport = () => {
             contentContainerStyle={styles.modalListContainer}
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
-                <MaterialIcons name="history" size={60} color="#ccc" />
+                <MaterialIcons name="history" size={60} color="rgba(1,4,75,0.62)" />
                 <Text style={styles.emptyText}>No activity log available</Text>
               </View>
             }
@@ -435,14 +435,14 @@ const PFReport = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: GlobalColor.PrimaryLight},
+  container: {flex: 1, backgroundColor: '#F5F5F5'},
   listContainer: {padding: 10, paddingBottom: 20},
   reportCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     padding: 15,
     marginBottom: 15,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
@@ -455,32 +455,32 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   cardHeaderRight: {flexDirection: 'row', alignItems: 'center', flexShrink: 0},
-  requestId: {fontSize: 15, color: '#333', flexWrap: 'wrap'},
+  requestId: {fontSize: 15, color: '#01044B', flexWrap: 'wrap'},
   statusBadge: {
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
     minWidth: 80,
   },
-  statusText: {fontSize: 11, color: '#fff', fontWeight: 'bold'},
-  statusApproved: {backgroundColor: '#4CAF50'},
-  statusRejected: {backgroundColor: '#F44336'},
-  statusSubmitted: {backgroundColor: '#FF9800'},
-  statusSentBack: {backgroundColor: '#9C27B0'},
-  statusDefault: {backgroundColor: '#9E9E9E'},
+  statusText: {fontSize: 11, color: '#FFFFFF', fontWeight: 'bold'},
+  statusApproved: {backgroundColor: '#171C8F'},
+  statusRejected: {backgroundColor: '#171C8F'},
+  statusSubmitted: {backgroundColor: '#171C8F'},
+  statusSentBack: {backgroundColor: '#171C8F'},
+  statusDefault: {backgroundColor: '#171C8F'},
   cardRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 12,
   },
   cardColumn: {flex: 1, marginRight: 10},
-  label: {fontSize: 12, color: '#666', marginBottom: 3},
-  value: {fontSize: 13, color: '#333', fontWeight: '500'},
-  amountText: {color: ThemeColor.Teal, fontWeight: 'bold'},
-  approvedAmount: {color: '#4CAF50', fontWeight: 'bold'},
+  label: {fontSize: 12, color: 'rgba(1,4,75,0.62)', marginBottom: 3},
+  value: {fontSize: 13, color: '#01044B', fontWeight: '500'},
+  amountText: {color: '#171C8F', fontWeight: 'bold'},
+  approvedAmount: {color: '#171C8F', fontWeight: 'bold'},
   buttonRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -496,9 +496,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 6,
   },
-  activityLogButton: {backgroundColor: ThemeColor.Teal},
+  activityLogButton: {backgroundColor: '#171C8F'},
   actionButtonText: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
     fontWeight: 'bold',
     marginLeft: 6,
@@ -509,33 +509,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 100,
   },
-  emptyText: {fontSize: 16, color: '#999', marginTop: 10},
-  spinnerTextStyle: {color: '#fff'},
-  modalContainer: {flex: 1, backgroundColor: GlobalColor.PrimaryLight},
+  emptyText: {fontSize: 16, color: 'rgba(1,4,75,0.62)', marginTop: 10},
+  spinnerTextStyle: {color: '#FFFFFF'},
+  modalContainer: {flex: 1, backgroundColor: '#F5F5F5'},
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
-    shadowColor: '#000',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
-  modalTitle: {fontSize: 20, color: ThemeColor.Teal},
-  modalSubtitle: {fontSize: 13, color: '#666', marginTop: 2},
+  modalTitle: {fontSize: 20, color: '#171C8F'},
+  modalSubtitle: {fontSize: 13, color: 'rgba(1,4,75,0.62)', marginTop: 2},
   closeButton: {padding: 5},
   modalListContainer: {padding: 15, paddingBottom: 30},
   activityLogCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     padding: 15,
     marginBottom: 15,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
@@ -548,21 +548,21 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingBottom: 10,
     borderBottomWidth: 2,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
-  activitySeqNo: {fontSize: 16, color: ThemeColor.Teal},
-  activityStatus: {fontSize: 13, color: '#666', fontWeight: '600'},
+  activitySeqNo: {fontSize: 16, color: '#171C8F'},
+  activityStatus: {fontSize: 13, color: 'rgba(1,4,75,0.62)', fontWeight: '600'},
   activityLogTable: {width: '100%'},
   tableRow: {
     flexDirection: 'row',
     paddingVertical: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#F0F0F0',
+    borderBottomColor: 'rgba(255,255,255,0.22)',
   },
-  tableLabel: {flex: 0.4, fontSize: 12, color: '#666', fontWeight: '600'},
-  tableValue: {flex: 0.6, fontSize: 12, color: '#333'},
-  actionTaken: {color: '#4CAF50', fontWeight: 'bold'},
-  newStatus: {color: ThemeColor.Teal, fontWeight: 'bold'},
+  tableLabel: {flex: 0.4, fontSize: 12, color: 'rgba(1,4,75,0.62)', fontWeight: '600'},
+  tableValue: {flex: 0.6, fontSize: 12, color: '#01044B'},
+  actionTaken: {color: '#171C8F', fontWeight: 'bold'},
+  newStatus: {color: '#171C8F', fontWeight: 'bold'},
 });
 
 export default PFReport;

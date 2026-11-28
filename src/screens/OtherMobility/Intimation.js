@@ -206,13 +206,13 @@ const [taxExempted, setTaxExempted] = useState('');
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { width: 100%; height: 100%; background-color: #525659; overflow: auto; -webkit-overflow-scrolling: touch; }
+          html, body { width: 100%; height: 100%; background-color: #01044B; overflow: auto; -webkit-overflow-scrolling: touch; }
           #zoom-container { transform-origin: top left; width: 100%; }
           #pdf-container { display: flex; flex-direction: column; align-items: center; padding: 10px 0; gap: 10px; width: 100%; }
-          canvas { display: block; width: 100% !important; height: auto !important; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-          #loading { color: #fff; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
-          #error { color: #ff6b6b; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
-          #page-info { color: #ccc; font-size: 13px; text-align: center; font-family: sans-serif; padding: 5px 0 10px 0; }
+          canvas { display: block; width: 100% !important; height: auto !important; box-shadow: 0 2px 8px rgba(1,4,75,0.4); }
+          #loading { color: #FFFFFF; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
+          #error { color: #01044B; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
+          #page-info { color: rgba(1,4,75,0.62); font-size: 13px; text-align: center; font-family: sans-serif; padding: 5px 0 10px 0; }
         </style>
       </head>
       <body>
@@ -302,7 +302,7 @@ const [taxExempted, setTaxExempted] = useState('');
     if (!selectedFileBase64) {
       return (
         <View style={styles.fileLoadingContainer}>
-          <ActivityIndicator size="large" color={ThemeColor.Teal} />
+          <ActivityIndicator size="large" color={'#FFFFFF'} />
           <Text style={styles.fileLoadingText}>Preparing file...</Text>
         </View>
       );
@@ -322,7 +322,7 @@ const [taxExempted, setTaxExempted] = useState('');
           onError={() => Toast.show('Error loading PDF', Toast.SHORT)}
           renderLoading={() => (
             <View style={styles.fileLoadingContainer}>
-              <ActivityIndicator size="large" color={ThemeColor.Teal} />
+              <ActivityIndicator size="large" color={'#FFFFFF'} />
               <Text style={styles.fileLoadingText}>Loading PDF...</Text>
             </View>
           )}
@@ -333,7 +333,7 @@ const [taxExempted, setTaxExempted] = useState('');
       const mimeType = getMimeType(selectedFileName);
       return (
         <ScrollView
-          style={{flex: 1, backgroundColor: '#525659'}}
+          style={{flex: 1, backgroundColor: '#01044B'}}
           contentContainerStyle={styles.imageScrollContainer}
           maximumZoomScale={5}
           minimumZoomScale={1}
@@ -349,7 +349,7 @@ const [taxExempted, setTaxExempted] = useState('');
     }
     return (
       <View style={styles.fileLoadingContainer}>
-        <MaterialIcons name="insert-drive-file" size={60} color="#ccc" />
+        <MaterialIcons name="insert-drive-file" size={60} color="#FFFFFF" />
         <Text style={styles.fileLoadingText}>Unsupported file type</Text>
       </View>
     );
@@ -1777,11 +1777,11 @@ const [taxExempted, setTaxExempted] = useState('');
     const getFileIcon = () => {
       if (fileType === 'pdf')
         return (
-          <MaterialIcons name="picture-as-pdf" size={20} color="#E53935" />
+          <MaterialIcons name="picture-as-pdf" size={20} color="#01044B" />
         );
       if (fileType === 'image')
-        return <MaterialIcons name="image" size={20} color="#43A047" />;
-      return <MaterialIcons name="attach-file" size={20} color={ThemeColor.Teal} />;
+        return <MaterialIcons name="image" size={20} color="#171C8F" />;
+      return <MaterialIcons name="attach-file" size={20} color={'#171C8F'} />;
     };
 
     return (
@@ -1801,13 +1801,13 @@ const [taxExempted, setTaxExempted] = useState('');
             <TouchableOpacity
               style={styles.viewAttachmentButton}
               onPress={() => openFileViewer(viewBase64, attachment.fileName)}>
-              <Ionicons name="eye-outline" size={22} color={ThemeColor.Teal} />
+              <Ionicons name="eye-outline" size={22} color={'#171C8F'} />
             </TouchableOpacity>
           ) : null}
           <TouchableOpacity
             style={styles.deleteAttachmentButton}
             onPress={() => deleteAttachment(attachment.id)}>
-            <Ionicons name="trash-outline" size={22} color={'#FF3B30'} />
+            <Ionicons name="trash-outline" size={22} color={'#01044B'} />
           </TouchableOpacity>
         </View>
       </View>
@@ -1880,7 +1880,7 @@ const [taxExempted, setTaxExempted] = useState('');
                       renderDropdownIcon={isOpened => (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       )}
@@ -1909,7 +1909,7 @@ const [taxExempted, setTaxExempted] = useState('');
                     renderDropdownIcon={isOpened => (
                       <FontAwesome
                         name={isOpened ? 'chevron-up' : 'chevron-down'}
-                        color={ThemeColor.Teal}
+                        color={'#171C8F'}
                         size={14}
                       />
                     )}
@@ -1941,7 +1941,7 @@ const [taxExempted, setTaxExempted] = useState('');
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}>
-                          <Feather name="search" size={18} color={ThemeColor.Teal} />
+                          <Feather name="search" size={18} color={'#171C8F'} />
                         </View>
                         <TextInput
                           placeholder="Search By Staff ID"
@@ -1960,7 +1960,7 @@ const [taxExempted, setTaxExempted] = useState('');
                             <Ionicons
                               name="close-circle-outline"
                               size={25}
-                              color={ThemeColor.Teal}
+                              color={'#171C8F'}
                             />
                           </TouchableOpacity>
                         )}
@@ -1971,7 +1971,7 @@ const [taxExempted, setTaxExempted] = useState('');
                             alignItems: 'center',
                             justifyContent: 'center',
                           }}>
-                          <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                          <Ionicons name="send" size={20} color={'#171C8F'} />
                         </TouchableOpacity>
                       </View>
                       {selectedEmployee !== '' && (
@@ -2018,7 +2018,7 @@ const [taxExempted, setTaxExempted] = useState('');
                     renderDropdownIcon={isOpened => (
                       <FontAwesome
                         name={isOpened ? 'chevron-up' : 'chevron-down'}
-                        color={ThemeColor.Teal}
+                        color={'#171C8F'}
                         size={14}
                       />
                     )}
@@ -2088,7 +2088,7 @@ const [taxExempted, setTaxExempted] = useState('');
                     <Ionicons
                       name="calendar-outline"
                       size={22}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                     />
                   </TouchableOpacity>
                   <DateTimePickerModal
@@ -2236,7 +2236,7 @@ const [taxExempted, setTaxExempted] = useState('');
                     style={[
                       styles.valueText,
                       taxExempted === 'No' && {
-                        color: 'red',
+                        color: '#01044B',
                         fontWeight: 'bold',
                       },
                     ]}>
@@ -2296,7 +2296,7 @@ const [taxExempted, setTaxExempted] = useState('');
                   renderDropdownIcon={isOpened => (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   )}
@@ -2344,7 +2344,7 @@ const [taxExempted, setTaxExempted] = useState('');
                         <Ionicons
                           name="add-circle"
                           size={24}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                         <Text style={styles.addAttachmentText}>Add File</Text>
                       </TouchableOpacity>
@@ -2410,7 +2410,7 @@ const [taxExempted, setTaxExempted] = useState('');
                   <Ionicons
                     name="close-circle-outline"
                     size={30}
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                   />
                 </TouchableOpacity>
               </View>
@@ -2431,13 +2431,13 @@ const [taxExempted, setTaxExempted] = useState('');
                     <Ionicons
                       name="person-circle-outline"
                       size={25}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                     />
                     <View style={{flex: 1, marginLeft: 10}}>
                       <Text style={{fontSize: 16}} Bold>
                         {item.EMPL_NAME || ''}
                       </Text>
-                      <Text style={{fontSize: 13, color: '#666'}}>
+                      <Text style={{fontSize: 13, color: 'rgba(1,4,75,0.62)'}}>
                         {item.EMPL_DESG_CODE || ''} ,{' '}
                         {item.EMPL_DEPT_CODE || ''} ({item.EMPL_ID || ''})
                       </Text>
@@ -2445,7 +2445,7 @@ const [taxExempted, setTaxExempted] = useState('');
                     <Ionicons
                       name="chevron-forward-circle-outline"
                       size={25}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                     />
                   </TouchableOpacity>
                 )}
@@ -2479,7 +2479,7 @@ const [taxExempted, setTaxExempted] = useState('');
                   <Ionicons
                     name="close-circle-outline"
                     size={30}
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                   />
                 </TouchableOpacity>
               </View>
@@ -2546,7 +2546,7 @@ const [taxExempted, setTaxExempted] = useState('');
             <TouchableOpacity
               onPress={closeFileViewer}
               style={styles.fileViewerCloseButton}>
-              <Ionicons name="close-circle" size={32} color="#fff" />
+              <Ionicons name="close-circle" size={32} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
           {renderFileViewerContent()}
@@ -2557,15 +2557,15 @@ const [taxExempted, setTaxExempted] = useState('');
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: GlobalColor.PrimaryLight},
+  container: {flex: 1, backgroundColor: '#F5F5F5'},
   scrollView: {flex: 1},
   content: {padding: 15, paddingBottom: 30},
   section: {
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderRadius: 8,
     padding: 15,
     marginBottom: 15,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -2573,10 +2573,10 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     marginBottom: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
     paddingBottom: 10,
   },
   row: {
@@ -2587,34 +2587,34 @@ const styles = StyleSheet.create({
   },
   column: {flex: 1},
   fullWidth: {marginBottom: 15},
-  label: {fontSize: 13, fontWeight: 'bold', marginBottom: 5, color: '#333'},
+  label: {fontSize: 13, fontWeight: 'bold', marginBottom: 5, color: '#01044B'},
   valueText: {
     fontSize: 13,
-    color: '#666',
+    color: 'rgba(1,4,75,0.62)',
     paddingVertical: 8,
     paddingHorizontal: 2,
   },
-  taxDateText: {color: 'red', fontWeight: 'bold'},
-  required: {color: 'red'},
+  taxDateText: {color: '#01044B', fontWeight: 'bold'},
+  required: {color: '#01044B'},
   input: {
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 12,
     fontSize: 13,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     height: 40,
   },
   disabledInput: {
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 12,
     fontSize: 13,
-    backgroundColor: '#F3F2F1',
-    color: '#666',
+    backgroundColor: '#FFFFFF',
+    color: 'rgba(1,4,75,0.62)',
     height: 40,
   },
   searchContainer: {
@@ -2622,8 +2622,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     alignSelf: 'center',
-    backgroundColor: '#fff',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   searchInput: {width: '70%', paddingVertical: 5, fontSize: 13, height: 40},
   datePickerButton: {
@@ -2631,43 +2631,43 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderRadius: 8,
     paddingVertical: 12,
     paddingHorizontal: 12,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
   },
-  dateText: {fontSize: 13, color: '#333'},
+  dateText: {fontSize: 13, color: '#01044B'},
   suggestionsContainer: {
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderRadius: 8,
     marginTop: 5,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     overflow: 'hidden',
   },
   suggestionItem: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
-  suggestionText: {fontSize: 13, color: '#333'},
+  suggestionText: {fontSize: 13, color: '#01044B'},
   dropdown2BtnStyle: {
     width: '100%',
     height: 40,
     borderWidth: 1,
     borderRadius: 8,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 13},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 13},
-  errorText: {color: 'red', fontSize: 12, marginTop: 5},
+  errorText: {color: '#01044B', fontSize: 12, marginTop: 5},
   attachmentHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -2677,16 +2677,16 @@ const styles = StyleSheet.create({
   addAttachmentButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
   },
   addAttachmentText: {
     fontSize: 13,
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     marginLeft: 5,
     fontWeight: 'bold',
   },
@@ -2695,23 +2695,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#FFFFFF',
     padding: 12,
     borderRadius: 8,
     marginBottom: 10,
     borderWidth: 1,
-    borderColor: '#E0E0E0',
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   attachmentInfo: {flex: 1, flexDirection: 'row', alignItems: 'center'},
   attachmentActions: {flexDirection: 'row', alignItems: 'center', gap: 4},
   viewAttachmentButton: {padding: 5},
-  attachmentFileName: {fontSize: 13, fontWeight: 'bold', color: '#333'},
-  attachmentFileDesc: {fontSize: 12, color: '#666', marginTop: 2},
-  attachmentOrder: {fontSize: 11, color: '#999', marginTop: 2},
+  attachmentFileName: {fontSize: 13, fontWeight: 'bold', color: '#01044B'},
+  attachmentFileDesc: {fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 2},
+  attachmentOrder: {fontSize: 11, color: 'rgba(1,4,75,0.62)', marginTop: 2},
   deleteAttachmentButton: {padding: 5},
   attachmentNote: {
     fontSize: 11,
-    color: '#999',
+    color: 'rgba(1,4,75,0.62)',
     fontStyle: 'italic',
     marginTop: 10,
   },
@@ -2728,18 +2728,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 5,
   },
-  submitButton: {backgroundColor: ThemeColor.Amber},
-  clearButton: {backgroundColor: ThemeColor.DisabledBg, borderWidth: 1, borderColor: ThemeColor.DisabledBorder },
-  buttonText: {color: ThemeColor.OnAmber, fontSize: 14},
-  spinnerTextStyle: {color: GlobalColor.White},
+  submitButton: {backgroundColor: '#FCBE62'},
+  clearButton: {backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)' },
+  buttonText: {color: '#01044B', fontSize: 14},
+  spinnerTextStyle: {color: '#FFFFFF'},
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   modalContent: {
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderRadius: 10,
     width: '90%',
     maxHeight: '70%',
@@ -2751,10 +2751,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    borderBottomColor: 'rgba(23,28,143,0.1)',
     paddingBottom: 10,
   },
-  modalTitle: {fontSize: 18, color: ThemeColor.Teal},
+  modalTitle: {fontSize: 18, color: '#171C8F'},
   modalScroll: {maxHeight: 400},
   modalField: {marginBottom: 15},
   employeeItem: {
@@ -2762,29 +2762,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     borderRadius: 8,
     marginBottom: 10,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
-  fileViewerContainer: {flex: 1, backgroundColor: '#525659'},
+  fileViewerContainer: {flex: 1, backgroundColor: '#01044B'},
   fileViewerHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 15,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
   },
-  fileViewerTitle: {fontSize: 16, color: '#fff'},
+  fileViewerTitle: {fontSize: 16, color: '#FFFFFF'},
   fileViewerCloseButton: {padding: 5},
-  webView: {flex: 1, backgroundColor: '#525659'},
+  webView: {flex: 1, backgroundColor: '#01044B'},
   fileLoadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#525659',
+    backgroundColor: '#01044B',
   },
-  fileLoadingText: {fontSize: 16, color: '#fff', marginTop: 15},
+  fileLoadingText: {fontSize: 16, color: '#FFFFFF', marginTop: 15},
   imageScrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',

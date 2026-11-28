@@ -116,7 +116,7 @@ const Book = () => {
 
   if (loader) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
         <LoadingScreen />
       </SafeAreaView>
     )
@@ -144,9 +144,9 @@ const Book = () => {
               setOpen(false);
             }}
           />
-          <Text style={{ color: GlobalColor.Text,fontSize:13 }}>{moment(date).format("DD-MMMM-YYYY").toUpperCase()}</Text>
+          <Text style={{ color: 'rgba(1,4,75,0.62)',fontSize:13 }}>{moment(date).format("DD-MMMM-YYYY").toUpperCase()}</Text>
           <TouchableOpacity onPress={() => setOpen(true)}>
-            <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
+            <Ionicons name="calendar-outline" size={25} color={'#171C8F'} />
           </TouchableOpacity>
         </View>
         <View style={{ paddingVertical: 10, }}>
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     alignSelf: 'center',
     paddingVertical: 5,
-    backgroundColor: GlobalColor.PrimaryLight
+    backgroundColor: '#F5F5F5'
   },
 
   SelectInputContainer: {
@@ -254,10 +254,10 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     borderWidth: 0,
-    borderColor: GlobalColor.PrimaryGradient,
+    borderColor: '#171C8F',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -272,8 +272,8 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     paddingVertical: 10,
-    backgroundColor: '#fff',
-    shadowColor: GlobalColor.ShadowColor,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 1.50,
-    borderBottomColor: GlobalColor.PrimaryGradient
+    borderBottomColor: '#171C8F'
   },
   ListContant: {
     width: '100%',
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: GlobalColor.PrimaryGradient
+    borderBottomColor: '#171C8F'
   },
   itemColumn: {
     flex: 0.25,
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     
   },
   ModalContainer: {
-    backgroundColor: '#000000aa',
+    backgroundColor: 'rgba(1,4,75,0.55)',
     flex: 1,
     alignItems: 'center',
     width: "100%",
@@ -315,7 +315,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20
   },
   ModalContant: {
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 5,

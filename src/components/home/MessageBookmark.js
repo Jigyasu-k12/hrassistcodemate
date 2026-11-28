@@ -251,7 +251,7 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
         ]}>
         {/* cinematic stage */}
         <LinearGradient
-          colors={[P.deep, P.deeper, '#030E0F']}
+          colors={['#171C8F', '#01044B', '#01044B']}
           style={StyleSheet.absoluteFill}
         />
 
@@ -264,7 +264,7 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
               <AppIcon
                 name="sparkle"
                 size={40}
-                color="rgba(255,255,255,0.4)"
+                color="rgba(255,255,255,0.45)"
                 strokeWidth={1.4}
               />
               <HText style={styles.failText}>
@@ -318,7 +318,7 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
             <View
               style={[StyleSheet.absoluteFill, styles.center]}
               pointerEvents="none">
-              <ActivityIndicator size="large" color={P.amber} />
+              <ActivityIndicator size="large" color={'#FFFFFF'} />
             </View>
           )}
         </Pressable>
@@ -328,13 +328,13 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
           pointerEvents={controls ? 'box-none' : 'none'}
           style={[styles.top, {paddingTop: insets.top + 8, opacity: chrome}]}>
           <LinearGradient
-            colors={['rgba(3,14,15,0.85)', 'rgba(3,14,15,0)']}
+            colors={['#01044B', 'rgba(255,255,255,0)']}
             style={StyleSheet.absoluteFill}
             pointerEvents="none"
           />
           <View style={styles.topRow}>
             <View style={styles.brandDot}>
-              <AppIcon name="play" size={12} color={P.onAmber} />
+              <AppIcon name="play" size={12} color={'#01044B'} />
             </View>
             <View style={{flex: 1}}>
               <HText style={styles.eyebrow}>MARUTI SUZUKI</HText>
@@ -384,7 +384,7 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
               {paddingBottom: insets.bottom + 18, opacity: chrome},
             ]}>
             <LinearGradient
-              colors={['rgba(3,14,15,0)', 'rgba(3,14,15,0.9)']}
+              colors={['rgba(255,255,255,0)', '#01044B']}
               style={StyleSheet.absoluteFill}
               pointerEvents="none"
             />
@@ -433,7 +433,7 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
               <AppIcon
                 name="check"
                 size={28}
-                color={P.onAmber}
+                color={'#01044B'}
                 strokeWidth={2.6}
               />
             </View>
@@ -502,7 +502,7 @@ const VideoPlayer = ({visible, onClose, onWatched, origin}) => {
               },
             ]}>
             <LinearGradient
-              colors={[P.tealInk, P.deep, P.deeper]}
+              colors={['#171C8F', '#171C8F', '#01044B']}
               locations={[0, 0.55, 1]}
               start={{x: 0.85, y: 0}}
               end={{x: 0.2, y: 1}}
@@ -563,9 +563,9 @@ const RibbonShape = ({w, h}) => (
   <Svg width={w} height={h} style={StyleSheet.absoluteFill}>
     <Defs>
       <SvgGradient id="osRibbon" x1="0" y1="0" x2="0.6" y2="1">
-        <Stop offset="0" stopColor={P.tealInk} />
-        <Stop offset="0.55" stopColor={P.deep} />
-        <Stop offset="1" stopColor={P.deeper} />
+        <Stop offset="0" stopColor={'#171C8F'} />
+        <Stop offset="0.55" stopColor={'#171C8F'} />
+        <Stop offset="1" stopColor={'#171C8F'} />
       </SvgGradient>
     </Defs>
     {/* flat against the screen edge, rounded top, forked (swallowtail) bottom */}
@@ -574,7 +574,7 @@ const RibbonShape = ({w, h}) => (
         h - NOTCH
       } L${w} ${h} Z`}
       fill="url(#osRibbon)"
-      stroke={P.amber}
+      stroke={'#171C8F'}
       strokeOpacity={0.55}
       strokeWidth={1}
     />
@@ -756,7 +756,7 @@ const MessageBookmark = ({visible = false}) => {
           </View>
 
           <View style={[styles.playBadge, {top: 10}]}>
-            <AppIcon name="play" size={9} color={P.onAmber} />
+            <AppIcon name="play" size={9} color={'#01044B'} />
           </View>
 
           {/* vertical branding — its own box sized to the label, then rotated,
@@ -832,7 +832,7 @@ const styles = StyleSheet.create({
     top: Dimensions.get('window').height * 0.46,
     zIndex: 20,
     elevation: 12,
-    shadowColor: P.deeper,
+    shadowColor: '#01044B',
     shadowOpacity: 0.35,
     shadowRadius: 10,
     shadowOffset: {width: -4, height: 6},
@@ -853,7 +853,7 @@ const styles = StyleSheet.create({
     width: BADGE,
     height: BADGE,
     borderRadius: BADGE / 2,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 1.5,
@@ -870,7 +870,7 @@ const styles = StyleSheet.create({
     lineHeight: 10,
     fontWeight: '800',
     letterSpacing: 1.6,
-    color: P.amber,
+    color: '#171C8F',
   },
   labelName: {
     fontSize: 8.5,
@@ -884,14 +884,14 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(255,255,255,0.22)',
   },
   newHalo: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 5,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
   },
 
   // intro
@@ -908,7 +908,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 2,
     borderRadius: 1,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     marginTop: 20,
   },
   introTitle: {
@@ -921,7 +921,7 @@ const styles = StyleSheet.create({
   },
 
   // player
-  player: {flex: 1, backgroundColor: '#030E0F'},
+  player: {flex: 1, backgroundColor: '#01044B'},
   failText: {fontSize: 14, color: 'rgba(255,255,255,0.75)', marginTop: 10},
   top: {
     position: 'absolute',
@@ -936,7 +936,7 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -946,7 +946,7 @@ const styles = StyleSheet.create({
     fontSize: 10.5,
     fontWeight: '700',
     letterSpacing: 1.8,
-    color: P.amber,
+    color: '#171C8F',
   },
   title: {fontSize: 17, fontWeight: '600', color: '#FFFFFF', marginTop: 2},
   glassBtn: {
@@ -961,7 +961,7 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: 'rgba(12,51,53,0.55)',
+    backgroundColor: 'rgba(23,28,143,0.55)',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.25)',
     alignItems: 'center',
@@ -983,16 +983,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.22)',
     overflow: 'hidden',
   },
-  barFill: {height: '100%', backgroundColor: P.amber},
+  barFill: {height: '100%', backgroundColor: '#FCBE62'},
   knob: {
     position: 'absolute',
     width: 14,
     height: 14,
     marginLeft: -7,
     borderRadius: 7,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(255,255,255,0.22)',
   },
   knobActive: {transform: [{scale: 1.3}]},
   bottomRow: {
@@ -1002,7 +1002,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   time: {fontSize: 12.5, fontWeight: '600', color: '#FFFFFF'},
-  timeSoft: {fontSize: 12.5, fontWeight: '500', color: P.mutedOnDark},
+  timeSoft: {fontSize: 12.5, fontWeight: '500', color: 'rgba(255,255,255,0.72)'},
   muteBtn: {
     height: 30,
     paddingHorizontal: 12,
@@ -1013,12 +1013,12 @@ const styles = StyleSheet.create({
   muteText: {fontSize: 12, fontWeight: '600', color: '#FFFFFF'},
 
   // end card
-  endScrim: {backgroundColor: 'rgba(3,14,15,0.82)', paddingHorizontal: 32},
+  endScrim: {backgroundColor: 'rgba(23,28,143,0.82)', paddingHorizontal: 32},
   endIcon: {
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1033,7 +1033,7 @@ const styles = StyleSheet.create({
   endSub: {
     marginTop: 6,
     fontSize: 14,
-    color: P.mutedOnDark,
+    color: 'rgba(255,255,255,0.72)',
     textAlign: 'center',
   },
   endBtns: {flexDirection: 'row', marginTop: 24},
@@ -1058,8 +1058,8 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     marginLeft: 6,
   },
-  endBtnAmber: {backgroundColor: P.amber},
-  endBtnAmberText: {fontSize: 14, fontWeight: '700', color: P.onAmber},
+  endBtnAmber: {backgroundColor: '#FCBE62'},
+  endBtnAmberText: {fontSize: 14, fontWeight: '700', color: '#01044B'},
 });
 
 export default MessageBookmark;

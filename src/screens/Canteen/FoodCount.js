@@ -129,7 +129,7 @@ const FoodCount = ({ navigation }) => {
   const Gurgaon = ({ navigation }) => {
     const [isOpen, setIsOpen] = useState('');
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor:GlobalColor.PrimaryLight }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#F5F5F5' }}>
       <View style={styles.AccordianContainer}>
         {loader == true ? (
           <Spinner
@@ -153,7 +153,7 @@ const FoodCount = ({ navigation }) => {
   const Manesar = ({ navigation }) => {
     const [isOpen, setIsOpen] = useState('');
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor:GlobalColor.PrimaryLight }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#F5F5F5' }}>
       <View style={styles.AccordianContainer}>
         {loader == true ? (
           <Spinner
@@ -174,7 +174,7 @@ const FoodCount = ({ navigation }) => {
   const Mpt = ({ navigation }) => {
     const [isOpen, setIsOpen] = useState('');
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor:GlobalColor.PrimaryLight }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#F5F5F5' }}>
       <View style={styles.AccordianContainer}>
         {loader == true ? (
           <Spinner
@@ -195,7 +195,7 @@ const FoodCount = ({ navigation }) => {
   const Rothak = ({ navigation }) => {
     const [isOpen, setIsOpen] = useState('');
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor:GlobalColor.PrimaryLight }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#F5F5F5' }}>
       <View style={styles.AccordianContainer}>
         {loader == true ? (
           <Spinner
@@ -227,7 +227,7 @@ const FoodCount = ({ navigation }) => {
   return (
     <View style={{ flex: 1, width: '100%', height: '100%' }}>
        <Header title="Food Court"/>        
-       <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+       <LinearGradient colors={['#171C8F','#171C8F','#171C8F']} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
         <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
@@ -236,8 +236,8 @@ const FoodCount = ({ navigation }) => {
           tabBarScrollEnabled: true,
           tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
           tabBarActiveTintColor: '#fff',
-          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
-          tabBarStyle: { backgroundColor:'transparent', elevation: 0 },
+          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: 'rgba(255,255,255,0.22)' },
+          tabBarStyle: { backgroundColor:'rgba(255,255,255,0)', elevation: 0 },
         }}
       >
         <Tab.Screen name="Gurgaon" component={Location} initialParams={{ MenuLocation: "002", MenuType: "F" }}/>
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
  mystyl:{
-    backgroundColor:'transparent',
+    backgroundColor:'rgba(255,255,255,0)',
     height:'100%',
     flexDirection:'row',
   },
@@ -269,10 +269,10 @@ const styles = StyleSheet.create({
   lunchBoxContainer: {
     width: '100%',
     marginVertical: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 5,
     alignSelf: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   spinnerTextStyle: {
-    color: '#FFF'
+    color: '#FFFFFF'
   },
   lunchBox: {
     flexDirection: 'row',
@@ -290,10 +290,10 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     paddingVertical: 15,
-    // backgroundColor:'red'
+    // backgroundColor:'#01044B'
   },
   calander: {   
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'space-around',
     alignItems: 'center',
     width:"100%",
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     // marginHorizontal:20,
     borderRadius: 5,
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
   // LoadingContainer: {
   //   flex: 1,
   //   backgroundColor:GlobalColor.PrimaryLight
-  //   // backgroundColor: '#fff',
+  //   // backgroundColor: '#F5F5F5',
   // },
 });
 

@@ -85,7 +85,7 @@ const CompayShiftDe = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
             {/* <Header title={"Company Shift Details"} back /> */}
-            <View style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight, paddingHorizontal: 10, paddingTop: 10,marginBottom:"10%" }}>
+            <View style={{ flex: 1, backgroundColor: '#F5F5F5', paddingHorizontal: 10, paddingTop: 10,marginBottom:"10%" }}>
 
                 <FlatList
                     contentContainerStyle={{ flexGrow: 1, paddingVertical: 5 }}
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
 
     canteenBox: {
         width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         alignSelf: 'center',
         padding: 10,
         paddingVertical: 15,
@@ -177,11 +177,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 0,
         borderBottomWidth: 1,
-        borderBottomColor: GlobalColor.Secondary
+        borderBottomColor: '#171C8F'
     },
     canteen: {
         width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         alignSelf: 'center',
         padding: 10,
         paddingVertical: 15,
@@ -190,14 +190,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 0,
         borderWidth: 0.5,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
         marginBottom: 10
     },
 
     cardContainer: {
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        borderColor: ThemeColor.Teal,
+        borderColor: '#171C8F',
         borderRadius: 5,
         padding: 10,
         marginBottom: 10
@@ -209,16 +209,16 @@ const styles = StyleSheet.create({
     },
     cardValueRight: {
         textAlign: 'right',
-        color: GlobalColor.Primary,
+        color: '#01044B',
         fontSize:13
     },
     cardLabel: {
-        color: GlobalColor.Primary,
+        color: '#01044B',
         fontSize: GlobalFontSize.Error
     },
     cardLabelRight: {
         textAlign: 'right',
-        color: GlobalColor.Primary,
+        color: '#01044B',
         fontSize: GlobalFontSize.Error
     },
     cardColumn:{

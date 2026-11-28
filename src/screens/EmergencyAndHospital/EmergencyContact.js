@@ -135,7 +135,7 @@ const EmergencyContacts = ({ navigation }) => {
                         width: 40,
                         height: 40,
                         borderRadius: 13,
-                        backgroundColor: HomePalette.mint,
+                        backgroundColor: '#F5F5F5',
                         justifyContent: 'center',
                         alignItems: 'center',
                         overflow: 'hidden'
@@ -145,7 +145,7 @@ const EmergencyContacts = ({ navigation }) => {
                   </View>
                   <View style={styles.item}>
                     <Text style={{fontSize:13}}>{item.EMER_DESC}</Text>
-                    <Feather name="corner-up-right" size={18} color={ThemeColor.Teal}/>
+                    <Feather name="corner-up-right" size={18} color={'#171C8F'}/>
                   </View>
                 </TouchableOpacity>
               )
@@ -160,12 +160,12 @@ const EmergencyContacts = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingHorizontal:10,
     marginBottom:"35%"
   },
   spinnerTextStyle: {
-    color: GlobalColor.White
+    color: '#FFFFFF'
   },
   box: {
     flexDirection: 'row',
@@ -175,10 +175,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     paddingHorizontal: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderWidth:0.5,
-    borderColor:GlobalColor.Secondary,
-    shadowColor: '#000',
+    borderColor:'#171C8F',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,

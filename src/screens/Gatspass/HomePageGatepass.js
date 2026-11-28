@@ -101,7 +101,7 @@ const stopLoader = () => {
 
   // ]);
   return (
-    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight, position: 'relative' }}>
+    <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: '#F5F5F5', position: 'relative' }}>
       <Header title="Gate Pass " />
       
       
@@ -124,7 +124,7 @@ const stopLoader = () => {
                 width:45,
                 height: 42,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -134,7 +134,7 @@ const stopLoader = () => {
           <View
             style={styles.MenuContainer}>
             <Text style={{fontSize:13}} Bold>Gatepass (Gurgaon,HO,Other Location)</Text>
-            <Feather name="corner-up-right" color={ThemeColor.Teal} size={18} />
+            <Feather name="corner-up-right" color={'#171C8F'} size={18} />
           </View>
         </TouchableOpacity>
 
@@ -150,7 +150,7 @@ const stopLoader = () => {
                 width: 45,
                 height: 42,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -160,7 +160,7 @@ const stopLoader = () => {
           <View
             style={styles.MenuContainer}>
             <Text style={{fontSize:13}} Bold>Employee Gatepass (Rohtak)</Text>
-            <Feather name="corner-up-right" color={ThemeColor.Teal} size={18} />
+            <Feather name="corner-up-right" color={'#171C8F'} size={18} />
           </View>
         </TouchableOpacity>
 }
@@ -175,7 +175,7 @@ const stopLoader = () => {
                 width: 45,
                 height: 42,
                 borderRadius: 14,
-                backgroundColor: HomePalette.mint,
+                backgroundColor: '#F5F5F5',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
@@ -185,7 +185,7 @@ const stopLoader = () => {
           <View
             style={styles.MenuContainer}>
             <Text style={{fontSize:13}} Bold>Visitor Gatepass (Rohtak)</Text>
-            <Feather name="corner-up-right" color={ThemeColor.Teal} size={18} />
+            <Feather name="corner-up-right" color={'#171C8F'} size={18} />
           </View>
         </TouchableOpacity>
 }
@@ -221,26 +221,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   fullWidthButton: {
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
   fullWidthButtonText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     marginLeft: 8,
     fontSize:13
   },
   canteen: {
     top: 5,
     marginVertical: 5,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,

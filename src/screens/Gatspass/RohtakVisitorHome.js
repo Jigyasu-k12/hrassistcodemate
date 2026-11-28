@@ -27,7 +27,7 @@ const RohtakVisitorHome = ({ navigation, route }) => {
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', height: '100%' }}>
       <Header title="Visitor Gatepass(Rohtak)"/>
-      <LinearGradient  colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}   > 
+      <LinearGradient  colors={['#171C8F', '#171C8F', '#171C8F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}   > 
       <View style={{flex: 1, flexDirection: 'row'}}>
       <Tab.Navigator
         swipeEnabled={false}
@@ -37,8 +37,8 @@ const RohtakVisitorHome = ({ navigation, route }) => {
           tabBarItemStyle: { paddingHorizontal:10, width:'auto' },
           tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight:'700'},
           tabBarActiveTintColor: '#fff',
-          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
-          tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+          tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: 'rgba(255,255,255,0.22)' },
+          tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
         }}>
         <Tab.Screen name="Create Request" component={RohtakGatePass}  />
         <Tab.Screen name="View Request" component={ViewRequestVSDT}  />
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#d9d9d9',
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 7,
   },
   searchIcon: {
@@ -78,11 +78,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
-    backgroundColor: '#fff',
-    color: '#424242',
+    backgroundColor: '#FFFFFF',
+    color: 'rgba(1,4,75,0.62)',
   },
   mystyl: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0)',
     height:'100%',
     flexDirection: 'row',
   },

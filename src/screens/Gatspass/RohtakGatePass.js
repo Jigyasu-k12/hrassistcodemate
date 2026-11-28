@@ -442,7 +442,7 @@ const RohtakGatePass = ({navigation}) => {
   // }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight,marginBottom:"35%"}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5',marginBottom:"35%"}}>
       
     
       <Spinner
@@ -588,7 +588,7 @@ const RohtakGatePass = ({navigation}) => {
                   fontSize: 14,
                   fontWeight: 'bold',
                 }}>
-                Your Location {<Text style  ={{color :'red'}}>*</Text>}
+                Your Location {<Text style  ={{color :'#01044B'}}>*</Text>}
               </Text>
             </View>
 
@@ -633,7 +633,7 @@ const RohtakGatePass = ({navigation}) => {
                 return (
                   <FontAwesome
                     name={isOpened ? 'chevron-up' : 'chevron-down'}
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                     size={14}
                   />
                 );
@@ -650,7 +650,7 @@ const RohtakGatePass = ({navigation}) => {
                   alignSelf: 'center',
                   paddingVertical: 2,
                 }}>
-                <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                   {errors.office}
                 </Text>
               </View>
@@ -678,21 +678,21 @@ const RohtakGatePass = ({navigation}) => {
             />
 
 <Text style={{ paddingVertical: 10, paddingHorizontal: 0,fontSize:13 }} Bold>
-                                Select Date {<Text style  ={{color :'red'}}>*</Text>}
+                                Select Date {<Text style  ={{color :'#01044B'}}>*</Text>}
                             </Text>
                             <View
                                 style={{
                                     width: '100%',
                                     alignSelf: 'center',
                                     borderWidth: 1,
-                                    borderColor: '#fff',
+                                    borderColor: 'rgba(23,28,143,0.1)',
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     flexDirection: 'row',
                                     padding: 10,
                                     marginVertical: 0,
-                                    backgroundColor: '#fff',
-                                    shadowColor: '#000',
+                                    backgroundColor: '#FFFFFF',
+                                    shadowColor: '#01044B',
                                     shadowOffset: {
                                         width: 0,
                                         height: 2,
@@ -749,7 +749,7 @@ const RohtakGatePass = ({navigation}) => {
                                     <TextInput2
                                         placeholder="Start date"
                                         style={{
-                                            color: '#000',
+                                            color: '#01044B',
                                             fontSize:13
                                         }}
                                         editable={false}
@@ -760,7 +760,7 @@ const RohtakGatePass = ({navigation}) => {
                                         <Ionicons
                                             name="calendar-outline"
                                             size={25}
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -795,7 +795,7 @@ const RohtakGatePass = ({navigation}) => {
                                         justifyContent: 'space-between',
                                     }}>
                                     <TextInput2
-                                        style={{ color: '#000', letterSpacing: 1,fontSize:13 }}
+                                        style={{ color: '#01044B', letterSpacing: 1,fontSize:13 }}
                                         placeholder="End Date"
                                         editable={false}
                                         paddingHorizontal={14}
@@ -805,7 +805,7 @@ const RohtakGatePass = ({navigation}) => {
                                         <Ionicons
                                             name="calendar-outline"
                                             size={25}
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                         />
                                     </TouchableOpacity>
                                 </View>
@@ -827,25 +827,25 @@ const RohtakGatePass = ({navigation}) => {
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}>
-                    Expected Arrival Time:  {<Text style  ={{color :'red'}}>*</Text>}
+                    Expected Arrival Time:  {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <TouchableOpacity
                     style={{
                       width: '100%',
-                      backgroundColor: GlobalColor.White,
+                      backgroundColor: '#FFFFFF',
                       borderWidth: 1,
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       flexDirection: 'row',
                       padding: 6,
                       alignSelf: 'center',
-                      borderColor: ThemeColor.Teal,
+                      borderColor: '#171C8F',
                     }}
                     onPress={() => showDatePickera(true)}>
-                    <Text style={{color: 'gray',fontSize:13}}>
+                    <Text style={{color: 'rgba(1,4,75,0.62)',fontSize:13}}>
                       {moment(timeExp).format('hh:mm a')}
                     </Text>
-                    {/* <Text style={{ color: 'gray' }}>
+                    {/* <Text style={{ color: 'rgba(1,4,75,0.62)' }}>
                     {moment(selectTime).format('LT')}
                   </Text> */}
                     <View>
@@ -858,7 +858,7 @@ const RohtakGatePass = ({navigation}) => {
                         <Ionicons
                           name="calendar-outline"
                           size={22}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       </View>
                     </View>
@@ -874,15 +874,15 @@ const RohtakGatePass = ({navigation}) => {
                       fontSize:13
                     }}
                     Bold>
-                    Duration {<Text style  ={{color :'red'}}>*</Text>}
+                    Duration {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <TextInput
                     style={{
                       width: '100%',
                       borderWidth: 1,
                       padding: 6,
-                      backgroundColor: '#fff',
-                      borderColor: ThemeColor.Teal,
+                      backgroundColor: '#FFFFFF',
+                      borderColor: '#171C8F',
                       fontSize:13,
                       height:25
                     }}
@@ -902,7 +902,7 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{fontSize: 14, color: 'red', textAlign: 'right'}}>
+                    style={{fontSize: 14, color: '#01044B', textAlign: 'right'}}>
                     {errors.duration}
                   </Text>
                 </View>
@@ -949,7 +949,7 @@ const RohtakGatePass = ({navigation}) => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   );
@@ -966,7 +966,7 @@ const RohtakGatePass = ({navigation}) => {
                     alignSelf: 'center',
                     paddingVertical: 2,
                   }}>
-                  <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                  <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.searchLevel}
                   </Text>
                 </View>
@@ -983,7 +983,7 @@ const RohtakGatePass = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Reason of Visit {<Text style  ={{color :'red'}}>*</Text>}
+                  Reason of Visit {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 {/* <TextInput
                   placeholder="Reason"
@@ -993,7 +993,7 @@ const RohtakGatePass = ({navigation}) => {
                   value={values.reason}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#F5F5F5',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
@@ -1017,7 +1017,7 @@ const RohtakGatePass = ({navigation}) => {
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={Purpose}
                     onSelect={(selectedItem, index) => {
                       // console.log(selectedItem, index);
@@ -1031,7 +1031,7 @@ const RohtakGatePass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1049,7 +1049,7 @@ const RohtakGatePass = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.Purpose}
                     </Text>
                   </View>
@@ -1068,7 +1068,7 @@ const RohtakGatePass = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Other Reason {<Text style  ={{color :'red'}}>*</Text>}
+                  Other Reason {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <TextInput
                   placeholder="Other Reason"
@@ -1078,13 +1078,13 @@ const RohtakGatePass = ({navigation}) => {
                   value={values.reason}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FFFFFF',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
                     padding: 6,
                     alignSelf: 'center',
-                    borderColor: ThemeColor.Teal,
+                    borderColor: '#171C8F',
                     fontSize: 13,
                   }}
                 />
@@ -1127,7 +1127,7 @@ const RohtakGatePass = ({navigation}) => {
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={options}
                     onSelect={(selectedItem, index) => {
                       // console.log(selectedItem, index);
@@ -1139,7 +1139,7 @@ const RohtakGatePass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1157,7 +1157,7 @@ const RohtakGatePass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.persionalVehical}
                       </Text>
                     </View>
@@ -1197,7 +1197,7 @@ const RohtakGatePass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1215,7 +1215,7 @@ const RohtakGatePass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.internalVehical}
                       </Text>
                     </View>
@@ -1236,7 +1236,7 @@ const RohtakGatePass = ({navigation}) => {
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}>
-                    Vehicle Number {<Text style  ={{color :'red'}}>*</Text>}
+                    Vehicle Number {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <TextInput
                     placeholder="Vehicle Number"
@@ -1246,13 +1246,13 @@ const RohtakGatePass = ({navigation}) => {
                     value={values.vehicleNumber}
                     style={{
                       width: '100%',
-                      backgroundColor: '#fff',
+                      backgroundColor: '#FFFFFF',
                       borderWidth: 1,
                       alignItems: 'center',
                       flexDirection: 'row',
                       padding: 6,
                       alignSelf: 'center',
-                      borderColor: ThemeColor.Teal,
+                      borderColor: '#171C8F',
                       fontSize: 13,
                     }}
                   />
@@ -1264,7 +1264,7 @@ const RohtakGatePass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.vehicleNumber}
                       </Text>
                     </View>
@@ -1290,7 +1290,7 @@ const RohtakGatePass = ({navigation}) => {
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}>
-                   Visitor Type {<Text style  ={{color :'red'}}>*</Text>}
+                   Visitor Type {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <SelectDropdown
                     buttonTextAfterSelection={(selectedItem, index) => {
@@ -1305,7 +1305,7 @@ const RohtakGatePass = ({navigation}) => {
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={visitorType}
                     onSelect={(selectedItem, index) => {
                       // console.log(selectedItem, index);
@@ -1317,7 +1317,7 @@ const RohtakGatePass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1335,7 +1335,7 @@ const RohtakGatePass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.VisitType}
                       </Text>
                     </View>
@@ -1350,7 +1350,7 @@ const RohtakGatePass = ({navigation}) => {
                       fontSize: 13,
                       fontWeight: 'bold',
                     }}>
-                   Visitor Level {<Text style  ={{color :'red'}}>*</Text>}
+                   Visitor Level {<Text style  ={{color :'#01044B'}}>*</Text>}
                   </Text>
                   <SelectDropdown
                     buttonTextAfterSelection={(selectedItem, index) => {
@@ -1386,7 +1386,7 @@ const RohtakGatePass = ({navigation}) => {
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1404,7 +1404,7 @@ const RohtakGatePass = ({navigation}) => {
                         paddingVertical: 2,
                       }}>
                       <Text
-                        style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                        style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                         {errors.VisitLevel}
                       </Text>
                     </View>
@@ -1421,15 +1421,15 @@ const RohtakGatePass = ({navigation}) => {
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Select Building {<Text style  ={{color :'red'}}>*</Text>}
+                  Select Building {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <View
                   style={{
                     width: '100%',
                     borderWidth: 1,
                     borderRadius: 5,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1451,7 +1451,7 @@ const RohtakGatePass = ({navigation}) => {
                               key={index}
                               style={{
                                 padding: 5,
-                                backgroundColor: ThemeColor.Teal,
+                                backgroundColor: '#171C8F',
                                 margin: 5,
                                 borderRadius: 20,
                                 flexDirection: 'row',
@@ -1461,7 +1461,7 @@ const RohtakGatePass = ({navigation}) => {
                               }}>
                               <TextInput
                                 editable={false}
-                                style={{color: '#fff', padding: 5,fontSize:13}}>
+                                style={{color: '#FFFFFF', padding: 5,fontSize:13}}>
                                 {
                                 element.BNAME
                                 }
@@ -1475,7 +1475,7 @@ const RohtakGatePass = ({navigation}) => {
                                   setSelectBuilding(newState);
                                  
                                 }}>
-                                <Ionicons name="remove-circle" size={27} color={ThemeColor.Teal} />
+                                <Ionicons name="remove-circle" size={27} color={'#FFFFFF'} />
                               </TouchableOpacity>
                             </View>
                           ) : null,
@@ -1484,12 +1484,12 @@ const RohtakGatePass = ({navigation}) => {
                     </ScrollView>
                     <TouchableOpacity onPress={toggleBuilding}>
                       {show == true ? (
-                        <Ionicons name="caret-up" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="caret-up" size={25} color={'#171C8F'} />
                       ) : (
                         <Ionicons
                           name="caret-down"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                       )}
                     </TouchableOpacity>
@@ -1524,13 +1524,13 @@ const RohtakGatePass = ({navigation}) => {
                               width: '48%',
                               padding: 10,
                               // borderWidth: 1,
-                              borderColor: GlobalColor.Secondary,
+                              borderColor: '#171C8F',
                               flexDirection: 'row',
                               justifyContent: 'space-between',
                               margin: 2,
                               backgroundColor: item.isSelected
-                                ? '#C9EFD9'
-                                : '#eee',
+                                ? '#F5F5F5'
+                                : '#FFFFFF',
                             }}
                             onPress={() => {
                               let newState = [...BuildingData];
@@ -1565,13 +1565,13 @@ const RohtakGatePass = ({navigation}) => {
                                 <Ionicons
                                   name="remove-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               ) : (
                                 <Ionicons
                                   name="add-circle"
                                   size={22}
-                                  color={ThemeColor.Teal}
+                                  color={'#171C8F'}
                                 />
                               )}
                             </View>
@@ -1590,7 +1590,7 @@ const RohtakGatePass = ({navigation}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.building}
                     </Text>
                   </View>
@@ -1603,7 +1603,7 @@ const RohtakGatePass = ({navigation}) => {
                               alignSelf: 'center',
                               paddingVertical: 2,
                             }}>
-                            <Text style={{ fontSize: 12, color: 'red' }}>
+                            <Text style={{ fontSize: 12, color: '#01044B' }}>
                              {errors.building}
                             </Text>
                           </View>
@@ -1631,8 +1631,8 @@ const RohtakGatePass = ({navigation}) => {
                     borderWidth: 1,
                     borderRadius: 5,
                     alignSelf: 'center',
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1640,7 +1640,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Feather name="search" size={18} color={ThemeColor.Teal} />
+                    <Feather name="search" size={18} color={'#171C8F'} />
                   </View>
 
                   <TextInput
@@ -1672,7 +1672,7 @@ const RohtakGatePass = ({navigation}) => {
                         style={styles.searchIcon}
                         name="close-circle-outline"
                         size={25}
-                        color={ThemeColor.Teal}
+                        color={'#171C8F'}
                       />
                     </TouchableOpacity>
                   ) : null}
@@ -1685,7 +1685,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                    <Ionicons name="send" size={20} color={'#171C8F'} />
                   </TouchableOpacity>
                 </View>
 
@@ -1696,7 +1696,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignSelf: 'center',
                       paddingVertical: 2,
                     }}>
-                    <Text style={{fontSize: 14, color: 'red', marginTop: 10}}>
+                    <Text style={{fontSize: 14, color: '#01044B', marginTop: 10}}>
                       {errors.searchEmp}
                     </Text>
                   </View>
@@ -1704,7 +1704,7 @@ const RohtakGatePass = ({navigation}) => {
 
                 {/* {search == '' ? (
                     <View>
-                      <Text style={{ fontSize: 14, color: 'red', marginTop: 10 }}>
+                      <Text style={{ fontSize: 14, color: '#01044B', marginTop: 10 }}>
                         {errors.searchEmp}
                       </Text>
                     </View>
@@ -1717,7 +1717,7 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{ fontSize: 12, color: 'red', textAlign: 'left' }}>
+                    style={{ fontSize: 12, color: '#01044B', textAlign: 'left' }}>
                     {searchAlert}
                   </Text>
                 </View>) : null} */}
@@ -1729,7 +1729,7 @@ const RohtakGatePass = ({navigation}) => {
                 <Spinner
                   visible={loader}
                   textContent={'Loading...'}
-                  textStyle={{color: '#fff'}}
+                  textStyle={{color: '#01044B'}}
                 />
               ) : null}
               <View
@@ -1757,8 +1757,8 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1782,8 +1782,8 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     height:40,
                     fontSize:13
                   }}
@@ -1828,7 +1828,7 @@ const RohtakGatePass = ({navigation}) => {
                     fontSize:13
                   }}
                   Bold>
-                  Person/Employee to Meet {<Text style  ={{color :'red'}}>*</Text>}
+                  Person/Employee to Meet {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 <View
                   style={{
@@ -1837,8 +1837,8 @@ const RohtakGatePass = ({navigation}) => {
                     borderWidth: 1,
                     borderRadius: 5,
                     alignSelf: 'center',
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}>
                   <View
                     style={{
@@ -1846,7 +1846,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Feather name="search" size={18} color={ThemeColor.Teal} />
+                    <Feather name="search" size={18} color={'#171C8F'} />
                   </View>
 
                   <TextInput
@@ -1879,7 +1879,7 @@ const RohtakGatePass = ({navigation}) => {
                         style={styles.searchIcon}
                         name="close-circle-outline"
                         size={25}
-                        color={ThemeColor.Teal}
+                        color={'#171C8F'}
                       />
                     </TouchableOpacity>
                   ) : null}
@@ -1892,7 +1892,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                    <Ionicons name="send" size={20} color={'#171C8F'} />
                   </TouchableOpacity>
                 </View>
 
@@ -1903,7 +1903,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignSelf: 'center',
                       paddingVertical: 2,
                     }}>
-                    <Text style={{fontSize: 14, color: 'red', marginTop: 10}}>
+                    <Text style={{fontSize: 14, color: '#01044B', marginTop: 10}}>
                       {errors.searchEmp}
                     </Text>
                   </View>
@@ -1911,7 +1911,7 @@ const RohtakGatePass = ({navigation}) => {
 
                 {/* {search == '' ? (
                     <View>
-                      <Text style={{ fontSize: 14, color: 'red', marginTop: 10 }}>
+                      <Text style={{ fontSize: 14, color: '#01044B', marginTop: 10 }}>
                         {errors.searchEmp}
                       </Text>
                     </View>
@@ -1924,7 +1924,7 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 2,
                   }}>
                   <Text
-                    style={{ fontSize: 12, color: 'red', textAlign: 'left' }}>
+                    style={{ fontSize: 12, color: '#01044B', textAlign: 'left' }}>
                     {searchAlert}
                   </Text>
                 </View>) : null} */}
@@ -1936,7 +1936,7 @@ const RohtakGatePass = ({navigation}) => {
                 <Spinner
                   visible={loader}
                   textContent={'Loading...'}
-                  textStyle={{color: '#fff'}}
+                  textStyle={{color: '#01044B'}}
                 />
               ) : null}
               <View
@@ -1963,8 +1963,8 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -1988,8 +1988,8 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     height:40,
                     fontSize:13
                   }}
@@ -2017,8 +2017,8 @@ const RohtakGatePass = ({navigation}) => {
                     paddingVertical: 10,
                     alignSelf: 'center',
                     borderRadius: 8,
-                    backgroundColor: GlobalColor.White,
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                     fontSize:13,
                     height:40
                   }}
@@ -2030,7 +2030,7 @@ const RohtakGatePass = ({navigation}) => {
                       alignSelf: 'center',
                       paddingVertical: 2,
                     }}>
-                    <Text style={{fontSize: 14, color: 'red', marginTop: 10}}>
+                    <Text style={{fontSize: 14, color: '#01044B', marginTop: 10}}>
                       {errors.mobEmp}
                     </Text>
                   </View>
@@ -2060,7 +2060,7 @@ const RohtakGatePass = ({navigation}) => {
                 }}>
                 <View
                   style={{
-                    backgroundColor: GlobalColor.White,
+                    backgroundColor: '#FFFFFF',
                     padding: 0,
                     borderRadius: 0,
                     width: '100%',
@@ -2077,7 +2077,7 @@ const RohtakGatePass = ({navigation}) => {
                       style={styles.searchIcon}
                       name="close-circle-outline"
                       size={30}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                     />
                   </TouchableOpacity>
 
@@ -2111,7 +2111,7 @@ const RohtakGatePass = ({navigation}) => {
                           style={styles.searchIcon}
                           name="person-circle-outline"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                         <View
                           style={{
@@ -2132,7 +2132,7 @@ const RohtakGatePass = ({navigation}) => {
                             style={styles.searchIcon}
                             name="chevron-forward-circle-outline"
                             size={25}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                           />
                         </TouchableOpacity>
                       </TouchableOpacity>
@@ -2159,7 +2159,7 @@ const RohtakGatePass = ({navigation}) => {
                 }}>
                 <View
                   style={{
-                    backgroundColor: GlobalColor.White,
+                    backgroundColor: '#FFFFFF',
                     padding: 0,
                     borderRadius: 0,
                     width: '100%',
@@ -2176,7 +2176,7 @@ const RohtakGatePass = ({navigation}) => {
                       style={styles.searchIcon}
                       name="close-circle-outline"
                       size={30}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                     />
                   </TouchableOpacity>
 
@@ -2210,7 +2210,7 @@ const RohtakGatePass = ({navigation}) => {
                           style={styles.searchIcon}
                           name="person-circle-outline"
                           size={25}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                         />
                         <View
                           style={{
@@ -2231,7 +2231,7 @@ const RohtakGatePass = ({navigation}) => {
                             style={styles.searchIcon}
                             name="chevron-forward-circle-outline"
                             size={25}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                           />
                         </TouchableOpacity>
                       </TouchableOpacity>
@@ -2269,8 +2269,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
 
   // Dropdown styles
@@ -2279,26 +2279,26 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 14},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     marginTop:"15%"
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -2308,7 +2308,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize:13,
   },
   checkboxLabel: {

@@ -20,7 +20,7 @@ const Guidelines = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
     },
     box: {
         flexDirection: 'row',
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
         paddingHorizontal: 10,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,

@@ -57,7 +57,7 @@ const HosLocation = ({ navigation }) => {
 
     <View>
           <LinearGradient
-          colors={[ThemeColor.Teal, ThemeColor.TealSoft]}
+          colors={['#171C8F', 'rgba(23,28,143,0.1)']}
           style={styles.gradient}>
           <View style={styles.container}>
             <View
@@ -70,14 +70,14 @@ const HosLocation = ({ navigation }) => {
               <Ionicons
                 name="chevron-back-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.goBack()}
               />
             </View>
 
             <Text
               style={{
-                color: '#fff',
+                color: '#FFFFFF',
                 fontSize: 16,
                 letterSpacing: 1,
                 marginLeft: 30,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   spinnerTextStyle: {
-    color: '#FFF'
+    color: '#FFFFFF'
   },
   searchSection: {
     top: 10,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#d9d9d9',
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 7,
   },
   searchIcon: {
@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
-    backgroundColor: '#fff',
-    color: '#424242',
+    backgroundColor: '#FFFFFF',
+    color: 'rgba(1,4,75,0.62)',
   },
 });
 

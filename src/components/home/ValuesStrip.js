@@ -25,7 +25,7 @@ const ValuesSheet = ({visible, onClose}) => (
     onClose={onClose}
     eyebrow="Maruti Suzuki"
     title="Vision, Mission & Philosophy">
-    <LinearGradient colors={[P.canvas, P.mint]} style={styles.sheetCard}>
+    <LinearGradient colors={['#F5F5F5', '#F5F5F5']} style={styles.sheetCard}>
       <View style={styles.block}>
         <HText style={styles.visionTitle}>Vision</HText>
         {VISION.map(v => (
@@ -54,7 +54,7 @@ const ValuesSheet = ({visible, onClose}) => (
         {PHILOSOPHY.map(p => (
           <View key={p.term} style={styles.philRow}>
             <LinearGradient
-              colors={[P.teal, P.deep]}
+              colors={['#171C8F', '#01044B']}
               start={{x: 0.5, y: 0}}
               end={{x: 0.5, y: 0.8}}
               style={styles.philPill}>
@@ -116,7 +116,7 @@ const ValuesStrip = ({active = true, reduceMotion = false}) => {
                     styles.tabText,
                     on && {
                       fontWeight: '700',
-                      color: i === 0 ? P.amberInk : P.deep,
+                      color: i === 0 ? '#171C8F' : '#01044B',
                     },
                   ]}>
                   {label}
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     paddingHorizontal: 10,
     paddingTop: 8,
     paddingBottom: 6,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 3,
     borderRadius: 12,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
   },
   tab: {
     flex: 1,
@@ -197,27 +197,27 @@ const styles = StyleSheet.create({
   },
   tabOn: {
     backgroundColor: '#FFFFFF',
-    shadowColor: P.deep,
+    shadowColor: '#01044B',
     shadowOpacity: 0.14,
     shadowRadius: 3,
     shadowOffset: {width: 0, height: 1},
     elevation: 1,
   },
-  tabText: {fontSize: 12, fontWeight: '600', color: P.sub},
+  tabText: {fontSize: 12, fontWeight: '600', color: 'rgba(1,4,75,0.62)'},
   viewAll: {
     height: 32,
     paddingHorizontal: 10,
     justifyContent: 'center',
     marginLeft: 4,
   },
-  viewAllText: {fontSize: 13, fontWeight: '600', color: P.tealInk},
+  viewAllText: {fontSize: 13, fontWeight: '600', color: '#171C8F'},
   stage: {minHeight: 58, justifyContent: 'center', paddingHorizontal: 4},
-  main: {fontWeight: '700', lineHeight: 20, color: P.deep, textAlign: 'center'},
+  main: {fontWeight: '700', lineHeight: 20, color: '#01044B', textAlign: 'center'},
   sub: {
     fontSize: 11.5,
     fontWeight: '600',
     lineHeight: 15,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
     marginTop: 2,
     textAlign: 'center',
   },
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
   sheetCard: {
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     padding: 16,
   },
   block: {marginBottom: 20},
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '300',
     letterSpacing: -0.5,
-    color: P.amberInk,
+    color: '#171C8F',
     textAlign: 'center',
     marginBottom: 8,
   },
@@ -241,14 +241,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
     lineHeight: 21,
-    color: P.deep,
+    color: '#01044B',
     textAlign: 'center',
     marginBottom: 6,
   },
   sectionTitle: {
     fontSize: 19,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     textAlign: 'center',
     marginBottom: 10,
   },
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: P.tealInk,
+    backgroundColor: '#171C8F',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 19,
-    color: P.deep,
+    color: '#01044B',
   },
   philRow: {flexDirection: 'row', alignItems: 'center', marginBottom: 10},
   philPill: {
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     lineHeight: 18,
-    color: P.body,
+    color: '#01044B',
   },
 });
 

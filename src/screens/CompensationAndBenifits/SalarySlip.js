@@ -209,7 +209,7 @@ const SalarySlip = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: GlobalColor.PrimaryLight }}>
+        <SafeAreaView style={{ flex: 1, width: '100%', height: '100%', backgroundColor: '#F5F5F5' }}>
             {loader == true ? (
                 <Spinner
                     visible={loader}
@@ -236,7 +236,7 @@ const SalarySlip = ({ navigation }) => {
                         <Text style={{ fontSize: 13 }} Bold>
                             {Decrypt(defaultDate)}
                         </Text>
-                        <Feather name="corner-up-right" size={18} color={ThemeColor.Teal} />
+                        <Feather name="corner-up-right" size={18} color={'#171C8F'} />
                     </View>
                 </TouchableOpacity>
 
@@ -249,7 +249,7 @@ const SalarySlip = ({ navigation }) => {
                             <TouchableOpacity style={{ position: 'absolute', top: 5, right: 5, zIndex: 55555 }}>
                                 <Feather
                                     name="x-circle"
-                                    color={GlobalColor.Danger}
+                                    color={'#01044B'}
                                     size={22}
                                     onPress={toggleModal}
                                     style={{ margin: 10 }}
@@ -277,7 +277,7 @@ const SalarySlip = ({ navigation }) => {
                                             toggleModal();
                                         }}
                                         style={styles.textContainer}>
-                                        <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: 13 }}>{Decrypt(item.SHIS_YYMM_CODE)}</Text>
+                                        <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#01044B", fontSize: 13 }}>{Decrypt(item.SHIS_YYMM_CODE)}</Text>
                                     </TouchableOpacity>
                                 )}
                             />
@@ -305,7 +305,7 @@ const SalarySlip = ({ navigation }) => {
                                 {Decrypt(DefaultSalary.PYDT_DESCRIPTION)}
                             </Text>
                         )}
-                        <Feather name="corner-up-right" size={18} color={ThemeColor.Teal} />
+                        <Feather name="corner-up-right" size={18} color={'#171C8F'} />
                     </View>
                 </TouchableOpacity>
 
@@ -319,7 +319,7 @@ const SalarySlip = ({ navigation }) => {
                                 style={{ position: 'absolute', top: 5, right: 5, zIndex: 55555 }}>
                                 <Feather
                                     name="x-circle"
-                                    color={GlobalColor.Danger}
+                                    color={'#01044B'}
                                     size={22}
                                     onPress={salaryTypetoggleModal}
                                     style={{ margin: 10 }}
@@ -344,7 +344,7 @@ const SalarySlip = ({ navigation }) => {
                                             salaryTypetoggleModal();
                                         }}
                                         style={styles.textContainer}>
-                                        <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#000", fontSize: 13 }}>{Decrypt(item.PYDT_DESCRIPTION)}</Text>
+                                        <Text style={{ paddingVertical: 5, paddingHorizontal: 8, color: "#01044B", fontSize: 13 }}>{Decrypt(item.PYDT_DESCRIPTION)}</Text>
                                     </TouchableOpacity>
                                 )}
                             />
@@ -352,7 +352,7 @@ const SalarySlip = ({ navigation }) => {
                     </SafeAreaView>
                 </Modal>
                 {selectMyDet < 202404 ? (
-                    <ScrollView style={{ backgroundColor: GlobalColor.White, marginVertical: 10 }}>
+                    <ScrollView style={{ backgroundColor: '#FFFFFF', marginVertical: 10 }}>
                         {table1Data.length > 0 ? (
                             <View style={{ paddingHorizontal: 10 }}>
                                 <View style={[styles.Table]}>
@@ -376,16 +376,16 @@ const SalarySlip = ({ navigation }) => {
                                         return (
                                             <View style={[styles.Table]}>
                                                 <View style={[styles.tableRow, { alignItems: 'center' }]}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: 13, textAlign: 'center' }}>{Decrypt(item.MDESC)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: 13, textAlign: 'center' }}>{Decrypt(item.MDESC)}</Text>
                                                 </View>
                                                 <View style={styles.tableRow}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.EARNING)}</Text>
                                                 </View>
                                                 <View style={styles.tableRow}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.DED)}</Text>
                                                 </View>
                                                 <View style={styles.tableRow}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.SHIS_REMARKS)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: GlobalFontSize.P - 2 }}>{Decrypt(item.SHIS_REMARKS)}</Text>
                                                 </View>
                                             </View>
                                         );
@@ -413,13 +413,13 @@ const SalarySlip = ({ navigation }) => {
                                         return (
                                             <View style={[styles.Table, { justifyContent: 'space-between' }]}>
                                                 <View style={styles.tableRow}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: 13 }}>{Decrypt(item.EARNING)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: 13 }}>{Decrypt(item.EARNING)}</Text>
                                                 </View>
                                                 <View style={[styles.tableRow, { flex: 1 }]}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: 13 }}>{Decrypt(item.DED)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: 13 }}>{Decrypt(item.DED)}</Text>
                                                 </View>
                                                 <View style={styles.tableRow}>
-                                                    <Text style={{ color: GlobalColor.Black, fontSize: 13 }}>{Decrypt(item.NET)}</Text>
+                                                    <Text style={{ color: '#01044B', fontSize: 13 }}>{Decrypt(item.NET)}</Text>
                                                 </View>
                                             </View>
                                         );
@@ -438,7 +438,7 @@ const SalarySlip = ({ navigation }) => {
                                     renderItem={({ item, index }) => {
                                         return (
                                             <View style={[styles.Table, { flexDirection: 'column' }]}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: 13 }}>{Decrypt(item.GLMS_MESSAGES)}</Text>
+                                                <Text style={{ color: '#01044B', fontSize: 13 }}>{Decrypt(item.GLMS_MESSAGES)}</Text>
                                             </View>
                                         );
                                     }} />
@@ -456,7 +456,7 @@ const SalarySlip = ({ navigation }) => {
                                     renderItem={({ item, index }) => {
                                         return (
                                             <View style={[styles.Table, { flexDirection: 'column' }]}>
-                                                <Text style={{ color: GlobalColor.Black, fontSize: 13 }}>{Decrypt(item.EXMS_MESSAGES)}</Text>
+                                                <Text style={{ color: '#01044B', fontSize: 13 }}>{Decrypt(item.EXMS_MESSAGES)}</Text>
                                             </View>
                                         );
                                     }} />
@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
-        backgroundColor: GlobalColor.PrimaryLight
+        backgroundColor: '#F5F5F5'
     },
     container: {
         flexDirection: 'row',
@@ -498,9 +498,9 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignSelf: 'center',
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderRadius: 3,
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -513,12 +513,12 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         paddingVertical: 15,
         width: '100%',
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         alignSelf: 'center',
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: -0,
             height: 1,
@@ -531,13 +531,13 @@ const styles = StyleSheet.create({
     textContainer: {
         width: '100%',
         padding: 5,
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         alignSelf: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 5,
         borderBottomWidth: 0.5,
-        borderColor: GlobalColor.LightDark
+        borderColor: 'rgba(23,28,143,0.1)'
     },
     Table: {
         width: '100%',
@@ -546,7 +546,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         paddingHorizontal: 5,
         borderBottomWidth: 0.5,
-        borderColor: GlobalColor.Secondary,
+        borderColor: '#171C8F',
         paddingVertical: 15
     },
     tableRow: {

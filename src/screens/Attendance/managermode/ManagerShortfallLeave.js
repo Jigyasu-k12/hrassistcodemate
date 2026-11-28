@@ -607,8 +607,8 @@ export const ManagerShortfallLeave = () => {
 
           onChange={() => test(!item.selected, item)}
           tintColors={{
-            true: GlobalColor.Secondary,
-            false: GlobalColor.LightDark,
+            true: '#171C8F',
+            false: 'rgba(1,4,75,0.45)',
           }}
         />
 
@@ -618,13 +618,13 @@ export const ManagerShortfallLeave = () => {
           <Ionicons
             name="checkmark-done-sharp"
             size={17}
-            color={GlobalColor.Primary}
+            color={'#01044B'}
           />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.itemButton}
           onPress={() => rejectLeave(item, true)}>
-          <Ionicons name="close-sharp" size={17} color={GlobalColor.Danger} />
+          <Ionicons name="close-sharp" size={17} color={'#01044B'} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -638,7 +638,7 @@ export const ManagerShortfallLeave = () => {
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.35}]}>
@@ -665,7 +665,7 @@ export const ManagerShortfallLeave = () => {
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.3}]}>
@@ -685,7 +685,7 @@ export const ManagerShortfallLeave = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       {loader == true ? (
         <Spinner
           visible={loader}
@@ -727,8 +727,8 @@ export const ManagerShortfallLeave = () => {
                 value={!isSelected}
                 onChange={() => selectAll()}
                 tintColors={{
-                  true: GlobalColor.Secondary,
-                  false: GlobalColor.LightDark,
+                  true: '#171C8F',
+                  false: 'rgba(1,4,75,0.45)',
                 }}
               />
               <Text Bold style={styles.checkboxText}>
@@ -743,7 +743,7 @@ export const ManagerShortfallLeave = () => {
               keyExtractor={item => item.id}
               ListHeaderComponent={FlatList_Header_Leave}
               ListHeaderComponentStyle={{
-                borderBottomColor: ThemeColor.Teal,
+                borderBottomColor: '#171C8F',
                 borderBottomWidth: 1,
               }}
               ListEmptyComponent={
@@ -762,10 +762,10 @@ export const ManagerShortfallLeave = () => {
               onPress={() => {
                 setSublistModalVisible(true);
               }}>
-             {usrAccess == 'Y'?<Text></Text>: <Text style={{color: '#000', fontSize: 13}}>
+             {usrAccess == 'Y'?<Text></Text>: <Text style={{color: '#01044B', fontSize: 13}}>
                 {DefaultSub.STAFFNO} {DefaultSub.NAME}
               </Text>}
-              <Ionicons name="send" size={17} color={ThemeColor.Teal} />
+              <Ionicons name="send" size={17} color={'#171C8F'} />
             </TouchableOpacity>
             <FlatList
               contentContainerStyle={{flexGrow: 1}}
@@ -774,7 +774,7 @@ export const ManagerShortfallLeave = () => {
               keyExtractor={item => item.id}
               ListHeaderComponent={FlatList_Header}
               ListHeaderComponentStyle={{
-                borderBottomColor: ThemeColor.Teal,
+                borderBottomColor: '#171C8F',
                 borderBottomWidth: 1,
               }}
               ListEmptyComponent={
@@ -797,11 +797,11 @@ export const ManagerShortfallLeave = () => {
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -818,7 +818,7 @@ export const ManagerShortfallLeave = () => {
                   Bold
                   style={{
                     fontSize: 15,
-                    color: GlobalColor.Primary,
+                    color: '#01044B',
                   }}>
                   Leave Details
                 </Text>
@@ -828,7 +828,7 @@ export const ManagerShortfallLeave = () => {
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -928,7 +928,7 @@ export const ManagerShortfallLeave = () => {
                                   setLeaveDetailModal(!LeaveDetailModal);
                                   DeleteLeavePending(modalData);
                                 }}>
-                                <Text style={{color:'#fff', alignSelf:'center'}} Bold>Delete</Text>
+                                <Text style={{color:'#F5F5F5', alignSelf:'center'}} Bold>Delete</Text>
                               </TouchableOpacity>
                               ) : null
                             } */}
@@ -936,7 +936,7 @@ export const ManagerShortfallLeave = () => {
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Teal,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                       }}
                       onPress={() => {
@@ -944,7 +944,7 @@ export const ManagerShortfallLeave = () => {
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -967,7 +967,7 @@ export const ManagerShortfallLeave = () => {
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -983,8 +983,8 @@ export const ManagerShortfallLeave = () => {
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalText(text)}
                 />
@@ -1025,7 +1025,7 @@ export const ManagerShortfallLeave = () => {
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
 
@@ -1041,8 +1041,8 @@ export const ManagerShortfallLeave = () => {
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Teal,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalTextBulk(text)}
                 />
@@ -1082,7 +1082,7 @@ export const ManagerShortfallLeave = () => {
               style={{position: 'absolute', top: 15, right: 5, zIndex: 55555}}>
               <Feather
                 name="x-circle"
-                color={GlobalColor.Danger}
+                color={'#01044B'}
                 size={23}
                 onPress={() => {
                   setSublistModalVisible(false);
@@ -1116,7 +1116,7 @@ export const ManagerShortfallLeave = () => {
                     style={{
                       paddingVertical: 5,
                       paddingHorizontal: 8,
-                      color: '#000',
+                      color: '#01044B',
                       fontSize: 13,
                       
                     }}>
@@ -1177,13 +1177,13 @@ export default ManagerShortfallLeave;
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 10,
     marginTop: 5,
     justifyContent: 'space-between',
     paddingVertical: 5,
     borderBottomWidth: 0.5,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   HeaderColumn: {
     flex: 0.25,
@@ -1197,7 +1197,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1213,7 +1213,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   tabsContainerStyle: {
     marginTop: 10,
@@ -1224,20 +1224,20 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
   },
   checkboxContainer: {
     // width: '100%',
@@ -1252,8 +1252,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -1268,12 +1268,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   modalView: {
     position: 'relative',
     width: '90%',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     padding: 20,
     // minHeight:200
   },
@@ -1294,7 +1294,7 @@ const styles = StyleSheet.create({
   textContainer: {
     width: '100%',
     padding: 5,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     // marginVertical: 8.5,
     // shadowColor: GlobalColor.Black,
@@ -1312,7 +1312,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 5,
     borderBottomWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   itemText: {
     fontSize: 13,

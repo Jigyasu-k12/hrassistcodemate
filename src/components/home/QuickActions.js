@@ -24,7 +24,7 @@ const Tile = ({width, columns, icon, label, onPress, accent = false, a11y}) => {
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={a11y || label}
-      android_ripple={{color: P.mint, borderless: false}}
+      android_ripple={{color: 'rgba(1,4,75,0.45)', borderless: false}}
       style={({pressed}) => [
         styles.tile,
         {width, minHeight: compact ? 84 : 92},
@@ -35,12 +35,12 @@ const Tile = ({width, columns, icon, label, onPress, accent = false, a11y}) => {
         style={[
           styles.chip,
           compact && styles.chipCompact,
-          accent && {backgroundColor: P.amberCream},
+          accent && {backgroundColor: '#F5F5F5'},
         ]}>
         <AppIcon
           name={icon}
           size={compact ? 20 : 22}
-          color={accent ? P.amberInk : P.tealInk}
+          color={accent ? '#171C8F' : '#171C8F'}
         />
       </View>
       <HText
@@ -65,11 +65,11 @@ const HeaderButton = ({icon, label, onPress, primary = false}) => (
     <AppIcon
       name={icon}
       size={15}
-      color={primary ? P.onAmber : P.tealInk}
+      color={primary ? '#01044B' : '#171C8F'}
       strokeWidth={2.2}
     />
     <HText
-      style={[styles.headBtnText, {color: primary ? P.onAmber : P.tealInk}]}>
+      style={[styles.headBtnText, {color: primary ? '#01044B' : '#171C8F'}]}>
       {label}
     </HText>
   </TouchableOpacity>
@@ -128,7 +128,7 @@ const QuickActions = ({navigation, restricted = false}) => {
 
       {ready && !items.length ? (
         <View style={styles.emptyCard}>
-          <AppIcon name="pinTile" size={26} color={P.tealInk} />
+          <AppIcon name="pinTile" size={26} color={'#171C8F'} />
           <HText style={styles.emptyTitle}>Your Quick actions are empty</HText>
           <HText style={styles.emptySub}>
             Pin the menus you use most so they're one tap away.
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 12,
   },
-  title: {...TYPE.title, color: P.deep, flexShrink: 1, marginRight: 8},
+  title: {...TYPE.title, color: '#01044B', flexShrink: 1, marginRight: 8},
   headBtns: {flexDirection: 'row', alignItems: 'center'},
   headBtn: {
     height: 32,
@@ -218,10 +218,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 8,
   },
-  headBtnSoft: {backgroundColor: P.mint},
+  headBtnSoft: {backgroundColor: '#F5F5F5'},
   headBtnPrimary: {
-    backgroundColor: P.amber,
-    shadowColor: P.amberStrong,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.4,
     shadowRadius: 6,
     shadowOffset: {width: 0, height: 3},
@@ -234,57 +234,57 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.card,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 10,
     paddingHorizontal: 6,
     overflow: 'hidden',
-    shadowColor: P.deep,
+    shadowColor: '#01044B',
     shadowOpacity: 0.05,
     shadowRadius: 3,
     shadowOffset: {width: 0, height: 1},
     elevation: 1,
   },
-  tileAccent: {borderColor: P.amberSoft, backgroundColor: '#FFFDF8'},
+  tileAccent: {borderColor: '#FCBE62', backgroundColor: '#FFFFFF'},
   tilePressed: {
-    backgroundColor: P.canvas,
-    borderColor: P.lineStrong,
+    backgroundColor: '#F5F5F5',
+    borderColor: 'rgba(23,28,143,0.18)',
     transform: [{scale: 0.97}],
   },
   chip: {
     width: 40,
     height: 40,
     borderRadius: RADIUS.md,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 7,
   },
   chipCompact: {width: 36, height: 36, borderRadius: 11, marginBottom: 6},
-  label: {...TYPE.label, color: P.deep, textAlign: 'center'},
+  label: {...TYPE.label, color: '#01044B', textAlign: 'center'},
   labelCompact: {fontSize: 11, lineHeight: 14},
   emptyCard: {
     borderRadius: 18,
     borderWidth: 1,
     borderStyle: 'dashed',
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 16,
   },
-  emptyTitle: {fontSize: 15, fontWeight: '700', color: P.deep, marginTop: 8},
-  emptySub: {fontSize: 13, color: P.sub, textAlign: 'center', marginTop: 4},
+  emptyTitle: {fontSize: 15, fontWeight: '700', color: '#01044B', marginTop: 8},
+  emptySub: {fontSize: 13, color: 'rgba(1,4,75,0.62)', textAlign: 'center', marginTop: 4},
   emptyBtn: {
     marginTop: 12,
     height: 40,
     paddingHorizontal: 22,
     borderRadius: 20,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     justifyContent: 'center',
   },
-  emptyBtnText: {fontSize: 14, fontWeight: '700', color: P.onAmber},
+  emptyBtnText: {fontSize: 14, fontWeight: '700', color: '#01044B'},
 });
 
 export default QuickActions;

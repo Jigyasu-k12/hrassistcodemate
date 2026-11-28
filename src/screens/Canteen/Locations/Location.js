@@ -117,7 +117,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
           <View style={styles.calander}>
             <Text style={{fontSize:13}}>{moment(date).format('MMM Do YYYY')}</Text>
             <TouchableOpacity onPress={() => setOpen(true)}>
-              <Ionicons name="calendar-outline" size={23} color={ThemeColor.Teal} />
+              <Ionicons name="calendar-outline" size={23} color={'#171C8F'} />
             </TouchableOpacity>
             <DatePicker
                 modal
@@ -154,16 +154,16 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
   const styles = StyleSheet.create({      
     screenContainer:{
       flex: 1, 
-      backgroundColor: GlobalColor.PrimaryLight,
+      backgroundColor: '#F5F5F5',
       paddingHorizontal:10
     },
     spinnerTextStyle: {
-      color: GlobalColor.White
+      color: '#FFFFFF'
     },
     calander: {
       width: '100%',
       paddingHorizontal:20,
-      backgroundColor: GlobalColor.White,
+      backgroundColor: '#FFFFFF',
       justifyContent: 'space-between',
       alignItems: 'center',
       alignSelf: 'center',
@@ -171,7 +171,7 @@ import { LoadingScreen } from '../../../components/reusable/LoadingScreen';
       paddingVertical: 8,
       marginVertical: 10,
       borderRadius: 0,
-      shadowColor: GlobalColor.Black,
+      shadowColor: '#01044B',
       shadowOffset: {
         width: 0,
         height: 4,

@@ -554,7 +554,7 @@ const getUserCurrentLocation = () => {
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.4}]}>
@@ -605,7 +605,7 @@ const getUserCurrentLocation = () => {
                 keyExtractor={item => item.id}
                 ListHeaderComponent={FlatList_Header_Leave}
                 ListHeaderComponentStyle={{
-                  borderBottomColor: ThemeColor.Teal,
+                  borderBottomColor: '#171C8F',
                   borderBottomWidth: 1,
                 }}
                 ListEmptyComponent={
@@ -626,7 +626,7 @@ const getUserCurrentLocation = () => {
                 transparent={true}>
                 <View
                   style={{
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FFFFFF',
                     padding: 10,
                     borderRadius: 0,
                     height:'auto',
@@ -645,7 +645,7 @@ const getUserCurrentLocation = () => {
                       Bold
                       style={{
                         fontSize: 15,
-                        color:ThemeColor.Teal,textDecorationLine: 'underline'
+                        color:'#171C8F',textDecorationLine: 'underline'
                       }}>
                       My Taxi Booking Detail
                     </Text>
@@ -655,7 +655,7 @@ const getUserCurrentLocation = () => {
                       <Ionicons
                         name="close-circle-outline"
                         size={25}
-                        color={GlobalColor.Danger}
+                        color={'#01044B'}
                       />
                     </TouchableOpacity>
                   </View>
@@ -741,7 +741,7 @@ const getUserCurrentLocation = () => {
                           style={{
                             padding: 12,
                             borderRadius: 24,
-                            backgroundColor: ThemeColor.Amber,
+                            backgroundColor: '#FCBE62',
                             minWidth: 100,
                             marginTop:10,
                             marginHorizontal:20
@@ -750,7 +750,7 @@ const getUserCurrentLocation = () => {
                            PauseRequest();
                           }}>
                           <Text
-                            style={{color: ThemeColor.OnAmber, alignSelf: 'center',fontSize:13}}
+                            style={{color: '#01044B', alignSelf: 'center',fontSize:13}}
                             Bold>
                             Pause
                           </Text>
@@ -760,7 +760,7 @@ const getUserCurrentLocation = () => {
                           style={{
                             padding: 12,
                             borderRadius: 24,
-                            backgroundColor: ThemeColor.Amber,
+                            backgroundColor: '#FCBE62',
                             minWidth: 100,
                             marginTop:10
                           }}
@@ -768,7 +768,7 @@ const getUserCurrentLocation = () => {
                             setReportModal(!ReportModal);
                           }}>
                           <Text
-                            style={{color: ThemeColor.OnAmber, alignSelf: 'center',fontSize:13}}
+                            style={{color: '#01044B', alignSelf: 'center',fontSize:13}}
                             Bold>
                             Okay
                           </Text>
@@ -789,17 +789,17 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight
+    backgroundColor: '#F5F5F5'
 },
 item: {
   flexDirection: 'row',
-  backgroundColor: GlobalColor.White,
+  backgroundColor: '#FFFFFF',
   paddingHorizontal: 10,
   marginTop: 5,
   justifyContent: 'space-between',
   paddingVertical: 5,
   borderBottomWidth: 0.5,
-  borderBottomColor: GlobalColor.Secondary,
+  borderBottomColor: '#171C8F',
 },
   FlatListData: {
     width: '100%',
@@ -812,8 +812,8 @@ item: {
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
   itemText: {
     fontSize: 13,
@@ -826,14 +826,14 @@ item: {
     width: '100%',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: 'rgba(23,28,143,0.1)',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     padding: 10,
     marginVertical: 0,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
         width: 0,
         height: 2,
@@ -848,25 +848,25 @@ item: {
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 14},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -876,7 +876,7 @@ item: {
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize:13,
   },
   checkboxLabel: {

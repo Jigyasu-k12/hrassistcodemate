@@ -24,7 +24,7 @@ const Accordion = ({ data, name, handleDropDown, isOpen }) => {
         <View style={styles.lunchBoxContainer}>
             <TouchableOpacity style={styles.lunchBox} onPress={() => handleDropDown()}>
                 <Text style={{fontSize:13}} Bold> {name} </Text>
-                <Ionicons name={isOpen == true ? 'ios-chevron-up' : 'ios-chevron-down'} size={18} color={ThemeColor.Teal} />
+                <Ionicons name={isOpen == true ? 'ios-chevron-up' : 'ios-chevron-down'} size={18} color={'#171C8F'} />
             </TouchableOpacity>
             <Collapsible collapsed={!isOpen}>
             <View style={styles.AccordionTab}>
@@ -112,10 +112,10 @@ const styles = StyleSheet.create({
     lunchBoxContainer: {     
         marginVertical: 10,
         paddingVertical:10,
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         borderRadius: 4,
         // alignSelf: 'center',
-        shadowColor: GlobalColor.Black,
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 4,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     AccordionTab: {
         padding: 15,
         borderTopWidth: 1.5,
-        borderColor:ThemeColor.Teal
+        borderColor:'#171C8F'
     },
     lunchBox: {
         flexDirection: 'row',        
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 15,
         
-        // backgroundColor:'red'
+        // backgroundColor:'#01044B'
     },
 });
 

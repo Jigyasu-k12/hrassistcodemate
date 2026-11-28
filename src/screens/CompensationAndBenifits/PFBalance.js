@@ -71,7 +71,7 @@ const PFBalance = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, width: '100%', position: 'relative' }}>
       <LinearGradient
-        colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]}
+        colors={['#171C8F', '#171C8F', '#171C8F']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.container}>
@@ -92,13 +92,13 @@ const PFBalance = ({ navigation }) => {
               <Ionicons
                 name="chevron-back-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.goBack()}
               />
               <Ionicons
                 name="menu-outline"
                 size={20}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.openDrawer()}
               />
             </View>
@@ -107,7 +107,7 @@ const PFBalance = ({ navigation }) => {
           <Text
             Bold
             style={{
-              color: '#fff',
+              color: '#FFFFFF',
               fontSize: GlobalFontSize.H4,
               marginLeft: 15,
             }}>
@@ -117,7 +117,7 @@ const PFBalance = ({ navigation }) => {
       </LinearGradient>
 
       <LinearGradient
-        colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]}
+        colors={['#171C8F', '#171C8F', '#171C8F']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.mystyl}>
@@ -129,8 +129,8 @@ const PFBalance = ({ navigation }) => {
               tabBarLabelStyle: { fontSize: 13, fontWeight: '700' },
               tabBarActiveTintColor: '#fff',
               tabBarItemStyle: { paddingHorizontal: 15, width: 'auto' },
-              tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: '#fff' },
-              tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+              tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: 'rgba(255,255,255,0.22)' },
+              tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
               tabBarAllowFontScaling: false,
             }}>
             <Tab.Screen name="PF Withdrawal" component={PFWithdrawal} listeners={tabBarListeners} />
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   mystyl: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0)',
     height: '83%',
     flexDirection: 'row',
   },

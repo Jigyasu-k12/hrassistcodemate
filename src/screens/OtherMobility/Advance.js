@@ -146,13 +146,13 @@ const Advance = ({ navigation, route }) => {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { width: 100%; height: 100%; background-color: #525659; overflow: auto; -webkit-overflow-scrolling: touch; }
+          html, body { width: 100%; height: 100%; background-color: #01044B; overflow: auto; -webkit-overflow-scrolling: touch; }
           #zoom-container { transform-origin: top left; width: 100%; }
           #pdf-container { display: flex; flex-direction: column; align-items: center; padding: 10px 0; gap: 10px; width: 100%; }
-          canvas { display: block; width: 100% !important; height: auto !important; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-          #loading { color: #fff; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
-          #error { color: #ff6b6b; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
-          #page-info { color: #ccc; font-size: 13px; text-align: center; font-family: sans-serif; padding: 5px 0 10px 0; }
+          canvas { display: block; width: 100% !important; height: auto !important; box-shadow: 0 2px 8px rgba(1,4,75,0.4); }
+          #loading { color: #FFFFFF; font-size: 16px; text-align: center; margin-top: 40vh; font-family: sans-serif; }
+          #error { color: #01044B; font-size: 14px; text-align: center; margin-top: 40vh; font-family: sans-serif; padding: 20px; display: none; }
+          #page-info { color: rgba(1,4,75,0.62); font-size: 13px; text-align: center; font-family: sans-serif; padding: 5px 0 10px 0; }
         </style>
       </head>
       <body>
@@ -1169,7 +1169,7 @@ const Advance = ({ navigation, route }) => {
     if (!selectedFileBase64) {
       return (
         <View style={styles.fileLoadingContainer}>
-          <ActivityIndicator size="large" color={ThemeColor.Teal} />
+          <ActivityIndicator size="large" color={'#FFFFFF'} />
           <Text style={styles.fileLoadingText}>Preparing file...</Text>
         </View>
       );
@@ -1189,7 +1189,7 @@ const Advance = ({ navigation, route }) => {
           onError={() => Toast.show('Error loading PDF', Toast.SHORT)}
           renderLoading={() => (
             <View style={styles.fileLoadingContainer}>
-              <ActivityIndicator size="large" color={ThemeColor.Teal} />
+              <ActivityIndicator size="large" color={'#FFFFFF'} />
               <Text style={styles.fileLoadingText}>Loading PDF...</Text>
             </View>
           )}
@@ -1200,7 +1200,7 @@ const Advance = ({ navigation, route }) => {
       const mimeType = getMimeType(selectedFileName);
       return (
         <ScrollView
-          style={{ flex: 1, backgroundColor: '#525659' }}
+          style={{ flex: 1, backgroundColor: '#01044B' }}
           contentContainerStyle={styles.imageScrollContainer}
           maximumZoomScale={5}
           minimumZoomScale={1}
@@ -1217,7 +1217,7 @@ const Advance = ({ navigation, route }) => {
     }
     return (
       <View style={styles.fileLoadingContainer}>
-        <MaterialIcons name="insert-drive-file" size={60} color="#ccc" />
+        <MaterialIcons name="insert-drive-file" size={60} color="#FFFFFF" />
         <Text style={styles.fileLoadingText}>Unsupported file type</Text>
       </View>
     );
@@ -1229,9 +1229,9 @@ const Advance = ({ navigation, route }) => {
     const viewBase64 = attachment.base64 || '';
 
     const getFileIcon = () => {
-      if (fileType === 'pdf') return <MaterialIcons name="picture-as-pdf" size={20} color="#E53935" />;
-      if (fileType === 'image') return <MaterialIcons name="image" size={20} color="#43A047" />;
-      return <MaterialIcons name="attach-file" size={20} color={ThemeColor.Teal} />;
+      if (fileType === 'pdf') return <MaterialIcons name="picture-as-pdf" size={20} color="#01044B" />;
+      if (fileType === 'image') return <MaterialIcons name="image" size={20} color="#171C8F" />;
+      return <MaterialIcons name="attach-file" size={20} color={'#171C8F'} />;
     };
 
     return (
@@ -1250,14 +1250,14 @@ const Advance = ({ navigation, route }) => {
               style={styles.viewAttachmentButton}
               onPress={() => openFileViewer(viewBase64, attachment.fileName)}
             >
-              <Ionicons name="eye-outline" size={22} color={ThemeColor.Teal} />
+              <Ionicons name="eye-outline" size={22} color={'#171C8F'} />
             </TouchableOpacity>
           ) : null}
           <TouchableOpacity
             style={styles.deleteAttachmentButton}
             onPress={() => deleteAttachment(attachment.id)}
           >
-            <Ionicons name="trash-outline" size={22} color={'#FF3B30'} />
+            <Ionicons name="trash-outline" size={22} color={'#01044B'} />
           </TouchableOpacity>
         </View>
       </View>
@@ -1389,7 +1389,7 @@ const Advance = ({ navigation, route }) => {
                       buttonStyle={styles.dropdown2BtnStyle}
                       buttonTextStyle={styles.dropdown2BtnTxtStyle}
                       renderDropdownIcon={isOpened => (
-                        <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Teal} size={14} />
+                        <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
                       )}
                       dropdownIconPosition={'right'}
                       dropdownStyle={styles.dropdown2DropdownStyle}
@@ -1443,7 +1443,7 @@ const Advance = ({ navigation, route }) => {
                     <>
                       <View style={styles.searchContainer}>
                         <View style={{ width: '15%', alignItems: 'center', justifyContent: 'center' }}>
-                          <Feather name="search" size={18} color={ThemeColor.Teal} />
+                          <Feather name="search" size={18} color={'#171C8F'} />
                         </View>
                         <TextInput
                           placeholder="Search By Staff ID"
@@ -1456,14 +1456,14 @@ const Advance = ({ navigation, route }) => {
                             style={{ borderRadius: 8, marginLeft: -10, alignSelf: 'center' }}
                             onPress={() => setSearchEmp('')}
                           >
-                            <Ionicons name="close-circle-outline" size={25} color={ThemeColor.Teal} />
+                            <Ionicons name="close-circle-outline" size={25} color={'#171C8F'} />
                           </TouchableOpacity>
                         )}
                         <TouchableOpacity
                           onPress={SearchEmployee}
                           style={{ width: '15%', alignItems: 'center', justifyContent: 'center' }}
                         >
-                          <Ionicons name="send" size={20} color={ThemeColor.Teal} />
+                          <Ionicons name="send" size={20} color={'#171C8F'} />
                         </TouchableOpacity>
                       </View>
                       {selectedEmployee !== '' && (
@@ -1498,10 +1498,10 @@ const Advance = ({ navigation, route }) => {
                     onPress={GetPendingIntimations}
                     activeOpacity={0.7}
                   >
-                    <Text style={[styles.selectButtonText, !intimationId && { color: '#999' }]}>
+                    <Text style={[styles.selectButtonText, !intimationId && { color: 'rgba(1,4,75,0.62)' }]}>
                       {intimationId || 'Select Intimation ID'}
                     </Text>
-                    <Ionicons name="chevron-down" size={20} color={ThemeColor.Teal} />
+                    <Ionicons name="chevron-down" size={20} color={'#171C8F'} />
                   </TouchableOpacity>
                 )}
                 {formErrors.intimationId ? (
@@ -1561,7 +1561,7 @@ const Advance = ({ navigation, route }) => {
               <View style={styles.row}>
                 <View style={styles.column}>
                 <Text style={styles.label}>Tax Exempted</Text>
-<Text style={[styles.valueText, taxExempted === 'No' && { color: 'red', fontWeight: 'bold' }]}>
+<Text style={[styles.valueText, taxExempted === 'No' && { color: '#01044B', fontWeight: 'bold' }]}>
   {taxExempted || '-'}
 </Text>
                 </View>
@@ -1607,7 +1607,7 @@ const Advance = ({ navigation, route }) => {
                     Attachments <Text style={styles.required}>*</Text>
                   </Text>
                   <TouchableOpacity style={styles.addAttachmentButton} onPress={pickDocument}>
-                    <Ionicons name="add-circle" size={24} color={ThemeColor.Teal} />
+                    <Ionicons name="add-circle" size={24} color={'#171C8F'} />
                     <Text style={styles.addAttachmentText}>Add File</Text>
                   </TouchableOpacity>
                 </View>
@@ -1648,7 +1648,7 @@ const Advance = ({ navigation, route }) => {
               <View style={styles.modalHeader}>
                 <Text style={styles.modalTitle} Bold>Select Employee</Text>
                 <TouchableOpacity onPress={() => setEmpModalVisible(false)}>
-                  <Ionicons name="close-circle-outline" size={30} color={ThemeColor.Teal} />
+                  <Ionicons name="close-circle-outline" size={30} color={'#171C8F'} />
                 </TouchableOpacity>
               </View>
               <FlatList
@@ -1659,14 +1659,14 @@ const Advance = ({ navigation, route }) => {
                 }
                 renderItem={({ item }) => (
                   <TouchableOpacity style={styles.employeeItem} onPress={() => handleSelectEmployee(item)}>
-                    <Ionicons name="person-circle-outline" size={25} color={ThemeColor.Teal} />
+                    <Ionicons name="person-circle-outline" size={25} color={'#171C8F'} />
                     <View style={{ flex: 1, marginLeft: 10 }}>
                       <Text style={{ fontSize: 16 }} Bold>{item.EMPL_NAME || ''}</Text>
-                      <Text style={{ fontSize: 13, color: '#666' }}>
+                      <Text style={{ fontSize: 13, color: 'rgba(1,4,75,0.62)' }}>
                         {item.EMPL_DESG_CODE || ''} , {item.EMPL_DEPT_CODE || ''} ({item.EMPL_ID || ''})
                       </Text>
                     </View>
-                    <Ionicons name="chevron-forward-circle-outline" size={25} color={ThemeColor.Teal} />
+                    <Ionicons name="chevron-forward-circle-outline" size={25} color={'#171C8F'} />
                   </TouchableOpacity>
                 )}
               />
@@ -1681,7 +1681,7 @@ const Advance = ({ navigation, route }) => {
               <View style={styles.modalHeader}>
                 <Text style={styles.modalTitle} Bold>Pending Intimation List</Text>
                 <TouchableOpacity onPress={() => setIntimationModalVisible(false)}>
-                  <Ionicons name="close-circle-outline" size={30} color={ThemeColor.Teal} />
+                  <Ionicons name="close-circle-outline" size={30} color={'#171C8F'} />
                 </TouchableOpacity>
               </View>
               <FlatList
@@ -1710,7 +1710,7 @@ const Advance = ({ navigation, route }) => {
                         <Text style={styles.intimationValue}>{item.HSTR_ADMIT_DATE || ''}</Text>
                       </View>
                     </View>
-                    <Ionicons name="chevron-forward-circle-outline" size={25} color={ThemeColor.Teal} />
+                    <Ionicons name="chevron-forward-circle-outline" size={25} color={'#171C8F'} />
                   </TouchableOpacity>
                 )}
               />
@@ -1728,7 +1728,7 @@ const Advance = ({ navigation, route }) => {
                   setAttachmentModalVisible(false);
                   setCurrentAttachment({ file: null, fileName: '', fileDesc: '', order: '1', base64: '' });
                 }}>
-                  <Ionicons name="close-circle-outline" size={30} color={ThemeColor.Teal} />
+                  <Ionicons name="close-circle-outline" size={30} color={'#171C8F'} />
                 </TouchableOpacity>
               </View>
               <ScrollView style={styles.modalScroll}>
@@ -1779,7 +1779,7 @@ const Advance = ({ navigation, route }) => {
               </Text>
             </View>
             <TouchableOpacity onPress={closeFileViewer} style={styles.fileViewerCloseButton}>
-              <Ionicons name="close-circle" size={32} color="#fff" />
+              <Ionicons name="close-circle" size={32} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
           {renderFileViewerContent()}
@@ -1790,110 +1790,110 @@ const Advance = ({ navigation, route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: GlobalColor.PrimaryLight },
+  container: { flex: 1, backgroundColor: '#F5F5F5' },
   scrollView: { flex: 1 },
   content: { padding: 15, paddingBottom: 30 },
   section: {
-    backgroundColor: GlobalColor.White, borderRadius: 8, padding: 15, marginBottom: 15,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
+    backgroundColor: '#FFFFFF', borderRadius: 8, padding: 15, marginBottom: 15,
+    shadowColor: '#01044B', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3,
   },
   sectionTitle: {
-    fontSize: 16, color: ThemeColor.Teal, marginBottom: 15,
-    borderBottomWidth: 1, borderBottomColor: '#E0E0E0', paddingBottom: 10,
+    fontSize: 16, color: '#171C8F', marginBottom: 15,
+    borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)', paddingBottom: 10,
   },
   row: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15, gap: 10 },
   column: { flex: 1 },
   fullWidth: { marginBottom: 15 },
-  label: { fontSize: 13, fontWeight: 'bold', marginBottom: 5, color: '#333' },
-  valueText: { fontSize: 13, color: '#666', paddingVertical: 8, paddingHorizontal: 2 },
-  required: { color: 'red' },
+  label: { fontSize: 13, fontWeight: 'bold', marginBottom: 5, color: '#01044B' },
+  valueText: { fontSize: 13, color: 'rgba(1,4,75,0.62)', paddingVertical: 8, paddingHorizontal: 2 },
+  required: { color: '#01044B' },
   input: {
-    borderWidth: 1, borderColor: ThemeColor.Teal, borderRadius: 8,
+    borderWidth: 1, borderColor: '#171C8F', borderRadius: 8,
     paddingVertical: 12, paddingHorizontal: 12, fontSize: 13,
-    backgroundColor: GlobalColor.White, height: 40,
+    backgroundColor: '#FFFFFF', height: 40,
   },
   disabledInput: {
-    borderWidth: 1, borderColor: ThemeColor.Teal, borderRadius: 8,
+    borderWidth: 1, borderColor: '#171C8F', borderRadius: 8,
     paddingVertical: 12, paddingHorizontal: 12, fontSize: 13,
-    backgroundColor: '#F3F2F1', color: '#666', height: 40,
+    backgroundColor: '#FFFFFF', color: 'rgba(1,4,75,0.62)', height: 40,
   },
   searchContainer: {
     flexDirection: 'row', borderWidth: 1, borderRadius: 8,
-    alignSelf: 'center', backgroundColor: '#fff', borderColor: ThemeColor.Teal,
+    alignSelf: 'center', backgroundColor: '#FFFFFF', borderColor: '#171C8F',
   },
   searchInput: { width: '70%', paddingVertical: 5, fontSize: 13, height: 40 },
   selectButton: {
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    borderWidth: 1, borderColor: ThemeColor.Teal, borderRadius: 8,
-    paddingVertical: 12, paddingHorizontal: 12, backgroundColor: GlobalColor.White,
+    borderWidth: 1, borderColor: '#171C8F', borderRadius: 8,
+    paddingVertical: 12, paddingHorizontal: 12, backgroundColor: '#FFFFFF',
     height: 40,
   },
-  selectButtonText: { fontSize: 13, color: '#333' },
+  selectButtonText: { fontSize: 13, color: '#01044B' },
   dropdown2BtnStyle: {
     width: '100%', height: 40, borderWidth: 1, borderRadius: 8,
-    backgroundColor: '#FFF', borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF', borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 13 },
-  dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
-  dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: ThemeColor.Teal },
+  dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
+  dropdown2RowStyle: { backgroundColor: '#FFFFFF', borderBottomColor: '#171C8F' },
   dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 13 },
-  errorText: { color: 'red', fontSize: 12, marginTop: 5 },
+  errorText: { color: '#01044B', fontSize: 12, marginTop: 5 },
   attachmentHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
   addAttachmentButton: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: ThemeColor.TealLight,
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8, borderWidth: 1, borderColor: ThemeColor.Teal,
+    flexDirection: 'row', alignItems: 'center', backgroundColor: '#F5F5F5',
+    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8, borderWidth: 1, borderColor: '#171C8F',
   },
-  addAttachmentText: { fontSize: 13, color: ThemeColor.Teal, marginLeft: 5, fontWeight: 'bold' },
+  addAttachmentText: { fontSize: 13, color: '#171C8F', marginLeft: 5, fontWeight: 'bold' },
   attachmentsList: { marginTop: 10 },
   attachmentItem: {
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    backgroundColor: '#F9F9F9', padding: 12, borderRadius: 8, marginBottom: 10,
-    borderWidth: 1, borderColor: '#E0E0E0',
+    backgroundColor: '#FFFFFF', padding: 12, borderRadius: 8, marginBottom: 10,
+    borderWidth: 1, borderColor: 'rgba(23,28,143,0.1)',
   },
   attachmentInfo: { flex: 1, flexDirection: 'row', alignItems: 'center' },
   attachmentActions: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   viewAttachmentButton: { padding: 5 },
-  attachmentFileName: { fontSize: 13, fontWeight: 'bold', color: '#333' },
-  attachmentFileDesc: { fontSize: 12, color: '#666', marginTop: 2 },
-  attachmentOrder: { fontSize: 11, color: '#999', marginTop: 2 },
+  attachmentFileName: { fontSize: 13, fontWeight: 'bold', color: '#01044B' },
+  attachmentFileDesc: { fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 2 },
+  attachmentOrder: { fontSize: 11, color: 'rgba(1,4,75,0.62)', marginTop: 2 },
   deleteAttachmentButton: { padding: 5 },
-  attachmentNote: { fontSize: 11, color: '#999', fontStyle: 'italic', marginTop: 10 },
+  attachmentNote: { fontSize: 11, color: 'rgba(1,4,75,0.62)', fontStyle: 'italic', marginTop: 10 },
   buttonContainer: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 20, marginBottom: 30 },
   button: { flex: 1, paddingVertical: 12, borderRadius: 24, alignItems: 'center', marginHorizontal: 5 },
-  submitButton: { backgroundColor: ThemeColor.Amber},
-  clearButton: { backgroundColor: ThemeColor.DisabledBg, borderWidth: 1, borderColor: ThemeColor.DisabledBorder },
-  buttonText: { color: ThemeColor.OnAmber, fontSize: 14 },
-  spinnerTextStyle: { color: GlobalColor.White },
-  modalContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' },
-  modalContent: { backgroundColor: GlobalColor.White, borderRadius: 10, width: '90%', maxHeight: '70%', padding: 20 },
+  submitButton: { backgroundColor: '#FCBE62'},
+  clearButton: { backgroundColor: '#F5F5F5', borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)' },
+  buttonText: { color: '#01044B', fontSize: 14 },
+  spinnerTextStyle: { color: '#FFFFFF' },
+  modalContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(1,4,75,0.5)' },
+  modalContent: { backgroundColor: '#FFFFFF', borderRadius: 10, width: '90%', maxHeight: '70%', padding: 20 },
   modalHeader: {
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    marginBottom: 20, borderBottomWidth: 1, borderBottomColor: '#E0E0E0', paddingBottom: 10,
+    marginBottom: 20, borderBottomWidth: 1, borderBottomColor: 'rgba(23,28,143,0.1)', paddingBottom: 10,
   },
-  modalTitle: { fontSize: 18, color: ThemeColor.Teal },
+  modalTitle: { fontSize: 18, color: '#171C8F' },
   modalScroll: { maxHeight: 400 },
   modalField: { marginBottom: 15 },
   employeeItem: {
     flexDirection: 'row', alignItems: 'center', padding: 15, borderWidth: 1,
-    borderColor: ThemeColor.Teal, borderRadius: 8, marginBottom: 10, backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F', borderRadius: 8, marginBottom: 10, backgroundColor: '#F5F5F5',
   },
   intimationItem: {
     flexDirection: 'row', alignItems: 'center', padding: 15, borderWidth: 1,
-    borderColor: ThemeColor.Teal, borderRadius: 8, marginBottom: 10, backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F', borderRadius: 8, marginBottom: 10, backgroundColor: '#F5F5F5',
   },
   intimationRow: { flexDirection: 'row', marginBottom: 5 },
-  intimationLabel: { fontSize: 13, color: '#666', width: 100 },
-  intimationValue: { fontSize: 13, color: '#333', flex: 1 },
-  fileViewerContainer: { flex: 1, backgroundColor: '#525659' },
+  intimationLabel: { fontSize: 13, color: 'rgba(1,4,75,0.62)', width: 100 },
+  intimationValue: { fontSize: 13, color: '#01044B', flex: 1 },
+  fileViewerContainer: { flex: 1, backgroundColor: '#01044B' },
   fileViewerHeader: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    padding: 15, backgroundColor: ThemeColor.Teal,
+    padding: 15, backgroundColor: '#171C8F',
   },
-  fileViewerTitle: { fontSize: 16, color: '#fff' },
+  fileViewerTitle: { fontSize: 16, color: '#FFFFFF' },
   fileViewerCloseButton: { padding: 5 },
-  webView: { flex: 1, backgroundColor: '#525659' },
-  fileLoadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#525659' },
-  fileLoadingText: { fontSize: 16, color: '#fff', marginTop: 15 },
+  webView: { flex: 1, backgroundColor: '#01044B' },
+  fileLoadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#01044B' },
+  fileLoadingText: { fontSize: 16, color: '#FFFFFF', marginTop: 15 },
   imageScrollContainer: { flexGrow: 1, justifyContent: 'center', alignItems: 'center', padding: 10 },
   fullImage: { width: '100%', aspectRatio: 1, minHeight: 300 },
 });

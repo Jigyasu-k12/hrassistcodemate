@@ -55,15 +55,15 @@ const ROAD_EASE = Easing.bezier(0.45, 0.05, 0.25, 1);
 // glow, so Manager mode is recognisable at a glance but stays in palette.
 const BACKDROP_TONES = {
   employee: {
-    base: [P.deep, P.deeper],
-    teal: {c: P.teal, o: 1, cx: '90%', r: '70%'},
+    base: ['#171C8F', '#01044B'],
+    teal: {c: '#171C8F', o: 1, cx: '90%', r: '70%'},
     glow: {c: P.glow, o: 1},
     amber: {o: 0.22, cx: '84%', rx: '45%', ry: '40%'},
   },
   manager: {
-    base: ['#123532', '#0A201E'],
-    teal: {c: P.teal, o: 0.55, cx: '8%', r: '60%'},
-    glow: {c: P.amberDeep, o: 0.32},
+    base: ['#171C8F', '#01044B'],
+    teal: {c: '#171C8F', o: 0.55, cx: '8%', r: '60%'},
+    glow: {c: '#FFFFFF', o: 0.32},
     amber: {o: 0.46, cx: '88%', rx: '78%', ry: '70%'},
   },
 };
@@ -119,8 +119,8 @@ export const HeaderBackdrop = ({
           ry={t.amber.ry}
           fx={t.amber.cx}
           fy="4%">
-          <Stop offset="0" stopColor={P.amber} stopOpacity={t.amber.o} />
-          <Stop offset="0.7" stopColor={P.amber} stopOpacity="0" />
+          <Stop offset="0" stopColor={'#FFFFFF'} stopOpacity={t.amber.o} />
+          <Stop offset="0.7" stopColor={'#FFFFFF'} stopOpacity="0" />
         </RadialGradient>
       </Defs>
       <Rect
@@ -163,29 +163,29 @@ const Car = () => (
         d="M4 20 L4 15 Q4 12 8 11.5 L16 10 L22 4 Q23.5 2.5 26 2.5 L38 2.5 Q41 2.5 43 4.5 L48 10 L51 11 Q54 12 54 15 L54 20 Z"
         fill="#FFFFFF"
       />
-      <Path d="M23.5 5 L26.5 4.5 L31 4.5 L31 10 L18.5 10 Z" fill={P.tealInk} />
+      <Path d="M23.5 5 L26.5 4.5 L31 4.5 L31 10 L18.5 10 Z" fill={'#171C8F'} />
       <Path
         d="M33 4.5 L38 4.5 Q40 4.5 41.5 6 L45 10 L33 10 Z"
-        fill={P.tealInk}
+        fill={'#171C8F'}
       />
       <Circle
         cx="15"
         cy="21"
         r="5"
-        fill={P.deep}
-        stroke={P.softOnDark}
+        fill={'#01044B'}
+        stroke={'rgba(255,255,255,0.22)'}
         strokeWidth="2"
       />
       <Circle
         cx="43"
         cy="21"
         r="5"
-        fill={P.deep}
-        stroke={P.softOnDark}
+        fill={'#01044B'}
+        stroke={'rgba(255,255,255,0.22)'}
         strokeWidth="2"
       />
-      <Rect x="2" y="13" width="4" height="2.5" rx="1" fill={P.amber} />
-      <Rect x="51" y="14" width="3" height="3" rx="1" fill="#E5302A" />
+      <Rect x="2" y="13" width="4" height="2.5" rx="1" fill={'#FCBE62'} />
+      <Rect x="51" y="14" width="3" height="3" rx="1" fill="#FCBE62" />
     </G>
   </Svg>
 );
@@ -422,7 +422,7 @@ const LegacyRoad = ({years, index, onPick, reduceMotion}) => {
                 <HText
                   style={[
                     styles.signText,
-                    {color: on ? P.deep : past ? '#FFFFFF' : P.mutedOnDark},
+                    {color: on ? '#01044B' : past ? '#FFFFFF' : 'rgba(255,255,255,0.72)'},
                   ]}>
                   {y.label}
                 </HText>
@@ -430,7 +430,7 @@ const LegacyRoad = ({years, index, onPick, reduceMotion}) => {
               <View
                 style={[
                   styles.pole,
-                  {backgroundColor: on ? P.amber : 'rgba(156,189,182,0.4)'},
+                  {backgroundColor: on ? '#FCBE62' : 'rgba(23,28,143,0.4)'},
                 ]}
               />
             </TouchableOpacity>
@@ -466,7 +466,7 @@ const LegacyRoad = ({years, index, onPick, reduceMotion}) => {
 
 // Brand hero — shown when a moment has no photo, or the photo can't load
 const StoryHero = ({label}) => (
-  <LinearGradient colors={[P.tealInk, P.deep]} style={styles.storyHero}>
+  <LinearGradient colors={['#171C8F', '#01044B']} style={styles.storyHero}>
     <Svg
       width="100%"
       height="100%"
@@ -479,10 +479,10 @@ const StoryHero = ({label}) => (
         rx="210"
         ry="60"
         fill="none"
-        stroke="rgba(156,189,182,0.45)"
+        stroke="rgba(255,255,255,0.45)"
         strokeWidth="6"
       />
-      <Path d="M0 104 L350 98" stroke="rgba(156,189,182,0.4)" />
+      <Path d="M0 104 L350 98" stroke="rgba(255,255,255,0.4)" />
     </Svg>
     <HText style={styles.storyYear}>{label}</HText>
     <HText style={styles.storyCaption}>
@@ -544,10 +544,10 @@ const HistoryPhoto = ({moment, label, alt}) => {
   return (
     <View style={[styles.photoBox, {aspectRatio: ratio}]}>
       <LinearGradient
-        colors={[P.mint, '#DCEDE8']}
+        colors={['#F5F5F5', '#F5F5F5']}
         style={[StyleSheet.absoluteFill, styles.photoPh]}>
         <HText style={styles.photoPhYear}>{label}</HText>
-        <ActivityIndicator color={P.teal} />
+        <ActivityIndicator color={'#171C8F'} />
       </LinearGradient>
       {!!src && (
         <Animated.Image
@@ -671,7 +671,7 @@ const StorySheet = ({visible, years, index, moment, onClose, onGo}) => {
             <HomeIcon
               name="chevronLeft"
               size={16}
-              color={P.deep}
+              color={'#01044B'}
               strokeWidth={2.4}
             />
             <HText style={styles.btnOutlineText}>{prevLabel}</HText>
@@ -685,7 +685,7 @@ const StorySheet = ({visible, years, index, moment, onClose, onGo}) => {
             <HomeIcon
               name="chevronRight"
               size={16}
-              color={P.onAmber}
+              color={'#01044B'}
               strokeWidth={2.4}
             />
           </TouchableOpacity>
@@ -809,7 +809,7 @@ const LegacySection = ({active, reduceMotion}) => {
             <HomeIcon
               name={playing ? 'pause' : 'play'}
               size={13}
-              color={P.mutedOnDark}
+              color={'rgba(255,255,255,0.72)'}
             />
           </TouchableOpacity>
         </View>
@@ -1119,7 +1119,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 28,
     paddingHorizontal: 16,
     paddingBottom: 10,
-    backgroundColor: P.deep,
+    backgroundColor: '#171C8F',
   },
   row: {flexDirection: 'row', alignItems: 'center'},
   bar: {paddingHorizontal: 16, zIndex: 10, elevation: 10},
@@ -1127,8 +1127,8 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     borderBottomLeftRadius: 22,
     borderBottomRightRadius: 22,
-    backgroundColor: P.deep,
-    shadowColor: P.deeper,
+    backgroundColor: '#171C8F',
+    shadowColor: '#01044B',
     shadowOpacity: 0.28,
     shadowRadius: 12,
     shadowOffset: {width: 0, height: 6},
@@ -1167,7 +1167,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 16,
     fontWeight: '500',
-    color: P.mutedOnDark,
+    color: 'rgba(255,255,255,0.72)',
   },
   greetTop: {flexDirection: 'row', alignItems: 'center'},
   roleBadge: {
@@ -1175,14 +1175,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     borderRadius: 9,
     marginLeft: 8,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     justifyContent: 'center',
   },
   roleBadgeText: {
     fontSize: 10.5,
     fontWeight: '700',
     letterSpacing: 0.3,
-    color: P.deep,
+    color: '#01044B',
   },
   glassBtn: {
     width: 44,
@@ -1198,14 +1198,14 @@ const styles = StyleSheet.create({
     width: 9,
     height: 9,
     borderRadius: 4.5,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     borderWidth: 1.5,
-    borderColor: P.deep,
+    borderColor: '#171C8F',
   },
   dotHalo: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 4.5,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
   },
 
   legacy: {marginTop: 6},
@@ -1222,8 +1222,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#FFFFFF',
   },
-  legacySince: {fontSize: 15, fontWeight: '500', color: P.mutedOnDark},
-  legacyCount: {...TYPE.label, color: P.mutedOnDark},
+  legacySince: {fontSize: 15, fontWeight: '500', color: 'rgba(255,255,255,0.72)'},
+  legacyCount: {...TYPE.label, color: 'rgba(255,255,255,0.72)'},
   playBtn: {
     width: 34,
     height: 34,
@@ -1232,23 +1232,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   infoBtn: {height: 58, justifyContent: 'center'},
-  infoYear: {...TYPE.display, color: P.amber},
+  infoYear: {...TYPE.display, color: '#171C8F'},
   infoChip: {
     marginLeft: 10,
     height: 22,
     paddingHorizontal: 9,
     borderRadius: 11,
     justifyContent: 'center',
-    backgroundColor: 'rgba(242,203,138,0.16)',
+    backgroundColor: '#F5F5F5',
     borderWidth: 1,
-    borderColor: 'rgba(242,203,138,0.35)',
+    borderColor: 'rgba(255,255,255,0.35)',
   },
-  infoChipText: {fontSize: 11, fontWeight: '700', color: P.amber},
+  infoChipText: {fontSize: 11, fontWeight: '700', color: '#171C8F'},
   infoHead: {
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 19,
-    color: P.softOnDark,
+    color: 'rgba(255,255,255,0.72)',
     marginTop: 3,
   },
 
@@ -1259,11 +1259,11 @@ const styles = StyleSheet.create({
     left: -400,
     top: 54,
     height: 34,
-    backgroundColor: 'rgba(7,30,32,0.42)',
+    backgroundColor: 'rgba(23,28,143,0.42)',
     borderTopWidth: 2,
     borderBottomWidth: 2,
-    borderTopColor: 'rgba(156,189,182,0.35)',
-    borderBottomColor: 'rgba(156,189,182,0.18)',
+    borderTopColor: 'rgba(255,255,255,0.35)',
+    borderBottomColor: 'rgba(255,255,255,0.18)',
   },
   lane: {
     position: 'absolute',
@@ -1292,15 +1292,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   signOn: {
-    backgroundColor: P.amber,
-    shadowColor: P.amber,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.6,
     shadowRadius: 8,
     shadowOffset: {width: 0, height: 0},
     elevation: 4,
   },
   signPast: {backgroundColor: 'rgba(255,255,255,0.14)'},
-  signNext: {borderWidth: 1, borderColor: 'rgba(156,189,182,0.45)'},
+  signNext: {borderWidth: 1, borderColor: 'rgba(255,255,255,0.45)'},
   signText: {fontSize: 12, fontWeight: '700'},
   pole: {width: 2, flex: 1},
   carShadow: {
@@ -1309,7 +1309,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 8,
     borderRadius: 32,
-    backgroundColor: 'rgba(7,30,32,0.55)',
+    backgroundColor: 'rgba(23,28,143,0.55)',
   },
   car: {position: 'absolute', top: 54, width: 56, height: 28},
 
@@ -1333,14 +1333,14 @@ const styles = StyleSheet.create({
     left: 14,
     bottom: 10,
     ...TYPE.eyebrow,
-    color: P.lineStrong,
+    color: '#171C8F',
   },
   photoBox: {
     width: '100%',
     borderRadius: 18,
     overflow: 'hidden',
     marginBottom: 12,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
   },
   photoPh: {alignItems: 'center', justifyContent: 'center'},
   photoPhYear: {
@@ -1350,7 +1350,7 @@ const styles = StyleSheet.create({
     fontSize: 62,
     fontWeight: '300',
     letterSpacing: -1.2,
-    color: 'rgba(30,106,98,0.12)',
+    color: '#171C8F',
   },
   momentRow: {
     flexDirection: 'row',
@@ -1364,12 +1364,12 @@ const styles = StyleSheet.create({
     height: 7,
     borderRadius: 4,
     marginRight: 6,
-    backgroundColor: P.lineStrong,
+    backgroundColor: '#F5F5F5',
   },
-  mDotOn: {width: 20, backgroundColor: P.teal},
-  momentCount: {fontSize: 12, fontWeight: '600', color: P.sub},
-  storyText: {fontSize: 15, lineHeight: 23, color: P.body},
-  storyMore: {fontSize: 14, lineHeight: 21, color: P.sub, marginTop: 8},
+  mDotOn: {width: 20, backgroundColor: '#171C8F'},
+  momentCount: {fontSize: 12, fontWeight: '600', color: 'rgba(1,4,75,0.62)'},
+  storyText: {fontSize: 15, lineHeight: 23, color: '#01044B'},
+  storyMore: {fontSize: 14, lineHeight: 21, color: 'rgba(1,4,75,0.62)', marginTop: 8},
   storyBtns: {flexDirection: 'row', marginTop: 16},
   btn: {
     flex: 1,
@@ -1381,19 +1381,19 @@ const styles = StyleSheet.create({
   },
   btnOutline: {
     borderWidth: 1,
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     backgroundColor: '#FFFFFF',
     marginRight: 10,
   },
   btnOutlineText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     marginLeft: 4,
   },
   btnAmber: {
-    backgroundColor: P.amber,
-    shadowColor: P.amberStrong,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.45,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 6},
@@ -1402,7 +1402,7 @@ const styles = StyleSheet.create({
   btnAmberText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.onAmber,
+    color: '#01044B',
     marginRight: 4,
   },
 });

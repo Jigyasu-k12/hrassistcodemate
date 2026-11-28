@@ -446,7 +446,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
 
   let visitorData = route.params.visitorData;
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>
       <Header title="Visitor Details Rohtak" />
       {/* Body */}
       <ScrollView
@@ -509,7 +509,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                 <View style={styles.singlerow}>
                                   <View style={styles.columnsingle}>
                                     <Text Bold style={styles.label}>
-                                      Phone <Text style={{ color: 'red' }}>*</Text>
+                                      Phone <Text style={{ color: '#01044B' }}>*</Text>
                                       </Text>
 
                                     <View style={[styles.inputBox]}>
@@ -560,7 +560,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                   </View>
                                   <View style={styles.columnsingle}>
                                     <Text Bold style={styles.label}>
-                                      Title <Text style={{ color: 'red' }}>*</Text>
+                                      Title <Text style={{ color: '#01044B' }}>*</Text>
                                       </Text>
                                     <SelectDropdown
                                       buttonTextAfterSelection={(
@@ -578,7 +578,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                         return item.label;
                                       }}
                                       // defaultButtonText="Yes"
-                                      dropdownBackgroundColor={'transparent'}
+                                      dropdownBackgroundColor={'rgba(255,255,255,0)'}
                                       data={[
                                         {
                                           label: 'Mr',
@@ -612,7 +612,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                                 ? 'chevron-up'
                                                 : 'chevron-down'
                                             }
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                             size={14}
                                           />
                                         );
@@ -644,7 +644,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                 <View style={styles.singlerow}>
                                   <View style={styles.columnsingle}>
                                     <Text Bold style={styles.label}>
-                                      Name <Text style={{ color: 'red' }}>*</Text>
+                                      Name <Text style={{ color: '#01044B' }}>*</Text>
                                       </Text>
                                     <TextInput
                                       key={index.ColourQuentity}
@@ -676,7 +676,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
 
                                   <View style={styles.columnsingle}>
                                     <Text Bold style={styles.label}>
-                                      Designation <Text style={{ color: 'red' }}>*</Text>
+                                      Designation <Text style={{ color: '#01044B' }}>*</Text>
                                       </Text>
                                     <TextInput
                                       key={index.ColourQuentity}
@@ -715,7 +715,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                 <View style={styles.singlerow}>
                                   <View style={styles.columnsingle}>
                                     <Text Bold style={styles.label}>
-                                      Address <Text style={{ color: 'red' }}>*</Text>
+                                      Address <Text style={{ color: '#01044B' }}>*</Text>
                                       </Text>
                                     <TextInput
                                       key={index.ColourQuentity}
@@ -752,7 +752,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
 
                                   <View style={styles.columnsingle}>
                                     <Text Bold style={styles.label}>
-                                      Laptop/ipad/tablet <Text style={{ color: 'red' }}>*</Text>
+                                      Laptop/ipad/tablet <Text style={{ color: '#01044B' }}>*</Text>
                                       </Text>
 
 
@@ -771,7 +771,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                         return item.label;
                                       }}
                                       // defaultButtonText="Yes"
-                                      dropdownBackgroundColor={'transparent'}
+                                      dropdownBackgroundColor={'rgba(255,255,255,0)'}
                                       data={[
                                         {
                                           label: 'YES',
@@ -809,7 +809,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                                 ? 'chevron-up'
                                                 : 'chevron-down'
                                             }
-                                            color={ThemeColor.Teal}
+                                            color={'#171C8F'}
                                             size={14}
                                           />
                                         );
@@ -889,7 +889,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                     1 ? (
                                       <View style={styles.columnsingleVen}>
                                         <Text Bold style={styles.label}>
-                                          Vendor <Text style={{ color: 'red' }}>*</Text>
+                                          Vendor <Text style={{ color: '#01044B' }}>*</Text>
                                         </Text>
 
                                         <Autocomplete
@@ -941,7 +941,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                     ) : (
                                       <View style={styles.columnsingle}>
                                         <Text Bold style={styles.label}>
-                                          Vendor <Text style={{ color: 'red' }}>*</Text>
+                                          Vendor <Text style={{ color: '#01044B' }}>*</Text>
                                         </Text>
                                         <TextInput
                                           key={index.ColourQuentity}
@@ -984,7 +984,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                     1 ? (
                                       <View style={styles.columnsingleVen}>
                                         <Text Bold style={styles.label}>
-                                          Sub Vendor <Text style={{ color: 'red' }}>*</Text>
+                                          Sub Vendor <Text style={{ color: '#01044B' }}>*</Text>
                                         </Text>
                                         <SelectDropdown
                                           buttonTextAfterSelection={(
@@ -1005,7 +1005,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                           }}
                                           // defaultButtonText="Yes"
                                           dropdownBackgroundColor={
-                                            'transparent'
+                                            'rgba(255,255,255,0)'
                                           }
                                           data={subvendorDetail == '' ? SubVen : subvendorDetail}
                                           onSelect={selectedItem => {
@@ -1029,7 +1029,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                                                     ? 'chevron-up'
                                                     : 'chevron-down'
                                                 }
-                                                color={ThemeColor.Teal}
+                                                color={'#171C8F'}
                                                 size={14}
                                               />
                                             );
@@ -1074,7 +1074,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
                         {values.actionPlans.length > 4 ? null : (
                           <TouchableOpacity
                             style={{
-                              backgroundColor: '#fff',
+                              backgroundColor: '#FFFFFF',
                               marginTop: 20,
                               // marginBottom: 50,
                               height: 50,
@@ -1126,7 +1126,7 @@ const VisitorDetailRohtak = ({ navigation, route }) => {
 };
 const styles = StyleSheet.create({
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   container: {
     flexDirection: 'row',
@@ -1138,11 +1138,11 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     marginTop: 10,
     position: 'relative',
     padding: 10,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -1152,7 +1152,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   iconTrash: {
-    color: '#f00',
+    color: '#01044B',
   },
   deleteIcon: {
     position: 'absolute',
@@ -1163,13 +1163,13 @@ const styles = StyleSheet.create({
     zIndex: 40,
   },
   errorLabel: {
-    color: '#f00',
+    color: '#01044B',
     fontSize:13
   },
   input: {
     flex: 1,
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     padding: 5,
     borderRadius: 0,
     fontSize: 13,
@@ -1190,7 +1190,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     paddingLeft: 5,
     borderRadius: 0,
     height: 40,
@@ -1217,17 +1217,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     fontSize: 15,
     marginBottom: 10,
-    color: GlobalColor.Primary,
+    color: '#01044B',
   },
 
   autocompleteContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
     //shadowColor: ThemeColor.Teal,
-    borderColor:ThemeColor.Teal
+    borderColor:'#171C8F'
 
     //height:10,
-    //shadowColor:'#666'
+    //shadowColor:'#171C8F'
   },
 
   descriptionContainer: {
@@ -1250,14 +1250,14 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 0,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
     fontSize: 13,
   },
-  dropdown2BtnTxtStyle: { color: '#444', textAlign: 'left', fontSize: 13 },
-  dropdown2DropdownStyle: { backgroundColor: '#EFEFEF' },
-  dropdown2RowStyle: { backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5' },
-  dropdown2RowTxtStyle: { color: '#444', textAlign: 'left', fontSize: 13 },
+  dropdown2BtnTxtStyle: { color: 'rgba(1,4,75,0.62)', textAlign: 'left', fontSize: 13 },
+  dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
+  dropdown2RowStyle: { backgroundColor: '#FFFFFF', borderBottomColor: 'rgba(23,28,143,0.1)' },
+  dropdown2RowTxtStyle: { color: 'rgba(1,4,75,0.62)', textAlign: 'left', fontSize: 13 },
 });
 //make this component available to the app
 export default VisitorDetailRohtak;

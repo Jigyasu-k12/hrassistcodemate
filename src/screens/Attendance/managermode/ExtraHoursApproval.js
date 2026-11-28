@@ -1006,13 +1006,13 @@ useFocusEffect(
           <Ionicons
             name="checkmark-done-sharp"
             size={17}
-            color={GlobalColor.Primary}
+            color={'#01044B'}
           />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.itemButton}
           onPress={() => rejectLeave(item, true)}>
-          <Ionicons name="close-sharp" size={17} color={GlobalColor.Danger} />
+          <Ionicons name="close-sharp" size={17} color={'#01044B'} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -1032,7 +1032,7 @@ useFocusEffect(
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.3}]}>
@@ -1053,7 +1053,7 @@ useFocusEffect(
  
  
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight,marginBottom:100}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5',marginBottom:100}}>
       {loader == true ? (
         <Spinner
           visible={loader}
@@ -1077,14 +1077,14 @@ useFocusEffect(
             <View style ={{flexDirection: 'row', justifyContent: 'flex-end',marginRight:20}}>
             <View style={{ width: '95%', paddingRight: 10,marginBottom:5 }}>
               <Text style={{ paddingHorizontal: 0, marginVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
-                Department {<Text style={{ color: 'red' }}>*</Text>}
+                Department {<Text style={{ color: '#01044B' }}>*</Text>}
               </Text>
               <SelectDropdown
                 ref={bookingTypeDropdownRef}
                 buttonTextAfterSelection={(selectedItem) => selectedItem.label}
                 defaultButtonText="Select Department"
                 rowTextForSelection={(item) => item.label}
-                dropdownBackgroundColor={'transparent'}
+                dropdownBackgroundColor={'rgba(255,255,255,0)'}
                 data={allDept}
                 onSelect={(selectedItem) => {
                   // console.log($1);
@@ -1095,7 +1095,7 @@ useFocusEffect(
                 buttonStyle={styles.dropdown2BtnStyle}
                 buttonTextStyle={styles.dropdown2BtnTxtStyle}
                 renderDropdownIcon={isOpened => (
-                  <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={ThemeColor.Forest} size={14} />
+                  <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#171C8F'} size={14} />
                 )}
                 dropdownIconPosition={'right'}
                 dropdownStyle={styles.dropdown2DropdownStyle}
@@ -1126,7 +1126,7 @@ useFocusEffect(
               keyExtractor={item => item.id}
               ListHeaderComponent={FlatList_Header_Leave}
               ListHeaderComponentStyle={{
-                borderBottomColor: ThemeColor.Forest,
+                borderBottomColor: '#171C8F',
                 borderBottomWidth: 1,
               }}
               ListEmptyComponent={
@@ -1186,11 +1186,11 @@ useFocusEffect(
               justifyContent: 'center',
               alignItems: 'center',
               flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.5)',
+              backgroundColor: 'rgba(1,4,75,0.5)',
             }}>
             <View
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 padding: 10,
                 borderRadius: 0,
                 width: '95%',
@@ -1207,7 +1207,7 @@ useFocusEffect(
                   Bold
                   style={{
                     fontSize: 15,
-                    color: GlobalColor.Primary,
+                    color: '#01044B',
                   }}>
                   Leave Details
                 </Text>
@@ -1217,7 +1217,7 @@ useFocusEffect(
                   <Ionicons
                     name="close-circle-outline"
                     size={23}
-                    color={GlobalColor.Danger}
+                    color={'#01044B'}
                   />
                 </TouchableOpacity>
               </View>
@@ -1323,7 +1323,7 @@ useFocusEffect(
                       style={{
                         padding: 12,
                         borderRadius: 5,
-                        backgroundColor: ThemeColor.Forest,
+                        backgroundColor: '#171C8F',
                         minWidth: 100,
                       }}
                       onPress={() => {
@@ -1331,7 +1331,7 @@ useFocusEffect(
                       }}>
                       <Text
                         style={{
-                          color: '#fff',
+                          color: '#FFFFFF',
                           alignSelf: 'center',
                           fontSize: 13,
                         }}
@@ -1355,7 +1355,7 @@ useFocusEffect(
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
  
@@ -1371,8 +1371,8 @@ useFocusEffect(
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalText(text)}
                 />
@@ -1410,7 +1410,7 @@ useFocusEffect(
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
  
@@ -1427,8 +1427,8 @@ useFocusEffect(
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setappHrsModalText(text)}
                 />
@@ -1471,7 +1471,7 @@ useFocusEffect(
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
  
@@ -1487,8 +1487,8 @@ useFocusEffect(
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setremarkModalTextBulk(text)}
                 />
@@ -1536,7 +1536,7 @@ useFocusEffect(
                 <Ionicons
                   name="close-circle-outline"
                   size={25}
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                 />
               </TouchableOpacity>
  
@@ -1553,8 +1553,8 @@ useFocusEffect(
                     padding: 6,
                     fontSize: 13,
                     height: 40,
-                    backgroundColor: '#fff',
-                    borderColor: ThemeColor.Forest,
+                    backgroundColor: '#FFFFFF',
+                    borderColor: '#171C8F',
                   }}
                   onChangeText={text => setappHrsModalTextBulk(text)}
                 />
@@ -1604,7 +1604,7 @@ useFocusEffect(
               style={{position: 'absolute', top: 15, right: 5, zIndex: 55555}}>
               <Feather
                 name="x-circle"
-                color={GlobalColor.Danger}
+                color={'#01044B'}
                 size={23}
                 onPress={() => {
                   setSublistModalVisibleType(false);
@@ -1644,7 +1644,7 @@ useFocusEffect(
                     style={{
                       paddingVertical: 5,
                       paddingHorizontal: 8,
-                      color: '#000',
+                      color: '#01044B',
                       fontSize: 13,
                      
                     }}>
@@ -1668,13 +1668,13 @@ export default ExtraHoursApproval;
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 10,
     marginTop: 5,
     justifyContent: 'space-between',
     paddingVertical: 5,
     borderBottomWidth: 0.5,
-    borderBottomColor: ThemeColor.Forest,
+    borderBottomColor: '#171C8F',
   },
   HeaderColumn: {
     flex: 0.25,
@@ -1688,7 +1688,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1704,7 +1704,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   tabsContainerStyle: {
     marginTop: 10,
@@ -1720,35 +1720,35 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.Forest,
+    borderColor: '#171C8F',
   },
   tabStyle1: {
     paddingVertical: 12,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.TealDark,
+    borderColor: '#171C8F',
     width:150
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Forest,
+    borderBottomColor: '#171C8F',
   },
   activeTabStyle1: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.TealDark,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Forest,
+    color: '#171C8F',
   },
   activeTabTextStyle1: {
-    color: ThemeColor.TealDark,
+    color: '#171C8F',
   },
   checkboxContainer: {
     // width: '100%',
@@ -1763,8 +1763,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     paddingVertical: 15,
-    backgroundColor: GlobalColor.White,
-    shadowColor: GlobalColor.Black,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -1779,12 +1779,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
   },
   modalView: {
     position: 'relative',
     width: '90%',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     padding: 20,
     // minHeight:200
   },
@@ -1805,14 +1805,14 @@ const styles = StyleSheet.create({
   textContainer: {
     width: '100%',
     padding: 5,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
    
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 5,
     borderBottomWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   itemText: {
     fontSize: 13,
@@ -1822,11 +1822,11 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Forest,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 14 },
-  dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
-  dropdown2RowStyle: { backgroundColor: GlobalColor.White, borderBottomColor: ThemeColor.Forest },
+  dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
+  dropdown2RowStyle: { backgroundColor: '#FFFFFF', borderBottomColor: '#171C8F' },
   dropdown2RowTxtStyle: { textAlign: 'left', fontSize: 16 },
 });

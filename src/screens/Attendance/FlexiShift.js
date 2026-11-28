@@ -246,7 +246,7 @@ const FlexiShift = () => {
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.4}]}>
@@ -332,7 +332,7 @@ const FlexiShift = () => {
           padding: 10,
           margin: 2,
           borderBottomWidth: 1,
-          borderBottomColor: ThemeColor.Teal,
+          borderBottomColor: '#171C8F',
           paddingVertical: 15,
         }}>
         <TouchableOpacity
@@ -375,13 +375,13 @@ const FlexiShift = () => {
             <Text  style={{fontSize:13}} Bold>
               {shiftName !== '' ? shiftName : <Text style={{fontSize:13}} Bold> Select Shift</Text>}
             </Text>
-            <Ionicons name="arrow-forward-outline" color={ThemeColor.Teal} size={20} />
+            <Ionicons name="arrow-forward-outline" color={'#171C8F'} size={20} />
             <Modal isVisible={isModalVisible}>
               <SafeAreaView>
               <View
                 style={{
                   height: '100%',
-                  backgroundColor: GlobalColor.White,
+                  backgroundColor: '#FFFFFF',
                   borderRadius: 0,
                 }}>
                 <View
@@ -395,7 +395,7 @@ const FlexiShift = () => {
                   <Text
                     Bold
                     style={{
-                      color: GlobalColor.Primary,
+                      color: '#01044B',
                       fontSize: 15,
                     }}>
                     Select Shift
@@ -404,7 +404,7 @@ const FlexiShift = () => {
                     <Ionicons
                       name="close-circle-outline"
                       size={25}
-                      color={GlobalColor.Danger}
+                      color={'#01044B'}
                     />
                   </TouchableOpacity>
                 </View>
@@ -455,7 +455,7 @@ const FlexiShift = () => {
             <Ionicons
               name="calendar-outline"
               size={25}
-              color={ThemeColor.Teal}
+              color={'#171C8F'}
             />
           </TouchableOpacity>
         </View>
@@ -507,21 +507,21 @@ const FlexiShift = () => {
           keyExtractor={(item, index) => index.toString()}
           ListHeaderComponent={FlatList_Header}
           ListHeaderComponentStyle={{
-            borderBottomColor: ThemeColor.Teal,
+            borderBottomColor: '#171C8F',
             borderBottomWidth: 1,
           }}
           renderItem={({item}) => (
             <View
               style={{
                 width: '100%',
-                backgroundColor: '#fff',
+                backgroundColor: '#FFFFFF',
                 marginVertical: 0,
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 padding: 10,
                 paddingVertical: 15,
                 borderBottomWidth: 0.4,
-                borderBottomColor: GlobalColor.LightDark,
+                borderBottomColor: 'rgba(23,28,143,0.1)',
               }}>
               <Text style={{flex: 0.4,fontSize:13}}>{item.SHFT_START_SHIFT}</Text>
               <Text style={{flex: 0.4,fontSize:13}}>
@@ -529,9 +529,9 @@ const FlexiShift = () => {
               </Text>
               <Text style={{flex: 0.2,fontSize:13}}>
                 {item.STATUS === 'Approved' ? (
-                  <Text style={{color: 'green',fontSize:13}}>{item.STATUS}</Text>
+                  <Text style={{color: '#171C8F',fontSize:13}}>{item.STATUS}</Text>
                 ) : (
-                  <Text style={{color: 'green',fontSize:13}}>{item.STATUS}</Text>
+                  <Text style={{color: '#171C8F',fontSize:13}}>{item.STATUS}</Text>
                 )}
               </Text>
             </View>
@@ -545,14 +545,14 @@ const FlexiShift = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
   box: {
     width: '100%',
     padding: 5,
     paddingVertical: 10,
-    backgroundColor: '#FFF',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -566,14 +566,14 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: 'rgba(23,28,143,0.1)',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     padding: 10,
     marginVertical: 0,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -584,12 +584,12 @@ const styles = StyleSheet.create({
   },
   inputBox: {
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingRight: 10,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -609,20 +609,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
   },
   tabTextStyle: {
     fontSize: GlobalFontSize.P,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
   },
   dataRow: {
     width: '100%',
@@ -643,7 +643,7 @@ const styles = StyleSheet.create({
     fontSize:13
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
 });
 export default FlexiShift;

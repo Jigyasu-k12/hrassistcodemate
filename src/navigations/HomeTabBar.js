@@ -51,7 +51,7 @@ const Tab = ({slot, active, accent, onPress}) => {
       speed: 40,
       bounciness: v === 1 ? 8 : 0,
     }).start();
-  const color = active ? accent : P.sub;
+  const color = active ? accent : 'rgba(1,4,75,0.62)';
   return (
     <Pressable
       onPress={onPress}
@@ -215,8 +215,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 22,
     borderTopRightRadius: 22,
     borderTopWidth: 1,
-    borderColor: P.line,
-    shadowColor: P.deep,
+    borderColor: 'rgba(23,28,143,0.1)',
+    shadowColor: '#01044B',
     shadowOpacity: 0.08,
     shadowRadius: 12,
     shadowOffset: {width: 0, height: -4},

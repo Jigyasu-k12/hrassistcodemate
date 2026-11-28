@@ -61,7 +61,7 @@ const PhoneAlertModal = ({visible, onClose}) => {
         {/* Header Section */}
         <View style={styles.headerSection}>
           <View style={styles.iconCircle}>
-            <Ionicons name="alert-circle" size={38} color={GlobalColor.Primary} />
+            <Ionicons name="alert-circle" size={38} color={'#01044B'} />
           </View>
           <Text style={styles.title} Bold>
             Action Required
@@ -73,7 +73,7 @@ const PhoneAlertModal = ({visible, onClose}) => {
           <View style={styles.messageCard}>
             <View style={styles.badgeRow}>
               <View style={styles.badge}>
-                <Ionicons name="information-circle" size={16} color={GlobalColor.Primary} />
+                <Ionicons name="information-circle" size={16} color={'#01044B'} />
                 <Text style={styles.badgeText} Bold>
                   Phone Number Update
                 </Text>
@@ -93,14 +93,14 @@ const PhoneAlertModal = ({visible, onClose}) => {
             onPress={onClose}
             activeOpacity={0.85}>
             <LinearGradient
-              colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.TealSoft]}
+              colors={['#171C8F', '#171C8F', 'rgba(23,28,143,0.1)']}
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
               style={styles.button}>
               <Text style={styles.buttonText} Bold>
                 Got It
               </Text>
-              <Ionicons name="arrow-forward" size={16} color={GlobalColor.White} />
+              <Ionicons name="arrow-forward" size={16} color={'#FFFFFF'} />
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
   },
   container: {
     width: SCREEN_WIDTH * 0.90,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     overflow: 'hidden',
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 8},
     shadowOpacity: 0.2,
     shadowRadius: 16,
@@ -133,19 +133,19 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 18,
     paddingHorizontal: 20,
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
   },
   iconCircle: {
     width: 68,
     height: 68,
     borderRadius: 34,
-    backgroundColor: ThemeColor.TealLight,
+    backgroundColor: '#F5F5F5',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 12,
     borderWidth: 2,
-    borderColor: GlobalColor.White,
-    shadowColor: GlobalColor.Primary,
+    borderColor: 'rgba(23,28,143,0.1)',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 3},
     shadowOpacity: 0.12,
     shadowRadius: 8,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     textAlign: 'center',
     letterSpacing: 0.3,
   },
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   messageCard: {
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
   },
   badgeRow: {
     flexDirection: 'row',
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     paddingVertical: 6,
     paddingHorizontal: 14,
     borderRadius: 18,
@@ -183,17 +183,17 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     fontSize: 12,
-    color: GlobalColor.Primary,
+    color: '#01044B',
     letterSpacing: 0.2,
   },
   message: {
     fontSize: 14,
-    color: GlobalColor.Text,
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     lineHeight: 22,
   },
   highlight: {
-    color: GlobalColor.Primary,
+    color: '#01044B',
     fontSize: 14,
   },
 
@@ -202,12 +202,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
     paddingTop: 4,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
   },
   buttonWrapper: {
     borderRadius: 12,
     overflow: 'hidden',
-    shadowColor: GlobalColor.Secondary,
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 3},
     shadowOpacity: 0.25,
     shadowRadius: 6,
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   buttonText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     fontSize: 15,
     letterSpacing: 0.4,
   },

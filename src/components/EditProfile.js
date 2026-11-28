@@ -187,7 +187,7 @@ const CollapsibleCard = ({
           <AppIcon
             name="arrowDown"
             size={15}
-            color={open ? P.tealInk : P.sub}
+            color={open ? '#171C8F' : 'rgba(1,4,75,0.62)'}
             strokeWidth={2.2}
           />
         </Animated.View>
@@ -295,7 +295,7 @@ const splitTable2 = rows => {
   };
 };
 
-const FAMILY_HUES = ['#F6E6C4', '#E3ECE7', '#EAF4F2', '#CFE6E2'];
+const FAMILY_HUES = ['#F5F5F5', '#F5F5F5', '#F5F5F5', '#F5F5F5'];
 
 // Dependent status — always shown: "Medical  ✓ Yes" / "LTC  — No"
 const DepPill = ({label, state}) => {
@@ -312,7 +312,7 @@ const DepPill = ({label, state}) => {
         <AppIcon
           name={yes ? 'check' : known ? 'minusCircle' : 'close'}
           size={yes ? 9 : 10}
-          color={yes ? '#FFFFFF' : '#8A9894'}
+          color={yes ? '#FFFFFF' : '#FFFFFF'}
           strokeWidth={yes ? 3 : 2.4}
         />
       </View>
@@ -362,7 +362,7 @@ const FamilyRow = ({member, last}) => {
         </HText>
         {!!dob && (
           <View style={styles.famDobRow}>
-            <AppIcon name="cake" size={12} color={P.sub} strokeWidth={2} />
+            <AppIcon name="cake" size={12} color={'rgba(1,4,75,0.62)'} strokeWidth={2} />
             <HText style={styles.famDob}>{dob}</HText>
           </View>
         )}
@@ -406,7 +406,7 @@ const VerifyOption = ({option, selected, disabled, onPress}) => {
       <View
         style={[styles.vBox, selected && (ok ? styles.vBoxOk : styles.vBoxNo)]}>
         {selected && (
-          <AppIcon name="check" size={13} color="#FFFFFF" strokeWidth={3} />
+          <AppIcon name="check" size={13} color="#01044B" strokeWidth={3} />
         )}
       </View>
       <View style={styles.vOptionText}>
@@ -422,7 +422,7 @@ const VerifyCard = ({choice, onChoose, onSubmit, submitting, result}) => {
   return (
     <View style={styles.vCard}>
       <LinearGradient
-        colors={['#FFFFFF', '#FDF7EA']}
+        colors={['#FFFFFF', '#F5F5F5']}
         start={{x: 0, y: 0}}
         end={{x: 0.4, y: 1}}
         style={StyleSheet.absoluteFill}
@@ -432,7 +432,7 @@ const VerifyCard = ({choice, onChoose, onSubmit, submitting, result}) => {
           <AppIcon
             name={done ? 'approve' : 'profile'}
             size={18}
-            color={P.amberInk}
+            color={'#171C8F'}
             strokeWidth={2}
           />
         </View>
@@ -483,7 +483,7 @@ const VerifyCard = ({choice, onChoose, onSubmit, submitting, result}) => {
               (!choice || submitting) && styles.vSubmitIdle,
             ]}>
             {submitting ? (
-              <ActivityIndicator color={P.onAmber} />
+              <ActivityIndicator color={'#01044B'} />
             ) : (
               <HText
                 style={[styles.vSubmitText, !choice && styles.vSubmitTextIdle]}>
@@ -495,7 +495,7 @@ const VerifyCard = ({choice, onChoose, onSubmit, submitting, result}) => {
       )}
 
       <View style={styles.vNote}>
-        <AppIcon name="helpdesk" size={14} color={P.sub} strokeWidth={2} />
+        <AppIcon name="helpdesk" size={14} color={'rgba(1,4,75,0.62)'} strokeWidth={2} />
         <View style={{flex: 1, marginLeft: 8}}>
           <HText style={styles.vNoteText}>
             For any correction, please contact your respective shop coordinator.
@@ -547,7 +547,7 @@ const CallButton = ({phone, name}) =>
       accessibilityRole="button"
       accessibilityLabel={`Call ${name}`}
       style={styles.callBtn}>
-      <AppIcon name="phone" size={17} color={P.tealInk} strokeWidth={2} />
+      <AppIcon name="phone" size={17} color={'#171C8F'} strokeWidth={2} />
     </TouchableOpacity>
   ) : null;
 
@@ -565,11 +565,11 @@ const HeroButton = ({icon, label, onPress, primary, style}) => (
     <AppIcon
       name={icon}
       size={18}
-      color={primary ? P.onAmber : '#FFFFFF'}
+      color={primary ? '#01044B' : '#FFFFFF'}
       strokeWidth={1.9}
     />
     <HText
-      style={[styles.heroBtnText, {color: primary ? P.onAmber : '#FFFFFF'}]}
+      style={[styles.heroBtnText, {color: primary ? '#01044B' : '#FFFFFF'}]}
       numberOfLines={1}>
       {label}
     </HText>
@@ -594,7 +594,7 @@ const DigitalIdSheet = ({
     title="Digital ID">
     <View style={styles.idCard}>
       <LinearGradient
-        colors={[P.tealInk, P.deep]}
+        colors={['#171C8F', '#01044B']}
         start={{x: 0.9, y: 0}}
         end={{x: 0.1, y: 1}}
         style={styles.idTop}>
@@ -639,8 +639,8 @@ const DigitalIdSheet = ({
       </View>
       {/* brand stripe kept from the original card */}
       <View style={styles.idStripe}>
-        <View style={{flex: 1, backgroundColor: '#E5302A'}} />
-        <View style={{flex: 3, backgroundColor: P.deep}} />
+        <View style={{flex: 1, backgroundColor: '#FFFFFF'}} />
+        <View style={{flex: 3, backgroundColor: '#171C8F'}} />
       </View>
     </View>
     <HText style={styles.idNote}>
@@ -763,7 +763,7 @@ const EditProfile = ({navigation}) => {
     useCallback(() => {
       StatusBar.setBarStyle('dark-content');
       if (Platform.OS === 'android') {
-        StatusBar.setBackgroundColor(P.canvas);
+        StatusBar.setBackgroundColor('#F5F5F5');
       }
       employeProfile();
       bc.checkScanAccess();
@@ -773,7 +773,7 @@ const EditProfile = ({navigation}) => {
       return () => {
         StatusBar.setBarStyle('light-content');
         if (Platform.OS === 'android') {
-          StatusBar.setBackgroundColor(ThemeColor.Teal);
+          StatusBar.setBackgroundColor('#171C8F');
         }
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -903,7 +903,7 @@ const EditProfile = ({navigation}) => {
             <AppIcon
               name="chevronLeft"
               size={20}
-              color={P.deep}
+              color={'#01044B'}
               strokeWidth={2.2}
             />
           </TouchableOpacity>
@@ -1018,7 +1018,7 @@ const EditProfile = ({navigation}) => {
         {/* ── Details ── */}
         {loader && !profile ? (
           <View style={styles.loading}>
-            <ActivityIndicator color={P.teal} />
+            <ActivityIndicator color={'#171C8F'} />
             <HText style={styles.loadingText}>Loading your details…</HText>
           </View>
         ) : loadFailed && !profile ? (
@@ -1034,7 +1034,7 @@ const EditProfile = ({navigation}) => {
                 <AppIcon
                   name="reset"
                   size={16}
-                  color={P.onAmber}
+                  color={'#01044B'}
                   strokeWidth={2.2}
                 />
                 <HText style={styles.retryBtnText}>Try again</HText>
@@ -1064,7 +1064,7 @@ const EditProfile = ({navigation}) => {
                 <Switch
                   value={isEnabled}
                   onValueChange={handleSwitchChange}
-                  trackColor={{false: P.lineStrong, true: P.deep}}
+                  trackColor={{false: '#F5F5F5', true: '#171C8F'}}
                   thumbColor="#FFFFFF"
                   ios_backgroundColor={P.lineStrong}
                   accessibilityLabel="Show my number to colleagues"
@@ -1178,7 +1178,7 @@ const EditProfile = ({navigation}) => {
                 <AppIcon
                   name="chevronRight"
                   size={16}
-                  color={P.sub}
+                  color={'rgba(1,4,75,0.62)'}
                   strokeWidth={2}
                 />
               </TouchableOpacity>
@@ -1202,7 +1202,7 @@ const EditProfile = ({navigation}) => {
           onPress={() => setSignOutOpen(true)}
           accessibilityRole="button"
           style={styles.signOut}>
-          <AppIcon name="logout" size={18} color="#C2362F" strokeWidth={2} />
+          <AppIcon name="logout" size={18} color="#01044B" strokeWidth={2} />
           <HText style={styles.signOutText}>Sign out</HText>
         </TouchableOpacity>
         <HText style={styles.version}>HR Assist · version {APP_VERSION}</HText>
@@ -1240,7 +1240,7 @@ const EditProfile = ({navigation}) => {
             accessibilityRole="button"
             style={[styles.sheetBtn, styles.sheetBtnDanger]}>
             {signingOut ? (
-              <ActivityIndicator color="#FFFFFF" />
+              <ActivityIndicator color="#01044B" />
             ) : (
               <HText style={styles.sheetBtnDangerText}>Sign out</HText>
             )}
@@ -1255,7 +1255,7 @@ const EditProfile = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  root: {flex: 1, backgroundColor: P.canvas},
+  root: {flex: 1, backgroundColor: '#F5F5F5'},
   scroll: {paddingHorizontal: 16},
 
   titleBar: {flexDirection: 'row', alignItems: 'center', marginBottom: 14},
@@ -1264,7 +1264,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
@@ -1274,18 +1274,18 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '300',
     letterSpacing: -0.5,
-    color: P.deep,
+    color: '#01044B',
   },
 
   hero: {
     borderRadius: 24,
     overflow: 'hidden',
     padding: 20,
-    backgroundColor: P.deep,
+    backgroundColor: '#171C8F',
     borderWidth: 1,
-    borderColor: 'rgba(234,246,242,0.10)',
+    borderColor: 'rgba(255,255,255,0.1)',
     marginBottom: 16,
-    shadowColor: '#0F2D28',
+    shadowColor: '#01044B',
     shadowOpacity: 0.32,
     shadowRadius: 24,
     shadowOffset: {width: 0, height: 16},
@@ -1297,21 +1297,21 @@ const styles = StyleSheet.create({
     height: 72,
     borderRadius: 36,
     padding: 2.5,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
   },
   avatar: {
     width: '100%',
     height: '100%',
     borderRadius: 34,
     borderWidth: 2.5,
-    borderColor: P.deep,
+    borderColor: '#171C8F',
   },
   avatarFallback: {
-    backgroundColor: P.lineStrong,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  avatarInitials: {fontSize: 22, fontWeight: '700', color: P.deep},
+  avatarInitials: {fontSize: 22, fontWeight: '700', color: '#01044B'},
   heroText: {flex: 1, minWidth: 0, marginLeft: 16},
   heroName: {
     fontWeight: '300',
@@ -1319,14 +1319,14 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textTransform: 'capitalize',
   },
-  heroSub: {fontSize: 13.5, lineHeight: 18, color: P.softOnDark, marginTop: 4},
+  heroSub: {fontSize: 13.5, lineHeight: 18, color: 'rgba(255,255,255,0.72)', marginTop: 4},
   heroMeta: {flexDirection: 'row', alignItems: 'center', marginTop: 6},
-  heroMetaText: {fontSize: 12, color: P.mutedOnDark},
+  heroMetaText: {fontSize: 12, color: 'rgba(255,255,255,0.72)'},
   dot: {
     width: 3,
     height: 3,
     borderRadius: 1.5,
-    backgroundColor: '#6F938C',
+    backgroundColor: '#171C8F',
     marginHorizontal: 6,
   },
 
@@ -1334,17 +1334,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 18,
     borderRadius: 16,
-    backgroundColor: 'rgba(234,246,242,0.06)',
+    backgroundColor: 'rgba(255,255,255,0.06)',
     borderWidth: 1,
-    borderColor: 'rgba(234,246,242,0.14)',
+    borderColor: 'rgba(255,255,255,0.14)',
   },
   stat: {flex: 1, paddingVertical: 12, paddingHorizontal: 12},
   statMid: {
     borderLeftWidth: 1,
     borderRightWidth: 1,
-    borderColor: 'rgba(234,246,242,0.14)',
+    borderColor: 'rgba(255,255,255,0.14)',
   },
-  statKey: {fontSize: 11.5, color: P.mutedOnDark},
+  statKey: {fontSize: 11.5, color: 'rgba(255,255,255,0.72)'},
   statVal: {fontSize: 15, fontWeight: '500', color: '#FFFFFF', marginTop: 4},
 
   heroBtns: {flexDirection: 'row', marginTop: 18},
@@ -1358,17 +1358,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   heroBtnPrimary: {
-    backgroundColor: P.amber,
-    shadowColor: P.amber,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.45,
     shadowRadius: 14,
     shadowOffset: {width: 0, height: 8},
     elevation: 4,
   },
   heroBtnGlass: {
-    backgroundColor: 'rgba(234,246,242,0.06)',
+    backgroundColor: 'rgba(255,255,255,0.06)',
     borderWidth: 1,
-    borderColor: 'rgba(234,246,242,0.24)',
+    borderColor: 'rgba(255,255,255,0.24)',
   },
   heroBtnText: {fontSize: 14, fontWeight: '600', marginLeft: 8},
   scanBtn: {flex: 0, marginTop: 10},
@@ -1376,7 +1376,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 18,
     paddingHorizontal: 16,
     marginBottom: 14,
@@ -1388,17 +1388,17 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   sectionHeadText: {flex: 1, minWidth: 0, marginRight: 12},
-  sectionTitle: {fontSize: 15, fontWeight: '700', color: P.deep},
-  sectionSummary: {fontSize: 12.5, color: P.sub, marginTop: 2},
+  sectionTitle: {fontSize: 15, fontWeight: '700', color: '#01044B'},
+  sectionSummary: {fontSize: 12.5, color: 'rgba(1,4,75,0.62)', marginTop: 2},
   sectionChevron: {
     width: 32,
     height: 32,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(28,43,39,0.05)',
+    backgroundColor: 'rgba(23,28,143,0.05)',
   },
-  sectionChevronOpen: {backgroundColor: P.mint},
+  sectionChevronOpen: {backgroundColor: '#F5F5F5'},
   sectionBody: {overflow: 'hidden', marginTop: -4},
   sectionMeasure: {position: 'absolute', left: 0, right: 0, top: 0},
   cardTitle: {
@@ -1407,41 +1407,41 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 0.2,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: P.mint,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   rowLast: {borderBottomWidth: 0},
   rowText: {flex: 1, minWidth: 0, marginLeft: 12, marginRight: 8},
-  rowLabel: {fontSize: 12, color: P.sub},
+  rowLabel: {fontSize: 12, color: 'rgba(1,4,75,0.62)'},
   rowValue: {
     fontSize: 14,
     fontWeight: '600',
-    color: P.deep,
+    color: '#01044B',
     marginTop: 2,
     lineHeight: 19,
   },
-  rowValueLink: {color: P.tealInk},
+  rowValueLink: {color: '#171C8F'},
   famAvatar: {
     width: 40,
     height: 40,
     borderRadius: 20,
     marginTop: 2,
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(255,255,255,0.22)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  famInitials: {fontSize: 13, fontWeight: '700', color: '#1C2B27'},
+  famInitials: {fontSize: 13, fontWeight: '700', color: '#171C8F'},
   vCard: {
     borderRadius: 18,
     borderWidth: 1,
-    borderColor: '#F5D9AE',
+    borderColor: 'rgba(23,28,143,0.1)',
     padding: 16,
     marginBottom: 14,
     overflow: 'hidden',
@@ -1455,77 +1455,77 @@ const styles = StyleSheet.create({
     marginRight: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: P.amberCream,
+    backgroundColor: '#F5F5F5',
   },
   vEyebrow: {
     fontSize: 10.5,
     fontWeight: '700',
     letterSpacing: 1.2,
-    color: P.amberInk,
+    color: '#171C8F',
   },
-  vTitle: {fontSize: 16, fontWeight: '700', color: P.deep, marginTop: 2},
-  vSub: {fontSize: 12.5, color: P.sub, marginTop: 2, lineHeight: 17},
+  vTitle: {fontSize: 16, fontWeight: '700', color: '#01044B', marginTop: 2},
+  vSub: {fontSize: 12.5, color: 'rgba(1,4,75,0.62)', marginTop: 2, lineHeight: 17},
   vOption: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     padding: 12,
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     backgroundColor: 'rgba(255,255,255,0.85)',
     marginBottom: 10,
   },
-  vOptionOk: {borderColor: P.teal, backgroundColor: P.mint},
-  vOptionNo: {borderColor: P.amberDeep, backgroundColor: P.amberCream},
+  vOptionOk: {borderColor: '#171C8F', backgroundColor: '#F5F5F5'},
+  vOptionNo: {borderColor: '#FCBE62', backgroundColor: '#F5F5F5'},
   vBox: {
     width: 22,
     height: 22,
     borderRadius: 7,
     borderWidth: 1.6,
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 1,
   },
-  vBoxOk: {backgroundColor: P.teal, borderColor: P.teal},
-  vBoxNo: {backgroundColor: P.amberDeep, borderColor: P.amberDeep},
+  vBoxOk: {backgroundColor: '#171C8F', borderColor: '#171C8F'},
+  vBoxNo: {backgroundColor: '#FCBE62', borderColor: '#FCBE62'},
   vOptionText: {flex: 1, marginLeft: 12},
   vOptionTitle: {
     fontSize: 13.5,
     fontWeight: '600',
-    color: P.deep,
+    color: '#01044B',
     lineHeight: 19,
   },
-  vOptionHindi: {fontSize: 13, color: P.sub, lineHeight: 20, marginTop: 3},
+  vOptionHindi: {fontSize: 13, color: 'rgba(1,4,75,0.62)', lineHeight: 20, marginTop: 3},
   vSubmit: {
     height: 48,
     borderRadius: 24,
     marginTop: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: P.amber,
-    shadowColor: P.amberStrong,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.4,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 6},
     elevation: 3,
   },
   vSubmitIdle: {
-    backgroundColor: 'rgba(28,43,39,0.06)',
+    backgroundColor: 'rgba(23,28,143,0.06)',
     shadowOpacity: 0,
     elevation: 0,
   },
-  vSubmitText: {fontSize: 15, fontWeight: '700', color: P.onAmber},
-  vSubmitTextIdle: {color: P.sub},
+  vSubmitText: {fontSize: 15, fontWeight: '700', color: '#01044B'},
+  vSubmitTextIdle: {color: 'rgba(1,4,75,0.62)'},
   vDone: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     padding: 14,
     borderRadius: 14,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     borderWidth: 1,
-    borderColor: 'rgba(43,131,121,0.25)',
+    borderColor: 'rgba(23,28,143,0.25)',
   },
   vDoneIcon: {
     width: 30,
@@ -1534,30 +1534,30 @@ const styles = StyleSheet.create({
     marginRight: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: P.teal,
+    backgroundColor: '#171C8F',
   },
-  vDoneTitle: {fontSize: 14.5, fontWeight: '700', color: P.tealInk},
-  vDoneText: {fontSize: 13, color: P.body, lineHeight: 19, marginTop: 2},
+  vDoneTitle: {fontSize: 14.5, fontWeight: '700', color: '#171C8F'},
+  vDoneText: {fontSize: 13, color: '#01044B', lineHeight: 19, marginTop: 2},
   vNote: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     marginTop: 14,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(226,185,131,0.35)',
+    borderTopColor: 'rgba(255,255,255,0.35)',
   },
-  vNoteText: {fontSize: 12, color: P.sub, lineHeight: 18},
+  vNoteText: {fontSize: 12, color: 'rgba(1,4,75,0.62)', lineHeight: 18},
   famRow: {alignItems: 'flex-start', paddingVertical: 14},
   famRel: {
     fontSize: 10.5,
     fontWeight: '700',
     letterSpacing: 1.2,
-    color: P.amberInk,
+    color: '#171C8F',
     marginBottom: 2,
   },
-  famName: {fontSize: 15, fontWeight: '700', lineHeight: 20, color: P.deep},
+  famName: {fontSize: 15, fontWeight: '700', lineHeight: 20, color: '#01044B'},
   famDobRow: {flexDirection: 'row', alignItems: 'center', marginTop: 4},
-  famDob: {fontSize: 12, color: P.sub, marginLeft: 5},
+  famDob: {fontSize: 12, color: 'rgba(1,4,75,0.62)', marginLeft: 5},
   famTags: {flexDirection: 'row', flexWrap: 'wrap', marginTop: 8},
   dep: {
     flexDirection: 'row',
@@ -1570,17 +1570,17 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     borderWidth: 1,
   },
-  depYes: {backgroundColor: P.mint, borderColor: 'rgba(43,131,121,0.22)'},
-  depNo: {backgroundColor: '#F6F8F7', borderColor: P.line},
-  depLabel: {fontSize: 11.5, fontWeight: '600', color: P.sub},
-  depLabelYes: {color: P.tealInk},
+  depYes: {backgroundColor: '#F5F5F5', borderColor: 'rgba(23,28,143,0.22)'},
+  depNo: {backgroundColor: '#FFFFFF', borderColor: 'rgba(23,28,143,0.1)'},
+  depLabel: {fontSize: 11.5, fontWeight: '600', color: 'rgba(1,4,75,0.62)'},
+  depLabelYes: {color: '#171C8F'},
   depDivider: {
     width: 1,
     height: 12,
     marginHorizontal: 7,
-    backgroundColor: P.line,
+    backgroundColor: '#F5F5F5',
   },
-  depDividerYes: {backgroundColor: 'rgba(43,131,121,0.25)'},
+  depDividerYes: {backgroundColor: 'rgba(23,28,143,0.25)'},
   depIcon: {
     width: 14,
     height: 14,
@@ -1589,18 +1589,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 4,
   },
-  depIconYes: {backgroundColor: P.teal},
-  depIconNo: {backgroundColor: 'transparent'},
+  depIconYes: {backgroundColor: '#171C8F'},
+  depIconNo: {backgroundColor: 'rgba(255,255,255,0)'},
   depValue: {fontSize: 11.5, fontWeight: '700'},
-  depValueYes: {color: P.tealInk},
-  depValueNo: {color: '#7A8884'},
-  navLabel: {fontSize: 14, fontWeight: '600', color: P.deep, marginBottom: 2},
+  depValueYes: {color: '#171C8F'},
+  depValueNo: {color: '#171C8F'},
+  navLabel: {fontSize: 14, fontWeight: '600', color: '#01044B', marginBottom: 2},
   callBtn: {
     width: 40,
     height: 40,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1610,28 +1610,28 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingLeft: 48,
     borderBottomWidth: 1,
-    borderBottomColor: P.mint,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
-  toggleLabel: {fontSize: 13.5, fontWeight: '600', color: P.deep},
-  toggleSub: {fontSize: 12, color: P.sub, marginTop: 2, marginRight: 8},
+  toggleLabel: {fontSize: 13.5, fontWeight: '600', color: '#01044B'},
+  toggleSub: {fontSize: 12, color: 'rgba(1,4,75,0.62)', marginTop: 2, marginRight: 8},
 
   loading: {alignItems: 'center', paddingVertical: 28},
-  loadingText: {fontSize: 13, color: P.sub, marginTop: 8},
+  loadingText: {fontSize: 13, color: 'rgba(1,4,75,0.62)', marginTop: 8},
   retry: {alignItems: 'center', paddingVertical: 20},
-  retryText: {fontSize: 14, color: P.body},
+  retryText: {fontSize: 14, color: '#01044B'},
   retryBtn: {
     marginTop: 12,
     height: 40,
     paddingHorizontal: 18,
     borderRadius: 20,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     flexDirection: 'row',
     alignItems: 'center',
   },
   retryBtnText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.onAmber,
+    color: '#01044B',
     marginLeft: 6,
   },
 
@@ -1639,7 +1639,7 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#F0C9C6',
+    borderColor: '#01044B',
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
@@ -1649,12 +1649,12 @@ const styles = StyleSheet.create({
   signOutText: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#C2362F',
+    color: '#01044B',
     marginLeft: 8,
   },
-  version: {textAlign: 'center', fontSize: 11, color: P.sub, marginTop: 12},
+  version: {textAlign: 'center', fontSize: 11, color: 'rgba(1,4,75,0.62)', marginTop: 12},
 
-  sheetBody: {fontSize: 14, lineHeight: 21, color: P.body},
+  sheetBody: {fontSize: 14, lineHeight: 21, color: '#01044B'},
   sheetBtns: {flexDirection: 'row', marginTop: 16},
   sheetBtn: {
     flex: 1,
@@ -1663,16 +1663,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sheetBtnOutline: {borderWidth: 1, borderColor: P.lineStrong, marginRight: 10},
-  sheetBtnOutlineText: {fontSize: 14, fontWeight: '700', color: P.deep},
-  sheetBtnDanger: {backgroundColor: '#C2362F'},
-  sheetBtnDangerText: {fontSize: 14, fontWeight: '700', color: '#FFFFFF'},
+  sheetBtnOutline: {borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)', marginRight: 10},
+  sheetBtnOutlineText: {fontSize: 14, fontWeight: '700', color: '#01044B'},
+  sheetBtnDanger: {backgroundColor: '#F5F5F5'},
+  sheetBtnDangerText: {fontSize: 14, fontWeight: '700', color: '#01044B'},
 
   idCard: {
     borderRadius: 20,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
   },
@@ -1695,7 +1695,7 @@ const styles = StyleSheet.create({
     fontSize: 10.5,
     fontWeight: '700',
     letterSpacing: 1.6,
-    color: P.mutedOnDark,
+    color: 'rgba(255,255,255,0.72)',
   },
   idPhotoRing: {
     marginTop: -40,
@@ -1703,26 +1703,26 @@ const styles = StyleSheet.create({
     height: 92,
     borderRadius: 46,
     padding: 3,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
   },
   idPhoto: {
     width: '100%',
     height: '100%',
     borderRadius: 43,
     borderWidth: 3,
-    borderColor: '#FFFFFF',
+    borderColor: 'rgba(255,255,255,0.22)',
   },
-  idInitials: {fontSize: 26, fontWeight: '700', color: P.deep},
+  idInitials: {fontSize: 26, fontWeight: '700', color: '#01044B'},
   idName: {
     marginTop: 10,
     paddingHorizontal: 16,
     fontSize: 19,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     textAlign: 'center',
     textTransform: 'capitalize',
   },
-  idDesg: {fontSize: 13, color: P.sub, marginTop: 2},
+  idDesg: {fontSize: 13, color: 'rgba(1,4,75,0.62)', marginTop: 2},
   idRows: {
     alignSelf: 'stretch',
     marginTop: 14,
@@ -1734,12 +1734,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 9,
     borderBottomWidth: 1,
-    borderBottomColor: P.mint,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
-  idKey: {width: 96, fontSize: 12, fontWeight: '600', color: P.sub},
-  idVal: {flex: 1, fontSize: 14, fontWeight: '600', color: P.deep},
+  idKey: {width: 96, fontSize: 12, fontWeight: '600', color: 'rgba(1,4,75,0.62)'},
+  idVal: {flex: 1, fontSize: 14, fontWeight: '600', color: '#01044B'},
   idStripe: {alignSelf: 'stretch', height: 5, flexDirection: 'row'},
-  idNote: {fontSize: 12, color: P.sub, textAlign: 'center', marginTop: 12},
+  idNote: {fontSize: 12, color: 'rgba(1,4,75,0.62)', textAlign: 'center', marginTop: 12},
 });
 
 export default EditProfile;

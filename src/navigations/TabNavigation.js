@@ -341,7 +341,7 @@ function Tabs() {
         <TouchableOpacity activeOpacity={1} onPress={handleDismissTooltip}>
           <View style={styles.tooltipBubble}>
             <LinearGradient
-              colors={[ThemeColor.TealLight, ThemeColor.TealSoft]}
+              colors={['#F5F5F5', 'rgba(23,28,143,0.1)']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.tooltipGradient}
@@ -376,7 +376,7 @@ function Tabs() {
               <MaterialCommunityIcons
                 name="arrow-down"
                 size={40}
-                color={ThemeColor.Teal}
+                color={'#171C8F'}
               />
             </View>
           </Animated.View>
@@ -493,7 +493,7 @@ const styles = StyleSheet.create({
   },
   managerText: {
     fontSize: 10,
-    color: '#000',
+    color: '#01044B',
     marginTop: 5,
     fontWeight: '800',
     textAlign: 'center',
@@ -518,7 +518,7 @@ const styles = StyleSheet.create({
   tooltipBubble: {
     borderRadius: 20,
     elevation: 15,
-    shadowColor: ThemeColor.Teal,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 8,
@@ -533,18 +533,18 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
     width: width * 0.75,
     borderWidth: 2,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
   },
   newBadge: {
     position: 'absolute',
     top: 8,
     right: 15,
-    backgroundColor: '#FF4757',
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 14,
     paddingVertical: 5,
     borderRadius: 14,
     elevation: 6,
-    shadowColor: '#FF4757',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -552,11 +552,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 5,
     borderWidth: 2,
-    borderColor: '#fff',
+    borderColor: 'rgba(255,255,255,0.22)',
     zIndex: 10,
   },
   newBadgeText: {
-    color: '#fff',
+    color: '#01044B',
     fontSize: 12,
     fontWeight: '900',
     letterSpacing: 1.2,
@@ -564,31 +564,31 @@ const styles = StyleSheet.create({
   tooltipTitle: {
     fontSize: 24,
     fontWeight: '900',
-    color: ThemeColor.TealDark,
+    color: '#171C8F',
     marginBottom: 10,
     textAlign: 'center',
-    textShadowColor: 'rgba(2, 119, 189, 0.2)',
+    textShadowColor: 'rgba(1,4,75,0.35)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
     fontStyle: 'italic',
   },
   tooltipDivider: {
     height: 2,
-    backgroundColor: 'rgba(2, 119, 189, 0.2)',
+    backgroundColor: 'rgba(23,28,143,0.2)',
     marginVertical: 10,
     borderRadius: 1,
   },
   tooltipSubtitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: ThemeColor.Teal,
+    color: '#171C8F',
     marginBottom: 10,
     textAlign: 'center',
     letterSpacing: 0.5,
   },
   tooltipDescription: {
     fontSize: 14,
-    color: ThemeColor.TealDeep,
+    color: '#01044B',
     textAlign: 'center',
     lineHeight: 22,
     fontWeight: '600',
@@ -599,11 +599,11 @@ const styles = StyleSheet.create({
     marginRight: width * 0.16,
   },
   arrowBorder: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 3,
     elevation: 8,
-    shadowColor: ThemeColor.Teal,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -611,7 +611,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,
     borderWidth: 2,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
   },
 });
 

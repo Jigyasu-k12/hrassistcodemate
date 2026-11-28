@@ -76,7 +76,7 @@ const Feedback = ({ navigation, route }) => {
             <Header title={"Feedback"} />    
             <View style={{flex:1, paddingHorizontal:10}}>
                 <View style={{ flex:1}}>
-                    <Text Bold style={{ color: GlobalColor.Text, fontSize: 13, marginVertical: 7 }}>Give your feedback!</Text>
+                    <Text Bold style={{ color: 'rgba(1,4,75,0.62)', fontSize: 13, marginVertical: 7 }}>Give your feedback!</Text>
                     <View style={styles.inputBox}>
                         <TextInput
                                 style={styles.input}
@@ -98,15 +98,15 @@ const Feedback = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        backgroundColor:GlobalColor.PrimaryLight,
+        backgroundColor: '#FFFFFF',
+        backgroundColor:'#F5F5F5',
     },
 
     inputBox: {
         height: 100,
         borderWidth: 1,
         padding: 10,
-        backgroundColor:GlobalColor.White
+        backgroundColor:'#FFFFFF'
       },
      
 });

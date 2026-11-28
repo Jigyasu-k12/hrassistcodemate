@@ -415,7 +415,7 @@ const BookRoomModify = ({navigation, route}) => {
   // }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: GlobalColor.PrimaryLight}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#F5F5F5'}}>
       <Spinner
         visible={loader}
         textContent={'Loading...'}
@@ -511,7 +511,7 @@ const BookRoomModify = ({navigation, route}) => {
                   alignSelf: 'center',
                   paddingVertical: 2,
                 }}>
-                <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                   {errors.office}
                 </Text>
               </View>
@@ -522,21 +522,21 @@ const BookRoomModify = ({navigation, route}) => {
             <Text
               style={{paddingVertical: 10, paddingHorizontal: 0, fontSize: 13}}
               Bold>
-              Select Date {<Text style={{color: 'red'}}>*</Text>}
+              Select Date {<Text style={{color: '#01044B'}}>*</Text>}
             </Text>
             <View
               style={{
                 width: '100%',
                 alignSelf: 'center',
                 borderWidth: 1,
-                borderColor: '#fff',
+                borderColor: 'rgba(23,28,143,0.1)',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 flexDirection: 'row',
                 padding: 10,
                 marginVertical: 0,
-                backgroundColor: '#fff',
-                shadowColor: '#000',
+                backgroundColor: '#FFFFFF',
+                shadowColor: '#01044B',
                 shadowOffset: {
                   width: 0,
                   height: 2,
@@ -594,7 +594,7 @@ const BookRoomModify = ({navigation, route}) => {
                 <TextInput2
                   placeholder="Start date"
                   style={{
-                    color: '#000',
+                    color: '#01044B',
                     fontSize: 11,
                   }}
                   editable={false}
@@ -606,7 +606,7 @@ const BookRoomModify = ({navigation, route}) => {
                   <Ionicons
                     name="calendar-outline"
                     size={20}
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                   />
                 </TouchableOpacity>
               </View>
@@ -651,7 +651,7 @@ const BookRoomModify = ({navigation, route}) => {
                   justifyContent: 'space-between',
                 }}>
                 <TextInput2
-                  style={{color: '#000', letterSpacing: 1, fontSize: 11}}
+                  style={{color: '#01044B', letterSpacing: 1, fontSize: 11}}
                   placeholder="End Date"
                   editable={false}
                   paddingHorizontal={5}
@@ -662,7 +662,7 @@ const BookRoomModify = ({navigation, route}) => {
                   <Ionicons
                     name="calendar-outline"
                     size={20}
-                    color={ThemeColor.Teal}
+                    color={'#171C8F'}
                   />
                 </TouchableOpacity>
               </View>
@@ -716,7 +716,7 @@ const BookRoomModify = ({navigation, route}) => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   );
@@ -733,7 +733,7 @@ const BookRoomModify = ({navigation, route}) => {
                     alignSelf: 'center',
                     paddingVertical: 2,
                   }}>
-                  <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                  <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.searchLevel}
                   </Text>
                 </View>
@@ -798,7 +798,7 @@ const BookRoomModify = ({navigation, route}) => {
                   return (
                     <FontAwesome
                       name={isOpened ? 'chevron-up' : 'chevron-down'}
-                      color={ThemeColor.Teal}
+                      color={'#171C8F'}
                       size={14}
                     />
                   );
@@ -815,7 +815,7 @@ const BookRoomModify = ({navigation, route}) => {
                     alignSelf: 'center',
                     paddingVertical: 2,
                   }}>
-                  <Text style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                  <Text style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                     {errors.searchLevel}
                   </Text>
                 </View>
@@ -841,13 +841,13 @@ const BookRoomModify = ({navigation, route}) => {
                   value={inputValue}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FFFFFF',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
                     padding: 6,
                     alignSelf: 'center',
-                    borderColor: ThemeColor.Teal,
+                    borderColor: '#171C8F',
                     fontSize: 12,
                   }}
                 />
@@ -859,7 +859,7 @@ const BookRoomModify = ({navigation, route}) => {
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -877,17 +877,17 @@ const BookRoomModify = ({navigation, route}) => {
            
 
                   <View style={[styles.rowContainer1]}>
-                         <View style={[styles.circle1,{backgroundColor:'#FF0000'}]}></View>      
+                         <View style={[styles.circle1,{backgroundColor:'#FFFFFF'}]}></View>      
                          <Text Bold style ={{fontSize:13, paddingHorizontal:8,}}>Booked</Text>
                          </View>
 
                          <View style={[styles.rowContainer1]}>
-                         <View style={[styles.circle1,{backgroundColor:'#FFA500'}]}></View>      
+                         <View style={[styles.circle1,{backgroundColor:'#FCBE62'}]}></View>      
                          <Text Bold style ={{fontSize:13,paddingHorizontal:8,}}>Partially Booked</Text>
                          </View>
 
                          <View style={[styles.rowContainer1]}>
-                         <View style={[styles.circle1,{backgroundColor:'#008000'}]}></View>      
+                         <View style={[styles.circle1,{backgroundColor:'#171C8F'}]}></View>      
                          <Text Bold style ={{fontSize:13,paddingHorizontal:8,}}>Available</Text>
                          </View>
 
@@ -916,8 +916,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    borderColor: ThemeColor.Teal,
-    backgroundColor: GlobalColor.PrimaryLight,
+    borderColor: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
 
   // Dropdown styles
@@ -926,20 +926,20 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 12},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 12},
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   circle: {
     width: 13,
@@ -959,7 +959,7 @@ const styles = StyleSheet.create({
   },
     rowContainer: {
       borderBottomWidth: 1,
-      borderBottomColor: '#fff',
+      borderBottomColor: 'rgba(255,255,255,0.22)',
       flexDirection: 'row',
       marginLeft:10,
     
@@ -968,13 +968,13 @@ const styles = StyleSheet.create({
     rowContainer1: {
       padding: 10,
       borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
+      borderBottomColor: 'rgba(23,28,143,0.1)',
       flexDirection: 'row',
     },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -984,7 +984,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
   },
   checkboxLabel: {

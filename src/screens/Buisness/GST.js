@@ -107,7 +107,7 @@ const Gst = ({ navigation }) => {
           style={styles.searchIcon}
           name="ios-search"
           size={22}
-          color={ThemeColor.Teal}
+          color={'#171C8F'}
         />
 
         <TextInput
@@ -136,17 +136,17 @@ const Gst = ({ navigation }) => {
               <TouchableOpacity style={styles.TouchableOpacity}>
                 <View
                   style={styles.HeadingContainer}>
-                  <Text style={{ fontSize: 13, color: GlobalColor.White, padding: 10, }}>
+                  <Text style={{ fontSize: 13, color: '#FFFFFF', padding: 10, }}>
                     {item.MAPP_GSTN_STATE_NAME}
                   </Text>
                 </View>
                 <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
                   <Text style={styles.GStBox}>GST Number</Text>
-                  <Text style={{ color: GlobalColor.Black,fontSize:13 }}>{item.MAPP_GSTN_REG_NO}</Text>
+                  <Text style={{ color: '#01044B',fontSize:13 }}>{item.MAPP_GSTN_REG_NO}</Text>
                   <Text style={styles.GStBox}>Company Name</Text>
-                  <Text style={{ color: GlobalColor.Black ,fontSize:13 }}>{item.MAPP_GSTN_COMPANY_NAME}</Text>
+                  <Text style={{ color: '#01044B' ,fontSize:13 }}>{item.MAPP_GSTN_COMPANY_NAME}</Text>
                   <Text style={styles.GStBox}>Address</Text>
-                  <Text style={{ color: GlobalColor.Black,fontSize:13  }}>{item.MAPP_GSTN_ADDRESS}</Text>
+                  <Text style={{ color: '#01044B',fontSize:13  }}>{item.MAPP_GSTN_ADDRESS}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -162,7 +162,7 @@ const Gst = ({ navigation }) => {
 const styles = StyleSheet.create({  
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,   
+    backgroundColor: '#F5F5F5',   
   },
   MainContainer:{
     flex:1,
@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 5,
     alignSelf: 'center',
-    backgroundColor: "#fff",
-    color: GlobalColor.Primary,
+    backgroundColor: "#FFFFFF",
+    color: '#01044B',
     fontSize: GlobalFontSize.Small,
     fontFamily: 'Roboto-Regular',
     textAlign: 'left',
@@ -196,11 +196,11 @@ const styles = StyleSheet.create({
   TouchableOpacity: {
     width: '100%',
     paddingTop: 1,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     margin: 10,
     paddingVertical: 10,
-    shadowColor: GlobalColor.ShadowColor,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
   },
   HeadingContainer:{
     width: '100%',
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     alignSelf: 'center',
     overflow: 'hidden',
     borderTopLeftRadius: 8,
@@ -223,13 +223,13 @@ const styles = StyleSheet.create({
   },
   GStBox: {
     fontSize: 13,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     paddingVertical: 10,
     paddingBottom: 5,
     letterSpacing: 1,
   },
   spinnerTextStyle: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
   },
 });
 

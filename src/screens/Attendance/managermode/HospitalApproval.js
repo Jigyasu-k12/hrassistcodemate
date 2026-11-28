@@ -30,7 +30,7 @@ const HospitalApproval = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1, width: '100%', position: 'relative' }}>
       {/* Header */}
       <LinearGradient
-        colors={[ThemeColor.Forest, ThemeColor.Forest, ThemeColor.Forest]}
+        colors={['#171C8F', '#171C8F', '#171C8F']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.container}>
@@ -50,19 +50,19 @@ const HospitalApproval = ({ navigation }) => {
               <Ionicons
                 name="chevron-back-outline"
                 size={25}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.goBack()}
               />
               <Ionicons
                 name="menu-outline"
                 size={20}
-                color={'white'}
+                color={'#FFFFFF'}
                 onPress={() => navigation.openDrawer()}
               />
             </View>
           </View>
           <Text Bold style={{
-            color: '#fff',
+            color: '#FFFFFF',
             fontSize: GlobalFontSize.H4,
             marginLeft: 15,
           }}>
@@ -73,7 +73,7 @@ const HospitalApproval = ({ navigation }) => {
 
       {/* Main Tab Navigator */}
       <LinearGradient
-        colors={[ThemeColor.Forest, ThemeColor.Forest, ThemeColor.Forest]}
+        colors={['#171C8F', '#171C8F', '#171C8F']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.mystyl}>
@@ -86,8 +86,8 @@ const HospitalApproval = ({ navigation }) => {
               tabBarActiveTintColor: ThemeColor.OnDark,
               tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
               tabBarItemStyle: { paddingHorizontal: 15, width: 'auto' },
-              tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
-              tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+              tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+              tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
             }}>
             <Tab.Screen
               name="Approval"
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   mystyl: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0)',
     height: '83%',
     flexDirection: 'row',
   },

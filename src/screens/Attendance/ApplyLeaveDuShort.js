@@ -750,7 +750,7 @@ let apiData =
               paddingHorizontal: 10,
               margin: 2,
               borderBottomWidth: 1,
-              borderBottomColor: ThemeColor.Teal,
+              borderBottomColor: '#171C8F',
               marginVertical: 0,
             }}>
             <TouchableOpacity
@@ -859,12 +859,12 @@ let apiData =
                                                     styles.circle,
                                                     {
                                                         backgroundColor:
-                                                            checked == item.id ? ThemeColor.Teal : null,
+                                                            checked == item.id ? '#171C8F' : null,
                                                     },
                                                 ]}>
                                                 <Text
                                                     style={{
-                                                        color: checked == item.id ? '#fff' : '#000',
+                                                        color: checked == item.id ? '#FFFFFF' : '#FFFFFF',
                                                         fontSize: 10
                                                     }}>
                                                     {item.Type}
@@ -881,7 +881,7 @@ let apiData =
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.leave}
                                     </Text>
                                 </View>
@@ -928,7 +928,7 @@ let apiData =
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.planned}
                                     </Text>
                                 </View>
@@ -985,7 +985,7 @@ let apiData =
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.period}
                                     </Text>
                                 </View>
@@ -1001,14 +1001,14 @@ let apiData =
                                     width: '100%',
                                     alignSelf: 'center',
                                     borderWidth: 1,
-                                    borderColor: '#fff',
+                                    borderColor: '#F5F5F5',
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     flexDirection: 'row',
                                     padding: 10,
                                     marginVertical: 0,
-                                    backgroundColor: '#fff',
-                                    shadowColor: '#000',
+                                    backgroundColor: '#F5F5F5',
+                                    shadowColor: '#171C8F',
                                     shadowOffset: {
                                         width: 0,
                                         height: 2,
@@ -1045,7 +1045,7 @@ let apiData =
                                     <TextInput2
                                         placeholder="Start date"
                                         style={{
-                                            color: '#000',
+                                            color: '#171C8F',
                                             fontSize:13
                                         }}
                                         editable={false}
@@ -1089,7 +1089,7 @@ let apiData =
                                         justifyContent: 'space-between',
                                     }}>
                                     <TextInput2
-                                        style={{ color: '#000', letterSpacing: 1,fontSize:13 }}
+                                        style={{ color: '#171C8F', letterSpacing: 1,fontSize:13 }}
                                         placeholder="End Date"
                                         editable={false}
                                         paddingHorizontal={14}
@@ -1113,7 +1113,7 @@ let apiData =
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                  Financial Year  {<Text style  ={{color :'red'}}>*</Text>}
+                  Financial Year  {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 
                    <SelectDropdown
@@ -1130,7 +1130,7 @@ let apiData =
                       return item.label;
                     }}
                     
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={fin_year}
                     onSelect={(selectedItem, index) => {
                         GetFnyear("","","");
@@ -1148,7 +1148,7 @@ let apiData =
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1166,7 +1166,7 @@ let apiData =
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -1185,7 +1185,7 @@ let apiData =
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                 Payroll Month  {<Text style  ={{color :'red'}}>*</Text>}
+                 Payroll Month  {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                 {/* <TextInput
                   placeholder="Reason"
@@ -1196,7 +1196,7 @@ let apiData =
                  onChangeText={text => setreson(text)}
                   style={{
                     width: '100%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#F5F5F5',
                     borderWidth: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
@@ -1221,7 +1221,7 @@ let apiData =
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={mnth}
                     onSelect={(selectedItem, index) => {
 // $&
@@ -1240,7 +1240,7 @@ let apiData =
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1258,7 +1258,7 @@ let apiData =
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -1274,7 +1274,7 @@ let apiData =
                     fontSize: 13,
                     fontWeight: 'bold',
                   }}>
-                 Block No.  {<Text style  ={{color :'red'}}>*</Text>}
+                 Block No.  {<Text style  ={{color :'#01044B'}}>*</Text>}
                 </Text>
                
 
@@ -1292,7 +1292,7 @@ let apiData =
                       return item.label;
                     }}
                     // defaultButtonText="Yes"
-                    dropdownBackgroundColor={'transparent'}
+                    dropdownBackgroundColor={'rgba(255,255,255,0)'}
                     data={block}
                     onSelect={(selectedItem, index) => {
 // $&
@@ -1315,7 +1315,7 @@ let apiData =
                       return (
                         <FontAwesome
                           name={isOpened ? 'chevron-up' : 'chevron-down'}
-                          color={ThemeColor.Teal}
+                          color={'#171C8F'}
                           size={14}
                         />
                       );
@@ -1333,7 +1333,7 @@ let apiData =
                       paddingVertical: 2,
                     }}>
                     <Text
-                      style={{fontSize: 14, color: 'red', textAlign: 'left'}}>
+                      style={{fontSize: 14, color: '#01044B', textAlign: 'left'}}>
                       {errors.reason}
                     </Text>
                   </View>
@@ -1341,7 +1341,7 @@ let apiData =
               </View>
             </View>
 
-            <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',borderWidth:1,borderRadius:1,borderColor:ThemeColor.Teal ,backgroundColor:"#fff",marginVertical:10}}>
+            <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',borderWidth:1,borderRadius:1,borderColor:'#171C8F' ,backgroundColor:"#FFFFFF",marginVertical:10}}>
               <View style ={{marginHorizontal:10}}>
             <Text style={{ paddingVertical: 10, paddingHorizontal: 0 ,fontSize:13}} Bold>
                                 Days
@@ -1403,7 +1403,7 @@ let apiData =
                                     <Text style={{fontSize:13}}>{validReason}</Text>
                                     <Ionicons
                                         name="arrow-forward-outline"
-                                        color={ThemeColor.Teal}
+                                        color={'#171C8F'}
                                         size={20}
                                     />
 
@@ -1412,7 +1412,7 @@ let apiData =
                                         <View
                                             style={{
                                                 height: '100%',
-                                                backgroundColor: GlobalColor.White,
+                                                backgroundColor: '#FFFFFF',
                                                 borderRadius: 0,
                                             }}>
                                             <View
@@ -1434,7 +1434,7 @@ let apiData =
                                                     <Ionicons
                                                         name="close-circle-outline"
                                                         size={25}
-                                                        color={GlobalColor.Danger}
+                                                        color={'#01044B'}
                                                     />
                                                 </TouchableOpacity>
                                             </View>
@@ -1454,7 +1454,7 @@ let apiData =
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.reason}
                                     </Text>
                                 </View>
@@ -1477,7 +1477,7 @@ let apiData =
                                         alignSelf: 'center',
                                         paddingVertical: 2,
                                     }}>
-                                    <Text style={{ fontSize: GlobalFontSize.error, color: 'red' }}>
+                                    <Text style={{ fontSize: GlobalFontSize.error, color: '#01044B' }}>
                                         {errors.comment}
                                     </Text>
                                 </View>
@@ -1502,7 +1502,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         width: '100%',
-        backgroundColor: GlobalColor.PrimaryLight
+        backgroundColor: '#F5F5F5'
     },
     tabsContainerStyle: {
         marginTop: 10,
@@ -1515,20 +1515,20 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         borderWidth: 1,
         borderRadius: 0,
-        borderColor: GlobalColor.Secondary
+        borderColor: '#171C8F'
     },
     tabTextStyle: {
         fontSize: GlobalFontSize.P,
-        color: 'grey',
+        color: 'rgba(1,4,75,0.62)',
         fontFamily: 'Roboto-Bold',
     },
     activeTabStyle: {
-        backgroundColor: GlobalColor.PrimaryLight,
+        backgroundColor: '#F5F5F5',
         borderBottomWidth: 4,
-        borderBottomColor: GlobalColor.Secondary,
+        borderBottomColor: '#171C8F',
     },
     activeTabTextStyle: {
-        color: GlobalColor.Secondary,
+        color: '#171C8F',
     },
     circleBox: {
         width: "16.6%",
@@ -1539,7 +1539,7 @@ const styles = StyleSheet.create({
     },
     circle: {
         borderWidth: 1,
-        borderColor: ThemeColor.Teal,
+        borderColor: '#171C8F',
         width: 35,
         height: 35,
         borderRadius: 40,
@@ -1554,8 +1554,8 @@ const styles = StyleSheet.create({
     box: {
         // width: '90%',
         padding: 5,
-        backgroundColor: '#FFF',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -1570,13 +1570,13 @@ const styles = StyleSheet.create({
         width: '100%',
         maxHeight: 100,
         height:170,
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        borderColor: '#ddd',
+        borderColor: 'rgba(23,28,143,0.1)',
         padding: 10
     },
     spinnerTextStyle: {
-        color: '#fff'
+        color: '#FFFFFF'
     },
     addtnlBtn: {
         position: 'absolute',
@@ -1599,25 +1599,25 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 3,
-    backgroundColor: '#FFF',
-    borderColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#171C8F',
   },
   dropdown2BtnTxtStyle: {textAlign: 'left', fontSize: 14},
-  dropdown2DropdownStyle: {backgroundColor: GlobalColor.White},
+  dropdown2DropdownStyle: {backgroundColor: '#FFFFFF'},
   dropdown2RowStyle: {
-    backgroundColor: GlobalColor.White,
-    borderBottomColor: ThemeColor.Teal,
+    backgroundColor: '#FFFFFF',
+    borderBottomColor: '#171C8F',
   },
   dropdown2RowTxtStyle: {textAlign: 'left', fontSize: 16},
   centeredView: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   Modalclose: {
     position: 'absolute',
     right: 0,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     justifyContent: 'center',
     // alignItems: 'center',
     zIndex: 55,
@@ -1627,7 +1627,7 @@ const styles = StyleSheet.create({
   },
   Modalclosetxt: {
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
     fontSize: 13,
   },
   checkboxLabel: {

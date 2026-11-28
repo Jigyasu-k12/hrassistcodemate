@@ -181,7 +181,7 @@ const PastBook = ({navigation, route}) => {
         return (
             <SafeAreaView style={{
                 flex: 1,
-                backgroundColor: GlobalColor.White,
+                backgroundColor: '#FFFFFF',
             }}>
                 <LoadingScreen />
             </SafeAreaView>
@@ -191,7 +191,7 @@ const PastBook = ({navigation, route}) => {
 
     return (
         <SafeAreaView
-            style={{ flex: 1, paddingHorizontal: 10, width: "100%", alignSelf: 'center', paddingVertical: 5, backgroundColor: GlobalColor.PrimaryLight }}>
+            style={{ flex: 1, paddingHorizontal: 10, width: "100%", alignSelf: 'center', paddingVertical: 5, backgroundColor: '#F5F5F5' }}>
             <Text style={{ paddingVertical: 5, fontSize: 13, fontWeight: 'bold' }}>
                 Select Date
             </Text>
@@ -218,13 +218,13 @@ const PastBook = ({navigation, route}) => {
                     style={styles.FromandToInput}>
                     <TextInput
                         placeholder="From"
-                        style={{ color: '#000', flex: 1 ,fontSize:13}}
+                        style={{ color: '#01044B', flex: 1 ,fontSize:13}}
                         editable={false}
                         paddingHorizontal={14}
                         value={textinputDate}
                     />
                     <TouchableOpacity onPress={() => setOpen(true)}>
-                        <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="calendar-outline" size={25} color={'#171C8F'} />
                     </TouchableOpacity>
                 </View>
 
@@ -248,14 +248,14 @@ const PastBook = ({navigation, route}) => {
                 <View
                     style={styles.FromandToInput}>
                     <TextInput
-                        style={{ color: '#000' ,fontSize:13}}
+                        style={{ color: '#01044B' ,fontSize:13}}
                         placeholder="To"
                         editable={false}
                         paddingHorizontal={14}
                         value={textinputSecondDate}
                     />
                     <TouchableOpacity onPress={() => setSecond(true)}>
-                        <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
+                        <Ionicons name="calendar-outline" size={25} color={'#171C8F'} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -265,7 +265,7 @@ const PastBook = ({navigation, route}) => {
                     <Spinner
                         visible={loader}
                         textContent={'Loading...'}
-                        textStyle={{ color: '#fff' }}
+                        textStyle={{ color: '#01044B' }}
                     />
                 ) : null}
 
@@ -449,15 +449,15 @@ const styles = StyleSheet.create({
         width: '100%',
         alignSelf: 'center',
         borderWidth: 1,
-        borderColor: '#fff',
+        borderColor: 'rgba(23,28,143,0.1)',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
         // padding: 10,
         paddingHorizontal: 5,
         paddingVertical:10,
-        backgroundColor: '#fff',
-        shadowColor: GlobalColor.ShadowColor,
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -479,8 +479,8 @@ const styles = StyleSheet.create({
 
 
         paddingHorizontal: 10,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -489,7 +489,7 @@ const styles = StyleSheet.create({
         shadowRadius: 1.84,
         elevation: 5,
         borderWidth: 0.5,
-        borderColor: ThemeColor.Teal,
+        borderColor: '#171C8F',
         borderRadius: 3,
         padding: 20,
         marginBottom: 10
@@ -500,18 +500,18 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: ThemeColor.Teal
+        borderBottomColor: '#171C8F'
     },
     CardData: {
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 8,
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
         paddingVertical: 15,
         paddingHorizontal: 5,
-        backgroundColor: '#FFF',
-        shadowColor: '#000',
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#01044B',
         shadowOffset: {
             width: 0,
             height: 1,
@@ -521,9 +521,9 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     cardContainer:{
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         borderWidth:1,
-        borderColor:ThemeColor.Teal,
+        borderColor:'#171C8F',
         borderRadius:5, 
         padding:10, 
         marginBottom:10
@@ -537,27 +537,27 @@ const styles = StyleSheet.create({
     cardValueRight:{
         fontSize:13,
         textAlign:'right',
-        color:GlobalColor.Primary
+        color:'#01044B'
     },
     cardLabel:{
 
-        color:GlobalColor.Primary,
+        color:'#01044B',
         fontSize:13
     },
     cardLabelRight:{
         textAlign:'right',
-        color:GlobalColor.Primary,
+        color:'#01044B',
         fontSize:13
     },
     centeredView:{
-        backgroundColor:'rgba(0,0,0,0.5)',
+        backgroundColor:'rgba(1,4,75,0.5)',
         flex:1, 
         justifyContent:'center',
         alignItems:'center'
     },
     modalView:{
         width:"80%",
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         padding:10,
         paddingHorizontal:15
     },

@@ -33,7 +33,7 @@ export const HText = ({style, children, ...rest}) => (
   <Text
     maxFontSizeMultiplier={1.3}
     {...rest}
-    style={[{color: P.deep, fontSize: 14}, style]}>
+    style={[{color: '#01044B', fontSize: 14}, style]}>
     {children}
   </Text>
 );

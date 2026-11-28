@@ -426,7 +426,7 @@ const LeaveReportHome = ({navigation}) => {
                   navigation.navigate('LeaveBalance')
                 }}>
 
-                <Text style={{ color: '#fff', }}>Leave Balance</Text>
+                <Text style={{ color: '#F5F5F5', }}>Leave Balance</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={{ paddingVertical: 10 }} onPress={() => {
@@ -434,7 +434,7 @@ const LeaveReportHome = ({navigation}) => {
                   navigation.navigate('SalaryDeduct')
                 }}>
 
-                <Text style={{ color: '#fff' }}>Salary Deduction</Text>
+                <Text style={{ color: '#F5F5F5' }}>Salary Deduction</Text>
               </TouchableOpacity>
             </View>
           ) : null} */}
@@ -540,7 +540,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
   tabsContainerStyle: {
     marginTop: 1,
@@ -552,20 +552,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.TealDark,
+    borderColor: '#171C8F',
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.TealDark,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.TealDark,
+    color: '#171C8F',
   },
   circleBox: {
     width: '16.6%',
@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     width: 40,
     height: 40,
     borderRadius: 40,
@@ -591,8 +591,8 @@ const styles = StyleSheet.create({
   box: {
     // width: '90%',
     padding: 5,
-    backgroundColor: '#FFF',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -606,13 +606,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '100%',
     maxHeight: 100,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: 'rgba(23,28,143,0.1)',
     padding: 10,
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   addtnlBtn: {
     position: 'absolute',

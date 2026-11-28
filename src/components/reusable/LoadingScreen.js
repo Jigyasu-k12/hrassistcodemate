@@ -13,7 +13,7 @@ export const LoadingScreen = ({stylesheet, message="Loading Please Wait"}) =>  {
                 style={{
                     transform: [{ scale: 1.5 }]}} 
                     size="large" 
-                    color={ThemeColor.Teal} 
+                    color={'#171C8F'} 
                 />
             <Text 
                 Bold
@@ -36,7 +36,7 @@ const styles = {
     text: {
         marginTop: 30,
         fontSize: GlobalFontSize.P,
-        color:GlobalColor.Text
+        color:'rgba(1,4,75,0.62)'
     }
 };
 

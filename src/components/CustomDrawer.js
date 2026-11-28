@@ -70,7 +70,7 @@ const ScanFrame = ({value, size}) => {
         <QRCode
           value={value}
           size={size}
-          color={P.deep}
+          color={'#01044B'}
           backgroundColor="#FFFFFF"
           ecl="H"
           quietZone={0}
@@ -103,7 +103,7 @@ const MenuRow = ({icon, label, onPress}) => (
     <AppIcon
       name="chevronRight"
       size={16}
-      color={P.lineStrong}
+      color={'#171C8F'}
       strokeWidth={2}
     />
   </TouchableOpacity>
@@ -169,7 +169,7 @@ function CustomDrawer(props) {
       contentContainerStyle={styles.scrollContent}>
       {/* ── Header ── */}
       <LinearGradient
-        colors={[P.tealInk, P.deep, P.deep]}
+        colors={['#171C8F', '#171C8F', '#01044B']}
         locations={[0, 0.5, 1]}
         start={{x: 0.85, y: 0}}
         end={{x: 0.2, y: 1}}
@@ -205,7 +205,7 @@ function CustomDrawer(props) {
             <Image source={{uri: photo}} style={styles.avatar} />
           ) : (
             <LinearGradient
-              colors={[P.mutedOnDark, P.mint]}
+              colors={['rgba(255,255,255,0.72)', '#F5F5F5']}
               start={{x: 0, y: 0}}
               end={{x: 1, y: 1}}
               style={styles.avatar}>
@@ -248,7 +248,7 @@ function CustomDrawer(props) {
               <AppIcon
                 name="share"
                 size={16}
-                color={P.onAmber}
+                color={'#01044B'}
                 strokeWidth={2}
               />
               <HText style={styles.qrBtnAmberText}>Share link</HText>
@@ -266,7 +266,7 @@ function CustomDrawer(props) {
           onPress={confirmLogout}
           accessibilityRole="button"
           style={styles.signOut}>
-          <AppIcon name="logout" size={18} color="#C2362F" strokeWidth={2} />
+          <AppIcon name="logout" size={18} color="#01044B" strokeWidth={2} />
           <HText style={styles.signOutText}>Sign out</HText>
         </TouchableOpacity>
 
@@ -298,7 +298,7 @@ const CORNER = 24;
 const THICK = 3;
 
 const styles = StyleSheet.create({
-  scroll: {backgroundColor: P.canvas},
+  scroll: {backgroundColor: '#F5F5F5'},
   // DrawerContentScrollView adds its own top inset; the header handles it instead.
   scrollContent: {paddingTop: 0},
   header: {paddingHorizontal: 18, borderBottomRightRadius: 24},
@@ -337,10 +337,10 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255,255,255,0.35)',
     overflow: 'hidden',
   },
-  avatarText: {fontSize: 16, fontWeight: '700', color: P.deep},
+  avatarText: {fontSize: 16, fontWeight: '700', color: '#01044B'},
   profileText: {flex: 1, marginLeft: 12},
   name: {fontSize: 16, lineHeight: 20, fontWeight: '700', color: '#FFFFFF'},
-  profileSub: {fontSize: 12, color: P.lineStrong, marginTop: 2},
+  profileSub: {fontSize: 12, color: '#171C8F', marginTop: 2},
 
   // QR card
   qrCard: {
@@ -349,12 +349,12 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     paddingHorizontal: 16,
     paddingTop: 14,
     paddingBottom: 16,
     alignItems: 'center',
-    shadowColor: P.deeper,
+    shadowColor: '#01044B',
     shadowOpacity: 0.16,
     shadowRadius: 18,
     shadowOffset: {width: 0, height: 10},
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 1.2,
-    color: P.amberInk,
+    color: '#171C8F',
   },
   qrTap: {alignItems: 'center'},
   frame: {alignItems: 'center', justifyContent: 'center'},
@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: CORNER,
     height: CORNER,
-    borderColor: P.amber,
+    borderColor: '#FCBE62',
   },
   tl: {
     top: 0,
@@ -425,10 +425,10 @@ const styles = StyleSheet.create({
     marginTop: 12,
     fontSize: 14.5,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     textAlign: 'center',
   },
-  qrSub: {marginTop: 3, fontSize: 12, color: P.sub, textAlign: 'center'},
+  qrSub: {marginTop: 3, fontSize: 12, color: 'rgba(1,4,75,0.62)', textAlign: 'center'},
   qrBtns: {flexDirection: 'row', alignSelf: 'stretch', marginTop: 14},
   qrBtn: {
     flex: 1,
@@ -439,8 +439,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   qrBtnAmber: {
-    backgroundColor: P.amber,
-    shadowColor: P.amberStrong,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.4,
     shadowRadius: 8,
     shadowOffset: {width: 0, height: 4},
@@ -449,7 +449,7 @@ const styles = StyleSheet.create({
   qrBtnAmberText: {
     fontSize: 13,
     fontWeight: '700',
-    color: P.onAmber,
+    color: '#01044B',
     marginLeft: 6,
   },
   bigQr: {alignItems: 'center', paddingVertical: 8},
@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
     marginTop: 14,
     fontSize: 16,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     textTransform: 'capitalize',
   },
 
@@ -474,7 +474,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 14,
     fontWeight: '600',
-    color: P.deep,
+    color: '#01044B',
   },
   signOut: {
     marginTop: 14,
@@ -482,7 +482,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: '#F0C9C6',
+    borderColor: '#01044B',
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
@@ -491,7 +491,7 @@ const styles = StyleSheet.create({
   signOutText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#C2362F',
+    color: '#01044B',
     marginLeft: 8,
   },
   footer: {
@@ -499,7 +499,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 11,
     lineHeight: 16,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
   },
 });
 

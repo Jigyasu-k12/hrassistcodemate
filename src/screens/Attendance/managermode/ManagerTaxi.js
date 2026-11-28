@@ -1266,7 +1266,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
         paddingVertical: 15,
 
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
 
         flexDirection: 'row'
 
@@ -1302,7 +1302,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
         paddingVertical: 15,
 
-        backgroundColor: GlobalColor.White,
+        backgroundColor: '#FFFFFF',
 
         flexDirection: 'row'
 
@@ -1326,7 +1326,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
   return (
 
-    <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight, marginBottom: 100 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5', marginBottom: 100 }}>
 
       {loader == true ? (
 
@@ -1480,7 +1480,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
               keyExtractor={({ item, index }) => index}
 
-              ListHeaderComponentStyle={{ borderBottomColor: ThemeColor.Forest, borderBottomWidth: 1 }}
+              ListHeaderComponentStyle={{ borderBottomColor: '#171C8F', borderBottomWidth: 1 }}
 
               ListEmptyComponent={() => {
 
@@ -1520,7 +1520,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
               keyExtractor={({ item, index }) => index}
 
-              ListHeaderComponentStyle={{ borderBottomColor: ThemeColor.Forest, borderBottomWidth: 1 }}
+              ListHeaderComponentStyle={{ borderBottomColor: '#171C8F', borderBottomWidth: 1 }}
 
               ListEmptyComponent={() => {
 
@@ -1564,7 +1564,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
             style={{
 
-              backgroundColor: '#fff',
+              backgroundColor: '#FFFFFF',
 
               padding: 10,
 
@@ -1602,7 +1602,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   fontSize: 15,
 
-                  color: ThemeColor.Forest, textDecorationLine: 'underline'
+                  color: '#171C8F', textDecorationLine: 'underline'
 
                 }}>
 
@@ -1620,7 +1620,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   size={25}
 
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
 
                 />
 
@@ -1724,7 +1724,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                             name={isOpened ? 'chevron-up' : 'chevron-down'}
 
-                            color={ThemeColor.Forest}
+                            color={'#171C8F'}
 
                             size={14}
 
@@ -1850,9 +1850,9 @@ export const ManagerTaxi = ({ navigation }) => {
 
                         borderRadius: 8,
 
-                        backgroundColor: GlobalColor.White,
+                        backgroundColor: '#FFFFFF',
 
-                        borderColor: ThemeColor.Forest,
+                        borderColor: '#171C8F',
 
                         fontSize: 13,
 
@@ -1890,7 +1890,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   borderRadius: 5,
 
-                  backgroundColor: ThemeColor.Forest,
+                  backgroundColor: '#171C8F',
 
                   minWidth: 100,
 
@@ -1916,7 +1916,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                 <Text
 
-                  style={{ color: '#fff', alignSelf: 'center', fontSize: 13 }}
+                  style={{ color: '#FFFFFF', alignSelf: 'center', fontSize: 13 }}
 
                   Bold>
 
@@ -1934,7 +1934,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   borderRadius: 5,
 
-                  backgroundColor: ThemeColor.Forest,
+                  backgroundColor: '#171C8F',
 
                   minWidth: 100,
 
@@ -1954,7 +1954,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                 <Text
 
-                  style={{ color: '#fff', alignSelf: 'center', fontSize: 13 }}
+                  style={{ color: '#FFFFFF', alignSelf: 'center', fontSize: 13 }}
 
                   Bold>
 
@@ -1984,7 +1984,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
             style={{
 
-              backgroundColor: '#fff',
+              backgroundColor: '#FFFFFF',
 
               padding: 10,
 
@@ -2022,7 +2022,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   fontSize: 15,
 
-                  color: ThemeColor.Forest, textDecorationLine: 'underline'
+                  color: '#171C8F', textDecorationLine: 'underline'
 
                 }}>
 
@@ -2040,7 +2040,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   size={25}
 
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
 
                 />
 
@@ -2152,7 +2152,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                   borderRadius: 5,
 
-                  backgroundColor: ThemeColor.Forest,
+                  backgroundColor: '#171C8F',
 
                   minWidth: 100,
 
@@ -2168,7 +2168,7 @@ export const ManagerTaxi = ({ navigation }) => {
 
                 <Text
 
-                  style={{ color: '#fff', alignSelf: 'center', fontSize: 13 }}
+                  style={{ color: '#FFFFFF', alignSelf: 'center', fontSize: 13 }}
 
                   Bold>
 
@@ -2204,7 +2204,7 @@ const styles = StyleSheet.create({
 
     flexDirection: 'row',
 
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
 
     paddingHorizontal: 10,
 
@@ -2216,7 +2216,7 @@ const styles = StyleSheet.create({
 
     borderBottomWidth: 0.5,
 
-    borderBottomColor: ThemeColor.Forest
+    borderBottomColor: '#171C8F'
 
   },
 
@@ -2258,7 +2258,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 15,
 
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
 
     alignItems: 'center',
 
@@ -2282,7 +2282,7 @@ const styles = StyleSheet.create({
 
   spinnerTextStyle: {
 
-    color: '#fff'
+    color: '#FFFFFF'
 
   },
 
@@ -2306,7 +2306,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 0,
 
-    borderColor: ThemeColor.Forest
+    borderColor: '#171C8F'
 
   },
 
@@ -2314,7 +2314,7 @@ const styles = StyleSheet.create({
 
     fontSize: 13,
 
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
 
     fontFamily: 'Roboto-Bold',
 
@@ -2322,17 +2322,17 @@ const styles = StyleSheet.create({
 
   activeTabStyle: {
 
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
 
     borderBottomWidth: 4,
 
-    borderBottomColor: ThemeColor.Forest,
+    borderBottomColor: '#171C8F',
 
   },
 
   activeTabTextStyle: {
 
-    color: ThemeColor.Forest,
+    color: '#171C8F',
 
   },
 
@@ -2346,7 +2346,7 @@ const styles = StyleSheet.create({
 
     borderWidth: 1,
 
-    borderColor: ThemeColor.Forest,
+    borderColor: '#171C8F',
 
     borderRadius: 3,
 
@@ -2358,7 +2358,7 @@ const styles = StyleSheet.create({
 
     height: 45,
 
-    backgroundColor: GlobalColor.White
+    backgroundColor: '#FFFFFF'
 
   },
 
@@ -2378,9 +2378,9 @@ const styles = StyleSheet.create({
 
     marginTop: 10,
 
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
 
-    shadowColor: GlobalColor.Black,
+    shadowColor: '#01044B',
 
     shadowOffset: {
 
@@ -2406,7 +2406,7 @@ const styles = StyleSheet.create({
 
     right: 0,
 
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
 
     justifyContent: 'center',
 
@@ -2426,7 +2426,7 @@ const styles = StyleSheet.create({
 
     fontWeight: '700',
 
-    color: '#fff',
+    color: '#FFFFFF',
 
     fontSize: 13,
 
@@ -2454,9 +2454,9 @@ const styles = StyleSheet.create({
 
     borderRadius: 3,
 
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
 
-    borderColor: ThemeColor.Forest,
+    borderColor: '#171C8F',
 
     marginHorizontal: 5
 
@@ -2464,13 +2464,13 @@ const styles = StyleSheet.create({
 
   dropdown2BtnTxtStyle: { textAlign: 'left', fontSize: 14 },
 
-  dropdown2DropdownStyle: { backgroundColor: GlobalColor.White },
+  dropdown2DropdownStyle: { backgroundColor: '#FFFFFF' },
 
   dropdown2RowStyle: {
 
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
 
-    borderBottomColor: ThemeColor.Forest,
+    borderBottomColor: '#171C8F',
 
   },
 

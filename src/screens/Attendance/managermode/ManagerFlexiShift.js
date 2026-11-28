@@ -167,10 +167,10 @@ export const ManagerFlexiShift = () => {
        </View>
        <View style={styles.itemColumnButtons}>  
             <TouchableOpacity style={[styles.itemButton, {marginRight:10}]} onPress={()=>approveFlexiShift(item)}>
-                <Ionicons name='checkmark-done-sharp' size={20} color={GlobalColor.Primary}/>
+                <Ionicons name='checkmark-done-sharp' size={20} color={'#01044B'}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemButton} onPress={()=>rejectFlexiShift(item)}>
-                <Ionicons name='close-sharp' size={20} color={GlobalColor.Danger}/>
+                <Ionicons name='close-sharp' size={20} color={'#01044B'}/>
             </TouchableOpacity>         
        </View>      
     </View>
@@ -184,7 +184,7 @@ export const ManagerFlexiShift = () => {
         justifyContent: 'space-between',
         paddingHorizontal:10,
         paddingVertical:15,
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         flexDirection:'row'
       }}>        
         <Text Bold style={[styles.HeaderColumn, {flex:0.40}]}>Name</Text>
@@ -196,7 +196,7 @@ export const ManagerFlexiShift = () => {
   }
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: GlobalColor.PrimaryLight }}>  
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F5F5' }}>  
 
             {loader == true ? (
               <Spinner
@@ -212,7 +212,7 @@ export const ManagerFlexiShift = () => {
             renderItem={ItemRender}
             keyExtractor={item => item.id}
             ListHeaderComponent={FlatList_Header}
-            ListHeaderComponentStyle={{ borderBottomColor: ThemeColor.Forest, borderBottomWidth: 1 }}
+            ListHeaderComponentStyle={{ borderBottomColor: '#171C8F', borderBottomWidth: 1 }}
             ListEmptyComponent={<ListEmptyComponent 
                 title="No Data Found"
                 enableRefresh={true} onRefreshCallback={() => FlexiShiftPendAppLOV(true)} refreshing={refresh}
@@ -228,13 +228,13 @@ export default ManagerFlexiShift;
 const styles = StyleSheet.create({
     item:{
         flexDirection:'row',
-        backgroundColor:GlobalColor.White,
+        backgroundColor:'#FFFFFF',
         paddingHorizontal:10, 
         marginTop:5,
         justifyContent:'space-between',
         paddingVertical:5,
         borderBottomWidth:0.5,
-        borderBottomColor:ThemeColor.Forest
+        borderBottomColor:'#171C8F'
     },
     HeaderColumn:{
         flex:0.25,
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
         width:30,
         height:30,
         borderRadius:15,
-        backgroundColor:GlobalColor.PrimaryLight,
+        backgroundColor:'#F5F5F5',
         alignItems:'center',
         justifyContent:'center',
     },
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
     },
     spinnerTextStyle: {
-        color: '#fff'
+        color: '#FFFFFF'
     }
 })
 

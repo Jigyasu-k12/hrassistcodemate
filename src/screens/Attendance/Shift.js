@@ -311,7 +311,7 @@ const Shift = ({ navigation }) => {
           padding: 10,
           margin: 2,
           borderBottomWidth: 1,
-          borderBottomColor: GlobalColor.Secondary,
+          borderBottomColor: '#171C8F',
           paddingVertical: 15
         }}>
         <TouchableOpacity
@@ -368,7 +368,7 @@ const Shift = ({ navigation }) => {
                   setHorizental(false)
                   navigation.navigate("CompayShiftDe")
                 }}>                      
-                  <Text style={{color:'#fff',}}>Company Shift Details</Text>
+                  <Text style={{color:'#F5F5F5',}}>Company Shift Details</Text>
                 </TouchableOpacity>
                
             </View>
@@ -457,15 +457,15 @@ const Shift = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight
+    backgroundColor: '#F5F5F5'
   },
   box: {
     width: '100%',
     padding: 5,
     paddingVertical: 10,
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     // alignSelf: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -479,14 +479,14 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: 'rgba(23,28,143,0.1)',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     padding: 10,
     marginVertical: 0,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -498,12 +498,12 @@ const styles = StyleSheet.create({
   inputBox: {
     width: '100%',
     // alignSelf: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingRight: 10,
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -523,28 +523,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: ThemeColor.Teal
+    borderColor: '#171C8F'
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
   },
   // content: {
   //   top: 10,
   //   alignItems: 'center',
   //   padding: 10,
-  //   backgroundColor: 'white',
+  //   backgroundColor: '#FFFFFF',
   //   borderRadius: 5,
-  //   shadowColor: '#000',
+  //   shadowColor: '#171C8F',
   //   shadowOffset: {
   //     width: 0,
   //     height: 1,

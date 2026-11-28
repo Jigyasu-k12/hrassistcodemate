@@ -455,7 +455,7 @@ const MarkAttendence = () => {
           <TouchableOpacity style={styles.content}>
             <Text>
               Live Location
-              <Icon name="map-marker-radius" size={25} color={'green'} />
+              <Icon name="map-marker-radius" size={25} color={'#171C8F'} />
             </Text>
             <TouchableOpacity
               style={styles.circle}
@@ -470,7 +470,7 @@ const MarkAttendence = () => {
             onPress={() => getMobDeviceIOS(true)}
             style={styles.resetLocation}>
             <Text style={styles.resetLocationTxt}>Reset Location</Text>
-            <Ionicons name="ios-locate-outline" size={30} color={'green'} />
+            <Ionicons name="ios-locate-outline" size={30} color={'#171C8F'} />
           </TouchableOpacity> */}
 
           {!locationStatus ? (
@@ -490,25 +490,25 @@ const styles = StyleSheet.create({
     flex: 1,
     // paddingHorizontal: 10,
     position: 'relative',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
 
   tabTextStyle: {
     fontSize: GlobalFontSize.P,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
 
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
   },
   content: {
     top: 10,
     alignItems: 'center',
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     borderRadius: 5,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -522,7 +522,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     borderWidth: 3,
-    borderColor: 'green',
+    borderColor: '#171C8F',
     borderRadius: 100,
     alignSelf: 'center',
     justifyContent: 'center',
@@ -535,21 +535,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     marginTop: 10,
     borderWidth: 0.5,
-    borderColor: GlobalColor.LightDark,
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   resetLocation: {
     marginTop: 20,
     flexDirection: 'row',
     alignSelf: 'center',
-    backgroundColor: '#4a4a4a',
+    backgroundColor: '#01044B',
     alignItems: 'center',
     padding: 10,
   },
   resetLocationTxt: {
-    color: '#fff',
+    color: '#FFFFFF',
     marginRight: 5,
     fontWeight: '700',
   },

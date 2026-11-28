@@ -300,13 +300,13 @@ usrAccess == 'Y'?
                     disabledDates={[
                       ...holidaycalendar249
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
-                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
-                    selectedDayTextColor="red"
-                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:'#171C8F'}}
+                    previousTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    nextTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    selectedDayColor={'#FFFFFF'}
+                    selectedDayStyle={{backgroundColor:'#171C8F'}}
+                    selectedDayTextColor="#01044B"
+                    selectedDayTextStyle={{color:"#01044B", fontWeight:'700'}}
                   />
               </View>
                   
@@ -314,7 +314,7 @@ usrAccess == 'Y'?
               style={{
                 width: '100%',
                 padding: 10,
-                backgroundColor:'#fff',
+                backgroundColor:'#FFFFFF',
                 marginVertical: 10,
               }}>
                 <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
@@ -339,13 +339,13 @@ usrAccess == 'Y'?
                     disabledDates={[
                       ...holidaycalendar280
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
-                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
-                    selectedDayTextColor="red"
-                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:'#171C8F'}}
+                    previousTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    nextTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    selectedDayColor={'#FFFFFF'}
+                    selectedDayStyle={{backgroundColor:'#171C8F'}}
+                    selectedDayTextColor="#01044B"
+                    selectedDayTextStyle={{color:"#01044B", fontWeight:'700'}}
                   />
               </View>
                   
@@ -353,7 +353,7 @@ usrAccess == 'Y'?
               style={{
                 width: '100%',
                 padding: 5,
-                backgroundColor:'#fff',
+                backgroundColor:'#FFFFFF',
                 marginVertical: 5,
               }}>
                 <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
@@ -415,13 +415,13 @@ usrAccess == 'Y'?
                     disabledDates={[
                       ...holidaycalendar249
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
-                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
-                    selectedDayTextColor="red"
-                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:'#171C8F'}}
+                    previousTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    nextTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    selectedDayColor={'#FFFFFF'}
+                    selectedDayStyle={{backgroundColor:'#171C8F'}}
+                    selectedDayTextColor="#01044B"
+                    selectedDayTextStyle={{color:"#01044B", fontWeight:'700'}}
                   />
               </View>
                   
@@ -429,7 +429,7 @@ usrAccess == 'Y'?
               style={{
                 width: '100%',
                 padding: 10,
-                backgroundColor:'#fff',
+                backgroundColor:'#FFFFFF',
                 marginVertical: 10,
               }}>
                 <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
@@ -452,13 +452,13 @@ usrAccess == 'Y'?
                     disabledDates={[
                       ...holidaycalendar280
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
-                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
-                    selectedDayTextColor="red"
-                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:'#171C8F'}}
+                    previousTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    nextTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    selectedDayColor={'#FFFFFF'}
+                    selectedDayStyle={{backgroundColor:'#171C8F'}}
+                    selectedDayTextColor="#01044B"
+                    selectedDayTextStyle={{color:"#01044B", fontWeight:'700'}}
                   />
               </View>
                   
@@ -466,7 +466,7 @@ usrAccess == 'Y'?
               style={{
                 width: '100%',
                 padding: 5,
-                backgroundColor:'#fff',
+                backgroundColor:'#FFFFFF',
                 marginVertical: 5,
               }}>
                 <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
@@ -491,13 +491,13 @@ usrAccess == 'Y'?
                     disabledDates={[
                       ...holidaycalendarSMG
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
-                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
-                    selectedDayTextColor="red"
-                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:'#171C8F'}}
+                    previousTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    nextTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    selectedDayColor={'#FFFFFF'}
+                    selectedDayStyle={{backgroundColor:'#171C8F'}}
+                    selectedDayTextColor="#01044B"
+                    selectedDayTextStyle={{color:"#01044B", fontWeight:'700'}}
                   />
               </View>
             
@@ -507,7 +507,7 @@ usrAccess == 'Y'?
               style={{
                 width: '100%',
                 padding: 10,
-                backgroundColor:'#fff',
+                backgroundColor:'#FFFFFF',
                 marginVertical: 5,
               }}>
                 <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
@@ -536,13 +536,13 @@ usrAccess == 'Y'?
                     disabledDates={[
                       ...holidaycalendarMNS
                     ]}
-                    disabledDatesTextStyle={{fontWeight:"700", color:ThemeColor.Teal}}
-                    previousTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    nextTitleStyle={{color:ThemeColor.Teal, fontWeight:'700'}}
-                    selectedDayColor={'#f00'}
-                    selectedDayStyle={{backgroundColor:ThemeColor.Teal}}
-                    selectedDayTextColor="red"
-                    selectedDayTextStyle={{color:"#fff", fontWeight:'700'}}
+                    disabledDatesTextStyle={{fontWeight:"700", color:'#171C8F'}}
+                    previousTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    nextTitleStyle={{color:'#171C8F', fontWeight:'700'}}
+                    selectedDayColor={'#FFFFFF'}
+                    selectedDayStyle={{backgroundColor:'#171C8F'}}
+                    selectedDayTextColor="#01044B"
+                    selectedDayTextStyle={{color:"#01044B", fontWeight:'700'}}
                   />
               </View>
             
@@ -552,7 +552,7 @@ usrAccess == 'Y'?
               style={{
                 width: '100%',
                 padding: 10,
-                backgroundColor:'#fff',
+                backgroundColor:'#FFFFFF',
                 marginVertical: 5,
               }}>
                 <Text style={{fontSize:13, fontWeight:'700'}}>{MnthTitle} Holidays</Text>
@@ -598,28 +598,28 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderWidth: 1,
     borderRadius:0,
-    borderColor:ThemeColor.Teal
+    borderColor:'#171C8F'
   },
   tabTextStyle: {
     fontSize: 13,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily:'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: ThemeColor.Teal,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: ThemeColor.Teal,
+    color: '#171C8F',
   },
   content: {
     top: 10,
     alignItems: 'center',
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     borderRadius: 5,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -630,19 +630,19 @@ const styles = StyleSheet.create({
   },
   calenderContainer:{
     borderWidth:1,
-    borderColor:"#efefef",
-    backgroundColor:'#fff',
+    borderColor:"rgba(23,28,143,0.1)",
+    backgroundColor:'#FFFFFF',
     padding:5,
     borderRadius:5
   },
   itemcontainer:{
     width:"100%",
-    backgroundColor:'#fff',
+    backgroundColor:'#FFFFFF',
     flexDirection:'row',
     paddingVertical:15,
     marginVertical:3,   
     borderLeftWidth: 5,
-    borderLeftColor: ThemeColor.Teal,   
+    borderLeftColor: '#171C8F',   
     marginBottom:2,
     padding:10,
     justifyContent:'space-between',

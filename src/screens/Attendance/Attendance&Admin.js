@@ -50,7 +50,7 @@ const AttendanceAdmin = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, width: '100%', position:'relative'}}>
       <LinearGradient
-       colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]}
+       colors={['#171C8F','#171C8F','#171C8F']}
        start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
         style={styles.container}>
             <View style={{ flex:1,flexDirection:'row' }}>            
@@ -70,13 +70,13 @@ const AttendanceAdmin = ({navigation}) => {
                             <Ionicons
                                 name="chevron-back-outline"
                                 size={25}
-                                color={'white'}
+                                color={'#FFFFFF'}
                                 onPress={() => navigation.goBack()}
                             />
                             <Ionicons
                                 name="menu-outline"
                                 size={20}
-                                color={'white'}
+                                color={'#FFFFFF'}
                                 onPress={() => navigation.openDrawer()}
                             />
                         </View>
@@ -85,7 +85,7 @@ const AttendanceAdmin = ({navigation}) => {
                 <Text
                 Bold
                 style={{
-                    color: '#fff',
+                    color: '#FFFFFF',
                     fontSize: GlobalFontSize.H4,
                     marginLeft: 15,
                 }}>
@@ -103,7 +103,7 @@ const AttendanceAdmin = ({navigation}) => {
                 <Ionicons
                   name="ellipsis-vertical-circle"
                   size={30}
-                  color={'#fff'}
+                  color={'#F5F5F5'}
                 />
               </TouchableOpacity>
               ):null
@@ -173,7 +173,7 @@ const AttendanceAdmin = ({navigation}) => {
               }
             </View>
           ) : null} */}
-        <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+        <LinearGradient colors={['#171C8F','#171C8F','#171C8F']} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
           <View style={{flex:1,flexDirection:'row'}}>
       <Tab.Navigator 
        swipeEnabled={false}
@@ -183,8 +183,8 @@ const AttendanceAdmin = ({navigation}) => {
         tabBarActiveTintColor: ThemeColor.OnDark,
         tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
         tabBarItemStyle: { paddingHorizontal:15, width:'auto' },
-        tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
-        tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+        tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+        tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
       }}>
         <Tab.Screen name="Attendance" component={Attendance} listeners={tabBarListeners} />
         <Tab.Screen name="Leave" component={Leave} listeners={tabBarListeners}/>
@@ -200,7 +200,7 @@ const AttendanceAdmin = ({navigation}) => {
         onPress={() => {
           navigation.navigate('ManagerMode');
         }}>
-      <Image  source={require("./../../assets/Images/setting.png")} style={{width:25,height:25,tintColor:'#fff'}}/>
+      <Image  source={require("./../../assets/Images/setting.png")} style={{width:25,height:25,tintColor:'#F5F5F5'}}/>
         <Text style={styles.fullWidthButtonText}>
           Go to Manager Mode
         </Text>
@@ -220,14 +220,14 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   fullWidthButton:{
-    backgroundColor:ThemeColor.Teal, 
+    backgroundColor:'#171C8F', 
     paddingVertical:10,
     flexDirection:'row', 
     alignItems:'center', 
     justifyContent:'center'
   },
   fullWidthButtonText:{
-    color:GlobalColor.White, 
+    color:'#FFFFFF', 
     marginLeft:8,
     fontSize:13
   },
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     zIndex:55555555
   },
   mystyl: {
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(255,255,255,0)',
         height:'83%',
         flexDirection: 'row',
       },

@@ -124,7 +124,7 @@ const Hospital = ({ locationName }) => {
               <TouchableOpacity style={{ position:'absolute', top:0, right:0 }} onPress={() =>setModalVisible(false)}>
                 <Feather
                   name="x-circle"
-                  color={GlobalColor.Danger}
+                  color={'#01044B'}
                   size={25}                  
                   style={{ margin: 10 }}
                 />
@@ -142,13 +142,13 @@ const Hospital = ({ locationName }) => {
                       Linking.openURL(`tel:${modalItem.HOSP_PHONE_NO}`)
                     }}
                   >
-                    <Feather name="phone-call" size={30} color={ThemeColor.Teal} />
+                    <Feather name="phone-call" size={30} color={'#171C8F'} />
                   </TouchableOpacity>
                   <TouchableOpacity
                      onPress={() => {
                       Linking.openURL(`http://maps.google.com/maps?saddr=&daddr=${modalItem.ADDR}`)
                     }}>
-                  <FontAwesome5 name='map-marked-alt' size={30} color={ThemeColor.Teal}/>
+                  <FontAwesome5 name='map-marked-alt' size={30} color={'#171C8F'}/>
                   </TouchableOpacity>
                 </View>
 
@@ -170,7 +170,7 @@ const Hospital = ({ locationName }) => {
               >
                 <Feather
                   name="x-circle"
-                  color={GlobalColor.Primary}
+                  color={'#01044B'}
                   size={20}             
                 />
               </TouchableOpacity>
@@ -180,7 +180,7 @@ const Hospital = ({ locationName }) => {
                   GetHospListApi()
                 }}
                 style={{paddingVertical:10 }}>
-                <Text Bold style={{ fontSize: 14, paddingHorizontal: 10, color:GlobalColor.Primary }}>Clear Filter</Text>
+                <Text Bold style={{ fontSize: 14, paddingHorizontal: 10, color:'#01044B' }}>Clear Filter</Text>
               </TouchableOpacity>
 
 
@@ -202,7 +202,7 @@ const Hospital = ({ locationName }) => {
                         onPress={() => {                                                
                           GetHospListApi(item.LOCN_DESC)
                         }}
-                        style={{ borderBottomWidth: 0.5, borderBottomColor:GlobalColor.Secondary, paddingVertical:10 }}>
+                        style={{ borderBottomWidth: 0.5, borderBottomColor:'#171C8F', paddingVertical:10 }}>
                         <Text Bold style={{ fontSize: 13, paddingHorizontal: 0 }}>{item.LOCN_DESC}</Text>
                       </TouchableOpacity>
                     )
@@ -218,7 +218,7 @@ const Hospital = ({ locationName }) => {
               <Ionicons
                 name="ios-filter"
                 size={22}
-                color={GlobalColor.Primary}                
+                color={'#01044B'}                
               />
             </TouchableOpacity>
           </View>
@@ -248,14 +248,14 @@ const Hospital = ({ locationName }) => {
                   <Text Bold style={{ fontSize: 13 }}>
                     {item.HOSP_NAME}
                   </Text>
-                  <Text style={{ color: '#000',fontSize:13 }}>{item.ADDR}</Text>
+                  <Text style={{ color: '#01044B',fontSize:13 }}>{item.ADDR}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{ width: '10%' }}
                   onPress={() => {
                     Linking.openURL(`tel:${item.HOSP_PHONE_NO}`)
                   }}>
-                  <Feather name="phone-call" size={17} color={ThemeColor.Teal} />
+                  <Feather name="phone-call" size={17} color={'#171C8F'} />
                 </TouchableOpacity>
               </View>
             )}
@@ -272,7 +272,7 @@ const Hospital = ({ locationName }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
   itemBox: {
     flex:1,
@@ -281,16 +281,16 @@ const styles = StyleSheet.create({
   },
   
   spinnerTextStyle: {
-    color: '#FFF'
+    color: '#FFFFFF'
   },
   box: {
     width: '100%',
-    backgroundColor:GlobalColor.White,
+    backgroundColor:'#FFFFFF',
     paddingHorizontal:10,
     marginBottom:10,
     paddingVertical: 10,
     borderBottomWidth: 0.5,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: '#171C8F',
     alignSelf: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -302,26 +302,26 @@ const styles = StyleSheet.create({
     padding: 10,
     // justifyContent: "center",
     // alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderRadius: 0
   },
 
   modalBoxDetail:{
-    backgroundColor:'rgba(0,0,0,0.7)',
+    backgroundColor:'rgba(1,4,75,0.55)',
     flex:1, 
     justifyContent:'center',
     alignItems:'center',
     paddingHorizontal:15
   },
   modalBoxDetailInner:{
-    backgroundColor:GlobalColor.White,
+    backgroundColor:'#FFFFFF',
     padding:20, 
     position:'relative'
   },
   modalText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#01044B',
     textAlign: 'center'
   },
   modalImage: {

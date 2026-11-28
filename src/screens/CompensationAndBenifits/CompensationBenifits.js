@@ -30,8 +30,8 @@ const CompensationBenifits = ({ navigation }) => {
 
   const optionalConfigObject = {
     title: 'Authentication Required', // Android
-    imageColor: '#e00606', // Android
-    imageErrorColor: '#ff0000', // Android
+    imageColor: '#171C8F', // Android
+    imageErrorColor: '#01044B', // Android
     sensorDescription: 'Touch sensor', // Android
     sensorErrorDescription: 'Failed', // Android
     cancelText: 'Cancel', // Android
@@ -131,14 +131,14 @@ const CompensationBenifits = ({ navigation }) => {
         {isAuth == true ? (
           <View style={{ flex: 1 }}>
             <Header title="Compensation and Benefits" />
-            <LinearGradient colors={[ThemeColor.Teal, ThemeColor.Teal, ThemeColor.Teal]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}>
+            <LinearGradient colors={['#171C8F', '#171C8F', '#171C8F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={styles.mystyl}>
               <View style={{ flex: 1, flexDirection: 'row' }}>
                 <Tab.Navigator
                   screenOptions={{
                     tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
                     tabBarActiveTintColor: GlobalColor.White,
-                    tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: GlobalColor.White },
-                    tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+                    tabBarIndicatorStyle: { borderBottomWidth: 5, borderBottomColor: 'rgba(255,255,255,0.22)' },
+                    tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
                     tabBarItemStyle: { paddingHorizontal: 0 }
                   }}>
                   <Tab.Screen name="Payroll" component={Payroll} />
@@ -148,7 +148,7 @@ const CompensationBenifits = ({ navigation }) => {
             </LinearGradient>
           </View>
         ) : (
-          <View style={{ backgroundColor: '#fff', flex: 1 }}>
+          <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <Header title="Compensation and Benefits" />
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   mystyl: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255,0)',
     height: '100%',
     flexDirection: 'row',
   },
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     borderWidth: 1,
-    borderColor: '#d9d9d9',
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 7,
   },
   searchIcon: {
@@ -207,8 +207,8 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
-    backgroundColor: GlobalColor.White,
-    color: '#424242',
+    backgroundColor: '#FFFFFF',
+    color: 'rgba(1,4,75,0.62)',
   },
   title: {
     fontSize: GlobalFontSize.H4,

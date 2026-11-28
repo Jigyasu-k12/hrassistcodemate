@@ -24,19 +24,19 @@ const Calander = () => {
         <View
           style={{
             marginTop: 10,
-            backgroundColor: ThemeColor.TealSoft,
+            backgroundColor: '#F5F5F5',
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',            
             paddingVertical: 6
           }}>
-          <Text style={{ color: 'gray', fontWeight: '800' }}>
+          <Text style={{ color: 'rgba(1,4,75,0.62)', fontWeight: '800' }}>
             (Todays Menu ) -- {moment(date).format('MMM Do YYYY')}
           </Text>
           <View>
             <View>
               <TouchableOpacity onPress={() => (setOpen(true))}>
-                <Ionicons name="calendar-outline" size={25} color={ThemeColor.Teal} />
+                <Ionicons name="calendar-outline" size={25} color={'#171C8F'} />
               </TouchableOpacity>
             </View>
           </View>

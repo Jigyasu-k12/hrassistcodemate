@@ -601,7 +601,7 @@ const AIChat = ({visible, onClose}) => {
       <Animated.View
         style={[styles.portalRing, {transform: [{rotate: portalRotation}]}]}>
         <LinearGradient
-          colors={[ThemeColor.TealDark, ThemeColor.Teal, ThemeColor.Teal, ThemeColor.TealSoft]}
+          colors={['#01044B', '#171C8F', '#171C8F', 'rgba(23,28,143,0.1)']}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 1}}
           style={styles.portalRingGradient}
@@ -634,7 +634,7 @@ const AIChat = ({visible, onClose}) => {
 
       <View style={styles.portalCenter}>
         <LinearGradient
-          colors={[ThemeColor.TealDark, ThemeColor.Teal]}
+          colors={['#01044B', '#171C8F']}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 1}}
           style={styles.portalCenterGradient}
@@ -663,7 +663,7 @@ const AIChat = ({visible, onClose}) => {
           ]}>
           {/* Professional Header - Blue Theme */}
           <LinearGradient
-            colors={[ThemeColor.TealDark, ThemeColor.Teal]}
+            colors={['#01044B', '#171C8F']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             style={styles.chatHeader}>
@@ -690,13 +690,13 @@ const AIChat = ({visible, onClose}) => {
                 <TouchableOpacity
                   onPress={handleClearChat}
                   style={styles.clearButton}>
-                  <Ionicons name="trash-outline" size={20} color="#fff" />
+                  <Ionicons name="trash-outline" size={20} color="#FFFFFF" />
                 </TouchableOpacity>
               )}
               <TouchableOpacity
                 onPress={handleCloseChat}
                 style={styles.closeButton}>
-                <MaterialCommunityIcons name="close" size={22} color="#fff" />
+                <MaterialCommunityIcons name="close" size={22} color="#FFFFFF" />
               </TouchableOpacity>
             </View>
           </LinearGradient>
@@ -776,7 +776,7 @@ const AIChat = ({visible, onClose}) => {
                           <MaterialCommunityIcons
                             name="lightning-bolt"
                             size={16}
-                            color={ThemeColor.Teal}
+                            color={'#171C8F'}
                             style={styles.exampleIcon}
                           />
                           <Text style={styles.exampleText} numberOfLines={2}>
@@ -785,7 +785,7 @@ const AIChat = ({visible, onClose}) => {
                           <MaterialCommunityIcons
                             name="chevron-right"
                             size={18}
-                            color="#9CA3AF"
+                            color="#171C8F"
                           />
                         </TouchableOpacity>
                       ))}
@@ -923,7 +923,7 @@ const AIChat = ({visible, onClose}) => {
                   <TextInput
                     style={styles.textInput}
                     placeholder="Ask Me..."
-                    placeholderTextColor="#9CA3AF"
+                    placeholderTextColor="#171C8F"
                     value={userQuery}
                     onChangeText={setUserQuery}
                     onFocus={() => {
@@ -946,8 +946,8 @@ const AIChat = ({visible, onClose}) => {
                     <LinearGradient
                       colors={
                         userQuery.trim() && !isLoading
-                          ? [ThemeColor.TealDark, ThemeColor.Teal]
-                          : ['#E5E7EB', '#E5E7EB']
+                          ? ['#01044B', '#171C8F']
+                          : ['#F5F5F5', '#F5F5F5']
                       }
                       start={{x: 0, y: 0}}
                       end={{x: 1, y: 1}}
@@ -956,7 +956,7 @@ const AIChat = ({visible, onClose}) => {
                         name="send"
                         size={20}
                         color={
-                          userQuery.trim() && !isLoading ? '#fff' : '#9CA3AF'
+                          userQuery.trim() && !isLoading ? '#01044B' : '#171C8F'
                         }
                       />
                     </LinearGradient>
@@ -975,7 +975,7 @@ const AIChat = ({visible, onClose}) => {
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(1,4,75,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -1003,7 +1003,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
   portalCenter: {
     width: 100,
@@ -1022,8 +1022,8 @@ const styles = StyleSheet.create({
     bottom: -40,
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    color: '#FFFFFF',
+    textShadowColor: 'rgba(1,4,75,0.35)',
     textShadowOffset: {width: 0, height: 2},
     textShadowRadius: 4,
   },
@@ -1032,11 +1032,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: width,
     height: height * 0.85,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     overflow: 'hidden',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: -2,
@@ -1062,7 +1062,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
@@ -1074,11 +1074,11 @@ const styles = StyleSheet.create({
   chatHeaderTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#fff',
+    color: '#FFFFFF',
   },
   chatHeaderSubtitle: {
     fontSize: 12,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: 'rgba(255,255,255,0.8)',
     marginTop: 1,
   },
   headerButtons: {
@@ -1090,7 +1090,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -1098,13 +1098,13 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   chatContent: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: '#FFFFFF',
     position: 'relative',
   },
   messagesContainer: {
@@ -1129,10 +1129,10 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 35,
     overflow: 'hidden',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: ThemeColor.Teal,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -1165,10 +1165,10 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   greetingBubble: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     borderRadius: 16,
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -1177,11 +1177,11 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 2,
     borderWidth: 1,
-    borderColor: '#F3F4F6',
+    borderColor: 'rgba(23,28,143,0.1)',
   },
   greetingText: {
     fontSize: 15,
-    color: '#374151',
+    color: '#171C8F',
     lineHeight: 22,
     textAlign: 'center',
   },
@@ -1192,20 +1192,20 @@ const styles = StyleSheet.create({
   examplesTitle: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#6B7280',
+    color: '#171C8F',
     marginBottom: 12,
     marginLeft: 4,
   },
   exampleCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     padding: 14,
     borderRadius: 12,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
-    shadowColor: '#000',
+    borderColor: 'rgba(23,28,143,0.1)',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -1220,7 +1220,7 @@ const styles = StyleSheet.create({
   exampleText: {
     flex: 1,
     fontSize: 14,
-    color: '#374151',
+    color: '#171C8F',
     lineHeight: 20,
   },
   messageBubble: {
@@ -1239,7 +1239,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 8,
@@ -1256,31 +1256,31 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   userMessageContent: {
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     borderBottomRightRadius: 4,
   },
   botMessageContent: {
-    backgroundColor: '#fff',
+    backgroundColor: '#171C8F',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: 'rgba(23,28,143,0.1)',
     borderBottomLeftRadius: 4,
   },
   errorMessageContent: {
-    backgroundColor: '#FEF2F2',
-    borderColor: '#FCA5A5',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#01044B',
   },
   messageText: {
     fontSize: 15,
     lineHeight: 21,
   },
   userMessageText: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   botMessageText: {
-    color: '#374151',
+    color: '#171C8F',
   },
   errorMessageText: {
-    color: '#DC2626',
+    color: '#01044B',
   },
   loadingContainer: {
     flexDirection: 'row',
@@ -1290,9 +1290,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   loadingBubble: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: 'rgba(23,28,143,0.1)',
     borderRadius: 16,
     borderBottomLeftRadius: 4,
     padding: 12,
@@ -1310,16 +1310,16 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
   },
   inputWrapper: {
     position: 'absolute',
     left: 0,
     right: 0,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
-    borderTopColor: '#E5E7EB',
-    shadowColor: '#000',
+    borderTopColor: 'rgba(23,28,143,0.1)',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: -2,
@@ -1336,10 +1336,10 @@ const styles = StyleSheet.create({
   inputBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F9FAFB',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: 'rgba(23,28,143,0.1)',
     paddingLeft: 16,
     paddingRight: 6,
     paddingVertical: 6,
@@ -1348,7 +1348,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     fontSize: 15,
-    color: '#111827',
+    color: '#171C8F',
     maxHeight: 100,
     paddingTop: 8,
     paddingBottom: 8,

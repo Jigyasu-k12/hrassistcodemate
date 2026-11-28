@@ -54,7 +54,7 @@ const IconBtn = ({icon, label, onPress, disabled, tone = 'default'}) => (
     <AppIcon
       name={icon}
       size={16}
-      color={tone === 'danger' ? '#C2362F' : P.deep}
+      color={tone === 'danger' ? '#01044B' : '#01044B'}
       strokeWidth={2.2}
     />
   </TouchableOpacity>
@@ -98,14 +98,14 @@ const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
         onPress={() => setDraft(normaliseLayout(DEFAULT_LAYOUT, restricted))}
         accessibilityRole="button"
         style={[styles.footBtn, styles.footOutline]}>
-        <AppIcon name="reset" size={16} color={P.deep} strokeWidth={2.2} />
+        <AppIcon name="reset" size={16} color={'#01044B'} strokeWidth={2.2} />
         <HText style={styles.footOutlineText}>Reset</HText>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onSave(draft)}
         accessibilityRole="button"
         style={[styles.footBtn, styles.footAmber]}>
-        <AppIcon name="check" size={16} color={P.onAmber} strokeWidth={2.6} />
+        <AppIcon name="check" size={16} color={'#01044B'} strokeWidth={2.6} />
         <HText style={styles.footAmberText}>Save</HText>
       </TouchableOpacity>
     </View>
@@ -235,7 +235,7 @@ const CustomiseSheet = ({visible, onClose, layout, restricted, onSave}) => {
                       <AppIcon
                         name="plus"
                         size={14}
-                        color={P.tealInk}
+                        color={'#171C8F'}
                         strokeWidth={2.6}
                       />
                       <HText style={styles.addText}>Add</HText>
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 15,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     marginBottom: 8,
   },
   titleRow: {flexDirection: 'row', alignItems: 'center', marginTop: 18},
@@ -271,13 +271,13 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     fontSize: 12,
     fontWeight: '700',
-    color: P.tealInk,
-    backgroundColor: P.mint,
+    color: '#171C8F',
+    backgroundColor: '#F5F5F5',
   },
   hint: {
     fontSize: 12,
     lineHeight: 17,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
     marginTop: -4,
     marginBottom: 8,
   },
@@ -285,13 +285,13 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 0.3,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
     marginBottom: 6,
   },
   card: {
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: P.line,
+    borderColor: 'rgba(23,28,143,0.1)',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 12,
   },
@@ -301,15 +301,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: P.line,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   optRowLast: {borderBottomWidth: 0},
-  optLabel: {fontSize: 14, fontWeight: '600', color: P.deep},
+  optLabel: {fontSize: 14, fontWeight: '600', color: '#01044B'},
   segment: {
     flexDirection: 'row',
     padding: 3,
     borderRadius: 12,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
   },
   segBtn: {
     minWidth: 44,
@@ -321,41 +321,41 @@ const styles = StyleSheet.create({
   },
   segBtnOn: {
     backgroundColor: '#FFFFFF',
-    shadowColor: P.deep,
+    shadowColor: '#01044B',
     shadowOpacity: 0.14,
     shadowRadius: 3,
     shadowOffset: {width: 0, height: 1},
     elevation: 1,
   },
-  segText: {fontSize: 12.5, fontWeight: '600', color: P.sub},
-  segTextOn: {color: P.deep, fontWeight: '700'},
+  segText: {fontSize: 12.5, fontWeight: '600', color: 'rgba(1,4,75,0.62)'},
+  segTextOn: {color: '#01044B', fontWeight: '700'},
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     minHeight: 54,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: P.line,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   rowLast: {borderBottomWidth: 0},
-  rank: {width: 20, fontSize: 12, fontWeight: '700', color: P.sub},
+  rank: {width: 20, fontSize: 12, fontWeight: '700', color: 'rgba(1,4,75,0.62)'},
   rowText: {flex: 1, marginLeft: 10, marginRight: 4},
-  rowLabel: {fontSize: 14, fontWeight: '600', color: P.deep},
-  overflow: {fontSize: 11, fontWeight: '600', color: P.amberInk, marginTop: 1},
+  rowLabel: {fontSize: 14, fontWeight: '600', color: '#01044B'},
+  overflow: {fontSize: 11, fontWeight: '600', color: '#171C8F', marginTop: 1},
   iconBtn: {
     width: 32,
     height: 32,
     borderRadius: 10,
     marginLeft: 4,
     borderWidth: 1,
-    borderColor: P.line,
-    backgroundColor: P.canvas,
+    borderColor: 'rgba(23,28,143,0.1)',
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  iconBtnDanger: {borderColor: '#F0C9C6', backgroundColor: '#FFF6F5'},
+  iconBtnDanger: {borderColor: '#01044B', backgroundColor: '#FFFFFF'},
   emptyText: {
     fontSize: 13,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
     textAlign: 'center',
     paddingVertical: 18,
   },
@@ -364,11 +364,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     flexDirection: 'row',
     alignItems: 'center',
   },
-  addText: {fontSize: 12, fontWeight: '700', color: P.tealInk, marginLeft: 4},
+  addText: {fontSize: 12, fontWeight: '700', color: '#171C8F', marginLeft: 4},
   footerRow: {flexDirection: 'row'},
   footBtn: {
     flex: 1,
@@ -378,16 +378,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  footOutline: {borderWidth: 1, borderColor: P.lineStrong, marginRight: 10},
+  footOutline: {borderWidth: 1, borderColor: 'rgba(23,28,143,0.18)', marginRight: 10},
   footOutlineText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     marginLeft: 6,
   },
   footAmber: {
-    backgroundColor: P.amber,
-    shadowColor: P.amberStrong,
+    backgroundColor: '#FCBE62',
+    shadowColor: '#01044B',
     shadowOpacity: 0.45,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 6},
@@ -396,7 +396,7 @@ const styles = StyleSheet.create({
   footAmberText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.onAmber,
+    color: '#01044B',
     marginLeft: 6,
   },
 });

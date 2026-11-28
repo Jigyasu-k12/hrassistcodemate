@@ -116,7 +116,7 @@ const ManagerActions = ({navigation}) => {
           <AppIcon
             name="approve"
             size={13}
-            color={P.amberInk}
+            color={'#171C8F'}
             strokeWidth={2.2}
           />
           <HText style={styles.subChipText}>Approvals & team</HText>
@@ -148,10 +148,10 @@ const ManagerActions = ({navigation}) => {
               onPress={() => navigation.navigate(t.route)}
               accessibilityRole="button"
               accessibilityLabel={t.label}
-              android_ripple={{color: P.amberCream}}
+              android_ripple={{color: 'rgba(1,4,75,0.45)'}}
               style={({pressed}) => [...style, pressed && styles.tilePressed]}>
               <View style={styles.chip}>
-                <AppIcon name={t.icon} size={22} color={P.amberInk} />
+                <AppIcon name={t.icon} size={22} color={'#171C8F'} />
               </View>
               <HText style={styles.label} numberOfLines={2}>
                 {t.label}
@@ -171,19 +171,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 12,
   },
-  title: {...TYPE.title, color: P.deep},
+  title: {...TYPE.title, color: '#01044B'},
   subChip: {
     height: 26,
     paddingHorizontal: 10,
     borderRadius: 13,
-    backgroundColor: P.amberCream,
+    backgroundColor: '#F5F5F5',
     flexDirection: 'row',
     alignItems: 'center',
   },
   subChipText: {
     fontSize: 12,
     fontWeight: '700',
-    color: P.amberInk,
+    color: '#171C8F',
     marginLeft: 5,
   },
   grid: {flexDirection: 'row', flexWrap: 'wrap'},
@@ -193,42 +193,42 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.card,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: P.amberSoft,
+    borderColor: '#FCBE62',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 10,
     paddingHorizontal: 6,
     overflow: 'hidden',
-    shadowColor: P.amberDeep,
+    shadowColor: '#01044B',
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: {width: 0, height: 2},
     elevation: 1,
   },
-  tilePressed: {backgroundColor: '#FFFBF2', transform: [{scale: 0.97}]},
+  tilePressed: {backgroundColor: '#FFFFFF', transform: [{scale: 0.97}]},
   chip: {
     width: 40,
     height: 40,
     borderRadius: RADIUS.md,
-    backgroundColor: P.amberCream,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 7,
   },
-  label: {...TYPE.label, color: P.deep, textAlign: 'center'},
-  skeleton: {borderColor: P.line, elevation: 0, shadowOpacity: 0},
+  label: {...TYPE.label, color: '#01044B', textAlign: 'center'},
+  skeleton: {borderColor: 'rgba(23,28,143,0.1)', elevation: 0, shadowOpacity: 0},
   skelChip: {
     width: 40,
     height: 40,
     borderRadius: 12,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     marginBottom: 9,
   },
   skelLine: {
     width: '70%',
     height: 8,
     borderRadius: 4,
-    backgroundColor: P.mint,
+    backgroundColor: '#F5F5F5',
     marginTop: 4,
   },
 });

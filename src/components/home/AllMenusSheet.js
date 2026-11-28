@@ -31,12 +31,12 @@ const AllMenusSheet = ({
 
   const search = (
     <View style={styles.searchBox}>
-      <AppIcon name="search" size={18} color={P.sub} />
+      <AppIcon name="search" size={18} color={'rgba(1,4,75,0.62)'} />
       <TextInput
         value={query}
         onChangeText={setQuery}
         placeholder="Search menus"
-        placeholderTextColor={P.sub}
+        placeholderTextColor={'rgba(1,4,75,0.62)'}
         style={styles.searchInput}
         returnKeyType="search"
         autoCorrect={false}
@@ -51,7 +51,7 @@ const AllMenusSheet = ({
       onPress={onCustomise}
       accessibilityRole="button"
       style={styles.customiseBtn}>
-      <AppIcon name="sliders" size={18} color={P.deep} strokeWidth={2} />
+      <AppIcon name="sliders" size={18} color={'#01044B'} strokeWidth={2} />
       <HText style={styles.customiseText}>Customise Quick actions</HText>
     </TouchableOpacity>
   );
@@ -105,11 +105,11 @@ const AllMenusSheet = ({
                   <AppIcon
                     name={isPinned ? 'check' : 'plus'}
                     size={14}
-                    color={isPinned ? P.onAmber : P.tealInk}
+                    color={isPinned ? '#01044B' : '#171C8F'}
                     strokeWidth={2.6}
                   />
                   <HText
-                    style={[styles.pinText, isPinned && {color: P.onAmber}]}>
+                    style={[styles.pinText, isPinned && {color: '#01044B'}]}>
                     {isPinned ? 'On Home' : 'Add'}
                   </HText>
                 </TouchableOpacity>
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
     height: 46,
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: P.line,
-    backgroundColor: P.canvas,
+    borderColor: 'rgba(23,28,143,0.1)',
+    backgroundColor: '#F5F5F5',
     paddingHorizontal: 12,
     marginBottom: 8,
   },
@@ -138,16 +138,16 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 8,
     fontSize: 15,
-    color: P.deep,
+    color: '#01044B',
     paddingVertical: 0,
   },
-  empty: {textAlign: 'center', color: P.sub, marginVertical: 24},
+  empty: {textAlign: 'center', color: 'rgba(1,4,75,0.62)', marginVertical: 24},
   group: {marginTop: 10},
   groupTitle: {
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 0.3,
-    color: P.sub,
+    color: 'rgba(1,4,75,0.62)',
     marginBottom: 4,
   },
   row: {
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: 56,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: P.line,
+    borderBottomColor: 'rgba(23,28,143,0.1)',
   },
   rowMain: {flex: 1, flexDirection: 'row', alignItems: 'center'},
   rowLabel: {
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 14,
     fontWeight: '600',
-    color: P.deep,
+    color: '#01044B',
   },
   pin: {
     height: 32,
@@ -171,24 +171,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 8,
   },
-  pinOn: {backgroundColor: P.amber, borderColor: P.amber},
+  pinOn: {backgroundColor: '#FCBE62', borderColor: '#FCBE62'},
   pinText: {
     fontSize: 12,
     fontWeight: '700',
-    color: P.tealInk,
+    color: '#171C8F',
     marginLeft: 4,
   },
   customiseBtn: {
     height: 48,
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: P.lineStrong,
+    borderColor: 'rgba(23,28,143,0.18)',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   customiseText: {
     fontSize: 14,
     fontWeight: '700',
-    color: P.deep,
+    color: '#01044B',
     marginLeft: 8,
   },
 });

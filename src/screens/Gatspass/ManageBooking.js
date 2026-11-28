@@ -161,21 +161,21 @@ const ManageBooking = ({ navigation, }) => {
               <TouchableOpacity style={styles.TouchableOpacity}>
                 <View
                   style={styles.HeadingContainer}>
-                  <Text Bold style={{ fontSize: 13, color: GlobalColor.White, padding: 10, }}>
+                  <Text Bold style={{ fontSize: 13, color: '#FFFFFF', padding: 10, }}>
                     {"Booked Room "}{item.ROOM}
                   </Text>
                 </View>
                 <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
                   <Text style={styles.GStBox}>Booked By</Text>
-                  <Text style={{ color: GlobalColor.Black ,fontSize:13}}>{item.BOOKED_BY}</Text>
+                  <Text style={{ color: '#01044B' ,fontSize:13}}>{item.BOOKED_BY}</Text>
                   <Text style={styles.GStBox}>Co-occupant</Text>
-                  <Text style={{ color: GlobalColor.Black ,fontSize:13}}>{item.CO_OCCUPTD}</Text>
+                  <Text style={{ color: '#01044B' ,fontSize:13}}>{item.CO_OCCUPTD}</Text>
                   <Text style={styles.GStBox}>Booking Start Time</Text>
-                  <Text style={{ color: GlobalColor.Black,fontSize:13 }}>{ moment(item.RMBK_START_TIME).format('DD-MMM-YYYY H:mm:ss a')}</Text>
+                  <Text style={{ color: '#01044B',fontSize:13 }}>{ moment(item.RMBK_START_TIME).format('DD-MMM-YYYY H:mm:ss a')}</Text>
                   <Text style={styles.GStBox}>Booking End Time</Text>
-                  <Text style={{ color: GlobalColor.Black,fontSize:13 }}>{ moment(item.RMBK_END_TIME).format('DD-MMM-YYYY H:mm:ss a')}</Text>
+                  <Text style={{ color: '#01044B',fontSize:13 }}>{ moment(item.RMBK_END_TIME).format('DD-MMM-YYYY H:mm:ss a')}</Text>
                   <Text style={styles.GStBox}>Meeting Reason</Text>
-                  <Text style={{ color: GlobalColor.Black,fontSize:13 }}>{item.RMBK_REMARKS}</Text>
+                  <Text style={{ color: '#01044B',fontSize:13 }}>{item.RMBK_REMARKS}</Text>
                 </View>
 
                 <View style={{marginVertical: 10,flexDirection:'row',flex:1,width:"100%"}}>
@@ -234,7 +234,7 @@ const ManageBooking = ({ navigation, }) => {
 const styles = StyleSheet.create({  
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.PrimaryLight,   
+    backgroundColor: '#F5F5F5',   
   },
   MainContainer:{
     flex:1,
@@ -247,8 +247,8 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 5,
     alignSelf: 'center',
-    backgroundColor: "#fff",
-    color: GlobalColor.Primary,
+    backgroundColor: "#FFFFFF",
+    color: '#01044B',
     fontSize: GlobalFontSize.Small,
     fontFamily: 'Roboto-Regular',
     textAlign: 'left',
@@ -268,11 +268,11 @@ const styles = StyleSheet.create({
   TouchableOpacity: {
     width: '100%',
     paddingTop: 1,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     margin: 10,
     paddingVertical: 10,
-    shadowColor: GlobalColor.ShadowColor,
+    shadowColor: '#01044B',
     shadowOffset: {
       width: -0,
       height: 1,
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
   },
   HeadingContainer:{
     width: '100%',
-    backgroundColor: ThemeColor.Teal,
+    backgroundColor: '#171C8F',
     alignSelf: 'center',
     overflow: 'hidden',
     borderTopLeftRadius: 8,
@@ -295,13 +295,13 @@ const styles = StyleSheet.create({
   },
   GStBox: {
     fontSize: 13,
-    color: GlobalColor.LightDark,
+    color: 'rgba(1,4,75,0.62)',
     paddingVertical: 10,
     paddingBottom: 5,
     letterSpacing: 1,
   },
   spinnerTextStyle: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
   },
 });
 

@@ -207,9 +207,9 @@ const LeaveViewReport = () => {
 
       <View style={[styles.itemColumn]}>
         {item.Status === 'Approved' ? (
-          <Text style={[styles.itemText, {color: 'green'}]}>{item.Status}</Text>
+          <Text style={[styles.itemText, {color: '#171C8F'}]}>{item.Status}</Text>
         ) : (
-          <Text style={[styles.itemText, {color: 'red'}]}>{item.Status}</Text>
+          <Text style={[styles.itemText, {color: '#01044B'}]}>{item.Status}</Text>
         )}
       </View>
     </TouchableOpacity>
@@ -223,7 +223,7 @@ const LeaveViewReport = () => {
           justifyContent: 'space-between',
           paddingHorizontal: 10,
           paddingVertical: 15,
-          backgroundColor: GlobalColor.White,
+          backgroundColor: '#FFFFFF',
           flexDirection: 'row',
         }}>
         <Text Bold style={[styles.HeaderColumn, {flex: 0.4}]}>
@@ -262,9 +262,9 @@ const LeaveViewReport = () => {
               alignSelf: 'center',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              backgroundColor: '#fff',
+              backgroundColor: '#FFFFFF',
               borderRadius: 0,
-              shadowColor: '#000',
+              shadowColor: '#01044B',
               shadowOffset: {
                 width: 0,
                 height: 1,
@@ -280,7 +280,7 @@ const LeaveViewReport = () => {
               defaultValue={SelectedYear}
               defaultValueByIndex={0}
               buttonStyle={{
-                backgroundColor: 'transparent',
+                backgroundColor: 'rgba(255,255,255,0)',
                 width: '100%',
                 height: 50,
                 borderRadius: 0,
@@ -292,7 +292,7 @@ const LeaveViewReport = () => {
                 return (
                   <FontAwesome
                     name={isOpened ? 'chevron-up' : 'chevron-down'}
-                    color={'#444'}
+                    color={'rgba(1,4,75,0.62)'}
                     size={15}
                   />
                 );
@@ -326,7 +326,7 @@ const LeaveViewReport = () => {
                 keyExtractor={item => item.id}
                 ListHeaderComponent={FlatList_Header_Leave}
                 ListHeaderComponentStyle={{
-                  borderBottomColor: ThemeColor.Teal,
+                  borderBottomColor: '#171C8F',
                   borderBottomWidth: 1,
                 }}
                 ListEmptyComponent={
@@ -343,7 +343,7 @@ const LeaveViewReport = () => {
               {/* <DataTable
                       style={{
                         width: '100%',
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5F5F5',
                         // marginVertical: '%',
                       }}>
                       <DataTable.Header style={{ backgroundColor: GlobalColor.White }}>
@@ -409,9 +409,9 @@ const LeaveViewReport = () => {
                                 </DataTable.Cell>
                                 <DataTable.Cell numeric>
                                   {item.Status === 'Approved' ? (
-                                    <Text style={{ color: 'green' }}>{item.Status}</Text>
+                                    <Text style={{ color: '#171C8F' }}>{item.Status}</Text>
                                   ) : (
-                                    <Text style={{ color: 'red' }}>{item.Status}</Text>
+                                    <Text style={{ color: '#01044B' }}>{item.Status}</Text>
                                   )}
                                 </DataTable.Cell>
                               </DataTable.Row>
@@ -426,7 +426,7 @@ const LeaveViewReport = () => {
                 transparent={true}>
                 <View
                   style={{
-                    backgroundColor: '#fff',
+                    backgroundColor: '#FFFFFF',
                     padding: 10,
                     borderRadius: 0,
                   }}>
@@ -442,7 +442,7 @@ const LeaveViewReport = () => {
                       Bold
                       style={{
                         fontSize: 14,
-                        color: GlobalColor.Primary,
+                        color: '#01044B',
                       }}>
                       Leave Details
                     </Text>
@@ -452,7 +452,7 @@ const LeaveViewReport = () => {
                       <Ionicons
                         name="close-circle-outline"
                         size={20}
-                        color={GlobalColor.Danger}
+                        color={'#01044B'}
                       />
                     </TouchableOpacity>
                   </View>
@@ -504,7 +504,7 @@ const LeaveViewReport = () => {
                             style={{
                               padding: 12,
                               borderRadius: 5,
-                              backgroundColor: ThemeColor.Teal,
+                              backgroundColor: '#171C8F',
                               minWidth: 90,
                               marginRight: 25,
                             }}
@@ -513,7 +513,7 @@ const LeaveViewReport = () => {
                               DeleteLeavePending(modalData);
                             }}>
                             <Text
-                              style={{color: '#fff', fontSize:13,alignSelf: 'center'}}
+                              style={{color: '#FFFFFF', fontSize:13,alignSelf: 'center'}}
                               >
                               Delete
                             </Text>
@@ -523,14 +523,14 @@ const LeaveViewReport = () => {
                           style={{
                             padding: 12,
                             borderRadius: 5,
-                            backgroundColor: ThemeColor.Teal,
+                            backgroundColor: '#171C8F',
                             minWidth: 90,
                           }}
                           onPress={() => {
                             setLeaveDetailModal(!LeaveDetailModal);
                           }}>
                           <Text
-                            style={{color: '#fff', fontSize:13,alignSelf: 'center'}}
+                            style={{color: '#FFFFFF', fontSize:13,alignSelf: 'center'}}
                             >
                             Okay
                           </Text>
@@ -553,7 +553,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
   },
   tabsContainerStyle: {
     marginTop: 10,
@@ -565,20 +565,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 0,
-    borderColor: GlobalColor.Secondary,
+    borderColor: '#171C8F',
   },
   tabTextStyle: {
     fontSize: GlobalFontSize.P,
-    color: 'grey',
+    color: 'rgba(1,4,75,0.62)',
     fontFamily: 'Roboto-Bold',
   },
   activeTabStyle: {
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     borderBottomWidth: 4,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: '#171C8F',
   },
   activeTabTextStyle: {
-    color: GlobalColor.Secondary,
+    color: '#171C8F',
   },
   circleBox: {
     width: '16.6%',
@@ -589,7 +589,7 @@ const styles = StyleSheet.create({
   },
   circle: {
     borderWidth: 1,
-    borderColor: ThemeColor.Teal,
+    borderColor: '#171C8F',
     width: 40,
     height: 40,
     borderRadius: 40,
@@ -604,8 +604,8 @@ const styles = StyleSheet.create({
   box: {
     // width: '90%',
     padding: 5,
-    backgroundColor: '#FFF',
-    shadowColor: '#000',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -619,13 +619,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '100%',
     maxHeight: 100,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: 'rgba(23,28,143,0.1)',
     padding: 10,
   },
   spinnerTextStyle: {
-    color: '#fff',
+    color: '#FFFFFF',
   },
   addtnlBtn: {
     position: 'absolute',
@@ -643,13 +643,13 @@ const styles = StyleSheet.create({
   },
   item: {
     flexDirection: 'row',
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 10,
     marginTop: 5,
     justifyContent: 'space-between',
     paddingVertical: 5,
     borderBottomWidth: 0.5,
-    borderBottomColor: GlobalColor.Secondary,
+    borderBottomColor: '#171C8F',
   },
   HeaderColumn: {
     flex: 0.25,
@@ -663,7 +663,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: GlobalColor.PrimaryLight,
+    backgroundColor: '#F5F5F5',
     alignItems: 'center',
     justifyContent: 'center',
   },

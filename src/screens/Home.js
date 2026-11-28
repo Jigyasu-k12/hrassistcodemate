@@ -114,37 +114,37 @@ const WHATS_NEW_SEEN_KEY = 'home_whats_new_seen_v2.2.3';
 // ═════════════════════════════════════════════════════════════════════════
 
 const DIWALI = {
-  gold: '#F5C451',
-  goldLight: '#FFE7A8',
-  goldDeep: '#C98A1E',
-  maroon: '#4A0E1F',
-  plum: '#2A0A3D',
-  cream: '#F7E6C4',
+  gold: '#FCBE62',
+  goldLight: '#FCBE62',
+  goldDeep: '#FCBE62',
+  maroon: '#01044B',
+  plum: '#01044B',
+  cream: '#FFFFFF',
 };
 
 // Vibrant, saturated palettes — they read well on the night-sky veil
 const FIREWORK_PALETTES = [
-  ['#FFC300', '#FF8C00', '#FFF3B0'], // gold-saffron
-  ['#FF2E63', '#FF7AA2', '#FFD6E0'], // crimson rose
-  ['#00E5FF', '#2979FF', '#E0FBFF'], // electric blue
-  ['#B14EFF', '#E040FB', '#F3D1FF'], // royal purple
-  ['#00E676', '#76FF03', '#E8FFD6'], // emerald
-  ['#FF5400', '#FFBD00', '#FFFFFF'], // fire
+  ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', '#F5F5F5'], // gold-saffron
+  ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', '#F5F5F5'], // crimson rose
+  ['#171C8F', '#171C8F', '#F5F5F5'], // electric blue
+  ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)'], // royal purple
+  ['#171C8F', '#171C8F', '#F5F5F5'], // emerald
+  ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', '#FFFFFF'], // fire
 ];
 const GOLD_PALETTE = FIREWORK_PALETTES[0];
-const WILLOW_PALETTE = ['#FFD45C', '#FFB000', '#FFF1C1'];
+const WILLOW_PALETTE = ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', '#F5F5F5'];
 
 // Warm, single-temperature palette for the header lights — elegant, not rainbow
-const WARM_BULB_COLORS = ['#FFC107', '#FF9800', '#FFD54F'];
+const WARM_BULB_COLORS = ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)'];
 
-const EMBER_COLORS = ['#FFC300', '#FFD166', '#FFB347'];
+const EMBER_COLORS = ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)'];
 const EMBER_COUNT = 10;
 
 // Header gets its own strip for the light string so text stays clear
 const HEADER_LIGHT_BAND = 16;
 
 // Night-sky veil shown behind fireworks so the colours pop on the light UI
-const NIGHT_VEIL_COLOR = '#12021E';
+const NIGHT_VEIL_COLOR = 'rgba(23,28,143,0.85)';
 
 // Rocket launcher placement — sits where the Feature Request button lives
 // (bottom-right, above the tab bar). Tweak here if needed.
@@ -314,12 +314,12 @@ const marigoldNode = (key, cx, cy, r) => (
           cx={cx + Math.cos(a) * r * 0.62}
           cy={cy + Math.sin(a) * r * 0.62}
           r={r * 0.48}
-          fill={i % 2 ? '#FF8F00' : '#FFA000'}
+          fill={i % 2 ? '#FCBE62' : '#FCBE62'}
         />
       );
     })}
-    <Circle cx={cx} cy={cy} r={r * 0.55} fill="#FFB300" />
-    <Circle cx={cx} cy={cy} r={r * 0.25} fill="#E65100" />
+    <Circle cx={cx} cy={cy} r={r * 0.55} fill="#FCBE62" />
+    <Circle cx={cx} cy={cy} r={r * 0.25} fill="#FCBE62" />
   </G>
 );
 
@@ -327,8 +327,8 @@ const mangoLeaf = (key, x, y, rot, len = 10) => (
   <Path
     key={key}
     d={`M0 0 C${len * 0.35} ${len * 0.25} ${len * 0.3} ${len * 0.8} 0 ${len} C${-len * 0.3} ${len * 0.8} ${-len * 0.35} ${len * 0.25} 0 0 Z`}
-    fill="#2E9E44"
-    stroke="#1B6E2E"
+    fill="#171C8F"
+    stroke="#171C8F"
     strokeWidth="0.6"
     transform={`translate(${x} ${y}) rotate(${rot})`}
   />
@@ -353,23 +353,23 @@ const LanternArt = ({variant = 'kandil'}) => {
       <Svg width={LANTERN_W} height={LANTERN_H} viewBox="0 0 20 38">
         <Defs>
           <SvgLinearGradient id="starLantern" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#FFB300" />
-            <Stop offset="1" stopColor="#E65100" />
+            <Stop offset="0" stopColor="#FFFFFF" />
+            <Stop offset="1" stopColor="#FFFFFF" />
           </SvgLinearGradient>
         </Defs>
-        <Line x1="10" y1="0" x2="10" y2="11.2" stroke="#7A4A1F" strokeWidth="1" />
+        <Line x1="10" y1="0" x2="10" y2="11.2" stroke="#FCBE62" strokeWidth="1" />
         <Path
           d={STAR_LANTERN_PATH}
           fill="url(#starLantern)"
-          stroke={DIWALI.gold}
+          stroke={'#FCBE62'}
           strokeWidth="0.7"
           strokeLinejoin="round"
         />
-        <Circle cx="10" cy="20.5" r="3" fill="#FFF3C4" fillOpacity="0.9" />
-        <Line x1="10" y1="24.8" x2="10" y2="34.6" stroke="#D7263D" strokeWidth="1.2" />
-        <Circle cx="10" cy="35.8" r="1.7" fill={DIWALI.gold} />
-        <Line x1="4.4" y1="28.3" x2="3.8" y2="33" stroke="#FFC300" strokeWidth="0.9" />
-        <Line x1="15.6" y1="28.3" x2="16.2" y2="33" stroke="#FFC300" strokeWidth="0.9" />
+        <Circle cx="10" cy="20.5" r="3" fill="#F5F5F5" fillOpacity="0.9" />
+        <Line x1="10" y1="24.8" x2="10" y2="34.6" stroke="#01044B" strokeWidth="1.2" />
+        <Circle cx="10" cy="35.8" r="1.7" fill={'#FCBE62'} />
+        <Line x1="4.4" y1="28.3" x2="3.8" y2="33" stroke="#FCBE62" strokeWidth="0.9" />
+        <Line x1="15.6" y1="28.3" x2="16.2" y2="33" stroke="#FCBE62" strokeWidth="0.9" />
       </Svg>
     );
   }
@@ -378,29 +378,29 @@ const LanternArt = ({variant = 'kandil'}) => {
       <Svg width={LANTERN_W} height={LANTERN_H} viewBox="0 0 20 38">
         <Defs>
           <SvgLinearGradient id="globeLantern" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0" stopColor="#EC407A" />
-            <Stop offset="1" stopColor="#AD1457" />
+            <Stop offset="0" stopColor="#FFFFFF" />
+            <Stop offset="1" stopColor="#FFFFFF" />
           </SvgLinearGradient>
         </Defs>
-        <Line x1="10" y1="0" x2="10" y2="8" stroke="#7A4A1F" strokeWidth="1" />
-        <Rect x="6.5" y="7.5" width="7" height="2.6" rx="1" fill={DIWALI.gold} />
+        <Line x1="10" y1="0" x2="10" y2="8" stroke="#FCBE62" strokeWidth="1" />
+        <Rect x="6.5" y="7.5" width="7" height="2.6" rx="1" fill={'#FCBE62'} />
         <Ellipse cx="10" cy="20" rx="8.8" ry="10" fill="url(#globeLantern)" />
-        <Ellipse cx="10" cy="21" rx="4.2" ry="6.2" fill="#FFE082" fillOpacity="0.5" />
+        <Ellipse cx="10" cy="21" rx="4.2" ry="6.2" fill="#F5F5F5" fillOpacity="0.5" />
         <Ellipse
           cx="10"
           cy="20"
           rx="4.6"
           ry="10"
-          stroke={DIWALI.gold}
+          stroke={'#171C8F'}
           strokeWidth="0.7"
           strokeOpacity="0.85"
           fill="none"
         />
-        <Line x1="10" y1="10" x2="10" y2="30" stroke={DIWALI.gold} strokeWidth="0.7" strokeOpacity="0.85" />
-        <Rect x="6.5" y="29.4" width="7" height="2.4" rx="1" fill={DIWALI.gold} />
-        <Line x1="10" y1="31.8" x2="10" y2="37" stroke="#FF8F00" strokeWidth="1.2" />
-        <Line x1="8" y1="31.6" x2="7.2" y2="35.6" stroke="#FFC300" strokeWidth="0.8" />
-        <Line x1="12" y1="31.6" x2="12.8" y2="35.6" stroke="#FFC300" strokeWidth="0.8" />
+        <Line x1="10" y1="10" x2="10" y2="30" stroke={'#171C8F'} strokeWidth="0.7" strokeOpacity="0.85" />
+        <Rect x="6.5" y="29.4" width="7" height="2.4" rx="1" fill={'#FCBE62'} />
+        <Line x1="10" y1="31.8" x2="10" y2="37" stroke="#FCBE62" strokeWidth="1.2" />
+        <Line x1="8" y1="31.6" x2="7.2" y2="35.6" stroke="#FCBE62" strokeWidth="0.8" />
+        <Line x1="12" y1="31.6" x2="12.8" y2="35.6" stroke="#FCBE62" strokeWidth="0.8" />
       </Svg>
     );
   }
@@ -408,22 +408,22 @@ const LanternArt = ({variant = 'kandil'}) => {
     <Svg width={LANTERN_W} height={LANTERN_H} viewBox="0 0 20 38">
       <Defs>
         <SvgLinearGradient id="kandilBody" x1="0" y1="0" x2="0" y2="1">
-          <Stop offset="0" stopColor="#D7263D" />
-          <Stop offset="1" stopColor="#8C1D2C" />
+          <Stop offset="0" stopColor="#FFFFFF" />
+          <Stop offset="1" stopColor="#FFFFFF" />
         </SvgLinearGradient>
       </Defs>
-      <Line x1="10" y1="0" x2="10" y2="8" stroke="#7A4A1F" strokeWidth="1" />
-      <Rect x="6.2" y="7.6" width="7.6" height="3" rx="1" fill={DIWALI.gold} />
+      <Line x1="10" y1="0" x2="10" y2="8" stroke="#FCBE62" strokeWidth="1" />
+      <Rect x="6.2" y="7.6" width="7.6" height="3" rx="1" fill={'#FCBE62'} />
       <Path d="M10 10.5 L19 17 L19 23.5 L10 30 L1 23.5 L1 17 Z" fill="url(#kandilBody)" />
       <Path
         d="M10 13.5 L15 17.5 L15 23 L10 27 L5 23 L5 17.5 Z"
-        fill="#FFE082"
+        fill="#F5F5F5"
         fillOpacity="0.6"
       />
-      <Path d="M1 17 L19 17 M1 23.5 L19 23.5" stroke={DIWALI.gold} strokeWidth="1" />
-      <Line x1="10" y1="30" x2="10" y2="37" stroke="#FF8F00" strokeWidth="1.3" />
-      <Line x1="7.4" y1="29" x2="6.4" y2="35.5" stroke="#FFC300" strokeWidth="0.9" />
-      <Line x1="12.6" y1="29" x2="13.6" y2="35.5" stroke="#FFC300" strokeWidth="0.9" />
+      <Path d="M1 17 L19 17 M1 23.5 L19 23.5" stroke={'#FCBE62'} strokeWidth="1" />
+      <Line x1="10" y1="30" x2="10" y2="37" stroke="#FCBE62" strokeWidth="1.3" />
+      <Line x1="7.4" y1="29" x2="6.4" y2="35.5" stroke="#FCBE62" strokeWidth="0.9" />
+      <Line x1="12.6" y1="29" x2="13.6" y2="35.5" stroke="#FCBE62" strokeWidth="0.9" />
     </Svg>
   );
 };
@@ -476,27 +476,27 @@ const FlyingLanternArt = () => (
   <Svg width={28} height={36} viewBox="0 0 28 36">
     <Defs>
       <SvgLinearGradient id="flyPaper" x1="0" y1="0" x2="0" y2="1">
-        <Stop offset="0" stopColor="#FFCC80" />
-        <Stop offset="0.6" stopColor="#FF9800" />
-        <Stop offset="1" stopColor="#E65100" />
+        <Stop offset="0" stopColor="#FFFFFF" />
+        <Stop offset="0.6" stopColor="#FFFFFF" />
+        <Stop offset="1" stopColor="#FFFFFF" />
       </SvgLinearGradient>
       <RadialGradient id="flyLight" cx="50%" cy="82%" r="62%">
-        <Stop offset="0" stopColor="#FFF8E1" stopOpacity="0.95" />
-        <Stop offset="1" stopColor="#FFF8E1" stopOpacity="0" />
+        <Stop offset="0" stopColor="#F5F5F5" stopOpacity="0.95" />
+        <Stop offset="1" stopColor="#F5F5F5" stopOpacity="0" />
       </RadialGradient>
     </Defs>
     <Path d="M5 4 Q14 -1.5 23 4 L26 27 Q14 31 2 27 Z" fill="url(#flyPaper)" />
     <Path d="M5 4 Q14 -1.5 23 4 L26 27 Q14 31 2 27 Z" fill="url(#flyLight)" />
     <Path
       d="M10 2.2 L8.5 28.6 M18 2.2 L19.5 28.6"
-      stroke="#E65100"
+      stroke="rgba(23,28,143,0.1)"
       strokeOpacity="0.35"
       strokeWidth="0.6"
     />
-    <Ellipse cx="14" cy="27.6" rx="12" ry="2.2" fill="#B23C00" fillOpacity="0.55" />
-    <Line x1="6" y1="28" x2="12" y2="32.5" stroke="#6D4C41" strokeWidth="0.6" />
-    <Line x1="22" y1="28" x2="16" y2="32.5" stroke="#6D4C41" strokeWidth="0.6" />
-    <Ellipse cx="14" cy="33" rx="2.6" ry="2.4" fill="#FFE082" />
+    <Ellipse cx="14" cy="27.6" rx="12" ry="2.2" fill="#F5F5F5" fillOpacity="0.55" />
+    <Line x1="6" y1="28" x2="12" y2="32.5" stroke="#01044B" strokeWidth="0.6" />
+    <Line x1="22" y1="28" x2="16" y2="32.5" stroke="#01044B" strokeWidth="0.6" />
+    <Ellipse cx="14" cy="33" rx="2.6" ry="2.4" fill="#F5F5F5" />
     <Ellipse cx="14" cy="33.3" rx="1.2" ry="1.2" fill="#FFFFFF" />
   </Svg>
 );
@@ -712,14 +712,14 @@ const DiwaliHeaderDecor = ({chase}) => {
               key={`t${i}`}
               size={t.size}
               delay={t.delay}
-              color="#F2B200"
+              color="#171C8F"
               position={{left: t.left, top: t.top}}
             />
           ))}
           <Svg width={decor.W} height={30} style={diwaliStyles.toranSvg}>
             <Path
               d={decor.path}
-              stroke="#A0702A"
+              stroke="rgba(23,28,143,0.1)"
               strokeWidth="1"
               strokeOpacity="0.85"
               fill="none"
@@ -766,18 +766,18 @@ const SmallDiya = () => (
   <Svg width={LEDGE_DIYA_W} height={LEDGE_DIYA_H} viewBox="0 0 60 24">
     <Defs>
       <SvgLinearGradient id="diyaClaySm" x1="0" y1="0" x2="0" y2="1">
-        <Stop offset="0" stopColor="#F08A3A" />
-        <Stop offset="1" stopColor="#9C3A10" />
+        <Stop offset="0" stopColor="#FFFFFF" />
+        <Stop offset="1" stopColor="#FFFFFF" />
       </SvgLinearGradient>
     </Defs>
     <Path d="M2 5 Q30 8 58 5 Q54 22 30 23 Q6 22 2 5 Z" fill="url(#diyaClaySm)" />
-    <Ellipse cx="30" cy="5" rx="28" ry="3.6" fill={DIWALI.gold} />
-    <Ellipse cx="30" cy="5" rx="22" ry="2" fill="#6E260C" />
-    <Path d="M12 13 Q30 17 48 13" stroke={DIWALI.gold} strokeWidth="1.2" fill="none" />
+    <Ellipse cx="30" cy="5" rx="28" ry="3.6" fill={'#FCBE62'} />
+    <Ellipse cx="30" cy="5" rx="22" ry="2" fill="#FCBE62" />
+    <Path d="M12 13 Q30 17 48 13" stroke={'#FCBE62'} strokeWidth="1.2" fill="none" />
     {[18, 30, 42].map(cx => (
-      <Circle key={cx} cx={cx} cy={cx === 30 ? 19 : 17.5} r="1.4" fill={DIWALI.gold} />
+      <Circle key={cx} cx={cx} cy={cx === 30 ? 19 : 17.5} r="1.4" fill={'#FCBE62'} />
     ))}
-    <Rect x="29" y="0.5" width="2" height="4.5" rx="1" fill="#3A1A0A" />
+    <Rect x="29" y="0.5" width="2" height="4.5" rx="1" fill="#FCBE62" />
   </Svg>
 );
 
@@ -786,8 +786,8 @@ const SmallFlame = () => (
     <Defs>
       <RadialGradient id="diyaFlameSm" cx="50%" cy="72%" r="62%">
         <Stop offset="0" stopColor="#FFFFFF" />
-        <Stop offset="0.35" stopColor="#FFE29A" />
-        <Stop offset="1" stopColor="#FF8A00" />
+        <Stop offset="0.35" stopColor="#FFFFFF" />
+        <Stop offset="1" stopColor="#FFFFFF" />
       </RadialGradient>
     </Defs>
     <Path
@@ -826,7 +826,7 @@ const FestiveWhatsNew = () => {
 
   return (
     <LinearGradient
-      colors={['#8C1D2C', '#5A0F2A']}
+      colors={['#FFFFFF', '#FFFFFF']}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}
       style={diwaliStyles.whatsNewPill}>
@@ -838,7 +838,7 @@ const FestiveWhatsNew = () => {
         pointerEvents="none"
         style={[diwaliStyles.whatsNewShine, {transform: [{translateX}, {rotate: '20deg'}]}]}>
         <LinearGradient
-          colors={['rgba(255,231,168,0)', 'rgba(255,231,168,0.5)', 'rgba(255,231,168,0)']}
+          colors={['rgba(255,255,255,0)', '#F5F5F5', 'rgba(255,255,255,0)']}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={StyleSheet.absoluteFill}
@@ -1143,7 +1143,7 @@ const FireworkShell = ({x, y, startY, palette, delay, radius, type, crackle, onD
         {left: x - 1.5, top: y, opacity, transform: [{translateY}]},
       ]}>
       <LinearGradient
-        colors={['#FFF6D5', 'rgba(255, 196, 90, 0)']}
+        colors={['#F5F5F5', 'rgba(255,255,255,0)']}
         style={StyleSheet.absoluteFill}
       />
     </Animated.View>
@@ -1274,36 +1274,36 @@ const RocketBody = ({width = ROCKET_W, height = ROCKET_BODY_H}) => (
   <Svg width={width} height={height} viewBox="0 0 40 62">
     <Defs>
       <SvgLinearGradient id="rocketBody" x1="0" y1="0" x2="1" y2="0">
-        <Stop offset="0" stopColor="#B3122A" />
-        <Stop offset="0.45" stopColor="#F0464F" />
-        <Stop offset="1" stopColor="#9A0F22" />
+        <Stop offset="0" stopColor="#FFFFFF" />
+        <Stop offset="0.45" stopColor="#FFFFFF" />
+        <Stop offset="1" stopColor="#FFFFFF" />
       </SvgLinearGradient>
     </Defs>
     {/* fins */}
-    <Path d="M9 34 L1 48 L1 53 L9 48 Z" fill={DIWALI.gold} />
-    <Path d="M31 34 L39 48 L39 53 L31 48 Z" fill={DIWALI.gold} />
+    <Path d="M9 34 L1 48 L1 53 L9 48 Z" fill={'#FCBE62'} />
+    <Path d="M31 34 L39 48 L39 53 L31 48 Z" fill={'#FCBE62'} />
     {/* body */}
     <Path
       d="M20 2 C28 10 31 22 31 36 L31 50 L9 50 L9 36 C9 22 12 10 20 2 Z"
       fill="url(#rocketBody)"
     />
     {/* nose cone */}
-    <Path d="M20 2 C25 7 28 13 29.6 19 L10.4 19 C12 13 15 7 20 2 Z" fill={DIWALI.gold} />
+    <Path d="M20 2 C25 7 28 13 29.6 19 L10.4 19 C12 13 15 7 20 2 Z" fill={'#FCBE62'} />
     {/* stripes */}
-    <Rect x="9" y="41" width="22" height="3" fill={DIWALI.gold} />
-    <Rect x="9" y="46" width="22" height="1.4" fill={DIWALI.goldLight} />
+    <Rect x="9" y="41" width="22" height="3" fill={'#FCBE62'} />
+    <Rect x="9" y="46" width="22" height="1.4" fill={'#FCBE62'} />
     {/* window */}
-    <Circle cx="20" cy="29" r="4.8" fill={DIWALI.plum} stroke={DIWALI.gold} strokeWidth="1.6" />
+    <Circle cx="20" cy="29" r="4.8" fill={'#01044B'} stroke={'#FCBE62'} strokeWidth="1.6" />
     <Circle cx="18.6" cy="27.6" r="1.5" fill="#FFFFFF" fillOpacity="0.7" />
     {/* nozzle */}
-    <Rect x="14" y="50" width="12" height="5" rx="1.2" fill="#5A0F1F" />
+    <Rect x="14" y="50" width="12" height="5" rx="1.2" fill="#FCBE62" />
   </Svg>
 );
 
 const RocketFlame = () => (
   <Svg width={15} height={ROCKET_FLAME_H} viewBox="0 0 20 28">
-    <Path d="M10 28 C3 18 3 9 6 0 L14 0 C17 9 17 18 10 28 Z" fill="#FF8A00" />
-    <Path d="M10 22 C6.5 16 6.5 9 8 2 L12 2 C13.5 9 13.5 16 10 22 Z" fill="#FFE29A" />
+    <Path d="M10 28 C3 18 3 9 6 0 L14 0 C17 9 17 18 10 28 Z" fill="#FCBE62" />
+    <Path d="M10 22 C6.5 16 6.5 9 8 2 L12 2 C13.5 9 13.5 16 10 22 Z" fill="#F5F5F5" />
   </Svg>
 );
 
@@ -1701,7 +1701,7 @@ const DiwaliRocketLauncher = () => {
               accessibilityLabel="Hide the rocket"
               hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
               style={diwaliStyles.rocketHideBtn}>
-              <Ionicons name="close" size={11} color={DIWALI.gold} />
+              <Ionicons name="close" size={11} color={'#171C8F'} />
             </TouchableOpacity>
           </Animated.View>
 
@@ -1722,7 +1722,7 @@ const DiwaliRocketLauncher = () => {
               accessibilityRole="button"
               accessibilityLabel="Show the rocket">
               <LinearGradient
-                colors={['#8C1D2C', '#5A0F2A']}
+                colors={['#FFFFFF', '#FFFFFF']}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}
                 style={diwaliStyles.rocketTab}>
@@ -1743,7 +1743,7 @@ const DiwaliRocketLauncher = () => {
 // ────────────────────────────────────────────────
 const Mandala = ({size}) => (
   <Svg width={size} height={size} viewBox="0 0 200 200">
-    <G stroke={DIWALI.gold} fill="none" strokeOpacity={0.35}>
+    <G stroke={'#171C8F'} fill="none" strokeOpacity={0.35}>
       <Circle cx="100" cy="100" r="96" strokeWidth="0.8" />
       <Circle cx="100" cy="100" r="82" strokeWidth="0.6" strokeDasharray="2 4" />
       {[...Array(16)].map((_, i) => (
@@ -1776,7 +1776,7 @@ const Mandala = ({size}) => (
         cx="100"
         cy="9"
         r="1.8"
-        fill={DIWALI.gold}
+        fill={'#171C8F'}
         fillOpacity={0.55}
         transform={`rotate(${i * 22.5} 100 100)`}
       />
@@ -1788,9 +1788,9 @@ const GlowOrb = ({size}) => (
   <Svg width={size} height={size} viewBox="0 0 100 100">
     <Defs>
       <RadialGradient id="diyaGlowOrb" cx="50%" cy="50%" r="50%">
-        <Stop offset="0" stopColor="#FFD166" stopOpacity="0.55" />
-        <Stop offset="0.5" stopColor="#FF9F1C" stopOpacity="0.18" />
-        <Stop offset="1" stopColor="#FF9F1C" stopOpacity="0" />
+        <Stop offset="0" stopColor="#FFFFFF" stopOpacity="0.55" />
+        <Stop offset="0.5" stopColor="#FFFFFF" stopOpacity="0.18" />
+        <Stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
       </RadialGradient>
     </Defs>
     <Circle cx="50" cy="50" r="50" fill="url(#diyaGlowOrb)" />
@@ -1802,8 +1802,8 @@ const DiyaFlame = ({width = 22, height = 36}) => (
     <Defs>
       <RadialGradient id="diyaFlameCore" cx="50%" cy="72%" r="62%">
         <Stop offset="0" stopColor="#FFFFFF" />
-        <Stop offset="0.35" stopColor="#FFE29A" />
-        <Stop offset="1" stopColor="#FF8A00" />
+        <Stop offset="0.35" stopColor="#FFFFFF" />
+        <Stop offset="1" stopColor="#FFFFFF" />
       </RadialGradient>
     </Defs>
     <Path
@@ -1812,7 +1812,7 @@ const DiyaFlame = ({width = 22, height = 36}) => (
     />
     <Path
       d="M11 14 C13 19 15.5 22 15.5 26.5 C15.5 30 13.5 32.5 11 32.5 C8.5 32.5 6.5 30 6.5 26.5 C6.5 22 9 19 11 14 Z"
-      fill="#FFF8E1"
+      fill="#F5F5F5"
       fillOpacity="0.85"
     />
   </Svg>
@@ -1822,28 +1822,28 @@ const DiyaLamp = ({width = 120, height = 62}) => (
   <Svg width={width} height={height} viewBox="0 0 120 62">
     <Defs>
       <SvgLinearGradient id="diyaClay" x1="0" y1="0" x2="0" y2="1">
-        <Stop offset="0" stopColor="#E9883A" />
-        <Stop offset="1" stopColor="#8E3410" />
+        <Stop offset="0" stopColor="#FFFFFF" />
+        <Stop offset="1" stopColor="#FFFFFF" />
       </SvgLinearGradient>
     </Defs>
     <Path d="M6 20 Q60 26 114 20 Q106 56 60 60 Q14 56 6 20 Z" fill="url(#diyaClay)" />
-    <Ellipse cx="60" cy="20" rx="54" ry="7" fill={DIWALI.gold} />
-    <Ellipse cx="60" cy="20" rx="46" ry="4.2" fill="#6E260C" />
+    <Ellipse cx="60" cy="20" rx="54" ry="7" fill={'#FCBE62'} />
+    <Ellipse cx="60" cy="20" rx="46" ry="4.2" fill="#FCBE62" />
     <Path
       d="M22 35 Q60 43 98 35"
-      stroke={DIWALI.gold}
+      stroke={'#171C8F'}
       strokeWidth="1.4"
       fill="none"
       strokeOpacity="0.8"
     />
     {[32, 46, 60, 74, 88].map(cx => (
-      <Circle key={cx} cx={cx} cy={cx === 60 ? 47 : 45.5} r="1.8" fill={DIWALI.gold} />
+      <Circle key={cx} cx={cx} cy={cx === 60 ? 47 : 45.5} r="1.8" fill={'#FCBE62'} />
     ))}
-    <Rect x="58.5" y="11" width="3" height="9" rx="1.5" fill="#3A1A0A" />
+    <Rect x="58.5" y="11" width="3" height="9" rx="1.5" fill="#FCBE62" />
   </Svg>
 );
 
-const SparkleStar = ({size, color = DIWALI.goldLight}) => (
+const SparkleStar = ({size, color = '#171C8F'}) => (
   <Svg width={size} height={size} viewBox="0 0 24 24">
     <Path
       d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
@@ -1898,7 +1898,7 @@ const Twinkle = ({size, delay, position, color}) => {
 // ────────────────────────────────────────────────
 // Greeting background — soft golden bokeh lights on a deep radial glow
 // ────────────────────────────────────────────────
-const BOKEH_COLORS = ['#FFC94D', '#FFB347', '#FF8A65', '#FFE29A'];
+const BOKEH_COLORS = ['rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', 'rgba(23,28,143,0.85)', '#F5F5F5'];
 
 const BokehOrb = ({id, size, color, x, y, delay, drift, peak}) => {
   const t = useRef(new Animated.Value(0)).current;
@@ -1973,9 +1973,9 @@ const GreetingBackdrop = ({width: W, height: H}) => {
       <Svg width={W} height={H} style={StyleSheet.absoluteFill}>
         <Defs>
           <RadialGradient id="greetBg" cx="50%" cy="52%" r="75%">
-            <Stop offset="0" stopColor="#6E1A32" />
-            <Stop offset="0.45" stopColor="#3D0C2C" />
-            <Stop offset="1" stopColor="#12031B" />
+            <Stop offset="0" stopColor="#FFFFFF" />
+            <Stop offset="0.45" stopColor="#FFFFFF" />
+            <Stop offset="1" stopColor="#FFFFFF" />
           </RadialGradient>
         </Defs>
         <Rect x="0" y="0" width={W} height={H} fill="url(#greetBg)" />
@@ -1992,9 +1992,9 @@ const LightPool = ({width}) => (
   <Svg width={width} height={width * 0.22} viewBox="0 0 100 22">
     <Defs>
       <RadialGradient id="lightPool" cx="50%" cy="50%" r="50%">
-        <Stop offset="0" stopColor="#FFD166" stopOpacity="0.55" />
-        <Stop offset="0.6" stopColor="#FF9F1C" stopOpacity="0.16" />
-        <Stop offset="1" stopColor="#FF9F1C" stopOpacity="0" />
+        <Stop offset="0" stopColor="#FFFFFF" stopOpacity="0.55" />
+        <Stop offset="0.6" stopColor="#FFFFFF" stopOpacity="0.16" />
+        <Stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
       </RadialGradient>
     </Defs>
     <Ellipse cx="50" cy="11" rx="50" ry="11" fill="url(#lightPool)" />
@@ -2208,7 +2208,7 @@ const DiwaliGreetingOverlay = ({visible, onClose}) => {
 
           {/* light string + hanging lanterns */}
           <Svg width={W} height={stringY + 24} style={diwaliStyles.toranSvg}>
-            <Path d={lights.path} stroke="#C9A25A" strokeWidth="1" strokeOpacity="0.7" fill="none" />
+            <Path d={lights.path} stroke="rgba(23,28,143,0.1)" strokeWidth="1" strokeOpacity="0.7" fill="none" />
             {lights.joints.map(j => (
               <G key={j.key}>
                 {mangoLeaf(`${j.key}a`, j.x - 2, j.y + 3.5, 26, 9)}
@@ -2272,14 +2272,14 @@ const DiwaliGreetingOverlay = ({visible, onClose}) => {
               </Text>
               <View style={diwaliStyles.ornamentRow}>
                 <LinearGradient
-                  colors={['rgba(245,196,81,0)', DIWALI.gold]}
+                  colors={['#FCBE62', '#FCBE62']}
                   start={{x: 0, y: 0}}
                   end={{x: 1, y: 0}}
                   style={diwaliStyles.ornamentLine}
                 />
                 <View style={diwaliStyles.ornamentDiamond} />
                 <LinearGradient
-                  colors={[DIWALI.gold, 'rgba(245,196,81,0)']}
+                  colors={['#FCBE62', '#FCBE62']}
                   start={{x: 0, y: 0}}
                   end={{x: 1, y: 0}}
                   style={diwaliStyles.ornamentLine}
@@ -2366,8 +2366,8 @@ const KeepsakeArt = ({type}) => {
         <Svg width={15} height={15} viewBox="0 0 16 16">
           <Defs>
             <RadialGradient id="kLaddoo" cx="38%" cy="35%" r="70%">
-              <Stop offset="0" stopColor="#FFD180" />
-              <Stop offset="1" stopColor="#E06C00" />
+              <Stop offset="0" stopColor="#FFFFFF" />
+              <Stop offset="1" stopColor="#FFFFFF" />
             </RadialGradient>
           </Defs>
           <Circle cx="8" cy="8" r="7.5" fill="url(#kLaddoo)" />
@@ -3014,9 +3014,9 @@ const Home = ({navigation}) => {
   useFocusEffect(
     useCallback(() => {
       StatusBar.setBarStyle('light-content');
-      if (Platform.OS === 'android') StatusBar.setBackgroundColor(HomePalette.deep);
+      if (Platform.OS === 'android') StatusBar.setBackgroundColor('#171C8F');
       return () => {
-        if (Platform.OS === 'android') StatusBar.setBackgroundColor(ThemeColor.Teal);
+        if (Platform.OS === 'android') StatusBar.setBackgroundColor('#171C8F');
       };
     }, []),
   );
@@ -3046,8 +3046,8 @@ const Home = ({navigation}) => {
           <RefreshControl
             refreshing={pullRefreshing}
             onRefresh={handlePullRefresh}
-            tintColor={HomePalette.teal}
-            colors={[HomePalette.teal]}
+            tintColor={'#171C8F'}
+            colors={['#171C8F']}
           />
         }>
         {/* Pinned: menu · greeting + name · What's New */}
@@ -3209,8 +3209,8 @@ const diwaliStyles = StyleSheet.create({
   // Rocket launcher
   rocketTrailDot: {
     position: 'absolute',
-    backgroundColor: '#FFE29A',
-    shadowColor: '#FFB703',
+    backgroundColor: '#F5F5F5',
+    shadowColor: '#01044B',
     shadowOffset: {width: 0, height: 0},
     shadowOpacity: 1,
     shadowRadius: 5,
@@ -3235,7 +3235,7 @@ const diwaliStyles = StyleSheet.create({
   ornamentDiamond: {
     width: 7,
     height: 7,
-    backgroundColor: DIWALI.gold,
+    backgroundColor: '#FCBE62',
     transform: [{rotate: '45deg'}],
     marginHorizontal: 10,
   },
@@ -3255,9 +3255,9 @@ const diwaliStyles = StyleSheet.create({
     width: 18,
     height: 18,
     borderRadius: 9,
-    backgroundColor: 'rgba(74, 14, 31, 0.92)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(245, 196, 81, 0.8)',
+    borderColor: 'rgba(255,255,255,0.8)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -3272,7 +3272,7 @@ const diwaliStyles = StyleSheet.create({
     borderBottomLeftRadius: 18,
     borderWidth: 1,
     borderRightWidth: 0,
-    borderColor: 'rgba(245, 196, 81, 0.75)',
+    borderColor: 'rgba(255,255,255,0.75)',
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 3,
@@ -3286,7 +3286,7 @@ const diwaliStyles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 15,
     borderWidth: 1,
-    borderColor: 'rgba(245, 196, 81, 0.75)',
+    borderColor: 'rgba(255,255,255,0.75)',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -3295,7 +3295,7 @@ const diwaliStyles = StyleSheet.create({
   },
   whatsNewText: {
     fontSize: 12,
-    color: '#FFE7A8',
+    color: 'rgba(1,4,75,0.45)',
     letterSpacing: 0.3,
   },
   whatsNewShine: {
@@ -3342,16 +3342,16 @@ const diwaliStyles = StyleSheet.create({
   },
   bulbCap: {
     position: 'absolute',
-    backgroundColor: '#4E342E',
+    backgroundColor: '#FFFFFF',
     borderRadius: 1,
   },
   bulbShine: {
     position: 'absolute',
-    backgroundColor: 'rgba(255, 255, 255, 0.75)',
+    backgroundColor: 'rgba(255,255,255,0.75)',
   },
   lanternString: {
     width: 1,
-    backgroundColor: '#7A4A1F',
+    backgroundColor: '#FCBE62',
   },
   flyingLantern: {
     position: 'absolute',
@@ -3370,10 +3370,10 @@ const diwaliStyles = StyleSheet.create({
     alignItems: 'center',
   },
   overlayTitle: {
-    color: DIWALI.gold,
+    color: '#171C8F',
     letterSpacing: 0.6,
     textAlign: 'center',
-    textShadowColor: 'rgba(255, 183, 3, 0.65)',
+    textShadowColor: 'rgba(1,4,75,0.35)',
     textShadowOffset: {width: 0, height: 0},
     textShadowRadius: 16,
   },
@@ -3398,9 +3398,9 @@ const diwaliStyles = StyleSheet.create({
   },
   burstWishText: {
     fontSize: 20,
-    color: '#FFE7A8',
+    color: 'rgba(1,4,75,0.45)',
     letterSpacing: 0.5,
-    textShadowColor: 'rgba(255, 140, 0, 0.9)',
+    textShadowColor: 'rgba(1,4,75,0.35)',
     textShadowOffset: {width: 0, height: 0},
     textShadowRadius: 10,
   },
@@ -3444,7 +3444,7 @@ const fxStyles = StyleSheet.create({
 // Main / Home styles (Idea C layout)
 // ─────────────────────────────────────────────────────
 const styles = StyleSheet.create({
-  root: {flex: 1, backgroundColor: HomePalette.canvas},
+  root: {flex: 1, backgroundColor: '#F5F5F5'},
   scroll: {flex: 1},
   scrollContent: {paddingBottom: 110},
   body: {paddingHorizontal: 16, paddingTop: 14},

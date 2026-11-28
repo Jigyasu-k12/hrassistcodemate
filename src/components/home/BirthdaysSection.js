@@ -10,7 +10,7 @@ import HomeIcon from './HomeIcons';
 
 const MAX_TODAY = 3;
 const MAX_TOMORROW = 2;
-const HUES = ['#F6E6C4', '#D6E6E1', '#EAF6F2'];
+const HUES = ['#F5F5F5', '#F5F5F5', '#F5F5F5'];
 
 const safeDecrypt = v => {
   try {
@@ -71,7 +71,7 @@ const PersonRow = ({p, today}) => {
           accessibilityRole="button"
           accessibilityLabel={`Send birthday wishes to ${p.name}`}
           style={styles.wishBtn}>
-          <HomeIcon name="mail" size={16} color={P.onAmber} strokeWidth={2} />
+          <HomeIcon name="mail" size={16} color={'#01044B'} strokeWidth={2} />
           <HText style={styles.wishText}>Wish</HText>
         </TouchableOpacity>
       )}
@@ -79,7 +79,7 @@ const PersonRow = ({p, today}) => {
   );
   return today ? (
     <LinearGradient
-      colors={['#FFFFFF', '#FDF7EA']}
+      colors={['#FFFFFF', '#F5F5F5']}
       start={{x: 0, y: 0}}
       end={{x: 0.6, y: 1}}
       style={[styles.row, styles.rowToday]}>
@@ -142,7 +142,7 @@ const BirthdaysSection = ({navigation, active = true, refreshKey = 0}) => {
     <View>
       <View style={styles.head}>
         <View style={styles.titleRow}>
-          <HomeIcon name="cake" size={20} color={P.amberInk} />
+          <HomeIcon name="cake" size={20} color={'#171C8F'} />
           <HText style={styles.title} accessibilityRole="header">
             Birthdays
           </HText>
@@ -162,7 +162,7 @@ const BirthdaysSection = ({navigation, active = true, refreshKey = 0}) => {
           <HomeIcon
             name="chevronRight"
             size={14}
-            color={P.tealInk}
+            color={'#171C8F'}
             strokeWidth={2.4}
           />
         </TouchableOpacity>
@@ -170,7 +170,7 @@ const BirthdaysSection = ({navigation, active = true, refreshKey = 0}) => {
 
       {!!today.length && (
         <View style={styles.group}>
-          <HText style={[styles.groupLabel, {color: P.amberInk}]}>
+          <HText style={[styles.groupLabel, {color: '#171C8F'}]}>
             Today · {today.length}
           </HText>
           {today.slice(0, MAX_TODAY).map(p => (
@@ -180,7 +180,7 @@ const BirthdaysSection = ({navigation, active = true, refreshKey = 0}) => {
       )}
       {!!tomorrow.length && (
         <View style={styles.group}>
-          <HText style={[styles.groupLabel, {color: P.sub}]}>
+          <HText style={[styles.groupLabel, {color: 'rgba(1,4,75,0.62)'}]}>
             Tomorrow · {tomorrow.length}
           </HText>
           {tomorrow.slice(0, MAX_TOMORROW).map(p => (
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   titleRow: {flexDirection: 'row', alignItems: 'center'},
-  title: {...TYPE.title, color: P.deep, marginLeft: 8},
+  title: {...TYPE.title, color: '#01044B', marginLeft: 8},
   seeAll: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   seeAllText: {
     fontSize: 13,
     fontWeight: '600',
-    color: P.tealInk,
+    color: '#171C8F',
     marginRight: 2,
   },
   group: {marginBottom: 6},
@@ -224,8 +224,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: 8,
   },
-  rowToday: {borderColor: P.amberSoft},
-  rowTomorrow: {borderColor: P.line, backgroundColor: '#FFFFFF'},
+  rowToday: {borderColor: '#FCBE62'},
+  rowTomorrow: {borderColor: 'rgba(23,28,143,0.1)', backgroundColor: '#FFFFFF'},
   avatar: {
     width: 42,
     height: 42,
@@ -233,33 +233,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
-    borderColor: '#FFFFFF',
-    shadowColor: P.deep,
+    borderColor: 'rgba(255,255,255,0.22)',
+    shadowColor: '#01044B',
     shadowOpacity: 0.12,
     shadowRadius: 3,
     shadowOffset: {width: 0, height: 2},
     elevation: 1,
   },
-  avatarText: {fontSize: 14, fontWeight: '700', color: P.deep},
+  avatarText: {fontSize: 14, fontWeight: '700', color: '#01044B'},
   personText: {flex: 1, minWidth: 0, marginHorizontal: 10},
-  name: {fontSize: 14, fontWeight: '700', color: P.deep},
-  dept: {...TYPE.caption, color: P.sub, marginTop: 1},
+  name: {fontSize: 14, fontWeight: '700', color: '#01044B'},
+  dept: {...TYPE.caption, color: 'rgba(1,4,75,0.62)', marginTop: 1},
   wishBtn: {
     height: 44,
     minWidth: 88,
     paddingHorizontal: 12,
     borderRadius: 22,
-    backgroundColor: P.amber,
+    backgroundColor: '#FCBE62',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: P.amberStrong,
+    shadowColor: '#01044B',
     shadowOpacity: 0.4,
     shadowRadius: 8,
     shadowOffset: {width: 0, height: 4},
     elevation: 2,
   },
-  wishText: {fontSize: 13, fontWeight: '700', color: P.onAmber, marginLeft: 6},
+  wishText: {fontSize: 13, fontWeight: '700', color: '#01044B', marginLeft: 6},
 });
 
 export default BirthdaysSection;

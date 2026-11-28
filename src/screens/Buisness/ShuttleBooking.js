@@ -46,7 +46,7 @@ const ShuttleBooking = ({ navigation }) => {
             <Ionicons
               name="ellipsis-vertical-circle"
               size={30}
-              color={'#fff'}
+              color={'#F5F5F5'}
             />
           </TouchableOpacity>
         ) : null
@@ -81,7 +81,7 @@ const ShuttleBooking = ({ navigation }) => {
         </View>
       ) : null} */}
       <View style={styles.container}>
-        <LinearGradient colors={[ThemeColor.Teal,ThemeColor.Teal,ThemeColor.Teal]} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
+        <LinearGradient colors={['#171C8F','#171C8F','#171C8F']} start={{x:0,y:0}} end={{x:1,y:0}} style={styles.mystyl}>
           <View style={{flex:1,flexDirection:'row'}}>
         <Tab.Navigator
           swipeEnabled={false}
@@ -91,8 +91,8 @@ const ShuttleBooking = ({ navigation }) => {
             tabBarLabelStyle: { fontSize: GlobalFontSize.TabTitle, fontWeight: '700' },
             tabBarActiveTintColor: ThemeColor.OnDark,
           tabBarInactiveTintColor: ThemeColor.OnDarkMuted,
-            tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: ThemeColor.Amber },
-            tabBarStyle: { backgroundColor: 'transparent', elevation: 0 },
+            tabBarIndicatorStyle: { height: 4, borderRadius: 2, backgroundColor: '#FCBE62' },
+            tabBarStyle: { backgroundColor: 'rgba(255,255,255,0)', elevation: 0 },
           }}>
           <Tab.Screen name="Book" component={Book} />
           <Tab.Screen name="Past Bookings" component={PastBook} />
@@ -110,7 +110,7 @@ const ShuttleBooking = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: GlobalColor.White,
+    backgroundColor: '#FFFFFF',
   },
   addtnlBtn: {
     position: 'absolute',
@@ -119,18 +119,18 @@ const styles = StyleSheet.create({
     zIndex: 55555555
   },
   fullWidthButton: {
-    backgroundColor: GlobalColor.Primary,
+    backgroundColor: '#171C8F',
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
   fullWidthButtonText: {
-    color: GlobalColor.White,
+    color: '#FFFFFF',
     marginLeft: 8
   },
   mystyl:{
-       backgroundColor:'transparent',
+       backgroundColor:'rgba(255,255,255,0)',
        height:'100%',
        flexDirection:'row',
   }

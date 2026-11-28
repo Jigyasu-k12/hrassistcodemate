@@ -187,11 +187,11 @@ const Routes = () => {
     // // console.log($1);
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size={'large'} color={'#80406A'} />
+        <ActivityIndicator size={'large'} color={'#01044B'} />
         <Text
           style={{
             fontSize: 16,
-            color: '#000',
+            color: '#01044B',
             marginVertical: 10,
           }}>
           Loading...

@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
   canteen: {
     marginVertical: 10,
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     alignSelf: 'center',
     padding: 10,
     paddingVertical:15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#01044B',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 0,    
     borderLeftWidth: 5,
-    borderLeftColor: ThemeColor.Teal,   
+    borderLeftColor: '#171C8F',   
     marginBottom:2,
   },
 });
